@@ -1,0 +1,47 @@
+ROAM AMERICA — SOURCES & CREDITS
+
+An independent travel inspiration and planning project.
+State descriptions, suggested seasons, and durations are editorial starting
+points, not real-time availability, route calculations, or booking offers.
+Check destination opening times, weather, reservations, road conditions,
+and current requirements before travel.
+
+TRAVEL REFERENCES
+Visit The USA (Brand USA): https://www.visittheusa.com/
+Each state guide links to the corresponding Visit The USA destination page.
+National Park Service: https://www.nps.gov/planyourvisit/index.htm
+NPS travel tips: https://www.nps.gov/planyourvisit/travel-tips.htm
+NPS passes: https://www.nps.gov/planyourvisit/passes.htm
+Federal recreation reservations: https://www.recreation.gov/
+U.S. Department of State: https://travel.state.gov/content/travel/en/us-visas/tourism-visit.html
+U.S. Customs and Border Protection: https://www.cbp.gov/travel/international-visitors
+California road conditions: https://quickmap.dot.ca.gov/
+
+DESTINATION PHOTOGRAPHS
+Photographs downloaded from Unsplash and served locally.
+Monument Valley Navajo Tribal Park (hero and Southwest route):
+https://images.unsplash.com/photo-1509316785289-025f5b846b35
+Golden Gate Bridge, San Francisco (California and Pacific route):
+https://images.unsplash.com/photo-1501594907352-04cda38ebc29
+New York City skyline:
+https://images.unsplash.com/photo-1485871981521-5b1fd3805eee
+Horseshoe Bend, near Page, Arizona:
+https://images.unsplash.com/photo-1474044159687-1ee9f3a51722
+Hawaiian coast:
+https://images.unsplash.com/photo-1542259009477-d625272157b7
+Unsplash license: https://unsplash.com/license
+State silhouettes and travel artwork are illustrations, not destination photographs.
+
+MAP
+US Atlas v3, an Albers-projected map of the United States.
+https://github.com/topojson/us-atlas
+Source: https://cdn.jsdelivr.net/npm/us-atlas@3/states-albers-10m.json
+Bundled SVG paths preserve the original state geometry.
+Alaska and Hawaii are displayed as insets. Washington, D.C. and U.S. territories
+are not included in the count of 50 states.
+The US Atlas ISC license is included in /us-atlas-LICENSE.txt.
+
+FONTS
+DM Sans, DM Serif Display, and Noto Sans Thai from Google Fonts.
+Fonts are served locally. SIL Open Font License texts are included in /fonts/.
+https://github.com/google/fonts

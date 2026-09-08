@@ -1,40 +1,26 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>USA Travel Planner</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* For custom scrollbar aesthetics */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
-    "react/": "https://esm.sh/react@^19.1.0/",
-    "react": "https://esm.sh/react@^19.1.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
-  <body class="bg-gray-50 text-gray-800">
+    <meta name="theme-color" content="#162e3c" />
+    <meta
+      name="description"
+      content="Discover all 50 U.S. states, explore an interactive atlas, save your favorite places, and build your own American road trip. Available in English and Thai."
+    />
+    <meta property="og:title" content="Roam America — America, your way" />
+    <meta
+      property="og:description"
+      content="50 states. Endless possibilities. Find your next American adventure and make it a plan."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <link rel="preload" href="/fonts/font-1.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/font-3.woff2" as="font" type="font/woff2" crossorigin />
+    <title>Roam America — 50 states. Endless possibilities.</title>
+  </head>
+  <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
