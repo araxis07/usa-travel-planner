@@ -45,3 +45,907 @@ FONTS
 DM Sans, DM Serif Display, and Noto Sans Thai from Google Fonts.
 Fonts are served locally. SIL Open Font License texts are included in /fonts/.
 https://github.com/google/fonts
+
+WIKIMEDIA COMMONS DESTINATION GALLERIES
+Photos are served locally, resized and cropped for layout. Each file retains its own license.
+The source pages identify the subjects, photographers and applicable reuse terms.
+
+California — San Francisco
+File: /images/states/ca-1.jpg
+Author: Craig Howell from San Carlos, CA, USA
+Source: https://commons.wikimedia.org/wiki/File:Zeppelin-ride-020100925-195_(5029394846).jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+California — Yosemite National Park
+File: /images/states/ca-2.jpg
+Author: Thomas Wolf , www.foto-tw.de
+Source: https://commons.wikimedia.org/wiki/File:Half_Dome_with_Eastern_Yosemite_Valley_(50MP).jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+California — Big Sur
+File: /images/states/ca-3.jpg
+Author: Diliff
+Source: https://commons.wikimedia.org/wiki/File:Central_Californian_Coastline,_Big_Sur_-_May_2013.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+New York — New York City
+File: /images/states/ny-1.jpg
+Author: Dllu
+Source: https://commons.wikimedia.org/wiki/File:View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_(cropped).jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+New York — Hudson Valley
+File: /images/states/ny-2.jpg
+Author: UpstateNYer
+Source: https://commons.wikimedia.org/wiki/File:BrunswickAutumn.JPG
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+New York — Niagara Falls
+File: /images/states/ny-3.jpg
+Author: Saffron Blaze
+Source: https://commons.wikimedia.org/wiki/File:3Falls_Niagara.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Arizona — Grand Canyon South Rim
+File: /images/states/az-1.jpg
+Author: Lennart Sikkema
+Source: https://commons.wikimedia.org/wiki/File:Canyon_River_Tree_(165872763).jpeg
+License: CC BY 3.0 — https://creativecommons.org/licenses/by/3.0
+
+Arizona — Sedona
+File: /images/states/az-2.jpg
+Author: Terrydarc
+Source: https://commons.wikimedia.org/wiki/File:Cathedral_Rock_-_Sedona_AZ-1.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Arizona — Monument Valley Navajo Tribal Park
+File: /images/states/az-3.jpg
+Author: Domenico Convertini
+Source: https://commons.wikimedia.org/wiki/File:Monument_Valley,_Utah,_USA_(23611451292).jpg
+License: CC BY-SA 2.0 — https://creativecommons.org/licenses/by-sa/2.0
+
+Hawaii — Oʻahu
+File: /images/states/hi-1.jpg
+Author: Pickle the cool
+Source: https://commons.wikimedia.org/wiki/File:City_of_Waikiki_view.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Hawaii — Hawaiʻi Volcanoes National Park
+File: /images/states/hi-2.jpg
+Author: Brocken Inaglory
+Source: https://commons.wikimedia.org/wiki/File:P%C4%81hoehoe_and_Aa_flows_at_Hawaii.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Hawaii — Kauaʻi
+File: /images/states/hi-3.jpg
+Author: Dcrjsr
+Source: https://commons.wikimedia.org/wiki/File:NaPali_overlook_Kalalau_Valley.jpg
+License: CC BY 3.0 — https://creativecommons.org/licenses/by/3.0
+
+Utah — Zion National Park
+File: /images/states/ut-1.jpg
+Author: Diliff
+Source: https://commons.wikimedia.org/wiki/File:Zion_angels_landing_view.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0/
+
+Utah — Bryce Canyon National Park
+File: /images/states/ut-2.jpg
+Author: King of Hearts
+Source: https://commons.wikimedia.org/wiki/File:Inspiration_Point_Bryce_Canyon_November_2018_panorama.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Utah — Arches National Park
+File: /images/states/ut-3.jpg
+Author: Palacemusic
+Source: https://commons.wikimedia.org/wiki/File:Delicate_arch_sunset.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Colorado — Rocky Mountain National Park
+File: /images/states/co-1.jpg
+Author: Daniel Mayer (Mav)
+Source: https://commons.wikimedia.org/wiki/File:Rocky_Mountain_National_Park_in_September_2011_-_Glacier_Gorge_from_Bear_Lake.JPG
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Colorado — Denver
+File: /images/states/co-2.jpg
+Author: Quintin Soloviev
+Source: https://commons.wikimedia.org/wiki/File:Denver,_Colorado_skyline_(cropped_3x5).jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Colorado — Mesa Verde National Park
+File: /images/states/co-3.jpg
+Author: Tobi 87
+Source: https://commons.wikimedia.org/wiki/File:Cliff_Palace-Colorado-Mesa_Verde_NP.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Florida — Miami Beach
+File: /images/states/fl-1.jpg
+Author: chensiyuan
+Source: https://commons.wikimedia.org/wiki/File:Ocean_drive_day_2009j.JPG
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Florida — Everglades National Park
+File: /images/states/fl-2.jpg
+Author: Everglades NPS from Homestead, Florida, United States
+Source: https://commons.wikimedia.org/wiki/File:Sunset_over_the_River_of_Grass,_NPSphoto,_G.Gardner_(9255157507).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Florida — Florida Keys
+File: /images/states/fl-3.jpg
+Author: Shanbin Zhao
+Source: https://commons.wikimedia.org/wiki/File:U.S._Route_1,_Florida_Keys.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Washington — Seattle
+File: /images/states/wa-1.jpg
+Author: Jeffery Hayes
+Source: https://commons.wikimedia.org/wiki/File:Seattle_Center_as_night_falls.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Washington — Olympic National Park
+File: /images/states/wa-2.jpg
+Author: Adbar
+Source: https://commons.wikimedia.org/wiki/File:Cedar_Creek_Abbey_Island_Ruby_Beach.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Washington — Mount Rainier National Park
+File: /images/states/wa-3.jpg
+Author: Samuel Kerr
+Source: https://commons.wikimedia.org/wiki/File:Mount_Rainier_from_above_Myrtle_Falls_in_August.JPG
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Alabama — Birmingham Civil Rights District
+File: /images/states/al-1.jpg
+Author: Chris Pruitt
+Source: https://commons.wikimedia.org/wiki/File:16th_Street_Baptist_Church_from_Kelly_Ingram_Park_Nov_2011.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Alabama — Muscle Shoals
+File: /images/states/al-2.jpg
+Author: Carol M. Highsmith
+Source: https://commons.wikimedia.org/wiki/File:FAME_Recording_Studios_Muscle_Shoals.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Alabama — Gulf Shores
+File: /images/states/al-3.jpg
+Author: Please attribute this image as the work of " DiscoverWithDima ."
+Source: https://commons.wikimedia.org/wiki/File:Gulf_Shores,_Alabama_(beach).jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Alaska — Denali National Park
+File: /images/states/ak-1.jpg
+Author: Denali National Park and Preserve
+Source: https://commons.wikimedia.org/wiki/File:Every_Road-_Denali_(7945497984).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Alaska — Kenai Fjords National Park
+File: /images/states/ak-2.jpg
+Author: NPS
+Source: https://commons.wikimedia.org/wiki/File:Kenai_Fjords_coast.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Alaska — Juneau
+File: /images/states/ak-3.jpg
+Author: Ifly6
+Source: https://commons.wikimedia.org/wiki/File:Queen_Elizabeth_(ship,_2010)_in_Juneau,_Alaska_2024-08-15_(cropped).jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Arkansas — Hot Springs National Park
+File: /images/states/ar-1.jpg
+Author: See source
+Source: https://commons.wikimedia.org/wiki/File:Hots_Springs_National_Park_aerial.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Arkansas — Buffalo National River
+File: /images/states/ar-2.jpg
+Author: OakleyOriginals
+Source: https://commons.wikimedia.org/wiki/File:Morning_on_the_Buffalo_River.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Arkansas — Bentonville
+File: /images/states/ar-3.jpg
+Author: Alfredo Carrillo
+Source: https://commons.wikimedia.org/wiki/File:Central_Avenue_at_night.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Connecticut — Mystic Seaport
+File: /images/states/ct-1.jpg
+Author: Don Ramey Logan
+Source: https://commons.wikimedia.org/wiki/File:Mystic_Shipyard_aerial_by_Don_Ramey_Logan.jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Connecticut — New Haven
+File: /images/states/ct-2.jpg
+Author: Quintin Soloviev
+Source: https://commons.wikimedia.org/wiki/File:New_Haven,_Connecticut_skyline_(cropped).jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Connecticut — Litchfield Hills
+File: /images/states/ct-3.jpg
+Author: U.S. Geological Survey from Reston, VA, USA
+Source: https://commons.wikimedia.org/wiki/File:Kent_Falls_State_Park_(15615230254).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Delaware — Rehoboth Beach
+File: /images/states/de-1.jpg
+Author: Dough4872
+Source: https://commons.wikimedia.org/wiki/File:Rehoboth_Beach_boardwalk_looking_north_toward_Rehoboth_Avenue.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Delaware — Cape Henlopen State Park
+File: /images/states/de-2.jpg
+Author: Dough4872
+Source: https://commons.wikimedia.org/wiki/File:Cape_Henlopen_State_Park_beach_looking_north_July_2022.jpeg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Delaware — Wilmington
+File: /images/states/de-3.jpg
+Author: Quintin Soloviev
+Source: https://commons.wikimedia.org/wiki/File:Wilmington,_Delaware,_USA.jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Georgia — Atlanta
+File: /images/states/ga-1.jpg
+Author: AtlChampion
+Source: https://commons.wikimedia.org/wiki/File:A2ATL20250614-0721_(cropped).jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Georgia — Savannah
+File: /images/states/ga-2.jpg
+Author: Bigdaverhuberg
+Source: https://commons.wikimedia.org/wiki/File:Savannah.tif
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Georgia — Jekyll Island
+File: /images/states/ga-3.jpg
+Author: Jud McCranie
+Source: https://commons.wikimedia.org/wiki/File:Jekyll_Island,_Georgia,_US,_original_entrance.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Idaho — Sawtooth Mountains
+File: /images/states/id-1.jpg
+Author: Fredlyfish4
+Source: https://commons.wikimedia.org/wiki/File:Sawtooth_Range.JPG
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Idaho — Boise
+File: /images/states/id-2.jpg
+Author: Jyoni Shuler
+Source: https://commons.wikimedia.org/wiki/File:Boise,_Idaho.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Idaho — Craters of the Moon
+File: /images/states/id-3.jpg
+Author: BroMcjoe
+Source: https://commons.wikimedia.org/wiki/File:CratersDrone1.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Illinois — Chicago
+File: /images/states/il-1.jpg
+Author: File:Chicago River ferry.jpg : John Picken derivative work: Georgfotoart
+Source: https://commons.wikimedia.org/wiki/File:Chicago_River_ferry_b.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Illinois — Springfield
+File: /images/states/il-2.jpg
+Author: w_lemay
+Source: https://commons.wikimedia.org/wiki/File:Dana-Thomas_House,_Lawrence_Avenue_and_4th_Street,_Springfield,_IL_-_53322374502.jpg
+License: CC BY-SA 2.0 — https://creativecommons.org/licenses/by-sa/2.0
+
+Illinois — Starved Rock State Park
+File: /images/states/il-3.jpg
+Author: Chris Light ( talk )
+Source: https://commons.wikimedia.org/wiki/File:Starved_Rock_Illinois_on_Illinois_River.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Indiana — Indianapolis
+File: /images/states/in-1.jpg
+Author: Carol M. Highsmith
+Source: https://commons.wikimedia.org/wiki/File:Indianapolis-1872529_1920_(cropped).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Indiana — Indiana Dunes National Park
+File: /images/states/in-2.jpg
+Author: Diego Delso
+Source: https://commons.wikimedia.org/wiki/File:Indiana_Dunes_National_Lakeshore,_Michigan_City,_Indiana,_Estados_Unidos,_2012-10-20,_DD_03.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Indiana — Bloomington
+File: /images/states/in-3.jpg
+Author: Yahala
+Source: https://commons.wikimedia.org/wiki/File:Bloomington_IN_Kirkwood.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Iowa — Des Moines
+File: /images/states/ia-1.jpg
+Author: Tony Webster from Minneapolis, Minnesota, United States
+Source: https://commons.wikimedia.org/wiki/File:Morning_Skyline_-_Des_Moines,_Iowa_-_Winter_on_the_Des_Moines_River_(24805016620)_(cropped).jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Iowa — Madison County
+File: /images/states/ia-2.jpg
+Author: en:User:Cburnett
+Source: https://commons.wikimedia.org/wiki/File:Madison_County,_Iowa_Courthouse.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0/
+
+Iowa — Dubuque
+File: /images/states/ia-3.jpg
+Author: Dirk
+Source: https://commons.wikimedia.org/wiki/File:Dubuque_IA_-_overview.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Kansas — Tallgrass Prairie National Preserve
+File: /images/states/ks-1.jpg
+Author: NPS
+Source: https://commons.wikimedia.org/wiki/File:Sunset_falls_across_the_beautiful_Flint_Hills_(f0f6c731-1dd8-b71b-0b88-d326127c9973).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Kansas — Wichita
+File: /images/states/ks-2.jpg
+Author: Quintin Soloviev
+Source: https://commons.wikimedia.org/wiki/File:Wichita,_Kansas_skyline.jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Kansas — Lawrence
+File: /images/states/ks-3.jpg
+Author: Shannon Beat
+Source: https://commons.wikimedia.org/wiki/File:Lawrence,_KS_August_2025.jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Kentucky — Louisville
+File: /images/states/ky-1.jpg
+Author: Charles Delano of LouisvilleUSACE - Louisville District of the US Army Corp of Engineers
+Source: https://commons.wikimedia.org/wiki/File:Louisville_Skyline_2021_(3).jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Kentucky — Mammoth Cave National Park
+File: /images/states/ky-2.jpg
+Author: Willis Thomas Lee
+Source: https://commons.wikimedia.org/wiki/File:Mammoth_Cave_Rotunda_(USGS_Lwt02830).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Kentucky — Lexington
+File: /images/states/ky-3.jpg
+Author: Madgeek1450 at English Wikipedia
+Source: https://commons.wikimedia.org/wiki/File:LexingtonDowntown.JPG
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Louisiana — New Orleans
+File: /images/states/la-1.jpg
+Author: George Bannister
+Source: https://commons.wikimedia.org/wiki/File:New_Orleans_from_the_Air_September_2019_-_Central_Business_District_Skyline_(cropped).jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Louisiana — Lafayette
+File: /images/states/la-2.jpg
+Author: TheLionHasSeen
+Source: https://commons.wikimedia.org/wiki/File:Downtown_Lafayette_LA_2021.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Louisiana — Atchafalaya Basin
+File: /images/states/la-3.jpg
+Author: U.S. Army Corps of Engineers, photographer not specified or unknown
+Source: https://commons.wikimedia.org/wiki/File:Atchafalaya_Basin.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Maine — Acadia National Park
+File: /images/states/me-1.jpg
+Author: Plh1234us
+Source: https://commons.wikimedia.org/wiki/File:Acadia_National_Park_02.JPG
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Maine — Portland
+File: /images/states/me-2.jpg
+Author: PhilipC
+Source: https://commons.wikimedia.org/wiki/File:TheOldPort.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Maine — Camden
+File: /images/states/me-3.jpg
+Author: King of Hearts
+Source: https://commons.wikimedia.org/wiki/File:Camden_Maine_October_2021_001.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Maryland — Baltimore
+File: /images/states/md-1.jpg
+Author: Matthew Binebrink
+Source: https://commons.wikimedia.org/wiki/File:Fell%27s_Point_Aerial_2022.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Maryland — Annapolis
+File: /images/states/md-2.jpg
+Author: Flickr user: high limitzz https://www.flickr.com/people/highlimitstudio/
+Source: https://commons.wikimedia.org/wiki/File:Some_Annapolis_commercial_strip.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Maryland — Assateague Island
+File: /images/states/md-3.jpg
+Author: Susanne Bledsoe, U.S. Army Corps of Engineers
+Source: https://commons.wikimedia.org/wiki/File:Assateague_Island_aerial_view.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Massachusetts — Boston
+File: /images/states/ma-1.jpg
+Author: Ian Howard
+Source: https://commons.wikimedia.org/wiki/File:ISH_WC_Boston4.jpg
+License: CC BY 2.5 — https://creativecommons.org/licenses/by/2.5
+
+Massachusetts — Cape Cod
+File: /images/states/ma-2.jpg
+Author: This image or media was taken or created by Matt H. Wade . To see his entire portfolio, click here . @ thatmattwade This image is protected by copyright ! If you would like to use it, please read this first.
+Source: https://commons.wikimedia.org/wiki/File:White_Crest_Beach_Wellfleet.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Massachusetts — The Berkshires
+File: /images/states/ma-3.jpg
+Author: No machine-readable author provided. BenFrantzDale~commonswiki assumed (based on copyright claims).
+Source: https://commons.wikimedia.org/wiki/File:Berkshires_in_Winter.jpg
+License: CC BY-SA 2.5 — https://creativecommons.org/licenses/by-sa/2.5
+
+Michigan — Detroit
+File: /images/states/mi-1.jpg
+Author: TheWxResearcher
+Source: https://commons.wikimedia.org/wiki/File:Detroit_Skyline_from_Windsor_2025-09-01.jpg
+License: CC0 — https://creativecommons.org/publicdomain/zero/1.0/deed.en
+
+Michigan — Sleeping Bear Dunes
+File: /images/states/mi-2.jpg
+Author: NPS Photo
+Source: https://commons.wikimedia.org/wiki/File:Dunes_and_fog_from_Platte_Point_(95c5ad13-5f8a-4a59-838f-50b9a644648c).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Michigan — Mackinac Island
+File: /images/states/mi-3.jpg
+Author: WMrapids
+Source: https://commons.wikimedia.org/wiki/File:Arch_Rock_(Mackinac_Island)_(cropped).jpg
+License: CC0 — https://creativecommons.org/publicdomain/zero/1.0/deed.en
+
+Minnesota — Minneapolis–Saint Paul
+File: /images/states/mn-1.jpg
+Author: BpA9543
+Source: https://commons.wikimedia.org/wiki/File:Minneapolis_Skyline_looking_south.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Minnesota — North Shore
+File: /images/states/mn-2.jpg
+Author: kkmarais
+Source: https://commons.wikimedia.org/wiki/File:Split_Rock_Lighthouse_-_North_Shore_of_Lake_Superior.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Minnesota — Voyageurs National Park
+File: /images/states/mn-3.jpg
+Author: See source
+Source: https://commons.wikimedia.org/wiki/File:Voyageurs_National_Park.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Mississippi — Clarksdale
+File: /images/states/ms-1.jpg
+Author: VitaleBaby at English Wikipedia
+Source: https://commons.wikimedia.org/wiki/File:Delta_Blues_Museum_2.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Mississippi — Natchez
+File: /images/states/ms-2.jpg
+Author: Carol M. Highsmith
+Source: https://commons.wikimedia.org/wiki/File:Eola_view,_U.S._Courthouse,_Natchez,_Mississippi_LCCN2010719141.tif
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Mississippi — Gulf Islands National Seashore
+File: /images/states/ms-3.jpg
+Author: National Park Service
+Source: https://commons.wikimedia.org/wiki/File:Gulf_Islands_NS.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Missouri — St. Louis
+File: /images/states/mo-1.jpg
+Author: Jefferson National Expansion Memorial, NPS from St. Louis, MO, USA
+Source: https://commons.wikimedia.org/wiki/File:Runner_Fountain_and_Old_Courthouse_and_Arch_(5618845531).jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Missouri — Kansas City
+File: /images/states/mo-2.jpg
+Author: Stephen Edmonds
+Source: https://commons.wikimedia.org/wiki/File:Kansas_City_-_Downtown_-_panoramio_(15).jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Missouri — Ozark National Scenic Riverways
+File: /images/states/mo-3.jpg
+Author: Kbh3rd
+Source: https://commons.wikimedia.org/wiki/File:Current_River_MO_2009-06-15_n65_below_Welch_Spring_crop2.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Montana — Glacier National Park
+File: /images/states/mt-1.jpg
+Author: Robert M. Russell
+Source: https://commons.wikimedia.org/wiki/File:Mountain_Goat_at_Hidden_Lake.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Montana — Bozeman
+File: /images/states/mt-2.jpg
+Author: Chris06
+Source: https://commons.wikimedia.org/wiki/File:Main_St,_Bozeman,_Montana_(1).JPG
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Montana — Little Bighorn Battlefield
+File: /images/states/mt-3.jpg
+Author: Durwood Brandon
+Source: https://commons.wikimedia.org/wiki/File:Little_Bighorn_memorial_obelisk.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Nebraska — Omaha
+File: /images/states/ne-1.jpg
+Author: Tony Webster from Minneapolis, Minnesota, United States
+Source: https://commons.wikimedia.org/wiki/File:City_of_Omaha,_Nebraska_Skyline_on_the_Missouri_River_(30899969517).jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Nebraska — Scotts Bluff National Monument
+File: /images/states/ne-2.jpg
+Author: Podruznik at English Wikipedia
+Source: https://commons.wikimedia.org/wiki/File:Covered_Wagon_In_Scotts_Bluff_National_Monument,_Nebraska.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Nebraska — Sandhills
+File: /images/states/ne-3.jpg
+Author: Z3lvs
+Source: https://commons.wikimedia.org/wiki/File:Sand_Hills_Grassland_Near_Seneca,_Nebraska_01.jpg
+License: CC0 — https://creativecommons.org/publicdomain/zero/1.0/deed.en
+
+Nevada — Las Vegas
+File: /images/states/nv-1.jpg
+Author: Mike McBey
+Source: https://commons.wikimedia.org/wiki/File:Las_Vegas_from_above_(40064746644).jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+Nevada — Valley of Fire State Park
+File: /images/states/nv-2.jpg
+Author: Clément Bardot
+Source: https://commons.wikimedia.org/wiki/File:Valley_of_fire_State_Park.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Nevada — Lake Tahoe
+File: /images/states/nv-3.jpg
+Author: Lara Farhadi
+Source: https://commons.wikimedia.org/wiki/File:Tahoe_North_Shore_from_the_East_Shore.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+New Hampshire — White Mountains
+File: /images/states/nh-1.jpg
+Author: MyCatIsAChonk
+Source: https://commons.wikimedia.org/wiki/File:Flume_Gorge_July_2023.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+New Hampshire — Lake Winnipesaukee
+File: /images/states/nh-2.jpg
+Author: See source
+Source: https://commons.wikimedia.org/wiki/File:Mtmajorsummitbig-2007-1022a.jpg
+License: CC BY 3.0 — https://creativecommons.org/licenses/by/3.0
+
+New Hampshire — Portsmouth
+File: /images/states/nh-3.jpg
+Author: Quintin Soloviev
+Source: https://commons.wikimedia.org/wiki/File:Portsmouth,_NH.jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+New Jersey — Cape May
+File: /images/states/nj-1.jpg
+Author: Smallbones
+Source: https://commons.wikimedia.org/wiki/File:Cape_May_Beach_Ave_from_the_sea_3.JPG
+License: CC0 — https://creativecommons.org/publicdomain/zero/1.0/deed.en
+
+New Jersey — Asbury Park
+File: /images/states/nj-2.jpg
+Author: Acroterion
+Source: https://commons.wikimedia.org/wiki/File:Paramount_Theatre_Asbury_Park_Convention_Hall_NJ2.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+New Jersey — Liberty State Park
+File: /images/states/nj-3.jpg
+Author: Benjamin KRAFT
+Source: https://commons.wikimedia.org/wiki/File:Central_Railroad_of_New_Jersey_Terminal_-_22_Sept._2012.jpg
+License: CC BY-SA 2.0 — https://creativecommons.org/licenses/by-sa/2.0
+
+New Mexico — Santa Fe
+File: /images/states/nm-1.jpg
+Author: Tony Hisgett from Birmingham, UK
+Source: https://commons.wikimedia.org/wiki/File:Palace_of_the_Governors.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+New Mexico — White Sands National Park
+File: /images/states/nm-2.jpg
+Author: uncredited National Park Service employee
+Source: https://commons.wikimedia.org/wiki/File:White_Sands_National_Park_visitor_center_and_native_plant_garden,_New_Mexico,_United_States.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+New Mexico — Taos
+File: /images/states/nm-3.jpg
+Author: Zeality
+Source: https://commons.wikimedia.org/wiki/File:Taos_plaza_la_fonda.jpg
+License: CC BY 2.5 — https://creativecommons.org/licenses/by/2.5
+
+North Carolina — Asheville
+File: /images/states/nc-1.jpg
+Author: Michael Tracey
+Source: https://commons.wikimedia.org/wiki/File:Asheville_at_dusk_(cropped).jpg
+License: CC0 — https://creativecommons.org/publicdomain/zero/1.0/deed.en
+
+North Carolina — Blue Ridge Parkway
+File: /images/states/nc-2.jpg
+Author: Goins
+Source: https://commons.wikimedia.org/wiki/File:Linn_Cove_Viaduct_in_the_Autumn.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+North Carolina — Outer Banks
+File: /images/states/nc-3.jpg
+Author: NPS Natural Resources
+Source: https://commons.wikimedia.org/wiki/File:Lighthouse_at_Cape_Hatteras_National_Seashore._NPS-Michael_B._Edwards_(18497979278).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+North Dakota — Theodore Roosevelt National Park
+File: /images/states/nd-1.jpg
+Author: NPS/Mark Hoffman
+Source: https://commons.wikimedia.org/wiki/File:View_of_Theodore_Roosevelt_National_Park.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+North Dakota — Fargo
+File: /images/states/nd-2.jpg
+Author: formulanone
+Source: https://commons.wikimedia.org/wiki/File:Downtown_Fargo_Aerial_-_Facing_Southeast_(51009704407).jpg
+License: CC BY-SA 2.0 — https://creativecommons.org/licenses/by-sa/2.0
+
+North Dakota — Bismarck
+File: /images/states/nd-3.jpg
+Author: Quintin Soloviev
+Source: https://commons.wikimedia.org/wiki/File:Bismarck,_North_Dakota_aerial_view.jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Ohio — Cleveland
+File: /images/states/oh-1.jpg
+Author: Erik Drost
+Source: https://commons.wikimedia.org/wiki/File:Cleveland_skyline_from_Lakewood_Park,_January_2026.jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Ohio — Cincinnati
+File: /images/states/oh-2.jpg
+Author: EEJCC
+Source: https://commons.wikimedia.org/wiki/File:Downtown_Cincinnati_viewed_from_Devou_Park_(cropped).jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Ohio — Hocking Hills State Park
+File: /images/states/oh-3.jpg
+Author: Ramseybuckeye
+Source: https://commons.wikimedia.org/wiki/File:HockingHillsAshCave.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Oklahoma — Oklahoma City
+File: /images/states/ok-1.jpg
+Author: Urbanative
+Source: https://commons.wikimedia.org/wiki/File:Oklahoma_city_downtown.JPG
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Oklahoma — Tulsa
+File: /images/states/ok-2.jpg
+Author: Nils Huenerfuerst
+Source: https://commons.wikimedia.org/wiki/File:Tulsa_skyline_aerial,_April_2023.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Oklahoma — Wichita Mountains Wildlife Refuge
+File: /images/states/ok-3.jpg
+Author: U.S. Fish and Wildlife Service Headquarters
+Source: https://commons.wikimedia.org/wiki/File:Coreopsis,_Wichita_Mountains_Wildlife_Refuge.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Oregon — Portland
+File: /images/states/or-1.jpg
+Author: Spicypepper999
+Source: https://commons.wikimedia.org/wiki/File:Portland_Oregon_Aerial,_June_2025.jpg
+License: CC0 — https://creativecommons.org/publicdomain/zero/1.0/deed.en
+
+Oregon — Cannon Beach
+File: /images/states/or-2.jpg
+Author: Dima Sergiyenko; Please attribute this image as the work of " DiscoverWithDima ."
+Source: https://commons.wikimedia.org/wiki/File:Haystack_Rock,_Oregon_(drone_photograph).jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Oregon — Crater Lake National Park
+File: /images/states/or-3.jpg
+Author: Athleticamps derivative work: User:Maps and stuff (cropped to 2.5:1 ratio, eliminating sign and stone structure on right while centering on lake; increased brightness in dark areas; saved as a high quality JPG)
+Source: https://commons.wikimedia.org/wiki/File:Above_Crater_Lake_(cropped).jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Pennsylvania — Philadelphia
+File: /images/states/pa-1.jpg
+Author: 颐园居
+Source: https://commons.wikimedia.org/wiki/File:Philadelphia_skyline_20240528_(cropped_2-1).jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Pennsylvania — Pittsburgh
+File: /images/states/pa-2.jpg
+Author: Dllu
+Source: https://commons.wikimedia.org/wiki/File:Ascending_the_Duquesne_Incline.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Pennsylvania — Gettysburg
+File: /images/states/pa-3.jpg
+Author: Bubba73
+Source: https://commons.wikimedia.org/wiki/File:Gettysburg_Battlefield,_Pennsylvania,_US_(98).jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Rhode Island — Newport
+File: /images/states/ri-1.jpg
+Author: MVASCO
+Source: https://commons.wikimedia.org/wiki/File:Newport_Rhode_Island_Aerial_View.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Rhode Island — Providence
+File: /images/states/ri-2.jpg
+Author: Quintin Soloviev
+Source: https://commons.wikimedia.org/wiki/File:Providence_RI_skyline.jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Rhode Island — Block Island
+File: /images/states/ri-3.jpg
+Author: Timothy J. Quill
+Source: https://commons.wikimedia.org/wiki/File:HiRes_BlockIsland_Aerial_7-23-2015.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+South Carolina — Charleston
+File: /images/states/sc-1.jpg
+Author: Chris Pruitt
+Source: https://commons.wikimedia.org/wiki/File:East_Battery_Street_Charleston_Aug2010.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+South Carolina — Hilton Head Island
+File: /images/states/sc-2.jpg
+Author: Locust member
+Source: https://commons.wikimedia.org/wiki/File:Hilton_Head_Island_Lighthouse_June_2026.png
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+South Carolina — Congaree National Park
+File: /images/states/sc-3.jpg
+Author: Brian W. Schaller
+Source: https://commons.wikimedia.org/wiki/File:A548,_Congaree_National_Park,_South_Carolina,_USA,_2012.jpg
+License: FAL — https://artlibre.org/licence/lal/en
+
+South Dakota — Badlands National Park
+File: /images/states/sd-1.jpg
+Author: Martin Kraft
+Source: https://commons.wikimedia.org/wiki/File:MK00609_Badlands.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+South Dakota — Custer State Park
+File: /images/states/sd-2.jpg
+Author: Guimir
+Source: https://commons.wikimedia.org/wiki/File:Adult_bison_and_calf,_Custer_State_Park,_South_Dakota_(2009-08-25).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+South Dakota — Black Hills
+File: /images/states/sd-3.jpg
+Author: Runner1928
+Source: https://commons.wikimedia.org/wiki/File:Needles_Highway_05.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Tennessee — Nashville
+File: /images/states/tn-1.jpg
+Author: Quintin Soloviev
+Source: https://commons.wikimedia.org/wiki/File:Nashville,_TN_skyline.jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Tennessee — Memphis
+File: /images/states/tn-2.jpg
+Author: Quintin Soloviev
+Source: https://commons.wikimedia.org/wiki/File:Skyline_of_Memphis,_TN.jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Tennessee — Great Smoky Mountains National Park
+File: /images/states/tn-3.jpg
+Author: AppalachianCentrist
+Source: https://commons.wikimedia.org/wiki/File:View_atop_Cliff_Tops_on_Mount_LeConte,_GSMNP,_TN.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Texas — Austin
+File: /images/states/tx-1.jpg
+Author: Quintin Soloviev
+Source: https://commons.wikimedia.org/wiki/File:Skyline_of_Austin,_Texas_(cropped).jpg
+License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0
+
+Texas — San Antonio
+File: /images/states/tx-2.jpg
+Author: Jouaienttoi
+Source: https://commons.wikimedia.org/wiki/File:San_Antonio_Botanical_Garden_Overlook_View.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Texas — Big Bend National Park
+File: /images/states/tx-3.jpg
+Author: Michael from Minnesota (@Michael)
+Source: https://commons.wikimedia.org/wiki/File:Canyon,_Rio_Grande,_Texas.jpeg
+License: CC BY-SA 2.0 — https://creativecommons.org/licenses/by-sa/2.0
+
+Vermont — Burlington
+File: /images/states/vt-1.jpg
+Author: Carol M. Highsmith
+Source: https://commons.wikimedia.org/wiki/File:View_of_the_Burlington_Marketplace_2017-10-01.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Vermont — Stowe
+File: /images/states/vt-2.jpg
+Author: Ascended Dreamer
+Source: https://commons.wikimedia.org/wiki/File:Stowe_VT_1-30-2026a.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Vermont — Woodstock
+File: /images/states/vt-3.jpg
+Author: Jsbillin
+Source: https://commons.wikimedia.org/wiki/File:Woodstock_foliage1920.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Virginia — Shenandoah National Park
+File: /images/states/va-1.jpg
+Author: Shenandoah National Park from Virginia
+Source: https://commons.wikimedia.org/wiki/File:Skyline_Drive_in_the_Fall_(21852619608).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Virginia — Richmond
+File: /images/states/va-2.jpg
+Author: Bruce Emmerling
+Source: https://commons.wikimedia.org/wiki/File:A_downtown_view_of_Richmond,_VA.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Virginia — Colonial Williamsburg
+File: /images/states/va-3.jpg
+Author: Humberto Moreno
+Source: https://commons.wikimedia.org/wiki/File:Colonial_Williamsburg_(3205781804).jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0
+
+West Virginia — New River Gorge National Park
+File: /images/states/wv-1.jpg
+Author: Aparkswv
+Source: https://commons.wikimedia.org/wiki/File:Grandview_Overlook,_New_River.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+West Virginia — Harpers Ferry
+File: /images/states/wv-2.jpg
+Author: Mark Fickett
+Source: https://commons.wikimedia.org/wiki/File:2010-09-02-Harpers-Ferry-From-Maryland-Heights-Panorama-Crop.jpg
+License: CC BY 3.0 — https://creativecommons.org/licenses/by/3.0
+
+West Virginia — Dolly Sods
+File: /images/states/wv-3.jpg
+Author: Valerius Tygart
+Source: https://commons.wikimedia.org/wiki/File:DollySods1.JPG
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0
+
+Wisconsin — Milwaukee
+File: /images/states/wi-1.jpg
+Author: Bfkenney
+Source: https://commons.wikimedia.org/wiki/File:Milwaukee_Skyline_w_New_NW_Mutual_Building_2025_by_Isaac_Rowlett.jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Wisconsin — Door County
+File: /images/states/wi-2.jpg
+Author: DNerenhausen
+Source: https://commons.wikimedia.org/wiki/File:Fish_Creek,_Wisconsin.jpg
+License: CC0 — https://creativecommons.org/publicdomain/zero/1.0/deed.en
+
+Wisconsin — Apostle Islands National Lakeshore
+File: /images/states/wi-3.jpg
+Author: NPS Photo
+Source: https://commons.wikimedia.org/wiki/File:Big_waves_on_Devils_Island_shoreline_(e99f5cd1-548c-439d-962d-0c03204c2bf8).jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Wyoming — Yellowstone National Park
+File: /images/states/wy-1.jpg
+Author: Rhododendrites
+Source: https://commons.wikimedia.org/wiki/File:Grand_Canyon_of_the_Yellowstone_Lower_Falls_(95819p).jpg
+License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0
+
+Wyoming — Grand Teton National Park
+File: /images/states/wy-2.jpg
+Author: Jon Sullivan, PD Photo.
+Source: https://commons.wikimedia.org/wiki/File:Barns_grand_tetons.jpg
+License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+
+Wyoming — Cody
+File: /images/states/wy-3.jpg
+Author: User:Swampyank
+Source: https://commons.wikimedia.org/wiki/File:The_Scout_by_Gertrude_Vanderbilt_Whitney.jpg
+License: CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0

@@ -1,0 +1,634 @@
+{
+  "Discover": ["发现目的地", "旅先を探す", "여행지 찾기"],
+  "Explore the map": ["探索地图", "地図で探す", "지도 둘러보기"],
+  "Road trips": ["公路旅行", "ロードトリップ", "로드 트립"],
+  "Field notes": ["旅行手记", "旅のヒント", "여행 노트"],
+  "Skip to destinations": ["跳至目的地", "目的地へスキップ", "여행지로 건너뛰기"],
+  "50 states. A million ways to make them yours.": [
+    "50个州，无数种属于你的旅行方式。",
+    "50の州。旅の楽しみ方は、あなた次第。",
+    "50개 주, 나만의 여행을 만드는 수많은 방법."
+  ],
+  "LET’S TAKE THE SCENIC ROUTE": ["沿着风景出发", "景色を楽しむ旅へ", "풍경을 따라 떠나요"],
+  "Main navigation": ["主导航", "メインナビゲーション", "주 메뉴"],
+  "Saved places": ["收藏地点", "お気に入り", "저장한 장소"],
+  "My trip": ["我的旅程", "マイ旅程", "내 여행"],
+  "Toggle navigation": ["打开或关闭导航", "メニューを開閉", "메뉴 열기 또는 닫기"],
+  "Sandstone buttes in Monument Valley Navajo Tribal Park": [
+    "纪念碑谷纳瓦霍部落公园的砂岩孤峰",
+    "モニュメントバレー・ナバホ・トライバル・パークの砂岩のビュート",
+    "모뉴먼트 밸리 나바호 부족 공원의 사암 뷰트"
+  ],
+  "THE GREAT AMERICAN GETAWAY": ["出发，探索美国", "アメリカをめぐる旅へ", "미국으로 떠나는 여행"],
+  "Find your": ["寻找你的", "あなたらしい", "나만의"],
+  "American": ["美国", "アメリカの", "미국 여행을"],
+  "state of mind.": ["旅行节奏。", "旅を。", "발견하세요."],
+  "From the places you’ve always dreamed of to the ones you haven’t found yet. Discover America, one unforgettable state at a time.": [
+    "从向往已久的名胜到尚未发现的角落，一次一州，留下难忘的美国旅行回忆。",
+    "憧れの場所から、まだ知らない場所まで。ひとつの州との出会いが、忘れられないアメリカの旅になる。",
+    "늘 꿈꾸던 명소부터 아직 모르는 곳까지. 한 주씩 둘러보며 잊지 못할 미국 여행을 만들어 보세요."
+  ],
+  "Find your adventure": ["寻找你的冒险", "旅を見つける", "여행 찾기"],
+  "A big country. A journey that’s uniquely yours.": [
+    "广阔的国度，属于你的独特旅程。",
+    "広い国に、あなただけの旅を。",
+    "넓은 나라에서 만나는 나만의 여행."
+  ],
+  "SOMEWHERE WORTH GETTING LOST": [
+    "值得放慢脚步的地方",
+    "寄り道したくなる場所",
+    "천천히 머물고 싶은 곳"
+  ],
+  "Arizona & Utah": ["亚利桑那州与犹他州", "アリゾナ州とユタ州", "애리조나주와 유타주"],
+  "Pause animations": ["暂停动画", "アニメーションを停止", "애니메이션 일시 정지"],
+  "Enable animations": ["启用动画", "アニメーションを有効にする", "애니메이션 켜기"],
+  "WHERE TO?": ["想去哪里？", "どこへ行く？", "어디로 갈까요?"],
+  "Search destinations": ["搜索目的地", "目的地を検索", "여행지 검색"],
+  "A state, a city, a little inspiration…": [
+    "一个州、一座城市、一点灵感……",
+    "州、街、気になる場所を…",
+    "주, 도시, 여행의 영감…"
+  ],
+  "YOUR KIND OF ADVENTURE": ["你的旅行风格", "あなたの旅のスタイル", "나만의 여행 스타일"],
+  "Experience": ["体验类型", "体験", "여행 테마"],
+  "A little of everything": ["每种都想体验", "いろいろ楽しみたい", "골고루 즐기기"],
+  "WHEN ARE YOU GOING?": ["什么时候出发？", "いつ行く？", "언제 떠나나요?"],
+  "Season": ["季节", "季節", "계절"],
+  "Any time is a good time": ["随时都能出发", "どの季節でも", "어느 계절이든"],
+  "Let’s explore": ["开始探索", "探してみる", "둘러보기"],
+  "YOUR NEXT “I’VE ALWAYS WANTED TO GO THERE” STARTS HERE.": [
+    "你一直想去的下一站，从这里开始。",
+    "「いつか行きたい」を、ここから。",
+    "늘 가 보고 싶던 다음 여행, 여기서 시작하세요."
+  ],
+  "Thoughtfully curated. Freely explored.": [
+    "精心挑选，自由探索。",
+    "厳選した旅先を、自由にめぐる。",
+    "정성껏 고른 여행지를 자유롭게 둘러보세요."
+  ],
+  "SO MANY PLACES. SO MANY POSSIBILITIES.": [
+    "众多目的地，无限可能。",
+    "旅先も、楽しみ方も、いろいろ。",
+    "다양한 여행지, 무한한 가능성."
+  ],
+  "Where will you": ["下一站，", "次は", "다음에는"],
+  "go next?": ["你想去哪里？", "どこへ？", "어디로 갈까요?"],
+  "Iconic for a reason. Unexpected in the best way. Find a state that speaks to you.": [
+    "经典名胜自有魅力，小众发现同样惊喜。找到让你心动的州。",
+    "定番には定番の魅力があり、意外な場所には発見がある。心ひかれる州を探そう。",
+    "대표 명소부터 뜻밖의 발견까지. 마음이 끌리는 주를 찾아보세요."
+  ],
+  "See the whole picture": ["查看全貌", "全体を見る", "전체 살펴보기"],
+  "Filter by experience": ["按体验筛选", "体験で絞り込む", "테마별 필터"],
+  "All experiences": ["所有体验", "すべての体験", "모든 테마"],
+  "Filter by region": ["按区域筛选", "地域で絞り込む", "지역별 필터"],
+  "All regions": ["所有区域", "すべての地域", "모든 지역"],
+  "Exploring": ["正在探索", "表示中", "둘러보는 중"],
+  "Reset filters": ["重置筛选", "絞り込みをリセット", "필터 초기화"],
+  "A little detour?": ["换个方向试试？", "少し条件を変えてみよう", "다른 곳도 살펴볼까요?"],
+  "No states match this combination. Try another place, season, or experience.": [
+    "没有符合条件的州。试试其他地点、季节或体验。",
+    "条件に合う州がありません。場所、季節、体験を変えてみてください。",
+    "조건에 맞는 주가 없습니다. 장소, 계절 또는 테마를 바꿔 보세요."
+  ],
+  "Show all destinations": ["显示所有目的地", "すべての目的地を表示", "모든 여행지 보기"],
+  "of": ["/", "/", "/"],
+  "state guides": ["州旅行指南", "州のガイド", "주 여행 가이드"],
+  "Show fewer places": ["收起目的地", "表示を減らす", "간략히 보기"],
+  "Explore all 50 states": ["探索全部50个州", "全50州を見る", "50개 주 모두 보기"],
+  "Sort destinations": ["目的地排序", "目的地の並び順", "여행지 정렬"],
+  "Curated picks": ["精选推荐", "おすすめ順", "추천순"],
+  "Name: A to Z": ["按名称排序", "名前順", "이름순"],
+  "Dismiss notification": ["关闭通知", "通知を閉じる", "알림 닫기"],
+  "days": ["天", "日", "일"],
+  "A LITTLE CURIOSITY GOES A LONG WAY": [
+    "一点好奇，带你走得更远",
+    "好奇心の先に、旅がある",
+    "호기심이 이끄는 여행"
+  ],
+  "One country.": ["一个国度。", "ひとつの国に、", "하나의 나라,"],
+  "A world to discover.": ["万千风景。", "たくさんの世界。", "다채로운 풍경."],
+  "Mountains or main streets? Ocean air or desert skies? There’s a corner of America that feels like you. Find it on the map.": [
+    "山间小径还是城市街道？海风还是沙漠星空？在地图上找到属于你的美国一角。",
+    "山道か、街歩きか。潮風か、砂漠の空か。地図から、あなたに似合うアメリカを探そう。",
+    "산길과 도심, 바닷바람과 사막의 하늘. 지도에서 나에게 맞는 미국의 한곳을 찾아보세요."
+  ],
+  "Map region": ["地图区域", "地図の地域", "지도 지역"],
+  "All of America": ["全美国", "アメリカ全域", "미국 전체"],
+  "YOUR NEXT CHAPTER STARTS HERE": [
+    "下一段旅程，从这里开始",
+    "次の旅は、ここから",
+    "다음 여행이 시작되는 곳"
+  ],
+  "Interactive map of all 50 United States": [
+    "美国全部50个州的互动地图",
+    "アメリカ全50州のインタラクティブマップ",
+    "미국 50개 주 인터랙티브 지도"
+  ],
+  "Explore state": ["探索州", "州を見る", "주 둘러보기"],
+  "Jump to a state": ["跳转到一个州", "州を選んで移動", "주 바로 선택"],
+  "Select a state to explore · Alaska & Hawaii shown as insets": [
+    "选择一个州开始探索 · 阿拉斯加和夏威夷以插图显示",
+    "州を選んで探索 · アラスカとハワイは別枠に表示",
+    "주를 선택하세요 · 알래스카와 하와이는 별도로 표시됩니다"
+  ],
+  "THE JOURNEY IS HALF THE STORY": [
+    "沿途也是旅程的一半",
+    "道中も、旅の物語",
+    "가는 길도 여행의 일부"
+  ],
+  "Good roads.": ["风景好路。", "いい道に、", "멋진 길,"],
+  "Great stories.": ["难忘故事。", "いい物語。", "잊지 못할 이야기."],
+  "A few thoughtfully chosen routes. A whole lot of freedom to make them your own.": [
+    "精选几条路线，留出更多自由，走出你的节奏。",
+    "おすすめのルートを出発点に、自分らしく自由に旅しよう。",
+    "엄선한 경로를 바탕으로 자유롭게 나만의 여행을 만드세요."
+  ],
+  "Windows down. Wonder up.": [
+    "摇下车窗，迎接惊喜。",
+    "窓を開けて、発見の旅へ。",
+    "창문을 열고 새로운 풍경을 만나요."
+  ],
+  "Take this route": ["查看这条路线", "このルートを見る", "경로 보기"],
+  "Starting points for your itinerary. Adjust the days, pick your stops, and check current road conditions.": [
+    "以这些行程为起点，调整天数、选择停靠点，并核实最新路况。",
+    "旅程づくりの出発点に。日数と立ち寄り先を調整し、最新の道路状況を確認してください。",
+    "일정의 출발점으로 활용하세요. 날짜와 방문지를 조정하고 최신 도로 상황을 확인하세요."
+  ],
+  "LESS PLANNING. MORE POSSIBILITY.": [
+    "轻松规划，更多可能。",
+    "計画を気軽に、旅を自由に。",
+    "간편한 계획, 더 많은 가능성."
+  ],
+  "Your someday trip.": ["你心中的某天之旅。", "「いつか」の旅を、", "언젠가 떠날 여행,"],
+  "Let’s make it a plan.": ["今天开始规划。", "計画にしよう。", "이제 계획해 보세요."],
+  "Save the places you love. Connect the dots. Build a little adventure that feels a lot like you.": [
+    "收藏心动的地点，串联成线，打造属于你的冒险。",
+    "好きな場所を保存して、つなげてみよう。あなただけの旅ができあがる。",
+    "마음에 드는 곳을 저장하고 연결해 나만의 여행을 만들어 보세요."
+  ],
+  "Continue my trip": ["继续规划旅程", "旅程づくりを続ける", "내 여행 이어서 계획하기"],
+  "Start planning — it’s free": ["免费开始规划", "無料で計画を始める", "무료로 계획 시작하기"],
+  "No account needed. Just a sense of adventure.": [
+    "无需账号，带上好奇心即可。",
+    "アカウント不要。冒険心だけで始められます。",
+    "계정 없이 여행을 시작하세요."
+  ],
+  "A FEW NOTES FOR THE ROAD": ["旅途中的小提示", "旅に役立つヒント", "여행을 위한 작은 팁"],
+  "A little insight.": ["多一点了解。", "少し知るだけで、", "조금 더 알아보고,"],
+  "A better adventure.": ["更好的旅程。", "旅はもっと楽しく。", "더 즐겁게 떠나요."],
+  "The Roam field notes": ["Roam旅行手记", "Roamの旅のヒント", "Roam 여행 노트"],
+  "Read the field note": ["阅读旅行手记", "旅のヒントを読む", "여행 노트 읽기"],
+  "The best stories rarely start with": [
+    "最好的故事，往往不会从",
+    "素敵な物語は、",
+    "멋진 이야기는 대개"
+  ],
+  "“I stayed home.”": [
+    "“我待在家里”开始。",
+    "「家にいた」からは始まらない。",
+    "“집에 있었어요”로 시작하지 않죠."
+  ],
+  "Go find yours.": [
+    "出发，找到你的故事。",
+    "あなたの物語を探しに。",
+    "나만의 이야기를 찾아 떠나요."
+  ],
+  "For the places. For the people. For the feeling of being somewhere new.": [
+    "为风景，为相遇，为初到异地的心动。",
+    "景色のために。出会いのために。初めての場所の、ときめきのために。",
+    "풍경을 위해, 만남을 위해, 새로운 곳에서 느끼는 설렘을 위해."
+  ],
+  "Made for your American adventure.": [
+    "为你的美国之旅而生。",
+    "あなたのアメリカの旅に。",
+    "당신의 미국 여행을 위해."
+  ],
+  "GO SOMEWHERE": ["出发探索", "旅先を探す", "여행지 찾기"],
+  "Discover destinations": ["发现目的地", "目的地を探す", "여행지 둘러보기"],
+  "MAKE IT HAPPEN": ["让旅程成真", "旅をかたちに", "여행 시작하기"],
+  "My trip planner": ["我的行程规划", "マイ旅程プランナー", "내 여행 플래너"],
+  "Travel field notes": ["旅行手记", "旅のヒント", "여행 노트"],
+  "A LITTLE ABOUT US": ["关于我们", "私たちについて", "서비스 소개"],
+  "About Roam": ["关于Roam", "Roamについて", "Roam 소개"],
+  "Stay curious. Travel thoughtfully.": [
+    "保持好奇，用心旅行。",
+    "好奇心を忘れず、思いやりのある旅を。",
+    "호기심을 갖고 배려하며 여행하세요."
+  ],
+  "Independent travel inspiration · English / ไทย": [
+    "独立旅行灵感 · 支持5种语言",
+    "旅のアイデアを届ける独立サイト · 5言語対応",
+    "독립 여행 가이드 · 5개 언어 지원"
+  ],
+  "Back to top": ["返回顶部", "ページの先頭へ", "맨 위로"],
+  "Good seasons to explore": ["适合探索的季节", "おすすめの季節", "여행하기 좋은 계절"],
+  "Suggested starting point": ["建议初次停留时间", "旅の目安日数", "추천 여행 일수"],
+  "Gateway airports": ["主要机场", "玄関口となる空港", "주요 공항"],
+  "Three places to start": ["从这三个地方开始", "まず訪れたい3か所", "먼저 가 볼 세 곳"],
+  "A TASTE OF THE STATE": ["当地风味", "この州の味", "이 지역의 맛"],
+  "GOOD TO KNOW": ["出发前须知", "旅の前に", "알아 두면 좋은 정보"],
+  "Official state guide on Visit The USA": [
+    "Visit The USA官方州指南",
+    "Visit The USAの公式州ガイド",
+    "Visit The USA 공식 주 가이드"
+  ],
+  "Season and duration are editorial suggestions. Check current opening times, weather, reservations, and access with the destination before traveling.": [
+    "季节和天数为编辑建议。出发前请向目的地核实最新开放时间、天气、预约及通行情况。",
+    "季節と日数は編集上の目安です。出発前に営業時間、天候、予約、アクセスの最新情報を訪問先で確認してください。",
+    "계절과 기간은 편집상의 제안입니다. 출발 전에 운영 시간, 날씨, 예약 및 접근 정보를 방문지에서 확인하세요."
+  ],
+  "In your trip · View plan": [
+    "已加入旅程 · 查看计划",
+    "追加済み · 旅程を見る",
+    "여행에 추가됨 · 계획 보기"
+  ],
+  "Add to my trip": ["加入我的旅程", "マイ旅程に追加", "내 여행에 추가"],
+  "Saved": ["已收藏", "保存済み", "저장됨"],
+  "Save for later": ["收藏以后再看", "あとで見るために保存", "나중을 위해 저장"],
+  "Close": ["关闭", "閉じる", "닫기"],
+  "YOUR SOMEDAY LIST": ["你的心愿清单", "いつか行きたいリスト", "가 보고 싶은 곳"],
+  "Places to": ["让你", "心ひかれる", "마음이"],
+  "fall for.": ["心动的地方。", "場所たち。", "끌리는 장소."],
+  "A little collection of places calling your name.": [
+    "把心动的地点，收进小小的收藏夹。",
+    "気になる旅先を、少しずつ集めよう。",
+    "마음에 드는 여행지를 모아 보세요."
+  ],
+  "Browser storage is unavailable. Saved places will be lost when you leave.": [
+    "浏览器存储不可用。离开后收藏将丢失。",
+    "ブラウザーの保存機能を利用できません。ページを離れると、お気に入りは失われます。",
+    "브라우저 저장소를 사용할 수 없습니다. 페이지를 나가면 저장한 장소가 사라집니다."
+  ],
+  "Your next favorite is out there.": [
+    "下一个心动地点，正在等你。",
+    "次のお気に入りは、きっと見つかる。",
+    "다음으로 좋아할 곳이 기다리고 있어요."
+  ],
+  "Tap a heart on any state to keep it here.": [
+    "点击任意州的爱心，就能收藏到这里。",
+    "州のハートを押すと、ここに保存できます。",
+    "주의 하트 버튼을 누르면 여기에 저장됩니다."
+  ],
+  "Find a place to love": ["发现心动地点", "お気に入りを見つける", "마음에 드는 곳 찾기"],
+  "Keep the official details close": [
+    "随时查阅官方信息",
+    "公式情報も確認しよう",
+    "공식 정보도 확인하세요"
+  ],
+  "Put it into a plan": ["开始制定计划", "旅程にしてみる", "계획에 담기"],
+  "suggested days": ["建议天数", "おすすめ日数", "추천 일수"],
+  "states to explore": ["可探索的州", "訪れる州", "둘러볼 주"],
+  "A flexible route at state level. Choose specific towns and overnight bases, verify driving times, and check access before booking. Adding this route keeps your existing stops and notes.": [
+    "这是一条按州划分的灵活路线。预订前请选择具体城镇和住宿基地，核实车程及通行情况。添加此路线会保留已有停靠点和备注。",
+    "州単位の柔軟なルートです。予約前に街や宿泊拠点を選び、移動時間とアクセスを確認してください。追加しても既存の立ち寄り先とメモは残ります。",
+    "주 단위의 유연한 경로입니다. 예약 전 구체적인 도시와 숙박 거점을 정하고 이동 시간과 접근 정보를 확인하세요. 추가해도 기존 방문지와 메모는 유지됩니다."
+  ],
+  "Route added. Make it your own!": [
+    "路线已添加，按你的方式调整吧！",
+    "ルートを追加しました。自分らしく調整しましょう！",
+    "경로가 추가되었습니다. 나만의 여행으로 바꿔 보세요!"
+  ],
+  "These states are already in your trip.": [
+    "这些州已在你的旅程中。",
+    "これらの州はすでに旅程に入っています。",
+    "이미 여행에 포함된 주입니다."
+  ],
+  "Make this my adventure": ["将这条路线加入旅程", "このルートで旅をする", "이 경로로 여행하기"],
+  "A big country.": ["广阔的国度。", "広い国と、", "넓은 나라,"],
+  "A little more connection.": ["更近的连接。", "もう少し近く。", "더 가까운 만남."],
+  "Roam America is an independent travel inspiration and planning project for discovering all 50 U.S. states. Our guides are starting points for your own research, with links to official tourism and park information.": [
+    "Roam America是一个独立的旅行灵感与规划项目，帮助你探索美国全部50个州。指南提供研究起点，并链接至官方旅游及公园信息。",
+    "Roam Americaは、全50州を発見するための独立した旅行案内・計画プロジェクトです。ガイドは旅の下調べの出発点として、公式観光・公園情報へのリンクを掲載しています。",
+    "Roam America는 미국 50개 주를 탐색하는 독립 여행 가이드 및 계획 프로젝트입니다. 가이드는 여행 조사의 출발점으로 공식 관광 및 공원 정보 링크를 제공합니다."
+  ],
+  "Your trip stays with you": ["旅程由你保管", "旅程はお手元に", "여행은 내 브라우저에"],
+  "Favorites, language, and itinerary are stored in this browser’s local storage. There is no account or cloud sync. Export a backup to move your trip to another browser or device. Clearing browser data removes saved plans.": [
+    "收藏、语言和行程保存在此浏览器中，没有账号或云同步。导出备份即可转移到其他浏览器或设备。清除浏览器数据会删除已保存的计划。",
+    "お気に入り、言語、旅程はこのブラウザーに保存されます。アカウントやクラウド同期はありません。別の端末へ移すにはバックアップを出力してください。ブラウザーデータの削除で旅程も消えます。",
+    "즐겨찾기, 언어와 일정은 이 브라우저에 저장됩니다. 계정이나 클라우드 동기화는 없습니다. 다른 기기로 옮기려면 백업을 내보내세요. 브라우저 데이터를 지우면 저장한 계획도 삭제됩니다."
+  ],
+  "Made with care": ["用心制作", "心をこめて制作", "정성껏 만들었습니다"],
+  "Sources & image credits": ["来源与图片鸣谢", "出典と写真クレジット", "출처 및 사진 크레딧"],
+  "My American adventure": ["我的美国冒险", "私のアメリカ旅行", "나의 미국 여행"],
+  "travelers": ["位旅客", "人", "명"],
+  "Starts": ["出发日期", "出発日", "출발일"],
+  "Daily budget per traveler": ["每位旅客每日预算", "1人1日あたりの予算", "1인 하루 예산"],
+  "Planning estimate": ["计划估算", "概算予算", "예상 비용"],
+  "Estimate based on your daily budget. Add flights, car rental, and one-off costs separately. Verify travel times and reservations before booking.": [
+    "按你的每日预算估算。机票、租车及一次性费用另计。预订前请核实车程和预约。",
+    "設定した日額による概算です。航空券、レンタカーなどの費用は別途加え、予約前に移動時間と必要な予約を確認してください。",
+    "설정한 하루 예산을 기준으로 한 추정치입니다. 항공권, 렌터카와 일회성 비용은 별도로 더하고 예약 전에 이동 시간과 예약 사항을 확인하세요."
+  ],
+  "Your itinerary is ready to download.": [
+    "行程已准备好下载。",
+    "旅程をダウンロードできます。",
+    "일정을 다운로드할 수 있습니다."
+  ],
+  "This file is too large. Choose a Roam backup under 150 KB.": [
+    "文件过大。请选择小于150 KB的Roam备份。",
+    "ファイルが大きすぎます。150 KB未満のRoamバックアップを選んでください。",
+    "파일이 너무 큽니다. 150 KB 미만의 Roam 백업을 선택하세요."
+  ],
+  "Could not read this trip. Choose a valid Roam JSON backup.": [
+    "无法读取行程。请选择有效的Roam JSON备份。",
+    "旅程を読み込めません。有効なRoam JSONバックアップを選んでください。",
+    "일정을 읽을 수 없습니다. 올바른 Roam JSON 백업을 선택하세요."
+  ],
+  "MAKE IT YOUR OWN": ["打造你的旅程", "自分らしい旅に", "나만의 여행 만들기"],
+  "A great trip": ["精彩旅程，", "素敵な旅は、", "멋진 여행은"],
+  "starts here.": ["从这里开始。", "ここから。", "여기서 시작됩니다."],
+  "Browser storage is unavailable. Export a backup to keep your trip.": [
+    "浏览器存储不可用。请导出备份以保存旅程。",
+    "ブラウザーに保存できません。旅程を残すにはバックアップを出力してください。",
+    "브라우저에 저장할 수 없습니다. 여행을 보관하려면 백업을 내보내세요."
+  ],
+  "Saved automatically on this browser": [
+    "已自动保存在此浏览器",
+    "このブラウザーに自動保存",
+    "이 브라우저에 자동 저장"
+  ],
+  "GIVE YOUR TRIP A NAME": ["给旅程起个名字", "旅に名前をつけよう", "여행 이름 정하기"],
+  "Trip name": ["旅程名称", "旅程名", "여행 이름"],
+  "Start date": ["出发日期", "出発日", "출발일"],
+  "Travelers": ["旅客人数", "人数", "여행자 수"],
+  "USD / person / day": ["美元 / 人 / 天", "米ドル / 人 / 日", "USD / 인 / 일"],
+  "Daily budget in USD": ["每日预算（美元）", "1日あたりの予算（米ドル）", "하루 예산(USD)"],
+  "Every adventure starts somewhere.": [
+    "每次冒险都有一个起点。",
+    "どんな旅にも、最初の一歩。",
+    "모든 여행에는 시작이 있습니다."
+  ],
+  "Explore a state and add it to your trip. Your days, notes, and route will come together here.": [
+    "探索一个州并加入旅程，在这里安排天数、备注和路线。",
+    "州を見つけて旅程に追加しましょう。日数、メモ、ルートをここでまとめられます。",
+    "주를 둘러보고 여행에 추가하세요. 여기서 날짜, 메모와 경로를 정리할 수 있습니다."
+  ],
+  "Find my first stop": ["寻找第一站", "最初の目的地を探す", "첫 방문지 찾기"],
+  "Your journey": ["你的旅程", "あなたの旅程", "나의 여정"],
+  "states": ["个州", "州", "개 주"],
+  "Add a stop": ["添加停靠点", "立ち寄り先を追加", "방문지 추가"],
+  "DAY": ["第几天", "日程", "여행일"],
+  "Remove": ["移除", "削除", "삭제"],
+  "Fewer days in": ["减少停留天数：", "日数を減らす：", "일수 줄이기:"],
+  "More days in": ["增加停留天数：", "日数を増やす：", "일수 늘리기:"],
+  "Move up": ["上移", "上へ移動", "위로 이동"],
+  "Move down": ["下移", "下へ移動", "아래로 이동"],
+  "Notes for": ["备注：", "メモ：", "메모:"],
+  "A café to try, a place to stay, a little reminder…": [
+    "想去的咖啡馆、住宿地点、小小提醒……",
+    "気になるカフェ、泊まりたい宿、覚えておきたいこと…",
+    "가 보고 싶은 카페, 숙소, 기억할 것…"
+  ],
+  "THE ADVENTURE": ["旅程概览", "旅の概要", "여행 개요"],
+  "YOUR BUDGET ESTIMATE": ["你的预算估算", "予算の目安", "예상 여행 예산"],
+  "Calculated from your daily budget × travelers × days. This is a planning estimate; add flights, car rental, and one-off costs separately. Route order does not calculate driving times.": [
+    "按每日预算 × 人数 × 天数计算。这只是计划估算，机票、租车及一次性费用另计。路线顺序不计算车程。",
+    "日額予算 × 人数 × 日数で計算した概算です。航空券、レンタカーなどは別途加えてください。ルートの順序から移動時間は計算しません。",
+    "하루 예산 × 인원 × 일수로 계산합니다. 계획용 추정치이며 항공권, 렌터카와 일회성 비용은 별도입니다. 경로 순서에 따른 운전 시간은 계산하지 않습니다."
+  ],
+  "Download my itinerary": ["下载我的行程", "旅程をダウンロード", "내 일정 다운로드"],
+  "Trip backup downloaded.": [
+    "旅程备份已下载。",
+    "バックアップをダウンロードしました。",
+    "여행 백업을 다운로드했습니다."
+  ],
+  "Export backup": ["导出备份", "バックアップを出力", "백업 내보내기"],
+  "Import trip": ["导入旅程", "旅程を読み込む", "여행 가져오기"],
+  "Clear trip": ["清空旅程", "旅程を消去", "여행 비우기"],
+  "Import trip file": ["导入旅程文件", "旅程ファイルを読み込む", "여행 파일 가져오기"],
+  "Imported trip": ["导入的旅程", "読み込む旅程", "가져온 여행"],
+  "days. Importing replaces the trip currently on this browser.": [
+    "天。导入将替换此浏览器中的当前旅程。",
+    "日。読み込むと、このブラウザーの現在の旅程が置き換わります。",
+    "일. 가져오면 이 브라우저의 현재 여행이 대체됩니다."
+  ],
+  "Trip imported.": ["旅程已导入。", "旅程を読み込みました。", "여행을 가져왔습니다."],
+  "Replace with this trip": ["用此旅程替换", "この旅程に置き換える", "이 여행으로 바꾸기"],
+  "Cancel": ["取消", "キャンセル", "취소"],
+  "Remove all stops, notes, dates, and budget settings from this trip?": [
+    "删除此次旅程中的全部停靠点、备注、日期和预算设置？",
+    "この旅程の立ち寄り先、メモ、日付、予算設定をすべて削除しますか？",
+    "이 여행의 모든 방문지, 메모, 날짜와 예산 설정을 삭제할까요?"
+  ],
+  "Trip cleared.": ["旅程已清空。", "旅程を消去しました。", "여행을 비웠습니다."],
+  "Clear this trip": ["清空此旅程", "この旅程を消去", "이 여행 비우기"],
+  "Keep my trip": ["保留我的旅程", "旅程を残す", "내 여행 유지"],
+  "The West": ["西部", "西部", "서부"],
+  "Southwest": ["西南部", "南西部", "남서부"],
+  "Midwest": ["中西部", "中西部", "중서부"],
+  "Southeast": ["东南部", "南東部", "남동부"],
+  "Northeast": ["东北部", "北東部", "북동부"],
+  "Great outdoors": ["自然户外", "大自然", "대자연"],
+  "City escapes": ["城市探索", "街を楽しむ", "도시 여행"],
+  "Coastal living": ["海岸时光", "海辺の旅", "해안 여행"],
+  "Culture & history": ["文化与历史", "文化と歴史", "문화와 역사"],
+  "Spring": ["春季", "春", "봄"],
+  "Summer": ["夏季", "夏", "여름"],
+  "Fall": ["秋季", "秋", "가을"],
+  "Winter": ["冬季", "冬", "겨울"],
+  "The great Southwest": ["壮美西南", "壮大な南西部へ", "웅장한 남서부"],
+  "Red rocks. Open roads. A whole new perspective.": [
+    "红岩与开阔公路，打开全新视野。",
+    "赤い岩、大きな道。新しい景色に出会う旅。",
+    "붉은 바위와 탁 트인 도로, 새로운 풍경."
+  ],
+  "THE DESERT COLLECTION": ["沙漠路线精选", "砂漠の旅", "사막 여행 모음"],
+  "Pacific coast state of mind": [
+    "太平洋海岸的旅行节奏",
+    "太平洋岸をのんびりと",
+    "태평양 해안을 따라서"
+  ],
+  "From evergreen forests to the Golden State.": [
+    "从常绿森林到金州风光。",
+    "常緑の森から、カリフォルニアへ。",
+    "상록수 숲에서 캘리포니아까지."
+  ],
+  "THE COASTAL COLLECTION": ["海岸路线精选", "海辺の旅", "해안 여행 모음"],
+  "A New England kind of fall": ["新英格兰的秋日", "ニューイングランドの秋", "뉴잉글랜드의 가을"],
+  "Small towns, scenic roads, and maple everything.": [
+    "小镇、景观公路，以及枫叶的世界。",
+    "小さな街、景色のいい道、メープルの味。",
+    "작은 마을, 아름다운 도로와 메이플의 풍미."
+  ],
+  "THE SLOW TRAVEL COLLECTION": ["慢旅行路线精选", "ゆっくり楽しむ旅", "느긋한 여행 모음"],
+  "THE ESSENTIALS": ["旅行基础", "旅の基本", "여행의 기본"],
+  "Your first American adventure, made simpler.": [
+    "第一次美国之旅，轻松出发。",
+    "初めてのアメリカ旅行を、わかりやすく。",
+    "첫 미국 여행을 더 간편하게."
+  ],
+  "A little preparation leaves more room for the good stuff. Start with the region that excites you, then build a trip around it.": [
+    "提前准备一点，精彩体验就多一点。从你最感兴趣的区域开始，再围绕它规划旅程。",
+    "少し準備するだけで、楽しむ時間が増えます。気になる地域を決めて、そこから旅を組み立てましょう。",
+    "조금만 준비하면 더 여유롭게 즐길 수 있습니다. 가장 끌리는 지역을 고르고 그곳을 중심으로 계획하세요."
+  ],
+  "Start with the map": ["从地图开始", "地図から始めよう", "지도부터 살펴보기"],
+  "The United States is vast. For a first visit, one region usually gives you more time to explore than a coast-to-coast checklist. Group nearby destinations and leave time for arrival, transfers, and rest. Alaska and Hawaii need separate flight planning.": [
+    "美国幅员辽阔。初次旅行选择一个区域，通常比横跨东西海岸能留出更多探索时间。把邻近目的地放在一起，预留抵达、转乘和休息时间。阿拉斯加和夏威夷需另行规划航班。",
+    "アメリカは広大です。初めてなら、東西横断よりひとつの地域に絞ると観光の時間を確保できます。近い目的地をまとめ、到着、乗り継ぎ、休息の時間も取りましょう。アラスカとハワイは別途フライトの計画が必要です。",
+    "미국은 매우 넓습니다. 첫 방문에는 동서 횡단보다 한 지역에 집중하면 더 여유롭게 둘러볼 수 있습니다. 가까운 여행지를 묶고 도착, 환승과 휴식 시간을 확보하세요. 알래스카와 하와이는 항공편을 따로 계획해야 합니다."
+  ],
+  "Check your entry documents": ["核查入境文件", "入国書類を確認しよう", "입국 서류 확인하기"],
+  "Entry requirements depend on your passport and circumstances. Use the U.S. Department of State and CBP websites to check the documents that apply to you before committing to travel. Keep copies of your bookings and travel documents accessible.": [
+    "入境要求取决于你的护照和个人情况。确定旅行前，请在美国国务院及CBP网站核实适用文件，并保存方便查阅的预订和旅行文件副本。",
+    "入国条件はパスポートと個人の状況によって異なります。旅行を手配する前に米国国務省とCBPのサイトで必要書類を確認し、予約や旅行書類のコピーをすぐ見られるようにしましょう。",
+    "입국 요건은 여권과 개인 상황에 따라 다릅니다. 여행을 확정하기 전에 미 국무부와 CBP에서 해당 서류를 확인하고 예약 및 여행 서류 사본을 쉽게 볼 수 있게 보관하세요."
+  ],
+  "Build a realistic day": ["合理安排一天", "無理のない1日に", "무리 없는 하루 계획"],
+  "Choose one main experience per day, then add nearby possibilities. Check opening days, travel time, accessibility, and advance bookings directly with each venue. Major cities often work well with public transport; rural routes usually need more transport planning.": [
+    "每天选择一个主要体验，再搭配附近地点。直接向场馆核实开放日期、交通时间、无障碍设施和预约。大城市通常适合公共交通，乡村路线则需要更多交通规划。",
+    "1日ひとつの主な体験を決め、近くの立ち寄り先を加えましょう。営業日、移動時間、バリアフリー対応、予約を各施設で確認してください。大都市は公共交通が便利な場合が多く、地方は移動の準備が必要です。",
+    "하루에 주요 체험 하나를 정하고 근처 장소를 더하세요. 운영일, 이동 시간, 접근성과 사전 예약을 각 시설에 확인하세요. 대도시는 대중교통이 편리한 경우가 많지만 교외는 이동 계획이 더 필요합니다."
+  ],
+  "Keep the practical things handy": [
+    "随手备好实用信息",
+    "必要な情報を手元に",
+    "필요한 정보 챙기기"
+  ],
+  "Download offline maps, check your phone’s data options, and save accommodation addresses. Review travel insurance and payment options for your own needs. Your Roam trip is saved on this browser; export a copy to take it with you.": [
+    "下载离线地图，查看手机流量方案并保存住宿地址。按自身需要考虑旅行保险和付款方式。Roam旅程保存在此浏览器，建议导出副本随身携带。",
+    "オフライン地図をダウンロードし、携帯通信と宿の住所を確認しましょう。保険と支払い方法も自分に合わせて検討を。Roamの旅程はこのブラウザーに保存されるため、コピーを出力しておきましょう。",
+    "오프라인 지도를 내려받고 휴대전화 데이터 요금제와 숙소 주소를 확인하세요. 필요에 맞는 여행자 보험과 결제 수단도 살펴보세요. Roam 일정은 이 브라우저에 저장되므로 사본을 내보내 두세요."
+  ],
+  "OUTSIDE IS CALLING": ["大自然在召唤", "自然が待っている", "자연이 부르는 여행"],
+  "Big parks. A little planning. Better adventures.": [
+    "广阔公园，提前规划，尽兴探索。",
+    "大きな公園を、少しの準備でもっと楽しく。",
+    "넓은 공원, 작은 준비, 더 즐거운 여행."
+  ],
+  "Make space for the view, and sort out the details before you go. Each park has its own access, seasons, and reservation arrangements.": [
+    "为风景留点时间，出发前理清细节。每座公园的通行、季节和预约安排都不同。",
+    "景色を楽しむ余裕のために、事前の確認を。アクセス、季節、予約方法は公園ごとに異なります。",
+    "풍경을 즐길 여유를 남기고 세부 사항은 미리 확인하세요. 공원마다 접근 방법, 계절과 예약 방식이 다릅니다."
+  ],
+  "Check the official park page": [
+    "查看公园官方网站",
+    "公園の公式ページを確認",
+    "공원 공식 페이지 확인"
+  ],
+  "Use the National Park Service’s Plan Your Visit pages for access, operating hours, alerts, and accessibility. Check them again close to departure: road and trail conditions can change.": [
+    "通过NPS的Plan Your Visit页面查看交通、开放时间、公告和无障碍信息。临近出发请再次确认，路况和步道状况可能改变。",
+    "NPSのPlan Your Visitでアクセス、営業時間、注意情報、バリアフリー情報を確認しましょう。道路や歩道の状況は変わるため、出発直前にも再確認してください。",
+    "NPS의 Plan Your Visit에서 접근 방법, 운영 시간, 공지와 접근성 정보를 확인하세요. 도로와 탐방로 상태는 바뀔 수 있으므로 출발 직전에 다시 확인하세요."
+  ],
+  "Separate passes from reservations": [
+    "区分门票与预约",
+    "パスと予約は別々に確認",
+    "입장권과 예약 구분하기"
+  ],
+  "An entrance pass does not necessarily include a timed-entry reservation, a campsite, or a hiking permit. Review each requirement and the current fees for your party directly with the park. Recreation.gov handles many federal reservations.": [
+    "入园通票不一定包含定时入园预约、营地或徒步许可。请直接向公园核实团队适用的要求和现行费用。许多联邦设施预约由Recreation.gov办理。",
+    "入園パスに時間指定予約、キャンプ場、登山許可が含まれるとは限りません。自分たちに必要な手続きと最新料金を公園で確認してください。多くの連邦施設の予約はRecreation.govで扱います。",
+    "입장 패스에 시간 지정 입장 예약, 캠핑장이나 하이킹 허가가 포함되는 것은 아닙니다. 일행에게 적용되는 요건과 최신 요금은 공원에서 직접 확인하세요. 많은 연방 시설 예약은 Recreation.gov에서 처리합니다."
+  ],
+  "Choose the right trail for your group": [
+    "选择适合同行者的步道",
+    "グループに合うトレイルを選ぶ",
+    "일행에게 맞는 탐방로 선택"
+  ],
+  "Consider distance, elevation, temperature, shade, and the return journey. Carry appropriate water and supplies, download a map, and tell someone your plan. Visitor centers can help you choose an experience that fits your time and ability.": [
+    "考虑距离、海拔、气温、遮阴和返程。携带合适的饮水与物资，下载地图，并告知他人行程。游客中心可帮助选择适合时间和体力的体验。",
+    "距離、標高、気温、日陰、帰り道を考慮しましょう。十分な水と装備、地図を用意し、誰かに計画を伝えてください。ビジターセンターでは時間と体力に合う体験を相談できます。",
+    "거리, 고도, 기온, 그늘과 돌아오는 길을 고려하세요. 적절한 물과 장비를 챙기고 지도를 내려받아 다른 사람에게 계획을 알려 두세요. 방문자 센터에서 시간과 체력에 맞는 활동을 안내받을 수 있습니다."
+  ],
+  "Leave room for nature": ["给自然留出空间", "自然への思いやりを", "자연을 배려하기"],
+  "Stay on permitted trails, give wildlife space, and take your litter with you. Follow local guidance, including tribal park rules where applicable. Keep a flexible alternative for weather or closures.": [
+    "沿获准步道行走，与野生动物保持距离，并带走垃圾。遵守当地指引，包括适用的部落公园规则，为天气变化或关闭准备备选计划。",
+    "許可された道を歩き、野生動物から距離を取り、ごみは持ち帰りましょう。部族公園の規則を含む現地の案内に従い、天候や閉鎖に備えて代案を用意してください。",
+    "허용된 탐방로를 이용하고 야생동물과 거리를 두며 쓰레기는 가져가세요. 부족 공원 규칙을 포함한 현지 안내를 따르고 날씨 변화나 폐쇄에 대비한 대안을 마련하세요."
+  ],
+  "TAKE THE SCENIC ROUTE": ["选择风景路线", "景色を楽しむ道へ", "풍경을 따라 떠나기"],
+  "Less rushing. More road-trip memories.": [
+    "少一点赶路，多一点回忆。",
+    "急がず、思い出を増やすロードトリップ。",
+    "서두르지 않고 더 많은 추억을."
+  ],
+  "The best part of a road trip is often the stop you did not plan. Give your itinerary enough breathing room to find it.": [
+    "公路旅行最美的时刻，常常来自计划外的停留。在行程里留点空白，才能发现它。",
+    "ロードトリップの醍醐味は、予定外の立ち寄り先にあることも。そんな発見のために、旅程に余白を残しましょう。",
+    "로드 트립의 가장 좋은 순간은 계획에 없던 곳에서 찾아오기도 합니다. 그런 발견을 위해 일정에 여유를 두세요."
+  ],
+  "Plan stops, then the driving": [
+    "先选落脚点，再规划驾驶路线",
+    "拠点を決めてから道を選ぶ",
+    "방문지를 정한 뒤 경로 계획"
+  ],
+  "Choose overnight bases around your must-see places. Our route collections are regional starting points, so choose specific towns and verify the roads between them before booking. Scenic roads can take much longer than the fastest navigation estimate.": [
+    "围绕必看地点选择住宿基地。推荐路线是区域层面的起点，预订前请选定具体城镇并核实道路。景观公路耗时可能远超导航的最快估计。",
+    "訪れたい場所の近くに宿泊拠点を決めましょう。おすすめルートは地域単位の目安です。予約前に具体的な街と道路を確認してください。景観道路は最短ルートより大幅に時間がかかることがあります。",
+    "꼭 보고 싶은 곳을 중심으로 숙박 거점을 고르세요. 추천 경로는 지역 단위의 시작점입니다. 예약 전에 구체적인 도시와 도로를 확인하세요. 경관 도로는 내비게이션의 최단 시간보다 훨씬 오래 걸릴 수 있습니다."
+  ],
+  "Check the car details": ["核实租车细节", "車の条件を確認", "차량 조건 확인하기"],
+  "Review your rental provider’s license, age, insurance, mileage, and one-way return conditions. Check parking at accommodation and attractions. For island or remote destinations, check whether your rental can travel on the roads or ferries you intend to use.": [
+    "向租车公司核实驾照、年龄、保险、里程和异地还车条件，也要查看住宿和景点停车情况。前往岛屿或偏远地区时，确认租车可走的道路及可搭乘的渡轮。",
+    "レンタカー会社の免許、年齢、保険、走行距離、乗り捨て条件を確認しましょう。宿や観光地の駐車場も確認を。島や遠隔地では、予定する道路やフェリーをレンタカーで利用できるか調べてください。",
+    "렌터카 업체의 면허, 연령, 보험, 주행 거리와 편도 반납 조건을 확인하세요. 숙소와 관광지의 주차도 살펴보세요. 섬이나 외딴 지역에서는 예정된 도로나 페리에 렌터카를 이용할 수 있는지 확인하세요."
+  ],
+  "Budget for the whole journey": [
+    "为整个旅程做预算",
+    "旅全体の予算を考える",
+    "전체 여행 예산 세우기"
+  ],
+  "Allow for accommodation, meals, fuel, parking, admission, and a buffer. The planner uses your own daily amount per traveler as a simple estimate; add flights, car hire, and any large one-off costs separately. It is not a booking quote.": [
+    "计入住宿、餐饮、燃油、停车、门票及备用金。规划器以你设定的人均每日金额作简单估算，机票、租车和大额一次性支出需另计，并非预订报价。",
+    "宿泊、食事、燃料、駐車、入場料、予備費を見込みましょう。プランナーは設定した1人1日あたりの金額による概算です。航空券、レンタカー、大きな支出は別途加えてください。予約価格ではありません。",
+    "숙박, 식사, 연료, 주차, 입장료와 여유 자금을 포함하세요. 플래너는 직접 설정한 1인 하루 금액으로 단순 추정합니다. 항공권, 렌터카와 큰 일회성 지출은 별도이며 예약 견적이 아닙니다."
+  ],
+  "Keep a flexible route": ["保持路线灵活", "柔軟なルートに", "유연한 경로 유지하기"],
+  "Check state transport agencies for closures and road conditions. Keep fuel margins on remote roads, download maps, and leave daylight for unfamiliar scenic routes. Build a rest day into longer itineraries.": [
+    "通过州交通部门查看封路和路况。偏远道路要留足油量，下载地图，陌生景观路段尽量白天行驶。长途行程中安排休息日。",
+    "州の交通機関で通行止めと道路状況を確認しましょう。遠隔地では燃料に余裕を持ち、地図をダウンロードし、不慣れな景観道路は明るい時間帯に。長い旅程には休息日を入れましょう。",
+    "주 교통 기관에서 도로 폐쇄와 상태를 확인하세요. 외딴 도로에서는 연료를 넉넉히 확보하고 지도를 내려받아 낯선 경관 도로는 낮에 운전하세요. 긴 일정에는 쉬는 날을 넣으세요."
+  ],
+  "{name} removed from saved places.": [
+    "已从收藏中移除{name}。",
+    "{name}をお気に入りから削除しました。",
+    "{name}을(를) 저장 목록에서 삭제했습니다."
+  ],
+  "{name} saved for a future adventure.": [
+    "已收藏{name}。",
+    "{name}をお気に入りに保存しました。",
+    "{name}을(를) 저장했습니다."
+  ],
+  "{name} added to your trip.": [
+    "已将{name}加入旅程。",
+    "{name}を旅程に追加しました。",
+    "{name}을(를) 여행에 추가했습니다."
+  ],
+  "Saved places ({count})": [
+    "收藏地点（{count}）",
+    "お気に入り（{count}）",
+    "저장한 장소({count})"
+  ],
+  "Explore all {count} matches": [
+    "查看全部{count}个结果",
+    "全{count}件を見る",
+    "검색 결과 {count}개 모두 보기"
+  ],
+  "Roam America — 50 states. Endless possibilities.": [
+    "Roam America — 探索美国50个州",
+    "Roam America — アメリカ全50州を旅しよう",
+    "Roam America — 미국 50개 주 여행"
+  ],
+  "Explore": ["探索", "探索する", "둘러보기"],
+  "Save": ["收藏", "保存", "저장"],
+  "Unsave": ["取消收藏", "保存を解除", "저장 취소"],
+  "days to explore": ["天的探索时间", "日間の旅", "일 추천"],
+  "View guide for": ["查看指南：", "ガイドを見る：", "가이드 보기:"],
+  "Photo gallery": ["照片集", "フォトギャラリー", "사진 갤러리"],
+  "View photo": ["查看照片：", "写真を見る：", "사진 보기:"],
+  "Resized for display": ["已调整显示尺寸", "表示用にサイズ調整", "표시용 크기 조정"],
+  "Content updated": ["内容更新", "コンテンツ更新", "콘텐츠 업데이트"],
+  "Made with Roam America": ["由Roam America制作", "Roam Americaで作成", "Roam America에서 작성"],
+  "Independent travel inspiration · 5 languages": [
+    "独立旅行灵感 · 支持5种语言",
+    "独立した旅のアイデアサイト · 5言語対応",
+    "독립 여행 가이드 · 5개 언어 지원"
+  ],
+  "Destination photographs from Unsplash and Wikimedia Commons, with individual author and license credits. State map geometry from US Atlas. Roam is not affiliated with U.S. tourism agencies and does not sell travel bookings.": [
+    "目的地照片来自Unsplash和Wikimedia Commons，授权及作者信息见照片来源。州地图来自US Atlas。Roam不隶属于美国旅游机构，也不销售旅行预订。",
+    "目的地の写真はUnsplashとWikimedia Commonsより。作者とライセンスは各出典で確認できます。州の地図はUS Atlasを使用。Roamは観光機関と提携しておらず、旅行予約を販売していません。",
+    "여행지 사진은 Unsplash와 Wikimedia Commons에서 제공하며 출처에서 작가와 라이선스를 확인할 수 있습니다. 주 지도는 US Atlas를 사용합니다. Roam은 미국 관광 기관과 제휴하지 않으며 여행 예약을 판매하지 않습니다."
+  ]
+}

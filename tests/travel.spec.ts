@@ -226,7 +226,7 @@ test('the state map works with keyboard and the 2D toggle', async ({ page }) => 
 test('Thai translation, search and persisted preference render without overflow', async ({
   page,
 }) => {
-  await page.getByRole('button', { name: 'เปลี่ยนเป็นภาษาไทย' }).click();
+  await page.getByRole('combobox', { name: 'Language / ภาษา' }).selectOption('th');
   await expect(page.locator('html')).toHaveAttribute('lang', 'th');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('ค้นพบอเมริกา');
   await page.getByLabel('ค้นหาจุดหมาย', { exact: true }).fill('ฮาวาย');
@@ -290,11 +290,11 @@ test('narrow phones and tablets retain filters and fit the screen in both langua
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
     ).toBe(true);
-    await page.getByRole('button', { name: 'เปลี่ยนเป็นภาษาไทย' }).click();
+    await page.getByRole('combobox', { name: 'Language / ภาษา' }).selectOption('th');
     await expect(page.getByLabel('ฤดูกาล', { exact: true })).toBeVisible();
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
     ).toBe(true);
-    await page.getByRole('button', { name: 'Switch to English' }).click();
+    await page.getByRole('combobox', { name: 'Language / ภาษา' }).selectOption('en');
   }
 });

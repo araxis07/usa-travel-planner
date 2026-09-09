@@ -1,3 +1,4 @@
+import { translate } from '../lib/i18n';
 import Icon, { type IconName } from './Icon';
 import { ROUTES, GUIDES, local, type Language } from '../data/travel';
 
@@ -19,7 +20,8 @@ export function Brand({ footer = false }: { footer?: boolean }) {
 }
 
 export function RoadTrips({ lang, onRoute }: { lang: Language; onRoute: (id: string) => void }) {
-  const t = (en: string, th: string) => (lang === 'th' ? th : en);
+  const t = (en: string, th: string, values?: Record<string, string | number>) =>
+    translate(en, th, lang, values);
   return (
     <section id="road-trips" className="road-trips section-shell section-anchor">
       <div className="section-heading">
@@ -102,7 +104,8 @@ export function PlannerBanner({
   hasTrip: boolean;
   onPlan: () => void;
 }) {
-  const t = (en: string, th: string) => (lang === 'th' ? th : en);
+  const t = (en: string, th: string, values?: Record<string, string | number>) =>
+    translate(en, th, lang, values);
   return (
     <section className="planner-banner section-shell">
       <div className="planner-banner-inner">
@@ -175,7 +178,8 @@ export function PlannerBanner({
 }
 
 export function FieldNotes({ lang, onGuide }: { lang: Language; onGuide: (id: string) => void }) {
-  const t = (en: string, th: string) => (lang === 'th' ? th : en);
+  const t = (en: string, th: string, values?: Record<string, string | number>) =>
+    translate(en, th, lang, values);
   return (
     <>
       <section id="guides" className="guides section-shell section-anchor">
@@ -246,7 +250,8 @@ export function Footer({
   onSaved: () => void;
   onAbout: () => void;
 }) {
-  const t = (en: string, th: string) => (lang === 'th' ? th : en);
+  const t = (en: string, th: string, values?: Record<string, string | number>) =>
+    translate(en, th, lang, values);
   return (
     <footer className="footer">
       <div className="section-shell">
@@ -294,8 +299,8 @@ export function Footer({
           </span>
           <span>
             {t(
-              'Independent travel inspiration · English / ไทย',
-              'แรงบันดาลใจท่องเที่ยวอิสระ · ไทย / English',
+              'Independent travel inspiration · 5 languages',
+              'แรงบันดาลใจท่องเที่ยวอิสระ · รองรับ 5 ภาษา',
             )}
           </span>
           <button

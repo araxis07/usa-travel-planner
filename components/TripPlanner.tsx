@@ -1,3 +1,5 @@
+import { statePlaces, statePhoto } from '../data/travel';
+import { translate, LOCALES } from '../lib/i18n';
 import { useRef, useState, type ChangeEvent } from 'react';
 import { EMPTY_TRIP, STATES, stateName, type Language, type Trip } from '../data/travel';
 import { downloadFile, tripDays, validateTrip, validDate } from '../lib/storage';
@@ -19,14 +21,15 @@ export default function TripPlanner({
   storageFailed: boolean;
   notify: (message: string) => void;
 }) {
-  const t = (en: string, th: string) => (lang === 'th' ? th : en);
+  const t = (en: string, th: string, values?: Record<string, string | number>) =>
+    translate(en, th, lang, values);
   const [confirmClear, setConfirmClear] = useState(false);
   const [pendingImport, setPendingImport] = useState<Trip | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const days = tripDays(trip);
   const estimate = days * trip.travelers * trip.dailyBudget;
   const money = (value: number) =>
-    new Intl.NumberFormat(lang === 'th' ? 'th-TH' : 'en-US', {
+    new Intl.NumberFormat(LOCALES[lang], {
       style: 'currency',
       currency: 'USD',
       maximumFractionDigits: 0,
@@ -41,7 +44,7 @@ export default function TripPlanner({
     if (!trip.startDate) return '';
     const date = new Date(`${trip.startDate}T12:00:00`);
     date.setDate(date.getDate() + offset);
-    return new Intl.DateTimeFormat(lang === 'th' ? 'th-TH' : 'en-US', {
+    return new Intl.DateTimeFormat(LOCALES[lang], {
       month: 'short',
       day: 'numeric',
     }).format(date);
@@ -56,7 +59,7 @@ export default function TripPlanner({
         const state = STATES.find((item) => item.code === stop.code)!;
         return [
           `${index + 1}. ${stateName(state, lang)} — ${stop.days} ${t('days', 'วัน')}`,
-          `   ${state.places.join(' / ')}`,
+          `   ${statePlaces(state, lang).join(' / ')}`,
           stop.notes ? `   ${stop.notes}` : '',
           '',
         ];
@@ -68,7 +71,7 @@ export default function TripPlanner({
         'ประมาณการจากงบรายวันที่ตั้งเอง คิดเที่ยวบิน ค่าเช่ารถ และค่าใช้จ่ายก้อนใหญ่เพิ่ม ตรวจเวลาเดินทางและการจองก่อนจองจริง',
       ),
       '',
-      'Made with Roam America',
+      t('Made with Roam America', 'สร้างด้วย Roam America'),
     ]
       .filter((line) => line !== undefined)
       .join('\n');
@@ -226,8 +229,8 @@ export default function TripPlanner({
                         className="stop-thumbnail"
                         style={{ background: regionColors[state.region] }}
                       >
-                        {state.image ? (
-                          <img src={`/images/${state.image}.jpg`} alt="" />
+                        {statePhoto(state) ? (
+                          <img src={statePhoto(state).src} alt="" />
                         ) : (
                           <StateShape state={state} />
                         )}
@@ -250,7 +253,7 @@ export default function TripPlanner({
                         <Icon name="close" size={17} />
                       </button>
                     </div>
-                    <p className="stop-places">{state.places.join(' · ')}</p>
+                    <p className="stop-places">{statePlaces(state, lang).join(' · ')}</p>
                     <div className="stop-controls">
                       <div className="day-stepper">
                         <button

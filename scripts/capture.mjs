@@ -29,7 +29,7 @@ await page.reload();
 await page.setViewportSize({ width: 390, height: 844 });
 await page.evaluate(() => window.scrollTo(0, 0));
 await page.screenshot({ path: `${folder}/mobile-top.png` });
-await page.getByRole('button', { name: 'เปลี่ยนเป็นภาษาไทย' }).click();
+await page.getByRole('combobox', { name: 'Language / ภาษา' }).selectOption('th');
 await page.evaluate(() => document.fonts.ready);
 await page.screenshot({ path: `${folder}/mobile-thai.png` });
 await page.screenshot({ path: `${folder}/mobile-thai-full.png`, fullPage: true });

@@ -1,3 +1,6 @@
+import LanguageSelector from './components/LanguageSelector';
+import { stateName } from './data/travel';
+import { translate, initialLanguage } from './lib/i18n';
 import { useEffect, useRef, useState } from 'react';
 import Atlas from './components/Atlas';
 import Icon, { type IconName } from './components/Icon';
@@ -27,11 +30,7 @@ const interestIcons: Record<Interest, IconName> = {
   Culture: 'book',
 };
 export default function App() {
-  const [lang, setLang] = useState<Language>(() =>
-    readLocal('roam.language', navigator.language.startsWith('th') ? 'th' : 'en', (value) =>
-      value === 'th' ? 'th' : 'en',
-    ),
-  );
+  const [lang, setLang] = useState<Language>(initialLanguage);
   const [favorites, setFavorites] = useState<string[]>(() =>
     readLocal('roam.saved.v1', [], validFavorites),
   );
@@ -51,7 +50,8 @@ export default function App() {
   const [toast, setToast] = useState('');
   const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const heroRef = useRef<HTMLElement>(null);
-  const t = (en: string, th: string) => (lang === 'th' ? th : en);
+  const t = (en: string, th: string, values?: Record<string, string | number>) =>
+    translate(en, th, lang, values);
   const notify = (message: string) => {
     clearTimeout(toastTimer.current);
     setToast(message);
@@ -70,10 +70,14 @@ export default function App() {
   }, [favorites, trip, lang]);
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title =
-      lang === 'th'
-        ? 'Roam America — วางแผนเที่ยวอเมริกาครบ 50 รัฐ'
-        : 'Roam America — 50 states. Endless possibilities.';
+    document.title = translate(
+      'Roam America — 50 states. Endless possibilities.',
+      'Roam America — วางแผนเที่ยวอเมริกาครบ 50 รัฐ',
+      lang,
+    );
+    const url = new URL(location.href);
+    url.searchParams.set('lang', lang);
+    history.replaceState(null, '', url);
   }, [lang]);
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -88,8 +92,12 @@ export default function App() {
     );
     notify(
       saved
-        ? t(`${state.name} removed from saved places.`, `นำ${state.thai}ออกจากรายการโปรดแล้ว`)
-        : t(`${state.name} saved for a future adventure.`, `บันทึก${state.thai}ในรายการโปรดแล้ว`),
+        ? t('{name} removed from saved places.', 'นำ{name}ออกจากรายการโปรดแล้ว', {
+            name: stateName(state, lang),
+          })
+        : t('{name} saved for a future adventure.', 'บันทึก{name}ในรายการโปรดแล้ว', {
+            name: stateName(state, lang),
+          }),
     );
   };
   const explore = () => {
@@ -107,7 +115,9 @@ export default function App() {
         ...value,
         stops: [...value.stops, { code: state.code, days: state.days, notes: '' }],
       }));
-      notify(t(`${state.name} added to your trip.`, `เพิ่ม${state.thai}ในทริปแล้ว`));
+      notify(
+        t('{name} added to your trip.', 'เพิ่ม{name}ในทริปแล้ว', { name: stateName(state, lang) }),
+      );
     }
     setModal({ type: 'trip' });
   };
@@ -126,7 +136,9 @@ export default function App() {
           state.name,
           state.thai,
           state.code,
+          ...state.names,
           ...state.description,
+          ...state.placeNames.flat(),
           ...state.places,
           ...state.food,
           ...state.interests,
@@ -140,7 +152,9 @@ export default function App() {
   );
   const hasFilters = !!search || interest !== 'All' || region !== 'All' || season !== 'All';
   const sorted =
-    sort === 'az' ? [...filtered].sort((a, b) => a.name.localeCompare(b.name)) : filtered;
+    sort === 'az'
+      ? [...filtered].sort((a, b) => stateName(a, lang).localeCompare(stateName(b, lang), lang))
+      : filtered;
   const visible = showAll ? sorted : sorted.slice(0, hasFilters ? 8 : 4);
   const nav = [
     { href: '#destinations', label: t('Discover', 'จุดหมาย') },
@@ -192,20 +206,12 @@ export default function App() {
             </button>
           </nav>
           <div className="header-actions">
-            <button
-              className="language-button"
-              onClick={() => setLang((value) => (value === 'en' ? 'th' : 'en'))}
-              aria-label={lang === 'en' ? 'เปลี่ยนเป็นภาษาไทย' : 'Switch to English'}
-            >
-              <Icon name="globe" size={16} />
-              <span>{lang === 'en' ? 'TH' : 'EN'}</span>
-            </button>
+            <LanguageSelector lang={lang} onChange={setLang} />
             <button
               className="header-saved icon-button"
-              aria-label={t(
-                `Saved places (${favorites.length})`,
-                `สถานที่โปรด (${favorites.length})`,
-              )}
+              aria-label={t('Saved places ({count})', 'สถานที่โปรด ({count})', {
+                count: favorites.length,
+              })}
               onClick={() => setModal({ type: 'saved' })}
             >
               <Icon name="heart" />
@@ -550,10 +556,9 @@ export default function App() {
                 {showAll
                   ? t('Show fewer places', 'แสดงน้อยลง')
                   : hasFilters
-                    ? t(
-                        `Explore all ${filtered.length} matches`,
-                        `ดูทั้ง ${filtered.length} รัฐที่พบ`,
-                      )
+                    ? t('Explore all {count} matches', 'ดูทั้ง {count} รัฐที่พบ', {
+                        count: filtered.length,
+                      })
                     : t('Explore all 50 states', 'สำรวจครบ 50 รัฐ')}
                 <Icon name={showAll ? 'minus' : 'arrow'} size={17} />
               </button>
@@ -600,6 +605,7 @@ export default function App() {
       {modal && (
         <TravelDialog
           modal={modal}
+          onLanguageChange={setLang}
           setModal={setModal}
           lang={lang}
           trip={trip}

@@ -1,3 +1,4 @@
+import { translate } from '../lib/i18n';
 import { useState } from 'react';
 import shapes from '../data/map-paths.json';
 import {
@@ -46,7 +47,8 @@ export default function Atlas({
   const [active, setActive] = useState('CA');
   const [dimension, setDimension] = useState(true);
   const selected = STATES.find((state) => state.code === active)!;
-  const t = (en: string, th: string) => (lang === 'th' ? th : en);
+  const t = (en: string, th: string, values?: Record<string, string | number>) =>
+    translate(en, th, lang, values);
   const regions = Object.keys(REGION_LABELS) as Region[];
   return (
     <section id="map" className="atlas-section section-anchor">

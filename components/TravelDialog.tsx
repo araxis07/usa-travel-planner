@@ -1,3 +1,6 @@
+import LanguageSelector from './LanguageSelector';
+import { statePlaces } from '../data/travel';
+import { translate } from '../lib/i18n';
 import Dialog from './Dialog';
 import StateDetail from './StateDetail';
 import StateCard from './StateCard';
@@ -26,6 +29,7 @@ interface Props {
   modal: TravelModal;
   setModal: (modal: TravelModal | null) => void;
   lang: Language;
+  onLanguageChange: (lang: Language) => void;
   trip: Trip;
   setTrip: (trip: Trip) => void;
   favorites: string[];
@@ -40,6 +44,7 @@ export default function TravelDialog({
   modal,
   setModal,
   lang,
+  onLanguageChange,
   trip,
   setTrip,
   favorites,
@@ -50,7 +55,8 @@ export default function TravelDialog({
   notify,
   toast,
 }: Props) {
-  const t = (en: string, th: string) => (lang === 'th' ? th : en);
+  const t = (en: string, th: string, values?: Record<string, string | number>) =>
+    translate(en, th, lang, values);
   const guide = modal.type === 'guide' ? GUIDES.find((item) => item.id === modal.id) : null;
   const route = modal.type === 'route' ? ROUTES.find((item) => item.id === modal.id) : null;
   const title =
@@ -73,6 +79,9 @@ export default function TravelDialog({
       wide={modal.type === 'saved'}
       closeLabel={t('Close', 'ปิด')}
     >
+      <div className="dialog-language">
+        <LanguageSelector lang={lang} onChange={onLanguageChange} />
+      </div>
       {modal.type === 'state' && (
         <StateDetail
           state={modal.state}
@@ -219,7 +228,7 @@ export default function TravelDialog({
                           {route.days[index]} {t('days', 'วัน')}
                         </small>
                       </h3>
-                      <p>{state.places.join(' · ')}</p>
+                      <p>{statePlaces(state, lang).join(' · ')}</p>
                       <p className="route-tip">{local(state.tip, lang)}</p>
                     </div>
                   </li>
@@ -289,8 +298,8 @@ export default function TravelDialog({
           <h3>{t('Made with care', 'ใส่ใจในทุกรายละเอียด')}</h3>
           <p>
             {t(
-              'Destination photographs from Unsplash. State map geometry from US Atlas. Illustrations represent states and travel themes. Roam is not affiliated with U.S. tourism agencies and does not sell travel bookings.',
-              'ภาพสถานที่จาก Unsplash ข้อมูลรูปร่างรัฐจาก US Atlas และภาพประกอบสื่อถึงรัฐกับธีมการเดินทาง Roam ไม่ได้สังกัดหน่วยงานท่องเที่ยวสหรัฐฯ และไม่ได้ขายบริการจองท่องเที่ยว',
+              'Destination photographs from Unsplash and Wikimedia Commons, with individual author and license credits. State map geometry from US Atlas. Roam is not affiliated with U.S. tourism agencies and does not sell travel bookings.',
+              'ภาพสถานที่จาก Unsplash และ Wikimedia Commons พร้อมเครดิตผู้ถ่ายและสิทธิ์ใช้งานรายภาพ ข้อมูลรูปร่างรัฐจาก US Atlas โดย Roam ไม่ได้สังกัดหน่วยงานท่องเที่ยวสหรัฐฯ และไม่ได้ขายบริการจองท่องเที่ยว',
             )}
           </p>
           <a className="text-link" href="/credits.txt" target="_blank" rel="noreferrer">

@@ -1,13 +1,13 @@
+import { translate } from '../lib/i18n';
+import { useState } from 'react';
 import {
   local,
   stateName,
-  tourismUrl,
   REGION_LABELS,
   SEASON_LABELS,
   type StateGuide,
   type Language,
 } from '../data/travel';
-import { StateShape, regionColors } from './Atlas';
 import Icon from './Icon';
 
 export default function StateDetail({
@@ -25,18 +25,14 @@ export default function StateDetail({
   onSave: () => void;
   onAdd: () => void;
 }) {
-  const t = (en: string, th: string) => (lang === 'th' ? th : en);
+  const t = (en: string, th: string, values?: Record<string, string | number>) =>
+    translate(en, th, lang, values);
+  const [selectedPhoto, setSelectedPhoto] = useState(state.cover);
+  const photo = state.photos[selectedPhoto] ?? state.photos[0];
   return (
     <div className="state-detail">
-      <div
-        className={`detail-cover ${state.image ? '' : 'detail-illustrated'}`}
-        style={{ backgroundColor: regionColors[state.region] }}
-      >
-        {state.image ? (
-          <img src={`/images/${state.image}.jpg`} alt={state.name} />
-        ) : (
-          <StateShape state={state} />
-        )}
+      <div className="detail-cover">
+        <img src={photo.src} alt={local(state.placeNames[photo.placeIndex], lang)} />
         <div>
           <span className="eyebrow">
             {local(REGION_LABELS[state.region], lang)} · {state.code}
@@ -45,6 +41,30 @@ export default function StateDetail({
         </div>
       </div>
       <div className="detail-content">
+        <div className="photo-gallery" aria-label={t('Photo gallery', 'แกลเลอรีภาพ')}>
+          {state.photos.map((item, index) => (
+            <button
+              key={item.src}
+              aria-pressed={index === selectedPhoto}
+              onClick={() => setSelectedPhoto(index)}
+              aria-label={`${t('View photo', 'ดูภาพ')} ${local(state.placeNames[item.placeIndex], lang)}`}
+            >
+              <img src={item.src} alt="" loading="lazy" />
+              <span>{local(state.placeNames[item.placeIndex], lang)}</span>
+            </button>
+          ))}
+        </div>
+        <p className="photo-credit">
+          {local(state.placeNames[photo.placeIndex], lang)} ·{' '}
+          <a href={photo.source} target="_blank" rel="noreferrer">
+            {photo.author}
+          </a>{' '}
+          ·{' '}
+          <a href={photo.licenseUrl} target="_blank" rel="noreferrer">
+            {photo.license}
+          </a>{' '}
+          · {t('Resized for display', 'ปรับขนาดเพื่อแสดงผล')}
+        </p>
         <p className="detail-description">{local(state.description, lang)}</p>
         <div className="detail-facts">
           <div>
@@ -77,7 +97,14 @@ export default function StateDetail({
               rel="noreferrer"
             >
               <span className="place-number">0{i + 1}</span>
-              <span>{place}</span>
+              <span>
+                {local(state.placeNames[i], lang)}
+                {lang !== 'en' && (
+                  <small className="place-original" lang="en">
+                    {place}
+                  </small>
+                )}
+              </span>
               <Icon name="external" size={16} />
             </a>
           ))}
@@ -92,15 +119,23 @@ export default function StateDetail({
             <p>{local(state.tip, lang)}</p>
           </div>
         </div>
-        <a
-          href={tourismUrl(state)}
-          target="_blank"
-          rel="noreferrer"
-          className="text-link source-link"
-        >
-          {t('Official state guide on Visit The USA', 'คู่มือรัฐจาก Visit The USA')}
-          <Icon name="external" size={14} />
-        </a>
+        {state.sources.map((source) => (
+          <a
+            key={source.url}
+            href={source.url}
+            target="_blank"
+            rel="noreferrer"
+            className="text-link source-link"
+          >
+            {source.name === 'Visit The USA'
+              ? t('Official state guide on Visit The USA', 'คู่มือรัฐจาก Visit The USA')
+              : source.name}
+            <Icon name="external" size={14} />
+          </a>
+        ))}
+        <p className="content-date">
+          {t('Content updated', 'ปรับปรุงเนื้อหา')} · {state.updatedAt}
+        </p>
         <p className="fine-print">
           {t(
             'Season and duration are editorial suggestions. Check current opening times, weather, reservations, and access with the destination before traveling.',

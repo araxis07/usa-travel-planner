@@ -28,3 +28,6 @@ playwright-report/
 *.njsproj
 *.sln
 *.sw?
+
+# Owner's unpublished editorial work
+.studio/
