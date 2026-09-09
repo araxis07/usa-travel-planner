@@ -16,6 +16,10 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-  server: { host: '127.0.0.1', port: mode === 'studio' ? 5174 : 5173, strictPort: true },
+  server: {
+    host: '127.0.0.1',
+    port: mode === 'studio' ? 5174 : 5173,
+    strictPort: mode === 'studio',
+  },
   preview: { host: '127.0.0.1' },
 }));

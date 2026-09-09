@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open `http://127.0.0.1:5173`. No API keys or accounts are required. Build with `npm run build`, then deploy `dist/` to a static host at the domain root. Production includes local images and fonts and makes no third-party asset requests.
+Open the `Local` URL printed by Vite (normally `http://127.0.0.1:5173`). If that port is already in use, `npm run dev` automatically selects the next available port. Stop a dev server with `Ctrl+C` in its terminal when finished. No API keys or accounts are required. Build with `npm run build`, then deploy `dist/` to a static host at the domain root. Production includes local images and fonts and makes no third-party asset requests.
 
 ## Version 2
 
