@@ -20,7 +20,7 @@ import {
 
 export type TravelModal =
   | { type: 'state'; state: StateGuide }
-  | { type: 'trip' }
+  | { type: 'trip'; daily?: boolean; code?: string }
   | { type: 'saved' }
   | { type: 'guide'; id: string }
   | { type: 'route'; id: string }
@@ -36,6 +36,7 @@ interface Props {
   onSave: (state: StateGuide) => void;
   onAdd: (state: StateGuide) => void;
   onExplore: () => void;
+  onOpenDestination: (state: StateGuide, index?: number) => void;
   storageFailed: boolean;
   notify: (message: string) => void;
   toast: string;
@@ -51,6 +52,7 @@ export default function TravelDialog({
   onSave,
   onAdd,
   onExplore,
+  onOpenDestination,
   storageFailed,
   notify,
   toast,
@@ -76,7 +78,7 @@ export default function TravelDialog({
       key={modal.type}
       title={title}
       onClose={() => setModal(null)}
-      wide={modal.type === 'saved'}
+      wide={modal.type === 'saved' || modal.type === 'trip'}
       closeLabel={t('Close', 'ปิด')}
     >
       <div className="dialog-language">
@@ -90,6 +92,7 @@ export default function TravelDialog({
           inTrip={trip.stops.some((stop) => stop.code === modal.state.code)}
           onSave={() => onSave(modal.state)}
           onAdd={() => onAdd(modal.state)}
+          onOpen={(index) => onOpenDestination(modal.state, index)}
         />
       )}
       {modal.type === 'trip' && (
@@ -100,6 +103,8 @@ export default function TravelDialog({
           onExplore={onExplore}
           storageFailed={storageFailed}
           notify={notify}
+          initialDaily={modal.daily}
+          initialCode={modal.code}
         />
       )}
       {modal.type === 'saved' && (
@@ -135,6 +140,7 @@ export default function TravelDialog({
                   saved
                   onSave={() => onSave(state)}
                   onSelect={() => setModal({ type: 'state', state })}
+                  onOpen={() => onOpenDestination(state)}
                 />
               ))}
             </div>

@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "AK-0",
+    "title": "Denali National Park and Preserve",
+    "coordinates": [63.43, -150.32],
+    "source": "https://en.wikipedia.org/wiki/Denali_National_Park_and_Preserve",
+    "checkedAt": "2026-09-09",
+    "place": "Denali National Park"
+  },
+  {
+    "id": "AK-1",
+    "title": "Kenai Fjords National Park",
+    "coordinates": [59.91777778, -149.9875],
+    "source": "https://en.wikipedia.org/wiki/Kenai_Fjords_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Kenai Fjords National Park"
+  },
+  {
+    "id": "AK-2",
+    "title": "Juneau, Alaska",
+    "coordinates": [58.3, -134.41611111],
+    "source": "https://en.wikipedia.org/wiki/Juneau%2C_Alaska",
+    "checkedAt": "2026-09-09",
+    "place": "Juneau"
+  },
+  {
+    "id": "AL-0",
+    "title": "Birmingham Civil Rights District",
+    "coordinates": [33.51611111, -86.815],
+    "source": "https://en.wikipedia.org/wiki/Birmingham_Civil_Rights_District",
+    "checkedAt": "2026-09-09",
+    "place": "Birmingham Civil Rights District"
+  },
+  {
+    "id": "AL-1",
+    "title": "Muscle Shoals, Alabama",
+    "coordinates": [34.75833333, -87.63611111],
+    "source": "https://en.wikipedia.org/wiki/Muscle_Shoals%2C_Alabama",
+    "checkedAt": "2026-09-09",
+    "place": "Muscle Shoals"
+  },
+  {
+    "id": "AL-2",
+    "title": "Gulf Shores, Alabama",
+    "coordinates": [30.26388889, -87.72083333],
+    "source": "https://en.wikipedia.org/wiki/Gulf_Shores%2C_Alabama",
+    "checkedAt": "2026-09-09",
+    "place": "Gulf Shores"
+  },
+  {
+    "id": "AR-0",
+    "title": "Hot Springs National Park",
+    "coordinates": [34.51361111, -93.05361111],
+    "source": "https://en.wikipedia.org/wiki/Hot_Springs_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Hot Springs National Park"
+  },
+  {
+    "id": "AR-1",
+    "title": "Buffalo National River",
+    "coordinates": [36.17805556, -92.42611111],
+    "source": "https://en.wikipedia.org/wiki/Buffalo_National_River",
+    "checkedAt": "2026-09-09",
+    "place": "Buffalo National River"
+  },
+  {
+    "id": "AR-2",
+    "title": "Bentonville, Arkansas",
+    "coordinates": [36.35277778, -94.23111111],
+    "source": "https://en.wikipedia.org/wiki/Bentonville%2C_Arkansas",
+    "checkedAt": "2026-09-09",
+    "place": "Bentonville"
+  },
+  {
+    "id": "AZ-0",
+    "title": "Grand Canyon Village, Arizona",
+    "coordinates": [36.04916667, -112.15666667],
+    "source": "https://en.wikipedia.org/wiki/Grand_Canyon_Village%2C_Arizona",
+    "checkedAt": "2026-09-09",
+    "place": "Grand Canyon South Rim"
+  },
+  {
+    "id": "AZ-1",
+    "title": "Sedona, Arizona",
+    "coordinates": [34.86972222, -111.76111111],
+    "source": "https://en.wikipedia.org/wiki/Sedona%2C_Arizona",
+    "checkedAt": "2026-09-09",
+    "place": "Sedona"
+  },
+  {
+    "id": "AZ-2",
+    "title": "Monument Valley",
+    "coordinates": [36.98333333, -110.1],
+    "source": "https://en.wikipedia.org/wiki/Monument_Valley",
+    "checkedAt": "2026-09-09",
+    "place": "Monument Valley Navajo Tribal Park"
+  },
+  {
+    "id": "CA-0",
+    "title": "San Francisco",
+    "coordinates": [37.7775, -122.41638889],
+    "source": "https://en.wikipedia.org/wiki/San_Francisco",
+    "checkedAt": "2026-09-09",
+    "place": "San Francisco"
+  },
+  {
+    "id": "CA-1",
+    "title": "Yosemite National Park",
+    "coordinates": [37.85, -119.51666667],
+    "source": "https://en.wikipedia.org/wiki/Yosemite_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Yosemite National Park"
+  },
+  {
+    "id": "CA-2",
+    "title": "Big Sur",
+    "coordinates": [36.299216, -121.873402],
+    "source": "https://en.wikipedia.org/wiki/Big_Sur",
+    "checkedAt": "2026-09-09",
+    "place": "Big Sur"
+  },
+  {
+    "id": "CO-0",
+    "title": "Rocky Mountain National Park",
+    "coordinates": [40.3466, -105.7364],
+    "source": "https://en.wikipedia.org/wiki/Rocky_Mountain_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Rocky Mountain National Park"
+  },
+  {
+    "id": "CO-1",
+    "title": "Denver",
+    "coordinates": [39.74, -104.99],
+    "source": "https://en.wikipedia.org/wiki/Denver",
+    "checkedAt": "2026-09-09",
+    "place": "Denver"
+  },
+  {
+    "id": "CO-2",
+    "title": "Mesa Verde National Park",
+    "coordinates": [37.1838, -108.4887],
+    "source": "https://en.wikipedia.org/wiki/Mesa_Verde_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Mesa Verde National Park"
+  },
+  {
+    "id": "CT-0",
+    "title": "Mystic Seaport",
+    "coordinates": [41.36138889, -71.96444444],
+    "source": "https://en.wikipedia.org/wiki/Mystic_Seaport",
+    "checkedAt": "2026-09-09",
+    "place": "Mystic Seaport"
+  },
+  {
+    "id": "CT-1",
+    "title": "New Haven, Connecticut",
+    "coordinates": [41.3083, -72.925],
+    "source": "https://en.wikipedia.org/wiki/New_Haven%2C_Connecticut",
+    "checkedAt": "2026-09-09",
+    "place": "New Haven"
+  },
+  {
+    "id": "CT-2",
+    "title": "Litchfield, Connecticut",
+    "coordinates": [41.74722222, -73.18972222],
+    "source": "https://en.wikipedia.org/wiki/Litchfield%2C_Connecticut",
+    "checkedAt": "2026-09-09",
+    "place": "Litchfield Hills"
+  },
+  {
+    "id": "DE-0",
+    "title": "Rehoboth Beach, Delaware",
+    "coordinates": [38.72083333, -75.07611111],
+    "source": "https://en.wikipedia.org/wiki/Rehoboth_Beach%2C_Delaware",
+    "checkedAt": "2026-09-09",
+    "place": "Rehoboth Beach"
+  },
+  {
+    "id": "DE-1",
+    "title": "Cape Henlopen State Park",
+    "coordinates": [38.8031678, -75.0946255],
+    "source": "https://en.wikipedia.org/wiki/Cape_Henlopen_State_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Cape Henlopen State Park"
+  },
+  {
+    "id": "DE-2",
+    "title": "Wilmington, Delaware",
+    "coordinates": [39.74583333, -75.54666667],
+    "source": "https://en.wikipedia.org/wiki/Wilmington%2C_Delaware",
+    "checkedAt": "2026-09-09",
+    "place": "Wilmington"
+  },
+  {
+    "id": "FL-0",
+    "title": "Miami Beach, Florida",
+    "coordinates": [25.82555556, -80.1325],
+    "source": "https://en.wikipedia.org/wiki/Miami_Beach%2C_Florida",
+    "checkedAt": "2026-09-09",
+    "place": "Miami Beach"
+  },
+  {
+    "id": "FL-1",
+    "title": "Everglades National Park",
+    "coordinates": [25.3125, -80.6875],
+    "source": "https://en.wikipedia.org/wiki/Everglades_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Everglades National Park"
+  },
+  {
+    "id": "FL-2",
+    "title": "Florida Keys",
+    "coordinates": [24.66694444, -81.54416667],
+    "source": "https://en.wikipedia.org/wiki/Florida_Keys",
+    "checkedAt": "2026-09-09",
+    "place": "Florida Keys"
+  },
+  {
+    "id": "GA-0",
+    "title": "Atlanta",
+    "coordinates": [33.74888889, -84.39],
+    "source": "https://en.wikipedia.org/wiki/Atlanta",
+    "checkedAt": "2026-09-09",
+    "place": "Atlanta"
+  },
+  {
+    "id": "GA-1",
+    "title": "Savannah, Georgia",
+    "coordinates": [32.08111111, -81.09111111],
+    "source": "https://en.wikipedia.org/wiki/Savannah%2C_Georgia",
+    "checkedAt": "2026-09-09",
+    "place": "Savannah"
+  },
+  {
+    "id": "GA-2",
+    "title": "Jekyll Island",
+    "coordinates": [31.07, -81.42027778],
+    "source": "https://en.wikipedia.org/wiki/Jekyll_Island",
+    "checkedAt": "2026-09-09",
+    "place": "Jekyll Island"
+  },
+  {
+    "id": "HI-0",
+    "title": "Oʻahu",
+    "coordinates": [21.5, -158],
+    "source": "https://en.wikipedia.org/wiki/O%CA%BBahu",
+    "checkedAt": "2026-09-09",
+    "place": "Oʻahu"
+  },
+  {
+    "id": "HI-1",
+    "title": "Hawaiʻi Volcanoes National Park",
+    "coordinates": [19.38333333, -155.2],
+    "source": "https://en.wikipedia.org/wiki/Hawai%CA%BBi_Volcanoes_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Hawaiʻi Volcanoes National Park"
+  },
+  {
+    "id": "HI-2",
+    "title": "Kauaʻi",
+    "coordinates": [22.07, -159.4975],
+    "source": "https://en.wikipedia.org/wiki/Kaua%CA%BBi",
+    "checkedAt": "2026-09-09",
+    "place": "Kauaʻi"
+  },
+  {
+    "id": "IA-0",
+    "title": "Des Moines, Iowa",
+    "coordinates": [41.590833333333, -93.620833333333],
+    "source": "https://www.wikidata.org/wiki/Q39709",
+    "checkedAt": "2026-09-09",
+    "place": "Des Moines"
+  },
+  {
+    "id": "IA-1",
+    "title": "Madison County, Iowa",
+    "coordinates": [41.33, -94.01],
+    "source": "https://en.wikipedia.org/wiki/Madison_County%2C_Iowa",
+    "checkedAt": "2026-09-09",
+    "place": "Madison County"
+  },
+  {
+    "id": "IA-2",
+    "title": "Dubuque, Iowa",
+    "coordinates": [42.49972222, -90.72361111],
+    "source": "https://en.wikipedia.org/wiki/Dubuque%2C_Iowa",
+    "checkedAt": "2026-09-09",
+    "place": "Dubuque"
+  },
+  {
+    "id": "ID-0",
+    "title": "Sawtooth Range (Idaho)",
+    "coordinates": [43.95333333, -114.99055556],
+    "source": "https://en.wikipedia.org/wiki/Sawtooth_Range_%28Idaho%29",
+    "checkedAt": "2026-09-09",
+    "place": "Sawtooth Mountains"
+  },
+  {
+    "id": "ID-1",
+    "title": "Boise, Idaho",
+    "coordinates": [43.61583333, -116.20166667],
+    "source": "https://en.wikipedia.org/wiki/Boise%2C_Idaho",
+    "checkedAt": "2026-09-09",
+    "place": "Boise"
+  },
+  {
+    "id": "ID-2",
+    "title": "Craters of the Moon National Monument and Preserve",
+    "coordinates": [43.46167, -113.56271],
+    "source": "https://en.wikipedia.org/wiki/Craters_of_the_Moon_National_Monument_and_Preserve",
+    "checkedAt": "2026-09-09",
+    "place": "Craters of the Moon"
+  },
+  {
+    "id": "IL-0",
+    "title": "Chicago",
+    "coordinates": [41.88194444, -87.62777778],
+    "source": "https://en.wikipedia.org/wiki/Chicago",
+    "checkedAt": "2026-09-09",
+    "place": "Chicago"
+  },
+  {
+    "id": "IL-1",
+    "title": "Springfield, Illinois",
+    "coordinates": [39.7975, -89.645],
+    "source": "https://en.wikipedia.org/wiki/Springfield%2C_Illinois",
+    "checkedAt": "2026-09-09",
+    "place": "Springfield"
+  },
+  {
+    "id": "IL-2",
+    "title": "Starved Rock State Park",
+    "coordinates": [41.32138889, -88.99027778],
+    "source": "https://en.wikipedia.org/wiki/Starved_Rock_State_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Starved Rock State Park"
+  },
+  {
+    "id": "IN-0",
+    "title": "Indianapolis",
+    "coordinates": [39.76861111, -86.15805556],
+    "source": "https://en.wikipedia.org/wiki/Indianapolis",
+    "checkedAt": "2026-09-09",
+    "place": "Indianapolis"
+  },
+  {
+    "id": "IN-1",
+    "title": "Indiana Dunes National Park",
+    "coordinates": [41.64805556, -87.10805556],
+    "source": "https://en.wikipedia.org/wiki/Indiana_Dunes_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Indiana Dunes National Park"
+  },
+  {
+    "id": "IN-2",
+    "title": "Bloomington, Indiana",
+    "coordinates": [39.1667, -86.5347],
+    "source": "https://en.wikipedia.org/wiki/Bloomington%2C_Indiana",
+    "checkedAt": "2026-09-09",
+    "place": "Bloomington"
+  },
+  {
+    "id": "KS-0",
+    "title": "Tallgrass Prairie National Preserve",
+    "coordinates": [38.43277778, -96.55888889],
+    "source": "https://en.wikipedia.org/wiki/Tallgrass_Prairie_National_Preserve",
+    "checkedAt": "2026-09-09",
+    "place": "Tallgrass Prairie National Preserve"
+  },
+  {
+    "id": "KS-1",
+    "title": "Wichita, Kansas",
+    "coordinates": [37.68888889, -97.33611111],
+    "source": "https://en.wikipedia.org/wiki/Wichita%2C_Kansas",
+    "checkedAt": "2026-09-09",
+    "place": "Wichita"
+  },
+  {
+    "id": "KS-2",
+    "title": "Lawrence, Kansas",
+    "coordinates": [38.95972222, -95.26416667],
+    "source": "https://en.wikipedia.org/wiki/Lawrence%2C_Kansas",
+    "checkedAt": "2026-09-09",
+    "place": "Lawrence"
+  },
+  {
+    "id": "KY-0",
+    "title": "Louisville, Kentucky",
+    "coordinates": [38.25611111, -85.75138889],
+    "source": "https://en.wikipedia.org/wiki/Louisville%2C_Kentucky",
+    "checkedAt": "2026-09-09",
+    "place": "Louisville"
+  },
+  {
+    "id": "KY-1",
+    "title": "Mammoth Cave National Park",
+    "coordinates": [37.18694444, -86.10111111],
+    "source": "https://en.wikipedia.org/wiki/Mammoth_Cave_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Mammoth Cave National Park"
+  },
+  {
+    "id": "KY-2",
+    "title": "Lexington, Kentucky",
+    "coordinates": [38.04638889, -84.49694444],
+    "source": "https://en.wikipedia.org/wiki/Lexington%2C_Kentucky",
+    "checkedAt": "2026-09-09",
+    "place": "Lexington"
+  },
+  {
+    "id": "LA-0",
+    "title": "New Orleans",
+    "coordinates": [29.9761, -90.0783],
+    "source": "https://en.wikipedia.org/wiki/New_Orleans",
+    "checkedAt": "2026-09-09",
+    "place": "New Orleans"
+  },
+  {
+    "id": "LA-1",
+    "title": "Lafayette, Louisiana",
+    "coordinates": [30.20805556, -92.0325],
+    "source": "https://en.wikipedia.org/wiki/Lafayette%2C_Louisiana",
+    "checkedAt": "2026-09-09",
+    "place": "Lafayette"
+  },
+  {
+    "id": "LA-2",
+    "title": "Atchafalaya Basin",
+    "coordinates": [30.3639, -91.6333],
+    "source": "https://www.wikidata.org/wiki/Q753927",
+    "checkedAt": "2026-09-09",
+    "place": "Atchafalaya Basin"
+  },
+  {
+    "id": "MA-0",
+    "title": "Boston",
+    "coordinates": [42.36027778, -71.05777778],
+    "source": "https://en.wikipedia.org/wiki/Boston",
+    "checkedAt": "2026-09-09",
+    "place": "Boston"
+  },
+  {
+    "id": "MA-1",
+    "title": "Cape Cod",
+    "coordinates": [41.68, -70.2],
+    "source": "https://en.wikipedia.org/wiki/Cape_Cod",
+    "checkedAt": "2026-09-09",
+    "place": "Cape Cod"
+  },
+  {
+    "id": "MA-2",
+    "title": "Berkshires",
+    "coordinates": [42.16675694, -73.14955139],
+    "source": "https://en.wikipedia.org/wiki/Berkshires",
+    "checkedAt": "2026-09-09",
+    "place": "The Berkshires"
+  },
+  {
+    "id": "MD-0",
+    "title": "Baltimore",
+    "coordinates": [39.28944444, -76.61527778],
+    "source": "https://en.wikipedia.org/wiki/Baltimore",
+    "checkedAt": "2026-09-09",
+    "place": "Baltimore"
+  },
+  {
+    "id": "MD-1",
+    "title": "Annapolis, Maryland",
+    "coordinates": [38.97305556, -76.50111111],
+    "source": "https://en.wikipedia.org/wiki/Annapolis%2C_Maryland",
+    "checkedAt": "2026-09-09",
+    "place": "Annapolis"
+  },
+  {
+    "id": "MD-2",
+    "title": "Assateague Island",
+    "coordinates": [37.97640833, -75.30475556],
+    "source": "https://en.wikipedia.org/wiki/Assateague_Island",
+    "checkedAt": "2026-09-09",
+    "place": "Assateague Island"
+  },
+  {
+    "id": "ME-0",
+    "title": "Acadia National Park",
+    "coordinates": [44.35, -68.21666667],
+    "source": "https://en.wikipedia.org/wiki/Acadia_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Acadia National Park"
+  },
+  {
+    "id": "ME-1",
+    "title": "Portland, Maine",
+    "coordinates": [43.64722222, -70.17166667],
+    "source": "https://en.wikipedia.org/wiki/Portland%2C_Maine",
+    "checkedAt": "2026-09-09",
+    "place": "Portland"
+  },
+  {
+    "id": "ME-2",
+    "title": "Camden, Maine",
+    "coordinates": [44.24305556, -69.11],
+    "source": "https://en.wikipedia.org/wiki/Camden%2C_Maine",
+    "checkedAt": "2026-09-09",
+    "place": "Camden"
+  },
+  {
+    "id": "MI-0",
+    "title": "Detroit",
+    "coordinates": [42.33166667, -83.04583333],
+    "source": "https://en.wikipedia.org/wiki/Detroit",
+    "checkedAt": "2026-09-09",
+    "place": "Detroit"
+  },
+  {
+    "id": "MI-1",
+    "title": "Sleeping Bear Dunes National Lakeshore",
+    "coordinates": [44.85, -86.05],
+    "source": "https://en.wikipedia.org/wiki/Sleeping_Bear_Dunes_National_Lakeshore",
+    "checkedAt": "2026-09-09",
+    "place": "Sleeping Bear Dunes"
+  },
+  {
+    "id": "MI-2",
+    "title": "Mackinac Island",
+    "coordinates": [45.86111111, -84.63055556],
+    "source": "https://en.wikipedia.org/wiki/Mackinac_Island",
+    "checkedAt": "2026-09-09",
+    "place": "Mackinac Island"
+  },
+  {
+    "id": "MN-0",
+    "title": "Minneapolis",
+    "coordinates": [44.98194444, -93.26916667],
+    "source": "https://en.wikipedia.org/wiki/Minneapolis",
+    "checkedAt": "2026-09-09",
+    "place": "Minneapolis–Saint Paul"
+  },
+  {
+    "id": "MN-1",
+    "title": "North Shore (Lake Superior)",
+    "coordinates": [47.65, -90.66666667],
+    "source": "https://en.wikipedia.org/wiki/North_Shore_%28Lake_Superior%29",
+    "checkedAt": "2026-09-09",
+    "place": "North Shore"
+  },
+  {
+    "id": "MN-2",
+    "title": "Voyageurs National Park",
+    "coordinates": [48.5, -92.88333333],
+    "source": "https://en.wikipedia.org/wiki/Voyageurs_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Voyageurs National Park"
+  },
+  {
+    "id": "MO-0",
+    "title": "St. Louis",
+    "coordinates": [38.62722222, -90.19777778],
+    "source": "https://en.wikipedia.org/wiki/St._Louis",
+    "checkedAt": "2026-09-09",
+    "place": "St. Louis"
+  },
+  {
+    "id": "MO-1",
+    "title": "Kansas City, Missouri",
+    "coordinates": [39.09972222, -94.57833333],
+    "source": "https://en.wikipedia.org/wiki/Kansas_City%2C_Missouri",
+    "checkedAt": "2026-09-09",
+    "place": "Kansas City"
+  },
+  {
+    "id": "MO-2",
+    "title": "Ozark National Scenic Riverways",
+    "coordinates": [37.1907, -91.2763],
+    "source": "https://en.wikipedia.org/wiki/Ozark_National_Scenic_Riverways",
+    "checkedAt": "2026-09-09",
+    "place": "Ozark National Scenic Riverways"
+  },
+  {
+    "id": "MS-0",
+    "title": "Clarksdale, Mississippi",
+    "coordinates": [34.2, -90.56666667],
+    "source": "https://en.wikipedia.org/wiki/Clarksdale%2C_Mississippi",
+    "checkedAt": "2026-09-09",
+    "place": "Clarksdale"
+  },
+  {
+    "id": "MS-1",
+    "title": "Natchez, Mississippi",
+    "coordinates": [31.55444444, -91.3875],
+    "source": "https://en.wikipedia.org/wiki/Natchez%2C_Mississippi",
+    "checkedAt": "2026-09-09",
+    "place": "Natchez"
+  },
+  {
+    "id": "MS-2",
+    "title": "Gulf Islands National Seashore",
+    "coordinates": [30.36444444, -86.9675],
+    "source": "https://en.wikipedia.org/wiki/Gulf_Islands_National_Seashore",
+    "checkedAt": "2026-09-09",
+    "place": "Gulf Islands National Seashore"
+  },
+  {
+    "id": "MT-0",
+    "title": "Glacier National Park (U.S.)",
+    "coordinates": [48.755, -113.8],
+    "source": "https://en.wikipedia.org/wiki/Glacier_National_Park_%28U.S.%29",
+    "checkedAt": "2026-09-09",
+    "place": "Glacier National Park"
+  },
+  {
+    "id": "MT-1",
+    "title": "Bozeman, Montana",
+    "coordinates": [45.6794, -111.0372],
+    "source": "https://en.wikipedia.org/wiki/Bozeman%2C_Montana",
+    "checkedAt": "2026-09-09",
+    "place": "Bozeman"
+  },
+  {
+    "id": "MT-2",
+    "title": "Little Bighorn Battlefield National Monument",
+    "coordinates": [45.57027778, -107.4275],
+    "source": "https://en.wikipedia.org/wiki/Little_Bighorn_Battlefield_National_Monument",
+    "checkedAt": "2026-09-09",
+    "place": "Little Bighorn Battlefield"
+  },
+  {
+    "id": "NC-0",
+    "title": "Asheville, North Carolina",
+    "coordinates": [35.59555556, -82.55194444],
+    "source": "https://en.wikipedia.org/wiki/Asheville%2C_North_Carolina",
+    "checkedAt": "2026-09-09",
+    "place": "Asheville"
+  },
+  {
+    "id": "NC-1",
+    "title": "Linn Cove Viaduct",
+    "coordinates": [36.09513, -81.81223],
+    "source": "https://en.wikipedia.org/wiki/Linn_Cove_Viaduct",
+    "checkedAt": "2026-09-09",
+    "place": "Blue Ridge Parkway"
+  },
+  {
+    "id": "NC-2",
+    "title": "Outer Banks",
+    "coordinates": [35.23333333, -75.53027778],
+    "source": "https://en.wikipedia.org/wiki/Outer_Banks",
+    "checkedAt": "2026-09-09",
+    "place": "Outer Banks"
+  },
+  {
+    "id": "ND-0",
+    "title": "Theodore Roosevelt National Park",
+    "coordinates": [46.96666667, -103.45],
+    "source": "https://en.wikipedia.org/wiki/Theodore_Roosevelt_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Theodore Roosevelt National Park"
+  },
+  {
+    "id": "ND-1",
+    "title": "Fargo, North Dakota",
+    "coordinates": [46.87333333, -96.82722222],
+    "source": "https://en.wikipedia.org/wiki/Fargo%2C_North_Dakota",
+    "checkedAt": "2026-09-09",
+    "place": "Fargo"
+  },
+  {
+    "id": "ND-2",
+    "title": "Bismarck, North Dakota",
+    "coordinates": [46.814572, -100.768568],
+    "source": "https://en.wikipedia.org/wiki/Bismarck%2C_North_Dakota",
+    "checkedAt": "2026-09-09",
+    "place": "Bismarck"
+  },
+  {
+    "id": "NE-0",
+    "title": "Omaha, Nebraska",
+    "coordinates": [41.25861111, -95.9375],
+    "source": "https://en.wikipedia.org/wiki/Omaha%2C_Nebraska",
+    "checkedAt": "2026-09-09",
+    "place": "Omaha"
+  },
+  {
+    "id": "NE-1",
+    "title": "Scotts Bluff National Monument",
+    "coordinates": [41.83472222, -103.70722222],
+    "source": "https://en.wikipedia.org/wiki/Scotts_Bluff_National_Monument",
+    "checkedAt": "2026-09-09",
+    "place": "Scotts Bluff National Monument"
+  },
+  {
+    "id": "NE-2",
+    "title": "Sandhills (Nebraska)",
+    "coordinates": [42.13, -102.19],
+    "source": "https://en.wikipedia.org/wiki/Sandhills_%28Nebraska%29",
+    "checkedAt": "2026-09-09",
+    "place": "Sandhills"
+  },
+  {
+    "id": "NH-0",
+    "title": "White Mountains (New England)",
+    "coordinates": [44.271, -71.305],
+    "source": "https://en.wikipedia.org/wiki/White_Mountains_%28New_England%29",
+    "checkedAt": "2026-09-09",
+    "place": "White Mountains"
+  },
+  {
+    "id": "NH-1",
+    "title": "Lake Winnipesaukee",
+    "coordinates": [43.6, -71.33333333],
+    "source": "https://en.wikipedia.org/wiki/Lake_Winnipesaukee",
+    "checkedAt": "2026-09-09",
+    "place": "Lake Winnipesaukee"
+  },
+  {
+    "id": "NH-2",
+    "title": "Portsmouth, New Hampshire",
+    "coordinates": [43.05805556, -70.7825],
+    "source": "https://en.wikipedia.org/wiki/Portsmouth%2C_New_Hampshire",
+    "checkedAt": "2026-09-09",
+    "place": "Portsmouth"
+  },
+  {
+    "id": "NJ-0",
+    "title": "Cape May, New Jersey",
+    "coordinates": [38.93333333, -74.92138889],
+    "source": "https://en.wikipedia.org/wiki/Cape_May%2C_New_Jersey",
+    "checkedAt": "2026-09-09",
+    "place": "Cape May"
+  },
+  {
+    "id": "NJ-1",
+    "title": "Asbury Park, New Jersey",
+    "coordinates": [40.222884, -74.010232],
+    "source": "https://en.wikipedia.org/wiki/Asbury_Park%2C_New_Jersey",
+    "checkedAt": "2026-09-09",
+    "place": "Asbury Park"
+  },
+  {
+    "id": "NJ-2",
+    "title": "Liberty State Park",
+    "coordinates": [40.70416667, -74.04916667],
+    "source": "https://en.wikipedia.org/wiki/Liberty_State_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Liberty State Park"
+  },
+  {
+    "id": "NM-0",
+    "title": "Santa Fe, New Mexico",
+    "coordinates": [35.66722222, -105.96444444],
+    "source": "https://en.wikipedia.org/wiki/Santa_Fe%2C_New_Mexico",
+    "checkedAt": "2026-09-09",
+    "place": "Santa Fe"
+  },
+  {
+    "id": "NM-1",
+    "title": "White Sands National Park",
+    "coordinates": [32.77916667, -106.17194444],
+    "source": "https://en.wikipedia.org/wiki/White_Sands_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "White Sands National Park"
+  },
+  {
+    "id": "NM-2",
+    "title": "Taos, New Mexico",
+    "coordinates": [36.38694444, -105.58],
+    "source": "https://en.wikipedia.org/wiki/Taos%2C_New_Mexico",
+    "checkedAt": "2026-09-09",
+    "place": "Taos"
+  },
+  {
+    "id": "NV-0",
+    "title": "Las Vegas",
+    "coordinates": [36.1672, -115.1486],
+    "source": "https://en.wikipedia.org/wiki/Las_Vegas",
+    "checkedAt": "2026-09-09",
+    "place": "Las Vegas"
+  },
+  {
+    "id": "NV-1",
+    "title": "Valley of Fire State Park",
+    "coordinates": [36.47222222, -114.5375],
+    "source": "https://en.wikipedia.org/wiki/Valley_of_Fire_State_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Valley of Fire State Park"
+  },
+  {
+    "id": "NV-2",
+    "title": "Lake Tahoe",
+    "coordinates": [39, -120],
+    "source": "https://en.wikipedia.org/wiki/Lake_Tahoe",
+    "checkedAt": "2026-09-09",
+    "place": "Lake Tahoe"
+  },
+  {
+    "id": "NY-0",
+    "title": "New York City",
+    "coordinates": [40.7128, -74.0061],
+    "source": "https://en.wikipedia.org/wiki/New_York_City",
+    "checkedAt": "2026-09-09",
+    "place": "New York City"
+  },
+  {
+    "id": "NY-1",
+    "title": "Hudson Valley",
+    "coordinates": [42, -74],
+    "source": "https://en.wikipedia.org/wiki/Hudson_Valley",
+    "checkedAt": "2026-09-09",
+    "place": "Hudson Valley"
+  },
+  {
+    "id": "NY-2",
+    "title": "Niagara Falls",
+    "coordinates": [43.0799, -79.0747],
+    "source": "https://en.wikipedia.org/wiki/Niagara_Falls",
+    "checkedAt": "2026-09-09",
+    "place": "Niagara Falls"
+  },
+  {
+    "id": "OH-0",
+    "title": "Cleveland",
+    "coordinates": [41.4992, -81.6947],
+    "source": "https://en.wikipedia.org/wiki/Cleveland",
+    "checkedAt": "2026-09-09",
+    "place": "Cleveland"
+  },
+  {
+    "id": "OH-1",
+    "title": "Cincinnati",
+    "coordinates": [39.1, -84.5125],
+    "source": "https://en.wikipedia.org/wiki/Cincinnati",
+    "checkedAt": "2026-09-09",
+    "place": "Cincinnati"
+  },
+  {
+    "id": "OH-2",
+    "title": "Hocking Hills State Park",
+    "coordinates": [39.43055556, -82.53888889],
+    "source": "https://en.wikipedia.org/wiki/Hocking_Hills_State_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Hocking Hills State Park"
+  },
+  {
+    "id": "OK-0",
+    "title": "Oklahoma City",
+    "coordinates": [35.46861111, -97.52138889],
+    "source": "https://en.wikipedia.org/wiki/Oklahoma_City",
+    "checkedAt": "2026-09-09",
+    "place": "Oklahoma City"
+  },
+  {
+    "id": "OK-1",
+    "title": "Tulsa, Oklahoma",
+    "coordinates": [36.13138889, -95.93722222],
+    "source": "https://en.wikipedia.org/wiki/Tulsa%2C_Oklahoma",
+    "checkedAt": "2026-09-09",
+    "place": "Tulsa"
+  },
+  {
+    "id": "OK-2",
+    "title": "Wichita Mountains Wildlife Refuge",
+    "coordinates": [34.76666667, -98.7],
+    "source": "https://en.wikipedia.org/wiki/Wichita_Mountains_Wildlife_Refuge",
+    "checkedAt": "2026-09-09",
+    "place": "Wichita Mountains Wildlife Refuge"
+  },
+  {
+    "id": "OR-0",
+    "title": "Portland, Oregon",
+    "coordinates": [45.52, -122.68194444],
+    "source": "https://en.wikipedia.org/wiki/Portland%2C_Oregon",
+    "checkedAt": "2026-09-09",
+    "place": "Portland"
+  },
+  {
+    "id": "OR-1",
+    "title": "Cannon Beach, Oregon",
+    "coordinates": [45.88194444, -123.95944444],
+    "source": "https://en.wikipedia.org/wiki/Cannon_Beach%2C_Oregon",
+    "checkedAt": "2026-09-09",
+    "place": "Cannon Beach"
+  },
+  {
+    "id": "OR-2",
+    "title": "Crater Lake National Park",
+    "coordinates": [42.91111111, -122.14777778],
+    "source": "https://en.wikipedia.org/wiki/Crater_Lake_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Crater Lake National Park"
+  },
+  {
+    "id": "PA-0",
+    "title": "Philadelphia",
+    "coordinates": [39.9528, -75.1636],
+    "source": "https://en.wikipedia.org/wiki/Philadelphia",
+    "checkedAt": "2026-09-09",
+    "place": "Philadelphia"
+  },
+  {
+    "id": "PA-1",
+    "title": "Pittsburgh",
+    "coordinates": [40.43972222, -79.97638889],
+    "source": "https://en.wikipedia.org/wiki/Pittsburgh",
+    "checkedAt": "2026-09-09",
+    "place": "Pittsburgh"
+  },
+  {
+    "id": "PA-2",
+    "title": "Gettysburg, Pennsylvania",
+    "coordinates": [39.82833333, -77.23222222],
+    "source": "https://en.wikipedia.org/wiki/Gettysburg%2C_Pennsylvania",
+    "checkedAt": "2026-09-09",
+    "place": "Gettysburg"
+  },
+  {
+    "id": "RI-0",
+    "title": "Newport, Rhode Island",
+    "coordinates": [41.4917, -71.3119],
+    "source": "https://en.wikipedia.org/wiki/Newport%2C_Rhode_Island",
+    "checkedAt": "2026-09-09",
+    "place": "Newport"
+  },
+  {
+    "id": "RI-1",
+    "title": "Providence, Rhode Island",
+    "coordinates": [41.82361111, -71.42222222],
+    "source": "https://en.wikipedia.org/wiki/Providence%2C_Rhode_Island",
+    "checkedAt": "2026-09-09",
+    "place": "Providence"
+  },
+  {
+    "id": "RI-2",
+    "title": "Block Island",
+    "coordinates": [41.16972222, -71.58],
+    "source": "https://en.wikipedia.org/wiki/Block_Island",
+    "checkedAt": "2026-09-09",
+    "place": "Block Island"
+  },
+  {
+    "id": "SC-0",
+    "title": "Charleston, South Carolina",
+    "coordinates": [32.81388889, -79.93194444],
+    "source": "https://en.wikipedia.org/wiki/Charleston%2C_South_Carolina",
+    "checkedAt": "2026-09-09",
+    "place": "Charleston"
+  },
+  {
+    "id": "SC-1",
+    "title": "Hilton Head Island, South Carolina",
+    "coordinates": [32.17888889, -80.75694444],
+    "source": "https://en.wikipedia.org/wiki/Hilton_Head_Island%2C_South_Carolina",
+    "checkedAt": "2026-09-09",
+    "place": "Hilton Head Island"
+  },
+  {
+    "id": "SC-2",
+    "title": "Congaree National Park",
+    "coordinates": [33.78333333, -80.78333333],
+    "source": "https://en.wikipedia.org/wiki/Congaree_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Congaree National Park"
+  },
+  {
+    "id": "SD-0",
+    "title": "Badlands National Park",
+    "coordinates": [43.75, -102.5],
+    "source": "https://en.wikipedia.org/wiki/Badlands_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Badlands National Park"
+  },
+  {
+    "id": "SD-1",
+    "title": "Custer State Park",
+    "coordinates": [43.61433, -103.689],
+    "source": "https://en.wikipedia.org/wiki/Custer_State_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Custer State Park"
+  },
+  {
+    "id": "SD-2",
+    "title": "Black Hills",
+    "coordinates": [43.86584773, -103.532432],
+    "source": "https://en.wikipedia.org/wiki/Black_Hills",
+    "checkedAt": "2026-09-09",
+    "place": "Black Hills"
+  },
+  {
+    "id": "TN-0",
+    "title": "Nashville, Tennessee",
+    "coordinates": [36.16222222, -86.77444444],
+    "source": "https://en.wikipedia.org/wiki/Nashville%2C_Tennessee",
+    "checkedAt": "2026-09-09",
+    "place": "Nashville"
+  },
+  {
+    "id": "TN-1",
+    "title": "Memphis, Tennessee",
+    "coordinates": [35.14611111, -90.05194444],
+    "source": "https://en.wikipedia.org/wiki/Memphis%2C_Tennessee",
+    "checkedAt": "2026-09-09",
+    "place": "Memphis"
+  },
+  {
+    "id": "TN-2",
+    "title": "Great Smoky Mountains National Park",
+    "coordinates": [35.61111111, -83.425],
+    "source": "https://en.wikipedia.org/wiki/Great_Smoky_Mountains_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Great Smoky Mountains National Park"
+  },
+  {
+    "id": "TX-0",
+    "title": "Austin, Texas",
+    "coordinates": [30.26722222, -97.74305556],
+    "source": "https://en.wikipedia.org/wiki/Austin%2C_Texas",
+    "checkedAt": "2026-09-09",
+    "place": "Austin"
+  },
+  {
+    "id": "TX-1",
+    "title": "San Antonio",
+    "coordinates": [29.425, -98.4939],
+    "source": "https://en.wikipedia.org/wiki/San_Antonio",
+    "checkedAt": "2026-09-09",
+    "place": "San Antonio"
+  },
+  {
+    "id": "TX-2",
+    "title": "Big Bend National Park",
+    "coordinates": [29.25, -103.25],
+    "source": "https://en.wikipedia.org/wiki/Big_Bend_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Big Bend National Park"
+  },
+  {
+    "id": "UT-0",
+    "title": "Zion National Park",
+    "coordinates": [37.3, -113],
+    "source": "https://en.wikipedia.org/wiki/Zion_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Zion National Park"
+  },
+  {
+    "id": "UT-1",
+    "title": "Bryce Canyon National Park",
+    "coordinates": [37.64, -112.17],
+    "source": "https://en.wikipedia.org/wiki/Bryce_Canyon_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Bryce Canyon National Park"
+  },
+  {
+    "id": "UT-2",
+    "title": "Arches National Park",
+    "coordinates": [38.72805556, -109.54],
+    "source": "https://en.wikipedia.org/wiki/Arches_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Arches National Park"
+  },
+  {
+    "id": "VA-0",
+    "title": "Shenandoah National Park",
+    "coordinates": [38.53333333, -78.35],
+    "source": "https://en.wikipedia.org/wiki/Shenandoah_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Shenandoah National Park"
+  },
+  {
+    "id": "VA-1",
+    "title": "Richmond, Virginia",
+    "coordinates": [37.54083333, -77.43666667],
+    "source": "https://en.wikipedia.org/wiki/Richmond%2C_Virginia",
+    "checkedAt": "2026-09-09",
+    "place": "Richmond"
+  },
+  {
+    "id": "VA-2",
+    "title": "Colonial Williamsburg",
+    "coordinates": [37.27138889, -76.7],
+    "source": "https://en.wikipedia.org/wiki/Colonial_Williamsburg",
+    "checkedAt": "2026-09-09",
+    "place": "Colonial Williamsburg"
+  },
+  {
+    "id": "VT-0",
+    "title": "Burlington, Vermont",
+    "coordinates": [44.50638889, -73.24305556],
+    "source": "https://en.wikipedia.org/wiki/Burlington%2C_Vermont",
+    "checkedAt": "2026-09-09",
+    "place": "Burlington"
+  },
+  {
+    "id": "VT-1",
+    "title": "Stowe, Vermont",
+    "coordinates": [44.50055556, -72.71833333],
+    "source": "https://en.wikipedia.org/wiki/Stowe%2C_Vermont",
+    "checkedAt": "2026-09-09",
+    "place": "Stowe"
+  },
+  {
+    "id": "VT-2",
+    "title": "Woodstock, Vermont",
+    "coordinates": [43.60694444, -72.54722222],
+    "source": "https://en.wikipedia.org/wiki/Woodstock%2C_Vermont",
+    "checkedAt": "2026-09-09",
+    "place": "Woodstock"
+  },
+  {
+    "id": "WA-0",
+    "title": "Seattle",
+    "coordinates": [47.60388889, -122.33],
+    "source": "https://en.wikipedia.org/wiki/Seattle",
+    "checkedAt": "2026-09-09",
+    "place": "Seattle"
+  },
+  {
+    "id": "WA-1",
+    "title": "Olympic National Park",
+    "coordinates": [47.96935, -123.49856],
+    "source": "https://en.wikipedia.org/wiki/Olympic_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Olympic National Park"
+  },
+  {
+    "id": "WA-2",
+    "title": "Mount Rainier National Park",
+    "coordinates": [46.85, -121.75],
+    "source": "https://en.wikipedia.org/wiki/Mount_Rainier_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Mount Rainier National Park"
+  },
+  {
+    "id": "WI-0",
+    "title": "Milwaukee",
+    "coordinates": [43.05, -87.95],
+    "source": "https://en.wikipedia.org/wiki/Milwaukee",
+    "checkedAt": "2026-09-09",
+    "place": "Milwaukee"
+  },
+  {
+    "id": "WI-1",
+    "title": "Door County, Wisconsin",
+    "coordinates": [45.02, -87.01],
+    "source": "https://en.wikipedia.org/wiki/Door_County%2C_Wisconsin",
+    "checkedAt": "2026-09-09",
+    "place": "Door County"
+  },
+  {
+    "id": "WI-2",
+    "title": "Apostle Islands National Lakeshore",
+    "coordinates": [46.96527778, -90.66416667],
+    "source": "https://en.wikipedia.org/wiki/Apostle_Islands_National_Lakeshore",
+    "checkedAt": "2026-09-09",
+    "place": "Apostle Islands National Lakeshore"
+  },
+  {
+    "id": "WV-0",
+    "title": "New River Gorge National Park and Preserve",
+    "coordinates": [37.96083333, -81.08166667],
+    "source": "https://en.wikipedia.org/wiki/New_River_Gorge_National_Park_and_Preserve",
+    "checkedAt": "2026-09-09",
+    "place": "New River Gorge National Park"
+  },
+  {
+    "id": "WV-1",
+    "title": "Harpers Ferry, West Virginia",
+    "coordinates": [39.32777778, -77.74638889],
+    "source": "https://en.wikipedia.org/wiki/Harpers_Ferry%2C_West_Virginia",
+    "checkedAt": "2026-09-09",
+    "place": "Harpers Ferry"
+  },
+  {
+    "id": "WV-2",
+    "title": "Dolly Sods Wilderness",
+    "coordinates": [38.99583333, -79.36805556],
+    "source": "https://en.wikipedia.org/wiki/Dolly_Sods_Wilderness",
+    "checkedAt": "2026-09-09",
+    "place": "Dolly Sods"
+  },
+  {
+    "id": "WY-0",
+    "title": "Yellowstone National Park",
+    "coordinates": [44.6, -110.5],
+    "source": "https://en.wikipedia.org/wiki/Yellowstone_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Yellowstone National Park"
+  },
+  {
+    "id": "WY-1",
+    "title": "Grand Teton National Park",
+    "coordinates": [43.83333333, -110.70083333],
+    "source": "https://en.wikipedia.org/wiki/Grand_Teton_National_Park",
+    "checkedAt": "2026-09-09",
+    "place": "Grand Teton National Park"
+  },
+  {
+    "id": "WY-2",
+    "title": "Cody, Wyoming",
+    "coordinates": [44.50777778, -109.04611111],
+    "source": "https://en.wikipedia.org/wiki/Cody%2C_Wyoming",
+    "checkedAt": "2026-09-09",
+    "place": "Cody"
+  }
+]

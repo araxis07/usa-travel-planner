@@ -8,6 +8,31 @@ const { validateCatalog, contentIssues } = await import(
   'data:text/javascript;base64,' + Buffer.from(javascript).toString('base64')
 );
 const catalog = validateCatalog(JSON.parse(await fs.readFile('content/states.json', 'utf8')));
+const places = JSON.parse(await fs.readFile('content/places.json', 'utf8'));
+const placeIds = new Set(
+  catalog.states.flatMap((state) => state.places.map((_, index) => `${state.code}-${index}`)),
+);
+if (places.length !== placeIds.size || new Set(places.map((p) => p.id)).size !== placeIds.size)
+  throw Error('Incomplete place coordinates');
+for (const place of places) {
+  const [code, index] = place.id.split('-');
+  if (catalog.states.find((state) => state.code === code)?.places[Number(index)] !== place.place)
+    throw Error('Place changed: update the reference coordinates for ' + place.id);
+  if (
+    !placeIds.has(place.id) ||
+    !Array.isArray(place.coordinates) ||
+    place.coordinates.length !== 2 ||
+    !place.coordinates.every(Number.isFinite) ||
+    place.coordinates[0] < 18 ||
+    place.coordinates[0] > 72 ||
+    place.coordinates[1] < -180 ||
+    place.coordinates[1] > -60 ||
+    !/^https:\/\/(en.wikipedia.org|www.wikidata.org)\/wiki\//.test(place.source) ||
+    !place.title ||
+    !/^\d{4}-\d{2}-\d{2}$/.test(place.checkedAt)
+  )
+    throw Error('Invalid place reference ' + place.id);
+}
 const issues = contentIssues(catalog);
 if (issues.length) throw Error(JSON.stringify(issues));
 const dictionary = JSON.parse(await fs.readFile('content/translations.json', 'utf8'));

@@ -9,6 +9,8 @@ import {
   type Language,
 } from '../data/travel';
 import Icon from './Icon';
+import PhotoLightbox from './PhotoLightbox';
+import { destinationUrl } from '../lib/destinations';
 
 export default function StateDetail({
   state,
@@ -17,6 +19,7 @@ export default function StateDetail({
   inTrip,
   onSave,
   onAdd,
+  onOpen,
 }: {
   state: StateGuide;
   lang: Language;
@@ -24,10 +27,12 @@ export default function StateDetail({
   inTrip: boolean;
   onSave: () => void;
   onAdd: () => void;
+  onOpen?: (index?: number) => void;
 }) {
   const t = (en: string, th: string, values?: Record<string, string | number>) =>
     translate(en, th, lang, values);
   const [selectedPhoto, setSelectedPhoto] = useState(state.cover);
+  const [lightbox, setLightbox] = useState(false);
   const photo = state.photos[selectedPhoto] ?? state.photos[0];
   return (
     <div className="state-detail">
@@ -41,6 +46,27 @@ export default function StateDetail({
         </div>
       </div>
       <div className="detail-content">
+        <div className="gallery-tools">
+          <button className="text-link" onClick={() => setLightbox(true)}>
+            <Icon name="search" size={16} />
+            {t('View fullscreen', 'ดูเต็มจอ')}
+          </button>
+          {onOpen && (
+            <a
+              className="text-link"
+              href={destinationUrl(state, lang)}
+              onClick={(event) => {
+                if (!event.ctrlKey && !event.metaKey && !event.shiftKey && event.button === 0) {
+                  event.preventDefault();
+                  onOpen();
+                }
+              }}
+            >
+              {t('Open full guide', 'เปิดคู่มือเต็มหน้า')}
+              <Icon name="arrow" size={16} />
+            </a>
+          )}
+        </div>
         <div className="photo-gallery" aria-label={t('Photo gallery', 'แกลเลอรีภาพ')}>
           {state.photos.map((item, index) => (
             <button
@@ -159,6 +185,14 @@ export default function StateDetail({
           </button>
         </div>
       </div>
+      {lightbox && (
+        <PhotoLightbox
+          state={state}
+          lang={lang}
+          initialIndex={selectedPhoto}
+          onClose={() => setLightbox(false)}
+        />
+      )}
     </div>
   );
 }

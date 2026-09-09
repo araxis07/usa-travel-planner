@@ -22,6 +22,9 @@ import {
 } from './data/travel';
 import { loadTrip, readLocal, tripDays, validFavorites } from './lib/storage';
 import './styles.css';
+import './journey.css';
+import DestinationPage from './components/DestinationPage';
+import { destinationUrl, readDestination, placeId } from './lib/destinations';
 
 const interestIcons: Record<Interest, IconName> = {
   Nature: 'mountain',
@@ -37,6 +40,8 @@ export default function App() {
   const [trip, setTrip] = useState<Trip>(loadTrip);
   const [storageFailed, setStorageFailed] = useState(false);
   const [modal, setModal] = useState<TravelModal | null>(null);
+  const [destination, setDestination] = useState(readDestination);
+  const [activeSection, setActiveSection] = useState(location.hash === '#map' ? 'map' : 'discover');
   const [query, setQuery] = useState('');
   const [interest, setInterest] = useState<Interest | 'All'>('All');
   const [region, setRegion] = useState<Region | 'All'>('All');
@@ -70,15 +75,81 @@ export default function App() {
   }, [favorites, trip, lang]);
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title = translate(
-      'Roam America — 50 states. Endless possibilities.',
-      'Roam America — วางแผนเที่ยวอเมริกาครบ 50 รัฐ',
-      lang,
-    );
+    document.title = destination
+      ? `${destination.placeIndex === undefined ? stateName(destination.state, lang) : local(destination.state.placeNames[destination.placeIndex], lang)} — Roam America`
+      : translate(
+          'Roam America — 50 states. Endless possibilities.',
+          'Roam America — วางแผนเที่ยวอเมริกาครบ 50 รัฐ',
+          lang,
+        );
     const url = new URL(location.href);
     url.searchParams.set('lang', lang);
-    history.replaceState(null, '', url);
-  }, [lang]);
+    history.replaceState(history.state, '', url);
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute(
+        'content',
+        destination
+          ? local(destination.state.description, lang)
+          : translate(
+              'Explore all 50 states, save your favorite places, and build your own American adventure.',
+              'สำรวจครบ 50 รัฐ บันทึกสถานที่โปรด และวางแผนเที่ยวอเมริกาในแบบคุณ',
+              lang,
+            ),
+      );
+  }, [lang, destination]);
+  useEffect(() => {
+    const old = history.scrollRestoration;
+    history.scrollRestoration = 'manual';
+    const pop = (event: PopStateEvent) => {
+      setDestination(readDestination());
+      setLang(initialLanguage());
+      setModal(null);
+      setMobileNav(false);
+      setActiveSection(location.hash === '#map' ? 'map' : 'discover');
+      requestAnimationFrame(() =>
+        window.scrollTo({ top: event.state?.scrollY ?? 0, behavior: 'instant' }),
+      );
+    };
+    window.addEventListener('popstate', pop);
+    return () => {
+      window.removeEventListener('popstate', pop);
+      history.scrollRestoration = old;
+    };
+  }, []);
+  const openDestination = (state: StateGuide, placeIndex?: number) => {
+    history.replaceState({ ...history.state, scrollY: window.scrollY }, '', location.href);
+    history.pushState({ scrollY: 0 }, '', destinationUrl(state, lang, placeIndex));
+    setDestination({ state, placeIndex });
+    setModal(null);
+    setMobileNav(false);
+    setActiveSection('discover');
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      document.querySelector<HTMLElement>('.destination-hero h1')?.focus({ preventScroll: true });
+    });
+  };
+  const goSection = (section: string) => {
+    setModal(null);
+    setMobileNav(false);
+    setActiveSection(section === 'map' ? 'map' : 'discover');
+    if (destination) {
+      history.replaceState({ ...history.state, scrollY: window.scrollY }, '', location.href);
+      history.pushState(
+        { scrollY: 0 },
+        '',
+        `${location.pathname}?lang=${lang}${section ? `#${section}` : ''}`,
+      );
+      setDestination(null);
+    }
+    requestAnimationFrame(() => {
+      if (section)
+        document
+          .getElementById(section)
+          ?.scrollIntoView({ behavior: motion ? 'smooth' : 'instant' });
+      else window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+  };
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const change = () => setMotion(!preference.matches);
@@ -101,13 +172,7 @@ export default function App() {
     );
   };
   const explore = () => {
-    setModal(null);
-    setMobileNav(false);
-    requestAnimationFrame(() =>
-      document
-        .getElementById('destinations')
-        ?.scrollIntoView({ behavior: motion ? 'smooth' : 'instant' }),
-    );
+    goSection('destinations');
   };
   const addState = (state: StateGuide) => {
     if (!trip.stops.some((stop) => stop.code === state.code)) {
@@ -127,6 +192,46 @@ export default function App() {
     setRegion('All');
     setSeason('All');
     setShowAll(false);
+  };
+  const addPlace = (state: StateGuide, index: number) => {
+    if (trip.stops.reduce((total, stop) => total + (stop.activities?.length ?? 0), 0) >= 200) {
+      notify(
+        t('A trip can hold up to 200 activities.', 'หนึ่งทริปเพิ่มกิจกรรมได้สูงสุด 200 รายการ'),
+      );
+      return;
+    }
+    const activity = {
+      id: crypto.randomUUID(),
+      day: 1,
+      period: 'morning' as const,
+      placeId: placeId(state, index),
+      title: state.places[index],
+      minutes: 120,
+      notes: '',
+    };
+    setTrip((value) => {
+      const existing = value.stops.some((stop) => stop.code === state.code);
+      return {
+        ...value,
+        stops: existing
+          ? value.stops.map((stop) =>
+              stop.code === state.code
+                ? { ...stop, activities: [...(stop.activities ?? []), activity] }
+                : stop,
+            )
+          : [
+              ...value.stops,
+              { code: state.code, days: state.days, notes: '', activities: [activity] },
+            ],
+      };
+    });
+    setModal({ type: 'trip', daily: true, code: state.code });
+    notify(
+      t(
+        'Added to the first morning in this state. Adjust the day and time in your plan.',
+        'เพิ่มในเช้าวันแรกของรัฐนี้แล้ว เปลี่ยนวันและเวลาได้ในแผน',
+      ),
+    );
   };
   const search = query.trim().toLocaleLowerCase();
   const filtered = STATES.filter(
@@ -163,8 +268,22 @@ export default function App() {
     { href: '#guides', label: t('Field notes', 'คู่มือเที่ยว') },
   ];
   return (
-    <div className="site" data-motion={motion ? 'on' : 'paused'}>
-      <a className="skip-link" href="#destinations">
+    <div
+      className="site"
+      data-motion={motion ? 'on' : 'paused'}
+      onClickCapture={(event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+        const anchor = (event.target as Element).closest('a');
+        const href = anchor?.getAttribute('href');
+        if (destination && href?.startsWith('#') && href !== '#destination-guide') {
+          event.preventDefault();
+          goSection(href.slice(1));
+        } else if (href === '#map' || href === '#destinations') {
+          setActiveSection(href === '#map' ? 'map' : 'discover');
+        }
+      }}
+    >
+      <a className="skip-link" href={destination ? '#destination-guide' : '#destinations'}>
         {t('Skip to destinations', 'ข้ามไปยังจุดหมาย')}
       </a>
       <div className="announcement">
@@ -236,365 +355,383 @@ export default function App() {
           </div>
         </div>
       </header>
-      <main>
-        <section
-          className="hero"
-          ref={heroRef}
-          onPointerMove={(event) => {
-            if (!motion || event.pointerType === 'touch') return;
-            const rect = event.currentTarget.getBoundingClientRect();
-            heroRef.current?.style.setProperty(
-              '--pointer-x',
-              `${((event.clientX - rect.left) / rect.width - 0.5) * 13}deg`,
-            );
-            heroRef.current?.style.setProperty(
-              '--pointer-y',
-              `${((event.clientY - rect.top) / rect.height - 0.5) * -13}deg`,
-            );
-          }}
-          onPointerLeave={() => {
-            heroRef.current?.style.setProperty('--pointer-x', '0deg');
-            heroRef.current?.style.setProperty('--pointer-y', '0deg');
-          }}
-        >
-          <img
-            className="hero-image"
-            src="/images/hero.jpg"
-            alt={t(
-              'Sandstone buttes in Monument Valley Navajo Tribal Park',
-              'ภูเขาหินทรายในอุทยานชนเผ่านาวาโฮ โมนูเมนต์แวลลีย์',
-            )}
-            fetchPriority="high"
-            width="1600"
-            height="1060"
-          />
-          <div className="hero-shade" />
-          <div className="hero-content">
-            <span className="eyebrow hero-eyebrow">
-              <span />
-              {t('THE GREAT AMERICAN GETAWAY', 'ออกเดินทางสู่ประสบการณ์อเมริกา')}
-            </span>
-            <h1>
-              {t('Find your', 'ค้นพบอเมริกา')}
-              <br />
-              {t('American', 'ในจังหวะ')}
-              <br />
-              <em>{t('state of mind.', 'ที่เป็นคุณ')}</em>
-            </h1>
-            <p>
-              {t(
-                'From the places you’ve always dreamed of to the ones you haven’t found yet. Discover America, one unforgettable state at a time.',
-                'จากสถานที่ในฝัน สู่มุมที่คุณยังไม่เคยรู้จัก ออกไปค้นพบอเมริกา ทีละรัฐ ทีละความทรงจำ',
-              )}
-            </p>
-            <div className="hero-cta">
-              <a className="button button-red" href="#destinations">
-                {t('Find your adventure', 'ค้นหาทริปของคุณ')}
-                <Icon name="arrow" size={18} />
-              </a>
-              <a className="hero-map-link" href="#map">
-                <Icon name="map" size={18} />
-                {t('Explore the map', 'สำรวจแผนที่')}
-              </a>
-            </div>
-            <div className="hero-footnote">
-              <span className="three-stars">✦ ✦ ✦</span>
-              {t(
-                'A big country. A journey that’s uniquely yours.',
-                'ประเทศกว้างใหญ่ การเดินทางในแบบของคุณ',
-              )}
-            </div>
-          </div>
-          <div className="hero-stamp" aria-hidden="true">
-            <div className="stamp-edge" />
-            <div className="stamp-face">
-              <svg viewBox="0 0 180 180">
-                <defs>
-                  <path id="stamp-circle" d="M90,90m-65,0a65,65 0 1,1 130,0a65,65 0 1,1-130,0" />
-                </defs>
-                <text>
-                  <textPath href="#stamp-circle" textLength="400">
-                    FIFTY STATES · ENDLESS POSSIBILITIES ·{' '}
-                  </textPath>
-                </text>
-                <path
-                  className="stamp-star"
-                  d="m90 40 10 36 37 14-37 10-10 40-11-39-38-11 37-12Z"
-                />
-              </svg>
-            </div>
-          </div>
-          <button
-            className="hero-location"
-            onClick={() =>
-              setModal({ type: 'state', state: STATES.find((state) => state.code === 'AZ')! })
-            }
-          >
-            <span className="location-icon">
-              <Icon name="pin" size={23} />
-            </span>
-            <span>
-              <small>{t('SOMEWHERE WORTH GETTING LOST', 'หนึ่งสถานที่ที่ควรออกไปพบ')}</small>
-              <strong>Monument Valley</strong>
-              <span>{t('Arizona & Utah', 'แอริโซนาและยูทาห์')}</span>
-            </span>
-            <Icon name="arrow" size={18} />
-          </button>
-          <button
-            className="motion-button"
-            onClick={() => setMotion((value) => !value)}
-            aria-label={
-              motion
-                ? t('Pause animations', 'หยุดแอนิเมชัน')
-                : t('Enable animations', 'เปิดแอนิเมชัน')
-            }
-            aria-pressed={!motion}
-          >
-            <Icon name={motion ? 'pause' : 'play'} size={13} />
-          </button>
-          <span className="hero-image-number" aria-hidden="true">
-            01 — 50
-          </span>
-        </section>
-        <div className="search-shell">
-          <form
-            className="adventure-search"
-            onSubmit={(event) => {
-              event.preventDefault();
-              explore();
+      {destination ? (
+        <DestinationPage
+          key={`${destination.state.code}-${destination.placeIndex ?? 'state'}`}
+          state={destination.state}
+          placeIndex={destination.placeIndex}
+          lang={lang}
+          saved={favorites.includes(destination.state.code)}
+          inTrip={trip.stops.some((stop) => stop.code === destination.state.code)}
+          onSave={() => saveState(destination.state)}
+          onAdd={() => addState(destination.state)}
+          onAddPlace={(index) => addPlace(destination.state, index)}
+          onOpen={openDestination}
+          onBack={explore}
+          notify={notify}
+        />
+      ) : (
+        <main>
+          <section
+            className="hero"
+            ref={heroRef}
+            onPointerMove={(event) => {
+              if (!motion || event.pointerType === 'touch') return;
+              const rect = event.currentTarget.getBoundingClientRect();
+              heroRef.current?.style.setProperty(
+                '--pointer-x',
+                `${((event.clientX - rect.left) / rect.width - 0.5) * 13}deg`,
+              );
+              heroRef.current?.style.setProperty(
+                '--pointer-y',
+                `${((event.clientY - rect.top) / rect.height - 0.5) * -13}deg`,
+              );
+            }}
+            onPointerLeave={() => {
+              heroRef.current?.style.setProperty('--pointer-x', '0deg');
+              heroRef.current?.style.setProperty('--pointer-y', '0deg');
             }}
           >
-            <label className="search-destination">
-              <Icon name="pin" size={23} />
-              <span>
-                <span className="search-label">{t('WHERE TO?', 'อยากไปที่ไหน?')}</span>
-                <input
-                  aria-label={t('Search destinations', 'ค้นหาจุดหมาย')}
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder={t(
-                    'A state, a city, a little inspiration…',
-                    'ชื่อรัฐ เมือง หรือแรงบันดาลใจ…',
-                  )}
-                />
-              </span>
-            </label>
-            <label className="search-select">
-              <Icon name="compass" size={22} />
-              <span>
-                <span className="search-label">
-                  {t('YOUR KIND OF ADVENTURE', 'เที่ยวแบบที่คุณชอบ')}
-                </span>
-                <select
-                  aria-label={t('Experience', 'รูปแบบการเที่ยว')}
-                  value={interest}
-                  onChange={(event) => setInterest(event.target.value as Interest | 'All')}
-                >
-                  <option value="All">{t('A little of everything', 'ลองทุกประสบการณ์')}</option>
-                  {(Object.keys(INTEREST_LABELS) as Interest[]).map((key) => (
-                    <option key={key} value={key}>
-                      {local(INTEREST_LABELS[key], lang)}
-                    </option>
-                  ))}
-                </select>
-              </span>
-            </label>
-            <label className="search-select search-season">
-              <Icon name="sun" size={22} />
-              <span>
-                <span className="search-label">
-                  {t('WHEN ARE YOU GOING?', 'อยากเดินทางช่วงไหน?')}
-                </span>
-                <select
-                  aria-label={t('Season', 'ฤดูกาล')}
-                  value={season}
-                  onChange={(event) => setSeason(event.target.value as Season | 'All')}
-                >
-                  <option value="All">
-                    {t('Any time is a good time', 'ทุกช่วงเวลามีสิ่งดี ๆ')}
-                  </option>
-                  {(Object.keys(SEASON_LABELS) as Season[]).map((key) => (
-                    <option key={key} value={key}>
-                      {local(SEASON_LABELS[key], lang)}
-                    </option>
-                  ))}
-                </select>
-              </span>
-            </label>
-            <button type="submit" className="button button-red search-submit">
-              <Icon name="search" size={19} />
-              {t('Let’s explore', 'ออกไปสำรวจ')}
-            </button>
-          </form>
-          <div className="search-caption">
-            <span>
-              {t(
-                'YOUR NEXT “I’VE ALWAYS WANTED TO GO THERE” STARTS HERE.',
-                'จุดหมายที่คุณเคยบอกว่า “อยากไปสักครั้ง” เริ่มต้นที่นี่',
+            <img
+              className="hero-image"
+              src="/images/hero.jpg"
+              alt={t(
+                'Sandstone buttes in Monument Valley Navajo Tribal Park',
+                'ภูเขาหินทรายในอุทยานชนเผ่านาวาโฮ โมนูเมนต์แวลลีย์',
               )}
-            </span>
-            <span>
-              <Icon name="compass" size={13} />
-              {t(
-                'Thoughtfully curated. Freely explored.',
-                'คัดสรรด้วยความตั้งใจ ออกไปเที่ยวได้ในแบบคุณ',
-              )}
-            </span>
-          </div>
-        </div>
-        <section id="destinations" className="destinations section-shell section-anchor">
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow">
-                <span className="red-dot" />
-                {t('SO MANY PLACES. SO MANY POSSIBILITIES.', 'หลายจุดหมาย หลากความเป็นไปได้')}
+              fetchPriority="high"
+              width="1600"
+              height="1060"
+            />
+            <div className="hero-shade" />
+            <div className="hero-content">
+              <span className="eyebrow hero-eyebrow">
+                <span />
+                {t('THE GREAT AMERICAN GETAWAY', 'ออกเดินทางสู่ประสบการณ์อเมริกา')}
               </span>
-              <h2>
-                {t('Where will you', 'ทริปต่อไป')} <em>{t('go next?', 'จะไปที่ไหนดี?')}</em>
-              </h2>
+              <h1>
+                {t('Find your', 'ค้นพบอเมริกา')}
+                <br />
+                {t('American', 'ในจังหวะ')}
+                <br />
+                <em>{t('state of mind.', 'ที่เป็นคุณ')}</em>
+              </h1>
               <p>
                 {t(
-                  'Iconic for a reason. Unexpected in the best way. Find a state that speaks to you.',
-                  'ทั้งสถานที่ในฝันและมุมที่คาดไม่ถึง ค้นพบรัฐที่ตรงกับสไตล์ของคุณ',
+                  'From the places you’ve always dreamed of to the ones you haven’t found yet. Discover America, one unforgettable state at a time.',
+                  'จากสถานที่ในฝัน สู่มุมที่คุณยังไม่เคยรู้จัก ออกไปค้นพบอเมริกา ทีละรัฐ ทีละความทรงจำ',
                 )}
               </p>
+              <div className="hero-cta">
+                <a className="button button-red" href="#destinations">
+                  {t('Find your adventure', 'ค้นหาทริปของคุณ')}
+                  <Icon name="arrow" size={18} />
+                </a>
+                <a className="hero-map-link" href="#map">
+                  <Icon name="map" size={18} />
+                  {t('Explore the map', 'สำรวจแผนที่')}
+                </a>
+              </div>
+              <div className="hero-footnote">
+                <span className="three-stars">✦ ✦ ✦</span>
+                {t(
+                  'A big country. A journey that’s uniquely yours.',
+                  'ประเทศกว้างใหญ่ การเดินทางในแบบของคุณ',
+                )}
+              </div>
             </div>
-            <a className="text-link heading-link" href="#map">
-              {t('See the whole picture', 'ดูภาพรวมทั้งประเทศ')}
-              <Icon name="arrow" size={18} />
-            </a>
-          </div>
-          <div className="destination-controls">
-            <div
-              className="interest-tabs"
-              aria-label={t('Filter by experience', 'กรองตามประสบการณ์')}
+            <div className="hero-stamp" aria-hidden="true">
+              <div className="stamp-edge" />
+              <div className="stamp-face">
+                <svg viewBox="0 0 180 180">
+                  <defs>
+                    <path id="stamp-circle" d="M90,90m-65,0a65,65 0 1,1 130,0a65,65 0 1,1-130,0" />
+                  </defs>
+                  <text>
+                    <textPath href="#stamp-circle" textLength="400">
+                      FIFTY STATES · ENDLESS POSSIBILITIES ·{' '}
+                    </textPath>
+                  </text>
+                  <path
+                    className="stamp-star"
+                    d="m90 40 10 36 37 14-37 10-10 40-11-39-38-11 37-12Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <button
+              className="hero-location"
+              onClick={() =>
+                setModal({ type: 'state', state: STATES.find((state) => state.code === 'AZ')! })
+              }
             >
-              <button
-                className={interest === 'All' ? 'active' : ''}
-                aria-pressed={interest === 'All'}
-                onClick={() => setInterest('All')}
-              >
-                <Icon name="compass" size={16} />
-                {t('All experiences', 'ทุกประสบการณ์')}
+              <span className="location-icon">
+                <Icon name="pin" size={23} />
+              </span>
+              <span>
+                <small>{t('SOMEWHERE WORTH GETTING LOST', 'หนึ่งสถานที่ที่ควรออกไปพบ')}</small>
+                <strong>Monument Valley</strong>
+                <span>{t('Arizona & Utah', 'แอริโซนาและยูทาห์')}</span>
+              </span>
+              <Icon name="arrow" size={18} />
+            </button>
+            <button
+              className="motion-button"
+              onClick={() => setMotion((value) => !value)}
+              aria-label={
+                motion
+                  ? t('Pause animations', 'หยุดแอนิเมชัน')
+                  : t('Enable animations', 'เปิดแอนิเมชัน')
+              }
+              aria-pressed={!motion}
+            >
+              <Icon name={motion ? 'pause' : 'play'} size={13} />
+            </button>
+            <span className="hero-image-number" aria-hidden="true">
+              01 — 50
+            </span>
+          </section>
+          <div className="search-shell">
+            <form
+              className="adventure-search"
+              onSubmit={(event) => {
+                event.preventDefault();
+                explore();
+              }}
+            >
+              <label className="search-destination">
+                <Icon name="pin" size={23} />
+                <span>
+                  <span className="search-label">{t('WHERE TO?', 'อยากไปที่ไหน?')}</span>
+                  <input
+                    aria-label={t('Search destinations', 'ค้นหาจุดหมาย')}
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    placeholder={t(
+                      'A state, a city, a little inspiration…',
+                      'ชื่อรัฐ เมือง หรือแรงบันดาลใจ…',
+                    )}
+                  />
+                </span>
+              </label>
+              <label className="search-select">
+                <Icon name="compass" size={22} />
+                <span>
+                  <span className="search-label">
+                    {t('YOUR KIND OF ADVENTURE', 'เที่ยวแบบที่คุณชอบ')}
+                  </span>
+                  <select
+                    aria-label={t('Experience', 'รูปแบบการเที่ยว')}
+                    value={interest}
+                    onChange={(event) => setInterest(event.target.value as Interest | 'All')}
+                  >
+                    <option value="All">{t('A little of everything', 'ลองทุกประสบการณ์')}</option>
+                    {(Object.keys(INTEREST_LABELS) as Interest[]).map((key) => (
+                      <option key={key} value={key}>
+                        {local(INTEREST_LABELS[key], lang)}
+                      </option>
+                    ))}
+                  </select>
+                </span>
+              </label>
+              <label className="search-select search-season">
+                <Icon name="sun" size={22} />
+                <span>
+                  <span className="search-label">
+                    {t('WHEN ARE YOU GOING?', 'อยากเดินทางช่วงไหน?')}
+                  </span>
+                  <select
+                    aria-label={t('Season', 'ฤดูกาล')}
+                    value={season}
+                    onChange={(event) => setSeason(event.target.value as Season | 'All')}
+                  >
+                    <option value="All">
+                      {t('Any time is a good time', 'ทุกช่วงเวลามีสิ่งดี ๆ')}
+                    </option>
+                    {(Object.keys(SEASON_LABELS) as Season[]).map((key) => (
+                      <option key={key} value={key}>
+                        {local(SEASON_LABELS[key], lang)}
+                      </option>
+                    ))}
+                  </select>
+                </span>
+              </label>
+              <button type="submit" className="button button-red search-submit">
+                <Icon name="search" size={19} />
+                {t('Let’s explore', 'ออกไปสำรวจ')}
               </button>
-              {(Object.keys(INTEREST_LABELS) as Interest[]).map((key) => (
+            </form>
+            <div className="search-caption">
+              <span>
+                {t(
+                  'YOUR NEXT “I’VE ALWAYS WANTED TO GO THERE” STARTS HERE.',
+                  'จุดหมายที่คุณเคยบอกว่า “อยากไปสักครั้ง” เริ่มต้นที่นี่',
+                )}
+              </span>
+              <span>
+                <Icon name="compass" size={13} />
+                {t(
+                  'Thoughtfully curated. Freely explored.',
+                  'คัดสรรด้วยความตั้งใจ ออกไปเที่ยวได้ในแบบคุณ',
+                )}
+              </span>
+            </div>
+          </div>
+          <section id="destinations" className="destinations section-shell section-anchor">
+            <div className="section-heading">
+              <div>
+                <span className="eyebrow">
+                  <span className="red-dot" />
+                  {t('SO MANY PLACES. SO MANY POSSIBILITIES.', 'หลายจุดหมาย หลากความเป็นไปได้')}
+                </span>
+                <h2>
+                  {t('Where will you', 'ทริปต่อไป')} <em>{t('go next?', 'จะไปที่ไหนดี?')}</em>
+                </h2>
+                <p>
+                  {t(
+                    'Iconic for a reason. Unexpected in the best way. Find a state that speaks to you.',
+                    'ทั้งสถานที่ในฝันและมุมที่คาดไม่ถึง ค้นพบรัฐที่ตรงกับสไตล์ของคุณ',
+                  )}
+                </p>
+              </div>
+              <a className="text-link heading-link" href="#map">
+                {t('See the whole picture', 'ดูภาพรวมทั้งประเทศ')}
+                <Icon name="arrow" size={18} />
+              </a>
+            </div>
+            <div className="destination-controls">
+              <div
+                className="interest-tabs"
+                aria-label={t('Filter by experience', 'กรองตามประสบการณ์')}
+              >
                 <button
-                  key={key}
-                  className={interest === key ? 'active' : ''}
-                  aria-pressed={interest === key}
-                  onClick={() => setInterest(key)}
+                  className={interest === 'All' ? 'active' : ''}
+                  aria-pressed={interest === 'All'}
+                  onClick={() => setInterest('All')}
                 >
-                  <Icon name={interestIcons[key]} size={16} />
-                  {local(INTEREST_LABELS[key], lang)}
+                  <Icon name="compass" size={16} />
+                  {t('All experiences', 'ทุกประสบการณ์')}
                 </button>
+                {(Object.keys(INTEREST_LABELS) as Interest[]).map((key) => (
+                  <button
+                    key={key}
+                    className={interest === key ? 'active' : ''}
+                    aria-pressed={interest === key}
+                    onClick={() => setInterest(key)}
+                  >
+                    <Icon name={interestIcons[key]} size={16} />
+                    {local(INTEREST_LABELS[key], lang)}
+                  </button>
+                ))}
+              </div>
+              <label className="region-filter">
+                <Icon name="map" size={15} />
+                <select
+                  aria-label={t('Filter by region', 'กรองตามภูมิภาค')}
+                  value={region}
+                  onChange={(event) => setRegion(event.target.value as Region | 'All')}
+                >
+                  <option value="All">{t('All regions', 'ทุกภูมิภาค')}</option>
+                  {(Object.keys(REGION_LABELS) as Region[]).map((key) => (
+                    <option key={key} value={key}>
+                      {local(REGION_LABELS[key], lang)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            {hasFilters && (
+              <div className="active-filters">
+                <span>
+                  {t('Exploring', 'กำลังค้นหา')}: {query.trim() && `“${query.trim()}” `}
+                  {season !== 'All' && local(SEASON_LABELS[season], lang)}
+                </span>
+                <button onClick={resetFilters}>
+                  {t('Reset filters', 'ล้างตัวกรอง')}
+                  <Icon name="close" size={13} />
+                </button>
+              </div>
+            )}
+            <div className="destination-grid">
+              {visible.map((state) => (
+                <StateCard
+                  key={state.code}
+                  state={state}
+                  lang={lang}
+                  saved={favorites.includes(state.code)}
+                  onSave={() => saveState(state)}
+                  onSelect={() => setModal({ type: 'state', state })}
+                  onOpen={() => openDestination(state)}
+                />
               ))}
             </div>
-            <label className="region-filter">
-              <Icon name="map" size={15} />
-              <select
-                aria-label={t('Filter by region', 'กรองตามภูมิภาค')}
-                value={region}
-                onChange={(event) => setRegion(event.target.value as Region | 'All')}
-              >
-                <option value="All">{t('All regions', 'ทุกภูมิภาค')}</option>
-                {(Object.keys(REGION_LABELS) as Region[]).map((key) => (
-                  <option key={key} value={key}>
-                    {local(REGION_LABELS[key], lang)}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-          {hasFilters && (
-            <div className="active-filters">
-              <span>
-                {t('Exploring', 'กำลังค้นหา')}: {query.trim() && `“${query.trim()}” `}
-                {season !== 'All' && local(SEASON_LABELS[season], lang)}
-              </span>
-              <button onClick={resetFilters}>
-                {t('Reset filters', 'ล้างตัวกรอง')}
-                <Icon name="close" size={13} />
-              </button>
-            </div>
-          )}
-          <div className="destination-grid">
-            {visible.map((state) => (
-              <StateCard
-                key={state.code}
-                state={state}
-                lang={lang}
-                saved={favorites.includes(state.code)}
-                onSave={() => saveState(state)}
-                onSelect={() => setModal({ type: 'state', state })}
-              />
-            ))}
-          </div>
-          {filtered.length === 0 && (
-            <div className="empty-results">
-              <Icon name="compass" size={40} />
-              <h3>{t('A little detour?', 'ลองเปลี่ยนเส้นทางค้นหา')}</h3>
-              <p>
-                {t(
-                  'No states match this combination. Try another place, season, or experience.',
-                  'ยังไม่มีรัฐที่ตรงกับตัวกรองนี้ ลองชื่อสถานที่ ฤดูกาล หรือประสบการณ์อื่น',
-                )}
-              </p>
-              <button className="button button-navy" onClick={resetFilters}>
-                {t('Show all destinations', 'ดูจุดหมายทั้งหมด')}
-              </button>
-            </div>
-          )}
-          <div className="destination-footer">
-            <span aria-live="polite">
-              {visible.length} {t('of', 'จาก')} {filtered.length} {t('state guides', 'คู่มือรัฐ')}
-            </span>
-            {filtered.length > (hasFilters ? 8 : 4) && (
-              <button
-                className="button button-outline"
-                onClick={() => setShowAll((value) => !value)}
-              >
-                {showAll
-                  ? t('Show fewer places', 'แสดงน้อยลง')
-                  : hasFilters
-                    ? t('Explore all {count} matches', 'ดูทั้ง {count} รัฐที่พบ', {
-                        count: filtered.length,
-                      })
-                    : t('Explore all 50 states', 'สำรวจครบ 50 รัฐ')}
-                <Icon name={showAll ? 'minus' : 'arrow'} size={17} />
-              </button>
+            {filtered.length === 0 && (
+              <div className="empty-results">
+                <Icon name="compass" size={40} />
+                <h3>{t('A little detour?', 'ลองเปลี่ยนเส้นทางค้นหา')}</h3>
+                <p>
+                  {t(
+                    'No states match this combination. Try another place, season, or experience.',
+                    'ยังไม่มีรัฐที่ตรงกับตัวกรองนี้ ลองชื่อสถานที่ ฤดูกาล หรือประสบการณ์อื่น',
+                  )}
+                </p>
+                <button className="button button-navy" onClick={resetFilters}>
+                  {t('Show all destinations', 'ดูจุดหมายทั้งหมด')}
+                </button>
+              </div>
             )}
-            <select
-              aria-label={t('Sort destinations', 'เรียงลำดับจุดหมาย')}
-              value={sort}
-              onChange={(event) => setSort(event.target.value)}
-            >
-              <option value="curated">{t('Curated picks', 'ลำดับแนะนำ')}</option>
-              <option value="az">{t('Name: A to Z', 'ชื่อตาม A–Z')}</option>
-            </select>
+            <div className="destination-footer">
+              <span aria-live="polite">
+                {visible.length} {t('of', 'จาก')} {filtered.length} {t('state guides', 'คู่มือรัฐ')}
+              </span>
+              {filtered.length > (hasFilters ? 8 : 4) && (
+                <button
+                  className="button button-outline"
+                  onClick={() => setShowAll((value) => !value)}
+                >
+                  {showAll
+                    ? t('Show fewer places', 'แสดงน้อยลง')
+                    : hasFilters
+                      ? t('Explore all {count} matches', 'ดูทั้ง {count} รัฐที่พบ', {
+                          count: filtered.length,
+                        })
+                      : t('Explore all 50 states', 'สำรวจครบ 50 รัฐ')}
+                  <Icon name={showAll ? 'minus' : 'arrow'} size={17} />
+                </button>
+              )}
+              <select
+                aria-label={t('Sort destinations', 'เรียงลำดับจุดหมาย')}
+                value={sort}
+                onChange={(event) => setSort(event.target.value)}
+              >
+                <option value="curated">{t('Curated picks', 'ลำดับแนะนำ')}</option>
+                <option value="az">{t('Name: A to Z', 'ชื่อตาม A–Z')}</option>
+              </select>
+            </div>
+          </section>
+          <div className="adventure-ribbon" aria-hidden="true">
+            <span>TAKE THE LONG WAY HOME</span>
+            <span>✦</span>
+            <span>COLLECT MOMENTS, NOT MILES</span>
+            <span>✦</span>
+            <span>STAY A LITTLE CURIOUS</span>
+            <span>✦</span>
+            <span>TAKE THE LONG WAY HOME</span>
           </div>
-        </section>
-        <div className="adventure-ribbon" aria-hidden="true">
-          <span>TAKE THE LONG WAY HOME</span>
-          <span>✦</span>
-          <span>COLLECT MOMENTS, NOT MILES</span>
-          <span>✦</span>
-          <span>STAY A LITTLE CURIOUS</span>
-          <span>✦</span>
-          <span>TAKE THE LONG WAY HOME</span>
-        </div>
-        <Atlas
-          lang={lang}
-          motion={motion}
-          onSelect={(state) => setModal({ type: 'state', state })}
-        />
-        <RoadTrips lang={lang} onRoute={(id) => setModal({ type: 'route', id })} />
-        <PlannerBanner
-          lang={lang}
-          hasTrip={trip.stops.length > 0}
-          onPlan={() => setModal({ type: 'trip' })}
-        />
-        <FieldNotes lang={lang} onGuide={(id) => setModal({ type: 'guide', id })} />
-      </main>
+          <Atlas
+            lang={lang}
+            motion={motion}
+            onSelect={(state) => setModal({ type: 'state', state })}
+          />
+          <RoadTrips lang={lang} onRoute={(id) => setModal({ type: 'route', id })} />
+          <PlannerBanner
+            lang={lang}
+            hasTrip={trip.stops.length > 0}
+            onPlan={() => setModal({ type: 'trip' })}
+          />
+          <FieldNotes lang={lang} onGuide={(id) => setModal({ type: 'guide', id })} />
+        </main>
+      )}
       <Footer
         lang={lang}
         motion={motion}
@@ -614,11 +751,48 @@ export default function App() {
           onSave={saveState}
           onAdd={addState}
           onExplore={explore}
+          onOpenDestination={openDestination}
           storageFailed={storageFailed}
           notify={notify}
           toast={toast}
         />
       )}
+      <nav className="bottom-nav" aria-label={t('Quick navigation', 'เมนูด่วน')}>
+        <button
+          aria-current={!modal && activeSection === 'discover' ? 'page' : undefined}
+          onClick={() => goSection('destinations')}
+        >
+          <Icon name="compass" size={21} />
+          <span>{t('Discover', 'จุดหมาย')}</span>
+        </button>
+        <button
+          aria-current={!modal && activeSection === 'map' ? 'page' : undefined}
+          onClick={() => goSection('map')}
+        >
+          <Icon name="map" size={21} />
+          <span>{t('Map', 'แผนที่')}</span>
+        </button>
+        <button
+          aria-current={modal?.type === 'saved' ? 'page' : undefined}
+          onClick={() => setModal({ type: 'saved' })}
+        >
+          <span className="bottom-nav-icon">
+            <Icon name="heart" size={21} />
+            {!!favorites.length && <small>{favorites.length}</small>}
+          </span>
+          <span>{t('Saved', 'บันทึกแล้ว')}</span>
+        </button>
+        <button
+          aria-current={modal?.type === 'trip' ? 'page' : undefined}
+          onClick={() => setModal({ type: 'trip', daily: trip.stops.length > 0 })}
+        >
+          <span className="bottom-nav-icon">
+            <Icon name="bag" size={21} />
+            {!!trip.stops.length && <small>{trip.stops.length}</small>}
+          </span>
+          <span>{t('My trip', 'ทริปของฉัน')}</span>
+        </button>
+      </nav>
       <div className={`toast ${toast ? 'visible' : ''}`} role="status" aria-live="polite">
         {toast && (
           <>

@@ -630,5 +630,211 @@
     "目的地照片来自Unsplash和Wikimedia Commons，授权及作者信息见照片来源。州地图来自US Atlas。Roam不隶属于美国旅游机构，也不销售旅行预订。",
     "目的地の写真はUnsplashとWikimedia Commonsより。作者とライセンスは各出典で確認できます。州の地図はUS Atlasを使用。Roamは観光機関と提携しておらず、旅行予約を販売していません。",
     "여행지 사진은 Unsplash와 Wikimedia Commons에서 제공하며 출처에서 작가와 라이선스를 확인할 수 있습니다. 주 지도는 US Atlas를 사용합니다. Roam은 미국 관광 기관과 제휴하지 않으며 여행 예약을 판매하지 않습니다."
+  ],
+  "Explore all 50 states, save your favorite places, and build your own American adventure.": [
+    "探索美国全部50个州，收藏心仪地点，规划专属旅程。",
+    "全50州を探索し、お気に入りを保存して、自分だけのアメリカ旅行を計画しましょう。",
+    "미국 50개 주를 둘러보고 마음에 드는 장소를 저장해 나만의 여행을 계획하세요."
+  ],
+  "A trip can hold up to 200 activities.": [
+    "每个行程最多可添加200项活动。",
+    "1つの旅行に登録できるアクティビティは200件までです。",
+    "여행 하나에 활동을 최대 200개까지 추가할 수 있습니다."
+  ],
+  "Added to the first morning in this state. Adjust the day and time in your plan.": [
+    "已添加到本州行程第一天上午，可在计划中调整日期和时段。",
+    "この州での初日の午前に追加しました。日付と時間帯は計画で変更できます。",
+    "이 주에서의 첫날 오전에 추가했습니다. 계획에서 날짜와 시간대를 변경하세요."
+  ],
+  "Quick navigation": ["快捷导航", "クイックナビゲーション", "빠른 탐색"],
+  "Map": ["地图", "地図", "지도"],
+  "Morning": ["上午", "午前", "오전"],
+  "Afternoon": ["下午", "午後", "오후"],
+  "Evening": ["晚上", "夜", "저녁"],
+  "Add a state to start planning your days.": [
+    "添加一个州，开始规划每日行程。",
+    "州を追加して、毎日の予定を立てましょう。",
+    "주를 추가해 일일 계획을 시작하세요."
+  ],
+  "Activity added to your day.": [
+    "已添加到当日行程。",
+    "この日の予定に追加しました。",
+    "오늘의 계획에 활동을 추가했습니다."
+  ],
+  "ONE DAY AT A TIME": ["一天一天，慢慢探索", "一日ずつ、旅をつくる", "하루씩 만드는 여행"],
+  "A little structure. Room to roam.": [
+    "有计划，也留点自由。",
+    "予定と、気ままな時間を。",
+    "계획 사이에 여유를 남겨요."
+  ],
+  "Planning state": ["正在规划的州", "計画する州", "계획할 주"],
+  "Choose a day": ["选择日期", "日を選択", "날짜 선택"],
+  "Day": ["行程日", "日程", "여행일"],
+  "activities": ["项活动", "件の予定", "개 활동"],
+  "minutes planned": ["分钟已安排", "分の予定", "분 계획됨"],
+  "A long day: allow more time or move an activity to another day.": [
+    "这一天安排较满，建议预留更多时间或将活动移到其他日期。",
+    "予定が長時間に及びます。余裕を持たせるか、別の日に移動しましょう。",
+    "일정이 긴 날입니다. 시간을 더 확보하거나 활동을 다른 날로 옮기세요."
+  ],
+  "Choose a place or custom activity": [
+    "选择地点或自定义活动",
+    "場所または自由な予定を選択",
+    "장소 또는 직접 만든 활동 선택"
+  ],
+  "Custom activity": ["自定义活动", "自由な予定", "직접 만든 활동"],
+  "Activity name": ["活动名称", "予定の名前", "활동 이름"],
+  "Coffee, a museum, a slow afternoon…": [
+    "咖啡、博物馆、悠闲的午后……",
+    "カフェ、美術館、のんびりした午後…",
+    "커피, 박물관, 느긋한 오후…"
+  ],
+  "Time of day": ["时段", "時間帯", "시간대"],
+  "Duration in minutes": ["时长（分钟）", "所要時間（分）", "소요 시간(분)"],
+  "Add activity": ["添加活动", "予定を追加", "활동 추가"],
+  "Drag activities to reorder or move between time slots. Arrow buttons and day selectors also work on touch screens and with a keyboard.": [
+    "拖动活动可排序或更换时段。触屏和键盘也可通过箭头按钮及日期选项操作。",
+    "予定をドラッグして順番や時間帯を変更できます。タッチ操作やキーボードでは、矢印ボタンと日付の選択も使えます。",
+    "활동을 끌어 순서나 시간대를 바꾸세요. 터치 화면과 키보드에서는 화살표 버튼과 날짜 선택도 사용할 수 있습니다."
+  ],
+  "Leave some room for discovery.": [
+    "留一点空白，遇见惊喜。",
+    "新しい出会いの余白を。",
+    "새로운 발견을 위한 여유를 남겨요."
+  ],
+  "Remove activity": ["删除活动", "予定を削除", "활동 삭제"],
+  "Day in this state": ["在本州的日期", "この州での日程", "이 주에서의 날짜"],
+  "Day for": ["日期：", "日程：", "날짜:"],
+  "Time slot for": ["时段：", "時間帯：", "시간대:"],
+  "Minutes": ["分钟", "分", "분"],
+  "Duration for": ["时长：", "所要時間：", "소요 시간:"],
+  "Rename activity": ["重命名活动", "予定の名前を変更", "활동 이름 변경"],
+  "Personal notes": ["个人笔记", "自分用メモ", "개인 메모"],
+  "Activity notes for": ["活动笔记：", "予定のメモ：", "활동 메모:"],
+  "minutes": ["分钟", "分", "분"],
+  "Move activity up": ["上移活动", "予定を上に移動", "활동 위로 이동"],
+  "Move activity down": ["下移活动", "予定を下に移動", "활동 아래로 이동"],
+  "Connect the dots": ["串起今日的目的地", "今日の目的地をつなぐ", "오늘의 목적지 연결하기"],
+  "Directions from previous stop": [
+    "从上一站出发的路线",
+    "前の地点からの経路",
+    "이전 장소에서 오는 길"
+  ],
+  "Guide link copied.": [
+    "攻略链接已复制。",
+    "ガイドのリンクをコピーしました。",
+    "가이드 링크를 복사했습니다."
+  ],
+  "All destinations": ["全部目的地", "すべての目的地", "모든 목적지"],
+  "View fullscreen": ["全屏查看", "全画面で見る", "전체 화면 보기"],
+  "A LITTLE FURTHER": ["再走远一点", "もう少し先へ", "조금 더 멀리"],
+  "Find your kind of adventure.": [
+    "找到属于你的旅行方式。",
+    "自分らしい冒険を見つけよう。",
+    "나만의 여행을 찾아보세요."
+  ],
+  "Make time for this place.": [
+    "为这里留出时间。",
+    "この場所を楽しむ時間を。",
+    "이곳을 위한 시간을 남겨두세요."
+  ],
+  "Suggested days in this state": [
+    "本州建议游玩天数",
+    "この州での滞在日数の目安",
+    "이 주의 추천 여행 일수"
+  ],
+  "Choose your activities and allow travel time between stops. Add this destination to a day, then adjust the duration to suit your visit.": [
+    "选择活动并预留各站之间的交通时间。将此地点加入某一天，再根据游览安排调整时长。",
+    "行いたいことを選び、移動時間も確保しましょう。この場所を一日の予定に加え、訪問に合わせて所要時間を調整できます。",
+    "활동을 고르고 장소 사이의 이동 시간도 확보하세요. 이 목적지를 일일 계획에 추가한 뒤 방문에 맞게 시간을 조정하세요."
+  ],
+  "Add to daily plan": ["加入每日行程", "一日の予定に追加", "일일 계획에 추가"],
+  "Open in Maps": ["在地图中打开", "地図で開く", "지도에서 열기"],
+  "Open full guide": ["打开完整攻略", "ガイドのページを開く", "전체 가이드 열기"],
+  "Location reference": ["位置参考来源", "位置情報の出典", "위치 참고 자료"],
+  "Leave room for local flavors.": [
+    "为当地风味留点胃口。",
+    "地元の味を楽しむ余裕を。",
+    "현지의 맛을 즐길 여유를 남겨요."
+  ],
+  "Before you set off.": ["出发之前。", "出発の前に。", "출발하기 전에."],
+  "Check before you book": ["预订前请确认", "予約前に確認", "예약 전 확인"],
+  "Check opening hours, admission, timed-entry reservations, transport, and seasonal access with official sources. The duration and seasons here are editorial starting points.": [
+    "请通过官方渠道确认开放时间、门票、分时预约、交通和季节性通行情况。此处的天数和季节仅为行程规划建议。",
+    "営業時間、入場料、日時指定予約、交通手段、季節による通行状況を公式情報で確認してください。日数と季節は編集上の目安です。",
+    "공식 안내에서 운영 시간, 입장료, 시간 지정 예약, 교통편, 계절별 접근 여부를 확인하세요. 이곳의 기간과 계절은 계획을 위한 제안입니다."
+  ],
+  "YOUR NEXT CHAPTER": ["旅程的下一章", "旅の次の章へ", "여행의 다음 장"],
+  "Put it on the itinerary.": [
+    "把这里写进行程。",
+    "旅の予定に加えよう。",
+    "여행 계획에 담아보세요."
+  ],
+  "Build a day-by-day plan with places, personal notes, and time to explore.": [
+    "按天安排地点、个人笔记和游玩时间。",
+    "場所、メモ、楽しむ時間を一日ずつ計画しましょう。",
+    "장소와 개인 메모, 둘러볼 시간을 담아 하루씩 계획하세요."
+  ],
+  "View my trip": ["查看我的行程", "自分の旅行を見る", "내 여행 보기"],
+  "Save this state": ["收藏这个州", "この州を保存", "이 주 저장"],
+  "Share this guide": ["分享攻略", "ガイドを共有", "가이드 공유"],
+  "Copy this link": ["复制此链接", "このリンクをコピー", "이 링크 복사"],
+  "More in this state": ["本州更多目的地", "この州のほかの目的地", "이 주의 다른 목적지"],
+  "Fullscreen gallery": ["全屏相册", "全画面ギャラリー", "전체 화면 갤러리"],
+  "Zoom photo": ["缩放照片", "写真を拡大・縮小", "사진 확대 및 축소"],
+  "Close gallery": ["关闭相册", "ギャラリーを閉じる", "갤러리 닫기"],
+  "Photo unavailable. Try another image or open the source below.": [
+    "照片暂时无法加载，请查看其他照片或打开下方来源。",
+    "写真を読み込めません。別の写真を選ぶか、下の出典を開いてください。",
+    "사진을 불러올 수 없습니다. 다른 사진을 선택하거나 아래 출처를 여세요."
+  ],
+  "Previous photo": ["上一张", "前の写真", "이전 사진"],
+  "Next photo": ["下一张", "次の写真", "다음 사진"],
+  "Zoom in map": ["放大地图", "地図を拡大", "지도 확대"],
+  "Zoom out map": ["缩小地图", "地図を縮小", "지도 축소"],
+  "Destination map": ["目的地地图", "目的地の地図", "목적지 지도"],
+  "Hide map": ["隐藏地图", "地図を隠す", "지도 숨기기"],
+  "Show map": ["显示地图", "地図を表示", "지도 표시"],
+  "Calculating route…": ["正在计算路线……", "経路を計算中…", "경로 계산 중…"],
+  "Calculate driving route": ["计算驾车路线", "車の経路を計算", "자동차 경로 계산"],
+  "Interactive map": ["互动地图", "操作できる地図", "인터랙티브 지도"],
+  "Map tiles could not load. Destination links are still available.": [
+    "地图图像无法加载，目的地链接仍可使用。",
+    "地図画像を読み込めません。目的地のリンクは利用できます。",
+    "지도 이미지를 불러오지 못했습니다. 목적지 링크는 사용할 수 있습니다."
+  ],
+  "No driving route is available right now. Try again or open directions below. Islands and remote areas may need a boat, flight, or a different entrance.": [
+    "暂时无法获取驾车路线，请重试或打开下方路线。岛屿及偏远地区可能需要船只、航班或其他入口。",
+    "現在、車の経路を取得できません。再試行するか、下の経路リンクを開いてください。島や遠隔地では船、飛行機、別の入口が必要な場合があります。",
+    "현재 자동차 경로를 찾을 수 없습니다. 다시 시도하거나 아래 길 안내를 여세요. 섬이나 외딴 지역은 배, 항공편 또는 다른 입구가 필요할 수 있습니다."
+  ],
+  "minutes driving": ["分钟车程", "分の運転", "분 운전"],
+  "Activity time": ["活动时间", "予定の所要時間", "활동 시간"],
+  "Driving time": ["驾车时间", "運転時間", "운전 시간"],
+  "Pins mark approximate destination areas, not entrances. Confirm your parking or access point before traveling.": [
+    "地图标记代表目的地区域的大致位置，并非入口。出发前请确认停车场或实际入口。",
+    "ピンは目的地のおおよその位置で、入口ではありません。出発前に駐車場やアクセス地点を確認してください。",
+    "핀은 목적지 지역의 대략적인 위치이며 입구가 아닙니다. 여행 전에 주차장이나 진입 지점을 확인하세요."
+  ],
+  "Use 2–10 mapped stops. Driving estimates exclude live traffic, breaks, and seasonal closures. Custom activities are not included. Requests send these coordinates to the routing service.": [
+    "支持2至10个地图地点。车程估算不含实时路况、休息或季节性封路，自定义活动不参与计算。查询会将这些坐标发送给路线服务。",
+    "地図上の地点を2〜10か所指定してください。運転時間にはリアルタイムの渋滞、休憩、季節閉鎖を含みません。自由な予定は計算対象外です。計算時に座標を経路サービスへ送信します。",
+    "지도에 표시된 장소 2~10곳을 사용하세요. 운전 예상 시간에는 실시간 교통, 휴식, 계절별 폐쇄가 반영되지 않습니다. 직접 만든 활동은 제외됩니다. 계산 시 좌표가 경로 서비스로 전송됩니다."
+  ],
+  "Improve the map": ["完善地图", "地図を改善", "지도 정보 개선"],
+  "Service privacy": ["服务隐私政策", "サービスのプライバシー", "서비스 개인정보 처리방침"],
+  "Full guide": ["完整攻略", "詳細ガイド", "전체 가이드"],
+  "This file is too large. Choose a Roam backup under 1 MB.": [
+    "文件过大，请选择小于1 MB的Roam备份。",
+    "ファイルが大きすぎます。1 MB未満のRoamバックアップを選んでください。",
+    "파일이 너무 큽니다. 1 MB 미만의 Roam 백업을 선택하세요."
+  ],
+  "Planner view": ["计划视图", "プランナー表示", "플래너 보기"],
+  "Trip overview": ["行程概览", "旅行の概要", "여행 개요"],
+  "Daily plan": ["每日行程", "一日の予定", "일일 계획"],
+  "To shorten a state stay, first move or remove activities on its last day in the daily plan.": [
+    "如需缩短在某州的停留时间，请先在每日行程中移走或删除最后一天的活动。",
+    "州での滞在日数を減らすには、先に最後の日の予定を移動または削除してください。",
+    "주에서의 숙박 일수를 줄이려면 먼저 일일 계획에서 마지막 날의 활동을 옮기거나 삭제하세요."
   ]
 }

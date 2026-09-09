@@ -10,6 +10,7 @@ export type IconName =
   | 'compass'
   | 'mountain'
   | 'sun'
+  | 'moon'
   | 'city'
   | 'waves'
   | 'route'
@@ -34,6 +35,7 @@ export type IconName =
   | 'map'
   | 'book';
 const paths: Record<IconName, React.ReactNode> = {
+  moon: <path d="M20 14A9 9 0 0 1 10 3 9 9 0 1 0 20 14Z" />,
   arrow: (
     <>
       <path d="M4 12h16m-6-6 6 6-6 6" />

@@ -248,8 +248,11 @@ test('reduced motion, readable guides, focus trapping and mobile navigation', as
   await expect(page.locator('.site')).toHaveAttribute('data-motion', 'paused');
   if (isMobile) {
     await page.getByRole('button', { name: 'Toggle navigation' }).click();
-    await expect(page.getByRole('navigation')).toBeVisible();
-    await page.getByRole('navigation').getByRole('link', { name: 'Field notes' }).click();
+    await expect(page.getByRole('navigation', { name: 'Main navigation' })).toBeVisible();
+    await page
+      .getByRole('navigation', { name: 'Main navigation' })
+      .getByRole('link', { name: 'Field notes' })
+      .click();
     await expect(page.getByRole('button', { name: 'Toggle navigation' })).toHaveAttribute(
       'aria-expanded',
       'false',

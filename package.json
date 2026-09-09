@@ -16,12 +16,14 @@
     "check:content": "node scripts/check-content.mjs"
   },
   "dependencies": {
+    "leaflet": "^1.9.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.63.0",
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^22.14.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",

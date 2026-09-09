@@ -1,4 +1,4 @@
-import { EMPTY_TRIP, STATES, type Trip, type TripStop } from '../data/travel';
+import { EMPTY_TRIP, STATES, type Trip, type TripStop, type TripActivity } from '../data/travel';
 const codes = new Set(STATES.map((state) => state.code));
 export function readLocal<T>(key: string, fallback: T, validate: (data: unknown) => T): T {
   try {
@@ -27,6 +27,7 @@ export function validateTrip(value: unknown): Trip {
   const trip = value as Record<string, unknown>;
   if (!Array.isArray(trip.stops) || trip.stops.length > 50) throw new Error('Invalid stops');
   const seen = new Set<string>();
+  const activityIds = new Set<string>();
   const stops: TripStop[] = trip.stops.map((raw: unknown) => {
     if (!raw || typeof raw !== 'object') throw new Error('Invalid stop');
     const stop = raw as Record<string, unknown>;
@@ -43,7 +44,51 @@ export function validateTrip(value: unknown): Trip {
     )
       throw new Error('Invalid stop');
     seen.add(stop.code);
-    return { code: stop.code, days: stop.days, notes: stop.notes };
+    const result: TripStop = { code: stop.code, days: stop.days, notes: stop.notes };
+    if (stop.activities !== undefined) {
+      if (!Array.isArray(stop.activities) || stop.activities.length > 200)
+        throw new Error('Invalid activities');
+      result.activities = stop.activities.map((raw: unknown): TripActivity => {
+        if (!raw || typeof raw !== 'object') throw new Error('Invalid activity');
+        const a = raw as Record<string, unknown>;
+        if (
+          typeof a.id !== 'string' ||
+          !/^[a-zA-Z0-9-]{1,80}$/.test(a.id) ||
+          activityIds.has(a.id) ||
+          activityIds.size >= 200 ||
+          typeof a.day !== 'number' ||
+          !Number.isInteger(a.day) ||
+          a.day < 1 ||
+          a.day > result.days ||
+          !['morning', 'afternoon', 'evening'].includes(a.period as string) ||
+          typeof a.title !== 'string' ||
+          !a.title.trim() ||
+          a.title.length > 120 ||
+          typeof a.minutes !== 'number' ||
+          !Number.isInteger(a.minutes) ||
+          a.minutes < 15 ||
+          a.minutes > 720 ||
+          typeof a.notes !== 'string' ||
+          a.notes.length > 500 ||
+          (a.placeId !== undefined &&
+            (typeof a.placeId !== 'string' ||
+              !/^[A-Z]{2}-[0-2]$/.test(a.placeId) ||
+              !codes.has(a.placeId.slice(0, 2))))
+        )
+          throw new Error('Invalid activity');
+        activityIds.add(a.id);
+        return {
+          id: a.id,
+          day: a.day,
+          period: a.period as TripActivity['period'],
+          title: a.title.trim(),
+          minutes: a.minutes,
+          notes: a.notes,
+          ...(typeof a.placeId === 'string' ? { placeId: a.placeId } : {}),
+        };
+      });
+    }
+    return result;
   });
   if (
     typeof trip.name !== 'string' ||

@@ -2,7 +2,10 @@ import { defineConfig } from 'vite';
 import { studioPlugin } from './studio/server';
 export default defineConfig(({ mode }) => ({
   cacheDir: mode === 'studio' ? 'node_modules/.vite-studio' : 'node_modules/.vite',
-  optimizeDeps: { entries: ['index.html'] },
+  optimizeDeps: {
+    entries: ['index.html'],
+    include: ['react', 'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime'],
+  },
   plugins:
     mode === 'studio' ? [studioPlugin(process.env.STUDIO_CONTENT_ROOT || process.cwd())] : [],
   build: {

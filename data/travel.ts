@@ -72,6 +72,17 @@ export interface TripStop {
   code: string;
   days: number;
   notes: string;
+  activities?: TripActivity[];
+}
+export type DayPeriod = 'morning' | 'afternoon' | 'evening';
+export interface TripActivity {
+  id: string;
+  day: number;
+  period: DayPeriod;
+  placeId?: string;
+  title: string;
+  minutes: number;
+  notes: string;
 }
 export interface Trip {
   name: string;

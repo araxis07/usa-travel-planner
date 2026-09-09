@@ -5,6 +5,8 @@ import { EMPTY_TRIP, STATES, stateName, type Language, type Trip } from '../data
 import { downloadFile, tripDays, validateTrip, validDate } from '../lib/storage';
 import Icon from './Icon';
 import { StateShape, regionColors } from './Atlas';
+import DailyPlanner from './DailyPlanner';
+import { activityName, sortedActivities } from '../lib/destinations';
 
 export default function TripPlanner({
   trip,
@@ -13,6 +15,8 @@ export default function TripPlanner({
   onExplore,
   storageFailed,
   notify,
+  initialDaily = false,
+  initialCode,
 }: {
   trip: Trip;
   setTrip: (trip: Trip) => void;
@@ -20,10 +24,13 @@ export default function TripPlanner({
   onExplore: () => void;
   storageFailed: boolean;
   notify: (message: string) => void;
+  initialDaily?: boolean;
+  initialCode?: string;
 }) {
   const t = (en: string, th: string, values?: Record<string, string | number>) =>
     translate(en, th, lang, values);
   const [confirmClear, setConfirmClear] = useState(false);
+  const [daily, setDaily] = useState(initialDaily);
   const [pendingImport, setPendingImport] = useState<Trip | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const days = tripDays(trip);
@@ -61,6 +68,10 @@ export default function TripPlanner({
           `${index + 1}. ${stateName(state, lang)} — ${stop.days} ${t('days', 'วัน')}`,
           `   ${statePlaces(state, lang).join(' / ')}`,
           stop.notes ? `   ${stop.notes}` : '',
+          ...sortedActivities(stop.activities ?? []).map(
+            (a) =>
+              `   ${t('Day', 'วันที่')} ${a.day} · ${a.period === 'morning' ? t('Morning', 'เช้า') : a.period === 'afternoon' ? t('Afternoon', 'บ่าย') : t('Evening', 'เย็น')} · ${activityName(a, lang)} · ${a.minutes} ${t('minutes', 'นาที')}${a.notes ? ` — ${a.notes}` : ''}`,
+          ),
           '',
         ];
       }),
@@ -82,18 +93,18 @@ export default function TripPlanner({
     const file = event.target.files?.[0];
     event.target.value = '';
     if (!file) return;
-    if (file.size > 150000) {
+    if (file.size > 1000000) {
       notify(
         t(
-          'This file is too large. Choose a Roam backup under 150 KB.',
-          'ไฟล์ใหญ่เกินไป กรุณาเลือกไฟล์สำรอง Roam ไม่เกิน 150 KB',
+          'This file is too large. Choose a Roam backup under 1 MB.',
+          'ไฟล์ใหญ่เกินไป กรุณาเลือกไฟล์สำรอง Roam ไม่เกิน 1 MB',
         ),
       );
       return;
     }
     try {
       const json = JSON.parse(await file.text());
-      if (json.version !== 1) throw new Error('Unsupported version');
+      if (![1, 2].includes(json.version)) throw new Error('Unsupported version');
       setPendingImport(validateTrip(json.trip));
     } catch {
       notify(
@@ -124,233 +135,275 @@ export default function TripPlanner({
             )
           : t('Saved automatically on this browser', 'บันทึกอัตโนมัติในเบราว์เซอร์นี้')}
       </p>
-      <div className="planner-settings">
-        <label className="trip-name-label">
-          {t('GIVE YOUR TRIP A NAME', 'ตั้งชื่อทริป')}
-          <input
-            aria-label={t('Trip name', 'ชื่อทริป')}
-            placeholder={t('My American adventure', 'ทริปอเมริกาของฉัน')}
-            value={trip.name}
-            maxLength={80}
-            onChange={(event) => update({ name: event.target.value })}
-          />
-        </label>
-        <div className="planner-fields">
-          <label>
-            <Icon name="calendar" size={16} />
-            {t('Start date', 'วันเริ่มทริป')}
-            <input
-              aria-label={t('Start date', 'วันเริ่มทริป')}
-              type="date"
-              value={trip.startDate}
-              onChange={(event) => {
-                if (event.target.value === '' || validDate(event.target.value))
-                  update({ startDate: event.target.value });
-              }}
-            />
-          </label>
-          <label>
-            <Icon name="users" size={16} />
-            {t('Travelers', 'ผู้เดินทาง')}
-            <input
-              aria-label={t('Travelers', 'ผู้เดินทาง')}
-              type="number"
-              min="1"
-              max="20"
-              value={trip.travelers}
-              onChange={(event) =>
-                update({
-                  travelers: Math.max(1, Math.min(20, Math.round(Number(event.target.value) || 1))),
-                })
-              }
-            />
-          </label>
-          <label>
-            <Icon name="dollar" size={16} />
-            {t('USD / person / day', 'USD / คน / วัน')}
-            <input
-              aria-label={t('Daily budget in USD', 'งบรายวัน USD')}
-              type="number"
-              min="0"
-              max="10000"
-              value={trip.dailyBudget}
-              onChange={(event) =>
-                update({
-                  dailyBudget: Math.max(0, Math.min(10000, Number(event.target.value) || 0)),
-                })
-              }
-            />
-          </label>
-        </div>
+      <div className="planner-tabs" role="group" aria-label={t('Planner view', 'มุมมองแผนเที่ยว')}>
+        <button aria-pressed={!daily} onClick={() => setDaily(false)}>
+          <Icon name="route" size={17} />
+          {t('Trip overview', 'ภาพรวมทริป')}
+        </button>
+        <button aria-pressed={daily} onClick={() => setDaily(true)}>
+          <Icon name="calendar" size={17} />
+          {t('Daily plan', 'แผนรายวัน')}
+        </button>
       </div>
-      {trip.stops.length === 0 ? (
-        <div className="planner-empty">
-          <span className="empty-compass">
-            <Icon name="route" size={42} />
-          </span>
-          <h3>{t('Every adventure starts somewhere.', 'ทุกการเดินทางมีจุดเริ่มต้น')}</h3>
-          <p>
-            {t(
-              'Explore a state and add it to your trip. Your days, notes, and route will come together here.',
-              'สำรวจรัฐที่ชอบแล้วเพิ่มในทริป วันเที่ยว โน้ต และเส้นทางจะรวมอยู่ที่นี่',
-            )}
-          </p>
-          <button className="button button-red" onClick={onExplore}>
-            {t('Find my first stop', 'ค้นหาจุดหมายแรก')}
-            <Icon name="arrow" size={17} />
-          </button>
+      {daily && (
+        <DailyPlanner
+          trip={trip}
+          setTrip={setTrip}
+          lang={lang}
+          initialCode={initialCode}
+          notify={notify}
+        />
+      )}
+      <div hidden={daily}>
+        <div className="planner-settings">
+          <label className="trip-name-label">
+            {t('GIVE YOUR TRIP A NAME', 'ตั้งชื่อทริป')}
+            <input
+              aria-label={t('Trip name', 'ชื่อทริป')}
+              placeholder={t('My American adventure', 'ทริปอเมริกาของฉัน')}
+              value={trip.name}
+              maxLength={80}
+              onChange={(event) => update({ name: event.target.value })}
+            />
+          </label>
+          <div className="planner-fields">
+            <label>
+              <Icon name="calendar" size={16} />
+              {t('Start date', 'วันเริ่มทริป')}
+              <input
+                aria-label={t('Start date', 'วันเริ่มทริป')}
+                type="date"
+                value={trip.startDate}
+                onChange={(event) => {
+                  if (event.target.value === '' || validDate(event.target.value))
+                    update({ startDate: event.target.value });
+                }}
+              />
+            </label>
+            <label>
+              <Icon name="users" size={16} />
+              {t('Travelers', 'ผู้เดินทาง')}
+              <input
+                aria-label={t('Travelers', 'ผู้เดินทาง')}
+                type="number"
+                min="1"
+                max="20"
+                value={trip.travelers}
+                onChange={(event) =>
+                  update({
+                    travelers: Math.max(
+                      1,
+                      Math.min(20, Math.round(Number(event.target.value) || 1)),
+                    ),
+                  })
+                }
+              />
+            </label>
+            <label>
+              <Icon name="dollar" size={16} />
+              {t('USD / person / day', 'USD / คน / วัน')}
+              <input
+                aria-label={t('Daily budget in USD', 'งบรายวัน USD')}
+                type="number"
+                min="0"
+                max="10000"
+                value={trip.dailyBudget}
+                onChange={(event) =>
+                  update({
+                    dailyBudget: Math.max(0, Math.min(10000, Number(event.target.value) || 0)),
+                  })
+                }
+              />
+            </label>
+          </div>
         </div>
-      ) : (
-        <>
-          <div className="planner-stops-heading">
-            <h3>
-              {t('Your journey', 'เส้นทางของคุณ')}{' '}
-              <span>
-                {trip.stops.length} {t('states', 'รัฐ')}
-              </span>
-            </h3>
-            <button className="text-link" onClick={onExplore}>
-              <Icon name="plus" size={15} />
-              {t('Add a stop', 'เพิ่มจุดหมาย')}
+        {trip.stops.length === 0 ? (
+          <div className="planner-empty">
+            <span className="empty-compass">
+              <Icon name="route" size={42} />
+            </span>
+            <h3>{t('Every adventure starts somewhere.', 'ทุกการเดินทางมีจุดเริ่มต้น')}</h3>
+            <p>
+              {t(
+                'Explore a state and add it to your trip. Your days, notes, and route will come together here.',
+                'สำรวจรัฐที่ชอบแล้วเพิ่มในทริป วันเที่ยว โน้ต และเส้นทางจะรวมอยู่ที่นี่',
+              )}
+            </p>
+            <button className="button button-red" onClick={onExplore}>
+              {t('Find my first stop', 'ค้นหาจุดหมายแรก')}
+              <Icon name="arrow" size={17} />
             </button>
           </div>
-          <ol className="trip-stops">
-            {trip.stops.map((stop, index) => {
-              const state = STATES.find((item) => item.code === stop.code)!;
-              const offset = trip.stops
-                .slice(0, index)
-                .reduce((total, item) => total + item.days, 0);
-              return (
-                <li key={stop.code} className="trip-stop">
-                  <span className="stop-number">{String(index + 1).padStart(2, '0')}</span>
-                  <div className="stop-body">
-                    <div className="stop-top">
-                      <div
-                        className="stop-thumbnail"
-                        style={{ background: regionColors[state.region] }}
-                      >
-                        {statePhoto(state) ? (
-                          <img src={statePhoto(state).src} alt="" />
-                        ) : (
-                          <StateShape state={state} />
+        ) : (
+          <>
+            <div className="planner-stops-heading">
+              <h3>
+                {t('Your journey', 'เส้นทางของคุณ')}{' '}
+                <span>
+                  {trip.stops.length} {t('states', 'รัฐ')}
+                </span>
+              </h3>
+              <button className="text-link" onClick={onExplore}>
+                <Icon name="plus" size={15} />
+                {t('Add a stop', 'เพิ่มจุดหมาย')}
+              </button>
+            </div>
+            <ol className="trip-stops">
+              {trip.stops.map((stop, index) => {
+                const state = STATES.find((item) => item.code === stop.code)!;
+                const offset = trip.stops
+                  .slice(0, index)
+                  .reduce((total, item) => total + item.days, 0);
+                return (
+                  <li key={stop.code} className="trip-stop">
+                    <span className="stop-number">{String(index + 1).padStart(2, '0')}</span>
+                    <div className="stop-body">
+                      <div className="stop-top">
+                        <div
+                          className="stop-thumbnail"
+                          style={{ background: regionColors[state.region] }}
+                        >
+                          {statePhoto(state) ? (
+                            <img src={statePhoto(state).src} alt="" />
+                          ) : (
+                            <StateShape state={state} />
+                          )}
+                        </div>
+                        <div className="stop-title">
+                          <span>
+                            {t('DAY', 'วันที่')} {offset + 1}
+                            {stop.days > 1 ? `–${offset + stop.days}` : ''}
+                            {trip.startDate ? ` · ${dateAt(offset)}` : ''}
+                          </span>
+                          <h4>{stateName(state, lang)}</h4>
+                        </div>
+                        <button
+                          className="icon-button"
+                          aria-label={`${t('Remove', 'ลบ')} ${state.name}`}
+                          onClick={() =>
+                            update({ stops: trip.stops.filter((item) => item.code !== stop.code) })
+                          }
+                        >
+                          <Icon name="close" size={17} />
+                        </button>
+                      </div>
+                      <p className="stop-places">{statePlaces(state, lang).join(' · ')}</p>
+                      <div className="stop-controls">
+                        <div className="day-stepper">
+                          <button
+                            aria-label={`${t('Fewer days in', 'ลดวันใน')} ${state.name}`}
+                            disabled={
+                              stop.days === 1 || !!stop.activities?.some((a) => a.day === stop.days)
+                            }
+                            onClick={() =>
+                              update({
+                                stops: trip.stops.map((item) =>
+                                  item.code === stop.code ? { ...item, days: item.days - 1 } : item,
+                                ),
+                              })
+                            }
+                          >
+                            <Icon name="minus" size={14} />
+                          </button>
+                          <span>
+                            {stop.days} {t('days', 'วัน')}
+                          </span>
+                          <button
+                            aria-label={`${t('More days in', 'เพิ่มวันใน')} ${state.name}`}
+                            disabled={stop.days === 30}
+                            onClick={() =>
+                              update({
+                                stops: trip.stops.map((item) =>
+                                  item.code === stop.code ? { ...item, days: item.days + 1 } : item,
+                                ),
+                              })
+                            }
+                          >
+                            <Icon name="plus" size={14} />
+                          </button>
+                        </div>
+                        <div className="reorder-buttons">
+                          <button
+                            className="icon-button"
+                            disabled={index === 0}
+                            aria-label={`${t('Move up', 'เลื่อนขึ้น')} ${state.name}`}
+                            onClick={() => move(index, -1)}
+                          >
+                            <Icon name="arrow-up" size={15} />
+                          </button>
+                          <button
+                            className="icon-button"
+                            disabled={index === trip.stops.length - 1}
+                            aria-label={`${t('Move down', 'เลื่อนลง')} ${state.name}`}
+                            onClick={() => move(index, 1)}
+                          >
+                            <Icon name="arrow-down" size={15} />
+                          </button>
+                        </div>
+                      </div>
+                      <textarea
+                        aria-label={`${t('Notes for', 'โน้ตสำหรับ')} ${state.name}`}
+                        placeholder={t(
+                          'A café to try, a place to stay, a little reminder…',
+                          'คาเฟ่ที่อยากลอง ที่พัก หรือสิ่งที่ต้องจำ…',
                         )}
-                      </div>
-                      <div className="stop-title">
-                        <span>
-                          {t('DAY', 'วันที่')} {offset + 1}
-                          {stop.days > 1 ? `–${offset + stop.days}` : ''}
-                          {trip.startDate ? ` · ${dateAt(offset)}` : ''}
-                        </span>
-                        <h4>{stateName(state, lang)}</h4>
-                      </div>
-                      <button
-                        className="icon-button"
-                        aria-label={`${t('Remove', 'ลบ')} ${state.name}`}
-                        onClick={() =>
-                          update({ stops: trip.stops.filter((item) => item.code !== stop.code) })
+                        maxLength={1000}
+                        rows={2}
+                        value={stop.notes}
+                        onChange={(event) =>
+                          update({
+                            stops: trip.stops.map((item) =>
+                              item.code === stop.code
+                                ? { ...item, notes: event.target.value }
+                                : item,
+                            ),
+                          })
                         }
-                      >
-                        <Icon name="close" size={17} />
-                      </button>
+                      />
                     </div>
-                    <p className="stop-places">{statePlaces(state, lang).join(' · ')}</p>
-                    <div className="stop-controls">
-                      <div className="day-stepper">
-                        <button
-                          aria-label={`${t('Fewer days in', 'ลดวันใน')} ${state.name}`}
-                          disabled={stop.days === 1}
-                          onClick={() =>
-                            update({
-                              stops: trip.stops.map((item) =>
-                                item.code === stop.code ? { ...item, days: item.days - 1 } : item,
-                              ),
-                            })
-                          }
-                        >
-                          <Icon name="minus" size={14} />
-                        </button>
-                        <span>
-                          {stop.days} {t('days', 'วัน')}
-                        </span>
-                        <button
-                          aria-label={`${t('More days in', 'เพิ่มวันใน')} ${state.name}`}
-                          disabled={stop.days === 30}
-                          onClick={() =>
-                            update({
-                              stops: trip.stops.map((item) =>
-                                item.code === stop.code ? { ...item, days: item.days + 1 } : item,
-                              ),
-                            })
-                          }
-                        >
-                          <Icon name="plus" size={14} />
-                        </button>
-                      </div>
-                      <div className="reorder-buttons">
-                        <button
-                          className="icon-button"
-                          disabled={index === 0}
-                          aria-label={`${t('Move up', 'เลื่อนขึ้น')} ${state.name}`}
-                          onClick={() => move(index, -1)}
-                        >
-                          <Icon name="arrow-up" size={15} />
-                        </button>
-                        <button
-                          className="icon-button"
-                          disabled={index === trip.stops.length - 1}
-                          aria-label={`${t('Move down', 'เลื่อนลง')} ${state.name}`}
-                          onClick={() => move(index, 1)}
-                        >
-                          <Icon name="arrow-down" size={15} />
-                        </button>
-                      </div>
-                    </div>
-                    <textarea
-                      aria-label={`${t('Notes for', 'โน้ตสำหรับ')} ${state.name}`}
-                      placeholder={t(
-                        'A café to try, a place to stay, a little reminder…',
-                        'คาเฟ่ที่อยากลอง ที่พัก หรือสิ่งที่ต้องจำ…',
-                      )}
-                      maxLength={1000}
-                      rows={2}
-                      value={stop.notes}
-                      onChange={(event) =>
-                        update({
-                          stops: trip.stops.map((item) =>
-                            item.code === stop.code ? { ...item, notes: event.target.value } : item,
-                          ),
-                        })
-                      }
-                    />
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-          <div className="budget-summary">
-            <div>
-              <span>{t('THE ADVENTURE', 'ระยะเวลาทริป')}</span>
-              <strong>
-                {days} <small>{t('days', 'วัน')}</small>
-              </strong>
+                  </li>
+                );
+              })}
+            </ol>
+            <div className="budget-summary">
+              <div>
+                <span>{t('THE ADVENTURE', 'ระยะเวลาทริป')}</span>
+                <strong>
+                  {days} <small>{t('days', 'วัน')}</small>
+                </strong>
+              </div>
+              <div>
+                <span>{t('YOUR BUDGET ESTIMATE', 'ประมาณการงบของคุณ')}</span>
+                <strong>{money(estimate)}</strong>
+              </div>
             </div>
-            <div>
-              <span>{t('YOUR BUDGET ESTIMATE', 'ประมาณการงบของคุณ')}</span>
-              <strong>{money(estimate)}</strong>
-            </div>
-          </div>
-          <p className="fine-print">
-            {t(
-              'Calculated from your daily budget × travelers × days. This is a planning estimate; add flights, car rental, and one-off costs separately. Route order does not calculate driving times.',
-              'คำนวณจากงบรายวัน × จำนวนคน × จำนวนวัน เป็นเพียงงบเบื้องต้น ควรคิดเที่ยวบิน ค่าเช่ารถ และค่าใช้จ่ายก้อนใหญ่เพิ่ม ลำดับทริปไม่ได้คำนวณเวลาขับรถ',
-            )}
-          </p>
-          <button className="button button-red export-main" onClick={exportText}>
-            <Icon name="download" size={18} />
-            {t('Download my itinerary', 'ดาวน์โหลดแผนเที่ยว')}
-            <Icon name="arrow" size={18} />
-          </button>
-        </>
+            <p className="fine-print">
+              {t(
+                'Calculated from your daily budget × travelers × days. This is a planning estimate; add flights, car rental, and one-off costs separately. Route order does not calculate driving times.',
+                'คำนวณจากงบรายวัน × จำนวนคน × จำนวนวัน เป็นเพียงงบเบื้องต้น ควรคิดเที่ยวบิน ค่าเช่ารถ และค่าใช้จ่ายก้อนใหญ่เพิ่ม ลำดับทริปไม่ได้คำนวณเวลาขับรถ',
+              )}
+            </p>
+            <button className="button button-red export-main" onClick={exportText}>
+              <Icon name="download" size={18} />
+              {t('Download my itinerary', 'ดาวน์โหลดแผนเที่ยว')}
+              <Icon name="arrow" size={18} />
+            </button>
+          </>
+        )}
+      </div>
+      {daily && trip.stops.length > 0 && (
+        <button className="button button-red export-main" onClick={exportText}>
+          <Icon name="download" size={18} />
+          {t('Download my itinerary', 'ดาวน์โหลดแผนเที่ยว')}
+        </button>
+      )}
+      {!daily && trip.stops.some((stop) => stop.activities?.some((a) => a.day === stop.days)) && (
+        <p className="fine-print">
+          {t(
+            'To shorten a state stay, first move or remove activities on its last day in the daily plan.',
+            'หากต้องการลดวันในรัฐ ให้ย้ายหรือลบกิจกรรมของวันสุดท้ายในแผนรายวันก่อน',
+          )}
+        </p>
       )}
       <div className="backup-actions">
         <button
@@ -358,7 +411,7 @@ export default function TripPlanner({
           onClick={() => {
             downloadFile(
               'roam-trip-backup.json',
-              JSON.stringify({ version: 1, trip }, null, 2),
+              JSON.stringify({ version: 2, trip }, null, 2),
               'application/json',
             );
             notify(t('Trip backup downloaded.', 'ดาวน์โหลดไฟล์สำรองทริปแล้ว'));
