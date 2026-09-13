@@ -811,11 +811,6 @@
   "minutes driving": ["分钟车程", "分の運転", "분 운전"],
   "Activity time": ["活动时间", "予定の所要時間", "활동 시간"],
   "Driving time": ["驾车时间", "運転時間", "운전 시간"],
-  "Pins mark approximate destination areas, not entrances. Confirm your parking or access point before traveling.": [
-    "地图标记代表目的地区域的大致位置，并非入口。出发前请确认停车场或实际入口。",
-    "ピンは目的地のおおよその位置で、入口ではありません。出発前に駐車場やアクセス地点を確認してください。",
-    "핀은 목적지 지역의 대략적인 위치이며 입구가 아닙니다. 여행 전에 주차장이나 진입 지점을 확인하세요."
-  ],
   "Use 2–10 mapped stops. Driving estimates exclude live traffic, breaks, and seasonal closures. Custom activities are not included. Requests send these coordinates to the routing service.": [
     "支持2至10个地图地点。车程估算不含实时路况、休息或季节性封路，自定义活动不参与计算。查询会将这些坐标发送给路线服务。",
     "地図上の地点を2〜10か所指定してください。運転時間にはリアルタイムの渋滞、休憩、季節閉鎖を含みません。自由な予定は計算対象外です。計算時に座標を経路サービスへ送信します。",
@@ -836,5 +831,239 @@
     "如需缩短在某州的停留时间，请先在每日行程中移走或删除最后一天的活动。",
     "州での滞在日数を減らすには、先に最後の日の予定を移動または削除してください。",
     "주에서의 숙박 일수를 줄이려면 먼저 일일 계획에서 마지막 날의 활동을 옮기거나 삭제하세요."
-  ]
+  ],
+  "Compare destinations": ["比较目的地", "目的地を比較", "여행지 비교"],
+  "Loading…": ["加载中…", "読み込み中…", "불러오는 중…"],
+  "Removed from your plan.": [
+    "已从行程中移除。",
+    "プランから削除しました。",
+    "일정에서 삭제했습니다."
+  ],
+  "Undo": ["撤销", "元に戻す", "실행 취소"],
+  "MAKE TIME FOR IT": ["为此安排时间", "この場所のための時間を", "이곳을 위한 시간"],
+  "Could not connect. Please try again.": [
+    "无法连接，请重试。",
+    "接続できませんでした。もう一度お試しください。",
+    "연결하지 못했습니다. 다시 시도하세요."
+  ],
+  "A newer version exists. Load it below or save a new copy.": [
+    "已有更新版本。请在下方加载，或另存副本。",
+    "新しいバージョンがあります。下から読み込むか、別のコピーとして保存してください。",
+    "더 최신 버전이 있습니다. 아래에서 불러오거나 새 사본으로 저장하세요."
+  ],
+  "Could not complete this request. Check your connection and account details, then try again.": [
+    "无法完成请求。请检查网络和账户信息后重试。",
+    "処理を完了できませんでした。接続とアカウント情報を確認して再試行してください。",
+    "요청을 완료하지 못했습니다. 연결과 계정 정보를 확인한 후 다시 시도하세요."
+  ],
+  "Your trips, together": ["汇集你的旅行", "あなたの旅をひとつに", "한곳에 모은 나의 여행"],
+  "Accounts are not available on this site yet. Your trip is still saved on this browser.": [
+    "本站暂未开放账户功能。行程仍可保存在此浏览器中。",
+    "このサイトではアカウントをまだ利用できません。旅のプランはこのブラウザーに保存されます。",
+    "이 사이트는 아직 계정 기능을 제공하지 않습니다. 일정은 이 브라우저에 계속 저장됩니다."
+  ],
+  "Password updated.": ["密码已更新。", "パスワードを変更しました。", "비밀번호를 변경했습니다."],
+  "Check your email to confirm your account.": [
+    "请查收邮件并确认账户。",
+    "メールを確認してアカウントを認証してください。",
+    "이메일을 확인하여 계정을 인증하세요."
+  ],
+  "Email": ["电子邮箱", "メールアドレス", "이메일"],
+  "Password": ["密码", "パスワード", "비밀번호"],
+  "Sign in": ["登录", "ログイン", "로그인"],
+  "Create account": ["创建账户", "アカウントを作成", "계정 만들기"],
+  "Update password": ["更新密码", "パスワードを変更", "비밀번호 변경"],
+  "Check your email for the password reset link.": [
+    "请查收密码重置邮件。",
+    "パスワード再設定のリンクをメールで確認してください。",
+    "이메일에서 비밀번호 재설정 링크를 확인하세요."
+  ],
+  "Reset password": ["重置密码", "パスワードを再設定", "비밀번호 재설정"],
+  "Signed out. Your local trip remains on this device.": [
+    "已退出登录。本地行程仍保留在此设备上。",
+    "ログアウトしました。ローカルの旅程はこの端末に残ります。",
+    "로그아웃했습니다. 기기에 저장된 일정은 그대로 남습니다."
+  ],
+  "Sign out": ["退出登录", "ログアウト", "로그아웃"],
+  "Save a copy to your account, then open it on another device. Your browser trip is only replaced when you choose to load one.": [
+    "将副本保存到账户后，即可在其他设备打开。只有你选择加载时才会替换浏览器内的行程。",
+    "アカウントにコピーを保存すると、別の端末でも開けます。このブラウザーの旅程は、読み込みを選んだときだけ置き換わります。",
+    "계정에 사본을 저장하면 다른 기기에서 열 수 있습니다. 불러오기를 선택할 때만 브라우저의 일정이 교체됩니다."
+  ],
+  "Saved to your account.": [
+    "已保存到账户。",
+    "アカウントに保存しました。",
+    "계정에 저장했습니다."
+  ],
+  "Save a new copy": ["保存新副本", "新しいコピーを保存", "새 사본 저장"],
+  "Update selected trip": ["更新所选行程", "選んだ旅程を更新", "선택한 일정 업데이트"],
+  "Refresh": ["刷新", "更新", "새로고침"],
+  "Trips in your account": ["账户中的行程", "アカウントの旅程", "계정에 저장된 일정"],
+  "No saved trips yet.": [
+    "尚无已保存行程。",
+    "保存した旅程はまだありません。",
+    "아직 저장된 일정이 없습니다."
+  ],
+  "Load trip": ["加载行程", "旅程を読み込む", "일정 불러오기"],
+  "Replace the trip on this browser with this saved copy? Export your current trip first if you want to keep it.": [
+    "要用此副本替换浏览器中的行程吗？如需保留当前行程，请先导出。",
+    "このコピーでブラウザーの旅程を置き換えますか？現在の旅程を残したい場合は、先に書き出してください。",
+    "이 사본으로 브라우저의 일정을 교체할까요? 현재 일정을 보관하려면 먼저 내보내세요."
+  ],
+  "Trip loaded.": ["行程已加载。", "旅程を読み込みました。", "일정을 불러왔습니다."],
+  "Replace current trip": ["替换当前行程", "現在の旅程を置き換える", "현재 일정 교체"],
+  "Share a snapshot": ["分享行程副本", "旅程のコピーを共有", "일정 사본 공유"],
+  "Anyone with the link can view this copy for 7 days. Later edits stay private. Revoke the link whenever you need.": [
+    "持有链接的人可在7天内查看此副本。之后的修改不会公开，你可随时撤销链接。",
+    "リンクを知る人は7日間このコピーを閲覧できます。後の編集は共有されません。リンクはいつでも無効にできます。",
+    "링크가 있는 사람은 7일 동안 이 사본을 볼 수 있습니다. 이후의 수정은 공유되지 않으며 링크는 언제든 취소할 수 있습니다."
+  ],
+  "Include my personal notes": ["包含我的个人备注", "個人メモも含める", "개인 메모 포함"],
+  "Create viewing link": ["创建查看链接", "閲覧用リンクを作成", "보기 링크 만들기"],
+  "Share link": ["分享链接", "共有リンク", "공유 링크"],
+  "Link copied.": ["链接已复制。", "リンクをコピーしました。", "링크를 복사했습니다."],
+  "Copy link": ["复制链接", "リンクをコピー", "링크 복사"],
+  "Expires": ["到期", "有効期限", "만료"],
+  "Revoke link": ["撤销链接", "リンクを無効にする", "링크 취소"],
+  "FIND YOUR FIT": ["找到适合你的目的地", "自分に合う旅先を", "나에게 맞는 여행지 찾기"],
+  "Choose up to 3 states or places to compare side by side.": [
+    "最多选择3个州或景点进行并排比较。",
+    "州や場所を3つまで選んで並べて比較できます。",
+    "주 또는 장소를 최대 3곳 선택하여 나란히 비교하세요."
+  ],
+  "Search places": ["搜索地点", "場所を検索", "장소 검색"],
+  "Add a destination to compare": ["添加比较目的地", "比較する目的地を追加", "비교할 여행지 추가"],
+  "Choose a destination": ["选择目的地", "目的地を選ぶ", "여행지 선택"],
+  "Destination comparison": ["目的地对比表", "目的地の比較表", "여행지 비교표"],
+  "Destination": ["目的地", "目的地", "여행지"],
+  "Travel style": ["旅行风格", "旅のスタイル", "여행 스타일"],
+  "Suggested time": ["建议时长", "時間の目安", "추천 소요 시간"],
+  "days in this state": ["天游览此州", "日間の州内滞在", "일간의 주 여행"],
+  "What to expect": ["值得期待", "どんな場所？", "어떤 곳인가요"],
+  "Next step": ["下一步", "次のステップ", "다음 단계"],
+  "Suggested times and seasons are starting points. Actual conditions and costs depend on your route and travel dates.": [
+    "建议时长和季节仅供规划参考。实际状况与费用取决于路线和日期。",
+    "時間や季節は計画の目安です。実際の状況や費用はルートと旅行日によって異なります。",
+    "추천 시간과 계절은 계획의 출발점입니다. 실제 상황과 비용은 경로와 여행 날짜에 따라 달라집니다."
+  ],
+  "Plan the practical details": ["安排旅行细节", "旅に必要な情報を確認", "여행에 필요한 세부 사항"],
+  "An editorial starting point; adjust for your activities.": [
+    "编辑建议，仅供参考；请根据活动调整。",
+    "編集部の目安です。活動に合わせて調整してください。",
+    "편집상 제안입니다. 활동에 맞게 조정하세요."
+  ],
+  "Getting around": ["当地交通", "現地での移動", "현지 이동"],
+  "Where to look for a stay": ["住宿搜索区域", "宿泊先を探すエリア", "숙소를 찾아볼 지역"],
+  "Area reference": ["区域参考位置", "エリアの参考位置", "지역 참고 위치"],
+  "Visitor center reference": [
+    "游客中心参考位置",
+    "ビジターセンターの参考位置",
+    "방문자 센터 참고 위치"
+  ],
+  "Entrance / parking": ["入口／停车", "入口・駐車場", "입구 / 주차"],
+  "Official visitor information": ["官方游客信息", "公式の観光案内", "공식 방문 정보"],
+  "Fees & reservations": ["费用与预约", "料金と予約", "요금 및 예약"],
+  "Official park snapshot": ["官方公园资料快照", "公園の公式情報の保存版", "공원 공식 정보 저장본"],
+  "Retrieved": ["获取日期", "取得日", "정보 수집일"],
+  "Official source text is shown in English. This is a saved snapshot, not a live status check.": [
+    "官方原文以英语显示。这是保存的资料，并非实时状态。",
+    "公式の原文を英語で表示しています。保存した情報であり、現在の状況を確認したものではありません。",
+    "공식 원문은 영어로 표시됩니다. 저장된 정보이며 실시간 상태 확인은 아닙니다."
+  ],
+  "This snapshot is over 7 days old. Check the official site for current conditions.": [
+    "此资料已超过7天。请到官方网站核实最新状况。",
+    "この情報は取得から7日以上経過しています。最新の状況は公式サイトで確認してください。",
+    "이 정보는 7일 이상 지났습니다. 공식 사이트에서 현재 상황을 확인하세요."
+  ],
+  "Hours & access": ["开放时间与通行", "開館時間とアクセス", "운영 시간 및 접근"],
+  "Confirm access with the park": [
+    "向公园核实通行信息",
+    "公園のアクセス情報を確認",
+    "공원 접근 정보 확인"
+  ],
+  "Entrance fees": ["入园费用", "入園料金", "입장 요금"],
+  "Fees may depend on residency, age, vehicle and passes. Read the full conditions; these are not a total trip price.": [
+    "费用可能因居住身份、年龄、车辆和通行证而异。请阅读完整条件；这不是旅行总价。",
+    "料金は居住資格、年齢、車両、パスにより異なる場合があります。条件をすべて確認してください。旅行全体の料金ではありません。",
+    "요금은 거주 자격, 나이, 차량 및 패스에 따라 달라질 수 있습니다. 전체 조건을 확인하세요. 여행 전체 비용이 아닙니다."
+  ],
+  "No fee details were supplied in this snapshot. Check with the park.": [
+    "此资料未提供费用详情，请向公园查询。",
+    "この情報には料金の詳細がありません。公園に確認してください。",
+    "이 저장본에는 요금 세부 정보가 없습니다. 공원에 확인하세요."
+  ],
+  "NPS nonresident fee information": [
+    "NPS非居民费用信息",
+    "NPSの非居住者向け料金情報",
+    "NPS 비거주자 요금 정보"
+  ],
+  "Alerts & closures": ["公告与关闭信息", "お知らせと閉鎖情報", "알림 및 폐쇄 정보"],
+  "Official notice": ["官方公告", "公式のお知らせ", "공식 공지"],
+  "No alerts were returned in this snapshot. This does not confirm that every road or facility is open.": [
+    "此资料未返回公告，但并不代表所有道路和设施都开放。",
+    "この保存版にはお知らせがありません。すべての道路や施設の開放を保証するものではありません。",
+    "이 저장본에는 알림이 없지만 모든 도로나 시설의 개방을 확인한 것은 아닙니다."
+  ],
+  "Park updates could not load. Use the official visitor link above.": [
+    "无法加载公园更新，请使用上方官方链接。",
+    "公園の更新情報を読み込めませんでした。上の公式リンクをご利用ください。",
+    "공원 업데이트를 불러오지 못했습니다. 위의 공식 링크를 이용하세요."
+  ],
+  "Confirm opening hours, admission and any required reservations with each venue before departure.": [
+    "出发前向各场所核实开放时间、门票及预约要求。",
+    "出発前に各施設の営業時間、入場料、予約の必要性を確認してください。",
+    "출발 전에 각 장소의 운영 시간, 입장료 및 예약 필요 여부를 확인하세요."
+  ],
+  "Adapted from Wikipedia contributors and Roam editorial notes.": [
+    "根据维基百科贡献者内容及Roam编辑建议改编。",
+    "ウィキペディアの執筆者による内容とRoamの編集メモをもとに構成。",
+    "위키백과 기여자의 내용과 Roam 편집 안내를 바탕으로 작성했습니다."
+  ],
+  "Read the source": ["阅读来源", "出典を読む", "출처 읽기"],
+  "Reviewed": ["内容查阅日期", "内容確認日", "내용 확인일"],
+  "A shared copy · view only": [
+    "分享副本 · 仅查看",
+    "共有されたコピー・閲覧のみ",
+    "공유 사본 · 보기 전용"
+  ],
+  "Use this itinerary": ["使用此行程", "この旅程を使う", "이 일정 사용"],
+  "This trip is unavailable": [
+    "无法打开此行程",
+    "この旅程は利用できません",
+    "이 일정을 이용할 수 없습니다"
+  ],
+  "The link may have expired or been revoked. Check your connection and try again.": [
+    "链接可能已过期或被撤销，请检查网络后重试。",
+    "リンクが期限切れか無効になっている可能性があります。接続を確認して再試行してください。",
+    "링크가 만료되었거나 취소되었을 수 있습니다. 연결을 확인하고 다시 시도하세요."
+  ],
+  "Try again": ["重试", "再試行", "다시 시도"],
+  "Print / Save as PDF": ["打印／保存为PDF", "印刷・PDFで保存", "인쇄 / PDF로 저장"],
+  "Offline download failed. Connect to the internet and try again on the published site.": [
+    "离线下载失败。请联网后在已发布的网站重试。",
+    "オフライン保存に失敗しました。インターネットに接続し、公開サイトで再試行してください。",
+    "오프라인 다운로드에 실패했습니다. 인터넷에 연결하고 배포된 사이트에서 다시 시도하세요."
+  ],
+  "Downloading…": ["下载中…", "ダウンロード中…", "다운로드 중…"],
+  "Save for offline": ["保存以供离线使用", "オフライン用に保存", "오프라인 저장"],
+  "Account & sharing": ["账户与分享", "アカウントと共有", "계정 및 공유"],
+  "Ready offline on this device. Your saved plan and these photos are available without internet; live maps need a connection.": [
+    "此设备已可离线使用。无需联网即可查看已保存的行程与照片；在线地图仍需网络。",
+    "この端末でオフライン閲覧の準備ができました。保存した旅程と写真はネット接続なしで利用できます。オンライン地図には接続が必要です。",
+    "이 기기에서 오프라인으로 볼 준비가 되었습니다. 저장한 일정과 사진은 인터넷 없이 볼 수 있으며 온라인 지도는 연결이 필요합니다."
+  ],
+  "Complete itinerary": ["完整行程", "旅程の全体", "전체 여행 일정"],
+  "Verify travel times, opening hours and reservations before departure. Maps and current alerts need an internet connection.": [
+    "出发前请核实交通时间、开放时间和预约。地图及最新公告需要网络连接。",
+    "出発前に移動時間、営業時間、予約を確認してください。地図と最新のお知らせにはインターネット接続が必要です。",
+    "출발 전에 이동 시간, 운영 시간 및 예약을 확인하세요. 지도와 최신 알림에는 인터넷 연결이 필요합니다."
+  ],
+  "Pins are planning references. Confirm the exact entrance, parking and access before traveling.": [
+    "地图标记仅供规划参考。出行前请确认具体入口、停车地点和通行条件。",
+    "ピンは計画用の参考地点です。出発前に正確な入口、駐車場、アクセスを確認してください。",
+    "지도 표시는 계획을 위한 참고 지점입니다. 여행 전에 정확한 입구, 주차장과 접근 방법을 확인하세요."
+  ],
+  "State travel styles": ["州内旅行特色", "州内の旅行スタイル", "주 내 여행 스타일"],
+  "State travel seasons": ["州内适游季节", "州内の旅行シーズン", "주 내 여행 계절"],
+  "State gateway airports": ["州内主要机场", "州の主要空港", "주의 주요 공항"]
 }

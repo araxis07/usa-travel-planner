@@ -37,6 +37,26 @@ export interface Photo {
   original: string;
   width: number;
   height: number;
+  caption?: string;
+}
+export interface PlaceProfile {
+  id: string;
+  summary: LocalText;
+  summarySources: string[];
+  summaryLicense: string;
+  access: LocalText;
+  stay: LocalText;
+  visitMinutes: number;
+  coordinates: [number, number];
+  locationKind: 'area' | 'entrance' | 'visitor-center';
+  locationLabel: LocalText;
+  locationSource: string;
+  locationCheckedAt: string;
+  officialUrl: string;
+  bookingUrl: string;
+  reviewedAt: string;
+  reviewAfter: string;
+  translationsReviewed: boolean[];
 }
 export interface StateGuide {
   code: string;
@@ -57,6 +77,7 @@ export interface StateGuide {
   cover: number;
   updatedAt: string;
   sources: { name: string; url: string }[];
+  destinations: PlaceProfile[];
 }
 
 // Editorial starting points, not a live inventory. Each guide links to official tourism information.

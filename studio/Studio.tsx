@@ -1,11 +1,18 @@
 import { useEffect, useRef, useState, type ChangeEvent } from 'react';
-import { contentIssues, validateCatalog, type Catalog } from '../lib/content';
+import {
+  contentIssues,
+  validateCatalog,
+  migrateCatalog,
+  reviewQueue,
+  type Catalog,
+} from '../lib/content';
 import { LANGUAGES, LANGUAGE_NAMES, type Language } from '../lib/i18n';
 import { local, type LocalText, type StateGuide } from '../data/travel';
 import { downloadFile } from '../lib/storage';
 import StateDetail from '../components/StateDetail';
 import Icon from '../components/Icon';
 import '../styles.css';
+import ProfileEditor from './ProfileEditor';
 import './studio.css';
 interface Session {
   catalog: Catalog;
@@ -19,6 +26,7 @@ export default function Studio() {
   const [selected, setSelected] = useState('CA');
   const [language, setLanguage] = useState<Language>('th');
   const [query, setQuery] = useState('');
+  const [onlyReview, setOnlyReview] = useState(false);
   const [onlyIssues, setOnlyIssues] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
@@ -56,6 +64,7 @@ export default function Studio() {
     window.addEventListener('beforeunload', warn);
     return () => window.removeEventListener('beforeunload', warn);
   }, [dirty]);
+  const reviews = catalog ? reviewQueue(catalog) : [];
   const issues = catalog ? contentIssues(catalog) : [];
   const state = catalog?.states.find((s) => s.code === selected);
   const change = (fields: Partial<StateGuide>) =>
@@ -156,8 +165,10 @@ export default function Studio() {
     event.target.value = '';
     if (!file) return;
     try {
-      if (file.size > 2_000_000) throw Error('ไฟล์ต้องไม่เกิน 2 MB');
-      const value = validateCatalog(JSON.parse(await file.text()));
+      if (file.size > 5_000_000) throw Error('ไฟล์ต้องไม่เกิน 5 MB');
+      const value = validateCatalog(
+        migrateCatalog(JSON.parse(await file.text()), session!.catalog),
+      );
       setCatalog(value);
       setMessage('นำเข้าเพื่อแก้ไขแล้ว กดบันทึกฉบับร่างเพื่อเก็บลงเครื่อง');
     } catch (e) {
@@ -269,6 +280,14 @@ export default function Studio() {
               />
               แสดงเฉพาะที่ยังไม่ครบ
             </label>
+            <label className="studio-check">
+              <input
+                type="checkbox"
+                checked={onlyReview}
+                onChange={(e) => setOnlyReview(e.target.checked)}
+              />
+              คิวตรวจทาน ({reviews.length})
+            </label>
             <nav aria-label="เลือกเนื้อหารัฐ">
               {catalog.states
                 .filter(
@@ -276,7 +295,8 @@ export default function Studio() {
                     (s.names.join(' ') + ' ' + s.code)
                       .toLowerCase()
                       .includes(query.toLowerCase()) &&
-                    (!onlyIssues || issues.some((i) => i.code === s.code)),
+                    (!onlyIssues || issues.some((i) => i.code === s.code)) &&
+                    (!onlyReview || reviews.some((i) => i.code === s.code)),
                 )
                 .map((s) => (
                   <button
@@ -354,6 +374,22 @@ export default function Studio() {
                 </button>
               ))}
             </div>
+            {!!reviews.filter((r) => r.code === selected).length && (
+              <details className="studio-review-queue">
+                <summary>
+                  คิวตรวจทานของรัฐนี้ ({reviews.filter((r) => r.code === selected).length})
+                </summary>
+                <ul>
+                  {reviews
+                    .filter((r) => r.code === selected)
+                    .map((r, i) => (
+                      <li key={i}>
+                        {state.places[r.index]}: {r.reason}
+                      </li>
+                    ))}
+                </ul>
+              </details>
+            )}
             {stateIssues.length > 0 && (
               <div className="studio-issues">
                 <strong>รายการที่ยังต้องเติม ({stateIssues.length})</strong>
@@ -381,6 +417,11 @@ export default function Studio() {
             ) : (
               <fieldset disabled={busy} className="studio-fields">
                 <legend className="sr-only">แก้ไขข้อมูล {state.name}</legend>
+                <ProfileEditor
+                  state={state}
+                  language={language}
+                  onChange={(destinations) => change({ destinations })}
+                />
                 <section>
                   <div className="studio-section-heading">
                     <span>01</span>

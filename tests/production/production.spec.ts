@@ -1,0 +1,158 @@
+import { test, expect } from '@playwright/test';
+import { EMPTY_TRIP, STATES, type Trip } from '../../data/travel';
+import { LANGUAGES } from '../../lib/i18n';
+const sample: Trip = {
+  ...EMPTY_TRIP,
+  name: 'My five-language journey',
+  startDate: '2026-10-01',
+  stops: [
+    {
+      code: 'CA',
+      days: 2,
+      notes: 'Keep the train tickets',
+      activities: [
+        {
+          id: 'offline-1',
+          day: 2,
+          period: 'afternoon',
+          placeId: 'CA-1',
+          title: 'Yosemite National Park',
+          minutes: 240,
+          notes: 'Camera · กล้อง · 相机 · カメラ · 카메라',
+        },
+      ],
+    },
+  ],
+};
+
+test('all language pages contain readable content without JavaScript and reciprocal SEO links', async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  const ca = STATES.find((s) => s.code === 'CA')!;
+  for (const [i, lang] of LANGUAGES.entries()) {
+    await page.goto(`${baseURL}/${lang}/states/california/yosemite-national-park/`);
+    await expect(page.locator('h1')).toHaveText(ca.placeNames[1][i]);
+    await expect(page.locator('main')).toContainText(ca.destinations[1].summary[i]);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      `https://roam.example/${lang}/states/california/yosemite-national-park/`,
+    );
+    await expect(page.locator('link[hreflang]')).toHaveCount(6);
+    const json = JSON.parse(
+      (await page.locator('script[type="application/ld+json"]').textContent())!,
+    );
+    expect(json.geo.latitude).toBe(ca.destinations[1].coordinates[0]);
+  }
+  const sitemap = await (await page.request.get('/sitemap.xml')).text();
+  expect(sitemap.match(/<loc>/g)).toHaveLength(1005);
+  await context.close();
+});
+
+test('client navigation updates metadata and private planner is not indexed', async ({ page }) => {
+  await page.goto('/en/states/california/san-francisco/');
+  await page.getByLabel('Language / ภาษา').selectOption('ja');
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+    'content',
+    STATES[0].destinations[0].summary[3],
+  );
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    'href',
+    'https://roam.example/ja/states/california/san-francisco/',
+  );
+  await page.locator('.header-trip').click();
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow');
+  await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+});
+
+test('saved itinerary and all selected state photos reopen offline; print covers every day in five languages', async ({
+  page,
+  context,
+}, testInfo) => {
+  await page.goto('/en/?view=planner');
+  await page.evaluate(
+    (value) => localStorage.setItem('roam.trip.v1', JSON.stringify(value)),
+    sample,
+  );
+  await page.reload();
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  // Activation can finish while the initial document is being replaced. Enter
+  // the worker's scope on a fresh navigation before testing offline behavior.
+  if (!(await page.evaluate(() => !!navigator.serviceWorker.controller))) await page.reload();
+  await page.waitForFunction(() => !!navigator.serviceWorker.controller);
+  await page.getByRole('button', { name: 'Save for offline', exact: true }).click();
+  await expect(page.getByText('Ready offline on this device.', { exact: false })).toBeVisible({
+    timeout: 30000,
+  });
+  const cached = await page.evaluate(async () => {
+    const all = await Promise.all(
+      (await caches.keys()).map(async (key) =>
+        (await (await caches.open(key)).keys()).map((r) => r.url),
+      ),
+    );
+    return all.flat();
+  });
+  expect(cached.filter((u) => u.includes('/images/'))).toHaveLength(9);
+  expect(
+    cached.every((u) => u.startsWith(locationOrigin(testInfo.project.use.baseURL as string))),
+  ).toBe(true);
+  await context.setOffline(true);
+  await page.reload();
+  await expect(page.locator('#planner-page')).toBeVisible();
+  for (const lang of LANGUAGES) {
+    await page.getByLabel('Language / ภาษา').selectOption(lang);
+    await page.emulateMedia({ media: 'print' });
+    await expect(page.locator('.print-itinerary')).toBeVisible();
+    await expect(page.locator('.print-day')).toHaveCount(2);
+    await expect(page.locator('.print-itinerary')).toContainText(
+      'Camera · กล้อง · 相机 · カメラ · 카메라',
+    );
+    const pdf = await page.pdf({
+      path: testInfo.outputPath(`itinerary-${lang}.pdf`),
+      format: 'A4',
+      printBackground: true,
+    });
+    expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
+    expect(pdf.byteLength).toBeGreaterThan(12000);
+    await page.emulateMedia({ media: 'screen' });
+  }
+  await page.goto('/en/states/california/yosemite-national-park/');
+  await expect(page.locator('h1')).toContainText('Yosemite');
+  const photos = STATES[0].photos.map((p) => p.src);
+  expect(
+    await page.evaluate(
+      async (paths) =>
+        Promise.all(
+          paths.map(async (src) => {
+            const image = new Image();
+            image.src = src;
+            await image.decode();
+            return image.naturalWidth > 0;
+          }),
+        ),
+      photos,
+    ),
+  ).toEqual(Array(9).fill(true));
+  const invalid = await page.evaluate(async () => {
+    const reg = await navigator.serviceWorker.ready;
+    return new Promise((resolve) => {
+      const c = new MessageChannel();
+      c.port1.onmessage = (e) => {
+        c.port1.close();
+        resolve(e.data.ok);
+      };
+      reg.active!.postMessage(
+        { type: 'SAVE_TRIP', photos: ['https://tile.openstreetmap.org/0/0/0.png'] },
+        [c.port2],
+      );
+    });
+  });
+  expect(invalid).toBe(false);
+});
+function locationOrigin(url: string) {
+  return new URL(url || 'http://127.0.0.1:5198').origin;
+}

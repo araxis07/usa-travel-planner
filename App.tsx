@@ -1,7 +1,7 @@
 import LanguageSelector from './components/LanguageSelector';
 import { stateName } from './data/travel';
 import { translate, initialLanguage } from './lib/i18n';
-import { useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import Atlas from './components/Atlas';
 import Icon, { type IconName } from './components/Icon';
 import StateCard from './components/StateCard';
@@ -18,13 +18,22 @@ import {
   type Interest,
   type Region,
   type Season,
-  type Trip,
+  type TripActivity,
 } from './data/travel';
-import { loadTrip, readLocal, tripDays, validFavorites } from './lib/storage';
+import { readLocal, tripDays, validFavorites } from './lib/storage';
 import './styles.css';
 import './journey.css';
 import DestinationPage from './components/DestinationPage';
-import { destinationUrl, readDestination, placeId } from './lib/destinations';
+import TripPlanner from './components/TripPlanner';
+import CompareDestinations, { validComparison } from './components/CompareDestinations';
+import AddPlaceDialog from './components/AddPlaceDialog';
+import { useTripHistory } from './lib/useTripHistory';
+import './expedition.css';
+import { updatePageMetadata } from './lib/pageMetadata';
+import { destinationUrl, readDestination } from './lib/destinations';
+
+const SharedTrip = lazy(() => import('./components/SharedTrip'));
+const sharedToken = () => new URLSearchParams(location.hash.slice(1)).get('share');
 
 const interestIcons: Record<Interest, IconName> = {
   Nature: 'mountain',
@@ -33,13 +42,41 @@ const interestIcons: Record<Interest, IconName> = {
   Culture: 'book',
 };
 export default function App() {
+  const [comparison, setComparison] = useState<string[]>(() =>
+    readLocal<string[]>('roam.compare.v1', [], (value) => (validComparison(value) ? value : [])),
+  );
+  const [comparing, setComparing] = useState(false);
+  const [shareToken, setShareToken] = useState(sharedToken);
   const [lang, setLang] = useState<Language>(initialLanguage);
   const [favorites, setFavorites] = useState<string[]>(() =>
     readLocal('roam.saved.v1', [], validFavorites),
   );
-  const [trip, setTrip] = useState<Trip>(loadTrip);
+  const { trip, setTrip, canUndo, undo } = useTripHistory();
+  const [pendingPlace, setPendingPlace] = useState<{ state: StateGuide; index: number } | null>(
+    null,
+  );
   const [storageFailed, setStorageFailed] = useState(false);
-  const [modal, setModal] = useState<TravelModal | null>(null);
+  const [modal, updateModal] = useState<TravelModal | null>(() =>
+    new URLSearchParams(location.search).get('view') === 'planner'
+      ? { type: 'trip', daily: true }
+      : null,
+  );
+  const setModal = (next: TravelModal | null) => {
+    const url = new URL(location.href);
+    if (next?.type === 'trip') {
+      url.searchParams.set('view', 'planner');
+      if (modal?.type !== 'trip') history.pushState({ scrollY: 0 }, '', url);
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        document.getElementById('planner-title')?.focus();
+      });
+    } else if (modal?.type === 'trip') {
+      url.searchParams.delete('view');
+      history.replaceState(history.state, '', url);
+    }
+    updateModal(next);
+    setMobileNav(false);
+  };
   const [destination, setDestination] = useState(readDestination);
   const [activeSection, setActiveSection] = useState(location.hash === '#map' ? 'map' : 'discover');
   const [query, setQuery] = useState('');
@@ -65,6 +102,7 @@ export default function App() {
   useEffect(() => () => clearTimeout(toastTimer.current), []);
   useEffect(() => {
     try {
+      localStorage.setItem('roam.compare.v1', JSON.stringify(comparison));
       localStorage.setItem('roam.saved.v1', JSON.stringify(favorites));
       localStorage.setItem('roam.trip.v1', JSON.stringify(trip));
       localStorage.setItem('roam.language', JSON.stringify(lang));
@@ -72,47 +110,42 @@ export default function App() {
     } catch {
       setStorageFailed(true);
     }
-  }, [favorites, trip, lang]);
+  }, [favorites, trip, lang, comparison]);
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title = destination
-      ? `${destination.placeIndex === undefined ? stateName(destination.state, lang) : local(destination.state.placeNames[destination.placeIndex], lang)} — Roam America`
-      : translate(
-          'Roam America — 50 states. Endless possibilities.',
-          'Roam America — วางแผนเที่ยวอเมริกาครบ 50 รัฐ',
-          lang,
-        );
     const url = new URL(location.href);
+    url.pathname = destination
+      ? destinationUrl(destination.state, lang, destination.placeIndex)
+      : `/${lang}/`;
+    url.searchParams.delete('state');
+    url.searchParams.delete('place');
     url.searchParams.set('lang', lang);
     history.replaceState(history.state, '', url);
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute(
-        'content',
-        destination
-          ? local(destination.state.description, lang)
-          : translate(
-              'Explore all 50 states, save your favorite places, and build your own American adventure.',
-              'สำรวจครบ 50 รัฐ บันทึกสถานที่โปรด และวางแผนเที่ยวอเมริกาในแบบคุณ',
-              lang,
-            ),
-      );
-  }, [lang, destination]);
+    updatePageMetadata(lang, destination, modal?.type === 'trip' || !!shareToken);
+  }, [lang, destination, modal?.type, shareToken]);
   useEffect(() => {
     const old = history.scrollRestoration;
     history.scrollRestoration = 'manual';
     const pop = (event: PopStateEvent) => {
       setDestination(readDestination());
+      setShareToken(sharedToken());
       setLang(initialLanguage());
-      setModal(null);
+      updateModal(
+        new URLSearchParams(location.search).get('view') === 'planner'
+          ? { type: 'trip', daily: true }
+          : null,
+      );
       setMobileNav(false);
       setActiveSection(location.hash === '#map' ? 'map' : 'discover');
       requestAnimationFrame(() =>
         window.scrollTo({ top: event.state?.scrollY ?? 0, behavior: 'instant' }),
       );
     };
+    const hash = () => setShareToken(sharedToken());
+    window.addEventListener('hashchange', hash);
     window.addEventListener('popstate', pop);
     return () => {
+      window.removeEventListener('hashchange', hash);
       window.removeEventListener('popstate', pop);
       history.scrollRestoration = old;
     };
@@ -130,6 +163,10 @@ export default function App() {
     });
   };
   const goSection = (section: string) => {
+    if (shareToken) {
+      history.pushState({}, '', `/?lang=${lang}`);
+      setShareToken(null);
+    }
     setModal(null);
     setMobileNav(false);
     setActiveSection(section === 'map' ? 'map' : 'discover');
@@ -138,7 +175,7 @@ export default function App() {
       history.pushState(
         { scrollY: 0 },
         '',
-        `${location.pathname}?lang=${lang}${section ? `#${section}` : ''}`,
+        `/${lang}/?lang=${lang}${section ? `#${section}` : ''}`,
       );
       setDestination(null);
     }
@@ -200,15 +237,11 @@ export default function App() {
       );
       return;
     }
-    const activity = {
-      id: crypto.randomUUID(),
-      day: 1,
-      period: 'morning' as const,
-      placeId: placeId(state, index),
-      title: state.places[index],
-      minutes: 120,
-      notes: '',
-    };
+    setPendingPlace({ state, index });
+  };
+  const confirmPlace = (activity: TripActivity) => {
+    if (!pendingPlace) return;
+    const { state } = pendingPlace;
     setTrip((value) => {
       const existing = value.stops.some((stop) => stop.code === state.code);
       return {
@@ -226,12 +259,8 @@ export default function App() {
       };
     });
     setModal({ type: 'trip', daily: true, code: state.code });
-    notify(
-      t(
-        'Added to the first morning in this state. Adjust the day and time in your plan.',
-        'เพิ่มในเช้าวันแรกของรัฐนี้แล้ว เปลี่ยนวันและเวลาได้ในแผน',
-      ),
-    );
+    setPendingPlace(null);
+    notify(t('Activity added to your day.', 'เพิ่มกิจกรรมในวันนี้แล้ว'));
   };
   const search = query.trim().toLocaleLowerCase();
   const filtered = STATES.filter(
@@ -283,7 +312,16 @@ export default function App() {
         }
       }}
     >
-      <a className="skip-link" href={destination ? '#destination-guide' : '#destinations'}>
+      <a
+        className="skip-link"
+        href={
+          modal?.type === 'trip'
+            ? '#planner-page'
+            : destination
+              ? '#destination-guide'
+              : '#destinations'
+        }
+      >
         {t('Skip to destinations', 'ข้ามไปยังจุดหมาย')}
       </a>
       <div className="announcement">
@@ -325,6 +363,13 @@ export default function App() {
             </button>
           </nav>
           <div className="header-actions">
+            <button
+              className="header-compare icon-button"
+              aria-label={t('Compare destinations', 'เปรียบเทียบจุดหมาย')}
+              onClick={() => setComparing(true)}
+            >
+              <Icon name="columns" size={19} />
+            </button>
             <LanguageSelector lang={lang} onChange={setLang} />
             <button
               className="header-saved icon-button"
@@ -355,7 +400,56 @@ export default function App() {
           </div>
         </div>
       </header>
-      {destination ? (
+      {shareToken ? (
+        <Suspense
+          fallback={
+            <main className="container shared-trip-page">
+              <p role="status">{t('Loading…', 'กำลังโหลด…')}</p>
+            </main>
+          }
+        >
+          <SharedTrip
+            token={shareToken}
+            lang={lang}
+            onBack={explore}
+            onCopy={(copy) => {
+              setTrip(copy);
+              setShareToken(null);
+              history.replaceState({}, '', `/?lang=${lang}`);
+              setModal({ type: 'trip', daily: true });
+            }}
+          />
+        </Suspense>
+      ) : modal?.type === 'trip' ? (
+        <main id="planner-page" className="planner-page container">
+          <div className="planner-page-top">
+            <button className="text-link" onClick={explore}>
+              {t('All destinations', 'จุดหมายทั้งหมด')}
+            </button>
+            <h1 id="planner-title" tabIndex={-1}>
+              {t('My trip planner', 'แผนทริปของฉัน')}
+            </h1>
+          </div>
+          {canUndo && (
+            <div className="undo-notice" role="status">
+              <span>{t('Removed from your plan.', 'ลบออกจากแผนแล้ว')}</span>
+              <button className="text-link" onClick={undo}>
+                {t('Undo', 'เลิกทำ')}
+              </button>
+            </div>
+          )}
+          <TripPlanner
+            trip={trip}
+            setTrip={setTrip}
+            lang={lang}
+            onExplore={explore}
+            storageFailed={storageFailed}
+            notify={notify}
+            initialDaily={modal.daily}
+            initialCode={modal.code}
+          />
+        </main>
+      ) : destination ? (
         <DestinationPage
           key={`${destination.state.code}-${destination.placeIndex ?? 'state'}`}
           state={destination.state}
@@ -363,6 +457,15 @@ export default function App() {
           lang={lang}
           saved={favorites.includes(destination.state.code)}
           inTrip={trip.stops.some((stop) => stop.code === destination.state.code)}
+          onCompare={() => {
+            const id =
+              destination.placeIndex === undefined
+                ? destination.state.code
+                : `${destination.state.code}-${destination.placeIndex}`;
+            if (!comparison.includes(id) && comparison.length < 3)
+              setComparison([...comparison, id]);
+            setComparing(true);
+          }}
           onSave={() => saveState(destination.state)}
           onAdd={() => addState(destination.state)}
           onAddPlace={(index) => addPlace(destination.state, index)}
@@ -739,7 +842,7 @@ export default function App() {
         onSaved={() => setModal({ type: 'saved' })}
         onAbout={() => setModal({ type: 'about' })}
       />
-      {modal && (
+      {modal && modal.type !== 'trip' && (
         <TravelDialog
           modal={modal}
           onLanguageChange={setLang}
@@ -755,6 +858,29 @@ export default function App() {
           storageFailed={storageFailed}
           notify={notify}
           toast={toast}
+        />
+      )}
+      {comparing && (
+        <CompareDestinations
+          selected={comparison}
+          onChange={setComparison}
+          lang={lang}
+          onClose={() => setComparing(false)}
+          onOpen={openDestination}
+          onAdd={(state, index) => (index === undefined ? addState(state) : addPlace(state, index))}
+        />
+      )}
+      {pendingPlace && (
+        <AddPlaceDialog
+          state={pendingPlace.state}
+          index={pendingPlace.index}
+          days={
+            trip.stops.find((s) => s.code === pendingPlace.state.code)?.days ??
+            pendingPlace.state.days
+          }
+          lang={lang}
+          onClose={() => setPendingPlace(null)}
+          onAdd={confirmPlace}
         />
       )}
       <nav className="bottom-nav" aria-label={t('Quick navigation', 'เมนูด่วน')}>

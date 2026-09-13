@@ -1,4 +1,3 @@
-import coordinates from '../content/places.json' with { type: 'json' };
 import { STATES, local, type StateGuide, type Language, type TripActivity } from '../data/travel';
 
 export const slug = (name: string) =>
@@ -14,23 +13,35 @@ export interface DestinationRoute {
 }
 export function readDestination(): DestinationRoute | null {
   const query = new URLSearchParams(location.search);
-  const state = STATES.find((item) => slug(item.name) === query.get('state'));
+  const parts = location.pathname.split('/').filter(Boolean);
+  const stateSlug = parts[1] === 'states' ? parts[2] : query.get('state');
+  const placeSlug = parts[1] === 'states' ? parts[3] : query.get('place');
+  const state = STATES.find((item) => slug(item.name) === stateSlug);
   if (!state) return null;
-  const index = state.places.findIndex((name) => slug(name) === query.get('place'));
+  const index = state.places.findIndex((name) => slug(name) === placeSlug);
   return { state, ...(index >= 0 ? { placeIndex: index } : {}) };
 }
 export function destinationUrl(state: StateGuide, lang: Language, placeIndex?: number) {
-  const query = new URLSearchParams({ lang, state: slug(state.name) });
-  if (placeIndex !== undefined) query.set('place', slug(state.places[placeIndex]));
-  return `${location.pathname}?${query}`;
+  return `/${lang}/states/${slug(state.name)}/${placeIndex === undefined ? '' : `${slug(state.places[placeIndex])}/`}`;
 }
 export const placeId = (state: StateGuide, index: number) => `${state.code}-${index}`;
 export function findPlace(id: string) {
-  const record = coordinates.find((item) => item.id === id);
   const state = STATES.find((item) => item.code === id.split('-')[0]);
   const index = Number(id.split('-')[1]);
-  return record && state && state.places[index] === record.place
-    ? { ...record, state, index }
+  const profile = state?.destinations?.[index];
+  return profile?.id === id && state
+    ? {
+        id,
+        state,
+        index,
+        place: state.places[index],
+        title: state.places[index],
+        profile,
+        coordinates: profile.coordinates,
+        source: profile.locationSource,
+        checkedAt: profile.locationCheckedAt,
+        kind: profile.locationKind,
+      }
     : undefined;
 }
 export function activityName(activity: TripActivity, lang: Language) {

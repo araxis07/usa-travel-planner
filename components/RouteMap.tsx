@@ -9,11 +9,15 @@ export default function RouteMap({
   lang,
   routing = false,
   activityMinutes = 0,
+  selectedId,
+  onSelect,
 }: {
   points: RoutePoint[];
   lang: Language;
   routing?: boolean;
   activityMinutes?: number;
+  selectedId?: string | null;
+  onSelect?: (id: string) => void;
 }) {
   const [visible, setVisible] = useState(false);
   const [route, setRoute] = useState<DrivingRoute | null>(null);
@@ -21,6 +25,9 @@ export default function RouteMap({
   const [mapError, setMapError] = useState(false);
   const container = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
+  const markers = useRef(new Map<string, import('leaflet').Marker>());
+  const onSelectRef = useRef(onSelect);
+  onSelectRef.current = onSelect;
   const request = useRef<AbortController | null>(null);
   const key = JSON.stringify(points);
   const t = (en: string, th: string) => translate(en, th, lang);
@@ -50,7 +57,7 @@ export default function RouteMap({
         points.forEach((p, i) => {
           const label = document.createElement('span');
           label.textContent = `${i + 1}. ${p.name}`;
-          L.marker(p.coordinates, {
+          const marker = L.marker(p.coordinates, {
             title: p.name,
             alt: p.name,
             icon: L.divIcon({
@@ -62,6 +69,8 @@ export default function RouteMap({
           })
             .bindPopup(label)
             .addTo(map);
+          marker.on('click', () => onSelectRef.current?.(p.id));
+          markers.current.set(p.id, marker);
         });
         if (route) L.polyline(route.geometry, { color: '#ac263c', weight: 4 }).addTo(map);
         map.fitBounds(L.latLngBounds(route?.geometry ?? points.map((p) => p.coordinates)), {
@@ -84,8 +93,22 @@ export default function RouteMap({
       cancelled = true;
       mapRef.current?.remove();
       mapRef.current = null;
+      markers.current.clear();
     };
   }, [visible, key, route, lang]);
+  useEffect(() => {
+    markers.current.forEach((marker, id) => {
+      marker.getElement()?.classList.toggle('is-selected', id === selectedId);
+      if (
+        id === selectedId &&
+        mapRef.current &&
+        !mapRef.current.getBounds().contains(marker.getLatLng())
+      )
+        mapRef.current.panTo(marker.getLatLng(), {
+          animate: !matchMedia('(prefers-reduced-motion: reduce)').matches,
+        });
+    });
+  }, [selectedId]);
   async function calculate() {
     request.current?.abort();
     const controller = new AbortController();
@@ -174,8 +197,8 @@ export default function RouteMap({
       )}
       <p className="fine-print">
         {t(
-          'Pins mark approximate destination areas, not entrances. Confirm your parking or access point before traveling.',
-          'หมุดระบุพื้นที่จุดหมายโดยประมาณ ไม่ใช่ทางเข้า กรุณาเช็กจุดจอดรถหรือทางเข้าก่อนเดินทาง',
+          'Pins are planning references. Confirm the exact entrance, parking and access before traveling.',
+          'หมุดเป็นจุดอ้างอิงสำหรับวางแผน โปรดยืนยันทางเข้า ที่จอดรถ และการเข้าถึงก่อนเดินทาง',
         )}
       </p>
       {routing && (

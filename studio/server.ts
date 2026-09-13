@@ -3,7 +3,7 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import { randomBytes, createHash, randomUUID } from 'node:crypto';
 import { readFile, writeFile, mkdir, rename, stat } from 'node:fs/promises';
 import path from 'node:path';
-import { validateCatalog, contentIssues } from '../lib/content';
+import { validateCatalog, contentIssues, migrateCatalog } from '../lib/content';
 
 export function studioPlugin(root = process.cwd()): Plugin {
   const contentFile = path.join(root, 'content/states.json');
@@ -22,7 +22,9 @@ export function studioPlugin(root = process.cwd()): Plugin {
       .update(published + '\0' + draft)
       .digest('hex');
     return {
-      catalog: validateCatalog(JSON.parse(draft || published)),
+      catalog: validateCatalog(
+        migrateCatalog(JSON.parse(draft || published), JSON.parse(published)),
+      ),
       savedDraft: !!draft,
       revision,
     };
@@ -91,7 +93,7 @@ export function studioPlugin(root = process.cwd()): Plugin {
         reply(res, 201, { src });
         return;
       }
-      const data = JSON.parse((await body(req, 2_000_000)).toString('utf8'));
+      const data = JSON.parse((await body(req, 5_000_000)).toString('utf8'));
       const current = await read();
       if (data.revision !== current.revision) {
         reply(res, 409, { error: 'เนื้อหาถูกแก้ไขจากหน้าต่างอื่น กรุณาโหลดข้อมูลล่าสุด' });

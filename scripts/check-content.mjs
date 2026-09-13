@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import ts from 'typescript';
+import { createHash } from 'node:crypto';
 const source = await fs.readFile('lib/content.ts', 'utf8');
 const javascript = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
@@ -8,31 +9,6 @@ const { validateCatalog, contentIssues } = await import(
   'data:text/javascript;base64,' + Buffer.from(javascript).toString('base64')
 );
 const catalog = validateCatalog(JSON.parse(await fs.readFile('content/states.json', 'utf8')));
-const places = JSON.parse(await fs.readFile('content/places.json', 'utf8'));
-const placeIds = new Set(
-  catalog.states.flatMap((state) => state.places.map((_, index) => `${state.code}-${index}`)),
-);
-if (places.length !== placeIds.size || new Set(places.map((p) => p.id)).size !== placeIds.size)
-  throw Error('Incomplete place coordinates');
-for (const place of places) {
-  const [code, index] = place.id.split('-');
-  if (catalog.states.find((state) => state.code === code)?.places[Number(index)] !== place.place)
-    throw Error('Place changed: update the reference coordinates for ' + place.id);
-  if (
-    !placeIds.has(place.id) ||
-    !Array.isArray(place.coordinates) ||
-    place.coordinates.length !== 2 ||
-    !place.coordinates.every(Number.isFinite) ||
-    place.coordinates[0] < 18 ||
-    place.coordinates[0] > 72 ||
-    place.coordinates[1] < -180 ||
-    place.coordinates[1] > -60 ||
-    !/^https:\/\/(en.wikipedia.org|www.wikidata.org)\/wiki\//.test(place.source) ||
-    !place.title ||
-    !/^\d{4}-\d{2}-\d{2}$/.test(place.checkedAt)
-  )
-    throw Error('Invalid place reference ' + place.id);
-}
 const issues = contentIssues(catalog);
 if (issues.length) throw Error(JSON.stringify(issues));
 const dictionary = JSON.parse(await fs.readFile('content/translations.json', 'utf8'));
@@ -80,8 +56,12 @@ let photos = 0;
 for (const state of catalog.states) {
   if (state.names[0] !== state.name || state.names[1] !== state.thai)
     throw Error(state.code + ' name aliases');
+  const hashes = new Set();
   for (const photo of state.photos) {
     const bytes = await fs.readFile('public' + photo.src);
+    const fingerprint = photo.placeIndex + ':' + createHash('sha256').update(bytes).digest('hex');
+    if (hashes.has(fingerprint)) throw Error('Duplicate destination photograph: ' + photo.src);
+    hashes.add(fingerprint);
     if (bytes.length < 100) throw Error('Empty photo ' + photo.src);
     const jpeg = bytes[0] === 255 && bytes[1] === 216;
     const png = bytes[0] === 137 && bytes[1] === 80;

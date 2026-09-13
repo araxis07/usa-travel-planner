@@ -116,7 +116,7 @@ test('state guide, itinerary changes, budget, notes and persistence work togethe
   await page.getByRole('button', { name: 'Explore California', exact: true }).click();
   await expect(page.getByRole('dialog')).toContainText('Yosemite National Park');
   await page.getByRole('button', { name: 'Add to my trip' }).click();
-  let dialog = page.getByRole('dialog');
+  let dialog = page.locator('#planner-page');
   await dialog.getByLabel('Trip name', { exact: true }).fill('West coast adventure');
   await dialog.getByLabel('Start date', { exact: true }).fill('2026-10-10');
   await dialog.getByLabel('Travelers', { exact: true }).fill('3');
@@ -126,7 +126,8 @@ test('state guide, itinerary changes, budget, notes and persistence work togethe
   await expect(dialog.locator('.budget-summary')).toContainText('$2,160');
   await page.reload();
   await page.locator('.header-trip').click();
-  dialog = page.getByRole('dialog');
+  await page.getByRole('button', { name: 'Trip overview', exact: true }).click();
+  dialog = page.locator('#planner-page');
   await expect(dialog.getByLabel('Trip name', { exact: true })).toHaveValue('West coast adventure');
   await expect(dialog.getByLabel('Notes for California')).toHaveValue(
     'Stay near Yosemite. Bring a camera.',
@@ -151,13 +152,13 @@ test('route templates merge without duplicates and support reorder and removal',
 }) => {
   await page.locator('.route-card').first().click();
   await page.getByRole('button', { name: 'Make this my adventure' }).click();
-  const dialog = page.getByRole('dialog');
+  const dialog = page.locator('#planner-page');
   await expect(dialog.locator('.trip-stop')).toHaveCount(3);
   await expect(dialog.locator('.budget-summary')).toContainText('8 days');
   await dialog.getByLabel('Notes for Arizona').fill('Sunrise stop');
   await dialog.getByRole('button', { name: 'Move down Arizona' }).click();
   await expect(dialog.locator('.stop-title h4').first()).toHaveText('Utah');
-  await dialog.getByRole('button', { name: 'Close', exact: true }).click();
+  await dialog.getByRole('button', { name: 'All destinations', exact: true }).click();
   await page.locator('.route-card').first().click();
   await page.getByRole('button', { name: 'Make this my adventure' }).click();
   await expect(page.locator('.trip-stop')).toHaveCount(3);
@@ -176,7 +177,9 @@ test('import previews replacement, rejects invalid files, and clear can be cance
     mimeType: 'application/json',
     buffer: Buffer.from('{bad json}'),
   });
-  await expect(page.getByRole('dialog')).toContainText('Could not read this trip');
+  await expect(
+    page.getByRole('status').filter({ hasText: 'Could not read this trip' }),
+  ).toBeVisible();
   await input.setInputFiles({
     name: 'trip.json',
     mimeType: 'application/json',
@@ -238,7 +241,7 @@ test('Thai translation, search and persisted preference render without overflow'
     true,
   );
   await page.locator('.header-trip').click();
-  await expect(page.getByRole('dialog')).toContainText('บันทึกอัตโนมัติในเบราว์เซอร์นี้');
+  await expect(page.locator('#planner-page')).toContainText('บันทึกอัตโนมัติในเบราว์เซอร์นี้');
 });
 
 test('reduced motion, readable guides, focus trapping and mobile navigation', async ({
@@ -278,7 +281,7 @@ test('corrupt local storage recovers without breaking the page', async ({ page }
   });
   await page.reload();
   await page.locator('.header-trip').click();
-  await expect(page.getByRole('dialog')).toContainText('Every adventure starts somewhere.');
+  await expect(page.locator('#planner-page')).toContainText('Every adventure starts somewhere.');
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('roam.saved.v1')!))).toEqual([
     'CA',
   ]);

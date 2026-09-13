@@ -31,3 +31,6 @@ playwright-report/
 
 # Owner's unpublished editorial work
 .studio/
+
+# Local Supabase CLI link/version cache
+supabase/.temp/

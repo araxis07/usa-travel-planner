@@ -1,12 +1,16 @@
 import { statePlaces, statePhoto } from '../data/travel';
 import { translate, LOCALES } from '../lib/i18n';
-import { useRef, useState, type ChangeEvent } from 'react';
+import { lazy, Suspense, useRef, useState, type ChangeEvent } from 'react';
 import { EMPTY_TRIP, STATES, stateName, type Language, type Trip } from '../data/travel';
 import { downloadFile, tripDays, validateTrip, validDate } from '../lib/storage';
 import Icon from './Icon';
 import { StateShape, regionColors } from './Atlas';
 import DailyPlanner from './DailyPlanner';
+import TripPrint from './TripPrint';
+import { saveOffline } from '../lib/offline';
 import { activityName, sortedActivities } from '../lib/destinations';
+
+const CloudPanel = lazy(() => import('./CloudPanel'));
 
 export default function TripPlanner({
   trip,
@@ -29,6 +33,11 @@ export default function TripPlanner({
 }) {
   const t = (en: string, th: string, values?: Record<string, string | number>) =>
     translate(en, th, lang, values);
+  const [offlineBusy, setOfflineBusy] = useState(false);
+  const [offlineReady, setOfflineReady] = useState(false);
+  const [account, setAccount] = useState(
+    new URLSearchParams(location.search).get('account') === '1',
+  );
   const [confirmClear, setConfirmClear] = useState(false);
   const [daily, setDaily] = useState(initialDaily);
   const [pendingImport, setPendingImport] = useState<Trip | null>(null);
@@ -135,6 +144,67 @@ export default function TripPlanner({
             )
           : t('Saved automatically on this browser', 'บันทึกอัตโนมัติในเบราว์เซอร์นี้')}
       </p>
+      <TripPrint trip={trip} lang={lang} />
+      <div className="planner-tools">
+        <button
+          className="button button-outline"
+          disabled={!trip.stops.length}
+          onClick={() => window.print()}
+        >
+          {t('Print / Save as PDF', 'พิมพ์ / บันทึกเป็น PDF')}
+        </button>
+        <button
+          className="button button-outline"
+          disabled={offlineBusy || !trip.stops.length}
+          onClick={async () => {
+            setOfflineBusy(true);
+            setOfflineReady(false);
+            try {
+              await saveOffline(trip);
+              setOfflineReady(true);
+            } catch {
+              notify(
+                t(
+                  'Offline download failed. Connect to the internet and try again on the published site.',
+                  'ดาวน์โหลดออฟไลน์ไม่สำเร็จ เชื่อมต่ออินเทอร์เน็ตแล้วลองอีกครั้งบนเว็บไซต์ที่เผยแพร่แล้ว',
+                ),
+              );
+            } finally {
+              setOfflineBusy(false);
+            }
+          }}
+        >
+          {offlineBusy
+            ? t('Downloading…', 'กำลังดาวน์โหลด…')
+            : t('Save for offline', 'เก็บไว้อ่านออฟไลน์')}
+        </button>
+        <button className="button button-outline" onClick={() => setAccount(true)}>
+          {t('Account & sharing', 'บัญชีและการแชร์')}
+        </button>
+      </div>
+      {offlineReady && (
+        <p role="status">
+          {t(
+            'Ready offline on this device. Your saved plan and these photos are available without internet; live maps need a connection.',
+            'พร้อมอ่านออฟไลน์บนอุปกรณ์นี้ เปิดแผนและภาพที่บันทึกได้โดยไม่ใช้อินเทอร์เน็ต แผนที่ออนไลน์ยังต้องเชื่อมต่อ',
+          )}
+        </p>
+      )}
+      {account && (
+        <Suspense fallback={<p role="status">{t('Loading…', 'กำลังโหลด…')}</p>}>
+          <CloudPanel
+            trip={trip}
+            lang={lang}
+            onLoad={setTrip}
+            onClose={() => {
+              setAccount(false);
+              const url = new URL(location.href);
+              url.searchParams.delete('account');
+              history.replaceState(history.state, '', url);
+            }}
+          />
+        </Suspense>
+      )}
       <div className="planner-tabs" role="group" aria-label={t('Planner view', 'มุมมองแผนเที่ยว')}>
         <button aria-pressed={!daily} onClick={() => setDaily(false)}>
           <Icon name="route" size={17} />

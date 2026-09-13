@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 
 export type IconName =
+  | 'columns'
   | 'arrow'
   | 'arrow-up'
   | 'arrow-down'
@@ -35,6 +36,12 @@ export type IconName =
   | 'map'
   | 'book';
 const paths: Record<IconName, React.ReactNode> = {
+  columns: (
+    <>
+      <rect x="3" y="4" width="7" height="16" rx="1" />
+      <rect x="14" y="4" width="7" height="16" rx="1" />
+    </>
+  ),
   moon: <path d="M20 14A9 9 0 0 1 10 3 9 9 0 1 0 20 14Z" />,
   arrow: (
     <>

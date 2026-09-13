@@ -33,7 +33,12 @@ export default function DailyPlanner({
   const [period, setPeriod] = useState<DayPeriod>('morning');
   const [selection, setSelection] = useState(`${stop?.code ?? 'CA'}-0`);
   const [title, setTitle] = useState('');
-  const [minutes, setMinutes] = useState(120);
+  const [minutes, setMinutes] = useState(
+    () => findPlace(`${stop?.code ?? 'CA'}-0`)?.profile.visitMinutes ?? 120,
+  );
+  const [adding, setAdding] = useState(false);
+  const [search, setSearch] = useState('');
+  const [selectedActivity, setSelectedActivity] = useState<string | null>(null);
   const [dragging, setDragging] = useState<string | null>(null);
   const t = (en: string, th: string) => translate(en, th, lang);
   const periodName = (p: DayPeriod) =>
@@ -80,6 +85,7 @@ export default function DailyPlanner({
       },
     ]);
     setTitle('');
+    setAdding(false);
     notify(t('Activity added to your day.', 'เพิ่มกิจกรรมในวันนี้แล้ว'));
   }
   function reorder(id: string, beforeId: string) {
@@ -112,6 +118,19 @@ export default function DailyPlanner({
       : [];
   });
   const total = today.reduce((sum, a) => sum + a.minutes, 0);
+  const matchingPlaces = (value: string) =>
+    STATES.flatMap((s) =>
+      s.places.map((_, i) => ({ state: s, index: i, id: placeId(s, i) })),
+    ).filter((p) =>
+      [...p.state.names, ...p.state.placeNames[p.index]].some((n) =>
+        n.toLocaleLowerCase().includes(value.toLocaleLowerCase().trim()),
+      ),
+    );
+  const choose = (id: string) => {
+    setSelection(id);
+    const place = findPlace(id);
+    if (place) setMinutes(place.profile.visitMinutes);
+  };
   return (
     <div className="daily-planner">
       <div className="day-planner-heading">
@@ -126,7 +145,8 @@ export default function DailyPlanner({
             onChange={(event) => {
               setCode(event.target.value);
               setDay(1);
-              setSelection(`${event.target.value}-0`);
+              setSearch('');
+              choose(`${event.target.value}-0`);
             }}
           >
             {trip.stops.map((s) => (
@@ -170,278 +190,329 @@ export default function DailyPlanner({
           )}
         </p>
       )}
-      <form
-        className="add-activity"
-        onSubmit={(event) => {
-          event.preventDefault();
-          add();
-        }}
+      <button
+        className="button button-red add-activity-toggle"
+        onClick={() => setAdding((v) => !v)}
+        aria-expanded={adding}
       >
-        <label className="activity-destination">
-          {t('Choose a place or custom activity', 'เลือกสถานที่หรือกิจกรรมที่ตั้งเอง')}
-          <select value={selection} onChange={(event) => setSelection(event.target.value)}>
-            <option value="custom">{t('Custom activity', 'กิจกรรมที่ตั้งเอง')}</option>
-            {STATES.map((s) => (
-              <optgroup key={s.code} label={stateName(s, lang)}>
-                {s.places.map((_, i) => (
-                  <option key={i} value={placeId(s, i)}>
-                    {local(s.placeNames[i], lang)}
-                  </option>
-                ))}
-              </optgroup>
-            ))}
-          </select>
-        </label>
-        {selection === 'custom' && (
+        {adding ? t('Close', 'ปิด') : t('Add activity', 'เพิ่มกิจกรรม')}
+      </button>
+      {adding && (
+        <form
+          className="add-activity"
+          onSubmit={(event) => {
+            event.preventDefault();
+            add();
+          }}
+        >
           <label className="activity-destination">
-            {t('Activity name', 'ชื่อกิจกรรม')}
+            {t('Search places', 'ค้นหาสถานที่')}
             <input
-              value={title}
-              required
-              maxLength={120}
-              onChange={(event) => setTitle(event.target.value)}
-              placeholder={t(
-                'Coffee, a museum, a slow afternoon…',
-                'กาแฟ พิพิธภัณฑ์ หรือพักผ่อนยามบ่าย…',
-              )}
+              type="search"
+              value={search}
+              onChange={(e) => {
+                const value = e.target.value;
+                setSearch(value);
+                const matches = matchingPlaces(value);
+                if (!matches.some((p) => p.id === selection)) choose(matches[0]?.id ?? 'custom');
+              }}
+              placeholder={t('Search places', 'ค้นหาสถานที่')}
             />
           </label>
-        )}
-        <label>
-          {t('Time of day', 'ช่วงเวลา')}
-          <select value={period} onChange={(event) => setPeriod(event.target.value as DayPeriod)}>
-            {PERIODS.map((p) => (
-              <option key={p} value={p}>
-                {periodName(p)}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          {t('Duration in minutes', 'ระยะเวลาเป็นนาที')}
-          <input
-            type="number"
-            min={15}
-            max={720}
-            step={15}
-            value={minutes}
-            onChange={(event) =>
-              setMinutes(Math.max(15, Math.min(720, Math.round(Number(event.target.value) || 15))))
-            }
-          />
-        </label>
-        <button className="button button-red" type="submit">
-          <Icon name="plus" size={16} />
-          {t('Add activity', 'เพิ่มกิจกรรม')}
-        </button>
-      </form>
+          <label className="activity-destination">
+            {t('Choose a place or custom activity', 'เลือกสถานที่หรือกิจกรรมที่ตั้งเอง')}
+            <select value={selection} onChange={(event) => choose(event.target.value)}>
+              <option value="custom">{t('Custom activity', 'กิจกรรมที่ตั้งเอง')}</option>
+              {STATES.map((s) => (
+                <optgroup key={s.code} label={stateName(s, lang)}>
+                  {s.places
+                    .map((_, i) => ({
+                      i,
+                      matches: [...s.names, ...s.placeNames[i]].some((n) =>
+                        n.toLocaleLowerCase().includes(search.toLocaleLowerCase().trim()),
+                      ),
+                    }))
+                    .filter((v) => v.matches)
+                    .map(({ i }) => (
+                      <option key={i} value={placeId(s, i)}>
+                        {local(s.placeNames[i], lang)}
+                      </option>
+                    ))}
+                </optgroup>
+              ))}
+            </select>
+          </label>
+          {selection === 'custom' && (
+            <label className="activity-destination">
+              {t('Activity name', 'ชื่อกิจกรรม')}
+              <input
+                value={title}
+                required
+                maxLength={120}
+                onChange={(event) => setTitle(event.target.value)}
+                placeholder={t(
+                  'Coffee, a museum, a slow afternoon…',
+                  'กาแฟ พิพิธภัณฑ์ หรือพักผ่อนยามบ่าย…',
+                )}
+              />
+            </label>
+          )}
+          <label>
+            {t('Time of day', 'ช่วงเวลา')}
+            <select value={period} onChange={(event) => setPeriod(event.target.value as DayPeriod)}>
+              {PERIODS.map((p) => (
+                <option key={p} value={p}>
+                  {periodName(p)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            {t('Duration in minutes', 'ระยะเวลาเป็นนาที')}
+            <input
+              type="number"
+              min={15}
+              max={720}
+              step={15}
+              value={minutes}
+              onChange={(event) =>
+                setMinutes(
+                  Math.max(15, Math.min(720, Math.round(Number(event.target.value) || 15))),
+                )
+              }
+            />
+          </label>
+          <button className="button button-red" type="submit">
+            <Icon name="plus" size={16} />
+            {t('Add activity', 'เพิ่มกิจกรรม')}
+          </button>
+        </form>
+      )}
       <p className="fine-print">
         {t(
           'Drag activities to reorder or move between time slots. Arrow buttons and day selectors also work on touch screens and with a keyboard.',
           'ลากกิจกรรมเพื่อเรียงหรือย้ายช่วงเวลา ใช้ปุ่มลูกศรและตัวเลือกวันบนจอสัมผัสหรือคีย์บอร์ดได้เช่นกัน',
         )}
       </p>
-      <div className="day-periods">
-        {PERIODS.map((p) => (
-          <section
-            key={p}
-            className={`day-period ${dragging ? 'drop-ready' : ''}`}
-            onDragOver={(event) => {
-              if (dragging) event.preventDefault();
-            }}
-            onDrop={(event) => {
-              event.preventDefault();
-              const id = event.dataTransfer.getData('text/roam-activity');
-              if (dragging === id) edit(id, { period: p, day });
-              setDragging(null);
-            }}
-            aria-label={periodName(p)}
-          >
-            <h4>
-              <Icon
-                name={p === 'morning' ? 'sun' : p === 'afternoon' ? 'compass' : 'moon'}
-                size={18}
-              />
-              {periodName(p)}
-              <span>{today.filter((a) => a.period === p).length}</span>
-            </h4>
-            {today.filter((a) => a.period === p).length === 0 && (
-              <p className="period-empty">
-                {t('Leave some room for discovery.', 'เว้นที่ว่างให้การค้นพบใหม่ ๆ')}
-              </p>
-            )}
-            {today
-              .filter((a) => a.period === p)
-              .map((a, index, group) => (
-                <article
-                  className="day-activity"
-                  key={a.id}
-                  data-activity-id={a.id}
-                  onDragOver={(event) => {
-                    if (dragging) event.preventDefault();
-                  }}
-                  onDrop={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    const id = event.dataTransfer.getData('text/roam-activity');
-                    if (dragging === id) reorder(id, a.id);
-                    setDragging(null);
-                  }}
-                >
-                  <div className="activity-title">
-                    <span
-                      className="activity-drag"
-                      draggable
-                      onDragStart={(event) => {
-                        setDragging(a.id);
-                        event.dataTransfer.setData('text/roam-activity', a.id);
-                        event.dataTransfer.effectAllowed = 'move';
-                      }}
-                      onDragEnd={() => setDragging(null)}
-                      aria-hidden="true"
-                    >
-                      ⠿
-                    </span>
-                    <h5>{activityName(a, lang)}</h5>
-                    <button
-                      className="icon-button"
-                      aria-label={`${t('Remove activity', 'ลบกิจกรรม')} ${activityName(a, lang)}`}
-                      onClick={() => update(activities.filter((item) => item.id !== a.id))}
-                    >
-                      <Icon name="trash" size={16} />
-                    </button>
-                  </div>
-                  <div className="activity-edit-row">
-                    <label>
-                      {t('Day in this state', 'วันที่ในรัฐนี้')}
-                      <select
-                        aria-label={`${t('Day for', 'วันของ')} ${activityName(a, lang)}`}
-                        value={a.day}
-                        onChange={(event) => edit(a.id, { day: Number(event.target.value) })}
-                      >
-                        {Array.from({ length: stop.days }, (_, i) => (
-                          <option key={i} value={i + 1}>
-                            {globalOffset + i + 1}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label>
-                      {t('Time of day', 'ช่วงเวลา')}
-                      <select
-                        aria-label={`${t('Time slot for', 'ช่วงเวลาของ')} ${activityName(a, lang)}`}
-                        value={a.period}
-                        onChange={(event) =>
-                          edit(a.id, { period: event.target.value as DayPeriod })
-                        }
-                      >
-                        {PERIODS.map((v) => (
-                          <option key={v} value={v}>
-                            {periodName(v)}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label>
-                      {t('Minutes', 'นาที')}
-                      <input
-                        aria-label={`${t('Duration for', 'ระยะเวลาของ')} ${activityName(a, lang)}`}
-                        type="number"
-                        min={15}
-                        max={720}
-                        value={a.minutes}
-                        onChange={(event) =>
-                          edit(a.id, {
-                            minutes: Math.max(
-                              15,
-                              Math.min(720, Math.round(Number(event.target.value) || 15)),
-                            ),
-                          })
-                        }
-                      />
-                    </label>
-                  </div>
-                  {!a.placeId && (
-                    <label className="activity-note">
-                      {t('Activity name', 'ชื่อกิจกรรม')}
-                      <input
-                        aria-label={`${t('Rename activity', 'เปลี่ยนชื่อกิจกรรม')} ${activityName(a, lang)}`}
-                        key={`${a.id}-${a.title}`}
-                        defaultValue={a.title}
-                        maxLength={120}
-                        onBlur={(event) => {
-                          const name = event.target.value.trim() || a.title;
-                          event.target.value = name;
-                          if (name !== a.title) edit(a.id, { title: name });
+      <div className="day-workspace">
+        <div className="day-periods">
+          {PERIODS.map((p) => (
+            <section
+              key={p}
+              className={`day-period ${dragging ? 'drop-ready' : ''}`}
+              onDragOver={(event) => {
+                if (dragging) event.preventDefault();
+              }}
+              onDrop={(event) => {
+                event.preventDefault();
+                const id = event.dataTransfer.getData('text/roam-activity');
+                if (dragging === id) edit(id, { period: p, day });
+                setDragging(null);
+              }}
+              aria-label={periodName(p)}
+            >
+              <h4>
+                <Icon
+                  name={p === 'morning' ? 'sun' : p === 'afternoon' ? 'compass' : 'moon'}
+                  size={18}
+                />
+                {periodName(p)}
+                <span>{today.filter((a) => a.period === p).length}</span>
+              </h4>
+              {today.filter((a) => a.period === p).length === 0 && (
+                <p className="period-empty">
+                  {t('Leave some room for discovery.', 'เว้นที่ว่างให้การค้นพบใหม่ ๆ')}
+                </p>
+              )}
+              {today
+                .filter((a) => a.period === p)
+                .map((a, index, group) => (
+                  <article
+                    className={`day-activity ${selectedActivity === a.id ? 'activity-selected' : ''}`}
+                    onFocus={() => setSelectedActivity(a.id)}
+                    onClick={() => setSelectedActivity(a.id)}
+                    key={a.id}
+                    data-activity-id={a.id}
+                    onDragOver={(event) => {
+                      if (dragging) event.preventDefault();
+                    }}
+                    onDrop={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      const id = event.dataTransfer.getData('text/roam-activity');
+                      if (dragging === id) reorder(id, a.id);
+                      setDragging(null);
+                    }}
+                  >
+                    <div className="activity-title">
+                      <span
+                        className="activity-drag"
+                        draggable
+                        onDragStart={(event) => {
+                          setDragging(a.id);
+                          event.dataTransfer.setData('text/roam-activity', a.id);
+                          event.dataTransfer.effectAllowed = 'move';
                         }}
-                        onKeyDown={(event) => {
-                          if (event.key === 'Enter') event.currentTarget.blur();
-                        }}
-                      />
-                    </label>
-                  )}
-                  <label className="activity-note">
-                    {t('Personal notes', 'โน้ตส่วนตัว')}
-                    <textarea
-                      aria-label={`${t('Activity notes for', 'โน้ตกิจกรรมสำหรับ')} ${activityName(a, lang)}`}
-                      rows={2}
-                      maxLength={500}
-                      value={a.notes}
-                      onChange={(event) => edit(a.id, { notes: event.target.value })}
-                    />
-                  </label>
-                  <div className="activity-bottom">
-                    <span>
-                      {a.minutes} {t('minutes', 'นาที')}
-                    </span>
-                    <div>
+                        onDragEnd={() => setDragging(null)}
+                        aria-hidden="true"
+                      >
+                        ⠿
+                      </span>
+                      <h5>{activityName(a, lang)}</h5>
                       <button
                         className="icon-button"
-                        disabled={index === 0}
-                        aria-label={`${t('Move activity up', 'เลื่อนกิจกรรมขึ้น')} ${activityName(a, lang)}`}
-                        onClick={() => move(a.id, -1)}
+                        aria-label={`${t('Remove activity', 'ลบกิจกรรม')} ${activityName(a, lang)}`}
+                        onClick={() => update(activities.filter((item) => item.id !== a.id))}
                       >
-                        <Icon name="arrow-up" size={15} />
-                      </button>
-                      <button
-                        className="icon-button"
-                        disabled={index === group.length - 1}
-                        aria-label={`${t('Move activity down', 'เลื่อนกิจกรรมลง')} ${activityName(a, lang)}`}
-                        onClick={() => move(a.id, 1)}
-                      >
-                        <Icon name="arrow-down" size={15} />
+                        <Icon name="trash" size={16} />
                       </button>
                     </div>
-                  </div>
-                </article>
+                    <div className="activity-edit-row">
+                      <label>
+                        {t('Day in this state', 'วันที่ในรัฐนี้')}
+                        <select
+                          aria-label={`${t('Day for', 'วันของ')} ${activityName(a, lang)}`}
+                          value={a.day}
+                          onChange={(event) => edit(a.id, { day: Number(event.target.value) })}
+                        >
+                          {Array.from({ length: stop.days }, (_, i) => (
+                            <option key={i} value={i + 1}>
+                              {globalOffset + i + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      <label>
+                        {t('Time of day', 'ช่วงเวลา')}
+                        <select
+                          aria-label={`${t('Time slot for', 'ช่วงเวลาของ')} ${activityName(a, lang)}`}
+                          value={a.period}
+                          onChange={(event) =>
+                            edit(a.id, { period: event.target.value as DayPeriod })
+                          }
+                        >
+                          {PERIODS.map((v) => (
+                            <option key={v} value={v}>
+                              {periodName(v)}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      <label>
+                        {t('Minutes', 'นาที')}
+                        <input
+                          aria-label={`${t('Duration for', 'ระยะเวลาของ')} ${activityName(a, lang)}`}
+                          type="number"
+                          min={15}
+                          max={720}
+                          value={a.minutes}
+                          onChange={(event) =>
+                            edit(a.id, {
+                              minutes: Math.max(
+                                15,
+                                Math.min(720, Math.round(Number(event.target.value) || 15)),
+                              ),
+                            })
+                          }
+                        />
+                      </label>
+                    </div>
+                    {!a.placeId && (
+                      <label className="activity-note">
+                        {t('Activity name', 'ชื่อกิจกรรม')}
+                        <input
+                          aria-label={`${t('Rename activity', 'เปลี่ยนชื่อกิจกรรม')} ${activityName(a, lang)}`}
+                          key={`${a.id}-${a.title}`}
+                          defaultValue={a.title}
+                          maxLength={120}
+                          onBlur={(event) => {
+                            const name = event.target.value.trim() || a.title;
+                            event.target.value = name;
+                            if (name !== a.title) edit(a.id, { title: name });
+                          }}
+                          onKeyDown={(event) => {
+                            if (event.key === 'Enter') event.currentTarget.blur();
+                          }}
+                        />
+                      </label>
+                    )}
+                    <label className="activity-note">
+                      {t('Personal notes', 'โน้ตส่วนตัว')}
+                      <textarea
+                        aria-label={`${t('Activity notes for', 'โน้ตกิจกรรมสำหรับ')} ${activityName(a, lang)}`}
+                        rows={2}
+                        maxLength={500}
+                        value={a.notes}
+                        onChange={(event) => edit(a.id, { notes: event.target.value })}
+                      />
+                    </label>
+                    <div className="activity-bottom">
+                      <span>
+                        {a.minutes} {t('minutes', 'นาที')}
+                      </span>
+                      <div>
+                        <button
+                          className="icon-button"
+                          disabled={index === 0}
+                          aria-label={`${t('Move activity up', 'เลื่อนกิจกรรมขึ้น')} ${activityName(a, lang)}`}
+                          onClick={() => move(a.id, -1)}
+                        >
+                          <Icon name="arrow-up" size={15} />
+                        </button>
+                        <button
+                          className="icon-button"
+                          disabled={index === group.length - 1}
+                          aria-label={`${t('Move activity down', 'เลื่อนกิจกรรมลง')} ${activityName(a, lang)}`}
+                          onClick={() => move(a.id, 1)}
+                        >
+                          <Icon name="arrow-down" size={15} />
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+            </section>
+          ))}
+        </div>
+        {!!today.length && (
+          <aside className="day-map-aside">
+            <h3 className="day-route-heading">{t('Connect the dots', 'เชื่อมจุดหมายของวันนี้')}</h3>
+            <RouteMap
+              points={points}
+              lang={lang}
+              routing
+              activityMinutes={total}
+              selectedId={selectedActivity}
+              onSelect={(id) => {
+                setSelectedActivity(id);
+                const element = document.querySelector<HTMLElement>(
+                  `[data-activity-id="${CSS.escape(id)}"]`,
+                );
+                element?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                element?.querySelector<HTMLElement>('button')?.focus({ preventScroll: true });
+              }}
+            />
+            <ol className="day-directions">
+              {points.map((point, i) => (
+                <li key={point.id}>
+                  <span>{point.name}</span>
+                  {i > 0 && (
+                    <a
+                      className="text-link"
+                      href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(points[i - 1].coordinates.join(','))}&destination=${encodeURIComponent(point.coordinates.join(','))}&travelmode=driving`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t('Directions from previous stop', 'เส้นทางจากจุดก่อนหน้า')}
+                      <Icon name="external" size={14} />
+                    </a>
+                  )}
+                </li>
               ))}
-          </section>
-        ))}
+            </ol>
+          </aside>
+        )}
       </div>
-      {!!today.length && (
-        <>
-          <h3 className="day-route-heading">{t('Connect the dots', 'เชื่อมจุดหมายของวันนี้')}</h3>
-          <RouteMap points={points} lang={lang} routing activityMinutes={total} />
-          <ol className="day-directions">
-            {points.map((point, i) => (
-              <li key={point.id}>
-                <span>{point.name}</span>
-                {i > 0 && (
-                  <a
-                    className="text-link"
-                    href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(points[i - 1].coordinates.join(','))}&destination=${encodeURIComponent(point.coordinates.join(','))}&travelmode=driving`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {t('Directions from previous stop', 'เส้นทางจากจุดก่อนหน้า')}
-                    <Icon name="external" size={14} />
-                  </a>
-                )}
-              </li>
-            ))}
-          </ol>
-        </>
-      )}
     </div>
   );
 }

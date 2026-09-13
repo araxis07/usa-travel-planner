@@ -30,6 +30,8 @@ export function translate(
   return text.replace(/\{(\w+)\}/g, (match, key: string) => String(values[key] ?? match));
 }
 export function initialLanguage(): Language {
+  const path = location.pathname.split('/')[1];
+  if (isLanguage(path)) return path;
   const query = new URLSearchParams(location.search).get('lang');
   if (isLanguage(query)) return query;
   try {

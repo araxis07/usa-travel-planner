@@ -13,6 +13,7 @@ import { destinationUrl, findPlace, placeId } from '../lib/destinations';
 import PhotoLightbox from './PhotoLightbox';
 import RouteMap from './RouteMap';
 import Icon from './Icon';
+import PlacePractical from './PlacePractical';
 
 export default function DestinationPage({
   state,
@@ -21,6 +22,7 @@ export default function DestinationPage({
   saved,
   inTrip,
   onSave,
+  onCompare,
   onAdd,
   onAddPlace,
   onOpen,
@@ -33,6 +35,7 @@ export default function DestinationPage({
   saved: boolean;
   inTrip: boolean;
   onSave: () => void;
+  onCompare: () => void;
   onAdd: () => void;
   onAddPlace: (index: number) => void;
   onOpen: (state: StateGuide, index?: number) => void;
@@ -79,6 +82,9 @@ export default function DestinationPage({
       onOpen(state, index);
     }
   };
+  const galleryPhotos = state.photos.filter(
+    (p) => placeIndex === undefined || p.placeIndex === placeIndex,
+  );
   return (
     <main className="destination-page" id="destination-guide">
       <div className="guide-breadcrumb container">
@@ -112,13 +118,21 @@ export default function DestinationPage({
               {placeIndex === undefined ? state.name : state.places[placeIndex]}
             </span>
           )}
-          <button
-            className="button gallery-open"
-            onClick={() => setGallery(state.photos.indexOf(photo))}
-          >
-            <Icon name="search" size={16} />
-            {t('View fullscreen', 'ดูเต็มจอ')} · {state.photos.length}
-          </button>
+          <div className="destination-hero-actions">
+            <button
+              className="button button-red hero-primary-action"
+              onClick={() => (placeIndex === undefined ? onAdd() : onAddPlace(placeIndex))}
+            >
+              {t('Add to my trip', 'เพิ่มในทริปของฉัน')}
+            </button>
+            <button
+              className="button gallery-open"
+              onClick={() => setGallery(state.photos.indexOf(photo))}
+            >
+              <Icon name="search" size={16} />
+              {t('View fullscreen', 'ดูเต็มจอ')} · {galleryPhotos.length}
+            </button>
+          </div>
         </div>
       </section>
       <p className="destination-hero-credit container photo-credit">
@@ -131,6 +145,11 @@ export default function DestinationPage({
         </a>{' '}
         · {t('Resized for display', 'ปรับขนาดเพื่อแสดงผล')}
       </p>
+      <div className="container compare-guide-link">
+        <button className="text-link" onClick={onCompare}>
+          {t('Compare destinations', 'เปรียบเทียบจุดหมาย')}
+        </button>
+      </div>
       <div className="destination-layout container">
         <article className="destination-story">
           <span className="eyebrow">{t('A LITTLE FURTHER', 'ออกไปค้นพบอีกนิด')}</span>
@@ -139,7 +158,15 @@ export default function DestinationPage({
               ? t('Find your kind of adventure.', 'ค้นพบการเดินทางในแบบคุณ')
               : t('Make time for this place.', 'เผื่อเวลาให้จุดหมายนี้')}
           </h2>
-          <p className="destination-intro">{local(state.description, lang)}</p>
+          <p className="destination-intro">
+            {local(
+              placeIndex === undefined ? state.description : state.destinations[placeIndex].summary,
+              lang,
+            )}
+          </p>
+          {placeIndex !== undefined && (
+            <PlacePractical profile={state.destinations[placeIndex]} lang={lang} />
+          )}
           <div className="detail-facts">
             <div>
               <Icon name="sun" />
@@ -188,12 +215,26 @@ export default function DestinationPage({
                         {local(state.placeNames[index], lang)}
                       </a>
                     </h3>
-                    <p>
-                      {t(
-                        'Choose your activities and allow travel time between stops. Add this destination to a day, then adjust the duration to suit your visit.',
-                        'เลือกกิจกรรมและเผื่อเวลาเดินทางระหว่างจุด เพิ่มจุดหมายนี้ในแผนรายวัน แล้วปรับระยะเวลาให้เหมาะกับการเที่ยวของคุณ',
-                      )}
-                    </p>
+                    {placeIndex === undefined && (
+                      <p>{local(state.destinations[index].summary, lang)}</p>
+                    )}
+                    <div className="place-gallery-strip">
+                      {state.photos
+                        .filter((p) => p.placeIndex === index)
+                        .map((p) => (
+                          <button
+                            key={p.src}
+                            onClick={() => setGallery(state.photos.indexOf(p))}
+                            aria-label={`${t('View photo', 'ดูภาพ')} ${local(state.placeNames[index], lang)} ${state.photos.indexOf(p) + 1}`}
+                          >
+                            <img
+                              src={p.src}
+                              alt={local(state.placeNames[index], lang)}
+                              loading="lazy"
+                            />
+                          </button>
+                        ))}
+                    </div>
                     <div className="place-story-actions">
                       <button className="text-link" onClick={() => onAddPlace(index)}>
                         <Icon name="plus" size={16} />
@@ -349,9 +390,12 @@ export default function DestinationPage({
       </div>
       {gallery !== null && (
         <PhotoLightbox
-          state={state}
+          state={{ ...state, photos: galleryPhotos }}
           lang={lang}
-          initialIndex={gallery}
+          initialIndex={Math.max(
+            0,
+            galleryPhotos.findIndex((p) => p.src === state.photos[gallery].src),
+          )}
           onClose={() => setGallery(null)}
         />
       )}

@@ -1,36 +1,82 @@
-# Roam America
+# Roam America · v3
 
-An independent travel guide and itinerary planner for all 50 U.S. states, available in English, Thai, Simplified Chinese, Japanese and Korean.
+An independent travel guide and itinerary planner for all 50 U.S. states, with English, Thai, Simplified Chinese, Japanese and Korean interfaces.
 
-## Run the website
+## Run locally
 
-Node.js 22 or newer:
+Use Node.js 22 or newer:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open the `Local` URL printed by Vite (normally `http://127.0.0.1:5173`). If that port is already in use, `npm run dev` automatically selects the next available port. Stop a dev server with `Ctrl+C` in its terminal when finished. No API keys or accounts are required. Build with `npm run build`, then deploy `dist/` to a static host at the domain root. Photography, fonts, the state atlas and the Leaflet library are bundled locally. Interactive destination maps load OpenStreetMap tiles only when opened; driving calculations contact the routing service only when requested.
+Open Vite’s printed `Local` URL. The default is port 5173; an occupied port automatically falls back to the next available port. Stop your server with `Ctrl+C` when finished. Local planning needs no account or API key.
 
-## Destination pages and daily itineraries
+```sh
+npm run build
+npm run preview
+```
 
-- **50 full state guides and 150 destination pages:** direct links such as `/?lang=th&state=california&place=yosemite-national-park`, native sharing with copy-link fallback, back/forward navigation, localized titles, credited photography, planning facts, nearby guides and official tourism references. Query-based URLs work on static hosts without rewrite rules. Cards retain quick previews and include a full-guide link.
-- **Fullscreen galleries:** keyboard arrows, swipe navigation, zoom, individual source/license links, image failure handling and focus restoration back to the opening control.
-- **Daily planner:** state/day selectors, morning/afternoon/evening activities, a place selector for all 150 destinations, custom activities, editable duration and notes. Drag to reorder or move between periods; buttons and selectors provide keyboard/touch equivalents. Date labels follow the trip start date and state order. Occupied last days cannot be removed until their activities are moved or deleted.
-- **Maps and driving estimates:** up to 10 mapped activities per day, numbered pins, calculated route geometry, distance, driving time and total planned minutes. Plans exceeding 12 hours prompt a suggestion to move activities. Directions links are available for each leg. Custom activities are retained in the itinerary but excluded from routing.
-- **Mobile bottom navigation:** Discover, Map, Saved and My trip, with counts and safe-area spacing. All new controls are translated into the same five languages.
+Deploy the complete `dist/` directory at the domain root. The build generates 1,005 HTML pages: five homepages, 250 state guides and 750 place guides. Each language page includes readable content before JavaScript starts. Example: `/th/states/california/yosemite-national-park/`. Existing `?lang=th&state=california&place=yosemite-national-park` links still work. The language in a URL path takes precedence over the query, saved preference and browser language.
 
-Adding a destination from its guide creates a two-hour activity on the first morning of that state's stay. This is an editable planning default, not a verified visit duration. Plans support up to 200 activities. JSON backups now use `version: 2`; the importer also accepts existing `version: 1` backups. Existing local trips migrate without losing notes, dates, budget settings or stops. Imports are validated and previewed before replacement, with a 1 MB file limit. Text exports include the daily schedule in the selected language.
+The repository has no hosting-specific deployment workflow. A Git push runs verification; your host must deploy the build separately.
 
-## Version 2
+## What is included
 
-- **150 local destination photographs:** three credited photographs for each of the 50 states, with selectable galleries, destination names, photographer/source links and individual license details. Each state has a real photographic cover.
-- **Five languages throughout:** navigation, state descriptions, food, travel tips, 150 place names, route collections, guide articles, planner controls, notifications, accessibility labels and text exports. Original English place names remain available in the guide for map searches.
-- **Search across languages:** a Japanese place name can find a state while the interface is English. Filters combine experience, season and region, with localized name sorting.
-- **Language continuity:** `?lang=en|th|zh|ja|ko` takes precedence over the saved preference, then browser language. Switching language preserves filters, the open dialog, selected gallery photo, favorites and trip notes. A language selector is available inside dialogs.
-- **Local Content Studio:** edit state translations and travel facts, manage gallery uploads, select covers, maintain attribution, preview, save durable drafts, export/import content backups and publish validated content to project files.
-- The existing interactive 2D/3D atlas, animation controls, saved states, trip planning, route templates, budget calculations, JSON trip backups and responsive design remain available.
+- **50 state guides, 150 place profiles and 450 local photographs.** Every place has three distinct photos with individual source and license links. Profiles include five-language highlights, planning duration, accommodation areas, access guidance, source dates and official links. Galleries support keyboard arrows, swipe, zoom and source captions.
+- **Discovery and comparison.** Search state/place names across all five languages, combine region/season/interest filters, save favorites and compare up to three states or places side by side.
+- **Full-page daily planner.** Choose the day, time slot and duration before adding a place. Search all 150 destinations or create a custom activity. Edit notes, move activities between days or periods, reorder by dragging or keyboard buttons and undo a deletion. The desktop workspace puts the schedule alongside its map; mobile uses a single column and day navigation.
+- **Interactive atlas and route map.** A local 2D/3D state atlas with motion controls, connected activity/pin selection, numbered itinerary markers and driving estimates requested explicitly by the traveler.
+- **Trip portability.** Automatic browser saving, validated JSON import with replacement confirmation, JSON/text export, and a print layout for every day and activity. The browser’s print dialog provides **Save as PDF**, including Thai and CJK text.
+- **Offline reading.** On the published HTTPS site (or localhost preview), **Save for offline** downloads the selected states’ photos. The service worker stores the app, fonts and cached park facts. The current browser trip and downloaded photos can then reopen offline. Success is shown only after the download completes. Save again after adding other states. Browser storage limits, private browsing or clearing site data can remove downloaded content; keep a JSON backup for durable storage.
+- **Optional accounts and sharing.** Supabase integration supports email/password signup, confirmation, reset, account copies, explicit loading, revision conflict detection and seven-day read-only snapshot links. Notes are excluded by default. Owners can include them explicitly and revoke links. Edits after sharing do not change that snapshot. Account activation requires the setup below.
+- **Local Content Studio.** Edit and publish the catalog, all five translations, per-place coordinates and sources, photography and review dates together. Review queues highlight overdue content, approximate coordinates and translations awaiting human review.
+
+Suggested visit times, accommodation areas, seasons and budgets are editorial planning starting points. The budget is `days × travelers × the traveler’s daily amount`; flights, car rental and one-off costs are separate. No live inventory, reservations or destination-specific price promises are generated.
+
+## Configure the public site and accounts
+
+Copy `.env.example` to `.env.local`, then fill the values you actually use:
+
+| Variable                        | Purpose                                                                                                                                                                       |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SITE_URL`                      | The real absolute public origin, such as your HTTPS domain, without a subpath. Adds canonical URLs, reciprocal `hreflang`, social image URLs and `sitemap.xml` at build time. |
+| `VITE_SUPABASE_URL`             | URL of the Supabase project selected for Roam America.                                                                                                                        |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Its public publishable key (or legacy `anon` key). Secret and service-role keys are rejected by the client.                                                                   |
+| `NPS_API_KEY`                   | Optional server-side environment value for refreshing the public park snapshot. Never bundled in the browser.                                                                 |
+
+Without a public origin, the build still generates all language pages but omits absolute canonical/social URLs and the sitemap. Without Supabase configuration, the account panel explains that accounts are not enabled and local planning continues.
+
+To activate accounts on the intended Supabase project:
+
+1. Initialize the CLI configuration if this is the first setup: `npx supabase init`.
+2. Run `npx supabase login`, then `npx supabase link --project-ref YOUR_PROJECT_REF`.
+3. Inspect `npx supabase db push --dry-run`, then apply `npx supabase db push` to that project. The migration is in `supabase/migrations/20260909193429_roam_cloud_trips.sql`.
+4. Enable email/password authentication. Set the Auth Site URL to the deployed origin and allow the exact redirect URLs used by the application: `/?lang=en&view=planner&account=1`, with equivalents for `th`, `zh`, `ja` and `ko`. Add localhost equivalents for development if needed. Configure an email provider for production confirmation and reset emails.
+5. Set the public URL/key above and rebuild. Verify signup confirmation, reset, saving and loading using your own test account on the actual deployed site.
+
+The migration uses owner-based row-level policies, explicit column permissions and immutable revisions. Account updates use the loaded revision; a conflict offers loading the latest copy or saving a new one. Loading a cloud trip explicitly replaces the browser trip. Signing out keeps the local trip on that device. The anonymous API can read one unexpired shared snapshot by its random token; it cannot list private trips or shares. Keep `roam_private` out of exposed API schemas. Snapshot expiry is checked by PostgreSQL even if old rows have not been deleted.
+
+No project has been provisioned or linked by this repository. Hosted authentication, delivery of emails and production database activation depend on the owner’s project configuration. See the official [Supabase password auth guide](https://supabase.com/docs/guides/auth/passwords) and [row-level security guide](https://supabase.com/docs/guides/database/postgres/row-level-security).
+
+## Park facts, coordinates and maps
+
+`public/data/parks.json` is a dated snapshot for 42 NPS destinations: operating hours, fee descriptions and conditions, official alerts and visitor-center records. The UI labels the original English data, shows its retrieval date, flags snapshots older than seven days and links to the park for current conditions. A missing alert does not imply that every area is open. Nonresident fee conditions remain visible with the source description.
+
+Refresh the snapshot explicitly with:
+
+```sh
+npm run refresh:parks
+```
+
+Provide `NPS_API_KEY` in the process environment for normal use; the script falls back to the rate-limited public `DEMO_KEY`. It queries parks, alerts and visitor centers, validates completeness and atomically replaces the cache only after successful responses. Refreshing does not alter the editor’s selected coordinates or mark editorial reviews complete. Review the diff and publish a new build to update visitor-facing facts. [NPS API documentation](https://www.nps.gov/subjects/developer/get-started.htm).
+
+The canonical coordinates are in each profile in `content/states.json`; 42 profiles identify an NPS visitor center. Other profiles identify an approximate area. A reference point does not guarantee vehicle access or parking. `content/places.json` is the original research archive and is no longer read by the app. Preserve stable place slot IDs (`CA-0`, for example) when editing existing destinations.
+
+Opening a map requests OpenStreetMap tiles. Driving calculation sends 2–10 mapped activity coordinates to OSRM/FOSSGIS; custom activities remain in the plan but are excluded. Routes may snap to nearby roads within 5 km and exclude live traffic, breaks and seasonal closures. Requests are queued at least 1.1 seconds apart, cancel when obsolete, time out after 12 seconds and use a 30-route in-memory cache. Disconnected islands or roads can return no route; the UI preserves the plan and offers retry and directions links.
+
+**Map tiles and third-party API responses are never saved by the offline service worker.** Live maps, routing, accounts and shared-link retrieval need a connection. Photos are downloaded only after the user requests offline saving. See the [OSM tile policy](https://operations.osmfoundation.org/policies/tiles/) and [routing service policy](https://map.project-osrm.org/about.html). Configure a dedicated provider in `components/RouteMap.tsx` and `lib/routing.ts` before a high-traffic rollout.
 
 ## Content Studio — สำหรับเจ้าของเว็บไซต์
 
@@ -38,74 +84,58 @@ Adding a destination from its guide creates a two-hour activity on the first mor
 npm run studio
 ```
 
-เปิด **http://127.0.0.1:5174/studio** แล้วทำงานตามลำดับนี้:
+เปิด **http://127.0.0.1:5174/studio**:
 
-1. เลือกรัฐจากด้านซ้าย เลือกภาษา แล้วแก้ชื่อ คำอธิบาย อาหาร ข้อแนะนำ และชื่อสถานที่
-2. เปลี่ยนวันแนะนำ สนามบิน ฤดูกาล รูปภาพปก ภาพแกลเลอรี และลิงก์แหล่งข้อมูล
-3. ภาพใหม่รองรับ JPEG, PNG และ WebP ไม่เกิน 5 MB ต้องระบุผู้ถ่าย แหล่งที่มา ชื่อสิทธิ์ใช้งาน และลิงก์เงื่อนไข
-4. กด **บันทึกฉบับร่าง** เพื่อเก็บลง `.studio/draft.json` ปิดเบราว์เซอร์หรือหยุดเซิร์ฟเวอร์แล้วกลับมาทำต่อได้
-5. ใช้ **ดูตัวอย่าง** และตรวจรายการที่ยังขาด กด **เผยแพร่เข้าโปรเจกต์** เมื่อพร้อม ระบบตรวจครบ 50 รัฐ คำแปล 5 ภาษา รูปอย่างน้อย 3 รูปต่อรัฐ ครบทั้งสามสถานที่ เครดิต แหล่งข้อมูล และไฟล์ภาพจริง
-6. ตรวจการเปลี่ยนแปลงด้วย Git แล้ว build, commit และ push ตามขั้นตอนของโปรเจกต์ เว็บไซต์ออนไลน์เปลี่ยนเมื่อโฮสต์ deploy สำเร็จ
+1. เลือกรัฐและภาษา แก้คำอธิบาย อาหาร ข้อแนะนำ ฤดูกาล และสนามบิน
+2. เปิดรายละเอียดรายสถานที่เพื่อแก้เรื่องราว เวลาเที่ยว บริเวณที่พัก การเข้าถึง ประเภทหมุด พิกัด ลิงก์อ้างอิง และวันตรวจสอบ
+3. จัดการภาพ JPEG/PNG/WebP ขนาดไม่เกิน 5 MB ใส่ผู้ถ่าย แหล่งที่มา และสิทธิ์ใช้งานให้ครบ ทุกสถานที่ต้องมีอย่างน้อย 3 ภาพ
+4. ใช้คิวตรวจทานเพื่อดูข้อมูลที่ถึงกำหนด พิกัดที่ยังเป็นพื้นที่โดยประมาณ และภาษาที่ยังไม่ได้ตรวจ แก้ข้อความแล้วสถานะตรวจทานภาษานั้นจะถูกล้าง
+5. บันทึกฉบับร่าง ดูตัวอย่าง และตรวจข้อมูลก่อนกด **เผยแพร่เข้าโปรเจกต์** จากนั้น build, commit และ push เพื่อส่งต่อให้โฮสต์ deploy
 
-Studio เปิดเฉพาะบนเครื่องเจ้าของที่ localhost และมีเฉพาะโหมด `studio`; production build ไม่มีหน้าแก้ไขหรือ API เขียนไฟล์ โดยไม่ต้องตั้งค่าบัญชีหรือฐานข้อมูลบนคลาวด์ ฉบับร่างไม่ถูกนำเข้า Git ส่วนภาพอัปโหลดอยู่ใน `public/images/library/` การเปลี่ยนภาพจะล้างเครดิตเดิมเพื่อให้ใส่ข้อมูลของภาพใหม่อย่างถูกต้อง
+เนื้อหา คำแปล ภาพ และพิกัดบันทึกใน catalog เดียว ป้องกันการเขียนทับงานจากหน้าต่างอื่นด้วย revision; เมื่อขัดแย้งให้โหลดล่าสุด ฉบับร่างอยู่ที่ `.studio/draft.json` และไม่เข้า Git ภาพอัปโหลดอยู่ใน `public/images/library/` ข้อมูลสำรองรุ่นเดิมจะเติมรายละเอียดสถานที่จากชุดปัจจุบันได้เมื่อชื่อสถานที่ตรงกันเท่านั้น
 
-หากเปิดหลายหน้าต่าง ระบบตรวจรุ่นข้อมูลก่อนบันทึกเพื่อป้องกันการเขียนทับงานที่เพิ่งเปลี่ยน กดโหลดล่าสุดเมื่อเกิดความขัดแย้ง การนำเข้าข้อมูลสำรองเป็นการนำเข้ามาแก้ไขก่อนและยังไม่เผยแพร่ทันที
+Studio เปิดเฉพาะ localhost ในโหมด `studio`; production ไม่มี API เขียนไฟล์ คำแปลที่เพิ่มเข้ามายังอยู่ในคิวรอการตรวจทานโดยเจ้าของภาษา ไม่ได้ถูกทำเครื่องหมายว่าผ่านการตรวจโดยคนแล้ว
 
-`content/states.json` is the published source of truth. Canonical state codes and English state identities are fixed to preserve map and trip references. The editor manages the existing 50 state guides and three place slots per state; it is not a remote multi-user CMS. Article and interface copy are maintained in `data/travel.ts` and `content/translations.json`.
+`content/states.json` is the published source of truth for all 50 states and their three destination slots. Interface/article translations are maintained in `content/translations.json`, with English/Thai strings alongside the UI. Photo captions and NPS source excerpts retain their source language.
 
-## Planning and storage
+## Storage and privacy
 
-State guides are editorial starting points, with suggested seasons, durations, food, gateway airports and official tourism links. They are not live booking inventory. Verify destination access, opening hours, weather and reservations with official sources before travel.
+Browser storage holds language, favorites, comparison choices and the current trip. JSON backups use version 2 and accept version 1 imports; old trips preserve notes, dates, stops and budget settings. Trips support up to 200 activities and imports are limited to 1 MB. Cloud storage is used only through the explicit account actions. Shared snapshots omit personal notes unless selected; anyone with the link can view the included trip details until expiry or revocation. Downloaded copies cannot be recalled.
 
-Route templates are sequences of **states**. The daily planner separately calculates driving routes between mapped activities. Travelers still choose their accommodation and transport. The budget is `days × travelers × the traveler’s daily amount`; USD 150 is an editable default, not a verified destination cost. Flights, car rental and one-off expenses are separate.
+The application has no analytics or advertising trackers. Gallery images, fonts and atlas geometry are local assets. Studio drafts are disk files independent of traveler storage. Clearing browser data removes local plans and offline copies; account copies remain until removed from the account database.
 
-`content/places.json` contains 150 reference coordinates with source links and verification dates. Pins locate destination areas, not exact visitor entrances or parking. Some cover a large region (for example a park or coastline), and the reference title identifies the sampled point. Driving estimates use OSRM/FOSSGIS, can snap to nearby roads within 5 km, and exclude live traffic, breaks and seasonal closures. Islands, remote regions and disconnected roads can return no route; the UI preserves the plan and offers retry and external directions. Verify access with the destination before travel.
-
-The browser queues routing requests with a minimum 1.1-second gap, a 12-second timeout and an in-memory cache of 30 routes. It aborts obsolete requests when destinations change. Maps use standard HTTP tile caching and have no offline downloads or tile prefetching. Visible attribution links to OpenStreetMap, OSRM/FOSSGIS, the map correction page and the routing service privacy policy. Coordinates are sent to the routing service; opening a map sends tile requests. See the [OSM tile policy](https://operations.osmfoundation.org/policies/tiles/) and [public routing service policy](https://map.project-osrm.org/about.html). Public services are best-effort: choose a dedicated provider and configure the URLs in `components/RouteMap.tsx` and `lib/routing.ts` before a high-traffic rollout. Browser tests mock tile/routing requests and never crawl the public tile service.
-
-Favorites, language and trips use browser local storage (`roam.saved.v1`, `roam.language`, `roam.trip.v1`). There are no accounts, cloud sync, analytics or tracking. Clearing browser data removes personal saved plans; JSON exports let travelers back up or move their trip. Text exports use the currently selected language. Content Studio drafts use disk files independently of traveler storage.
-
-## Structure
-
-- `App.tsx`, `components/` — discovery, atlas, galleries, guides, dialogs and trip planner.
-- `content/states.json` — published state content, all five translations, images and references.
-- `content/places.json`, `lib/destinations.ts` — sourced reference coordinates, stable activity IDs, destination URL handling and localized activity names. When replacing one of the three place slots in Content Studio, update the matching coordinate record too; existing activities refer to the slot ID (`CA-0`, for example).
-- `components/DestinationPage.tsx`, `components/PhotoLightbox.tsx`, `journey.css` — full destination pages, fullscreen galleries and the new responsive layouts.
-- `components/DailyPlanner.tsx`, `components/RouteMap.tsx`, `lib/routing.ts` — daily schedules, on-demand maps, cancellation, timeout and cached driving requests.
-- `content/translations.json`, `lib/i18n.ts` — Chinese, Japanese and Korean interface/article translations and locale handling; English/Thai source strings remain alongside UI copy.
-- `data/travel.ts` — types, state data accessors, taxonomies, routes and articles.
-- `lib/content.ts` — content structure, image path validation and completeness checks.
-- `studio/Studio.tsx`, `studio/server.ts` — owner editor and local file-backed draft, upload and publish endpoints.
-- `data/map-paths.json`, `components/Atlas.tsx` — local Albers-projected SVG map with 2D/3D interaction.
-- `lib/storage.ts` — trip validation, persistence and portable downloads.
-- `public/` — bundled media, fonts, source credits and licenses.
-- `tests/` — browser flows, accessibility, multilingual content and isolated Studio persistence/security tests.
-
-## Verification
+## Verification and project structure
 
 ```sh
-npm run check:content  # five-language completeness, credit metadata, asset files, UI dictionary coverage
+npm run check:content
 npm run typecheck
-npm run build         # validates content, regenerates photo credits, checks types, builds the static site
+npm run build
 npx playwright install chromium
-npm test              # desktop and mobile Chromium
+npm test
+npm run test:cloud
+npm run test:production
 npm run format:check
 ```
 
-Tests cover all 50 image covers, translated gallery/itinerary flows, cross-language searches, persistence, exports, map keyboard controls, reduced motion, filters, favorites, corrupt backups and axe accessibility checks in the new languages. Studio tests use temporary content directories: draft saving/reloading, preview, publication, missing-data rejection, upload validation, cross-origin rejection and stale revision conflicts.
+The regular Chromium suite covers desktop/mobile flows, five languages, galleries, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
 
-`tests/journey.spec.ts` adds deep-link/history/sharing checks, fullscreen gallery keyboard/swipe/focus checks, daily schedule persistence and version 2 round trips, malformed activity rejection, accessible reorder and cross-period drag, occupied-day protection, mocked routing failure/retry/invalidation, five-language narrow layouts and automated accessibility checks.
+`test:production` builds to ignored `artifacts/production/`, serves port 5198, checks static SEO without JavaScript, client metadata, offline reloads, all saved photos and PDFs in five languages. Account tests intercept Supabase HTTP requests to exercise the real browser client without sending emails or changing a remote database. Reports and PDFs are in `artifacts/production-results/` and `artifacts/production-report/`. Tests close their servers when finished. GitHub Actions runs all three suites.
 
-`node scripts/capture-journey.mjs` starts its own temporary server on port 5299, captures destination pages, galleries and daily planners into `artifacts/journey/`, then closes the browser and server. With both dev servers running, `node scripts/capture-v2.mjs` captures five-language desktop/mobile previews, galleries, the editor and a photo contact sheet into ignored `artifacts/v2/`. `node scripts/capture.mjs` captures the original broader page flows. Automated checks supplement manual visual review.
-
-GitHub Actions checks formatting and content, builds the site, and runs the tests on pushes to `main` and pull requests. No hosting-specific deployment configuration is assumed.
+| Location                                                           | Responsibility                                                             |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| `App.tsx`, `components/`, `expedition.css`                         | Discovery, comparison, guides, daily planning, print, accounts and sharing |
+| `content/states.json`, `data/travel.ts`                            | Published multilingual profiles, images, coordinates and types             |
+| `lib/content.ts`, `studio/`                                        | Validation, migration, review queues and local editor                      |
+| `lib/storage.ts`, `lib/useTripHistory.ts`                          | Trip validation, browser persistence and undo                              |
+| `lib/cloud.ts`, `supabase/migrations/`                             | Optional authentication, scoped cloud storage and sharing                  |
+| `scripts/build-pages.mjs`, `lib/pageMetadata.ts`, `lib/offline.ts` | Static pages, SEO metadata and offline downloading                         |
+| `scripts/refresh-parks.mjs`, `public/data/parks.json`              | Official dated park snapshot                                               |
+| `scripts/review-v3.mjs`                                            | Local contact sheets of the published photos in `artifacts/v3/`            |
 
 ## Sources and licenses
 
-See [`public/credits.txt`](public/credits.txt) for every photograph’s source, photographer and license. The state galleries use Wikimedia Commons photographs with individual CC BY, CC BY-SA, CC0, public-domain or Free Art License terms; source metadata is stored with each image. Local images are resized and may be cropped by the layout. Hero/route photography also uses Unsplash. Source and license links remain beside the selected gallery image. `npm run build` regenerates the credit list from published content.
+[`public/credits.txt`](public/credits.txt) lists each photograph’s source, author and license, regenerated at build time. Wikimedia Commons images retain individual CC BY, CC BY-SA, CC0, public-domain or Free Art License terms. NPS images use the credits and public-domain status supplied for the selected images. Photos are locally resized and may be cropped by the layout. Hero/route photographs also use Unsplash.
 
-State geometry is from the ISC-licensed [US Atlas](https://github.com/topojson/us-atlas). Alaska and Hawaii appear in separate insets; D.C. and territories are outside the 50-state count. DM Sans, DM Serif Display and Noto Sans Thai are self-hosted under the bundled SIL Open Font Licenses. Chinese, Japanese and Korean use the device’s native font fallbacks.
+Destination summaries adapt Wikipedia introductions and editorial highlights. Each profile includes its language-specific source link and CC BY-SA 4.0 attribution. Preserve those references when editing or reusing the summaries. Hours, fees and alerts come from the National Park Service; they are snapshots, not live guarantees.
 
-```sh
-python3 scripts/prepare-map.py /path/to/states-albers-10m.json
-```
+State geometry comes from the ISC-licensed [US Atlas](https://github.com/topojson/us-atlas), with Alaska and Hawaii in separate insets. D.C. and territories are outside the 50-state count. DM Sans, DM Serif Display and Noto Sans Thai are self-hosted under bundled SIL Open Font Licenses. Chinese, Japanese and Korean use the device’s installed font fallbacks.

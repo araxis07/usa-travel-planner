@@ -5,7 +5,9 @@ import { EMPTY_TRIP, STATES, type Trip, type TripActivity } from '../data/travel
 import { validateTrip } from '../lib/storage';
 import { slug } from '../lib/destinations';
 import { translate, type Language } from '../lib/i18n';
-import coordinates from '../content/places.json' with { type: 'json' };
+const coordinates = STATES.flatMap((s) =>
+  s.destinations.map((p) => ({ id: p.id, coordinates: p.coordinates, source: p.locationSource })),
+);
 
 const activity: TripActivity = {
   id: 'activity-1',
@@ -74,7 +76,7 @@ test('all 150 places have traceable map coordinates and unique shareable slugs',
       expect(p.coordinates![0]).toBeLessThan(72);
       expect(p.coordinates![1]).toBeGreaterThan(-180);
       expect(p.coordinates![1]).toBeLessThan(-60);
-      expect(p.source).toMatch(/^https:\/\/(en.wikipedia.org|www.wikidata.org)\/wiki\//);
+      expect(p.source).toMatch(/^https:\/\/(en.wikipedia.org|www.wikidata.org|www.nps.gov)\//);
     });
   }
 });
@@ -116,10 +118,10 @@ test('full state and place pages support links, reloads, sharing fallback and br
 }) => {
   await page.goto('/?lang=en');
   await page.getByRole('link', { name: 'Open full guide California', exact: true }).click();
-  await expect(page).toHaveURL(/state=california/);
+  await expect(page).toHaveURL(/states\/california/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('California');
   await page.locator('.place-story h3 a').nth(1).click();
-  await expect(page).toHaveURL(/place=yosemite-national-park/);
+  await expect(page).toHaveURL(/yosemite-national-park/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Yosemite National Park');
   await page.reload();
   await expect(page).toHaveTitle('Yosemite National Park — Roam America');
@@ -131,7 +133,7 @@ test('full state and place pages support links, reloads, sharing fallback and br
     });
   });
   await page.getByRole('button', { name: 'Share this guide' }).click();
-  await expect(page.getByLabel('Copy this link')).toHaveValue(/place=yosemite-national-park/);
+  await expect(page.getByLabel('Copy this link')).toHaveValue(/yosemite-national-park/);
   await page.goBack();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('California');
   await page.goBack();
@@ -190,16 +192,21 @@ test('a destination adds to daily planning and custom activities survive export,
 }) => {
   await page.goto('/?lang=en&state=california&place=san-francisco');
   await page.locator('.place-story').getByRole('button', { name: 'Add to daily plan' }).click();
-  const dialog = page.getByRole('dialog');
+  await page.getByRole('dialog').getByRole('button', { name: 'Add activity', exact: true }).click();
+  const dialog = page.locator('#planner-page');
   await expect(dialog.getByRole('button', { name: 'Daily plan', exact: true })).toHaveAttribute(
     'aria-pressed',
     'true',
   );
   await expect(dialog.locator('.day-activity h5')).toHaveText('San Francisco');
+  await page.locator('.add-activity-toggle').click();
   await page.getByLabel('Choose a place or custom activity').selectOption('custom');
   await page.getByLabel('Activity name', { exact: true }).fill('Picnic with friends');
   await page.locator('.add-activity').getByLabel('Time of day').selectOption('afternoon');
-  await page.getByRole('button', { name: 'Add activity', exact: true }).click();
+  await page
+    .locator('.add-activity')
+    .getByRole('button', { name: 'Add activity', exact: true })
+    .click();
   const rename = page.getByLabel('Rename activity Picnic with friends');
   await rename.fill('');
   await expect(rename).toHaveValue('');
@@ -250,11 +257,17 @@ test('activities reorder, move between time slots and protect occupied days from
   await page.getByRole('button', { name: 'Move activity down San Francisco' }).click();
   await expect(page.locator('.day-activity h5').first()).toHaveText('Big Sur');
   if (!isMobile) {
-    await page
-      .locator('.day-activity')
-      .first()
-      .locator('.activity-drag')
-      .dragTo(page.getByRole('region', { name: 'Evening', exact: true }));
+    // Start the native drag before scrolling to a time slot below the viewport.
+    const handle = page.locator('.activity-drag').first();
+    const target = page.getByRole('region', { name: 'Evening', exact: true });
+    await handle.hover();
+    const box = (await handle.boundingBox())!;
+    await page.mouse.down();
+    await page.mouse.move(box.x + box.width / 2 + 15, box.y + box.height / 2, { steps: 5 });
+    await target.scrollIntoViewIfNeeded();
+    await target.hover();
+    await target.hover();
+    await page.mouse.up();
     await expect(
       page.getByRole('region', { name: 'Evening', exact: true }).locator('h5'),
     ).toHaveText('Big Sur');
@@ -330,6 +343,10 @@ test('five-language full guides and daily plans remain readable and accessible',
       .locator('.place-story')
       .getByRole('button', { name: translate('Add to daily plan', 'เพิ่มในแผนรายวัน', lang) })
       .click();
+    await page
+      .getByRole('dialog')
+      .getByRole('button', { name: translate('Add activity', 'เพิ่มกิจกรรม', lang), exact: true })
+      .click();
     await page.setViewportSize({ width: 320, height: 950 });
     const daily = page.locator('.daily-planner');
     await expect(daily.locator('h5').first()).toContainText(
@@ -346,10 +363,7 @@ test('five-language full guides and daily plans remain readable and accessible',
       nodes: v.nodes.map((n) => ({ target: n.target, message: n.failureSummary })),
     })),
   ).toEqual([]);
-  await page
-    .getByRole('dialog')
-    .getByRole('button', { name: translate('Close', 'ปิด', 'ko'), exact: true })
-    .click();
+  await page.locator('.planner-page-top').getByRole('button').click();
   const guide = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
     .analyze();
@@ -380,5 +394,5 @@ test('mobile bottom navigation reaches the map, saved places and daily trip', as
   await expect(page.getByRole('dialog', { name: 'Saved places' })).toBeVisible();
   await page.getByRole('button', { name: 'Close', exact: true }).click();
   await nav.getByRole('button', { name: 'My trip', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: 'My trip planner' })).toBeVisible();
+  await expect(page.locator('#planner-page')).toBeVisible();
 });

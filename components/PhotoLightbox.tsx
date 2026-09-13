@@ -118,6 +118,12 @@ export default function PhotoLightbox({
           <Icon name="arrow" style={{ transform: 'rotate(180deg)' }} />
         </button>
         <p>
+          {photo.caption && (
+            <>
+              <span className="photo-caption">{photo.caption}</span>
+              <br />
+            </>
+          )}
           <a href={photo.source} target="_blank" rel="noreferrer">
             {photo.author}
           </a>{' '}

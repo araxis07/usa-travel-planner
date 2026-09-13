@@ -10,7 +10,7 @@ const catalog = validateCatalog(
 test('all published content has five languages and three credited local destination photographs', () => {
   expect(contentIssues(catalog)).toEqual([]);
   for (const state of catalog.states) {
-    expect(state.photos).toHaveLength(3);
+    expect(state.photos.length).toBeGreaterThanOrEqual(3);
     expect(new Set(state.photos.map((p) => p.placeIndex)).size).toBe(3);
     for (const text of [
       state.names,
@@ -47,9 +47,11 @@ for (const [lang, headline, name] of [
     await expect(page.getByRole('heading', { level: 1 })).toContainText(headline);
     await expect(page.getByRole('combobox', { name: 'Language / ภาษา' })).toHaveValue(lang);
     await page.locator('.destination-grid .card-image-button').first().click();
-    const dialog = page.getByRole('dialog');
+    let dialog = page.getByRole('dialog');
     await expect(dialog).toHaveAccessibleName(name);
-    await expect(dialog.locator('.photo-gallery button')).toHaveCount(3);
+    await expect(dialog.locator('.photo-gallery button')).toHaveCount(
+      catalog.states[0].photos.length,
+    );
     await dialog.locator('.photo-gallery button').nth(1).click();
     const src = await dialog.locator('.detail-cover img').getAttribute('src');
     await dialog.getByRole('combobox', { name: 'Language / ภาษา' }).selectOption('en');
@@ -58,6 +60,7 @@ for (const [lang, headline, name] of [
     await dialog.getByRole('combobox', { name: 'Language / ภาษา' }).selectOption(lang);
     const add = translate('Add to my trip', 'เพิ่มในทริปของฉัน', lang);
     await dialog.getByRole('button', { name: add, exact: true }).click();
+    dialog = page.locator('#planner-page');
     await expect(dialog.locator('.stop-places')).not.toContainText('San Francisco');
     const notes = dialog.locator('textarea').first();
     await notes.fill('My own café note');
