@@ -1,14 +1,86 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Language } from '../data/travel';
+import type { Language, StateGuide } from '../data/travel';
+import TravelImage from './TravelImage';
+import { w } from '../data/workspace-copy';
+import { readLocal } from '../lib/storage';
 import { local } from '../data/travel';
 import { x } from '../data/experience-copy';
 
 // A small, locally rendered 3D illustration. No model downloads or render loop while hidden.
-export default function LandmarkScene({ lang, motion }: { lang: Language; motion: boolean }) {
+type SceneKind = 'CA' | 'NY' | 'AZ';
+const TITLES: Record<SceneKind, readonly [string, string, string, string, string]> = {
+  CA: ['Golden Gate Bridge', 'สะพานโกลเดนเกต', '金门大桥', 'ゴールデンゲートブリッジ', '금문교'],
+  NY: [
+    'Liberty in New York Harbor',
+    'เสรีภาพแห่งอ่าวนิวยอร์ก',
+    '纽约港的自由女神',
+    'ニューヨーク港の自由の女神',
+    '뉴욕항의 자유의 여신',
+  ],
+  AZ: ['Monument Valley', 'โมนูเมนต์แวลลีย์', '纪念碑谷', 'モニュメントバレー', '모뉴먼트밸리'],
+};
+export default function LandmarkScene({
+  lang,
+  motion,
+  state,
+}: {
+  lang: Language;
+  motion: boolean;
+  state: StateGuide;
+}) {
+  const [photoMode, setPhotoMode] = useState(() =>
+    readLocal('roam.scene-photo.v1', false, (v) => v === true),
+  );
+  const supported = state.code in TITLES;
+  return (
+    <div className="atlas-scene-container">
+      <div className="scene-mode-controls">
+        {supported && (
+          <button
+            className="text-link"
+            aria-pressed={photoMode}
+            onClick={() => {
+              const next = !photoMode;
+              setPhotoMode(next);
+              try {
+                localStorage.setItem('roam.scene-photo.v1', JSON.stringify(next));
+              } catch {
+                /* Optional visual preference. */
+              }
+            }}
+          >
+            {w(lang, photoMode ? 'sceneMode' : 'lightMode')}
+          </button>
+        )}
+      </div>
+      <LandmarkCanvas
+        key={`${state.code}-${photoMode}`}
+        lang={lang}
+        motion={motion}
+        state={state}
+        kind={supported && !photoMode ? (state.code as SceneKind) : null}
+      />
+    </div>
+  );
+}
+function LandmarkCanvas({
+  lang,
+  motion,
+  state,
+  kind,
+}: {
+  lang: Language;
+  motion: boolean;
+  state: StateGuide;
+  kind: SceneKind | null;
+}) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [angle, setAngle] = useState(-0.65);
-  const [available, setAvailable] = useState(true);
+  const [available, setAvailable] = useState(!!kind);
+  const cover = state.photos[state.cover];
+  const title = kind ? local(TITLES[kind], lang) : local(state.names, lang);
   useEffect(() => {
+    if (!kind) return;
     const element = canvas.current;
     const gl = element?.getContext('webgl', { alpha: true, antialias: true });
     if (!element || !gl) {
@@ -35,7 +107,7 @@ export default function LandmarkScene({ lang, motion }: { lang: Language; motion
     try {
       vertex = shader(
         gl.VERTEX_SHADER,
-        `attribute vec3 position;attribute vec3 color;varying vec3 tint;uniform float angle;uniform float aspect;void main(){float c=cos(angle),s=sin(angle);vec3 p=vec3(position.x*c+position.z*s,position.y,-position.x*s+position.z*c);float tilt=.42;p=vec3(p.x,p.y*cos(tilt)-p.z*sin(tilt),p.y*sin(tilt)+p.z*cos(tilt));float depth=8.0-p.z;gl_Position=vec4(p.x*2.1/aspect,p.y*2.1,depth-2.0,depth);tint=color;}`,
+        `attribute vec3 position;attribute vec3 color;varying vec3 tint;uniform float angle;uniform float aspect;void main(){float c=cos(angle),s=sin(angle);vec3 p=vec3(position.x*c+position.z*s,position.y,-position.x*s+position.z*c);float tilt=.42;p=vec3(p.x,p.y*cos(tilt)-p.z*sin(tilt),p.y*sin(tilt)+p.z*cos(tilt));float depth=8.0-p.z;gl_Position=vec4(p.x*2.6/aspect,p.y*2.6,depth-2.0,depth);tint=color;}`,
       );
       fragment = shader(
         gl.FRAGMENT_SHADER,
@@ -88,29 +160,90 @@ export default function LandmarkScene({ lang, motion }: { lang: Language; motion
           }),
         );
       };
-      const red = [0.78, 0.25, 0.19],
-        water = [0.39, 0.65, 0.68];
-      cube(0, -1.2, 0, 6.4, 0.16, 3.2, water);
-      cube(0, -0.12, 0, 6, 0.12, 0.72, [0.23, 0.3, 0.34]);
-      cube(0, -0.02, 0, 6, 0.035, 0.035, [0.96, 0.83, 0.57]);
-      for (const px of [-1.6, 1.6]) {
-        for (const pz of [-0.42, 0.42]) {
-          cube(px, 0.42, pz, 0.18, 2.8, 0.18, red);
-          cube(px, -1.02, pz, 0.45, 0.25, 0.5, [0.62, 0.63, 0.55]);
+      if (kind === 'CA') {
+        const red = [0.78, 0.25, 0.19],
+          water = [0.39, 0.65, 0.68];
+        cube(0, -1.2, 0, 6.4, 0.16, 3.2, water);
+        cube(0, -0.12, 0, 6, 0.12, 0.72, [0.23, 0.3, 0.34]);
+        cube(0, -0.02, 0, 6, 0.035, 0.035, [0.96, 0.83, 0.57]);
+        for (const px of [-1.6, 1.6]) {
+          for (const pz of [-0.42, 0.42]) {
+            cube(px, 0.42, pz, 0.18, 2.8, 0.18, red);
+            cube(px, -1.02, pz, 0.45, 0.25, 0.5, [0.62, 0.63, 0.55]);
+          }
+          for (const py of [0.5, 1.3, 1.65]) cube(px, py, 0, 0.18, 0.12, 1, red);
         }
-        for (const py of [0.5, 1.3, 1.65]) cube(px, py, 0, 0.18, 0.12, 1, red);
+        for (const z of [-0.43, 0.43])
+          for (let i = 0; i < 55; i++) {
+            const px = -3 + (i * 6) / 54;
+            const py =
+              Math.abs(px) <= 1.6
+                ? 0.4 + 1.22 * (px / 1.6) ** 2
+                : 1.62 - (Math.abs(px) - 1.6) * 1.05;
+            cube(px, py, z, 0.15, 0.055, 0.055, red);
+            if (i % 3 === 0)
+              cube(px, (py - 0.02) / 2, z, 0.035, Math.max(0.02, py + 0.02), 0.035, red);
+          }
+        cube(-3, -0.75, 0, 0.6, 0.75, 1.1, [0.64, 0.62, 0.43]);
+        cube(3, -0.75, 0, 0.6, 0.75, 1.1, [0.64, 0.62, 0.43]);
+      } else if (kind === 'NY') {
+        const copper = [0.3, 0.6, 0.53],
+          stone = [0.65, 0.6, 0.47];
+        cube(0, -1.25, 0, 5.8, 0.16, 3, [0.32, 0.57, 0.64]);
+        cube(0, -1.05, 0, 2.1, 0.3, 1.6, [0.46, 0.6, 0.39]);
+        cube(0, -0.75, 0, 1.05, 0.45, 0.95, stone);
+        cube(0, -0.38, 0, 0.78, 0.35, 0.72, stone);
+        cube(0, 0.14, 0, 0.58, 0.72, 0.44, copper);
+        cube(0, 0.59, 0, 0.42, 0.35, 0.35, copper);
+        cube(0, 0.92, 0, 0.3, 0.32, 0.3, copper);
+        cube(0, 1.13, 0, 0.52, 0.06, 0.37, copper);
+        for (let i = -2; i <= 2; i++)
+          cube(i * 0.1, 1.24, 0, 0.035, 0.2 + 0.04 * (2 - Math.abs(i)), 0.04, copper);
+        cube(-0.41, 0.92, 0, 0.14, 0.7, 0.14, copper);
+        cube(-0.3, 0.61, 0, 0.4, 0.14, 0.16, copper);
+        cube(-0.41, 1.34, 0, 0.12, 0.2, 0.12, [0.85, 0.68, 0.26]);
+        cube(-0.41, 1.5, 0, 0.1, 0.16, 0.1, [1, 0.79, 0.23]);
+        cube(0.3, 0.45, 0.17, 0.18, 0.5, 0.16, copper);
+        cube(0.28, 0.38, 0.3, 0.3, 0.42, 0.09, [0.22, 0.48, 0.43]);
+        for (const [px, h, pz] of [
+          [-2, 0.6, -0.9],
+          [-1.6, 1, -0.8],
+          [1.5, 0.7, -1],
+          [2, 1.3, -1],
+          [2.4, 0.5, -0.8],
+        ])
+          cube(px, -1.15 + h / 2, pz, 0.3, h, 0.4, [0.5, 0.6, 0.63]);
+      } else {
+        cube(0, -1.2, 0, 6, 0.18, 3.2, [0.72, 0.42, 0.28]);
+        for (const [px, pz, height, width] of [
+          [-1.65, 0, 2, 0.85],
+          [0.2, 0.55, 1.6, 0.95],
+          [1.85, -0.3, 2.5, 1.05],
+        ]) {
+          cube(px, -0.9, pz, width * 1.45, 0.5, width * 1.2, [0.66, 0.31, 0.2]);
+          cube(px, -0.5 + height * 0.25, pz, width, height * 0.7, width * 0.72, [0.78, 0.39, 0.23]);
+          cube(
+            px,
+            -0.5 + height * 0.66,
+            pz,
+            width * 0.7,
+            height * 0.2,
+            width * 0.55,
+            [0.65, 0.29, 0.18],
+          );
+          cube(
+            px + width * 0.3,
+            -0.5 + height * 0.74,
+            pz,
+            width * 0.19,
+            height * 0.38,
+            width * 0.25,
+            [0.72, 0.34, 0.2],
+          );
+        }
+        for (let i = 0; i < 7; i++)
+          cube(-2.5 + i * 0.8, -1.02, 1, 0.16, 0.18, 0.16, [0.41, 0.45, 0.26]);
       }
-      for (const z of [-0.43, 0.43])
-        for (let i = 0; i < 55; i++) {
-          const px = -3 + (i * 6) / 54;
-          const py =
-            Math.abs(px) <= 1.6 ? 0.4 + 1.22 * (px / 1.6) ** 2 : 1.62 - (Math.abs(px) - 1.6) * 1.05;
-          cube(px, py, z, 0.15, 0.055, 0.055, red);
-          if (i % 3 === 0)
-            cube(px, (py - 0.02) / 2, z, 0.035, Math.max(0.02, py + 0.02), 0.035, red);
-        }
-      cube(-3, -0.75, 0, 0.6, 0.75, 1.1, [0.64, 0.62, 0.43]);
-      cube(3, -0.75, 0, 0.6, 0.75, 1.1, [0.64, 0.62, 0.43]);
       buffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(points), gl.STATIC_DRAW);
@@ -184,40 +317,27 @@ export default function LandmarkScene({ lang, motion }: { lang: Language; motion
       gl.deleteShader(vertex);
       gl.deleteShader(fragment);
     }
-  }, [angle, motion]);
+  }, [angle, motion, kind]);
   return (
     <figure className="landmark-scene">
       <div className="landmark-scene-top">
-        <span>CALIFORNIA / 3D</span>
+        <span>
+          {state.code} / {available ? '3D' : 'USA'}
+        </span>
         <span aria-hidden="true">✦</span>
       </div>
       {available ? (
-        <canvas
-          ref={canvas}
-          role="img"
-          aria-label={local(
-            [
-              'Stylized 3D illustration of the Golden Gate Bridge',
-              'ภาพจำลองสามมิติสะพานโกลเดนเกต',
-              '金门大桥风格化三维插画',
-              'ゴールデンゲートブリッジの3Dイラスト',
-              '금문교를 표현한 3D 일러스트',
-            ],
-            lang,
-          )}
-        />
+        <canvas ref={canvas} role="img" aria-label={`${w(lang, 'sceneMode')}: ${title}`} />
       ) : (
-        <img
-          src="/images/states/ca-1.jpg"
-          alt={local(
-            ['San Francisco', 'ซานฟรานซิสโก', '旧金山', 'サンフランシスコ', '샌프란시스코'],
-            lang,
-          )}
+        <TravelImage
+          src={cover.src}
+          alt={local(state.names, lang)}
           loading="lazy"
+          sizes="(max-width:760px) 90vw, 340px"
         />
       )}
       <figcaption>
-        <strong>Golden Gate Bridge</strong>
+        <strong>{available ? title : local(cover.displayCaption ?? state.names, lang)}</strong>
         {available && (
           <button
             className="text-link"
@@ -227,6 +347,13 @@ export default function LandmarkScene({ lang, motion }: { lang: Language; motion
           </button>
         )}
       </figcaption>
+      {available ? (
+        <p className="scene-note">{w(lang, 'sceneHint')}</p>
+      ) : (
+        <a className="scene-note" href={cover.source} target="_blank" rel="noreferrer">
+          {cover.author} · {cover.license}
+        </a>
+      )}
     </figure>
   );
 }

@@ -1,7 +1,10 @@
 import { EMPTY_TRIP, STATES, type Trip, type TripStop, type TripActivity } from '../data/travel';
+import { validateExpenses } from './budget';
+import { recoverLocalTransaction } from './localTransaction';
 const codes = new Set(STATES.map((state) => state.code));
 export function readLocal<T>(key: string, fallback: T, validate: (data: unknown) => T): T {
   try {
+    recoverLocalTransaction();
     const value = localStorage.getItem(key);
     return value ? validate(JSON.parse(value)) : fallback;
   } catch {
@@ -113,6 +116,8 @@ export function validateTrip(value: unknown): Trip {
     trip.dailyBudget > 10000
   )
     throw new Error('Invalid trip settings');
+  if (trip.budgetMode !== undefined && trip.budgetMode !== 'daily' && trip.budgetMode !== 'items')
+    throw Error('Invalid budget mode');
   return {
     name: trip.name,
     startDate: trip.startDate as string,
@@ -120,6 +125,8 @@ export function validateTrip(value: unknown): Trip {
     dailyBudget: trip.dailyBudget,
     stops,
     ...(trip.checklist !== undefined ? { checklist: validateChecklist(trip.checklist) } : {}),
+    ...(trip.expenses !== undefined ? { expenses: validateExpenses(trip.expenses) } : {}),
+    ...(trip.budgetMode !== undefined ? { budgetMode: trip.budgetMode as Trip['budgetMode'] } : {}),
   };
 }
 function validateChecklist(value: unknown): NonNullable<Trip['checklist']> {

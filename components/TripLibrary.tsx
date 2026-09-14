@@ -8,6 +8,9 @@ import { downloadFile, tripDays } from '../lib/storage';
 import { LOCALES } from '../lib/i18n';
 import Dialog from './Dialog';
 import Icon from './Icon';
+import WorkspaceBackup from './WorkspaceBackup';
+import { persistWorkspace, type WorkspaceBackup as Backup } from '../lib/workspaceBackup';
+import type { Collections } from '../lib/collections';
 
 export default function TripLibrary({
   library,
@@ -15,12 +18,18 @@ export default function TripLibrary({
   onClose,
   onOpen,
   notify,
+  collections,
+  favorites,
+  onRestore,
 }: {
   library: JourneyLibrary;
   lang: Language;
   onClose: () => void;
   onOpen: () => void;
   notify: (message: string) => void;
+  collections: Collections;
+  favorites: string[];
+  onRestore: (value: Backup) => void;
 }) {
   const [archived, setArchived] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
@@ -35,6 +44,21 @@ export default function TripLibrary({
         <span className="eyebrow">ROAM / COLLECTIONS</span>
         <h2>{x(lang, 'library')}</h2>
         <p>{x(lang, 'localOnly')}</p>
+        <WorkspaceBackup
+          lang={lang}
+          current={{
+            format: 'roam-workspace',
+            version: 1,
+            exportedAt: new Date().toISOString(),
+            library: { version: 1, activeId: library.activeId, trips: library.trips },
+            collections,
+            favorites,
+          }}
+          onRestore={(value) => {
+            persistWorkspace(value);
+            onRestore(value);
+          }}
+        />
         {library.error && (
           <p role="alert" className="storage-warning">
             {x(lang, 'storageError')}

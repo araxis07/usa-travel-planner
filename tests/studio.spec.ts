@@ -40,6 +40,10 @@ test('studio saves drafts, detects missing translations, previews and publishes 
   ).toBeEnabled();
   const field = page.getByRole('textbox', { name: 'คำแนะนำรัฐ', exact: true });
   const original = await field.inputValue();
+  const caption = page.locator('.studio-photo-captions').first();
+  await caption.getByRole('checkbox').check();
+  await caption.getByRole('textbox').fill('เกาะอัลคาทราซจากมุมสูง — ฉบับแก้ไข');
+  await expect(caption.getByRole('checkbox')).not.toBeChecked();
   await field.fill('เรื่องราวฉบับร่างที่แก้ไขจาก Studio');
   await page.getByRole('button', { name: 'บันทึกฉบับร่าง', exact: true }).click();
   await expect(page.getByRole('status')).toContainText('บันทึกฉบับร่างลงเครื่องแล้ว');
@@ -68,6 +72,13 @@ test('studio saves drafts, detects missing translations, previews and publishes 
     JSON.parse(await readFile(path.join(studio.root, 'content/states.json'), 'utf8')).states[0]
       .description[1],
   ).toBe('เรื่องราวฉบับร่างที่แก้ไขจาก Studio');
+  const published = JSON.parse(
+    await readFile(path.join(studio.root, 'content/states.json'), 'utf8'),
+  );
+  expect(published.states[0].photos[0].displayCaption[1]).toBe(
+    'เกาะอัลคาทราซจากมุมสูง — ฉบับแก้ไข',
+  );
+  expect(published.states[0].photos[0].captionReviewed[1]).toBe(false);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 test('studio rejects cross-site writes, stale revisions, invalid image paths and incomplete publication', async ({

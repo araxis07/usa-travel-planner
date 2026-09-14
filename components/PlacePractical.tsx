@@ -62,6 +62,15 @@ export default function PlacePractical({
   return (
     <section className="place-practical" id="guide-practical">
       <h3>{t('Plan the practical details', 'วางแผนรายละเอียดที่จำเป็น')}</h3>
+      {profile.advisory && (
+        <aside className="day-warning">
+          <p>{local(profile.advisory.text, lang)}</p>
+          <a href={profile.advisory.source} target="_blank" rel="noreferrer">
+            {t('Official visitor information', 'ข้อมูลจากหน่วยงานท่องเที่ยว')} ·{' '}
+            {date(profile.advisory.checkedAt)}
+          </a>
+        </aside>
+      )}
       {profile.planning && (
         <div className="place-planning-facts">
           <div>

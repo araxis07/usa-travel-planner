@@ -122,6 +122,11 @@ export function validateCatalog(value: unknown): Catalog {
     if (!Array.isArray(state.destinations) || state.destinations.length !== 3)
       return fail(`${c} destination profiles`);
     for (const [i, profile] of state.destinations.entries()) {
+      if (record(profile) && profile.advisory !== undefined) {
+        const a = profile.advisory;
+        if (!record(a) || !texts(a.text) || !url(a.source) || !a.source || !date(a.checkedAt))
+          return fail(`${c} advisory`);
+      }
       if (record(profile) && profile.planning !== undefined) {
         const p = profile.planning;
         if (
@@ -238,6 +243,10 @@ export function validateCatalog(value: unknown): Catalog {
         !string(photo.license, 150) ||
         (photo.caption !== undefined && !string(photo.caption, 2000)) ||
         (photo.displayCaption !== undefined && !texts(photo.displayCaption)) ||
+        (photo.captionReviewed !== undefined &&
+          (!Array.isArray(photo.captionReviewed) ||
+            photo.captionReviewed.length !== 5 ||
+            !photo.captionReviewed.every((v) => typeof v === 'boolean'))) ||
         !Number.isInteger(photo.width) ||
         !Number.isInteger(photo.height) ||
         Number(photo.width) < 1 ||
@@ -282,12 +291,16 @@ export function contentIssues(catalog: Catalog): ContentIssue[] {
         p.summarySources.some((s) => !s)
       )
         add(`destinations.${index}.sources`, 'แหล่งอ้างอิงสถานที่ยังไม่ครบ');
+      if (p.advisory?.text.some((s) => !s.trim()))
+        add(`destinations.${index}.advisory`, 'ประกาศต้องมีคำแปลครบ 5 ภาษา');
     });
     if (state.photos.length < 3) add('photos', 'ต้องมีภาพอย่างน้อย 3 ภาพ');
     for (let p = 0; p < 3; p++)
       if (state.photos.filter((photo) => photo.placeIndex === p).length < 3)
         add('photos', `สถานที่ ${p + 1} ต้องมีภาพอย่างน้อย 3 ภาพ`);
     state.photos.forEach((photo, i) => {
+      if (!photo.displayCaption || photo.displayCaption.some((v) => !v.trim()))
+        add(`photos.${i}.displayCaption`, 'คำบรรยายภาพ 5 ภาษายังไม่ครบ');
       for (const key of ['source', 'author', 'license', 'licenseUrl'] as const)
         if (!photo[key].trim()) add(`photos.${i}.${key}`, 'เครดิตหรือสิทธิ์ใช้งานยังไม่ครบ');
     });
@@ -308,6 +321,12 @@ export function reviewQueue(catalog: Catalog, today = new Date().toISOString().s
       ...(p.locationKind === 'area'
         ? [{ code: state.code, index, reason: 'ยังใช้พิกัดพื้นที่โดยประมาณ' }]
         : []),
+      ...(state.photos
+        .filter((photo) => photo.placeIndex === index)
+        .some((photo) => !photo.captionReviewed?.every(Boolean))
+        ? [{ code: state.code, index, reason: 'รอตรวจคำบรรยายภาพ' }]
+        : []),
+      ...(p.advisory ? [{ code: state.code, index, reason: 'ตรวจประกาศการเดินทางอีกครั้ง' }] : []),
     ]),
   );
 }

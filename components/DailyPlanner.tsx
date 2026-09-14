@@ -188,6 +188,23 @@ export default function DailyPlanner({
         </span>
       </div>
       <p className="fine-print">{x(lang, 'timingNote')}</p>
+      {[...new Set((stop.activities ?? []).filter((a) => a.day === day).map((a) => a.placeId))].map(
+        (id) => {
+          const place = id ? findPlace(id) : undefined;
+          const advisory = place?.profile.advisory;
+          return (
+            advisory && (
+              <aside className="day-warning" key={id}>
+                <p>{local(advisory.text, lang)}</p>
+                <a href={advisory.source} target="_blank" rel="noreferrer">
+                  {t('Official visitor information', 'ข้อมูลจากหน่วยงานท่องเที่ยว')} ·{' '}
+                  {advisory.checkedAt}
+                </a>
+              </aside>
+            )
+          );
+        },
+      )}
       {timeline.some((item) => item.overlap) && (
         <p role="status" className="day-warning">
           {x(lang, 'overlap')}
@@ -208,7 +225,15 @@ export default function DailyPlanner({
       )}
       <button
         className="button button-red add-activity-toggle"
-        onClick={() => setAdding((v) => !v)}
+        onClick={() => {
+          setAdding((v) => !v);
+          if (!adding)
+            requestAnimationFrame(() => {
+              const form = document.querySelector('.add-activity');
+              form?.scrollIntoView({ block: 'center', behavior: 'instant' });
+              form?.querySelector('input')?.focus({ preventScroll: true });
+            });
+        }}
         aria-expanded={adding}
       >
         {adding ? t('Close', 'ปิด') : t('Add activity', 'เพิ่มกิจกรรม')}

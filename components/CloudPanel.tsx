@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { w } from '../data/workspace-copy';
 import type { User } from '@supabase/supabase-js';
 import {
   cloud,
@@ -353,7 +354,7 @@ export default function CloudPanel({
                 checked={includeNotes}
                 onChange={(e) => setIncludeNotes(e.target.checked)}
               />
-              {t('Include my personal notes', 'รวมโน้ตส่วนตัวของฉัน')}
+              {w(lang, 'sharePrivate')}
             </label>
             <button
               className="button button-outline"

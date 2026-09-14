@@ -134,7 +134,7 @@ export default function Atlas({
             ))}
           </div>
           <Suspense fallback={<div className="landmark-placeholder" aria-hidden="true" />}>
-            <LandmarkScene lang={lang} motion={motion} />
+            <LandmarkScene lang={lang} motion={motion} state={selected} />
           </Suspense>
         </div>
         <div className="atlas-display">
@@ -214,7 +214,7 @@ export default function Atlas({
                     tabIndex={0}
                     aria-label={stateName(state, lang)}
                     aria-pressed={active === state.code}
-                    className={`map-state ${active === state.code ? 'selected' : ''} ${dimmed ? 'dimmed' : ''}`}
+                    className={`map-state ${active === state.code ? 'selected' : ''} ${dimmed ? 'dimmed' : ''} ${tripCodes.includes(state.code) ? 'in-trip' : ''}`}
                     style={{ fill: regionColors[state.region] }}
                     onMouseEnter={() => setActive(state.code)}
                     onFocus={() => setActive(state.code)}

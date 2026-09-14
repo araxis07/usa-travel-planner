@@ -39,6 +39,7 @@ export interface Photo {
   height: number;
   caption?: string;
   displayCaption?: LocalText;
+  captionReviewed?: boolean[];
 }
 export interface PlaceProfile {
   id: string;
@@ -58,6 +59,7 @@ export interface PlaceProfile {
   reviewedAt: string;
   reviewAfter: string;
   translationsReviewed: boolean[];
+  advisory?: { text: LocalText; source: string; checkedAt: string };
   planning?: {
     transport: 'transit' | 'car' | 'boat';
     setting: 'indoors' | 'outdoors';
@@ -122,6 +124,15 @@ export interface Trip {
   dailyBudget: number;
   stops: TripStop[];
   checklist?: { id: string; label: string; done: boolean }[];
+  expenses?: TripExpense[];
+  budgetMode?: 'daily' | 'items';
+}
+export interface TripExpense {
+  id: string;
+  name: string;
+  category: 'flight' | 'lodging' | 'transport' | 'food' | 'activities' | 'other';
+  planned: number;
+  paid: number;
 }
 export const EMPTY_TRIP: Trip = {
   name: '',

@@ -4,6 +4,10 @@ import { LANGUAGES } from '../../lib/i18n';
 const sample: Trip = {
   ...EMPTY_TRIP,
   name: 'My five-language journey',
+  budgetMode: 'items',
+  expenses: [
+    { id: 'hotel', name: 'Hotel deposit', category: 'lodging', planned: 600.25, paid: 200.1 },
+  ],
   startDate: '2026-10-01',
   stops: [
     {
@@ -47,6 +51,8 @@ test('all language pages contain readable content without JavaScript and recipro
     expect(json.geo.latitude).toBe(ca.destinations[1].coordinates[0]);
   }
   const sitemap = await (await page.request.get('/sitemap.xml')).text();
+  await page.goto(`${baseURL}/en/states/california/big-sur/`);
+  await expect(page.locator('main aside')).toContainText('September 2');
   expect(sitemap.match(/<loc>/g)).toHaveLength(1005);
   await context.close();
 });
@@ -108,6 +114,8 @@ test('saved itinerary and all selected state photos reopen offline; print covers
     await page.emulateMedia({ media: 'print' });
     await expect(page.locator('.print-itinerary')).toBeVisible();
     await expect(page.locator('.print-day')).toHaveCount(2);
+    await expect(page.locator('.print-budget')).toContainText('Hotel deposit');
+    await expect(page.locator('.print-budget')).toContainText('400.15');
     await expect(page.locator('.print-itinerary')).toContainText(
       'Camera · กล้อง · 相机 · カメラ · 카메라',
     );

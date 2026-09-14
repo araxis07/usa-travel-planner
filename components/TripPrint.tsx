@@ -5,6 +5,8 @@ import { tripDays } from '../lib/storage';
 import { x } from '../data/experience-copy';
 import { dayTimeline, clockLabel } from '../lib/timeline';
 import { checklistItems, checklistLabel } from './TripChecklist';
+import { budgetTotals } from '../lib/budget';
+import { w } from '../data/workspace-copy';
 export default function TripPrint({
   trip,
   lang,
@@ -30,7 +32,7 @@ export default function TripPrint({
       <p>
         {t('Planning estimate', 'งบประมาณเบื้องต้น')}:{' '}
         {new Intl.NumberFormat(LOCALES[lang], { style: 'currency', currency: 'USD' }).format(
-          tripDays(trip) * trip.dailyBudget * trip.travelers,
+          budgetTotals(trip).estimate,
         )}
       </p>
       {trip.stops.map((stop) => {
@@ -84,6 +86,36 @@ export default function TripPrint({
           </section>
         );
       })}
+      {!!trip.expenses?.length && (
+        <section className="print-budget">
+          <h2>{w(lang, 'budget')} · USD</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>{w(lang, 'name')}</th>
+                <th>{w(lang, 'category')}</th>
+                <th>{w(lang, 'planned')}</th>
+                <th>{w(lang, 'paid')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {trip.expenses.map((e) => (
+                <tr key={e.id}>
+                  <td>{e.name}</td>
+                  <td>{w(lang, e.category)}</td>
+                  <td>{e.planned.toFixed(2)}</td>
+                  <td>{e.paid.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p>
+            {w(lang, 'totals')}: {budgetTotals(trip).planned.toFixed(2)} · {w(lang, 'paid')}:{' '}
+            {budgetTotals(trip).paid.toFixed(2)} · {w(lang, 'unpaid')}:{' '}
+            {budgetTotals(trip).remaining.toFixed(2)}
+          </p>
+        </section>
+      )}
       {!!trip.checklist?.length && (
         <section className="print-checklist">
           <h2>{x(lang, 'checklist')}</h2>

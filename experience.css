@@ -1250,3 +1250,364 @@ html[lang='ko'] .discovery-place h3 {
 .destination-hero h1:focus {
   outline: none;
 }
+
+/* A quieter mobile workspace, with planning controls close to the schedule. */
+.planner-utility {
+  margin: 12px 0 20px;
+  border: 1px solid #d7dcd8;
+  border-radius: 10px;
+  background: #fff;
+  padding: 12px 16px;
+}
+.planner-utility > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+.planner-utility > summary span {
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 12px;
+  color: #52616a;
+}
+.planner-utility .planner-tools {
+  margin: 16px 0 0;
+}
+.planner-utility .offline-status {
+  margin-bottom: 0;
+}
+.trip-budget {
+  padding: 24px 0;
+}
+.budget-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.trip-budget label,
+.expense-add label,
+.expense-row label {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 0;
+}
+.trip-budget input,
+.trip-budget select {
+  border: 1px solid #bec7c9;
+  border-radius: 7px;
+  padding: 11px;
+  background: #fff;
+  color: #19314f;
+  width: 100%;
+  min-width: 0;
+}
+.expense-totals {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #d9dfdd;
+  border: 1px solid #d9dfdd;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+.expense-totals > div {
+  background: #fff;
+  padding: 22px;
+  display: grid;
+  gap: 10px;
+}
+.expense-totals span {
+  font-size: 12px;
+  color: #52616a;
+}
+.expense-totals strong {
+  font-size: 24px;
+  overflow-wrap: anywhere;
+}
+.expense-totals > div:first-child {
+  background: #19314f;
+  color: #fff;
+}
+.expense-totals > div:first-child span {
+  color: #fff;
+}
+.expense-add {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr auto;
+  gap: 14px;
+  align-items: end;
+  background: #eeeee7;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+.expense-list {
+  display: grid;
+  gap: 12px;
+}
+.expense-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1fr 44px;
+  gap: 12px;
+  align-items: end;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid #d5dcda;
+  border-radius: 10px;
+}
+.expense-row .icon-button {
+  margin-bottom: 0;
+}
+.budget-warning {
+  padding: 14px;
+  background: #fff1dc;
+  border-left: 3px solid #9e5723;
+  color: #593c17;
+  border-radius: 6px;
+}
+.expense-category-totals {
+  max-width: 500px;
+  margin: 24px 0;
+}
+.expense-category-totals > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid #d5dcda;
+  padding: 10px 0;
+  font-size: 14px;
+}
+.workspace-backup {
+  border: 1px solid #c9d2d1;
+  background: #f4f4ed;
+  padding: 16px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+.workspace-backup summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.workspace-backup p {
+  font-size: 13px;
+  line-height: 1.8;
+}
+.workspace-backup-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.workspace-backup-actions .button {
+  font-size: 12px;
+}
+.restore-preview {
+  margin-top: 20px;
+  border-top: 1px solid #c9d2d1;
+  padding-top: 12px;
+}
+.restore-preview fieldset {
+  border: 1px solid #c9d2d1;
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 8px;
+}
+.restore-preview label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 0;
+  overflow-wrap: anywhere;
+}
+.restore-preview input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: #19314f;
+}
+.restore-preview input:focus-visible {
+  outline: 2px solid #ac263c;
+  outline-offset: 3px;
+}
+.print-budget table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.print-budget th,
+.print-budget td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+.print-budget tr {
+  break-inside: avoid;
+}
+@media (max-width: 760px) {
+  .planner-page {
+    padding-top: 20px;
+  }
+  .planner-page-top {
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+  }
+  .planner-page-top h1 {
+    font-size: 21px;
+  }
+  .planner-page-top > .button {
+    min-height: 40px;
+    padding: 9px 12px;
+    width: auto;
+    justify-self: start;
+  }
+  .planner-save-status {
+    margin: 8px 0;
+    font-size: 11px;
+  }
+  .planner-utility {
+    padding: 11px 12px;
+    margin: 10px 0;
+  }
+  .planner-utility > summary span {
+    display: none;
+  }
+  .planner-tabs {
+    margin-top: 14px;
+    gap: 8px;
+  }
+  .planner-tabs button {
+    font-size: 12px;
+    padding: 12px 6px;
+    min-height: 44px;
+  }
+  .planner-tabs svg {
+    display: none;
+  }
+  .trip-checklist {
+    margin: 12px 0;
+  }
+  .day-planner-heading {
+    margin: 16px 0;
+  }
+  .day-planner-heading .eyebrow {
+    display: none;
+  }
+  .day-planner-heading h3 {
+    font-size: 20px;
+  }
+  .day-strip {
+    margin: 12px 0;
+  }
+  .add-activity-toggle {
+    position: fixed;
+    right: 18px;
+    bottom: calc(82px + env(safe-area-inset-bottom));
+    z-index: 45;
+    border-radius: 30px;
+    box-shadow: 0 5px 20px #19314f35;
+    padding: 13px 20px;
+  }
+  .daily-planner {
+    padding-bottom: 65px;
+  }
+  .day-activity {
+    padding: 14px;
+  }
+  .activity-summary {
+    margin: 12px 0;
+  }
+  .day-activity .activity-actions {
+    padding-top: 4px;
+  }
+  .budget-heading {
+    display: block;
+  }
+  .budget-heading h2 {
+    font-size: 26px;
+    margin: 10px 0 18px;
+  }
+  .expense-totals {
+    grid-template-columns: 1fr 1fr;
+    margin: 18px 0;
+  }
+  .expense-totals > div {
+    padding: 15px;
+  }
+  .expense-totals strong {
+    font-size: 22px;
+  }
+  .expense-add {
+    grid-template-columns: 1fr 1fr;
+    padding: 15px;
+  }
+  .expense-add label:first-child {
+    grid-column: 1/-1;
+  }
+  .expense-add .button {
+    grid-column: 1/-1;
+  }
+  .expense-row {
+    grid-template-columns: 1fr 1fr;
+    padding: 15px;
+  }
+  .expense-row label:first-child {
+    grid-column: 1/-1;
+  }
+  .expense-row .icon-button {
+    justify-self: end;
+  }
+  .workspace-backup-actions .button {
+    width: 100%;
+  }
+  .restore-preview label {
+    font-size: 13px;
+  }
+}
+.scene-mode-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 8px;
+}
+.scene-mode-controls .text-link {
+  font-size: 12px;
+  min-height: 36px;
+}
+.scene-note {
+  display: block;
+  font-size: 10px;
+  color: #485f65;
+  line-height: 1.6;
+  margin: 10px 0 0;
+}
+.landmark-scene figcaption {
+  gap: 8px;
+}
+.map-state.in-trip {
+  stroke: #19314f;
+  stroke-width: 2.4;
+}
+
+.landmark-scene .scene-note {
+  margin: 0;
+  padding: 0 16px 16px;
+  font-size: 11px;
+}
+
+@media (max-width: 760px) {
+  .day-planner-heading > div {
+    display: none;
+  }
+  .day-planner-heading {
+    margin: 12px 0;
+  }
+  .trip-checklist summary {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+  }
+}

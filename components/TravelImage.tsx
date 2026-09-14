@@ -5,6 +5,8 @@ export function imageSources(src: string) {
   if (!/^\/images\/(?!responsive\/).+\.(jpg|jpeg|png)$/.test(src)) return undefined;
   const base = src.replace('/images/', '/images/responsive/').replace(/\.(jpg|jpeg|png)$/, '');
   const width = widths.get(src) ?? 960;
+  if (src === '/images/hero.jpg')
+    return `${base}-480.webp 480w, ${base}-960.webp 960w, ${base}-1600.webp 1600w`;
   if (width <= 480) return `${base}-960.webp ${width}w`;
   return `${base}-480.webp ${Math.min(480, width)}w, ${base}-960.webp ${Math.min(960, width)}w`;
 }

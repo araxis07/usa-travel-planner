@@ -34,7 +34,7 @@ export default function TripWizard({
   const places = STATES.flatMap((state) =>
     state.destinations.map((profile, index) => ({ state, profile, index })),
   )
-    .filter((p) => car || p.profile.planning?.transport === 'transit')
+    .filter((p) => !p.profile.advisory && (car || p.profile.planning?.transport === 'transit'))
     .map((p) => ({
       ...p,
       score:

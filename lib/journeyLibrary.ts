@@ -8,7 +8,7 @@ export interface SavedTrip {
   archived: boolean;
   updatedAt: string;
 }
-interface Library {
+export interface Library {
   version: 1;
   activeId: string;
   trips: SavedTrip[];
@@ -101,6 +101,13 @@ export function useJourneyLibrary(trip: Trip, replaceTrip: (trip: Trip) => void)
     ...library,
     error,
     create,
+    applyRestored(next: Library) {
+      const checked = validateLibrary(next);
+      latest.current = checked;
+      setLibrary(checked);
+      replaceTrip(checked.trips.find((t) => t.id === checked.activeId)!.trip);
+      setError(false);
+    },
     open(id: string) {
       const previous = snapshot();
       const entry = previous.trips.find((t) => t.id === id && !t.archived);

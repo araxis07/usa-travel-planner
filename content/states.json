@@ -56,12 +56,13 @@
           "width": 960,
           "height": 720,
           "displayCaption": [
-            "San Francisco · Photograph 1",
-            "ซานฟรานซิสโก · ภาพที่ 1",
-            "旧金山 · 照片 1",
-            "サンフランシスコ・写真 1",
-            "샌프란시스코 · 사진 1"
-          ]
+            "Alcatraz Island from above",
+            "เกาะอัลคาทราซจากมุมสูง",
+            "俯瞰恶魔岛",
+            "上空から見たアルカトラズ島",
+            "하늘에서 본 앨커트래즈섬"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/ca-2.jpg",
@@ -74,12 +75,13 @@
           "width": 960,
           "height": 608,
           "displayCaption": [
-            "Yosemite National Park · Photograph 1",
-            "อุทยานแห่งชาติโยเซมิตี · ภาพที่ 1",
-            "优胜美地国家公园 · 照片 1",
-            "ヨセミテ国立公園・写真 1",
-            "요세미티 국립공원 · 사진 1"
-          ]
+            "Half Dome and Yosemite's granite landscape",
+            "Half Dome และภูมิประเทศหินแกรนิตของโยเซมิตี",
+            "半穹顶与优胜美地花岗岩地貌",
+            "ハーフドームとヨセミテの花崗岩の景観",
+            "하프 돔과 요세미티의 화강암 지형"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/ca-3.jpg",
@@ -92,12 +94,13 @@
           "width": 960,
           "height": 625,
           "displayCaption": [
-            "Big Sur · Photograph 1",
-            "บิกเซอร์ · ภาพที่ 1",
-            "大苏尔 · 照片 1",
-            "ビッグサー・写真 1",
-            "빅서 · 사진 1"
-          ]
+            "Rocky Pacific coastline at Big Sur",
+            "ชายฝั่งหินริมแปซิฟิกที่บิกเซอร์",
+            "大苏尔的太平洋岩岸",
+            "ビッグサーの岩がちな太平洋岸",
+            "빅서의 바위 많은 태평양 해안"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ca-0-2.jpg",
@@ -111,12 +114,13 @@
           "height": 720,
           "caption": "Aerial view of Chase Center at 2020",
           "displayCaption": [
-            "San Francisco · Photograph 2",
-            "ซานฟรานซิสโก · ภาพที่ 2",
-            "旧金山 · 照片 2",
-            "サンフランシスコ・写真 2",
-            "샌프란시스코 · 사진 2"
-          ]
+            "Chase Center beside the bay",
+            "สนาม Chase Center ริมอ่าว",
+            "海湾旁的Chase Center体育馆",
+            "湾に面したChase Center",
+            "만 옆의 Chase Center"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ca-0-3.jpg",
@@ -130,12 +134,13 @@
           "height": 625,
           "caption": "Cliff House from Ocean Beach",
           "displayCaption": [
-            "San Francisco · Photograph 3",
-            "ซานฟรานซิสโก · ภาพที่ 3",
-            "旧金山 · 照片 3",
-            "サンフランシスコ・写真 3",
-            "샌프란시스코 · 사진 3"
-          ]
+            "Cliff House above Ocean Beach",
+            "Cliff House เหนือหาด Ocean Beach",
+            "Ocean Beach上方的Cliff House",
+            "Ocean Beachを見下ろすCliff House",
+            "Ocean Beach 위의 Cliff House"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ca-1-2.jpg",
@@ -149,12 +154,13 @@
           "height": 960,
           "caption": "Half Dome is one of the most recognizable granitic formations in the world.",
           "displayCaption": [
-            "Yosemite National Park · Photograph 2",
-            "อุทยานแห่งชาติโยเซมิตี · ภาพที่ 2",
-            "优胜美地国家公园 · 照片 2",
-            "ヨセミテ国立公園・写真 2",
-            "요세미티 국립공원 · 사진 2"
-          ]
+            "Half Dome framed by forest",
+            "Half Dome ท่ามกลางแนวป่า",
+            "林木映衬下的半穹顶",
+            "森に縁取られたハーフドーム",
+            "숲에 둘러싸인 하프 돔"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ca-1-3.jpg",
@@ -168,12 +174,13 @@
           "height": 744,
           "caption": "Upper Yosemite Fall and Merced River in spring",
           "displayCaption": [
-            "Yosemite National Park · Photograph 3",
-            "อุทยานแห่งชาติโยเซมิตี · ภาพที่ 3",
-            "优胜美地国家公园 · 照片 3",
-            "ヨセミテ国立公園・写真 3",
-            "요세미티 국립공원 · 사진 3"
-          ]
+            "Upper Yosemite Fall above the Merced River",
+            "น้ำตก Upper Yosemite เหนือแม่น้ำเมอร์เซด",
+            "默塞德河上方的上优胜美地瀑布",
+            "マーセド川とアッパーヨセミテ滝",
+            "머세드강 위의 어퍼 요세미티 폭포"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ca-2-2.jpg",
@@ -187,12 +194,13 @@
           "height": 635,
           "caption": "McWay Falls at Julia Pfeiffer Burns State Park",
           "displayCaption": [
-            "Big Sur · Photograph 2",
-            "บิกเซอร์ · ภาพที่ 2",
-            "大苏尔 · 照片 2",
-            "ビッグサー・写真 2",
-            "빅서 · 사진 2"
-          ]
+            "McWay Falls at Julia Pfeiffer Burns State Park",
+            "น้ำตก McWay ใน Julia Pfeiffer Burns State Park",
+            "Julia Pfeiffer Burns州立公园的McWay瀑布",
+            "Julia Pfeiffer Burns州立公園のMcWay滝",
+            "Julia Pfeiffer Burns 주립공원의 McWay 폭포"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ca-2-3.jpg",
@@ -206,16 +214,17 @@
           "height": 720,
           "caption": "Big Sur Coast in Central California looking south near Julia Pfeiffer Burns State Park",
           "displayCaption": [
-            "Big Sur · Photograph 3",
-            "บิกเซอร์ · ภาพที่ 3",
-            "大苏尔 · 照片 3",
-            "ビッグサー・写真 3",
-            "빅서 · 사진 3"
-          ]
+            "Yellow wildflowers above the Big Sur coast",
+            "ดอกไม้ป่าสีเหลืองเหนือชายฝั่งบิกเซอร์",
+            "大苏尔海岸上方的黄色野花",
+            "ビッグサーの海岸を望む黄色い野の花",
+            "빅서 해안 위의 노란 야생화"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         }
       ],
       "cover": 0,
-      "updatedAt": "2026-09-14",
+      "updatedAt": "2026-09-15",
       "sources": [
         {
           "name": "Visit The USA",
@@ -241,11 +250,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Use SFMTA’s Muni trip planner for journeys between San Francisco neighborhoods. Compare the final walk and check the operator’s accessibility guide before choosing a stop; hills can make nearby places feel farther apart.",
-            "ใช้เครื่องมือวางแผน Muni ของ SFMTA สำหรับเดินทางระหว่างย่านในซานฟรานซิสโก เทียบระยะเดินช่วงสุดท้ายและตรวจคู่มือการเข้าถึงก่อนเลือกป้าย เนินเขาอาจทำให้จุดที่ดูใกล้กันเดินทางยากขึ้น",
-            "使用SFMTA的Muni路线规划器安排行程，选择站点前比较最后一段步行并查阅无障碍指南；山坡会增加步行难度。",
-            "SFMTAのMuni経路検索で街区間の移動を計画。停留所からの徒歩とアクセシビリティを確認しましょう。近い場所でも坂があると移動の負担が変わります。",
-            "SFMTA의 Muni 경로 검색으로 동네 간 이동을 계획하세요. 정류장을 고르기 전에 마지막 도보 구간과 접근성 안내를 확인하세요. 언덕 때문에 가까운 곳도 이동이 어려울 수 있습니다."
+            "Use Muni between neighborhoods and compare the final walk before picking a stop. Hills can change an easy-looking journey; choose parking near your first activity if driving.",
+            "ใช้ Muni เดินทางระหว่างย่านและเทียบระยะเดินช่วงสุดท้ายก่อนเลือกป้าย ทางลาดชันอาจทำให้เดินยากกว่าที่คิด หากขับรถให้เลือกที่จอดใกล้กิจกรรมแรก",
+            "搭乘Muni往返各街区，选站时比较最后一段步行。坡道会增加难度；自驾可先找第一项活动附近的停车场。",
+            "街区間はMuniを利用し、停留所からの徒歩も比較しましょう。坂道で負担が変わります。車なら最初の目的地に近い駐車場を探しましょう。",
+            "동네 간에는 Muni를 이용하고 정류장부터 걸을 거리도 비교하세요. 언덕 때문에 이동이 힘들 수 있으니 운전한다면 첫 목적지 근처 주차장을 고르세요."
           ],
           "stay": [
             "Explore accommodation around San Francisco; compare the journey to your chosen sights before booking.",
@@ -268,7 +277,7 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://www.sfmta.com/getting-around-san-francisco",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-14",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -276,7 +285,7 @@
             "setting": "indoors",
             "walking": "easy",
             "interest": "Cities",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [4, 5, 9, 10]
           }
         },
         {
@@ -297,11 +306,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "YARTS connects gateway communities to Yosemite Valley; some routes are seasonal. Within the valley, use the park shuttle for its served stops. Check your exact arrival and return services before planning a car-free visit beyond the valley.",
-            "YARTS เชื่อมเมืองทางเข้ากับหุบเขาโยเซมิตี บางสายให้บริการตามฤดูกาล ภายในหุบเขาใช้รถรับส่งอุทยานตามป้ายที่ให้บริการ ตรวจเที่ยวไปและกลับให้ตรงก่อนวางแผนเที่ยวส่วนอื่นโดยไม่มีรถ",
-            "YARTS连接门户城镇与优胜美地山谷，部分线路季节性运营。谷内可乘公园接驳车；无车前往其他区域前，请核对往返班次。",
-            "YARTSは周辺の町とヨセミテ渓谷を結び、一部路線は季節運行です。渓谷内はシャトルの停留所を利用。車なしで他の地域へ行く際は往復便を確認しましょう。",
-            "YARTS가 관문 도시와 요세미티 밸리를 연결하며 일부 노선은 계절에 따라 운행합니다. 밸리 내에서는 셔틀 정류장을 이용하세요. 차 없이 다른 지역까지 방문하려면 왕복 교통편을 확인하세요."
+            "Choose your park entrance before navigating: Yosemite has no single arrival address. Higher roads close seasonally. Plan valley parking and shuttle stops together, with a separate plan for areas beyond the valley.",
+            "เลือกทางเข้าอุทยานก่อนเปิดนำทาง โยเซมิตีไม่มีที่อยู่ทางเข้าเพียงแห่งเดียว ถนนบนที่สูงปิดตามฤดูกาล วางแผนที่จอดกับป้ายรถรับส่งในหุบเขา และจัดการเดินทางส่วนอื่นแยก",
+            "先选公园入口再导航，优胜美地没有唯一的抵达地址。高山道路季节性关闭。谷内停车与接驳站应一起规划，谷外行程另作安排。",
+            "入口を決めてからナビを設定しましょう。到着地点は一つではなく、高地の道路は季節閉鎖があります。渓谷内の駐車とシャトル、渓谷外への移動を分けて計画しましょう。",
+            "먼저 입구를 정한 뒤 내비게이션을 설정하세요. 도착 주소가 하나가 아니며 고지대 도로는 계절에 따라 닫힙니다. 밸리 주차와 셔틀, 밸리 밖 이동을 나누어 계획하세요."
           ],
           "stay": [
             "Explore accommodation around El Portal / Mariposa; compare the journey to your chosen sights before booking.",
@@ -322,9 +331,9 @@
           ],
           "locationSource": "https://www.nps.gov/yose/index.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/yose/planyourvisit/publictransportation.htm",
+          "officialUrl": "https://www.nps.gov/yose/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/yose/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-14",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -332,7 +341,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [5, 6, 9, 10]
           }
         },
         {
@@ -353,11 +362,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Choose the specific entrance or trailhead first. Check road access, parking and seasonal conditions with the land manager before departure.",
-            "เลือกทางเข้าหรือจุดเริ่มเส้นทางให้ชัดเจนก่อน ตรวจถนน ที่จอดรถ และสภาพตามฤดูกาลกับผู้ดูแลพื้นที่ก่อนเดินทาง",
-            "先选定入口或步道起点，出发前向管理方核对道路、停车和季节状况。",
-            "入口や登山口を先に決め、道路、駐車場、季節の状況を管理者の案内で確認しましょう。",
-            "먼저 입구나 탐방로 시작점을 정하고, 출발 전에 관리 기관에서 도로 접근과 주차, 계절 상황을 확인하세요."
+            "Big Sur Station is a visitor-information reference, not an entrance to every coastal stop. Check the dated closure notice and Caltrans before choosing Highway 1 parking or an overnight base.",
+            "Big Sur Station เป็นจุดอ้างอิงศูนย์ข้อมูล ไม่ใช่ทางเข้าทุกจุดริมชายฝั่ง ตรวจประกาศปิดพื้นที่และ Caltrans ก่อนเลือกที่จอดบน Highway 1 หรือเมืองค้างคืน",
+            "Big Sur Station是游客咨询参考点，并非所有海岸景点的入口。选择1号公路停车点和住宿基地前，请查看有日期的关闭公告及Caltrans路况。",
+            "Big Sur Stationは観光案内の基準点で、海岸の各名所への入口ではありません。駐車場所や宿泊地を決める前に、閉鎖告知とCaltransの道路情報を確認しましょう。",
+            "Big Sur Station은 안내소 기준점이며 모든 해안 명소의 입구가 아닙니다. 1번 도로 주차 장소와 숙소를 정하기 전에 폐쇄 공지와 Caltrans 도로 상황을 확인하세요."
           ],
           "stay": [
             "Explore accommodation around Monterey / Carmel; compare the journey to your chosen sights before booking.",
@@ -367,22 +376,39 @@
             "Monterey / Carmel 주변 숙소를 살펴보고 예약 전에 선택한 명소까지의 이동을 비교하세요."
           ],
           "visitMinutes": 360,
-          "coordinates": [36.299216, -121.873402],
-          "locationKind": "area",
-          "locationLabel": ["Big Sur", "บิกเซอร์", "大苏尔", "ビッグサー", "빅서"],
-          "locationSource": "https://en.wikipedia.org/wiki/Big_Sur",
-          "locationCheckedAt": "2026-09-09",
-          "officialUrl": "https://www.visittheusa.com/destinations/california/",
+          "coordinates": [36.247463, -121.781755],
+          "locationKind": "visitor-center",
+          "locationLabel": [
+            "Big Sur Station visitor information",
+            "ศูนย์ข้อมูลนักท่องเที่ยว Big Sur Station",
+            "Big Sur Station游客咨询中心",
+            "Big Sur Station観光案内所",
+            "Big Sur Station 관광 안내소"
+          ],
+          "locationSource": "https://californiacoastaltrail.org/info-point/big-sur-station/",
+          "locationCheckedAt": "2026-09-15",
+          "officialUrl": "https://parks.ca.gov/?page_id=29170",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-10",
-          "reviewAfter": "2026-12-01",
+          "reviewedAt": "2026-09-15",
+          "reviewAfter": "2026-09-22",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Coast",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [4, 5, 6, 7, 8, 9, 10]
+          },
+          "advisory": {
+            "checkedAt": "2026-09-15",
+            "source": "https://parks.ca.gov/?page_id=29170",
+            "text": [
+              "The official September 2 notice reports Big Sur park and Highway 1 closures due to fires. This is a saved notice; confirm current access before travel.",
+              "ประกาศทางการวันที่ 2 กันยายนระบุการปิดอุทยานใน Big Sur และ Highway 1 จากไฟป่า นี่คือประกาศที่บันทึกไว้ โปรดตรวจการเข้าถึงล่าสุดก่อนเดินทาง",
+              "官方9月2日公告提及火灾导致大苏尔公园及1号公路关闭。此为保存的公告，出行前请核对最新通行情况。",
+              "9月2日の公式告知では火災によるBig Surの公園とHighway 1の閉鎖が報告されています。保存された告知のため、出発前に最新状況を確認してください。",
+              "9월 2일 공식 공지는 화재로 인한 Big Sur 공원과 1번 도로 폐쇄를 알립니다. 저장된 공지이므로 출발 전에 최신 통행 상황을 확인하세요."
+            ]
           }
         }
       ]
@@ -436,12 +462,13 @@
           "width": 960,
           "height": 540,
           "displayCaption": [
-            "New York City · Photograph 1",
-            "นิวยอร์กซิตี้ · ภาพที่ 1",
-            "纽约市 · 照片 1",
-            "ニューヨーク市・写真 1",
-            "뉴욕시 · 사진 1"
-          ]
+            "Empire State Building and Manhattan at dusk",
+            "ตึกเอ็มไพร์สเตตและแมนฮัตตันยามพลบค่ำ",
+            "暮色中的帝国大厦与曼哈顿",
+            "夕暮れのエンパイアステートビルとマンハッタン",
+            "해 질 녘 엠파이어 스테이트 빌딩과 맨해튼"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/ny-2.jpg",
@@ -454,12 +481,13 @@
           "width": 960,
           "height": 720,
           "displayCaption": [
-            "Hudson Valley · Photograph 1",
-            "หุบเขาฮัดสัน · ภาพที่ 1",
-            "哈德逊河谷 · 照片 1",
-            "ハドソンバレー・写真 1",
-            "허드슨밸리 · 사진 1"
-          ]
+            "Hudson Valley farmland in autumn",
+            "พื้นที่เกษตรฮัดสันวัลเลย์ในฤดูใบไม้ร่วง",
+            "秋日的哈德逊河谷农田",
+            "秋のハドソンバレーの農地",
+            "가을의 허드슨 밸리 농경지"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/ny-3.jpg",
@@ -472,12 +500,13 @@
           "width": 960,
           "height": 638,
           "displayCaption": [
-            "Niagara Falls · Photograph 1",
-            "น้ำตกไนแอการา · ภาพที่ 1",
-            "尼亚加拉瀑布 · 照片 1",
-            "ナイアガラの滝・写真 1",
-            "나이아가라 폭포 · 사진 1"
-          ]
+            "American and Horseshoe Falls, photographed from Canada",
+            "น้ำตก American และ Horseshoe ถ่ายจากฝั่งแคนาดา",
+            "从加拿大拍摄的美国瀑布与马蹄瀑布",
+            "カナダ側から撮影したアメリカ滝とホースシュー滝",
+            "캐나다에서 촬영한 아메리칸 폭포와 호스슈 폭포"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ny-0-2.jpg",
@@ -491,12 +520,13 @@
           "height": 747,
           "caption": "Central Park, Manhattan, New York City",
           "displayCaption": [
-            "New York City · Photograph 2",
-            "นิวยอร์กซิตี้ · ภาพที่ 2",
-            "纽约市 · 照片 2",
-            "ニューヨーク市・写真 2",
-            "뉴욕시 · 사진 2"
-          ]
+            "Central Park pond with the city beyond",
+            "สระน้ำในเซ็นทรัลพาร์กและเมืองด้านหลัง",
+            "中央公园池塘与远处城市",
+            "セントラルパークの池とその先の街並み",
+            "센트럴 파크 연못과 너머의 도시"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ny-0-3.jpg",
@@ -510,12 +540,13 @@
           "height": 640,
           "caption": "Midtown Manhattan , New York City , as viewed from Weehawken , New Jersey .",
           "displayCaption": [
-            "New York City · Photograph 3",
-            "นิวยอร์กซิตี้ · ภาพที่ 3",
-            "纽约市 · 照片 3",
-            "ニューヨーク市・写真 3",
-            "뉴욕시 · 사진 3"
-          ]
+            "Midtown Manhattan from the New Jersey waterfront",
+            "มิดทาวน์แมนฮัตตันจากริมน้ำฝั่งนิวเจอร์ซีย์",
+            "从新泽西滨水区眺望曼哈顿中城",
+            "ニュージャージーの水辺から望むミッドタウン",
+            "뉴저지 해안가에서 본 맨해튼 미드타운"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ny-1-2.jpg",
@@ -529,12 +560,13 @@
           "height": 720,
           "caption": "Garden and front facade of Kykuit — in Tarrytown, New York. Photograph taken by me, September 2005.",
           "displayCaption": [
-            "Hudson Valley · Photograph 2",
-            "หุบเขาฮัดสัน · ภาพที่ 2",
-            "哈德逊河谷 · 照片 2",
-            "ハドソンバレー・写真 2",
-            "허드슨밸리 · 사진 2"
-          ]
+            "Stone façade of the Kykuit estate",
+            "ด้านหน้าอาคารหินของคฤหาสน์ Kykuit",
+            "Kykuit庄园的石砌立面",
+            "Kykuit邸の石造りの外観",
+            "Kykuit 저택의 석조 외관"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ny-1-3.jpg",
@@ -548,12 +580,13 @@
           "height": 721,
           "caption": "U.S. Military Academy cadets prepare for pass and review before a football game in West Point, N.Y. Nov. 1, 2008. The academy's \"Black Nights' took on the \"Eagles\" of the U.S. Air Force Academy during this year's matchup between the two service academies. Air Force defeated Army 16-7. DoD photo by Navy Petty Officer 1st Class Chad J. McNeeley Download Hi-Res",
           "displayCaption": [
-            "Hudson Valley · Photograph 3",
-            "หุบเขาฮัดสัน · ภาพที่ 3",
-            "哈德逊河谷 · 照片 3",
-            "ハドソンバレー・写真 3",
-            "허드슨밸리 · 사진 3"
-          ]
+            "Cadets on the parade ground at West Point",
+            "นักเรียนนายร้อยบนลานสวนสนามเวสต์พอยต์",
+            "西点军校阅兵场上的学员",
+            "ウェストポイントの練兵場の士官候補生",
+            "웨스트포인트 연병장의 사관생도"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ny-2-2.jpg",
@@ -567,12 +600,13 @@
           "height": 641,
           "caption": "15-23-0882: rainbow bridge from observation deck",
           "displayCaption": [
-            "Niagara Falls · Photograph 2",
-            "น้ำตกไนแอการา · ภาพที่ 2",
-            "尼亚加拉瀑布 · 照片 2",
-            "ナイアガラの滝・写真 2",
-            "나이아가라 폭포 · 사진 2"
-          ]
+            "Rainbow Bridge over the Niagara River",
+            "สะพาน Rainbow ข้ามแม่น้ำไนแอการา",
+            "尼亚加拉河上的彩虹桥",
+            "ナイアガラ川に架かるレインボーブリッジ",
+            "나이아가라강을 가로지르는 레인보 브리지"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ny-2-3.jpg",
@@ -586,16 +620,17 @@
           "height": 720,
           "caption": "Canadian Horseshoe Falls. Clicked from Skylon Tower, Niagara Falls, Canada.",
           "displayCaption": [
-            "Niagara Falls · Photograph 3",
-            "น้ำตกไนแอการา · ภาพที่ 3",
-            "尼亚加拉瀑布 · 照片 3",
-            "ナイアガラの滝・写真 3",
-            "나이아가라 폭포 · 사진 3"
-          ]
+            "Horseshoe Falls from Skylon Tower in Canada",
+            "น้ำตก Horseshoe จาก Skylon Tower ในแคนาดา",
+            "从加拿大Skylon塔眺望马蹄瀑布",
+            "カナダのSkylon Towerから望むホースシュー滝",
+            "캐나다 Skylon Tower에서 본 호스슈 폭포"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         }
       ],
       "cover": 0,
-      "updatedAt": "2026-09-14",
+      "updatedAt": "2026-09-15",
       "sources": [
         {
           "name": "Visit The USA",
@@ -621,11 +656,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Use the MTA subway guide and current service status to plan New York City trips. Check train direction, local versus express stops and the accessible entrance you need. Plan the return trip as well as the outward journey.",
-            "ใช้คู่มือรถไฟใต้ดิน MTA และสถานะบริการล่าสุดวางแผนเที่ยวนิวยอร์ก ตรวจทิศทางรถ ป้ายของรถจอดทุกสถานีกับรถด่วน และทางเข้าสถานีที่เหมาะกับคุณ พร้อมวางแผนขากลับด้วย",
-            "通过MTA地铁指南和实时服务状态规划纽约行程。确认方向、普通与快车停靠站以及所需无障碍入口，并提前规划返程。",
-            "MTAの地下鉄ガイドと運行状況で移動を計画。方向、各駅停車と急行の停車駅、利用する入口を確認し、帰りの経路も決めましょう。",
-            "MTA 지하철 안내와 운행 현황으로 뉴욕 일정을 계획하세요. 열차 방향, 일반·급행 정차역과 필요한 접근 가능한 입구를 확인하고 귀가 경로도 준비하세요."
+            "Group nearby neighborhoods and use the MTA journey planner between them. Check train direction, service changes and station accessibility; a nearby station may have a different accessible entrance.",
+            "จัดย่านที่อยู่ใกล้กันไว้วันเดียวแล้วใช้เครื่องมือวางแผน MTA ตรวจทิศทางรถ การเปลี่ยนบริการ และการเข้าถึงสถานี ทางเข้าสำหรับผู้ใช้รถเข็นอาจอยู่คนละจุด",
+            "将相邻街区安排在一起，再用MTA规划移动。核对列车方向、服务变更及车站无障碍设施；无障碍入口可能位于不同位置。",
+            "近い街区をまとめ、MTAで移動を検索。列車の方向、運行変更、駅のバリアフリー設備を確認しましょう。利用可能な入口が別の場所にある場合があります。",
+            "가까운 동네끼리 묶고 MTA로 이동을 검색하세요. 열차 방향과 운행 변경, 역 접근성을 확인하세요. 접근 가능한 출입구는 다른 위치에 있을 수 있습니다."
           ],
           "stay": [
             "Explore accommodation around New York City; compare the journey to your chosen sights before booking.",
@@ -642,7 +677,7 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://www.mta.info/guides/riding-the-subway",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-14",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -650,7 +685,7 @@
             "setting": "indoors",
             "walking": "easy",
             "interest": "Cities",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [4, 5, 6, 9, 10]
           }
         },
         {
@@ -671,11 +706,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Group nearby sights into a walkable neighborhood. Check local transport routes and the final walk before choosing your accommodation.",
-            "จัดสถานที่ใกล้กันไว้ในย่านเดียว ตรวจเส้นทางขนส่งท้องถิ่นและระยะเดินช่วงสุดท้ายก่อนเลือกที่พัก",
-            "把相邻景点安排在同一街区，选择住宿前核对当地交通线路和最后一段步行距离。",
-            "近くの見どころを同じ街区にまとめ、宿を選ぶ前に公共交通の経路と最後の徒歩区間を確認しましょう。",
-            "가까운 명소를 같은 동네 일정으로 묶고, 숙소를 고르기 전에 현지 교통편과 마지막 도보 구간을 확인하세요。"
+            "Choose a particular heritage site and riverbank before booking a base. The Hudson Valley covers many towns; compare each site's visitor instructions, parking and onward transport rather than navigating to the regional pin.",
+            "เลือกสถานที่ประวัติศาสตร์และฝั่งแม่น้ำให้ชัดก่อนจองที่พัก ฮัดสันวัลเลย์ครอบคลุมหลายเมือง ตรวจคำแนะนำผู้เข้าชม ที่จอด และรถต่อของแต่ละแห่ง แทนการนำทางไปหมุดกลางภูมิภาค",
+            "先选具体历史景点及河岸，再决定住宿。哈德逊河谷横跨多个城镇；请逐一比较参观指引、停车及接驳，不要直接导航至区域标记。",
+            "史跡と川のどちら側を訪ねるかを決めてから宿を選びましょう。広い地域なので、地域ピンではなく各施設の来訪案内、駐車場、交通を確認してください。",
+            "유적지와 강의 어느 쪽을 방문할지 정한 뒤 숙소를 고르세요. 여러 마을에 걸친 지역이므로 지역 핀 대신 각 시설의 방문 안내와 주차, 연계 교통을 확인하세요."
           ],
           "stay": [
             "Explore accommodation around Hudson Valley; compare the journey to your chosen sights before booking.",
@@ -696,9 +731,9 @@
           ],
           "locationSource": "https://en.wikipedia.org/wiki/Hudson_Valley",
           "locationCheckedAt": "2026-09-09",
-          "officialUrl": "https://www.visittheusa.com/destinations/new-york/",
+          "officialUrl": "https://www.hudsonrivervalley.com/",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -706,7 +741,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [5, 6, 7, 8, 9, 10]
           }
         },
         {
@@ -727,11 +762,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Group nearby sights into a walkable neighborhood. Check local transport routes and the final walk before choosing your accommodation.",
-            "จัดสถานที่ใกล้กันไว้ในย่านเดียว ตรวจเส้นทางขนส่งท้องถิ่นและระยะเดินช่วงสุดท้ายก่อนเลือกที่พัก",
-            "把相邻景点安排在同一街区，选择住宿前核对当地交通线路和最后一段步行距离。",
-            "近くの見どころを同じ街区にまとめ、宿を選ぶ前に公共交通の経路と最後の徒歩区間を確認しましょう。",
-            "가까운 명소를 같은 동네 일정으로 묶고, 숙소를 고르기 전에 현지 교통편과 마지막 도보 구간을 확인하세요。"
+            "Use the official U.S. park map to choose a parking lot for Prospect Point or Goat Island. Some gallery photographs look back from Canada; choose the viewing bank explicitly when planning your day.",
+            "ใช้แผนที่อุทยานฝั่งสหรัฐฯ เลือกที่จอดสำหรับ Prospect Point หรือ Goat Island ภาพบางภาพในแกลเลอรีถ่ายจากแคนาดา จึงควรเลือกฝั่งที่จะชมให้ชัดเจนก่อนจัดวันเที่ยว",
+            "使用美国侧公园官方地图，选择前往Prospect Point或Goat Island的停车场。图库部分照片从加拿大拍摄，规划时请明确观景所在一侧。",
+            "米国側の公式地図でProspect PointやGoat Islandへの駐車場を選びましょう。ギャラリーにはカナダ側からの写真もあります。訪れる側を明確にしてください。",
+            "미국 쪽 공원 공식 지도로 Prospect Point나 Goat Island 주차장을 고르세요. 갤러리에는 캐나다에서 촬영한 사진도 있으므로 방문할 쪽을 분명히 정하세요."
           ],
           "stay": [
             "Explore accommodation around Niagara Falls; compare the journey to your chosen sights before booking.",
@@ -752,9 +787,9 @@
           ],
           "locationSource": "https://en.wikipedia.org/wiki/Niagara_Falls",
           "locationCheckedAt": "2026-09-09",
-          "officialUrl": "https://www.visittheusa.com/destinations/new-york/",
+          "officialUrl": "https://www.niagarafallsstatepark.com/plan-your-trip/",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -762,7 +797,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [5, 6, 7, 8, 9, 10]
           }
         }
       ]
@@ -828,12 +863,13 @@
           "width": 960,
           "height": 616,
           "displayCaption": [
-            "Grand Canyon South Rim · Photograph 1",
-            "แกรนด์แคนยอนฝั่งใต้ · ภาพที่ 1",
-            "大峡谷南缘 · 照片 1",
-            "グランドキャニオン・サウスリム・写真 1",
-            "그랜드캐니언 사우스림 · 사진 1"
-          ]
+            "Layered canyon walls from the South Rim",
+            "ชั้นหน้าผาแกรนด์แคนยอนจาก South Rim",
+            "从南缘眺望层叠峡谷岩壁",
+            "サウスリムから見た幾層もの峡谷の岩壁",
+            "사우스 림에서 본 층층이 쌓인 협곡 벽"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/az-2.jpg",
@@ -846,12 +882,13 @@
           "width": 960,
           "height": 720,
           "displayCaption": [
-            "Sedona · Photograph 1",
-            "เซโดนา · ภาพที่ 1",
-            "塞多纳 · 照片 1",
-            "セドナ・写真 1",
-            "세도나 · 사진 1"
-          ]
+            "Sedona's red-rock formations",
+            "กลุ่มหินสีแดงแห่งเซโดนา",
+            "塞多纳的红色岩群",
+            "セドナの赤い岩山",
+            "세도나의 붉은 암석 지형"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/az-3.jpg",
@@ -864,12 +901,13 @@
           "width": 960,
           "height": 640,
           "displayCaption": [
-            "Monument Valley Navajo Tribal Park · Photograph 1",
-            "อุทยานชนเผ่านาวาโฮโมนูเมนต์วัลเลย์ · ภาพที่ 1",
-            "纪念碑谷纳瓦霍部落公园 · 照片 1",
-            "モニュメントバレー・ナバホ・トライバル・パーク・写真 1",
-            "모뉴먼트 밸리 나바호 부족 공원 · 사진 1"
-          ]
+            "The Mittens in Monument Valley",
+            "กลุ่มหิน The Mittens ในโมนูเมนต์แวลลีย์",
+            "纪念碑谷的Mittens孤峰",
+            "モニュメントバレーのMittens",
+            "모뉴먼트밸리의 Mittens 암봉"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/az-0-2.jpg",
@@ -883,31 +921,33 @@
           "height": 746,
           "caption": "Dramatic sunset from Mather Point",
           "displayCaption": [
-            "Grand Canyon South Rim · Photograph 2",
-            "แกรนด์แคนยอนฝั่งใต้ · ภาพที่ 2",
-            "大峡谷南缘 · 照片 2",
-            "グランドキャニオン・サウスリム・写真 2",
-            "그랜드캐니언 사우스림 · 사진 2"
-          ]
+            "Sunset at the Mather Point overlook",
+            "พระอาทิตย์ตกที่จุดชมวิว Mather Point",
+            "Mather Point观景台的日落",
+            "Mather Point展望台の夕日",
+            "Mather Point 전망대의 일몰"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/az-0-3.jpg",
           "placeIndex": 0,
           "source": "https://www.nps.gov/grca/index.htm",
-          "author": "NPS/M. Lellouch",
+          "author": "NPS/M. Quinn",
           "license": "Public domain",
           "licenseUrl": "https://www.nps.gov/aboutus/disclaimer.htm",
-          "original": "https://www.nps.gov/common/uploads/structured_data/6D21F1C3-FC94-9597-A861557ED5AD2BC2.jpg",
+          "original": "https://www.nps.gov/common/uploads/structured_data/6DB76AE7-D151-6009-38541DF5F185BA0F.jpg",
           "width": 960,
-          "height": 633,
-          "caption": "Ancestral granary at Nankoweap, in the canyon wall, above the Colorado River",
+          "height": 561,
+          "caption": "A winter landscape as seen from Hermit Road on the South Rim of the park",
           "displayCaption": [
-            "Grand Canyon South Rim · Photograph 3",
-            "แกรนด์แคนยอนฝั่งใต้ · ภาพที่ 3",
-            "大峡谷南缘 · 照片 3",
-            "グランドキャニオン・サウスリム・写真 3",
-            "그랜드캐니언 사우스림 · 사진 3"
-          ]
+            "Winter clouds over the canyon from Hermit Road, South Rim",
+            "เมฆฤดูหนาวเหนือแคนยอน มองจาก Hermit Road ฝั่ง South Rim",
+            "从南缘Hermit Road眺望峡谷上空的冬云",
+            "サウスリムのHermit Roadから見た峡谷と冬雲",
+            "사우스 림 Hermit Road에서 본 협곡과 겨울 구름"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/az-1-2.jpg",
@@ -921,12 +961,13 @@
           "height": 640,
           "caption": "A picture of the Chapel of the Holy Cross in Sedona, Arizona near sunset. The chapel appears to rise out of the rock formations characteristic of the area.",
           "displayCaption": [
-            "Sedona · Photograph 2",
-            "เซโดนา · ภาพที่ 2",
-            "塞多纳 · 照片 2",
-            "セドナ・写真 2",
-            "세도나 · 사진 2"
-          ]
+            "Chapel of the Holy Cross among the red rocks",
+            "โบสถ์ Chapel of the Holy Cross ท่ามกลางหินแดง",
+            "红岩间的圣十字教堂",
+            "赤い岩山の中のChapel of the Holy Cross",
+            "붉은 바위 사이의 Chapel of the Holy Cross"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/az-1-3.jpg",
@@ -940,12 +981,13 @@
           "height": 412,
           "caption": "Downtown Sedona - Route 89A",
           "displayCaption": [
-            "Sedona · Photograph 3",
-            "เซโดนา · ภาพที่ 3",
-            "塞多纳 · 照片 3",
-            "セドナ・写真 3",
-            "세도나 · 사진 3"
-          ]
+            "Route 89A through Sedona",
+            "ถนน Route 89A ผ่านเซโดนา",
+            "穿过塞多纳的89A公路",
+            "セドナを通るRoute 89A",
+            "세도나를 지나는 Route 89A"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/az-2-2.jpg",
@@ -959,12 +1001,13 @@
           "height": 613,
           "caption": "West Mitten Butte Monument Valley, view northeastward from Arizona to Utah, USA.",
           "displayCaption": [
-            "Monument Valley Navajo Tribal Park · Photograph 2",
-            "อุทยานชนเผ่านาวาโฮโมนูเมนต์วัลเลย์ · ภาพที่ 2",
-            "纪念碑谷纳瓦霍部落公园 · 照片 2",
-            "モニュメントバレー・ナバホ・トライバル・パーク・写真 2",
-            "모뉴먼트 밸리 나바호 부족 공원 · 사진 2"
-          ]
+            "West Mitten Butte with desert wood in the foreground",
+            "West Mitten Butte กับซากไม้ทะเลทรายด้านหน้า",
+            "前景枯木映衬下的West Mitten孤峰",
+            "砂漠の枯れ木越しのWest Mitten Butte",
+            "사막 고목 너머의 West Mitten Butte"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/az-2-3.jpg",
@@ -978,16 +1021,17 @@
           "height": 640,
           "caption": "Monument Valley",
           "displayCaption": [
-            "Monument Valley Navajo Tribal Park · Photograph 3",
-            "อุทยานชนเผ่านาวาโฮโมนูเมนต์วัลเลย์ · ภาพที่ 3",
-            "纪念碑谷纳瓦霍部落公园 · 照片 3",
-            "モニュメントバレー・ナバホ・トライバル・パーク・写真 3",
-            "모뉴먼트 밸리 나바호 부족 공원 · 사진 3"
-          ]
+            "Monument Valley buttes at sunset",
+            "แท่งหินโมนูเมนต์แวลลีย์ยามพระอาทิตย์ตก",
+            "夕阳下的纪念碑谷孤峰",
+            "夕日に染まるモニュメントバレーのビュート",
+            "해 질 녘 모뉴먼트밸리의 암봉"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         }
       ],
       "cover": 0,
-      "updatedAt": "2026-09-14",
+      "updatedAt": "2026-09-15",
       "sources": [
         {
           "name": "Visit The USA",
@@ -1013,11 +1057,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Use the South Rim shuttle map to choose the visitor-center, village and viewpoint stops for your day. Shuttle routes and service dates vary; check the current NPS schedule and allow time to return before the final service.",
-            "ใช้แผนที่รถรับส่ง South Rim เลือกป้ายศูนย์บริการ หมู่บ้าน และจุดชมวิวของวันนั้น เส้นทางและวันบริการต่างกัน ตรวจตาราง NPS ล่าสุดและเผื่อเวลากลับก่อนเที่ยวสุดท้าย",
-            "用南缘接驳车地图选择游客中心、村庄与观景点。线路和运营日期有所不同，请查看NPS最新时刻并预留返程时间。",
-            "サウスリムのシャトル地図でビジターセンター、村、展望台を選びましょう。路線や運行日は異なるため、最新時刻と帰りの時間を確認してください。",
-            "사우스림 셔틀 지도로 방문자 센터, 마을과 전망대 정류장을 고르세요. 노선과 운행일이 다르므로 NPS의 최신 시간표와 돌아오는 시간을 확인하세요."
+            "Navigate to the South Rim via AZ 64 and choose visitor-center parking before using park shuttles. The North Rim is a separate, distant arrival area; it is not a nearby alternative entrance.",
+            "ไป South Rim ผ่าน AZ 64 แล้วเลือกที่จอดศูนย์บริการก่อนต่อรถรับส่ง North Rim เป็นจุดมาถึงอีกฝั่งที่อยู่ไกล ไม่ใช่ทางเข้าใกล้กันที่เปลี่ยนไปใช้ได้ทันที",
+            "经AZ 64前往南缘，在游客中心停车后规划接驳。北缘是相距很远的另一抵达区域，并非附近的备用入口。",
+            "AZ 64からサウスリムへ入り、ビジターセンター周辺の駐車とシャトルを計画。ノースリムは遠く離れた別の到着地点で、近隣の代替入口ではありません。",
+            "AZ 64를 통해 사우스 림으로 가고 방문자 센터 주차와 셔틀을 계획하세요. 노스 림은 멀리 떨어진 별도 도착지이며 가까운 대체 입구가 아닙니다."
           ],
           "stay": [
             "Explore accommodation around Tusayan / Grand Canyon Village; compare the journey to your chosen sights before booking.",
@@ -1038,9 +1082,9 @@
           ],
           "locationSource": "https://www.nps.gov/grca/planyourvisit/grand-canyon-visitor-center.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/grca/planyourvisit/shuttle-buses.htm",
+          "officialUrl": "https://www.nps.gov/grca/planyourvisit/directions_s_rim.htm",
           "bookingUrl": "https://www.nps.gov/grca/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-14",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -1048,7 +1092,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [4, 5, 6, 9, 10]
           }
         },
         {
@@ -1069,11 +1113,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Group nearby sights into a walkable neighborhood. Check local transport routes and the final walk before choosing your accommodation.",
-            "จัดสถานที่ใกล้กันไว้ในย่านเดียว ตรวจเส้นทางขนส่งท้องถิ่นและระยะเดินช่วงสุดท้ายก่อนเลือกที่พัก",
-            "把相邻景点安排在同一街区，选择住宿前核对当地交通线路和最后一段步行距离。",
-            "近くの見どころを同じ街区にまとめ、宿を選ぶ前に公共交通の経路と最後の徒歩区間を確認しましょう。",
-            "가까운 명소를 같은 동네 일정으로 묶고, 숙소를 고르기 전에 현지 교통편과 마지막 도보 구간을 확인하세요。"
+            "For served trailheads, use Sedona Shuttle park-and-ride lots. Check the route and operating day for your chosen hike; the shuttle does not cover every trail or every day.",
+            "ใช้ลานจอดแล้วต่อรถ Sedona Shuttle สำหรับเส้นทางที่มีบริการ ตรวจสายรถและวันให้บริการให้ตรงกับเส้นทางเดินป่า เพราะรถไม่ได้ไปทุกเส้นทางหรือวิ่งทุกวัน",
+            "可前往Sedona Shuttle换乘停车场，搭车到其服务的步道。核对路线及运营日；并非所有步道或日期都有接驳。",
+            "対象の登山口へはSedona Shuttleのパークアンドライドを検討。行きたいコースの路線と運行日を確認しましょう。全登山口・全日程をカバーするものではありません。",
+            "운행 대상 탐방로는 Sedona Shuttle 환승 주차장을 이용하세요. 선택한 코스의 노선과 운행일을 확인하세요. 모든 탐방로나 날짜에 운행하지는 않습니다."
           ],
           "stay": [
             "Explore accommodation around Sedona; compare the journey to your chosen sights before booking.",
@@ -1088,9 +1132,9 @@
           "locationLabel": ["Sedona", "เซโดนา", "塞多纳", "セドナ", "세도나"],
           "locationSource": "https://en.wikipedia.org/wiki/Sedona%2C_Arizona",
           "locationCheckedAt": "2026-09-09",
-          "officialUrl": "https://www.visittheusa.com/destinations/arizona/",
+          "officialUrl": "https://sedonashuttle.com/",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -1119,11 +1163,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Choose the specific entrance or trailhead first. Check road access, parking and seasonal conditions with the land manager before departure.",
-            "เลือกทางเข้าหรือจุดเริ่มเส้นทางให้ชัดเจนก่อน ตรวจถนน ที่จอดรถ และสภาพตามฤดูกาลกับผู้ดูแลพื้นที่ก่อนเดินทาง",
-            "先选定入口或步道起点，出发前向管理方核对道路、停车和季节状况。",
-            "入口や登山口を先に決め、道路、駐車場、季節の状況を管理者の案内で確認しましょう。",
-            "먼저 입구나 탐방로 시작점을 정하고, 출발 전에 관리 기관에서 도로 접근과 주차, 계절 상황을 확인하세요."
+            "The tribal park's scenic loop is an unpaved road. Check vehicle suitability and current access with Navajo Nation Parks; compare authorized guided tours before choosing how to explore.",
+            "เส้นทางชมวิวในอุทยานชนเผ่าเป็นถนนไม่ลาดยาง ตรวจว่ารถเหมาะสมและเข้าได้หรือไม่กับ Navajo Nation Parks แล้วเปรียบเทียบทัวร์ที่ได้รับอนุญาตก่อนเลือกวิธีเที่ยว",
+            "部落公园的观景环线为未铺装道路。请向Navajo Nation Parks确认车辆适用性和当前通行情况，也可比较获授权的导览。",
+            "部族公園の周遊路は未舗装です。車両が適しているか、通行できるかをNavajo Nation Parksで確認し、公認ガイドツアーも比較しましょう。",
+            "부족 공원의 경관 순환로는 비포장입니다. Navajo Nation Parks에서 차량 적합성과 통행 상황을 확인하고 공인 가이드 투어도 비교하세요."
           ],
           "stay": [
             "Explore accommodation around Kayenta / Mexican Hat; compare the journey to your chosen sights before booking.",
@@ -1144,9 +1188,9 @@
           ],
           "locationSource": "https://en.wikipedia.org/wiki/Monument_Valley",
           "locationCheckedAt": "2026-09-09",
-          "officialUrl": "https://www.visittheusa.com/destinations/arizona/",
+          "officialUrl": "https://navajonationparks.org/guided-tour-operators/monument-valley-tour-operators/",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -1154,7 +1198,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [3, 4, 5, 9, 10]
           }
         }
       ]
@@ -1214,12 +1258,13 @@
           "width": 960,
           "height": 467,
           "displayCaption": [
-            "Oʻahu · Photograph 1",
-            "เกาะโออาฮู · ภาพที่ 1",
-            "欧胡岛 · 照片 1",
-            "オアフ島・写真 1",
-            "오아후섬 · 사진 1"
-          ]
+            "Waikīkī skyline seen from the water",
+            "แนวอาคารไวกีกีมองจากทะเล",
+            "从海面眺望威基基天际线",
+            "海から見たワイキキの街並み",
+            "바다에서 본 와이키키 스카이라인"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/hi-2.jpg",
@@ -1232,12 +1277,13 @@
           "width": 960,
           "height": 641,
           "displayCaption": [
-            "Hawaiʻi Volcanoes National Park · Photograph 1",
-            "อุทยานแห่งชาติภูเขาไฟฮาวาย · ภาพที่ 1",
-            "夏威夷火山国家公园 · 照片 1",
-            "ハワイ火山国立公園・写真 1",
-            "하와이 화산 국립공원 · 사진 1"
-          ]
+            "Lava flow, photographed during a past volcanic event",
+            "ลาวาไหล ภาพจากเหตุการณ์ภูเขาไฟในอดีต",
+            "过去火山活动中拍摄的熔岩流",
+            "過去の火山活動で撮影された溶岩流",
+            "과거 화산 활동 때 촬영한 용암류"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/hi-3.jpg",
@@ -1250,12 +1296,13 @@
           "width": 960,
           "height": 640,
           "displayCaption": [
-            "Kauaʻi · Photograph 1",
-            "เกาะคาไว · ภาพที่ 1",
-            "考艾岛 · 照片 1",
-            "カウアイ島・写真 1",
-            "카우아이섬 · 사진 1"
-          ]
+            "Green ridges along the Nāpali Coast",
+            "แนวสันเขาสีเขียวริมชายฝั่งนาปาลี",
+            "纳帕利海岸的翠绿山脊",
+            "ナパリ海岸の緑の尾根",
+            "나팔리 해안을 따라 펼쳐진 푸른 능선"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/hi-0-2.jpg",
@@ -1269,12 +1316,13 @@
           "height": 543,
           "caption": "Beachgoers in Lanikai, Hawaii",
           "displayCaption": [
-            "Oʻahu · Photograph 2",
-            "เกาะโออาฮู · ภาพที่ 2",
-            "欧胡岛 · 照片 2",
-            "オアフ島・写真 2",
-            "오아후섬 · 사진 2"
-          ]
+            "Swimmers at Lanikai Beach",
+            "ผู้เล่นน้ำที่หาดลานิไค",
+            "拉尼凯海滩的游泳者",
+            "ラニカイビーチで泳ぐ人々",
+            "라니카이 해변의 수영객"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/hi-0-3.jpg",
@@ -1288,12 +1336,13 @@
           "height": 235,
           "caption": "Panoramic view of Hanauma Bay - Hawaii",
           "displayCaption": [
-            "Oʻahu · Photograph 3",
-            "เกาะโออาฮู · ภาพที่ 3",
-            "欧胡岛 · 照片 3",
-            "オアフ島・写真 3",
-            "오아후섬 · 사진 3"
-          ]
+            "Hanauma Bay from above",
+            "อ่าวฮานาอูมาจากมุมสูง",
+            "俯瞰恐龙湾",
+            "上から見たハナウマ湾",
+            "위에서 본 하나우마 베이"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/hi-1-2.jpg",
@@ -1307,12 +1356,13 @@
           "height": 640,
           "caption": "Millions of people visit the park to watch volcanic activity from the caldera's edge.",
           "displayCaption": [
-            "Hawaiʻi Volcanoes National Park · Photograph 2",
-            "อุทยานแห่งชาติภูเขาไฟฮาวาย · ภาพที่ 2",
-            "夏威夷火山国家公园 · 照片 2",
-            "ハワイ火山国立公園・写真 2",
-            "하와이 화산 국립공원 · 사진 2"
-          ]
+            "Lava fountain during a past eruption",
+            "น้ำพุลาวาขณะปะทุในอดีต",
+            "过去喷发时的熔岩喷泉",
+            "過去の噴火時の溶岩噴泉",
+            "과거 분화 당시의 용암 분수"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/hi-1-3.jpg",
@@ -1326,12 +1376,13 @@
           "height": 551,
           "caption": "Sunrise at Kīlauea Iki",
           "displayCaption": [
-            "Hawaiʻi Volcanoes National Park · Photograph 3",
-            "อุทยานแห่งชาติภูเขาไฟฮาวาย · ภาพที่ 3",
-            "夏威夷火山国家公园 · 照片 3",
-            "ハワイ火山国立公園・写真 3",
-            "하와이 화산 국립공원 · 사진 3"
-          ]
+            "Sunrise clouds above Kīlauea Iki",
+            "เมฆยามเช้าเหนือ Kīlauea Iki",
+            "Kīlauea Iki上空的日出云彩",
+            "キラウエア・イキにかかる朝焼けの雲",
+            "Kīlauea Iki 위의 일출 구름"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/hi-2-2.jpg",
@@ -1345,12 +1396,13 @@
           "height": 259,
           "caption": "Photographer: myself, Gh5046 A stitched panorama of the Hanalei Valley taken 2007/08/22 from the Hanalei Valley Lookout in Hanalei, Hawaii. The photo was stitched from several other photos, cropped and resized, otherwise it is in its original state.",
           "displayCaption": [
-            "Kauaʻi · Photograph 2",
-            "เกาะคาไว · ภาพที่ 2",
-            "考艾岛 · 照片 2",
-            "カウアイ島・写真 2",
-            "카우아이섬 · 사진 2"
-          ]
+            "Taro fields in Hanalei Valley",
+            "แปลงเผือกในหุบเขาฮานาเลย์",
+            "哈纳雷山谷的芋田",
+            "ハナレイ渓谷のタロイモ畑",
+            "하날레이 계곡의 타로 밭"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/hi-2-3.jpg",
@@ -1364,16 +1416,17 @@
           "height": 720,
           "caption": "This is a picture of the Na Pali Coastline from the perspective of a person standing on a boat.",
           "displayCaption": [
-            "Kauaʻi · Photograph 3",
-            "เกาะคาไว · ภาพที่ 3",
-            "考艾岛 · 照片 3",
-            "カウアイ島・写真 3",
-            "카우아이섬 · 사진 3"
-          ]
+            "Nāpali's cliffs viewed from the sea",
+            "หน้าผานาปาลีมองจากทะเล",
+            "从海上眺望纳帕利峭壁",
+            "海から望むナパリの断崖",
+            "바다에서 본 나팔리 절벽"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         }
       ],
       "cover": 0,
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-15",
       "sources": [
         {
           "name": "Visit The USA",
@@ -1399,11 +1452,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Check the boat or flight connection for your chosen arrival point. Allow time for transfers and confirm the return service before booking activities.",
-            "ตรวจเรือหรือเที่ยวบินไปยังจุดที่ต้องการ เผื่อเวลาต่อรถหรือเรือและตรวจเที่ยวกลับก่อนจองกิจกรรม",
-            "核对前往所选抵达点的船班或航班，预留换乘时间，并在预订活动前确认返程。",
-            "到着地点への船や飛行機を確認し、乗り継ぎの時間を確保して、活動を予約する前に帰りの便も確認しましょう。",
-            "선택한 도착지로 가는 배나 항공편을 확인하고 환승 시간을 확보하세요. 활동 예약 전 귀환 교통편도 확인하세요."
+            "Arrive via Honolulu airport and plan transport within Oʻahu. TheBus and shuttles suit some journeys; compare transfers for beaches outside Honolulu. Travel to another Hawaiian island needs a separate journey.",
+            "เริ่มที่สนามบินโฮโนลูลูและวางแผนการเดินทางภายในโออาฮู TheBus และรถรับส่งเหมาะกับบางเส้นทาง เทียบรถต่อสำหรับชายหาดนอกเมือง ส่วนการไปเกาะอื่นต้องจัดการเดินทางแยก",
+            "从檀香山机场抵达，再规划欧胡岛内交通。部分行程适合TheBus或接驳车，市外海滩需比较换乘；前往其他岛屿须另行安排。",
+            "ホノルル空港から島内の交通を計画。TheBusやシャトルが使える行程もあります。市外のビーチへの乗り継ぎを確認し、他島への移動は別に手配しましょう。",
+            "호놀룰루 공항 도착 후 오아후 내 교통을 계획하세요. 일부 구간은 TheBus나 셔틀이 편리합니다. 시외 해변의 환승을 비교하고 다른 섬으로 가는 교통은 따로 준비하세요."
           ],
           "stay": [
             "Explore accommodation around Oʻahu; compare the journey to your chosen sights before booking.",
@@ -1418,9 +1471,9 @@
           "locationLabel": ["Oʻahu", "เกาะโออาฮู", "欧胡岛", "オアフ島", "오아후섬"],
           "locationSource": "https://en.wikipedia.org/wiki/O%CA%BBahu",
           "locationCheckedAt": "2026-09-09",
-          "officialUrl": "https://www.visittheusa.com/destinations/hawaii/",
+          "officialUrl": "https://www.gohawaii.com/islands/oahu/travel-info/transportation",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -1428,7 +1481,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Coast",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [4, 5, 6, 9, 10]
           }
         },
         {
@@ -1449,11 +1502,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Choose the specific entrance or trailhead first. Check road access, parking and seasonal conditions with the land manager before departure.",
-            "เลือกทางเข้าหรือจุดเริ่มเส้นทางให้ชัดเจนก่อน ตรวจถนน ที่จอดรถ และสภาพตามฤดูกาลกับผู้ดูแลพื้นที่ก่อนเดินทาง",
-            "先选定入口或步道起点，出发前向管理方核对道路、停车和季节状况。",
-            "入口や登山口を先に決め、道路、駐車場、季節の状況を管理者の案内で確認しましょう。",
-            "먼저 입구나 탐방로 시작점을 정하고, 출발 전에 관리 기관에서 도로 접근과 주차, 계절 상황을 확인하세요."
+            "Approach on Highway 11 from Hilo or Kona. There is no internal public shuttle; arrange transport between park stops and your return. Eruption photographs show past moments, not a promised view.",
+            "เข้าอุทยานทาง Highway 11 จากฮิโลหรือโคนา ไม่มีรถรับส่งสาธารณะภายใน จึงต้องจัดรถระหว่างจุดชมและขากลับ ภาพการปะทุเป็นภาพในอดีต ไม่ใช่วิวที่รับรองว่าจะได้เห็น",
+            "从希洛或科纳经11号公路前往。园内没有公共接驳车，需安排景点间及返程交通。喷发照片记录的是过去，并不保证能看到相同景象。",
+            "ヒロやコナからハイウェイ11でアクセス。園内の公共シャトルはないため、各地点間と帰路の交通を確保しましょう。噴火写真は過去の記録です。",
+            "힐로나 코나에서 11번 도로로 접근하세요. 공원 내부 공공 셔틀이 없으므로 지점 간 이동과 귀가 교통을 준비하세요. 분화 사진은 과거 기록이며 같은 경관을 보장하지 않습니다."
           ],
           "stay": [
             "Explore accommodation around Volcano / Hilo; compare the journey to your chosen sights before booking.",
@@ -1474,9 +1527,9 @@
           ],
           "locationSource": "https://www.nps.gov/havo/planyourvisit/welcome-center.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/havo/index.htm",
+          "officialUrl": "https://www.nps.gov/havo/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/havo/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -1484,7 +1537,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [4, 5, 6, 9, 10]
           }
         },
         {
@@ -1505,11 +1558,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Check the boat or flight connection for your chosen arrival point. Allow time for transfers and confirm the return service before booking activities.",
-            "ตรวจเรือหรือเที่ยวบินไปยังจุดที่ต้องการ เผื่อเวลาต่อรถหรือเรือและตรวจเที่ยวกลับก่อนจองกิจกรรม",
-            "核对前往所选抵达点的船班或航班，预留换乘时间，并在预订活动前确认返程。",
-            "到着地点への船や飛行機を確認し、乗り継ぎの時間を確保して、活動を予約する前に帰りの便も確認しましょう。",
-            "선택한 도착지로 가는 배나 항공편을 확인하고 환승 시간을 확보하세요. 활동 예약 전 귀환 교통편도 확인하세요."
+            "Līhuʻe is the airport gateway. Choose a north- or south-shore base around your activities: roads do not circle the Nāpali Coast. Review the tourism advisory before making new arrangements.",
+            "สนามบินลีฮูเอเป็นประตูเข้าเกาะ เลือกฐานพักฝั่งเหนือหรือใต้ตามกิจกรรม ถนนไม่ได้วนรอบชายฝั่งนาปาลี ตรวจประกาศท่องเที่ยวก่อนจัดการจองใหม่",
+            "利胡埃是航空门户。按活动选择北岸或南岸住宿，公路无法环绕纳帕利海岸。作出新安排前请查看旅游公告。",
+            "空路の玄関口はリフエです。行程に合わせて北岸か南岸に宿泊を。ナパリ海岸を一周する道路はありません。新たな手配の前に観光案内の注意情報を確認しましょう。",
+            "리후에가 항공 관문입니다. 활동에 맞춰 북쪽이나 남쪽 해안에 숙소를 정하세요. 나팔리 해안을 도로로 일주할 수 없습니다. 새 예약 전 관광 공지를 확인하세요."
           ],
           "stay": [
             "Explore accommodation around Kauaʻi; compare the journey to your chosen sights before booking.",
@@ -1524,17 +1577,28 @@
           "locationLabel": ["Kauaʻi", "เกาะคาไว", "考艾岛", "カウアイ島", "카우아이섬"],
           "locationSource": "https://en.wikipedia.org/wiki/Kaua%CA%BBi",
           "locationCheckedAt": "2026-09-09",
-          "officialUrl": "https://www.visittheusa.com/destinations/hawaii/",
+          "officialUrl": "https://www.gohawaii.com/islands/kauai/travel-info/transportation",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-10",
-          "reviewAfter": "2026-12-01",
+          "reviewedAt": "2026-09-15",
+          "reviewAfter": "2026-09-22",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "boat",
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Coast",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [4, 5, 6, 9, 10]
+          },
+          "advisory": {
+            "checkedAt": "2026-09-15",
+            "source": "https://www.gohawaii.com/islands/kauai",
+            "text": [
+              "When checked on September 15, GoHawaii advised upcoming Kauaʻi travelers to reschedule or consider another island. The banner has no publication date; verify the latest guidance before booking.",
+              "เมื่อตรวจวันที่ 15 กันยายน GoHawaii แนะนำผู้ที่จะไปเกาะคาไวให้เลื่อนทริปหรือพิจารณาเกาะอื่น แบนเนอร์ไม่ระบุวันเผยแพร่ โปรดตรวจคำแนะนำล่าสุดก่อนจอง",
+              "9月15日查看时，GoHawaii建议即将前往可爱岛的游客改期或考虑其他岛屿。横幅未注明发布日期，预订前请核对最新指引。",
+              "9月15日の確認時点でGoHawaiiは、カウアイ島への予定を延期するか他島を検討するよう案内しています。掲載日不明のため、予約前に最新情報を確認してください。",
+              "9월 15일 확인 당시 GoHawaii는 예정된 카우아이 여행을 연기하거나 다른 섬을 고려하도록 안내했습니다. 게시 날짜가 없어 예약 전에 최신 안내를 확인하세요."
+            ]
           }
         }
       ]
@@ -1606,12 +1670,13 @@
           "width": 960,
           "height": 984,
           "displayCaption": [
-            "Zion National Park · Photograph 1",
-            "อุทยานแห่งชาติไซออน · ภาพที่ 1",
-            "锡安国家公园 · 照片 1",
-            "ザイオン国立公園・写真 1",
-            "자이언 국립공원 · 사진 1"
-          ]
+            "Looking across Zion Canyon",
+            "ทิวทัศน์ข้ามหุบเขาไซออน",
+            "眺望锡安峡谷",
+            "ザイオンキャニオンを見渡す景色",
+            "자이언 캐니언을 가로지르는 풍경"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/ut-2.jpg",
@@ -1624,12 +1689,13 @@
           "width": 960,
           "height": 576,
           "displayCaption": [
-            "Bryce Canyon National Park · Photograph 1",
-            "อุทยานแห่งชาติไบรซ์แคนยอน · ภาพที่ 1",
-            "布莱斯峡谷国家公园 · 照片 1",
-            "ブライスキャニオン国立公園・写真 1",
-            "브라이스캐니언 국립공원 · 사진 1"
-          ]
+            "Hoodoos in Bryce Amphitheater",
+            "เสาหินฮูดูใน Bryce Amphitheater",
+            "布莱斯露天剧场地形中的石柱",
+            "Bryce Amphitheaterのフードゥー",
+            "Bryce Amphitheater의 후두 지형"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/ut-3.jpg",
@@ -1642,12 +1708,13 @@
           "width": 960,
           "height": 720,
           "displayCaption": [
-            "Arches National Park · Photograph 1",
-            "อุทยานแห่งชาติอาร์เชส · ภาพที่ 1",
-            "拱门国家公园 · 照片 1",
-            "アーチーズ国立公園・写真 1",
-            "아치스 국립공원 · 사진 1"
-          ]
+            "Delicate Arch framed by open sky",
+            "Delicate Arch ใต้ท้องฟ้าเปิด",
+            "晴空下的精致拱门",
+            "広い空を背景にしたデリケートアーチ",
+            "넓은 하늘 아래 델리케이트 아치"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ut-0-2.jpg",
@@ -1661,12 +1728,13 @@
           "height": 640,
           "caption": "The Watchman greets visitors to Zion Canyon as it towers over the visitor center and South Entrance.",
           "displayCaption": [
-            "Zion National Park · Photograph 2",
-            "อุทยานแห่งชาติไซออน · ภาพที่ 2",
-            "锡安国家公园 · 照片 2",
-            "ザイオン国立公園・写真 2",
-            "자이언 국립공원 · 사진 2"
-          ]
+            "The Watchman with wildflowers",
+            "The Watchman และดอกไม้ป่า",
+            "野花映衬下的Watchman峰",
+            "野の花とThe Watchman",
+            "야생화와 The Watchman"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ut-0-3.jpg",
@@ -1680,12 +1748,13 @@
           "height": 390,
           "caption": "The Towers of the Virgin can be seen from the Human History Museum (Zion Canyon Shuttle Stop #2).",
           "displayCaption": [
-            "Zion National Park · Photograph 3",
-            "อุทยานแห่งชาติไซออน · ภาพที่ 3",
-            "锡安国家公园 · 照片 3",
-            "ザイオン国立公園・写真 3",
-            "자이언 국립공원 · 사진 3"
-          ]
+            "Towers of the Virgin in evening light",
+            "Towers of the Virgin ในแสงเย็น",
+            "暮光中的Towers of the Virgin群峰",
+            "夕方の光を浴びるTowers of the Virgin",
+            "저녁 햇살 속 Towers of the Virgin"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ut-1-2.jpg",
@@ -1699,12 +1768,13 @@
           "height": 640,
           "caption": "Viewpoints of the iconic Bryce Amphitheater are located along the first 3 miles of the park road and are a popular destination at sunrise.",
           "displayCaption": [
-            "Bryce Canyon National Park · Photograph 2",
-            "อุทยานแห่งชาติไบรซ์แคนยอน · ภาพที่ 2",
-            "布莱斯峡谷国家公园 · 照片 2",
-            "ブライスキャニオン国立公園・写真 2",
-            "브라이스캐니언 국립공원 · 사진 2"
-          ]
+            "A wide view across Bryce Amphitheater",
+            "มุมกว้างเหนือ Bryce Amphitheater",
+            "布莱斯露天剧场地形的全景",
+            "Bryce Amphitheaterの広がり",
+            "Bryce Amphitheater의 탁 트인 전망"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ut-1-3.jpg",
@@ -1718,12 +1788,13 @@
           "height": 640,
           "caption": "Here at 8,000' (2438 m) winter comes early and stays late. Snow transforms the landscape and requires seasonal closures in some areas and trails.",
           "displayCaption": [
-            "Bryce Canyon National Park · Photograph 3",
-            "อุทยานแห่งชาติไบรซ์แคนยอน · ภาพที่ 3",
-            "布莱斯峡谷国家公园 · 照片 3",
-            "ブライスキャニオン国立公園・写真 3",
-            "브라이스캐니언 국립공원 · 사진 3"
-          ]
+            "Bryce's hoodoos under snow",
+            "เสาหินไบรซ์ใต้หิมะ",
+            "积雪覆盖的布莱斯石柱",
+            "雪に覆われたブライスのフードゥー",
+            "눈 덮인 브라이스의 후두"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ut-2-2.jpg",
@@ -1737,12 +1808,13 @@
           "height": 639,
           "caption": "Double O Arch is one of many large arches in the Devils Garden area",
           "displayCaption": [
-            "Arches National Park · Photograph 2",
-            "อุทยานแห่งชาติอาร์เชส · ภาพที่ 2",
-            "拱门国家公园 · 照片 2",
-            "アーチーズ国立公園・写真 2",
-            "아치스 국립공원 · 사진 2"
-          ]
+            "Double O Arch in the sandstone landscape",
+            "Double O Arch ในภูมิประเทศหินทราย",
+            "砂岩地貌中的Double O拱门",
+            "砂岩の景観にあるDouble O Arch",
+            "사암 지형의 Double O Arch"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/ut-2-3.jpg",
@@ -1756,16 +1828,17 @@
           "height": 639,
           "caption": "North Window with a waxing moon",
           "displayCaption": [
-            "Arches National Park · Photograph 3",
-            "อุทยานแห่งชาติอาร์เชส · ภาพที่ 3",
-            "拱门国家公园 · 照片 3",
-            "アーチーズ国立公園・写真 3",
-            "아치스 국립공원 · 사진 3"
-          ]
+            "Moonlight and the North Window arch",
+            "แสงจันทร์และซุ้มหิน North Window",
+            "月光与North Window拱门",
+            "月とNorth Windowのアーチ",
+            "달빛과 North Window 아치"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         }
       ],
       "cover": 0,
-      "updatedAt": "2026-09-14",
+      "updatedAt": "2026-09-15",
       "sources": [
         {
           "name": "Visit The USA",
@@ -1791,11 +1864,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Plan Zion Canyon around the park shuttle when it is operating. The Springdale shuttle connects town stops with the pedestrian entrance, while the canyon shuttle serves the scenic drive. Check both schedules and keep time for the return journey.",
-            "ช่วงที่รถรับส่งเปิดให้บริการ ให้จัดแผน Zion Canyon ตามระบบรถของอุทยาน รถ Springdale เชื่อมป้ายในเมืองกับทางเข้าเดินเท้า ส่วนรถในแคนยอนให้บริการตามถนนชมวิว ตรวจทั้งสองตารางและเผื่อขากลับ",
-            "接驳车运营时，围绕公园班车规划锡安峡谷行程。Springdale班车连接城镇与步行入口，峡谷班车服务景观公路。核对两套时刻并预留返程时间。",
-            "運行期間中は公園シャトルを軸に計画。Springdaleのシャトルは町と歩行者入口を結び、峡谷のシャトルは景観道路を走ります。両方の時刻と帰路を確認しましょう。",
-            "셔틀 운행 기간에는 공원 셔틀을 중심으로 자이언 캐니언 일정을 계획하세요. Springdale 셔틀은 마을과 보행자 입구를 연결하고 캐니언 셔틀은 경관 도로를 운행합니다. 두 시간표와 귀가 시간을 확인하세요."
+            "For Zion Canyon, plan around Springdale's South Entrance and visitor-center shuttle stop. Parking can fill; check Springdale park-and-ride options. Kolob Canyons is a separate access area.",
+            "เที่ยว Zion Canyon ให้ยึดทางเข้า South Entrance ที่ Springdale และป้ายรถรับส่งศูนย์บริการ ที่จอดอาจเต็มจึงควรดูทางเลือกจอดแล้วต่อรถในเมือง ส่วน Kolob Canyons ใช้ทางเข้าแยก",
+            "游览锡安峡谷可围绕Springdale南入口及游客中心接驳站规划。停车可能满位，可查镇内换乘；Kolob Canyons是另一进入区域。",
+            "ザイオンキャニオンへはSpringdaleの南入口とビジターセンターのシャトル停留所を基点に。満車に備え町の乗り換え駐車も確認。Kolob Canyonsは別のアクセスです。",
+            "자이언 캐니언은 Springdale 남쪽 입구와 방문자 센터 셔틀 정류장을 기준으로 계획하세요. 만차에 대비해 마을 환승 주차도 확인하세요. Kolob Canyons는 별도 접근 구역입니다."
           ],
           "stay": [
             "Explore accommodation around Springdale; compare the journey to your chosen sights before booking.",
@@ -1816,9 +1889,9 @@
           ],
           "locationSource": "https://www.nps.gov/zion/learn/nature/zion-canyon-visitor-center.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/zion/planyourvisit/zion-canyon-shuttle-system.htm",
+          "officialUrl": "https://www.nps.gov/zion/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/zion/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-14",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -1826,7 +1899,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [4, 5, 9, 10]
           }
         },
         {
@@ -1847,11 +1920,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Choose the specific entrance or trailhead first. Check road access, parking and seasonal conditions with the land manager before departure.",
-            "เลือกทางเข้าหรือจุดเริ่มเส้นทางให้ชัดเจนก่อน ตรวจถนน ที่จอดรถ และสภาพตามฤดูกาลกับผู้ดูแลพื้นที่ก่อนเดินทาง",
-            "先选定入口或步道起点，出发前向管理方核对道路、停车和季节状况。",
-            "入口や登山口を先に決め、道路、駐車場、季節の状況を管理者の案内で確認しましょう。",
-            "먼저 입구나 탐방로 시작점을 정하고, 출발 전에 관리 기관에서 도로 접근과 주차, 계절 상황을 확인하세요."
+            "Enter via UT 63; the visitor center is about one mile inside. Arrange transport to the park separately from its seasonal shuttle. Snow can affect rim paths and roads outside summer.",
+            "เข้าทาง UT 63 ศูนย์บริการอยู่ราวหนึ่งไมล์จากทางเข้า การเดินทางมาอุทยานต้องจัดแยกจากรถรับส่งตามฤดูกาล หิมะอาจกระทบถนนและทางเดินริมผานอกฤดูร้อน",
+            "经UT 63入园，游客中心距入口约一英里。到园交通与季节性园内接驳需分别安排；夏季以外，积雪可能影响崖边步道及道路。",
+            "UT 63から入り、約1マイル先にビジターセンターがあります。公園までの移動と季節運行のシャトルは別に計画。夏以外は雪で道路や歩道が影響を受けます。",
+            "UT 63으로 들어가면 약 1마일 안쪽에 방문자 센터가 있습니다. 공원까지의 교통과 계절 셔틀은 따로 계획하세요. 여름 외에는 눈이 도로와 절벽 산책로에 영향을 줄 수 있습니다."
           ],
           "stay": [
             "Explore accommodation around Bryce Canyon City / Tropic; compare the journey to your chosen sights before booking.",
@@ -1872,9 +1945,9 @@
           ],
           "locationSource": "https://www.nps.gov/brca/planyourvisit/tourvisitor.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/brca/index.htm",
+          "officialUrl": "https://www.nps.gov/brca/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/brca/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -1882,7 +1955,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [5, 6, 7, 8, 9, 10]
           }
         },
         {
@@ -1903,11 +1976,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Choose the specific entrance or trailhead first. Check road access, parking and seasonal conditions with the land manager before departure.",
-            "เลือกทางเข้าหรือจุดเริ่มเส้นทางให้ชัดเจนก่อน ตรวจถนน ที่จอดรถ และสภาพตามฤดูกาลกับผู้ดูแลพื้นที่ก่อนเดินทาง",
-            "先选定入口或步道起点，出发前向管理方核对道路、停车和季节状况。",
-            "入口や登山口を先に決め、道路、駐車場、季節の状況を管理者の案内で確認しましょう。",
-            "먼저 입구나 탐방로 시작점을 정하고, 출발 전에 관리 기관에서 도로 접근과 주차, 계절 상황을 확인하세요."
+            "Use the entrance on US 191 north of Moab. There is no public transport inside the park; plan a vehicle and allow for full trailhead lots rather than assuming immediate parking.",
+            "ใช้ทางเข้าบน US 191 ทางเหนือของโมแอบ ไม่มีขนส่งสาธารณะภายในอุทยาน จึงควรเตรียมรถและเผื่อเวลาหาที่จอดบริเวณจุดเริ่มเส้นทาง",
+            "从摩押以北US 191入口进入。园内没有公共交通，请安排车辆并预留寻找步道停车位的时间，不要假定到达即可停车。",
+            "モアブ北側のUS 191沿いの入口を利用。園内に公共交通はないため車を手配し、登山口の満車も見込んで時間に余裕を持ちましょう。",
+            "모아브 북쪽 US 191 입구를 이용하세요. 내부 대중교통이 없으므로 차량을 준비하고 탐방로 주차장 만차에 대비해 시간을 확보하세요."
           ],
           "stay": [
             "Explore accommodation around Moab; compare the journey to your chosen sights before booking.",
@@ -1928,9 +2001,9 @@
           ],
           "locationSource": "https://www.nps.gov/arch/planyourvisit/visitorcenters.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/arch/index.htm",
+          "officialUrl": "https://www.nps.gov/arch/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/arch/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -1938,7 +2011,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [3, 4, 5, 9, 10, 11]
+            "months": [3, 4, 5, 9, 10]
           }
         }
       ]
@@ -2004,12 +2077,13 @@
           "width": 960,
           "height": 683,
           "displayCaption": [
-            "Rocky Mountain National Park · Photograph 1",
-            "อุทยานแห่งชาติร็อกกีเมาน์เทน · ภาพที่ 1",
-            "落基山国家公园 · 照片 1",
-            "ロッキーマウンテン国立公園・写真 1",
-            "로키마운틴 국립공원 · 사진 1"
-          ]
+            "A mountain lake bordered by forest",
+            "ทะเลสาบภูเขาที่ล้อมด้วยป่า",
+            "林木环绕的高山湖泊",
+            "森に囲まれた山の湖",
+            "숲으로 둘러싸인 산악 호수"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/co-2.jpg",
@@ -2022,12 +2096,13 @@
           "width": 960,
           "height": 576,
           "displayCaption": [
-            "Denver · Photograph 1",
-            "เดนเวอร์ · ภาพที่ 1",
-            "丹佛 · 照片 1",
-            "デンバー・写真 1",
-            "덴버 · 사진 1"
-          ]
+            "Denver skyline with mountains beyond",
+            "แนวอาคารเดนเวอร์กับภูเขาด้านหลัง",
+            "群山映衬下的丹佛天际线",
+            "山々を背景にしたデンバーの街並み",
+            "산을 배경으로 한 덴버 스카이라인"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/co-3.jpg",
@@ -2040,12 +2115,13 @@
           "width": 960,
           "height": 547,
           "displayCaption": [
-            "Mesa Verde National Park · Photograph 1",
-            "อุทยานแห่งชาติเมซาเวอร์เด · ภาพที่ 1",
-            "梅萨维德国家公园 · 照片 1",
-            "メサヴェルデ国立公園・写真 1",
-            "메사베르데 국립공원 · 사진 1"
-          ]
+            "Cliff Palace beneath the sandstone overhang",
+            "Cliff Palace ใต้ชะง่อนหินทราย",
+            "砂岩悬壁下的Cliff Palace",
+            "砂岩の張り出しの下にあるCliff Palace",
+            "사암 돌출부 아래의 Cliff Palace"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/co-0-2.jpg",
@@ -2059,12 +2135,13 @@
           "height": 720,
           "caption": "Mountain peaks with alpine tundra plants and wildflowers",
           "displayCaption": [
-            "Rocky Mountain National Park · Photograph 2",
-            "อุทยานแห่งชาติร็อกกีเมาน์เทน · ภาพที่ 2",
-            "落基山国家公园 · 照片 2",
-            "ロッキーマウンテン国立公園・写真 2",
-            "로키마운틴 국립공원 · 사진 2"
-          ]
+            "Wildflowers on the alpine tundra",
+            "ดอกไม้ป่าบนทุ่งทุนดราภูเขา",
+            "高山苔原上的野花",
+            "高山ツンドラに咲く野の花",
+            "고산 툰드라의 야생화"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/co-0-3.jpg",
@@ -2078,12 +2155,13 @@
           "height": 768,
           "caption": "Trail Ridge Road",
           "displayCaption": [
-            "Rocky Mountain National Park · Photograph 3",
-            "อุทยานแห่งชาติร็อกกีเมาน์เทน · ภาพที่ 3",
-            "落基山国家公园 · 照片 3",
-            "ロッキーマウンテン国立公園・写真 3",
-            "로키마운틴 국립공원 · 사진 3"
-          ]
+            "Trail Ridge Road across the mountains",
+            "ถนน Trail Ridge พาดผ่านภูเขา",
+            "穿越山地的Trail Ridge Road",
+            "山々を通るTrail Ridge Road",
+            "산을 가로지르는 Trail Ridge Road"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/co-1-2.jpg",
@@ -2097,12 +2175,13 @@
           "height": 638,
           "caption": "16th Street Mall in downtown Denver, Colorado, looking southeast towards the state capitol building.",
           "displayCaption": [
-            "Denver · Photograph 2",
-            "เดนเวอร์ · ภาพที่ 2",
-            "丹佛 · 照片 2",
-            "デンバー・写真 2",
-            "덴버 · 사진 2"
-          ]
+            "16th Street Mall lit up at night",
+            "16th Street Mall ประดับไฟยามค่ำ",
+            "夜晚灯光下的16th Street Mall",
+            "夜の灯りに包まれた16th Street Mall",
+            "밤에 불 밝힌 16th Street Mall"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/co-1-3.jpg",
@@ -2116,12 +2195,13 @@
           "height": 720,
           "caption": "The Lola and Rob Salazar Student Wellness Center and CU Denver Student Commons Building.",
           "displayCaption": [
-            "Denver · Photograph 3",
-            "เดนเวอร์ · ภาพที่ 3",
-            "丹佛 · 照片 3",
-            "デンバー・写真 3",
-            "덴버 · 사진 3"
-          ]
+            "CU Denver campus and the city skyline",
+            "พื้นที่มหาวิทยาลัย CU Denver และแนวอาคารเมือง",
+            "CU Denver校园与城市天际线",
+            "CU Denverのキャンパスと街並み",
+            "CU Denver 캠퍼스와 도시 스카이라인"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/co-2-2.jpg",
@@ -2135,12 +2215,13 @@
           "height": 720,
           "caption": "Cliff Palace, Mesa Verde's Largest Cliff Dwelling",
           "displayCaption": [
-            "Mesa Verde National Park · Photograph 2",
-            "อุทยานแห่งชาติเมซาเวอร์เด · ภาพที่ 2",
-            "梅萨维德国家公园 · 照片 2",
-            "メサヴェルデ国立公園・写真 2",
-            "메사베르데 국립공원 · 사진 2"
-          ]
+            "Cliff Palace viewed from the rim",
+            "Cliff Palace มองจากขอบผา",
+            "从崖缘眺望Cliff Palace",
+            "崖の縁から見たCliff Palace",
+            "절벽 가장자리에서 본 Cliff Palace"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/co-2-3.jpg",
@@ -2154,16 +2235,17 @@
           "height": 670,
           "caption": "Visitors enjoying Step House, on Wetherill Mesa",
           "displayCaption": [
-            "Mesa Verde National Park · Photograph 3",
-            "อุทยานแห่งชาติเมซาเวอร์เด · ภาพที่ 3",
-            "梅萨维德国家公园 · 照片 3",
-            "メサヴェルデ国立公園・写真 3",
-            "메사베르데 국립공원 · 사진 3"
-          ]
+            "Visitors exploring Step House",
+            "นักท่องเที่ยวสำรวจ Step House",
+            "参观Step House的游客",
+            "Step Houseを見学する人々",
+            "Step House를 둘러보는 방문객"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         }
       ],
       "cover": 0,
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-15",
       "sources": [
         {
           "name": "Visit The USA",
@@ -2189,11 +2271,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Choose the specific entrance or trailhead first. Check road access, parking and seasonal conditions with the land manager before departure.",
-            "เลือกทางเข้าหรือจุดเริ่มเส้นทางให้ชัดเจนก่อน ตรวจถนน ที่จอดรถ และสภาพตามฤดูกาลกับผู้ดูแลพื้นที่ก่อนเดินทาง",
-            "先选定入口或步道起点，出发前向管理方核对道路、停车和季节状况。",
-            "入口や登山口を先に決め、道路、駐車場、季節の状況を管理者の案内で確認しましょう。",
-            "먼저 입구나 탐방로 시작점을 정하고, 출발 전에 관리 기관에서 도로 접근과 주차, 계절 상황을 확인하세요."
+            "Choose Estes Park on the east or Grand Lake on the west before booking. Trail Ridge Road closes seasonally, so do not assume a cross-park drive is available for your dates.",
+            "เลือกฝั่งตะวันออกที่ Estes Park หรือฝั่งตะวันตกที่ Grand Lake ก่อนจอง ถนน Trail Ridge ปิดตามฤดูกาล จึงไม่ควรสมมติว่าจะขับข้ามอุทยานได้ในวันที่ไป",
+            "预订前先选东侧Estes Park或西侧Grand Lake。Trail Ridge Road季节性关闭，不要默认出行日期可以驾车穿越公园。",
+            "予約前に東のEstes Parkか西のGrand Lakeを選択。Trail Ridge Roadは季節閉鎖があるので、訪問日に公園を横断できるとは限りません。",
+            "예약 전에 동쪽 Estes Park나 서쪽 Grand Lake를 선택하세요. Trail Ridge Road는 계절에 따라 닫히므로 방문일에 공원을 가로지를 수 있다고 가정하지 마세요."
           ],
           "stay": [
             "Explore accommodation around Estes Park / Grand Lake; compare the journey to your chosen sights before booking.",
@@ -2214,9 +2296,9 @@
           ],
           "locationSource": "https://www.nps.gov/romo/index.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/romo/index.htm",
+          "officialUrl": "https://www.nps.gov/romo/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/romo/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -2224,7 +2306,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [1, 2, 6, 7, 8, 9, 10, 11, 12]
+            "months": [6, 7, 8, 9]
           }
         },
         {
@@ -2245,11 +2327,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Group nearby sights into a walkable neighborhood. Check local transport routes and the final walk before choosing your accommodation.",
-            "จัดสถานที่ใกล้กันไว้ในย่านเดียว ตรวจเส้นทางขนส่งท้องถิ่นและระยะเดินช่วงสุดท้ายก่อนเลือกที่พัก",
-            "把相邻景点安排在同一街区，选择住宿前核对当地交通线路和最后一段步行距离。",
-            "近くの見どころを同じ街区にまとめ、宿を選ぶ前に公共交通の経路と最後の徒歩区間を確認しましょう。",
-            "가까운 명소를 같은 동네 일정으로 묶고, 숙소를 고르기 전에 현지 교통편과 마지막 도보 구간을 확인하세요。"
+            "Use RTD's bus and rail guidance to compare downtown journeys. Choose accommodation near the stops you actually need, and plan mountain excursions separately from the city network.",
+            "ใช้คู่มือรถบัสและรถไฟ RTD เทียบเส้นทางในตัวเมือง เลือกที่พักใกล้ป้ายที่ต้องใช้จริง และจัดรถสำหรับเที่ยวภูเขาแยกจากเครือข่ายเมือง",
+            "利用RTD公交及轨道指南比较市中心行程。住宿应靠近实际需要的站点，山地游览的交通需与市内网络分开规划。",
+            "RTDのバス・鉄道案内で中心街の移動を比較。実際に使う停留所の近くに宿を選び、山への遠足は市内交通と別に計画しましょう。",
+            "RTD 버스와 철도 안내로 도심 이동을 비교하세요. 실제 이용할 정류장 근처에 숙소를 정하고 산악 여행 교통은 도시 노선과 별도로 계획하세요."
           ],
           "stay": [
             "Explore accommodation around Denver; compare the journey to your chosen sights before booking.",
@@ -2264,9 +2346,9 @@
           "locationLabel": ["Denver", "เดนเวอร์", "丹佛", "デンバー", "덴버"],
           "locationSource": "https://en.wikipedia.org/wiki/Denver",
           "locationCheckedAt": "2026-09-09",
-          "officialUrl": "https://www.visittheusa.com/destinations/colorado/",
+          "officialUrl": "https://www.rtd-denver.com/how-to-ride",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -2274,7 +2356,7 @@
             "setting": "indoors",
             "walking": "easy",
             "interest": "Cities",
-            "months": [1, 2, 6, 7, 8, 9, 10, 11, 12]
+            "months": [4, 5, 6, 7, 8, 9, 10]
           }
         },
         {
@@ -2295,11 +2377,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Choose the specific entrance or trailhead first. Check road access, parking and seasonal conditions with the land manager before departure.",
-            "เลือกทางเข้าหรือจุดเริ่มเส้นทางให้ชัดเจนก่อน ตรวจถนน ที่จอดรถ และสภาพตามฤดูกาลกับผู้ดูแลพื้นที่ก่อนเดินทาง",
-            "先选定入口或步道起点，出发前向管理方核对道路、停车和季节状况。",
-            "入口や登山口を先に決め、道路、駐車場、季節の状況を管理者の案内で確認しましょう。",
-            "먼저 입구나 탐방로 시작점을 정하고, 출발 전에 관리 기관에서 도로 접근과 주차, 계절 상황을 확인하세요."
+            "Enter from US 160 between Mancos and Cortez. Cliff dwellings are around 21 miles beyond the entrance on winding roads; allow roughly 45 minutes before any tour check-in time.",
+            "เข้าจาก US 160 ระหว่าง Mancos กับ Cortez บ้านหน้าผาอยู่ลึกไปราว 21 ไมล์บนถนนคดเคี้ยว เผื่อขับรถประมาณ 45 นาทีก่อนเวลารายงานตัวทัวร์",
+            "入口位于Mancos与Cortez之间的US 160。悬崖住宅距入口约21英里，沿途弯道多；应在导览签到时间前另留约45分钟驾驶时间。",
+            "MancosとCortezの間のUS 160から入園。崖の住居群は入口から約21マイル先で道は曲がりくねっています。ツアー集合の前に約45分の運転時間を見込みましょう。",
+            "Mancos와 Cortez 사이 US 160에서 진입하세요. 절벽 주거지는 입구에서 굽은 길로 약 21마일 떨어져 있으므로 투어 체크인 전에 약 45분의 운전 시간을 확보하세요."
           ],
           "stay": [
             "Explore accommodation around Cortez / Mancos; compare the journey to your chosen sights before booking.",
@@ -2320,9 +2402,9 @@
           ],
           "locationSource": "https://www.nps.gov/meve/planyourvisit/meve_vc.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/meve/index.htm",
+          "officialUrl": "https://www.nps.gov/meve/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/meve/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -2330,7 +2412,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [1, 2, 6, 7, 8, 9, 10, 11, 12]
+            "months": [5, 6, 7, 8, 9, 10]
           }
         }
       ]
@@ -2390,12 +2472,13 @@
           "width": 960,
           "height": 553,
           "displayCaption": [
-            "Miami Beach · Photograph 1",
-            "ไมอามีบีช · ภาพที่ 1",
-            "迈阿密海滩 · 照片 1",
-            "マイアミビーチ・写真 1",
-            "마이애미비치 · 사진 1"
-          ]
+            "Art Deco façades along Ocean Drive",
+            "อาคารอาร์ตเดโคริม Ocean Drive",
+            "Ocean Drive沿线的装饰艺术风格建筑",
+            "Ocean Drive沿いのアールデコ建築",
+            "Ocean Drive의 아르데코 건물 외관"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/fl-2.jpg",
@@ -2408,12 +2491,13 @@
           "width": 960,
           "height": 640,
           "displayCaption": [
-            "Everglades National Park · Photograph 1",
-            "อุทยานแห่งชาติเอเวอร์เกลดส์ · ภาพที่ 1",
-            "大沼泽地国家公园 · 照片 1",
-            "エバーグレーズ国立公園・写真 1",
-            "에버글레이즈 국립공원 · 사진 1"
-          ]
+            "Sunset over Everglades wetlands",
+            "พระอาทิตย์ตกเหนือพื้นที่ชุ่มน้ำเอเวอร์เกลดส์",
+            "大沼泽地湿地的日落",
+            "エバーグレーズの湿地に沈む夕日",
+            "에버글레이즈 습지의 일몰"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/fl-3.jpg",
@@ -2426,12 +2510,13 @@
           "width": 960,
           "height": 639,
           "displayCaption": [
-            "Florida Keys · Photograph 1",
-            "หมู่เกาะฟลอริดาคีย์ส · ภาพที่ 1",
-            "佛罗里达礁岛群 · 照片 1",
-            "フロリダキーズ・写真 1",
-            "플로리다키스 · 사진 1"
-          ]
+            "The old and new Seven Mile Bridge spans",
+            "สะพาน Seven Mile ทั้งช่วงเก่าและใหม่",
+            "新旧七英里大桥的桥跨",
+            "新旧のSeven Mile Bridge",
+            "구·신 Seven Mile Bridge"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/fl-0-2.jpg",
@@ -2445,12 +2530,13 @@
           "height": 719,
           "caption": "The Fontainebleau Hotel in Miami Beach in 2025 as captured by a DJI Mavic 3 Classic.",
           "displayCaption": [
-            "Miami Beach · Photograph 2",
-            "ไมอามีบีช · ภาพที่ 2",
-            "迈阿密海滩 · 照片 2",
-            "マイアミビーチ・写真 2",
-            "마이애미비치 · 사진 2"
-          ]
+            "Fontainebleau hotel from above",
+            "โรงแรม Fontainebleau จากมุมสูง",
+            "俯瞰Fontainebleau酒店",
+            "上空から見たFontainebleauホテル",
+            "하늘에서 본 Fontainebleau 호텔"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/fl-0-3.jpg",
@@ -2464,12 +2550,13 @@
           "height": 720,
           "caption": "Digital photo taken by Marc Averette. The northern part of the city of en:Miami Beach, Florida , known as North Beach , as seen from en:Akoya Condominiums 2/14/2008.",
           "displayCaption": [
-            "Miami Beach · Photograph 3",
-            "ไมอามีบีช · ภาพที่ 3",
-            "迈阿密海滩 · 照片 3",
-            "マイアミビーチ・写真 3",
-            "마이애미비치 · 사진 3"
-          ]
+            "North Beach buildings beside the water",
+            "อาคาร North Beach ริมน้ำ",
+            "水边的North Beach建筑群",
+            "水辺に並ぶNorth Beachの建物",
+            "물가의 North Beach 건물"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/fl-1-2.jpg",
@@ -2483,12 +2570,13 @@
           "height": 640,
           "caption": "Cypress Tree Sunrise (2020 Photo Contest)",
           "displayCaption": [
-            "Everglades National Park · Photograph 2",
-            "อุทยานแห่งชาติเอเวอร์เกลดส์ · ภาพที่ 2",
-            "大沼泽地国家公园 · 照片 2",
-            "エバーグレーズ国立公園・写真 2",
-            "에버글레이즈 국립공원 · 사진 2"
-          ]
+            "Cypress trees in the morning light",
+            "ต้นไซเปรสในแสงเช้า",
+            "晨光中的柏树",
+            "朝の光を浴びるサイプレス",
+            "아침 햇살 속 사이프러스 나무"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/fl-1-3.jpg",
@@ -2502,12 +2590,13 @@
           "height": 720,
           "caption": "A meeting ground of marsh and mangrove environments. You may see alligators, wading birds, turtles, and fish.",
           "displayCaption": [
-            "Everglades National Park · Photograph 3",
-            "อุทยานแห่งชาติเอเวอร์เกลดส์ · ภาพที่ 3",
-            "大沼泽地国家公园 · 照片 3",
-            "エバーグレーズ国立公園・写真 3",
-            "에버글레이즈 국립공원 · 사진 3"
-          ]
+            "Canoes at the edge of the wetlands",
+            "เรือแคนูริมพื้นที่ชุ่มน้ำ",
+            "湿地边的独木舟",
+            "湿地の岸辺のカヌー",
+            "습지 가장자리의 카누"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/fl-2-2.jpg",
@@ -2521,12 +2610,13 @@
           "height": 720,
           "caption": "Seven Miles Bridge",
           "displayCaption": [
-            "Florida Keys · Photograph 2",
-            "หมู่เกาะฟลอริดาคีย์ส · ภาพที่ 2",
-            "佛罗里达礁岛群 · 照片 2",
-            "フロリダキーズ・写真 2",
-            "플로리다키스 · 사진 2"
-          ]
+            "Driving across Seven Mile Bridge",
+            "การขับรถข้ามสะพาน Seven Mile",
+            "驾车穿越七英里大桥",
+            "Seven Mile Bridgeを渡るドライブ",
+            "Seven Mile Bridge를 건너는 드라이브"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/fl-2-3.jpg",
@@ -2540,16 +2630,17 @@
           "height": 720,
           "caption": "Royal Poinciana ( D. regia ) in full bloom in the Florida Keys",
           "displayCaption": [
-            "Florida Keys · Photograph 3",
-            "หมู่เกาะฟลอริดาคีย์ส · ภาพที่ 3",
-            "佛罗里达礁岛群 · 照片 3",
-            "フロリダキーズ・写真 3",
-            "플로리다키스 · 사진 3"
-          ]
+            "Red royal poinciana blossoms in the Keys",
+            "ดอกหางนกยูงฝรั่งสีแดงในหมู่เกาะคีย์ส",
+            "佛罗里达群岛的红色凤凰木花",
+            "キー諸島に咲く赤いホウオウボクの花",
+            "키스 제도의 붉은 로열 포인시아나 꽃"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         }
       ],
       "cover": 0,
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-15",
       "sources": [
         {
           "name": "Visit The USA",
@@ -2575,11 +2666,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Group nearby sights into a walkable neighborhood. Check local transport routes and the final walk before choosing your accommodation.",
-            "จัดสถานที่ใกล้กันไว้ในย่านเดียว ตรวจเส้นทางขนส่งท้องถิ่นและระยะเดินช่วงสุดท้ายก่อนเลือกที่พัก",
-            "把相邻景点安排在同一街区，选择住宿前核对当地交通线路和最后一段步行距离。",
-            "近くの見どころを同じ街区にまとめ、宿を選ぶ前に公共交通の経路と最後の徒歩区間を確認しましょう。",
-            "가까운 명소를 같은 동네 일정으로 묶고, 숙소를 고르기 전에 현지 교통편과 마지막 도보 구간을 확인하세요。"
+            "Miami Beach's free trolley connects several beach neighborhoods. Match your destination to the city route map and designated stops; check separate regional connections for trips beyond Miami Beach.",
+            "รถ trolley ฟรีของ Miami Beach เชื่อมหลายย่านชายหาด เลือกสายและป้ายตามแผนที่เมือง ส่วนการไปนอก Miami Beach ให้ตรวจเส้นทางเชื่อมภูมิภาคแยก",
+            "迈阿密海滩的免费电车连接多个海滨街区。按市内路线图选择站点，前往市外需另查区域交通接驳。",
+            "Miami Beachの無料トロリーは複数の海辺の街区を結びます。市の路線図で目的地と停留所を確認し、市外への乗り継ぎは別に調べましょう。",
+            "Miami Beach의 무료 트롤리는 여러 해변 동네를 연결합니다. 시 노선도에서 목적지와 정류장을 확인하고 도시 밖으로 갈 때는 지역 연계 교통을 따로 확인하세요."
           ],
           "stay": [
             "Explore accommodation around Miami Beach; compare the journey to your chosen sights before booking.",
@@ -2600,17 +2691,17 @@
           ],
           "locationSource": "https://en.wikipedia.org/wiki/Miami_Beach%2C_Florida",
           "locationCheckedAt": "2026-09-09",
-          "officialUrl": "https://www.visittheusa.com/destinations/florida/",
+          "officialUrl": "https://www.miamibeachfl.gov/city-hall/transportation/trolley/",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
-            "transport": "car",
+            "transport": "transit",
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Coast",
-            "months": [1, 2, 3, 4, 5, 12]
+            "months": [1, 2, 3, 4, 12]
           }
         },
         {
@@ -2631,11 +2722,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Choose the specific entrance or trailhead first. Check road access, parking and seasonal conditions with the land manager before departure.",
-            "เลือกทางเข้าหรือจุดเริ่มเส้นทางให้ชัดเจนก่อน ตรวจถนน ที่จอดรถ และสภาพตามฤดูกาลกับผู้ดูแลพื้นที่ก่อนเดินทาง",
-            "先选定入口或步道起点，出发前向管理方核对道路、停车和季节状况。",
-            "入口や登山口を先に決め、道路、駐車場、季節の状況を管理者の案内で確認しましょう。",
-            "먼저 입구나 탐방로 시작점을 정하고, 출발 전에 관리 기관에서 도로 접근과 주차, 계절 상황을 확인하세요."
+            "The park's three entrances are not connected internally. This pin is Ernest F. Coe Visitor Center near Homestead. Choose the correct entrance first and arrange your vehicle and return transport.",
+            "ทางเข้าหลักสามแห่งไม่มีถนนภายในเชื่อมถึงกัน หมุดนี้คือ Ernest F. Coe Visitor Center ใกล้ Homestead เลือกทางเข้าให้ตรงก่อนจัดรถและการเดินทางกลับ",
+            "三个入口在园内互不相连。此标记为Homestead附近的Ernest F. Coe游客中心。先选正确入口，再安排车辆及返程。",
+            "三つの入口は園内でつながっていません。このピンはHomestead近くのErnest F. Coeビジターセンターです。入口を選んでから車と帰路を確保しましょう。",
+            "세 입구는 공원 내부에서 서로 연결되지 않습니다. 이 핀은 Homestead 근처 Ernest F. Coe 방문자 센터입니다. 올바른 입구를 고른 뒤 차량과 귀가 교통을 준비하세요."
           ],
           "stay": [
             "Explore accommodation around Homestead / Florida City; compare the journey to your chosen sights before booking.",
@@ -2656,9 +2747,9 @@
           ],
           "locationSource": "https://www.nps.gov/ever/planyourvisit/coedirections.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/ever/index.htm",
+          "officialUrl": "https://www.nps.gov/ever/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/ever/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -2666,7 +2757,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [1, 2, 3, 4, 5, 12]
+            "months": [1, 2, 3, 4, 12]
           }
         },
         {
@@ -2687,11 +2778,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Group nearby sights into a walkable neighborhood. Check local transport routes and the final walk before choosing your accommodation.",
-            "จัดสถานที่ใกล้กันไว้ในย่านเดียว ตรวจเส้นทางขนส่งท้องถิ่นและระยะเดินช่วงสุดท้ายก่อนเลือกที่พัก",
-            "把相邻景点安排在同一街区，选择住宿前核对当地交通线路和最后一段步行距离。",
-            "近くの見どころを同じ街区にまとめ、宿を選ぶ前に公共交通の経路と最後の徒歩区間を確認しましょう。",
-            "가까운 명소를 같은 동네 일정으로 묶고, 숙소를 고르기 전에 현지 교통편과 마지막 도보 구간을 확인하세요。"
+            "Pick a particular island and mile marker on US 1 before booking. The Overseas Highway links the Keys but congestion can lengthen transfers; leave time for stops and your return to the mainland.",
+            "เลือกเกาะและเลขไมล์บน US 1 ให้ชัดก่อนจอง Overseas Highway เชื่อมหมู่เกาะ แต่รถติดอาจเพิ่มเวลาเดินทาง เผื่อเวลาแวะพักและกลับแผ่นดินใหญ่",
+            "预订前确定具体岛屿和US 1里程标。海外公路连接群岛，但拥堵可能延长车程；请为停留及返回大陆留出时间。",
+            "予約前に島とUS 1のマイルマーカーを確認。Overseas Highwayが島々を結びますが、渋滞で時間が延びることも。立ち寄りと本土への帰路に余裕を持ちましょう。",
+            "예약 전에 섬과 US 1 마일 표지를 정하세요. Overseas Highway가 섬을 연결하지만 정체로 이동이 길어질 수 있습니다. 경유와 본토 귀환 시간을 넉넉히 잡으세요."
           ],
           "stay": [
             "Explore accommodation around Florida Keys; compare the journey to your chosen sights before booking.",
@@ -2712,9 +2803,9 @@
           ],
           "locationSource": "https://en.wikipedia.org/wiki/Florida_Keys",
           "locationCheckedAt": "2026-09-09",
-          "officialUrl": "https://www.visittheusa.com/destinations/florida/",
+          "officialUrl": "https://visitfloridakeys.com/plan-your-trip/plan-book/getting-here-around/how-to-get-here",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -2722,7 +2813,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Coast",
-            "months": [1, 2, 3, 4, 5, 12]
+            "months": [1, 2, 3, 4, 12]
           }
         }
       ]
@@ -2788,12 +2879,13 @@
           "width": 960,
           "height": 600,
           "displayCaption": [
-            "Seattle · Photograph 1",
-            "ซีแอตเทิล · ภาพที่ 1",
-            "西雅图 · 照片 1",
-            "シアトル・写真 1",
-            "시애틀 · 사진 1"
-          ]
+            "Space Needle at dusk",
+            "Space Needle ยามพลบค่ำ",
+            "暮色中的太空针塔",
+            "夕暮れのスペースニードル",
+            "해 질 녘 스페이스 니들"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/wa-2.jpg",
@@ -2806,12 +2898,13 @@
           "width": 960,
           "height": 643,
           "displayCaption": [
-            "Olympic National Park · Photograph 1",
-            "อุทยานแห่งชาติโอลิมปิก · ภาพที่ 1",
-            "奥林匹克国家公园 · 照片 1",
-            "オリンピック国立公園・写真 1",
-            "올림픽 국립공원 · 사진 1"
-          ]
+            "Sea stacks along Olympic's rugged coast",
+            "โขดหินกลางทะเลริมชายฝั่งโอลิมปิก",
+            "奥林匹克崎岖海岸的海蚀柱",
+            "オリンピックの険しい海岸の海食柱",
+            "올림픽의 거친 해안을 따라 솟은 해식 기둥"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/states/wa-3.jpg",
@@ -2824,12 +2917,13 @@
           "width": 960,
           "height": 720,
           "displayCaption": [
-            "Mount Rainier National Park · Photograph 1",
-            "อุทยานแห่งชาติเมานต์เรเนียร์ · ภาพที่ 1",
-            "雷尼尔山国家公园 · 照片 1",
-            "マウントレーニア国立公園・写真 1",
-            "마운트레이니어 국립공원 · 사진 1"
-          ]
+            "Mount Rainier above an alpine meadow and stream",
+            "เมาท์เรเนียร์เหนือทุ่งหญ้าภูเขาและลำธาร",
+            "高山草甸与溪流上方的雷尼尔山",
+            "高山の草原と小川の向こうのレーニア山",
+            "고산 초원과 개울 위의 레이니어산"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/wa-0-2.jpg",
@@ -2843,12 +2937,13 @@
           "height": 640,
           "caption": "View of Benaroya Hall, from 2nd Ave and University St. The Garden of Remembrance is in the foreground.",
           "displayCaption": [
-            "Seattle · Photograph 2",
-            "ซีแอตเทิล · ภาพที่ 2",
-            "西雅图 · 照片 2",
-            "シアトル・写真 2",
-            "시애틀 · 사진 2"
-          ]
+            "Benaroya Hall and the Garden of Remembrance",
+            "Benaroya Hall และ Garden of Remembrance",
+            "Benaroya Hall与纪念花园",
+            "Benaroya HallとGarden of Remembrance",
+            "Benaroya Hall과 Garden of Remembrance"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/wa-0-3.jpg",
@@ -2862,12 +2957,13 @@
           "height": 643,
           "caption": "King County / Elliot Bay water taxi and downtown Seattle.",
           "displayCaption": [
-            "Seattle · Photograph 3",
-            "ซีแอตเทิล · ภาพที่ 3",
-            "西雅图 · 照片 3",
-            "シアトル・写真 3",
-            "시애틀 · 사진 3"
-          ]
+            "Elliott Bay Water Taxi against Seattle's skyline",
+            "เรือ Elliott Bay Water Taxi กับแนวอาคารซีแอตเทิล",
+            "西雅图天际线前的Elliott Bay水上出租船",
+            "シアトルの街並みを背景にしたElliott Bay Water Taxi",
+            "시애틀 스카이라인을 배경으로 한 Elliott Bay Water Taxi"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/wa-1-2.jpg",
@@ -2881,12 +2977,13 @@
           "height": 642,
           "caption": "A herd of Roosevelt Elk cross a river in Olympic.",
           "displayCaption": [
-            "Olympic National Park · Photograph 2",
-            "อุทยานแห่งชาติโอลิมปิก · ภาพที่ 2",
-            "奥林匹克国家公园 · 照片 2",
-            "オリンピック国立公園・写真 2",
-            "올림픽 국립공원 · 사진 2"
-          ]
+            "Roosevelt elk crossing a river",
+            "กวางรูสเวลต์เอลก์ข้ามแม่น้ำ",
+            "正在渡河的罗斯福马鹿",
+            "川を渡るルーズベルトエルク",
+            "강을 건너는 루스벨트 엘크"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/wa-1-3.jpg",
@@ -2900,12 +2997,13 @@
           "height": 960,
           "caption": "Ocher sea stars rest on the rocks during a low tide on one of Olympic's beaches.",
           "displayCaption": [
-            "Olympic National Park · Photograph 3",
-            "อุทยานแห่งชาติโอลิมปิก · ภาพที่ 3",
-            "奥林匹克国家公园 · 照片 3",
-            "オリンピック国立公園・写真 3",
-            "올림픽 국립공원 · 사진 3"
-          ]
+            "Coastal rocks and tide pools in Olympic",
+            "โขดหินชายฝั่งและแอ่งน้ำขึ้นลงในโอลิมปิก",
+            "奥林匹克海岸岩石与潮池",
+            "オリンピックの海岸の岩と潮だまり",
+            "올림픽 해안의 바위와 조수 웅덩이"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/wa-2-2.jpg",
@@ -2919,12 +3017,13 @@
           "height": 640,
           "caption": "Narada Falls is one of dozens of waterfalls created by the glacier and snow-fed creeks and rivers of Mount Rainier.",
           "displayCaption": [
-            "Mount Rainier National Park · Photograph 2",
-            "อุทยานแห่งชาติเมานต์เรเนียร์ · ภาพที่ 2",
-            "雷尼尔山国家公园 · 照片 2",
-            "マウントレーニア国立公園・写真 2",
-            "마운트레이니어 국립공원 · 사진 2"
-          ]
+            "A rainbow in the spray at Narada Falls",
+            "สายรุ้งในละอองน้ำตก Narada",
+            "Narada瀑布水雾中的彩虹",
+            "Narada滝の水しぶきにかかる虹",
+            "Narada 폭포 물보라 속 무지개"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         },
         {
           "src": "/images/places/wa-2-3.jpg",
@@ -2938,16 +3037,17 @@
           "height": 720,
           "caption": "From small amphibians and hoary marmots to the black bears and elk, many animals call the wild places of Mount Rainier home.",
           "displayCaption": [
-            "Mount Rainier National Park · Photograph 3",
-            "อุทยานแห่งชาติเมานต์เรเนียร์ · ภาพที่ 3",
-            "雷尼尔山国家公园 · 照片 3",
-            "マウントレーニア国立公園・写真 3",
-            "마운트레이니어 국립공원 · 사진 3"
-          ]
+            "A hoary marmot in close view",
+            "ภาพระยะใกล้ของโฮอารีมาร์มอต",
+            "近距离观察灰旱獭",
+            "近くから見たシラガマーモット",
+            "가까이에서 본 흰등마멋"
+          ],
+          "captionReviewed": [false, false, false, false, false]
         }
       ],
       "cover": 0,
-      "updatedAt": "2026-09-14",
+      "updatedAt": "2026-09-15",
       "sources": [
         {
           "name": "Visit The USA",
@@ -2973,11 +3073,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Use Sound Transit’s ride guide for Link light rail and regional connections, then plan the final walk or local bus to your Seattle destination. Check the route, stop and payment instructions with the operator for your travel date.",
-            "ใช้คู่มือ Sound Transit สำหรับรถไฟ Link และการต่อรถภูมิภาค แล้ววางแผนเดินหรือรถบัสท้องถิ่นช่วงสุดท้ายในซีแอตเทิล ตรวจเส้นทาง ป้าย และวิธีชำระเงินกับผู้ให้บริการตามวันเดินทาง",
-            "通过Sound Transit指南了解Link轻轨和区域换乘，再规划到西雅图目的地的最后一段步行或巴士。按出行日期核对线路、站点与支付方式。",
-            "Sound Transitの案内でLinkと地域の乗り換えを確認し、シアトルの目的地までの徒歩や市バスも計画。利用日の路線・停留所・支払いを確認しましょう。",
-            "Sound Transit 안내에서 Link 경전철과 지역 환승을 확인한 뒤 시애틀 목적지까지의 도보나 시내버스를 계획하세요. 여행일 기준 노선과 정류장, 결제 안내를 확인하세요."
+            "Compare Link light rail and connecting services for Seattle stops. Check the final walk and station access; waterfront, hilltop and ferry journeys may require different connections.",
+            "เทียบ Link light rail และรถต่อสำหรับจุดเที่ยวซีแอตเทิล ตรวจทางเดินช่วงสุดท้ายและทางเข้าสถานี เส้นทางริมน้ำ บนเนิน และท่าเรืออาจใช้การต่อรถต่างกัน",
+            "比较Link轻轨及接驳线路，核对最后一段步行和车站入口。滨水区、山坡及渡轮行程可能需要不同换乘。",
+            "Linkライトレールと乗り継ぎを比較し、最後の徒歩と駅へのアクセスを確認。水辺、丘の上、フェリーへの移動は乗り継ぎが異なる場合があります。",
+            "Link 경전철과 연계 교통을 비교하고 마지막 도보 구간과 역 접근을 확인하세요. 해안가와 언덕, 페리 이동은 다른 환승이 필요할 수 있습니다."
           ],
           "stay": [
             "Explore accommodation around Seattle; compare the journey to your chosen sights before booking.",
@@ -2994,7 +3094,7 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://www.soundtransit.org/ride-with-us/know-before-you-go/how-to-ride",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-14",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -3002,7 +3102,7 @@
             "setting": "indoors",
             "walking": "easy",
             "interest": "Cities",
-            "months": [6, 7, 8, 9, 10, 11]
+            "months": [5, 6, 7, 8, 9]
           }
         },
         {
@@ -3023,11 +3123,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Choose the specific entrance or trailhead first. Check road access, parking and seasonal conditions with the land manager before departure.",
-            "เลือกทางเข้าหรือจุดเริ่มเส้นทางให้ชัดเจนก่อน ตรวจถนน ที่จอดรถ และสภาพตามฤดูกาลกับผู้ดูแลพื้นที่ก่อนเดินทาง",
-            "先选定入口或步道起点，出发前向管理方核对道路、停车和季节状况。",
-            "入口や登山口を先に決め、道路、駐車場、季節の状況を管理者の案内で確認しましょう。",
-            "먼저 입구나 탐방로 시작점을 정하고, 출발 전에 관리 기관에서 도로 접근과 주차, 계절 상황을 확인하세요."
+            "Choose Port Angeles for the northern mountains or Forks for the Hoh and western coast. US 101 connects different access roads; there is no direct road across the mountain interior.",
+            "เลือก Port Angeles สำหรับภูเขาฝั่งเหนือ หรือ Forks สำหรับ Hoh และชายฝั่งตะวันตก US 101 เชื่อมถนนเข้าแต่ละโซน ไม่มีถนนตัดตรงผ่านใจกลางภูเขา",
+            "北部山地可选Port Angeles为基地，Hoh及西海岸可选Forks。US 101连接各入口道路，山地内部没有横穿的直达公路。",
+            "北部の山々ならPort Angeles、Hohや西海岸ならForksを拠点に。US 101から各地域へ入ります。山地の内部を横断する道路はありません。",
+            "북쪽 산지는 Port Angeles, Hoh와 서부 해안은 Forks를 거점으로 고려하세요. US 101이 각 진입 도로를 연결하며 산악 내부를 가로지르는 직통 도로는 없습니다."
           ],
           "stay": [
             "Explore accommodation around Port Angeles / Forks; compare the journey to your chosen sights before booking.",
@@ -3048,9 +3148,9 @@
           ],
           "locationSource": "https://www.nps.gov/olym/planyourvisit/visitorcenters.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/olym/index.htm",
+          "officialUrl": "https://www.nps.gov/olym/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/olym/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -3058,7 +3158,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [6, 7, 8, 9, 10, 11]
+            "months": [6, 7, 8, 9]
           }
         },
         {
@@ -3079,11 +3179,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Choose the specific entrance or trailhead first. Check road access, parking and seasonal conditions with the land manager before departure.",
-            "เลือกทางเข้าหรือจุดเริ่มเส้นทางให้ชัดเจนก่อน ตรวจถนน ที่จอดรถ และสภาพตามฤดูกาลกับผู้ดูแลพื้นที่ก่อนเดินทาง",
-            "先选定入口或步道起点，出发前向管理方核对道路、停车和季节状况。",
-            "入口や登山口を先に決め、道路、駐車場、季節の状況を管理者の案内で確認しましょう。",
-            "먼저 입구나 탐방로 시작점을 정하고, 출발 전에 관리 기관에서 도로 접근과 주차, 계절 상황을 확인하세요."
+            "This visitor-center pin serves Paradise. Sunrise uses a different approach. Choose the entrance for your destination, then check seasonal road access and parking; GPS may otherwise lead to a closed gate.",
+            "หมุดศูนย์บริการนี้ใช้สำหรับ Paradise ส่วน Sunrise ใช้อีกเส้นทาง เลือกทางเข้าตามจุดหมายแล้วตรวจถนนตามฤดูกาลและที่จอด มิฉะนั้น GPS อาจพาไปประตูที่ปิด",
+            "此游客中心标记服务Paradise，Sunrise需从另一方向进入。按目的地选择入口并核对季节道路及停车情况，否则导航可能指向关闭的入口。",
+            "このビジターセンターのピンはParadise用です。Sunriseは別の経路になります。目的地に合う入口を選び、季節の道路状況と駐車を確認。ナビが閉鎖ゲートへ案内する場合もあります。",
+            "이 방문자 센터 핀은 Paradise용이며 Sunrise는 다른 경로로 접근합니다. 목적지에 맞는 입구와 계절 도로 상황, 주차를 확인하세요. 내비게이션이 닫힌 입구로 안내할 수 있습니다."
           ],
           "stay": [
             "Explore accommodation around Ashford / Packwood; compare the journey to your chosen sights before booking.",
@@ -3104,9 +3204,9 @@
           ],
           "locationSource": "https://www.nps.gov/mora/planyourvisit/paradise.htm",
           "locationCheckedAt": "2026-09-10",
-          "officialUrl": "https://www.nps.gov/mora/index.htm",
+          "officialUrl": "https://www.nps.gov/mora/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/mora/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-10",
+          "reviewedAt": "2026-09-15",
           "reviewAfter": "2026-12-01",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -3114,7 +3214,7 @@
             "setting": "outdoors",
             "walking": "varied",
             "interest": "Nature",
-            "months": [6, 7, 8, 9, 10, 11]
+            "months": [7, 8, 9]
           }
         }
       ]

@@ -62,6 +62,65 @@ export default function ProfileEditor({
             </label>
           ))}
           <div className="studio-facts">
+            <label className="studio-check">
+              <input
+                type="checkbox"
+                checked={!!p.advisory}
+                onChange={(e) =>
+                  change(index, {
+                    advisory: e.target.checked
+                      ? {
+                          text: ['', '', '', '', ''],
+                          source: p.officialUrl,
+                          checkedAt: new Date().toISOString().slice(0, 10),
+                        }
+                      : undefined,
+                  })
+                }
+              />
+              มีประกาศที่ต้องตรวจการเดินทาง
+            </label>
+            {p.advisory && (
+              <>
+                <label>
+                  ประกาศ · {LANGUAGE_NAMES[language]}
+                  <textarea
+                    maxLength={4000}
+                    value={local(p.advisory.text, language)}
+                    onChange={(e) => {
+                      const texts = [...p.advisory!.text];
+                      texts[languageIndex] = e.target.value;
+                      change(index, {
+                        advisory: { ...p.advisory!, text: texts as unknown as LocalText },
+                        translationsReviewed: p.translationsReviewed.map((v, i) =>
+                          i === languageIndex ? false : v,
+                        ),
+                      });
+                    }}
+                  />
+                </label>
+                <label>
+                  แหล่งประกาศ (HTTPS)
+                  <input
+                    type="url"
+                    value={p.advisory.source}
+                    onChange={(e) =>
+                      change(index, { advisory: { ...p.advisory!, source: e.target.value } })
+                    }
+                  />
+                </label>
+                <label>
+                  วันที่ตรวจประกาศ
+                  <input
+                    type="date"
+                    value={p.advisory.checkedAt}
+                    onChange={(e) =>
+                      change(index, { advisory: { ...p.advisory!, checkedAt: e.target.value } })
+                    }
+                  />
+                </label>
+              </>
+            )}
             {p.planning && (
               <>
                 <label>

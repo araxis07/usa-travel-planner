@@ -13,6 +13,7 @@ import StateDetail from '../components/StateDetail';
 import Icon from '../components/Icon';
 import '../styles.css';
 import ProfileEditor from './ProfileEditor';
+import PhotoCaptionEditor from './PhotoCaptionEditor';
 import './studio.css';
 interface Session {
   catalog: Catalog;
@@ -178,7 +179,15 @@ export default function Studio() {
   const editPhoto = (index: number, field: string, value: string | number) =>
     state &&
     change({
-      photos: state.photos.map((photo, i) => (i === index ? { ...photo, [field]: value } : photo)),
+      photos: state.photos.map((photo, i) =>
+        i === index
+          ? {
+              ...photo,
+              [field]: value,
+              ...(field === 'placeIndex' ? { captionReviewed: Array(5).fill(false) } : {}),
+            }
+          : photo,
+      ),
     });
   const stateIssues = issues.filter((i) => i.code === selected);
   return (
@@ -608,6 +617,13 @@ export default function Studio() {
                             ),
                           )}
                         </div>
+                        <PhotoCaptionEditor
+                          photo={photo}
+                          language={language}
+                          onChange={(next) =>
+                            change({ photos: state.photos.map((p, i) => (i === index ? next : p)) })
+                          }
+                        />
                       </article>
                     ))}
                   </div>

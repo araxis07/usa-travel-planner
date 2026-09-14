@@ -4,7 +4,13 @@ import { loadTrip } from './storage';
 type History = { trip: Trip; undo: Trip | null };
 type Action = { next: SetStateAction<Trip> } | { undo: true } | { replace: Trip };
 const ids = (trip: Trip) =>
-  new Set(trip.stops.flatMap((s) => [s.code, ...(s.activities ?? []).map((a) => a.id)]));
+  new Set([
+    ...trip.stops.flatMap((s) => [
+      `state:${s.code}`,
+      ...(s.activities ?? []).map((a) => `activity:${a.id}`),
+    ]),
+    ...(trip.expenses ?? []).map((e) => `expense:${e.id}`),
+  ]);
 function reducer(value: History, action: Action): History {
   if ('replace' in action) return { trip: action.replace, undo: null };
   if ('undo' in action) return value.undo ? { trip: value.undo, undo: null } : value;

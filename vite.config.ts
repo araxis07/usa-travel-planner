@@ -21,6 +21,7 @@ export default defineConfig(({ mode }) => ({
   },
   server: {
     host: '127.0.0.1',
+    watch: { ignored: ['**/artifacts/**', '**/test-results/**', '**/playwright-report/**'] },
     port: mode === 'studio' ? 5174 : 5173,
     strictPort: mode === 'studio',
   },

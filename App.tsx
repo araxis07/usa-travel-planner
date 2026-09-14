@@ -1,3 +1,4 @@
+import TravelImage from './components/TravelImage';
 import LanguageSelector from './components/LanguageSelector';
 import { stateName } from './data/travel';
 import { translate, initialLanguage } from './lib/i18n';
@@ -539,7 +540,8 @@ export default function App() {
                 heroRef.current?.style.setProperty('--pointer-y', '0deg');
               }}
             >
-              <img
+              <TravelImage
+                sizes="100vw"
                 className="hero-image"
                 src="/images/hero.jpg"
                 alt={t(
@@ -994,6 +996,13 @@ export default function App() {
           {libraryOpen && (
             <TripLibrary
               library={library}
+              collections={{ groups: collections.groups, visited: collections.visited }}
+              favorites={favorites}
+              onRestore={(value) => {
+                library.applyRestored(value.library);
+                collections.restore(value.collections);
+                setFavorites(value.favorites);
+              }}
               lang={lang}
               notify={notify}
               onClose={() => setLibraryOpen(false)}

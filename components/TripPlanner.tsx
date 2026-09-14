@@ -11,6 +11,9 @@ import { saveOffline } from '../lib/offline';
 import { activityName, sortedActivities } from '../lib/destinations';
 import TripChecklist from './TripChecklist';
 import OfflineStatus from './OfflineStatus';
+import { w } from '../data/workspace-copy';
+import { budgetTotals } from '../lib/budget';
+const TripBudget = lazy(() => import('./TripBudget'));
 
 const CloudPanel = lazy(() => import('./CloudPanel'));
 
@@ -42,18 +45,20 @@ export default function TripPlanner({
   );
   const [confirmClear, setConfirmClear] = useState(false);
   const [daily, setDaily] = useState(initialDaily);
+  const [budgetOpen, setBudgetOpen] = useState(false);
   const [pendingImport, setPendingImport] = useState<Trip | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    document.getElementById('planner-title')?.focus({ preventScroll: true });
+    if (!document.querySelector('[role="dialog"]'))
+      document.getElementById('planner-title')?.focus({ preventScroll: true });
   }, []);
   const days = tripDays(trip);
-  const estimate = days * trip.travelers * trip.dailyBudget;
+  const estimate = budgetTotals(trip).estimate;
   const money = (value: number) =>
     new Intl.NumberFormat(LOCALES[lang], {
       style: 'currency',
       currency: 'USD',
-      maximumFractionDigits: 0,
+      maximumFractionDigits: 2,
     }).format(value);
   const update = (fields: Partial<Trip>) => setTrip({ ...trip, ...fields });
   function move(index: number, offset: number) {
@@ -89,12 +94,21 @@ export default function TripPlanner({
           '',
         ];
       }),
-      `${t('Daily budget per traveler', 'งบรายวันต่อคน')}: ${money(trip.dailyBudget)}`,
+      trip.budgetMode !== 'items'
+        ? `${t('Daily budget per traveler', 'งบรายวันต่อคน')}: ${money(trip.dailyBudget)}`
+        : w(lang, 'itemMode'),
       `${t('Planning estimate', 'งบประมาณเบื้องต้น')}: ${money(estimate)}`,
-      t(
-        'Estimate based on your daily budget. Add flights, car rental, and one-off costs separately. Verify travel times and reservations before booking.',
-        'ประมาณการจากงบรายวันที่ตั้งเอง คิดเที่ยวบิน ค่าเช่ารถ และค่าใช้จ่ายก้อนใหญ่เพิ่ม ตรวจเวลาเดินทางและการจองก่อนจองจริง',
+      ...(trip.expenses ?? []).map(
+        (e) =>
+          `${w(lang, e.category)} · ${e.name}: ${w(lang, 'planned')} ${money(e.planned)} · ${w(lang, 'paid')} ${money(e.paid)}`,
       ),
+      `${w(lang, 'paid')}: ${money(budgetTotals(trip).paid)}`,
+      trip.budgetMode === 'items'
+        ? w(lang, 'budgetHint')
+        : t(
+            'Estimate based on your daily budget. Add flights, car rental, and one-off costs separately. Verify travel times and reservations before booking.',
+            'ประมาณการจากงบรายวันที่ตั้งเอง คิดเที่ยวบิน ค่าเช่ารถ และค่าใช้จ่ายก้อนใหญ่เพิ่ม ตรวจเวลาเดินทางและการจองก่อนจองจริง',
+          ),
       '',
       t('Made with Roam America', 'สร้างด้วย Roam America'),
     ]
@@ -150,54 +164,63 @@ export default function TripPlanner({
           : t('Saved automatically on this browser', 'บันทึกอัตโนมัติในเบราว์เซอร์นี้')}
       </p>
       <TripPrint trip={trip} lang={lang} />
-      <div className="planner-tools">
-        <button
-          className="button button-outline"
-          disabled={!trip.stops.length}
-          onClick={() => window.print()}
-        >
-          {t('Print / Save as PDF', 'พิมพ์ / บันทึกเป็น PDF')}
-        </button>
-        <button
-          className="button button-outline"
-          disabled={offlineBusy || !trip.stops.length}
-          onClick={async () => {
-            setOfflineBusy(true);
-            setOfflineReady(false);
-            try {
-              await saveOffline(trip);
-              setOfflineReady(true);
-            } catch {
-              notify(
-                t(
-                  'Offline download failed. Connect to the internet and try again on the published site.',
-                  'ดาวน์โหลดออฟไลน์ไม่สำเร็จ เชื่อมต่ออินเทอร์เน็ตแล้วลองอีกครั้งบนเว็บไซต์ที่เผยแพร่แล้ว',
-                ),
-              );
-            } finally {
-              setOfflineBusy(false);
-            }
-          }}
-        >
-          {offlineBusy
-            ? t('Downloading…', 'กำลังดาวน์โหลด…')
-            : t('Save for offline', 'เก็บไว้อ่านออฟไลน์')}
-        </button>
-        {import.meta.env.VITE_SUPABASE_URL && (
-          <button className="button button-outline" onClick={() => setAccount(true)}>
-            {t('Account & sharing', 'บัญชีและการแชร์')}
+      <details className="planner-utility" open={!matchMedia('(max-width: 760px)').matches}>
+        <summary>
+          {w(lang, 'tools')}{' '}
+          <span>
+            {t('Print / Save as PDF', 'พิมพ์ / บันทึกเป็น PDF')} ·{' '}
+            {t('Save for offline', 'เก็บไว้อ่านออฟไลน์')}
+          </span>
+        </summary>
+        <div className="planner-tools">
+          <button
+            className="button button-outline"
+            disabled={!trip.stops.length}
+            onClick={() => window.print()}
+          >
+            {t('Print / Save as PDF', 'พิมพ์ / บันทึกเป็น PDF')}
           </button>
-        )}
-      </div>
-      {offlineReady && (
-        <p role="status">
-          {t(
-            'Ready offline on this device. Your saved plan and these photos are available without internet; live maps need a connection.',
-            'พร้อมอ่านออฟไลน์บนอุปกรณ์นี้ เปิดแผนและภาพที่บันทึกได้โดยไม่ใช้อินเทอร์เน็ต แผนที่ออนไลน์ยังต้องเชื่อมต่อ',
+          <button
+            className="button button-outline"
+            disabled={offlineBusy || !trip.stops.length}
+            onClick={async () => {
+              setOfflineBusy(true);
+              setOfflineReady(false);
+              try {
+                await saveOffline(trip);
+                setOfflineReady(true);
+              } catch {
+                notify(
+                  t(
+                    'Offline download failed. Connect to the internet and try again on the published site.',
+                    'ดาวน์โหลดออฟไลน์ไม่สำเร็จ เชื่อมต่ออินเทอร์เน็ตแล้วลองอีกครั้งบนเว็บไซต์ที่เผยแพร่แล้ว',
+                  ),
+                );
+              } finally {
+                setOfflineBusy(false);
+              }
+            }}
+          >
+            {offlineBusy
+              ? t('Downloading…', 'กำลังดาวน์โหลด…')
+              : t('Save for offline', 'เก็บไว้อ่านออฟไลน์')}
+          </button>
+          {import.meta.env.VITE_SUPABASE_URL && (
+            <button className="button button-outline" onClick={() => setAccount(true)}>
+              {t('Account & sharing', 'บัญชีและการแชร์')}
+            </button>
           )}
-        </p>
-      )}
-      <OfflineStatus trip={trip} lang={lang} refresh={offlineReady} />
+        </div>
+        {offlineReady && (
+          <p role="status">
+            {t(
+              'Ready offline on this device. Your saved plan and these photos are available without internet; live maps need a connection.',
+              'พร้อมอ่านออฟไลน์บนอุปกรณ์นี้ เปิดแผนและภาพที่บันทึกได้โดยไม่ใช้อินเทอร์เน็ต แผนที่ออนไลน์ยังต้องเชื่อมต่อ',
+            )}
+          </p>
+        )}
+        <OfflineStatus trip={trip} lang={lang} refresh={offlineReady} />
+      </details>
       {account && (
         <Suspense fallback={<p role="status">{t('Loading…', 'กำลังโหลด…')}</p>}>
           <CloudPanel
@@ -214,17 +237,37 @@ export default function TripPlanner({
         </Suspense>
       )}
       <div className="planner-tabs" role="group" aria-label={t('Planner view', 'มุมมองแผนเที่ยว')}>
-        <button aria-pressed={!daily} onClick={() => setDaily(false)}>
+        <button
+          aria-pressed={!daily && !budgetOpen}
+          onClick={() => {
+            setDaily(false);
+            setBudgetOpen(false);
+          }}
+        >
           <Icon name="route" size={17} />
           {t('Trip overview', 'ภาพรวมทริป')}
         </button>
-        <button aria-pressed={daily} onClick={() => setDaily(true)}>
+        <button
+          aria-pressed={daily && !budgetOpen}
+          onClick={() => {
+            setDaily(true);
+            setBudgetOpen(false);
+          }}
+        >
           <Icon name="calendar" size={17} />
           {t('Daily plan', 'แผนรายวัน')}
         </button>
+        <button aria-pressed={budgetOpen} onClick={() => setBudgetOpen(true)}>
+          {w(lang, 'budget')}
+        </button>
       </div>
       <TripChecklist trip={trip} setTrip={setTrip} lang={lang} />
-      {daily && (
+      {budgetOpen && (
+        <Suspense fallback={<p role="status">{t('Loading…', 'กำลังโหลด…')}</p>}>
+          <TripBudget trip={trip} lang={lang} setTrip={setTrip} />
+        </Suspense>
+      )}
+      {daily && !budgetOpen && (
         <DailyPlanner
           trip={trip}
           setTrip={setTrip}
@@ -233,7 +276,7 @@ export default function TripPlanner({
           notify={notify}
         />
       )}
-      <div hidden={daily}>
+      <div hidden={daily || budgetOpen}>
         <div className="planner-settings">
           <label className="trip-name-label">
             {t('GIVE YOUR TRIP A NAME', 'ตั้งชื่อทริป')}
@@ -456,7 +499,7 @@ export default function TripPlanner({
                 <strong>{money(estimate)}</strong>
               </div>
             </div>
-            <p className="fine-print">
+            <p className="fine-print" hidden={trip.budgetMode === 'items'}>
               {t(
                 'Calculated from your daily budget × travelers × days. This is a planning estimate; add flights, car rental, and one-off costs separately. Route order does not calculate driving times.',
                 'คำนวณจากงบรายวัน × จำนวนคน × จำนวนวัน เป็นเพียงงบเบื้องต้น ควรคิดเที่ยวบิน ค่าเช่ารถ และค่าใช้จ่ายก้อนใหญ่เพิ่ม ลำดับทริปไม่ได้คำนวณเวลาขับรถ',
@@ -470,7 +513,7 @@ export default function TripPlanner({
           </>
         )}
       </div>
-      {daily && trip.stops.length > 0 && (
+      {(daily || budgetOpen) && trip.stops.length > 0 && (
         <button className="button button-red export-main" onClick={exportText}>
           <Icon name="download" size={18} />
           {t('Download my itinerary', 'ดาวน์โหลดแผนเที่ยว')}
