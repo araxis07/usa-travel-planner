@@ -2,6 +2,9 @@ import { STATES, stateName, type Trip, type Language } from '../data/travel';
 import { translate, LOCALES } from '../lib/i18n';
 import { activityName, sortedActivities } from '../lib/destinations';
 import { tripDays } from '../lib/storage';
+import { x } from '../data/experience-copy';
+import { dayTimeline, clockLabel } from '../lib/timeline';
+import { checklistItems, checklistLabel } from './TripChecklist';
 export default function TripPrint({
   trip,
   lang,
@@ -57,7 +60,7 @@ export default function TripPrint({
                     <p>{t('Leave some room for discovery.', 'เว้นที่ว่างให้การค้นพบใหม่ ๆ')}</p>
                   )}
                   <ol>
-                    {activities.map((a) => (
+                    {dayTimeline(activities).map(({ activity: a, start, end }) => (
                       <li key={a.id}>
                         <strong>
                           {a.period === 'morning'
@@ -65,7 +68,7 @@ export default function TripPrint({
                             : a.period === 'afternoon'
                               ? t('Afternoon', 'บ่าย')
                               : t('Evening', 'เย็น')}{' '}
-                          · {activityName(a, lang)}
+                          · {activityName(a, lang)} · {clockLabel(start)}–{clockLabel(end)}
                         </strong>
                         <span>
                           {' '}
@@ -81,6 +84,18 @@ export default function TripPrint({
           </section>
         );
       })}
+      {!!trip.checklist?.length && (
+        <section className="print-checklist">
+          <h2>{x(lang, 'checklist')}</h2>
+          <ul>
+            {checklistItems(trip).map((item) => (
+              <li key={item.id}>
+                {item.done ? '☑' : '☐'} {checklistLabel(item, lang)}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       <p className="fine-print">
         {t(
           'Verify travel times, opening hours and reservations before departure. Maps and current alerts need an internet connection.',

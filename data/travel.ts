@@ -38,6 +38,7 @@ export interface Photo {
   width: number;
   height: number;
   caption?: string;
+  displayCaption?: LocalText;
 }
 export interface PlaceProfile {
   id: string;
@@ -57,6 +58,13 @@ export interface PlaceProfile {
   reviewedAt: string;
   reviewAfter: string;
   translationsReviewed: boolean[];
+  planning?: {
+    transport: 'transit' | 'car' | 'boat';
+    setting: 'indoors' | 'outdoors';
+    walking: 'easy' | 'varied';
+    interest: Interest;
+    months: number[];
+  };
 }
 export interface StateGuide {
   code: string;
@@ -104,6 +112,8 @@ export interface TripActivity {
   title: string;
   minutes: number;
   notes: string;
+  startTime?: string;
+  bufferMinutes?: number;
 }
 export interface Trip {
   name: string;
@@ -111,6 +121,7 @@ export interface Trip {
   travelers: number;
   dailyBudget: number;
   stops: TripStop[];
+  checklist?: { id: string; label: string; done: boolean }[];
 }
 export const EMPTY_TRIP: Trip = {
   name: '',

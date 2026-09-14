@@ -70,6 +70,13 @@ export function validateTrip(value: unknown): Trip {
           a.minutes > 720 ||
           typeof a.notes !== 'string' ||
           a.notes.length > 500 ||
+          (a.startTime !== undefined &&
+            (typeof a.startTime !== 'string' || !/^([01]\d|2[0-3]):[0-5]\d$/.test(a.startTime))) ||
+          (a.bufferMinutes !== undefined &&
+            (typeof a.bufferMinutes !== 'number' ||
+              !Number.isInteger(a.bufferMinutes) ||
+              a.bufferMinutes < 0 ||
+              a.bufferMinutes > 360)) ||
           (a.placeId !== undefined &&
             (typeof a.placeId !== 'string' ||
               !/^[A-Z]{2}-[0-2]$/.test(a.placeId) ||
@@ -84,6 +91,8 @@ export function validateTrip(value: unknown): Trip {
           title: a.title.trim(),
           minutes: a.minutes,
           notes: a.notes,
+          ...(typeof a.startTime === 'string' ? { startTime: a.startTime } : {}),
+          ...(typeof a.bufferMinutes === 'number' ? { bufferMinutes: a.bufferMinutes } : {}),
           ...(typeof a.placeId === 'string' ? { placeId: a.placeId } : {}),
         };
       });
@@ -110,7 +119,26 @@ export function validateTrip(value: unknown): Trip {
     travelers: trip.travelers,
     dailyBudget: trip.dailyBudget,
     stops,
+    ...(trip.checklist !== undefined ? { checklist: validateChecklist(trip.checklist) } : {}),
   };
+}
+function validateChecklist(value: unknown): NonNullable<Trip['checklist']> {
+  if (!Array.isArray(value) || value.length > 80) throw Error('Invalid checklist');
+  const seen = new Set<string>();
+  return value.map((item) => {
+    if (
+      !item ||
+      typeof item.id !== 'string' ||
+      !/^[a-zA-Z0-9-]{1,80}$/.test(item.id) ||
+      seen.has(item.id) ||
+      typeof item.label !== 'string' ||
+      item.label.length > 200 ||
+      typeof item.done !== 'boolean'
+    )
+      throw Error('Invalid checklist item');
+    seen.add(item.id);
+    return { id: item.id, label: item.label, done: item.done };
+  });
 }
 export function loadTrip() {
   return readLocal('roam.trip.v1', EMPTY_TRIP, validateTrip);

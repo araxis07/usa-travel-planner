@@ -1,6 +1,7 @@
 import { build, preview } from 'vite';
 import { execFileSync } from 'node:child_process';
 const outDir = 'artifacts/production';
+execFileSync(process.execPath, ['scripts/prepare-images.mjs'], { stdio: 'inherit' });
 await build({
   build: { outDir, emptyOutDir: true },
   define: {

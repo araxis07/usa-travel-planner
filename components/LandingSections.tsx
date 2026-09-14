@@ -1,6 +1,8 @@
 import { translate } from '../lib/i18n';
 import Icon, { type IconName } from './Icon';
-import { ROUTES, GUIDES, local, type Language } from '../data/travel';
+import { GUIDES, local, type Language } from '../data/travel';
+import { ITINERARIES as ROUTES } from '../data/itineraries';
+import { MORE_GUIDES } from '../data/fieldNotes';
 
 export function Brand({ footer = false }: { footer?: boolean }) {
   return (
@@ -200,7 +202,7 @@ export function FieldNotes({ lang, onGuide }: { lang: Language; onGuide: (id: st
           </span>
         </div>
         <div className="guide-grid">
-          {GUIDES.map((item, index) => (
+          {[...GUIDES, ...MORE_GUIDES].map((item, index) => (
             <button className="guide-card" key={item.id} onClick={() => onGuide(item.id)}>
               <div className={`guide-illustration guide-illustration-${index}`}>
                 <Icon name={item.icon as IconName} size={54} />

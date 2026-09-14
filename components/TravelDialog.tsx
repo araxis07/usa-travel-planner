@@ -7,9 +7,14 @@ import StateCard from './StateCard';
 import TripPlanner from './TripPlanner';
 import Icon, { type IconName } from './Icon';
 import { Brand } from './LandingSections';
+import { ITINERARIES, itineraryTrip } from '../data/itineraries';
+import { x } from '../data/experience-copy';
+import PlaceCollections from './PlaceCollections';
+import type { PlaceCollections as Collections } from '../lib/collections';
+import { activityName } from '../lib/destinations';
+import { MORE_GUIDES } from '../data/fieldNotes';
 import {
   STATES,
-  ROUTES,
   GUIDES,
   local,
   stateName,
@@ -40,6 +45,8 @@ interface Props {
   storageFailed: boolean;
   notify: (message: string) => void;
   toast: string;
+  onCreateTrip: (trip: Trip) => void;
+  collections: Collections;
 }
 export default function TravelDialog({
   modal,
@@ -56,11 +63,17 @@ export default function TravelDialog({
   storageFailed,
   notify,
   toast,
+  onCreateTrip,
+  collections,
 }: Props) {
   const t = (en: string, th: string, values?: Record<string, string | number>) =>
     translate(en, th, lang, values);
-  const guide = modal.type === 'guide' ? GUIDES.find((item) => item.id === modal.id) : null;
-  const route = modal.type === 'route' ? ROUTES.find((item) => item.id === modal.id) : null;
+  const guide =
+    modal.type === 'guide'
+      ? [...GUIDES, ...MORE_GUIDES].find((item) => item.id === modal.id)
+      : null;
+  const route = modal.type === 'route' ? ITINERARIES.find((item) => item.id === modal.id) : null;
+  const template = route ? itineraryTrip(route, lang) : null;
   const title =
     modal.type === 'state'
       ? stateName(modal.state, lang)
@@ -122,6 +135,7 @@ export default function TravelDialog({
               'เก็บสถานที่ที่ชอบ รอวันออกเดินทาง',
             )}
           </p>
+          <PlaceCollections collections={collections} lang={lang} onOpen={onOpenDestination} />
           {storageFailed && (
             <p className="storage-warning">
               {t(
@@ -241,20 +255,65 @@ export default function TravelDialog({
                 );
               })}
             </ol>
+            {template && (
+              <details className="template-schedule" open>
+                <summary>{x(lang, 'suggested')}</summary>
+                {template.stops.map((stop) => (
+                  <section key={stop.code}>
+                    <h3>
+                      {stateName(
+                        STATES.find((s) => s.code === stop.code)!,
+                        lang,
+                      )}
+                    </h3>
+                    {Array.from({ length: stop.days }, (_, i) => (
+                      <div className="template-day" key={i}>
+                        <strong>
+                          {t('Day', 'วันที่')} {i + 1}
+                        </strong>
+                        <ul>
+                          {stop.activities
+                            ?.filter((a) => a.day === i + 1)
+                            .map((a) => (
+                              <li key={a.id}>
+                                <time>{a.startTime}</time>
+                                {activityName(a, lang)}
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </section>
+                ))}
+              </details>
+            )}
             <p className="fine-print">
-              {t(
-                'A flexible route at state level. Choose specific towns and overnight bases, verify driving times, and check access before booking. Adding this route keeps your existing stops and notes.',
-                'เส้นทางยืดหยุ่นในระดับรัฐ ควรเลือกเมืองและฐานพัก ตรวจเวลาขับรถและการเข้าถึงก่อนจอง การเพิ่มเส้นทางจะเก็บจุดหมายและโน้ตเดิมไว้',
-              )}
+              {x(lang, 'templateNote')} {x(lang, 'preserveTrip')}
             </p>
+            {template && (
+              <button className="button button-navy" onClick={() => onCreateTrip(template)}>
+                {x(lang, 'usePlan')}
+              </button>
+            )}
             <button
               className="button button-red"
               onClick={() => {
-                const newStops = route.codes.flatMap((code, index) =>
-                  trip.stops.some((stop) => stop.code === code)
-                    ? []
-                    : [{ code, days: route.days[index], notes: '' }],
+                const newStops = template!.stops.filter(
+                  (candidate) => !trip.stops.some((stop) => stop.code === candidate.code),
                 );
+                if (
+                  trip.stops.reduce((n, s) => n + (s.activities?.length ?? 0), 0) +
+                    newStops.reduce((n, s) => n + (s.activities?.length ?? 0), 0) >
+                  200
+                ) {
+                  notify(
+                    t(
+                      'A trip can hold up to 200 activities.',
+                      'หนึ่งทริปเพิ่มกิจกรรมได้สูงสุด 200 รายการ',
+                    ),
+                  );
+                  return;
+                }
                 setTrip({
                   ...trip,
                   name: trip.name || local(route.title, lang),

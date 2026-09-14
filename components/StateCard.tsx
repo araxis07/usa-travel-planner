@@ -1,3 +1,4 @@
+import TravelImage from './TravelImage';
 import {
   local,
   stateName,
@@ -37,7 +38,7 @@ export default function StateCard({
           aria-label={`${t('Explore', 'สำรวจ')} ${name}`}
         >
           {photo && (
-            <img
+            <TravelImage
               src={photo.src}
               alt={local(state.placeNames[photo.placeIndex], lang)}
               loading="lazy"

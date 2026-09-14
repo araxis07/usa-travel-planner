@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { local, type StateGuide, type Language } from '../data/travel';
 import { translate } from '../lib/i18n';
 import Icon from './Icon';
+import { x } from '../data/experience-copy';
 
 export default function PhotoLightbox({
   state,
@@ -118,9 +119,21 @@ export default function PhotoLightbox({
           <Icon name="arrow" style={{ transform: 'rotate(180deg)' }} />
         </button>
         <p>
+          <span className="photo-caption">
+            {photo.displayCaption
+              ? local(photo.displayCaption, lang)
+              : x(lang, 'photoOf', {
+                  place: local(state.placeNames[photo.placeIndex], lang),
+                  number: index + 1,
+                })}
+          </span>
+          <br />
           {photo.caption && (
             <>
-              <span className="photo-caption">{photo.caption}</span>
+              <span className="source-photo-caption">
+                <small>{x(lang, 'sourceCaption')}: </small>
+                {photo.caption}
+              </span>
               <br />
             </>
           )}

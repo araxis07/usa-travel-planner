@@ -13,6 +13,7 @@ const user = {
 const trip: Trip = {
   ...EMPTY_TRIP,
   name: 'Private road trip',
+  checklist: [{ id: 'personal', label: 'Private booking reference', done: false }],
   stops: [
     {
       code: 'CA',
@@ -129,6 +130,7 @@ test('account copy, revision conflict, explicit load, private-note-free sharing 
     new RegExp(`#share=${token}$`),
   );
   expect(shares[0].payload.stops[0].notes).toBe('');
+  expect(shares[0].payload.checklist).toBeUndefined();
   expect(shares[0].payload.stops[0].activities![0].notes).toBe('');
   const view = await context.newPage();
   await view.goto(`/?lang=en#share=${token}`);

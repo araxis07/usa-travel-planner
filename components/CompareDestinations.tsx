@@ -12,6 +12,7 @@ import {
 import { translate } from '../lib/i18n';
 import { findPlace } from '../lib/destinations';
 import Dialog from './Dialog';
+import { x } from '../data/experience-copy';
 export const validComparison = (value: unknown): value is string[] =>
   Array.isArray(value) &&
   value.length <= 3 &&
@@ -133,6 +134,20 @@ export default function CompareDestinations({
                 </tr>
               </thead>
               <tbody>
+                {(['transport', 'walking', 'setting'] as const).map((field) => (
+                  <tr key={field}>
+                    <th scope="row">{x(lang, field === 'setting' ? 'interest' : field)}</th>
+                    {columns.map((c) => (
+                      <td key={c.id}>
+                        {c.index === undefined
+                          ? '—'
+                          : c.state.destinations[c.index].planning
+                            ? x(lang, c.state.destinations[c.index].planning![field])
+                            : '—'}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
                 <tr>
                   <th scope="row">{t('State travel styles', 'สไตล์การเที่ยวในรัฐ')}</th>
                   {columns.map((c) => (

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import TravelImage from './TravelImage';
+import { useEffect, useState } from 'react';
 import {
   local,
   stateName,
@@ -14,6 +15,8 @@ import PhotoLightbox from './PhotoLightbox';
 import RouteMap from './RouteMap';
 import Icon from './Icon';
 import PlacePractical from './PlacePractical';
+import { x } from '../data/experience-copy';
+import type { PlaceCollections } from '../lib/collections';
 
 export default function DestinationPage({
   state,
@@ -28,6 +31,7 @@ export default function DestinationPage({
   onOpen,
   onBack,
   notify,
+  collections,
 }: {
   state: StateGuide;
   placeIndex?: number;
@@ -41,10 +45,14 @@ export default function DestinationPage({
   onOpen: (state: StateGuide, index?: number) => void;
   onBack: () => void;
   notify: (message: string) => void;
+  collections: PlaceCollections;
 }) {
   const t = (en: string, th: string) => translate(en, th, lang);
   const [gallery, setGallery] = useState<number | null>(null);
   const [shareFallback, setShareFallback] = useState(false);
+  useEffect(() => {
+    document.querySelector<HTMLElement>('.destination-hero h1')?.focus({ preventScroll: true });
+  }, []);
   const photo =
     placeIndex === undefined
       ? statePhoto(state)
@@ -102,8 +110,9 @@ export default function DestinationPage({
         )}
       </div>
       <section className="destination-hero">
-        <img
+        <TravelImage
           src={photo.src}
+          sizes="100vw"
           alt={local(state.placeNames[photo.placeIndex], lang)}
           fetchPriority="high"
         />
@@ -150,8 +159,14 @@ export default function DestinationPage({
           {t('Compare destinations', 'เปรียบเทียบจุดหมาย')}
         </button>
       </div>
+      <nav className="guide-toc container" aria-label={x(lang, 'practical')}>
+        <a href="#guide-story">{x(lang, 'story')}</a>
+        {placeIndex !== undefined && <a href="#guide-practical">{x(lang, 'practical')}</a>}
+        <a href="#guide-photos">{x(lang, 'photos')}</a>
+        <a href="#guide-map">{x(lang, 'directions')}</a>
+      </nav>
       <div className="destination-layout container">
-        <article className="destination-story">
+        <article className="destination-story" id="guide-story">
           <span className="eyebrow">{t('A LITTLE FURTHER', 'ออกไปค้นพบอีกนิด')}</span>
           <h2>
             {placeIndex === undefined
@@ -192,7 +207,7 @@ export default function DestinationPage({
             </h2>
             <span className="eyebrow">{state.code} — 01 / 03</span>
           </div>
-          <div className="place-story-list">
+          <div className="place-story-list" id="guide-photos">
             {indices.map((index) => {
               const item = state.photos.find((p) => p.placeIndex === index) ?? photo;
               const record = findPlace(placeId(state, index));
@@ -203,7 +218,11 @@ export default function DestinationPage({
                     onClick={() => setGallery(state.photos.indexOf(item))}
                     aria-label={`${t('View photo', 'ดูภาพ')} ${local(state.placeNames[index], lang)}`}
                   >
-                    <img src={item.src} alt={local(state.placeNames[index], lang)} loading="lazy" />
+                    <TravelImage
+                      src={item.src}
+                      alt={local(state.placeNames[index], lang)}
+                      loading="lazy"
+                    />
                     <span>0{index + 1}</span>
                   </button>
                   <div>
@@ -227,7 +246,7 @@ export default function DestinationPage({
                             onClick={() => setGallery(state.photos.indexOf(p))}
                             aria-label={`${t('View photo', 'ดูภาพ')} ${local(state.placeNames[index], lang)} ${state.photos.indexOf(p) + 1}`}
                           >
-                            <img
+                            <TravelImage
                               src={p.src}
                               alt={local(state.placeNames[index], lang)}
                               loading="lazy"
@@ -239,6 +258,21 @@ export default function DestinationPage({
                       <button className="text-link" onClick={() => onAddPlace(index)}>
                         <Icon name="plus" size={16} />
                         {t('Add to daily plan', 'เพิ่มในแผนรายวัน')}
+                      </button>
+                      <button
+                        className="text-link"
+                        aria-pressed={collections.groups[0].places.includes(
+                          `${state.code}-${index}`,
+                        )}
+                        onClick={() => collections.toggle(`${state.code}-${index}`)}
+                      >
+                        <Icon name="heart" size={16} />
+                        {x(
+                          lang,
+                          collections.groups[0].places.includes(`${state.code}-${index}`)
+                            ? 'savedPlace'
+                            : 'savePlace',
+                        )}
                       </button>
                       <a
                         className="text-link"
@@ -285,7 +319,9 @@ export default function DestinationPage({
               );
             })}
           </div>
-          <RouteMap points={points} lang={lang} />
+          <div id="guide-map">
+            <RouteMap points={points} lang={lang} />
+          </div>
           <div className="destination-notes">
             <section>
               <span className="eyebrow">{t('A TASTE OF THE STATE', 'รสชาติประจำรัฐ')}</span>

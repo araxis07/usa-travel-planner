@@ -62,6 +62,100 @@ export default function ProfileEditor({
             </label>
           ))}
           <div className="studio-facts">
+            {p.planning && (
+              <>
+                <label>
+                  การเดินทาง
+                  <select
+                    value={p.planning.transport}
+                    onChange={(e) =>
+                      change(index, {
+                        planning: {
+                          ...p.planning!,
+                          transport: e.target.value as NonNullable<
+                            PlaceProfile['planning']
+                          >['transport'],
+                        },
+                      })
+                    }
+                  >
+                    <option value="transit">ฐานขนส่งสาธารณะ</option>
+                    <option value="car">รถหรือรถรับส่ง</option>
+                    <option value="boat">เรือหรือข้ามเกาะ</option>
+                  </select>
+                </label>
+                <label>
+                  ประเภทกิจกรรม
+                  <select
+                    value={p.planning.interest}
+                    onChange={(e) =>
+                      change(index, {
+                        planning: {
+                          ...p.planning!,
+                          interest: e.target.value as NonNullable<
+                            PlaceProfile['planning']
+                          >['interest'],
+                        },
+                      })
+                    }
+                  >
+                    {['Cities', 'Nature', 'Coast', 'Culture'].map((v) => (
+                      <option key={v}>{v}</option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  สภาพแวดล้อม
+                  <select
+                    value={p.planning.setting}
+                    onChange={(e) =>
+                      change(index, {
+                        planning: {
+                          ...p.planning!,
+                          setting: e.target.value as 'indoors' | 'outdoors',
+                        },
+                      })
+                    }
+                  >
+                    <option value="indoors">มีตัวเลือกในร่ม</option>
+                    <option value="outdoors">กลางแจ้ง</option>
+                  </select>
+                </label>
+                <label>
+                  รูปแบบการเดิน
+                  <select
+                    value={p.planning.walking}
+                    onChange={(e) =>
+                      change(index, {
+                        planning: { ...p.planning!, walking: e.target.value as 'easy' | 'varied' },
+                      })
+                    }
+                  >
+                    <option value="easy">เลือกเที่ยวช่วงสั้นได้</option>
+                    <option value="varied">ตรวจเส้นทางหรือสถานที่</option>
+                  </select>
+                </label>
+                <fieldset>
+                  <legend>เดือนแนะนำเบื้องต้น</legend>
+                  {Array.from({ length: 12 }, (_, i) => (
+                    <label key={i}>
+                      <input
+                        type="checkbox"
+                        checked={p.planning!.months.includes(i + 1)}
+                        onChange={() => {
+                          const months = p.planning!.months.includes(i + 1)
+                            ? p.planning!.months.filter((m) => m !== i + 1)
+                            : [...p.planning!.months, i + 1].sort((a, b) => a - b);
+                          if (months.length)
+                            change(index, { planning: { ...p.planning!, months } });
+                        }}
+                      />
+                      {i + 1}
+                    </label>
+                  ))}
+                </fieldset>
+              </>
+            )}
             <label>
               เวลาเที่ยวแนะนำ (นาที)
               <input

@@ -1,4 +1,4 @@
-# Roam America · v3
+# Roam America · v3.1
 
 An independent travel guide and itinerary planner for all 50 U.S. states, with English, Thai, Simplified Chinese, Japanese and Korean interfaces.
 
@@ -13,6 +13,8 @@ npm run dev
 
 Open Vite’s printed `Local` URL. The default is port 5173; an occupied port automatically falls back to the next available port. Stop your server with `Ctrl+C` when finished. Local planning needs no account or API key.
 
+The first dev start generates responsive WebP photographs from the local originals. Later starts reuse unchanged variants. `npm run prepare:images` regenerates them explicitly; the production build also runs it. Generated files under `public/images/responsive/` do not belong in Git.
+
 ```sh
 npm run build
 npm run preview
@@ -25,15 +27,18 @@ The repository has no hosting-specific deployment workflow. A Git push runs veri
 ## What is included
 
 - **50 state guides, 150 place profiles and 450 local photographs.** Every place has three distinct photos with individual source and license links. Profiles include five-language highlights, planning duration, accommodation areas, access guidance, source dates and official links. Galleries support keyboard arrows, swipe, zoom and source captions.
-- **Discovery and comparison.** Search state/place names across all five languages, combine region/season/interest filters, save favorites and compare up to three states or places side by side.
-- **Full-page daily planner.** Choose the day, time slot and duration before adding a place. Search all 150 destinations or create a custom activity. Edit notes, move activities between days or periods, reorder by dragging or keyboard buttons and undo a deletion. The desktop workspace puts the schedule alongside its map; mobile uses a single column and day navigation.
-- **Interactive atlas and route map.** A local 2D/3D state atlas with motion controls, connected activity/pin selection, numbered itinerary markers and driving estimates requested explicitly by the traveler.
+- **Discovery and comparison.** Separate state and place views, multilingual search, combined region/season/interest/transport/indoor filters, list/map selection and comparison of up to three states or places. The three-step trip helper suggests three bases with reasons using month, interests, party and car preference. Its editable starter plan leaves later days flexible.
+- **A local trip library.** Keep up to 30 separate trips, switch, duplicate, archive, restore, delete with confirmation and export individual backups. Creating a trip from the helper or a template preserves the current one. Each trip has its own notes and checklist; storage failures are shown before switching.
+- **Place collections.** Save individual places into named lists, mark visited destinations, and export/import collection backups with a replacement preview. Existing state favorites remain available.
+- **Eight editable itineraries and six field guides.** Southwest, Pacific Coast, New England, New York, Boston, Chicago, Florida and Wyoming templates include daily activities, meals, rest and transfer blocks. Preview every day before creating a trip. Field guides now cover car-free cities, seasonal planning and comfortable travel as well as the original essentials.
+- **Full-page daily planner.** Compact activity cards expand for editing. Set a start time and transfer/rest buffer, add a quick meal or break, move activities and undo changes. Overlapping times, midnight overruns and distant places on the same day are flagged. Distance warnings use straight-line reference coordinates, not driving estimates. Desktop shows the schedule alongside its map; mobile has list/map switching and day navigation. A per-trip checklist supports custom tasks and prints with the plan.
+- **Interactive atlas and route map.** A local 2D/3D state atlas with zoom, reset, rotation, state/region focus, destination previews and a schematic state route. A small native WebGL Golden Gate Bridge illustration pauses when hidden and respects reduced-motion preferences, with a photo fallback. Driving estimates remain an explicit action on the daily route map.
 - **Trip portability.** Automatic browser saving, validated JSON import with replacement confirmation, JSON/text export, and a print layout for every day and activity. The browser’s print dialog provides **Save as PDF**, including Thai and CJK text.
-- **Offline reading.** On the published HTTPS site (or localhost preview), **Save for offline** downloads the selected states’ photos. The service worker stores the app, fonts and cached park facts. The current browser trip and downloaded photos can then reopen offline. Success is shown only after the download completes. Save again after adding other states. Browser storage limits, private browsing or clearing site data can remove downloaded content; keep a JSON backup for durable storage.
-- **Optional accounts and sharing.** Supabase integration supports email/password signup, confirmation, reset, account copies, explicit loading, revision conflict detection and seven-day read-only snapshot links. Notes are excluded by default. Owners can include them explicitly and revoke links. Edits after sharing do not change that snapshot. Account activation requires the setup below.
+- **Offline reading.** On the published HTTPS site (or localhost preview), **Save for offline** downloads the selected states’ originals and responsive photos. A connection/download panel reports availability and removes selected-trip downloads after confirmation. The service worker stores the app, fonts and cached park facts. The current browser trip and downloaded photos can then reopen offline. Success is shown only after the download completes. Save again after adding other states. Browser storage limits, private browsing or clearing site data can remove downloaded content; keep a JSON backup for durable storage.
+- **Optional accounts and sharing.** Supabase integration supports email/password signup, confirmation, reset, account copies, explicit loading, revision conflict detection and seven-day read-only snapshot links. Notes and personal checklists are excluded by default. Owners can include them explicitly and revoke links. Edits after sharing do not change that snapshot. Account activation requires the setup below.
 - **Local Content Studio.** Edit and publish the catalog, all five translations, per-place coordinates and sources, photography and review dates together. Review queues highlight overdue content, approximate coordinates and translations awaiting human review.
 
-Suggested visit times, accommodation areas, seasons and budgets are editorial planning starting points. The budget is `days × travelers × the traveler’s daily amount`; flights, car rental and one-off costs are separate. No live inventory, reservations or destination-specific price promises are generated.
+Suggested visit times, accommodation areas, months, transport/walking classifications and budgets are editorial planning starting points. Month tags initially follow state seasons and are editable per place in Studio; they are not live forecasts. Transit-friendly labels identify city bases, not every attraction. Walking labels do not certify wheelchair access; use the linked operator or park guidance. Eight popular-place access guides were reviewed against official sources on 2026-09-14. Human translation review and 108 approximate-area coordinate reviews remain in the Studio queue. The budget is `days × travelers × the traveler’s daily amount`; flights, car rental and one-off costs are separate. No live inventory, reservations or destination-specific price promises are generated.
 
 ## Configure the public site and accounts
 
@@ -46,7 +51,7 @@ Copy `.env.example` to `.env.local`, then fill the values you actually use:
 | `VITE_SUPABASE_PUBLISHABLE_KEY` | Its public publishable key (or legacy `anon` key). Secret and service-role keys are rejected by the client.                                                                   |
 | `NPS_API_KEY`                   | Optional server-side environment value for refreshing the public park snapshot. Never bundled in the browser.                                                                 |
 
-Without a public origin, the build still generates all language pages but omits absolute canonical/social URLs and the sitemap. Without Supabase configuration, the account panel explains that accounts are not enabled and local planning continues.
+Without a public origin, the build still generates all language pages but omits absolute canonical/social URLs and the sitemap. Without Supabase configuration, the account entry is hidden and all local features work. This release does not activate accounts or connect a database.
 
 To activate accounts on the intended Supabase project:
 
@@ -87,7 +92,7 @@ npm run studio
 เปิด **http://127.0.0.1:5174/studio**:
 
 1. เลือกรัฐและภาษา แก้คำอธิบาย อาหาร ข้อแนะนำ ฤดูกาล และสนามบิน
-2. เปิดรายละเอียดรายสถานที่เพื่อแก้เรื่องราว เวลาเที่ยว บริเวณที่พัก การเข้าถึง ประเภทหมุด พิกัด ลิงก์อ้างอิง และวันตรวจสอบ
+2. เปิดรายละเอียดรายสถานที่เพื่อแก้เรื่องราว เวลาเที่ยว บริเวณที่พัก การเข้าถึง ประเภทหมุด พิกัด ลิงก์อ้างอิง วันตรวจสอบ และข้อมูลเดือนท่องเที่ยว การเดินทาง การเดิน และกิจกรรมในร่ม/กลางแจ้ง
 3. จัดการภาพ JPEG/PNG/WebP ขนาดไม่เกิน 5 MB ใส่ผู้ถ่าย แหล่งที่มา และสิทธิ์ใช้งานให้ครบ ทุกสถานที่ต้องมีอย่างน้อย 3 ภาพ
 4. ใช้คิวตรวจทานเพื่อดูข้อมูลที่ถึงกำหนด พิกัดที่ยังเป็นพื้นที่โดยประมาณ และภาษาที่ยังไม่ได้ตรวจ แก้ข้อความแล้วสถานะตรวจทานภาษานั้นจะถูกล้าง
 5. บันทึกฉบับร่าง ดูตัวอย่าง และตรวจข้อมูลก่อนกด **เผยแพร่เข้าโปรเจกต์** จากนั้น build, commit และ push เพื่อส่งต่อให้โฮสต์ deploy
@@ -96,11 +101,11 @@ npm run studio
 
 Studio เปิดเฉพาะ localhost ในโหมด `studio`; production ไม่มี API เขียนไฟล์ คำแปลที่เพิ่มเข้ามายังอยู่ในคิวรอการตรวจทานโดยเจ้าของภาษา ไม่ได้ถูกทำเครื่องหมายว่าผ่านการตรวจโดยคนแล้ว
 
-`content/states.json` is the published source of truth for all 50 states and their three destination slots. Interface/article translations are maintained in `content/translations.json`, with English/Thai strings alongside the UI. Photo captions and NPS source excerpts retain their source language.
+`content/states.json` is the published source of truth for all 50 states and their three destination slots. Original interface/article translations are maintained in `content/translations.json`, with English/Thai strings alongside the UI. New experience copy, itineraries and field notes keep five languages together in `data/experience-copy.ts`, `data/itineraries.ts` and `data/fieldNotes.ts`. Photos have concise localized place/photo labels; the full original source caption and NPS excerpts retain their source language.
 
 ## Storage and privacy
 
-Browser storage holds language, favorites, comparison choices and the current trip. JSON backups use version 2 and accept version 1 imports; old trips preserve notes, dates, stops and budget settings. Trips support up to 200 activities and imports are limited to 1 MB. Cloud storage is used only through the explicit account actions. Shared snapshots omit personal notes unless selected; anyone with the link can view the included trip details until expiry or revocation. Downloaded copies cannot be recalled.
+Browser storage holds language, favorites, comparison choices, place collections, visited places and the trip library. `roam.trip.v1` remains the current-trip compatibility record; `roam.library.v1` stores up to 30 trips and `roam.collections.v1` stores up to 20 collections. These do not sync across devices. Export a trip or collections backup to transfer it. JSON backups use version 2 and accept version 1 imports; old trips preserve notes, dates, stops and budget settings. Trips support up to 200 activities and imports are limited to 1 MB. Cloud storage is used only through the explicit account actions. Shared snapshots omit personal notes and checklists unless selected; anyone with the link can view the included trip details until expiry or revocation. Downloaded copies cannot be recalled.
 
 The application has no analytics or advertising trackers. Gallery images, fonts and atlas geometry are local assets. Studio drafts are disk files independent of traveler storage. Clearing browser data removes local plans and offline copies; account copies remain until removed from the account database.
 
@@ -117,25 +122,25 @@ npm run test:production
 npm run format:check
 ```
 
-The regular Chromium suite covers desktop/mobile flows, five languages, galleries, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
+The 86-test regular Chromium suite covers multi-trip switching, collections import/export, templates, the trip helper, editable timelines and the existing desktop/mobile flows, five languages, galleries, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
 
 `test:production` builds to ignored `artifacts/production/`, serves port 5198, checks static SEO without JavaScript, client metadata, offline reloads, all saved photos and PDFs in five languages. Account tests intercept Supabase HTTP requests to exercise the real browser client without sending emails or changing a remote database. Reports and PDFs are in `artifacts/production-results/` and `artifacts/production-report/`. Tests close their servers when finished. GitHub Actions runs all three suites.
 
-| Location                                                           | Responsibility                                                             |
-| ------------------------------------------------------------------ | -------------------------------------------------------------------------- |
-| `App.tsx`, `components/`, `expedition.css`                         | Discovery, comparison, guides, daily planning, print, accounts and sharing |
-| `content/states.json`, `data/travel.ts`                            | Published multilingual profiles, images, coordinates and types             |
-| `lib/content.ts`, `studio/`                                        | Validation, migration, review queues and local editor                      |
-| `lib/storage.ts`, `lib/useTripHistory.ts`                          | Trip validation, browser persistence and undo                              |
-| `lib/cloud.ts`, `supabase/migrations/`                             | Optional authentication, scoped cloud storage and sharing                  |
-| `scripts/build-pages.mjs`, `lib/pageMetadata.ts`, `lib/offline.ts` | Static pages, SEO metadata and offline downloading                         |
-| `scripts/refresh-parks.mjs`, `public/data/parks.json`              | Official dated park snapshot                                               |
-| `scripts/review-v3.mjs`                                            | Local contact sheets of the published photos in `artifacts/v3/`            |
+| Location                                                                                 | Responsibility                                                             |
+| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `App.tsx`, `components/`, `expedition.css`, `experience.css`                             | Discovery, comparison, guides, daily planning, print, accounts and sharing |
+| `content/states.json`, `data/travel.ts`                                                  | Published multilingual profiles, images, coordinates and types             |
+| `lib/content.ts`, `studio/`                                                              | Validation, migration, review queues and local editor                      |
+| `lib/storage.ts`, `lib/useTripHistory.ts`, `lib/journeyLibrary.ts`, `lib/collections.ts` | Trip validation, browser persistence and undo                              |
+| `lib/cloud.ts`, `supabase/migrations/`                                                   | Optional authentication, scoped cloud storage and sharing                  |
+| `scripts/build-pages.mjs`, `lib/pageMetadata.ts`, `lib/offline.ts`                       | Static pages, SEO metadata and offline downloading                         |
+| `scripts/refresh-parks.mjs`, `public/data/parks.json`                                    | Official dated park snapshot                                               |
+| `scripts/review-v3.mjs`                                                                  | Local contact sheets of the published photos in `artifacts/v3/`            |
 
 ## Sources and licenses
 
 [`public/credits.txt`](public/credits.txt) lists each photograph’s source, author and license, regenerated at build time. Wikimedia Commons images retain individual CC BY, CC BY-SA, CC0, public-domain or Free Art License terms. NPS images use the credits and public-domain status supplied for the selected images. Photos are locally resized and may be cropped by the layout. Hero/route photographs also use Unsplash.
 
-Destination summaries adapt Wikipedia introductions and editorial highlights. Each profile includes its language-specific source link and CC BY-SA 4.0 attribution. Preserve those references when editing or reusing the summaries. Hours, fees and alerts come from the National Park Service; they are snapshots, not live guarantees.
+Destination summaries now use concise editorial highlights rather than encyclopedia introductions. Earlier research remains in the source archive. Each profile includes its language-specific source link and CC BY-SA 4.0 attribution. Preserve those references when editing or reusing the summaries. Hours, fees and alerts come from the National Park Service; they are snapshots, not live guarantees.
 
 State geometry comes from the ISC-licensed [US Atlas](https://github.com/topojson/us-atlas), with Alaska and Hawaii in separate insets. D.C. and territories are outside the 50-state count. DM Sans, DM Serif Display and Noto Sans Thai are self-hosted under bundled SIL Open Font Licenses. Chinese, Japanese and Korean use the device’s installed font fallbacks.

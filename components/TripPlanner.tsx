@@ -1,6 +1,6 @@
 import { statePlaces, statePhoto } from '../data/travel';
 import { translate, LOCALES } from '../lib/i18n';
-import { lazy, Suspense, useRef, useState, type ChangeEvent } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { EMPTY_TRIP, STATES, stateName, type Language, type Trip } from '../data/travel';
 import { downloadFile, tripDays, validateTrip, validDate } from '../lib/storage';
 import Icon from './Icon';
@@ -9,6 +9,8 @@ import DailyPlanner from './DailyPlanner';
 import TripPrint from './TripPrint';
 import { saveOffline } from '../lib/offline';
 import { activityName, sortedActivities } from '../lib/destinations';
+import TripChecklist from './TripChecklist';
+import OfflineStatus from './OfflineStatus';
 
 const CloudPanel = lazy(() => import('./CloudPanel'));
 
@@ -42,6 +44,9 @@ export default function TripPlanner({
   const [daily, setDaily] = useState(initialDaily);
   const [pendingImport, setPendingImport] = useState<Trip | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    document.getElementById('planner-title')?.focus({ preventScroll: true });
+  }, []);
   const days = tripDays(trip);
   const estimate = days * trip.travelers * trip.dailyBudget;
   const money = (value: number) =>
@@ -178,9 +183,11 @@ export default function TripPlanner({
             ? t('Downloading…', 'กำลังดาวน์โหลด…')
             : t('Save for offline', 'เก็บไว้อ่านออฟไลน์')}
         </button>
-        <button className="button button-outline" onClick={() => setAccount(true)}>
-          {t('Account & sharing', 'บัญชีและการแชร์')}
-        </button>
+        {import.meta.env.VITE_SUPABASE_URL && (
+          <button className="button button-outline" onClick={() => setAccount(true)}>
+            {t('Account & sharing', 'บัญชีและการแชร์')}
+          </button>
+        )}
       </div>
       {offlineReady && (
         <p role="status">
@@ -190,6 +197,7 @@ export default function TripPlanner({
           )}
         </p>
       )}
+      <OfflineStatus trip={trip} lang={lang} refresh={offlineReady} />
       {account && (
         <Suspense fallback={<p role="status">{t('Loading…', 'กำลังโหลด…')}</p>}>
           <CloudPanel
@@ -215,6 +223,7 @@ export default function TripPlanner({
           {t('Daily plan', 'แผนรายวัน')}
         </button>
       </div>
+      <TripChecklist trip={trip} setTrip={setTrip} lang={lang} />
       {daily && (
         <DailyPlanner
           trip={trip}

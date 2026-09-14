@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { local, type PlaceProfile, type Language } from '../data/travel';
 import { translate, LOCALES } from '../lib/i18n';
+import { x } from '../data/experience-copy';
 interface Park {
   id: string;
   url: string;
@@ -59,8 +60,38 @@ export default function PlacePractical({
       new Date(value),
     );
   return (
-    <section className="place-practical">
+    <section className="place-practical" id="guide-practical">
       <h3>{t('Plan the practical details', 'วางแผนรายละเอียดที่จำเป็น')}</h3>
+      {profile.planning && (
+        <div className="place-planning-facts">
+          <div>
+            <span>{x(lang, 'transport')}</span>
+            <strong>{x(lang, profile.planning.transport)}</strong>
+          </div>
+          <div>
+            <span>{x(lang, 'walking')}</span>
+            <strong>{x(lang, profile.planning.walking)}</strong>
+          </div>
+          <div>
+            <span>{x(lang, 'interest')}</span>
+            <strong>{x(lang, profile.planning.setting)}</strong>
+          </div>
+          <div>
+            <span>{x(lang, 'months')}</span>
+            <strong>
+              {profile.planning.months
+                .map((m) =>
+                  new Intl.DateTimeFormat(LOCALES[lang], { month: 'short' }).format(
+                    new Date(2026, m - 1, 1),
+                  ),
+                )
+                .join(' · ')}
+            </strong>
+          </div>
+        </div>
+      )}
+      <p className="fine-print">{x(lang, 'editorial')}</p>
+      <p className="fine-print">{x(lang, 'accessNote')}</p>
       <dl className="practical-grid">
         <div>
           <dt>{t('Suggested time', 'เวลาแนะนำ')}</dt>

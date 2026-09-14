@@ -34,3 +34,5 @@ playwright-report/
 
 # Local Supabase CLI link/version cache
 supabase/.temp/
+
+/public/images/responsive/

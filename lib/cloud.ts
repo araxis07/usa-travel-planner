@@ -60,6 +60,7 @@ export async function saveCloudTrip(
 export function shareSnapshot(trip: Trip, includeNotes: boolean): Trip {
   return validateTrip({
     ...trip,
+    checklist: includeNotes ? trip.checklist : undefined,
     stops: trip.stops.map((s) => ({
       ...s,
       notes: includeNotes ? s.notes : '',

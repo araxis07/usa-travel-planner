@@ -207,6 +207,11 @@ test('a destination adds to daily planning and custom activities survive export,
     .locator('.add-activity')
     .getByRole('button', { name: 'Add activity', exact: true })
     .click();
+  await page
+    .locator('.day-activity')
+    .filter({ hasText: 'Picnic with friends' })
+    .getByRole('button', { name: 'Edit activity', exact: true })
+    .click();
   const rename = page.getByLabel('Rename activity Picnic with friends');
   await rename.fill('');
   await expect(rename).toHaveValue('');
@@ -271,7 +276,19 @@ test('activities reorder, move between time slots and protect occupied days from
     await expect(
       page.getByRole('region', { name: 'Evening', exact: true }).locator('h5'),
     ).toHaveText('Big Sur');
-  } else await page.getByLabel('Time slot for Big Sur').selectOption('evening');
+  } else {
+    await page
+      .locator('.day-activity')
+      .filter({ hasText: 'Big Sur' })
+      .getByRole('button', { name: 'Edit activity', exact: true })
+      .click();
+    await page.getByLabel('Time slot for Big Sur').selectOption('evening');
+  }
+  const editBigSur = page
+    .locator('.day-activity')
+    .filter({ hasText: 'Big Sur' })
+    .getByRole('button', { name: 'Edit activity', exact: true });
+  if (await editBigSur.count()) await editBigSur.click();
   await page.getByLabel('Day for Big Sur', { exact: true }).selectOption('2');
   await page.getByRole('button', { name: 'Trip overview', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Fewer days in California' })).toBeDisabled();
@@ -314,13 +331,27 @@ test('route requests are explicit, show real response values, fail safely and cl
   });
   await seed(page);
   expect(requests).toBe(0);
+  const mapSwitch = page
+    .locator('.mobile-workspace-switch')
+    .getByRole('button', { name: 'Map', exact: true });
+  if (await mapSwitch.isVisible()) await mapSwitch.click();
   await page.getByRole('button', { name: 'Calculate driving route' }).click();
   await expect(page.getByRole('alert')).toContainText('No driving route');
   await page.getByRole('button', { name: 'Calculate driving route' }).click();
   await expect(page.locator('.route-result')).toContainText('280 km · 210 minutes driving');
   await expect(page.locator('.route-result')).toContainText('510 minutes');
   await expect(page.locator('.route-pin')).toHaveCount(2);
+  const listSwitch = page
+    .locator('.mobile-workspace-switch')
+    .getByRole('button', { name: 'List', exact: true });
+  if (await listSwitch.isVisible()) await listSwitch.click();
+  await page
+    .locator('.day-activity')
+    .filter({ hasText: 'Big Sur' })
+    .getByRole('button', { name: 'Edit activity', exact: true })
+    .click();
   await page.getByLabel('Day for Big Sur', { exact: true }).selectOption('2');
+  if (await mapSwitch.isVisible()) await mapSwitch.click();
   await expect(page.locator('.route-result')).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Calculate driving route' })).toBeDisabled();
   expect(requests).toBe(2);
@@ -363,7 +394,7 @@ test('five-language full guides and daily plans remain readable and accessible',
       nodes: v.nodes.map((n) => ({ target: n.target, message: n.failureSummary })),
     })),
   ).toEqual([]);
-  await page.locator('.planner-page-top').getByRole('button').click();
+  await page.locator('.planner-page-top > .text-link').click();
   const guide = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
     .analyze();

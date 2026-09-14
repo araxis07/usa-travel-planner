@@ -96,7 +96,7 @@ test('saved itinerary and all selected state photos reopen offline; print covers
     );
     return all.flat();
   });
-  expect(cached.filter((u) => u.includes('/images/'))).toHaveLength(9);
+  expect(cached.filter((u) => u.includes('/images/'))).toHaveLength(27);
   expect(
     cached.every((u) => u.startsWith(locationOrigin(testInfo.project.use.baseURL as string))),
   ).toBe(true);
@@ -122,7 +122,14 @@ test('saved itinerary and all selected state photos reopen offline; print covers
   }
   await page.goto('/en/states/california/yosemite-national-park/');
   await expect(page.locator('h1')).toContainText('Yosemite');
-  const photos = STATES[0].photos.map((p) => p.src);
+  const photos = STATES[0].photos.flatMap((p) => [
+    p.src,
+    ...[480, 960].map((width) =>
+      p.src
+        .replace('/images/', '/images/responsive/')
+        .replace(/\.(jpg|jpeg|png)$/, `-${width}.webp`),
+    ),
+  ]);
   expect(
     await page.evaluate(
       async (paths) =>
@@ -136,7 +143,7 @@ test('saved itinerary and all selected state photos reopen offline; print covers
         ),
       photos,
     ),
-  ).toEqual(Array(9).fill(true));
+  ).toEqual(Array(27).fill(true));
   const invalid = await page.evaluate(async () => {
     const reg = await navigator.serviceWorker.ready;
     return new Promise((resolve) => {

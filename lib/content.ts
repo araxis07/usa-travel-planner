@@ -122,6 +122,21 @@ export function validateCatalog(value: unknown): Catalog {
     if (!Array.isArray(state.destinations) || state.destinations.length !== 3)
       return fail(`${c} destination profiles`);
     for (const [i, profile] of state.destinations.entries()) {
+      if (record(profile) && profile.planning !== undefined) {
+        const p = profile.planning;
+        if (
+          !record(p) ||
+          !['transit', 'car', 'boat'].includes(p.transport as string) ||
+          !['indoors', 'outdoors'].includes(p.setting as string) ||
+          !['easy', 'varied'].includes(p.walking as string) ||
+          !['Nature', 'Cities', 'Coast', 'Culture'].includes(p.interest as string) ||
+          !Array.isArray(p.months) ||
+          !p.months.length ||
+          new Set(p.months).size !== p.months.length ||
+          !p.months.every((m) => Number.isInteger(m) && m >= 1 && m <= 12)
+        )
+          return fail(`${c} planning metadata`);
+      }
       if (
         !record(profile) ||
         profile.id !== `${c}-${i}` ||
@@ -222,6 +237,7 @@ export function validateCatalog(value: unknown): Catalog {
         !string(photo.author, 2000) ||
         !string(photo.license, 150) ||
         (photo.caption !== undefined && !string(photo.caption, 2000)) ||
+        (photo.displayCaption !== undefined && !texts(photo.displayCaption)) ||
         !Number.isInteger(photo.width) ||
         !Number.isInteger(photo.height) ||
         Number(photo.width) < 1 ||
