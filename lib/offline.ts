@@ -7,7 +7,7 @@ export async function saveOffline(trip: Trip) {
     .flatMap((stop) => STATES.find((s) => s.code === stop.code)?.photos.map((p) => p.src) ?? [])
     .flatMap((src) => [
       src,
-      ...[480, 960].map((width) =>
+      ...[480, 640, 960].map((width) =>
         src
           .replace('/images/', '/images/responsive/')
           .replace(/\.(jpg|jpeg|png)$/, `-${width}.webp`),

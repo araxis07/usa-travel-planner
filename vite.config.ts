@@ -12,9 +12,33 @@ export default defineConfig(({ mode }) => ({
       name: 'catalog-views',
       enforce: 'pre',
       transform(source, id) {
-        if (!/\/content\/states\.json\?(overview|photos)$/.test(id)) return;
+        if (!/\/content\/states\.json\?(overview|photos|practical)$/.test(id)) return;
         const catalog = JSON.parse(source) as Catalog;
-        // Keep one editorial source; gallery metadata loads with guides and galleries.
+        // Keep one editorial source; practical details and photo credits load with guides.
+        const practicalFields = new Set([
+          'summarySources',
+          'summaryLicense',
+          'access',
+          'stay',
+          'officialUrl',
+          'bookingUrl',
+          'reviewedAt',
+          'reviewAfter',
+          'translationsReviewed',
+        ]);
+        if (id.endsWith('?practical'))
+          return JSON.stringify(
+            Object.fromEntries(
+              catalog.states.flatMap((state) =>
+                state.destinations.map((profile) => [
+                  profile.id,
+                  Object.fromEntries(
+                    Object.entries(profile).filter(([key]) => practicalFields.has(key)),
+                  ),
+                ]),
+              ),
+            ),
+          );
         return JSON.stringify(
           id.endsWith('?photos')
             ? Object.fromEntries(
@@ -24,6 +48,11 @@ export default defineConfig(({ mode }) => ({
                 ...catalog,
                 states: catalog.states.map((state) => ({
                   ...state,
+                  destinations: state.destinations.map((profile) =>
+                    Object.fromEntries(
+                      Object.entries(profile).filter(([key]) => !practicalFields.has(key)),
+                    ),
+                  ),
                   photos: state.photos.map(({ src, placeIndex, width, height }) => ({
                     src,
                     placeIndex,
@@ -43,6 +72,7 @@ export default defineConfig(({ mode }) => ({
         manualChunks(id) {
           if (id.endsWith('/content/states.json?overview')) return 'state-guides';
           if (id.endsWith('/content/states.json?photos')) return 'photo-details';
+          if (id.endsWith('/content/states.json?practical')) return 'place-details';
           if (id.endsWith('/content/translations.json')) return 'translations';
           if (id.endsWith('/data/map-paths.json')) return 'atlas-geometry';
         },

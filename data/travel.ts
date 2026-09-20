@@ -89,8 +89,21 @@ export interface StateGuide {
   cover: number;
   updatedAt: string;
   sources: { name: string; url: string }[];
-  destinations: PlaceProfile[];
+  destinations: PlaceOverview[];
 }
+
+export type PlaceOverview = Omit<
+  PlaceProfile,
+  | 'summarySources'
+  | 'summaryLicense'
+  | 'access'
+  | 'stay'
+  | 'officialUrl'
+  | 'bookingUrl'
+  | 'reviewedAt'
+  | 'reviewAfter'
+  | 'translationsReviewed'
+>;
 
 // Editorial starting points, not a live inventory. Each guide links to official tourism information.
 export const STATES = catalog.states as unknown as StateGuide[];

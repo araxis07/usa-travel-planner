@@ -78,7 +78,7 @@ export default function OfflineStatus({
                   paths
                     .flatMap((src) => [
                       src,
-                      ...[480, 960].map((width) =>
+                      ...[480, 640, 960].map((width) =>
                         src
                           .replace('/images/', '/images/responsive/')
                           .replace(/\.(jpg|jpeg|png)$/, `-${width}.webp`),

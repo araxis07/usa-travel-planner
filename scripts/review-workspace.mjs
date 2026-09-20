@@ -1,8 +1,9 @@
 import { chromium } from '@playwright/test';
 import fs from 'node:fs/promises';
 import { preview } from 'vite';
-const output = 'artifacts/v3.3';
+const output = 'artifacts/v3.4';
 const screensOnly = process.argv.includes('--screens-only');
+const performanceOnly = process.argv.includes('--performance-only');
 await fs.mkdir(output, { recursive: true });
 const server = await preview({ preview: { host: '127.0.0.1', port: 5177, strictPort: true } });
 const browser = await chromium.launch();
@@ -90,18 +91,25 @@ try {
         initialPhotoDetailsLoaded: performance
           .getEntriesByType('resource')
           .some((e) => /\/photo-details-/.test(e.name)),
+        initialPlaceDetailsLoaded: performance
+          .getEntriesByType('resource')
+          .some((e) => /\/place-details-/.test(e.name)),
       })),
     );
     await context.close();
   }
   await fs.writeFile(`${output}/review.json`, JSON.stringify(report, null, 2));
-  for (const [name, width, lang] of [
-    ['desktop', 1440, 'en'],
-    ['mobile', 390, 'th'],
-  ]) {
+  for (const [name, width, lang] of performanceOnly
+    ? []
+    : [
+        ['desktop', 1440, 'en'],
+        ['mobile', 390, 'th'],
+      ]) {
     const page = await browser.newPage({
       viewport: { width, height: 900 },
       reducedMotion: 'reduce',
+      isMobile: name === 'mobile',
+      hasTouch: name === 'mobile',
     });
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
@@ -169,6 +177,17 @@ try {
     await page.screenshot({ path: `${output}/${name}-budget.png`, fullPage: true });
     await page.locator('.planner-tabs button').nth(1).click();
     await page.screenshot({ path: `${output}/${name}-planner.png`, fullPage: true });
+    if (name === 'mobile') {
+      await page.locator('.add-activity-toggle').tap();
+      await page.setViewportSize({ width: 390, height: 360 });
+      await page.locator('.add-activity input').first().scrollIntoViewIfNeeded();
+      await page.screenshot({ path: `${output}/mobile-short-planner.png` });
+      await page.setViewportSize({ width: 844, height: 390 });
+      await page.locator('.add-activity button[type="submit"]').scrollIntoViewIfNeeded();
+      await page.screenshot({ path: `${output}/mobile-landscape-planner.png` });
+      await page.setViewportSize({ width, height: 900 });
+      await page.locator('.add-activity-toggle').tap();
+    }
     await page.locator('.planner-page-top > button').last().click();
     await page.locator('.workspace-backup summary').click();
     await page.screenshot({ path: `${output}/${name}-backup.png` });

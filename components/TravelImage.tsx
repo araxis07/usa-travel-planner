@@ -7,8 +7,10 @@ export function imageSources(src: string) {
   const width = widths.get(src) ?? 960;
   if (src === '/images/hero.jpg')
     return `${base}-480.webp 480w, ${base}-960.webp 960w, ${base}-1600.webp 1600w`;
-  if (width <= 480) return `${base}-960.webp ${width}w`;
-  return `${base}-480.webp ${Math.min(480, width)}w, ${base}-960.webp ${Math.min(960, width)}w`;
+  return [480, 640, 960]
+    .filter((_, i, sizes) => i === 0 || width > sizes[i - 1])
+    .map((size) => `${base}-${size}.webp ${Math.min(size, width)}w`)
+    .join(', ');
 }
 export default function TravelImage({
   src = '',

@@ -1,5 +1,6 @@
 import TravelImage from './TravelImage';
 import { photoDetails } from '../data/photo-details';
+import { placeDetails } from '../data/place-details';
 import { useEffect, useState } from 'react';
 import {
   local,
@@ -96,7 +97,8 @@ export default function DestinationPage({
   const galleryPhotos = state.photos.filter(
     (p) => placeIndex === undefined || p.placeIndex === placeIndex,
   );
-  const profile = placeIndex === undefined ? undefined : state.destinations[placeIndex];
+  const profile =
+    placeIndex === undefined ? undefined : placeDetails(state.destinations[placeIndex]);
   const isSaved =
     placeIndex === undefined
       ? saved
@@ -270,9 +272,7 @@ export default function DestinationPage({
               lang,
             )}
           </p>
-          {placeIndex !== undefined && (
-            <PlacePractical profile={state.destinations[placeIndex]} lang={lang} overviewShown />
-          )}
+          {profile && <PlacePractical profile={profile} lang={lang} overviewShown />}
           <div className="detail-facts" hidden={placeIndex === undefined}>
             <div>
               <Icon name="sun" />

@@ -94,7 +94,10 @@ function render(lang, state, index) {
     .replace('/images/', '/images/responsive/')
     .replace(/\.(jpg|jpeg|png)$/, '');
   const coverPreload = photo
-    ? `<link rel="preload" as="image" href="${coverBase}-960.webp" imagesrcset="${photo.width > 480 ? `${coverBase}-480.webp 480w, ` : ''}${coverBase}-960.webp ${Math.min(960, photo.width)}w" imagesizes="100vw" fetchpriority="high"/>`
+    ? `<link rel="preload" as="image" href="${coverBase}-960.webp" imagesrcset="${[480, 640, 960]
+        .filter((_, i, sizes) => i === 0 || photo.width > sizes[i - 1])
+        .map((width) => `${coverBase}-${width}.webp ${Math.min(width, photo.width)}w`)
+        .join(', ')}" imagesizes="100vw" fetchpriority="high"/>`
     : null;
   const html = template
     .replace(/<link\s+data-roam-cover\s[^>]+>/, (tag) => coverPreload ?? tag)
@@ -165,7 +168,7 @@ self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(ur
  if(event.request.mode==='navigate'){event.respondWith(fetch(event.request).catch(async()=>{const cache=await caches.open(CACHE);return await cache.match('/index.html')||Response.error();}));return;}
  if(SHELL.includes(url.pathname)||url.pathname.startsWith('/images/'))event.respondWith((async()=>{const hit=await caches.match(url.pathname);return hit||fetch(event.request);})());
 });
-self.addEventListener('message',event=>{if(event.data?.type!=='SAVE_TRIP')return;event.waitUntil((async()=>{try{const photos=event.data.photos;if(!Array.isArray(photos)||photos.length>1500||photos.some(p=>typeof p!=='string'||!/^\\/images\\/(?:[a-zA-Z0-9_-]+\\/)*[a-zA-Z0-9_-]+\\.(jpg|jpeg|png|webp)$/.test(p)))throw Error();const cache=await caches.open(PHOTOS);for(const path of new Set(photos)){if(!await cache.match(path)){const response=await fetch(path);if(!response.ok||!response.headers.get('content-type')?.startsWith('image/'))throw Error();await cache.put(path,response);}}event.ports[0]?.postMessage({ok:true});}catch{event.ports[0]?.postMessage({ok:false});}})());});`;
+self.addEventListener('message',event=>{if(event.data?.type!=='SAVE_TRIP')return;event.waitUntil((async()=>{try{const photos=event.data.photos;if(!Array.isArray(photos)||photos.length>1800||photos.some(p=>typeof p!=='string'||!/^\\/images\\/(?:[a-zA-Z0-9_-]+\\/)*[a-zA-Z0-9_-]+\\.(jpg|jpeg|png|webp)$/.test(p)))throw Error();const cache=await caches.open(PHOTOS);for(const path of new Set(photos)){if(!await cache.match(path)){const response=await fetch(path);if(!response.ok||!response.headers.get('content-type')?.startsWith('image/'))throw Error();await cache.put(path,response);}}event.ports[0]?.postMessage({ok:true});}catch{event.ports[0]?.postMessage({ok:false});}})());});`;
 await writeFile(outDir + '/sw.js', sw);
 console.log(
   `Generated ${pages.length} localized pages, offline service worker${origin ? ' and production sitemap' : ' (set SITE_URL to add absolute SEO metadata and sitemap)'}.`,

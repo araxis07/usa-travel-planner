@@ -1,7 +1,10 @@
-import type { StateGuide, Photo } from '../data/travel';
+import type { StateGuide, Photo, PlaceProfile } from '../data/travel';
 export interface Catalog {
   version: 1;
-  states: (Omit<StateGuide, 'photos'> & { photos: Photo[] })[];
+  states: (Omit<StateGuide, 'photos' | 'destinations'> & {
+    photos: Photo[];
+    destinations: PlaceProfile[];
+  })[];
 }
 export interface ContentIssue {
   code: string;

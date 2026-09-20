@@ -14,7 +14,7 @@ async function walk(dir) {
     if (!/\.(jpg|jpeg|png)$/i.test(file)) continue;
     const relative = path.relative(root, file).replace(/\.(jpg|jpeg|png)$/i, '');
     const source = await fs.stat(file);
-    for (const width of relative === 'hero' ? [480, 960, 1600] : [480, 960]) {
+    for (const width of relative === 'hero' ? [480, 960, 1600] : [480, 640, 960]) {
       const output = path.join(root, 'responsive', `${relative}-${width}.webp`);
       const stat = await fs.stat(output).catch(() => null);
       if (stat && stat.mtimeMs >= source.mtimeMs) continue;

@@ -18,6 +18,7 @@ export default defineConfig({
   projects: [
     {
       name: 'desktop',
+      testIgnore: ['**/production/**', '**/mobile-journey.spec.ts'],
       use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 1000 } },
     },
     { name: 'mobile', use: { ...devices['iPhone 13'], defaultBrowserType: 'chromium' } },
@@ -26,7 +27,16 @@ export default defineConfig({
       testMatch: '**/workspace.spec.ts',
       use: { ...devices['Desktop Firefox'], viewport: { width: 1440, height: 1000 } },
     },
-    { name: 'webkit', testMatch: '**/workspace.spec.ts', use: { ...devices['iPhone 13'] } },
+    {
+      name: 'webkit',
+      testMatch: ['**/workspace.spec.ts', '**/mobile-journey.spec.ts'],
+      use: { ...devices['iPhone 13'] },
+    },
+    {
+      name: 'android',
+      testMatch: '**/mobile-journey.spec.ts',
+      use: { ...devices['Pixel 7'] },
+    },
   ],
   webServer: {
     command: 'npm run dev -- --host 127.0.0.1 --port 5173 --strictPort',

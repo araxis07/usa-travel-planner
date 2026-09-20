@@ -1,11 +1,12 @@
-import { local, type StateGuide, type PlaceProfile, type LocalText } from '../data/travel';
+import { local, type PlaceProfile, type LocalText } from '../data/travel';
+import type { Catalog } from '../lib/content';
 import { LANGUAGES, LANGUAGE_NAMES, type Language } from '../lib/i18n';
 export default function ProfileEditor({
   state,
   language,
   onChange,
 }: {
-  state: StateGuide;
+  state: Catalog['states'][number];
   language: Language;
   onChange: (profiles: PlaceProfile[]) => void;
 }) {

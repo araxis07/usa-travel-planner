@@ -2285,6 +2285,17 @@ html[lang='ko'] .discovery-place h3 {
     font-size: 14px;
   }
 }
+@media (max-width: 1100px) and (pointer: coarse) {
+  :is(.site, .dialog) :is(input, select, textarea),
+  .site .header .language-selector select {
+    font-size: 16px;
+  }
+}
+@media (max-width: 760px) and (max-height: 500px) {
+  .planner-page .day-navigation {
+    position: static;
+  }
+}
 @media print {
   .day-navigation,
   .day-help,

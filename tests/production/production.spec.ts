@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { EMPTY_TRIP, STATES, type Trip } from '../../data/travel';
 import { LANGUAGES } from '../../lib/i18n';
+import catalog from '../../content/states.json' with { type: 'json' };
 const sample: Trip = {
   ...EMPTY_TRIP,
   name: 'My five-language journey',
@@ -29,7 +30,7 @@ const sample: Trip = {
   ],
 };
 
-test('mobile home defers gallery metadata and atlas while destination credits remain available', async ({
+test('mobile home defers guide details and atlas while credits and practical guidance remain available', async ({
   browser,
   baseURL,
 }) => {
@@ -45,11 +46,19 @@ test('mobile home defers gallery metadata and atlas while destination credits re
   await page.locator('.hero-search input').waitFor();
   await page.waitForLoadState('networkidle');
   expect(
-    requests.some((url) => /\/(Atlas|LandmarkScene|atlas-geometry|photo-details)-/.test(url)),
+    requests.some((url) =>
+      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|place-details)-/.test(url),
+    ),
   ).toBe(false);
   expect(
     await page.locator('.hero-image').evaluate((image: HTMLImageElement) => image.currentSrc),
   ).toContain('hero-mobile-800.webp');
+  expect(
+    await page
+      .locator('.destination-grid .card-image-button img')
+      .first()
+      .evaluate((image: HTMLImageElement) => image.currentSrc),
+  ).toContain('-640.webp');
   await page.locator('.destination-grid .card-image-button').first().click();
   await expect(page.locator('.destination-hero h1')).toHaveText('California');
   await expect(page.locator('.destination-page > .photo-credit a').first()).toHaveAttribute(
@@ -60,6 +69,18 @@ test('mobile home defers gallery metadata and atlas while destination credits re
   await expect(page.locator('.photo-lightbox .photo-caption')).not.toBeEmpty();
   await expect(page.locator('.lightbox-footer a').first()).toHaveAttribute('href', /^https:\/\//);
   expect(requests.some((url) => /\/photo-details-/.test(url))).toBe(true);
+  await page.goto(`${baseURL}/en/states/california/san-francisco/`);
+  const profile = catalog.states[0].destinations[0];
+  for (const [i, lang] of LANGUAGES.entries()) {
+    await page.getByLabel('Language / ภาษา').selectOption(lang);
+    await expect(page.locator('.practical-grid')).toContainText(profile.access[i]);
+    await expect(page.locator('.practical-grid')).toContainText(profile.stay[i]);
+    await expect(page.locator('.practical-links a').first()).toHaveAttribute(
+      'href',
+      profile.officialUrl,
+    );
+  }
+  expect(requests.some((url) => /\/place-details-/.test(url))).toBe(true);
   await context.close();
 });
 
@@ -136,7 +157,7 @@ test('saved itinerary and all selected state photos reopen offline; print covers
     );
     return all.flat();
   });
-  expect(cached.filter((u) => u.includes('/images/'))).toHaveLength(27);
+  expect(cached.filter((u) => u.includes('/images/'))).toHaveLength(36);
   expect(
     cached.every((u) => u.startsWith(locationOrigin(testInfo.project.use.baseURL as string))),
   ).toBe(true);
@@ -164,9 +185,12 @@ test('saved itinerary and all selected state photos reopen offline; print covers
   }
   await page.goto('/en/states/california/yosemite-national-park/');
   await expect(page.locator('h1')).toContainText('Yosemite');
+  await expect(page.locator('.practical-grid')).toContainText(
+    catalog.states[0].destinations[1].access[0],
+  );
   const photos = STATES[0].photos.flatMap((p) => [
     p.src,
-    ...[480, 960].map((width) =>
+    ...[480, 640, 960].map((width) =>
       p.src
         .replace('/images/', '/images/responsive/')
         .replace(/\.(jpg|jpeg|png)$/, `-${width}.webp`),
@@ -185,7 +209,7 @@ test('saved itinerary and all selected state photos reopen offline; print covers
         ),
       photos,
     ),
-  ).toEqual(Array(27).fill(true));
+  ).toEqual(Array(36).fill(true));
   const invalid = await page.evaluate(async () => {
     const reg = await navigator.serviceWorker.ready;
     return new Promise((resolve) => {
@@ -201,6 +225,26 @@ test('saved itinerary and all selected state photos reopen offline; print covers
     });
   });
   expect(invalid).toBe(false);
+  const capacity = await page.evaluate(async () => {
+    const reg = await navigator.serviceWorker.ready;
+    return Promise.all(
+      [1800, 1801].map(
+        (count) =>
+          new Promise((resolve) => {
+            const channel = new MessageChannel();
+            channel.port1.onmessage = (event) => {
+              channel.port1.close();
+              resolve(event.data.ok);
+            };
+            reg.active!.postMessage(
+              { type: 'SAVE_TRIP', photos: Array(count).fill('/images/states/ca-1.jpg') },
+              [channel.port2],
+            );
+          }),
+      ),
+    );
+  });
+  expect(capacity).toEqual([true, false]);
 });
 function locationOrigin(url: string) {
   return new URL(url || 'http://127.0.0.1:5198').origin;
