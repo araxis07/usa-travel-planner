@@ -11,6 +11,7 @@ import {
 import Icon from './Icon';
 import PhotoLightbox from './PhotoLightbox';
 import { destinationUrl } from '../lib/destinations';
+import { photoDetails } from '../data/photo-details';
 
 export default function StateDetail({
   state,
@@ -33,7 +34,7 @@ export default function StateDetail({
     translate(en, th, lang, values);
   const [selectedPhoto, setSelectedPhoto] = useState(state.cover);
   const [lightbox, setLightbox] = useState(false);
-  const photo = state.photos[selectedPhoto] ?? state.photos[0];
+  const photo = photoDetails(state.photos[selectedPhoto] ?? state.photos[0]);
   return (
     <div className="state-detail">
       <div className="detail-cover">

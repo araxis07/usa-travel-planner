@@ -1,7 +1,7 @@
-import type { StateGuide } from '../data/travel';
+import type { StateGuide, Photo } from '../data/travel';
 export interface Catalog {
   version: 1;
-  states: StateGuide[];
+  states: (Omit<StateGuide, 'photos'> & { photos: Photo[] })[];
 }
 export interface ContentIssue {
   code: string;

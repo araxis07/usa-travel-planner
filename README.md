@@ -1,4 +1,4 @@
-# Roam America · v3.2
+# Roam America · v3.3
 
 An independent travel guide and itinerary planner for all 50 U.S. states, with English, Thai, Simplified Chinese, Japanese and Korean interfaces.
 
@@ -147,8 +147,14 @@ Destination summaries now use concise editorial highlights rather than encyclope
 
 State geometry comes from the ISC-licensed [US Atlas](https://github.com/topojson/us-atlas), with Alaska and Hawaii in separate insets. D.C. and territories are outside the 50-state count. DM Sans, DM Serif Display and Noto Sans Thai are self-hosted under bundled SIL Open Font Licenses. Chinese, Japanese and Korean use the device’s installed font fallbacks.
 
-## v3.2 review notes
+## v3.3 UX and performance
+
+Search and the trip helper now sit inside the opening hero, with an early shortcut to resume a saved trip. State-card images open full guides; Quick view is a separate action. Returning to discovery preserves filters and scroll position. Guides put practical highlights, access notices and save/add actions near the cover.
+
+The mobile planner brings activities forward, keeps day selection and Add activity together in a sticky toolbar, and turns empty time slots into compact add buttons. Header controls fit all five languages. Landmark rotation reuses its WebGL scene; optional motion respects system preferences. Mobile cover crops, responsive preloads, deferred atlas loading and separate gallery metadata reduce startup work. The editorial source remains `content/states.json`; Vite derives both catalog views without duplicating editable content. See [release checks and measured limits](docs/v3.3-release.md).
+
+## v3.2 content review
 
 The first 24 destination access guides and 72 photo captions were reviewed and rewritten across five languages. Big Sur now uses a sourced visitor-information pin; broad areas retain clearly labeled area references. Saved advisories show their check dates and official sources, including on pages without JavaScript and in affected daily plans. Studio includes per-language photo-caption editing and review flags. Native-speaker sign-off remains pending. See [content review](docs/v3.2-content-review.md), [device and usability protocol](docs/usability-check.md), and [release checks](docs/v3.2-release.md).
 
-Install test browsers with `npx playwright install chromium firefox webkit`. `npm test` runs the complete Chromium desktop/mobile suite plus critical workspace journeys on Firefox and WebKit. `npm run test:production` covers generated pages, local offline/PDF behavior and mocked optional account compatibility. No tests connect to a real database. After `npm run build`, `node scripts/review-workspace.mjs` records three throttled production measurements and desktop/mobile screenshots under ignored `artifacts/v3.2/`.
+Install test browsers with `npx playwright install chromium firefox webkit`. `npm test` runs the complete Chromium desktop/mobile suite plus critical workspace journeys on Firefox and WebKit. `npm run test:production` covers generated pages, deferred assets and photo credits, local offline/PDF behavior and mocked optional account compatibility. No tests connect to a real database. After `npm run build`, `node scripts/review-workspace.mjs` records three throttled production measurements and desktop/mobile screenshots under ignored `artifacts/v3.3/`.

@@ -21,9 +21,11 @@ const secure = (url: string, fallback: string) => (/^https:\/\/[^/]+\//.test(url
 export default function PlacePractical({
   profile,
   lang,
+  overviewShown = false,
 }: {
   profile: PlaceProfile;
   lang: Language;
+  overviewShown?: boolean;
 }) {
   const t = (en: string, th: string) => translate(en, th, lang);
   const [facts, setFacts] = useState<Snapshot | null>(null);
@@ -62,7 +64,7 @@ export default function PlacePractical({
   return (
     <section className="place-practical" id="guide-practical">
       <h3>{t('Plan the practical details', 'วางแผนรายละเอียดที่จำเป็น')}</h3>
-      {profile.advisory && (
+      {!overviewShown && profile.advisory && (
         <aside className="day-warning">
           <p>{local(profile.advisory.text, lang)}</p>
           <a href={profile.advisory.source} target="_blank" rel="noreferrer">

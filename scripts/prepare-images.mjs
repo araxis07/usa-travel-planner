@@ -26,6 +26,19 @@ async function walk(dir) {
         .toFile(output);
       written++;
     }
+    if (relative === 'hero') {
+      for (const width of [480, 800]) {
+        const output = path.join(root, 'responsive', `hero-mobile-${width}.webp`);
+        const stat = await fs.stat(output).catch(() => null);
+        if (stat && stat.mtimeMs >= source.mtimeMs) continue;
+        await sharp(file)
+          .rotate()
+          .resize({ width, height: Math.round((width * 4) / 3), fit: 'cover' })
+          .webp({ quality: 75, effort: 4 })
+          .toFile(output);
+        written++;
+      }
+    }
   }
 }
 await walk(root);

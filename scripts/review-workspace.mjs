@@ -1,7 +1,7 @@
 import { chromium } from '@playwright/test';
 import fs from 'node:fs/promises';
 import { preview } from 'vite';
-const output = 'artifacts/v3.2';
+const output = 'artifacts/v3.3';
 const screensOnly = process.argv.includes('--screens-only');
 await fs.mkdir(output, { recursive: true });
 const server = await preview({ preview: { host: '127.0.0.1', port: 5177, strictPort: true } });
@@ -42,7 +42,10 @@ try {
         lastShift: 0,
       };
       new PerformanceObserver((list) => {
-        for (const e of list.getEntries()) window.__lab.lcp = e.startTime;
+        for (const e of list.getEntries()) {
+          window.__lab.lcp = e.startTime;
+          window.__lab.element = e.element?.className;
+        }
       }).observe({ type: 'largest-contentful-paint', buffered: true });
       new PerformanceObserver((list) => {
         const m = window.__lab;
@@ -63,6 +66,17 @@ try {
     report.runs.push(
       await page.evaluate(() => ({
         lcpMs: window.__lab.lcp,
+        lcpElement: window.__lab.element,
+        resources: performance
+          .getEntriesByType('resource')
+          .map((e) => ({
+            name: e.name.split('/').at(-1),
+            bytes: e.transferSize,
+            startMs: Math.round(e.startTime),
+            endMs: Math.round(e.responseEnd),
+          }))
+          .sort((a, b) => b.bytes - a.bytes)
+          .slice(0, 12),
         cls: window.__lab.cls,
         fcpMs: performance.getEntriesByName('first-contentful-paint')[0]?.startTime,
         transferBytes: performance
@@ -70,6 +84,12 @@ try {
           .reduce((n, e) => n + e.transferSize, 0),
         hero: document.querySelector('.hero img')?.currentSrc,
         overflow: document.documentElement.scrollWidth > innerWidth,
+        initialAtlasLoaded: performance
+          .getEntriesByType('resource')
+          .some((e) => /\/(Atlas|LandmarkScene|atlas-geometry)-/.test(e.name)),
+        initialPhotoDetailsLoaded: performance
+          .getEntriesByType('resource')
+          .some((e) => /\/photo-details-/.test(e.name)),
       })),
     );
     await context.close();
@@ -132,6 +152,12 @@ try {
       ),
     );
     await page.goto(`http://127.0.0.1:5177/${lang}/`);
+    await page.screenshot({ path: `${output}/${name}-home.png` });
+    await page.locator('.destination-grid .card-image-button').first().click();
+    await page.locator('.guide-overview').waitFor();
+    await page.screenshot({ path: `${output}/${name}-guide.png`, fullPage: true });
+    await page.locator('.guide-breadcrumb button').click();
+    await page.locator('#map').scrollIntoViewIfNeeded();
     for (const code of ['CA', 'NY', 'AZ']) {
       await page.locator('.map-select select').selectOption(code);
       await page.locator('.landmark-scene').scrollIntoViewIfNeeded();

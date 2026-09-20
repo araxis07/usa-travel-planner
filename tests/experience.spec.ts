@@ -33,7 +33,6 @@ test('all templates have complete valid days and five-language experience copy',
   });
   STATES.forEach((s) => {
     expect(s.destinations.every((p) => p.planning?.months.length)).toBe(true);
-    expect(s.photos.every((p) => p.displayCaption?.length === 5)).toBe(true);
   });
 });
 
@@ -309,6 +308,7 @@ test('collection backup previews replacement, restores places and rejects unrela
 
 test('atlas zoom, reset, 3D illustration and new surfaces remain accessible', async ({ page }) => {
   await page.goto('/en/');
+  await page.locator('#map').scrollIntoViewIfNeeded();
   const map = page.locator('.usa-map'),
     initial = await map.getAttribute('viewBox');
   await page.getByRole('button', { name: 'Zoom in', exact: true }).click();

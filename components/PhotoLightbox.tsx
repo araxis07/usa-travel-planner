@@ -3,6 +3,7 @@ import { local, type StateGuide, type Language } from '../data/travel';
 import { translate } from '../lib/i18n';
 import Icon from './Icon';
 import { x } from '../data/experience-copy';
+import { photoDetails } from '../data/photo-details';
 
 export default function PhotoLightbox({
   state,
@@ -20,7 +21,7 @@ export default function PhotoLightbox({
   const [failed, setFailed] = useState(false);
   const ref = useRef<HTMLDialogElement>(null);
   const touch = useRef<{ x: number; y: number } | null>(null);
-  const photo = state.photos[index] ?? state.photos[0];
+  const photo = photoDetails(state.photos[index] ?? state.photos[0]);
   const t = (en: string, th: string) => translate(en, th, lang);
   function move(delta: number) {
     setIndex((value) => (value + delta + state.photos.length) % state.photos.length);

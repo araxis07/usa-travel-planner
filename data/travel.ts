@@ -1,4 +1,4 @@
-import catalog from '../content/states.json' with { type: 'json' };
+import catalog from '../content/states.json?overview' with { type: 'json' };
 import { translate, languageIndex, type Language } from '../lib/i18n';
 export type { Language } from '../lib/i18n';
 export type LocalText = readonly [string, string, ...string[]];
@@ -27,16 +27,18 @@ export const SEASON_LABELS: Record<Season, LocalText> = {
   Winter: ['Winter', 'ฤดูหนาว'],
 };
 
-export interface Photo {
+export interface PhotoAsset {
   src: string;
   placeIndex: number;
+  width: number;
+  height: number;
+}
+export interface Photo extends PhotoAsset {
   source: string;
   author: string;
   license: string;
   licenseUrl: string;
   original: string;
-  width: number;
-  height: number;
   caption?: string;
   displayCaption?: LocalText;
   captionReviewed?: boolean[];
@@ -83,7 +85,7 @@ export interface StateGuide {
   tip: LocalText;
   names: LocalText;
   placeNames: LocalText[];
-  photos: Photo[];
+  photos: PhotoAsset[];
   cover: number;
   updatedAt: string;
   sources: { name: string; url: string }[];

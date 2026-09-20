@@ -29,6 +29,40 @@ const sample: Trip = {
   ],
 };
 
+test('mobile home defers gallery metadata and atlas while destination credits remain available', async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    deviceScaleFactor: 3,
+    serviceWorkers: 'block',
+  });
+  const page = await context.newPage();
+  const requests: string[] = [];
+  page.on('request', (request) => requests.push(request.url()));
+  await page.goto(`${baseURL}/en/`);
+  await page.locator('.hero-search input').waitFor();
+  await page.waitForLoadState('networkidle');
+  expect(
+    requests.some((url) => /\/(Atlas|LandmarkScene|atlas-geometry|photo-details)-/.test(url)),
+  ).toBe(false);
+  expect(
+    await page.locator('.hero-image').evaluate((image: HTMLImageElement) => image.currentSrc),
+  ).toContain('hero-mobile-800.webp');
+  await page.locator('.destination-grid .card-image-button').first().click();
+  await expect(page.locator('.destination-hero h1')).toHaveText('California');
+  await expect(page.locator('.destination-page > .photo-credit a').first()).toHaveAttribute(
+    'href',
+    /^https:\/\//,
+  );
+  await page.locator('.destination-gallery-open').click();
+  await expect(page.locator('.photo-lightbox .photo-caption')).not.toBeEmpty();
+  await expect(page.locator('.lightbox-footer a').first()).toHaveAttribute('href', /^https:\/\//);
+  expect(requests.some((url) => /\/photo-details-/.test(url))).toBe(true);
+  await context.close();
+});
+
 test('all language pages contain readable content without JavaScript and reciprocal SEO links', async ({
   browser,
   baseURL,

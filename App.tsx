@@ -3,7 +3,7 @@ import LanguageSelector from './components/LanguageSelector';
 import { stateName } from './data/travel';
 import { translate, initialLanguage } from './lib/i18n';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import Atlas from './components/Atlas';
+import DeferredAtlas from './components/DeferredAtlas';
 import Icon, { type IconName } from './components/Icon';
 import StateCard from './components/StateCard';
 import type { TravelModal } from './components/TravelDialog';
@@ -108,6 +108,17 @@ export default function App() {
   const [toast, setToast] = useState('');
   const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const heroRef = useRef<HTMLElement>(null);
+  const discoveryScroll = useRef<number | null>(null);
+  const [homeVisited, setHomeVisited] = useState(
+    () =>
+      !readDestination() &&
+      new URLSearchParams(location.search).get('view') !== 'planner' &&
+      !sharedToken(),
+  );
+  const showHome = !shareToken && modal?.type !== 'trip' && !destination;
+  useEffect(() => {
+    if (showHome) setHomeVisited(true);
+  }, [showHome]);
   const t = (en: string, th: string, values?: Record<string, string | number>) =>
     translate(en, th, lang, values);
   const notify = (message: string) => {
@@ -177,6 +188,7 @@ export default function App() {
     };
   }, []);
   const openDestination = (state: StateGuide, placeIndex?: number) => {
+    if (!destination) discoveryScroll.current = window.scrollY;
     history.replaceState({ ...history.state, scrollY: window.scrollY }, '', location.href);
     history.pushState({ scrollY: 0 }, '', destinationUrl(state, lang, placeIndex));
     setDestination({ state, placeIndex });
@@ -236,6 +248,13 @@ export default function App() {
   };
   const explore = () => {
     goSection('destinations');
+  };
+  const returnToDiscovery = () => {
+    goSection('destinations');
+    if (discoveryScroll.current !== null)
+      requestAnimationFrame(() =>
+        window.scrollTo({ top: discoveryScroll.current!, behavior: 'instant' }),
+      );
   };
   const addState = (state: StateGuide) => {
     if (!trip.stops.some((stop) => stop.code === state.code)) {
@@ -324,7 +343,7 @@ export default function App() {
   ];
   return (
     <div
-      className="site"
+      className={`site ${modal?.type === 'trip' ? 'is-planner' : ''}`}
       data-motion={motion ? 'on' : 'paused'}
       onClickCapture={(event) => {
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
@@ -336,7 +355,12 @@ export default function App() {
           document
             .getElementById(href.slice(1))
             ?.scrollIntoView({ behavior: motion ? 'smooth' : 'instant', block: 'start' });
-        } else if (destination && href?.startsWith('#') && href !== '#destination-guide') {
+        } else if (
+          (destination || modal?.type === 'trip' || shareToken || href === '#') &&
+          href?.startsWith('#') &&
+          href !== '#destination-guide' &&
+          href !== '#planner-page'
+        ) {
           event.preventDefault();
           goSection(href.slice(1));
         } else if (href === '#map' || href === '#destinations') {
@@ -375,6 +399,7 @@ export default function App() {
         <div className="header-inner">
           <Brand />
           <nav
+            id="main-navigation"
             className={`desktop-nav ${mobileNav ? 'mobile-open' : ''}`}
             aria-label={t('Main navigation', 'เมนูหลัก')}
           >
@@ -392,6 +417,16 @@ export default function App() {
             >
               <Icon name="heart" size={17} />
               {t('Saved places', 'สถานที่โปรด')} ({favorites.length})
+            </button>
+            <button
+              className="mobile-compare-link"
+              onClick={() => {
+                setMobileNav(false);
+                setComparing(true);
+              }}
+            >
+              <Icon name="columns" size={17} />
+              {t('Compare destinations', 'เปรียบเทียบจุดหมาย')}
             </button>
           </nav>
           <div className="header-actions">
@@ -415,6 +450,7 @@ export default function App() {
             </button>
             <button
               className="button button-navy header-trip"
+              aria-label={t('My trip', 'ทริปของฉัน')}
               onClick={() => setModal({ type: 'trip' })}
             >
               <Icon name="bag" size={17} />
@@ -425,6 +461,7 @@ export default function App() {
               className="menu-button icon-button"
               aria-label={t('Toggle navigation', 'เปิดหรือปิดเมนู')}
               aria-expanded={mobileNav}
+              aria-controls="main-navigation"
               onClick={() => setMobileNav((value) => !value)}
             >
               <Icon name={mobileNav ? 'close' : 'menu'} />
@@ -514,12 +551,13 @@ export default function App() {
             onAdd={() => addState(destination.state)}
             onAddPlace={(index) => addPlace(destination.state, index)}
             onOpen={openDestination}
-            onBack={explore}
+            onBack={returnToDiscovery}
             notify={notify}
             collections={collections}
           />
-        ) : (
-          <main>
+        ) : null}
+        {(homeVisited || showHome) && (
+          <main hidden={!showHome}>
             <section
               className="hero"
               ref={heroRef}
@@ -540,18 +578,25 @@ export default function App() {
                 heroRef.current?.style.setProperty('--pointer-y', '0deg');
               }}
             >
-              <TravelImage
-                sizes="100vw"
-                className="hero-image"
-                src="/images/hero.jpg"
-                alt={t(
-                  'Sandstone buttes in Monument Valley Navajo Tribal Park',
-                  'ภูเขาหินทรายในอุทยานชนเผ่านาวาโฮ โมนูเมนต์แวลลีย์',
-                )}
-                fetchPriority="high"
-                width="1600"
-                height="1060"
-              />
+              <picture>
+                <source
+                  media="(max-width: 760px)"
+                  srcSet="/images/responsive/hero-mobile-480.webp 480w, /images/responsive/hero-mobile-800.webp 800w"
+                  sizes="100vw"
+                />
+                <TravelImage
+                  sizes="100vw"
+                  className="hero-image"
+                  src="/images/hero.jpg"
+                  alt={t(
+                    'Sandstone buttes in Monument Valley Navajo Tribal Park',
+                    'ภูเขาหินทรายในอุทยานชนเผ่านาวาโฮ โมนูเมนต์แวลลีย์',
+                  )}
+                  fetchPriority="high"
+                  width="1600"
+                  height="1060"
+                />
+              </picture>
               <div className="hero-shade" />
               <div className="hero-content">
                 <span className="eyebrow hero-eyebrow">
@@ -571,15 +616,53 @@ export default function App() {
                     'จากสถานที่ในฝัน สู่มุมที่คุณยังไม่เคยรู้จัก ออกไปค้นพบอเมริกา ทีละรัฐ ทีละความทรงจำ',
                   )}
                 </p>
+                <form
+                  className="hero-search"
+                  role="search"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    explore();
+                  }}
+                >
+                  <label className="search-destination">
+                    <Icon name="pin" size={23} />
+                    <span>
+                      <span className="search-label">{t('WHERE TO?', 'อยากไปที่ไหน?')}</span>
+                      <input
+                        aria-label={t('Search destinations', 'ค้นหาจุดหมาย')}
+                        value={query}
+                        onChange={(event) => setQuery(event.target.value)}
+                        placeholder={t(
+                          'A state, a city, a little inspiration…',
+                          'ชื่อรัฐ เมือง หรือแรงบันดาลใจ…',
+                        )}
+                      />
+                    </span>
+                  </label>
+                  <button type="submit" className="button button-red search-submit">
+                    <Icon name="search" size={19} />
+                    {t('Let’s explore', 'ออกไปสำรวจ')}
+                  </button>
+                </form>
                 <div className="hero-cta">
-                  <a className="button button-red" href="#destinations">
-                    {t('Find your adventure', 'ค้นหาทริปของคุณ')}
-                    <Icon name="arrow" size={18} />
-                  </a>
-                  <a className="hero-map-link" href="#map">
-                    <Icon name="map" size={18} />
-                    {t('Explore the map', 'สำรวจแผนที่')}
-                  </a>
+                  <button className="button hero-wizard" onClick={() => setWizardOpen(true)}>
+                    <Icon name="compass" size={18} />
+                    {t('Help me plan a trip', 'ช่วยจัดทริปให้ฉัน')}
+                  </button>
+                  {trip.stops.length ? (
+                    <button
+                      className="hero-map-link hero-resume"
+                      onClick={() => setModal({ type: 'trip', daily: true })}
+                    >
+                      <Icon name="bag" size={18} />
+                      {x(lang, 'resume')}
+                    </button>
+                  ) : (
+                    <a className="hero-map-link" href="#destinations">
+                      {t('Choose a state', 'เลือกรัฐที่อยากไป')}
+                      <Icon name="arrow" size={18} />
+                    </a>
+                  )}
                 </div>
                 <div className="hero-footnote">
                   <span className="three-stars">✦ ✦ ✦</span>
@@ -679,21 +762,6 @@ export default function App() {
                   explore();
                 }}
               >
-                <label className="search-destination">
-                  <Icon name="pin" size={23} />
-                  <span>
-                    <span className="search-label">{t('WHERE TO?', 'อยากไปที่ไหน?')}</span>
-                    <input
-                      aria-label={t('Search destinations', 'ค้นหาจุดหมาย')}
-                      value={query}
-                      onChange={(event) => setQuery(event.target.value)}
-                      placeholder={t(
-                        'A state, a city, a little inspiration…',
-                        'ชื่อรัฐ เมือง หรือแรงบันดาลใจ…',
-                      )}
-                    />
-                  </span>
-                </label>
                 <label className="search-select">
                   <Icon name="compass" size={22} />
                   <span>
@@ -736,10 +804,6 @@ export default function App() {
                     </select>
                   </span>
                 </label>
-                <button type="submit" className="button button-red search-submit">
-                  <Icon name="search" size={19} />
-                  {t('Let’s explore', 'ออกไปสำรวจ')}
-                </button>
               </form>
               <div className="search-caption">
                 <span>
@@ -934,7 +998,7 @@ export default function App() {
               <span>✦</span>
               <span>TAKE THE LONG WAY HOME</span>
             </div>
-            <Atlas
+            <DeferredAtlas
               lang={lang}
               motion={motion}
               tripCodes={trip.stops.map((s) => s.code)}

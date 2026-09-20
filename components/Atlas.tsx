@@ -90,7 +90,7 @@ export default function Atlas({
     translate(en, th, lang, values);
   const regions = Object.keys(REGION_LABELS) as Region[];
   return (
-    <section id="map" className="atlas-section section-anchor">
+    <section className="atlas-section">
       <div className="section-shell atlas-layout">
         <div className="atlas-copy">
           <span className="eyebrow">

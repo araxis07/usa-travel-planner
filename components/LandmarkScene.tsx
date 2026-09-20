@@ -5,6 +5,7 @@ import { w } from '../data/workspace-copy';
 import { readLocal } from '../lib/storage';
 import { local } from '../data/travel';
 import { x } from '../data/experience-copy';
+import { photoDetails } from '../data/photo-details';
 
 // A small, locally rendered 3D illustration. No model downloads or render loop while hidden.
 type SceneKind = 'CA' | 'NY' | 'AZ';
@@ -75,9 +76,11 @@ function LandmarkCanvas({
   kind: SceneKind | null;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
-  const [angle, setAngle] = useState(-0.65);
+  const angle = useRef(-0.65);
+  const targetAngle = useRef(-0.65);
+  const redraw = useRef(() => {});
   const [available, setAvailable] = useState(!!kind);
-  const cover = state.photos[state.cover];
+  const cover = photoDetails(state.photos[state.cover]);
   const title = kind ? local(TITLES[kind], lang) : local(state.names, lang);
   useEffect(() => {
     if (!kind) return;
@@ -257,7 +260,7 @@ function LandmarkCanvas({
       }
       const angleUniform = gl.getUniformLocation(program, 'angle'),
         aspect = gl.getUniformLocation(program, 'aspect');
-      const render = (time = 0) => {
+      const render = (time = performance.now()) => {
         if (lost) return;
         const rect = element.getBoundingClientRect(),
           dpr = Math.min(devicePixelRatio, 1.5);
@@ -271,10 +274,17 @@ function LandmarkCanvas({
         gl.clearColor(0, 0, 0, 0);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
         gl.enable(gl.DEPTH_TEST);
-        gl.uniform1f(angleUniform, angle + (motion ? Math.sin(time / 5000) * 0.08 : 0));
+        angle.current = motion
+          ? angle.current + (targetAngle.current - angle.current) * 0.15
+          : targetAngle.current;
+        gl.uniform1f(angleUniform, angle.current + (motion ? Math.sin(time / 5000) * 0.08 : 0));
         gl.uniform1f(aspect, width / height);
         gl.drawArrays(gl.TRIANGLES, 0, points.length / 6);
         if (motion && visible && !document.hidden) frame = requestAnimationFrame(render);
+      };
+      redraw.current = () => {
+        cancelAnimationFrame(frame);
+        render();
       };
       const observer = new IntersectionObserver(([entry]) => {
         visible = entry.isIntersecting;
@@ -300,6 +310,7 @@ function LandmarkCanvas({
       element.addEventListener('webglcontextlost', contextLost);
       render();
       return () => {
+        redraw.current = () => {};
         observer.disconnect();
         resize.disconnect();
         document.removeEventListener('visibilitychange', visibility);
@@ -317,7 +328,7 @@ function LandmarkCanvas({
       gl.deleteShader(vertex);
       gl.deleteShader(fragment);
     }
-  }, [angle, motion, kind]);
+  }, [motion, kind]);
   return (
     <figure className="landmark-scene">
       <div className="landmark-scene-top">
@@ -341,7 +352,10 @@ function LandmarkCanvas({
         {available && (
           <button
             className="text-link"
-            onClick={() => setAngle((a) => (a > 0.4 ? -0.65 : a + 0.35))}
+            onClick={() => {
+              targetAngle.current += 0.35;
+              redraw.current();
+            }}
           >
             {x(lang, 'rotate')}
           </button>

@@ -151,7 +151,7 @@ test('fullscreen gallery handles keyboard, zoom, swipe and nested-dialog focus',
   isMobile,
 }) => {
   await page.goto('/?lang=en');
-  await page.getByRole('button', { name: 'Explore California', exact: true }).click();
+  await page.getByRole('button', { name: 'Quick view California', exact: true }).click();
   const quick = page.getByRole('dialog', { name: 'California', exact: true });
   await quick.getByRole('button', { name: 'View fullscreen' }).click();
   const gallery = page.getByRole('dialog', { name: 'Fullscreen gallery' });

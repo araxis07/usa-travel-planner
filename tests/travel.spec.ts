@@ -113,7 +113,7 @@ test('favorites persist through reload and can be removed from the collection', 
 test('state guide, itinerary changes, budget, notes and persistence work together', async ({
   page,
 }) => {
-  await page.getByRole('button', { name: 'Explore California', exact: true }).click();
+  await page.getByRole('button', { name: 'Quick view California', exact: true }).click();
   await expect(page.getByRole('dialog')).toContainText('Yosemite National Park');
   await page.getByRole('button', { name: 'Add to my trip' }).click();
   let dialog = page.locator('#planner-page');

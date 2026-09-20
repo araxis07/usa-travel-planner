@@ -68,6 +68,15 @@ export default function DailyPlanner({
     });
   const edit = (id: string, fields: Partial<TripActivity>) =>
     update(activities.map((a) => (a.id === id ? { ...a, ...fields } : a)));
+  const openAdd = (nextPeriod?: DayPeriod) => {
+    if (nextPeriod) setPeriod(nextPeriod);
+    setAdding(true);
+    requestAnimationFrame(() => {
+      const form = document.querySelector('.add-activity');
+      form?.scrollIntoView({ block: 'center', behavior: 'instant' });
+      form?.querySelector('input')?.focus({ preventScroll: true });
+    });
+  };
   function add() {
     if (trip.stops.reduce((count, s) => count + (s.activities?.length ?? 0), 0) >= 200) {
       notify(
@@ -77,10 +86,11 @@ export default function DailyPlanner({
     }
     const p = findPlace(selection);
     if (!p && !title.trim()) return;
+    const id = crypto.randomUUID();
     update([
       ...activities,
       {
-        id: crypto.randomUUID(),
+        id,
         day,
         period,
         title: p ? p.state.places[p.index] : title.trim(),
@@ -91,6 +101,12 @@ export default function DailyPlanner({
     ]);
     setTitle('');
     setAdding(false);
+    setSelectedActivity(id);
+    requestAnimationFrame(() =>
+      document
+        .querySelector<HTMLElement>(`[data-activity-id="${id}"]`)
+        ?.focus({ preventScroll: true }),
+    );
     notify(t('Activity added to your day.', 'เพิ่มกิจกรรมในวันนี้แล้ว'));
   }
   function reorder(id: string, beforeId: string) {
@@ -138,44 +154,55 @@ export default function DailyPlanner({
   };
   return (
     <div className="daily-planner">
-      <div className="day-planner-heading">
-        <div>
-          <span className="eyebrow">{t('ONE DAY AT A TIME', 'ค่อย ๆ วางแผนทีละวัน')}</span>
-          <h3>{t('A little structure. Room to roam.', 'มีแผนพอดี มีเวลาให้ค้นพบ')}</h3>
-        </div>
-        <label>
-          {t('Planning state', 'รัฐที่กำลังวางแผน')}
-          <select
-            value={stop.code}
-            onChange={(event) => {
-              setCode(event.target.value);
-              setDay(1);
-              setSearch('');
-              choose(`${event.target.value}-0`);
-            }}
+      <div className="day-navigation">
+        <div className="day-planner-heading">
+          <div>
+            <span className="eyebrow">{t('ONE DAY AT A TIME', 'ค่อย ๆ วางแผนทีละวัน')}</span>
+            <h3>{t('A little structure. Room to roam.', 'มีแผนพอดี มีเวลาให้ค้นพบ')}</h3>
+          </div>
+          <label>
+            {t('Planning state', 'รัฐที่กำลังวางแผน')}
+            <select
+              value={stop.code}
+              onChange={(event) => {
+                setCode(event.target.value);
+                setDay(1);
+                setSearch('');
+                choose(`${event.target.value}-0`);
+              }}
+            >
+              {trip.stops.map((s) => (
+                <option key={s.code} value={s.code}>
+                  {stateName(
+                    STATES.find((v) => v.code === s.code)!,
+                    lang,
+                  )}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button
+            className="button button-red add-activity-toggle"
+            aria-expanded={adding}
+            aria-controls="activity-form"
+            onClick={() => (adding ? setAdding(false) : openAdd())}
           >
-            {trip.stops.map((s) => (
-              <option key={s.code} value={s.code}>
-                {stateName(
-                  STATES.find((v) => v.code === s.code)!,
-                  lang,
-                )}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-      <div className="day-strip" role="group" aria-label={t('Choose a day', 'เลือกวัน')}>
-        {Array.from({ length: stop.days }, (_, i) => (
-          <button key={i} aria-pressed={day === i + 1} onClick={() => setDay(i + 1)}>
-            <span>
-              {t('Day', 'วันที่')} {globalOffset + i + 1}
-            </span>
-            <small>
-              {activities.filter((a) => a.day === i + 1).length} {t('activities', 'กิจกรรม')}
-            </small>
+            <Icon name={adding ? 'close' : 'plus'} size={17} />
+            {adding ? t('Close', 'ปิด') : t('Add activity', 'เพิ่มกิจกรรม')}
           </button>
-        ))}
+        </div>
+        <div className="day-strip" role="group" aria-label={t('Choose a day', 'เลือกวัน')}>
+          {Array.from({ length: stop.days }, (_, i) => (
+            <button key={i} aria-pressed={day === i + 1} onClick={() => setDay(i + 1)}>
+              <span>
+                {t('Day', 'วันที่')} {globalOffset + i + 1}
+              </span>
+              <small>
+                {activities.filter((a) => a.day === i + 1).length} {t('activities', 'กิจกรรม')}
+              </small>
+            </button>
+          ))}
+        </div>
       </div>
       <div className="day-summary">
         <strong>
@@ -187,7 +214,6 @@ export default function DailyPlanner({
           {total} {t('minutes planned', 'นาทีที่วางแผนไว้')}
         </span>
       </div>
-      <p className="fine-print">{x(lang, 'timingNote')}</p>
       {[...new Set((stop.activities ?? []).filter((a) => a.day === day).map((a) => a.placeId))].map(
         (id) => {
           const place = id ? findPlace(id) : undefined;
@@ -223,23 +249,9 @@ export default function DailyPlanner({
           )}
         </p>
       )}
-      <button
-        className="button button-red add-activity-toggle"
-        onClick={() => {
-          setAdding((v) => !v);
-          if (!adding)
-            requestAnimationFrame(() => {
-              const form = document.querySelector('.add-activity');
-              form?.scrollIntoView({ block: 'center', behavior: 'instant' });
-              form?.querySelector('input')?.focus({ preventScroll: true });
-            });
-        }}
-        aria-expanded={adding}
-      >
-        {adding ? t('Close', 'ปิด') : t('Add activity', 'เพิ่มกิจกรรม')}
-      </button>
       {adding && (
         <form
+          id="activity-form"
           className="add-activity"
           onSubmit={(event) => {
             event.preventDefault();
@@ -329,12 +341,6 @@ export default function DailyPlanner({
           </button>
         </form>
       )}
-      <p className="fine-print">
-        {t(
-          'Drag activities to reorder or move between time slots. Arrow buttons and day selectors also work on touch screens and with a keyboard.',
-          'ลากกิจกรรมเพื่อเรียงหรือย้ายช่วงเวลา ใช้ปุ่มลูกศรและตัวเลือกวันบนจอสัมผัสหรือคีย์บอร์ดได้เช่นกัน',
-        )}
-      </p>
       <div className="daily-quick-actions">
         {(['lunch', 'rest'] as const).map((key) => (
           <button
@@ -393,7 +399,7 @@ export default function DailyPlanner({
           {PERIODS.map((p) => (
             <section
               key={p}
-              className={`day-period ${dragging ? 'drop-ready' : ''}`}
+              className={`day-period ${dragging ? 'drop-ready' : ''} ${today.some((a) => a.period === p) ? '' : 'is-empty'}`}
               onDragOver={(event) => {
                 if (dragging) event.preventDefault();
               }}
@@ -414,9 +420,10 @@ export default function DailyPlanner({
                 <span>{today.filter((a) => a.period === p).length}</span>
               </h4>
               {today.filter((a) => a.period === p).length === 0 && (
-                <p className="period-empty">
-                  {t('Leave some room for discovery.', 'เว้นที่ว่างให้การค้นพบใหม่ ๆ')}
-                </p>
+                <button className="period-empty" onClick={() => openAdd(p)}>
+                  <Icon name="plus" size={17} />
+                  {t('Add activity', 'เพิ่มกิจกรรม')} · {periodName(p)}
+                </button>
               )}
               {today
                 .filter((a) => a.period === p)
@@ -427,6 +434,7 @@ export default function DailyPlanner({
                     onClick={() => setSelectedActivity(a.id)}
                     key={a.id}
                     data-activity-id={a.id}
+                    tabIndex={-1}
                     onDragOver={(event) => {
                       if (dragging) event.preventDefault();
                     }}
@@ -672,6 +680,16 @@ export default function DailyPlanner({
           </aside>
         )}
       </div>
+      <details className="day-help">
+        <summary>{t('Planning tips', 'คำแนะนำการวางแผน')}</summary>
+        <p className="fine-print">{x(lang, 'timingNote')}</p>
+        <p className="fine-print">
+          {t(
+            'Drag activities to reorder or move between time slots. Arrow buttons and day selectors also work on touch screens and with a keyboard.',
+            'ลากกิจกรรมเพื่อเรียงหรือย้ายช่วงเวลา ใช้ปุ่มลูกศรและตัวเลือกวันบนจอสัมผัสหรือคีย์บอร์ดได้เช่นกัน',
+          )}
+        </p>
+      </details>
     </div>
   );
 }

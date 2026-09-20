@@ -1,4 +1,5 @@
 import TravelImage from './TravelImage';
+import { photoDetails } from '../data/photo-details';
 import { useEffect, useState } from 'react';
 import {
   local,
@@ -6,10 +7,11 @@ import {
   statePhoto,
   REGION_LABELS,
   SEASON_LABELS,
+  INTEREST_LABELS,
   type Language,
   type StateGuide,
 } from '../data/travel';
-import { translate } from '../lib/i18n';
+import { translate, LOCALES } from '../lib/i18n';
 import { destinationUrl, findPlace, placeId } from '../lib/destinations';
 import PhotoLightbox from './PhotoLightbox';
 import RouteMap from './RouteMap';
@@ -57,6 +59,7 @@ export default function DestinationPage({
     placeIndex === undefined
       ? statePhoto(state)
       : (state.photos.find((item) => item.placeIndex === placeIndex) ?? statePhoto(state));
+  const credit = photoDetails(photo);
   const title =
     placeIndex === undefined ? stateName(state, lang) : local(state.placeNames[placeIndex], lang);
   const indices = placeIndex === undefined ? [0, 1, 2] : [placeIndex];
@@ -93,6 +96,63 @@ export default function DestinationPage({
   const galleryPhotos = state.photos.filter(
     (p) => placeIndex === undefined || p.placeIndex === placeIndex,
   );
+  const profile = placeIndex === undefined ? undefined : state.destinations[placeIndex];
+  const isSaved =
+    placeIndex === undefined
+      ? saved
+      : collections.groups[0].places.includes(placeId(state, placeIndex));
+  const toggleSave = () => {
+    if (placeIndex === undefined) onSave();
+    else {
+      collections.toggle(placeId(state, placeIndex));
+      notify(
+        isSaved
+          ? t('{name} removed from saved places.', 'นำ {name} ออกจากสถานที่ที่บันทึกแล้ว').replace(
+              '{name}',
+              title,
+            )
+          : x(lang, 'savedPlace'),
+      );
+    }
+  };
+  const overview = [
+    {
+      icon: 'compass' as const,
+      label: t('Best for', 'เหมาะกับ'),
+      value: (profile?.planning ? [profile.planning.interest] : state.interests)
+        .map((i) => local(INTEREST_LABELS[i], lang))
+        .join(' · '),
+    },
+    {
+      icon: 'clock' as const,
+      label: t('Suggested time', 'เวลาแนะนำ'),
+      value: profile
+        ? `${profile.visitMinutes} ${t('minutes', 'นาที')}`
+        : `${state.days} ${t('days', 'วัน')}`,
+    },
+    {
+      icon: 'sun' as const,
+      label: t('When to visit', 'ช่วงน่าเที่ยว'),
+      value: profile?.planning
+        ? profile.planning.months
+            .map((m) =>
+              new Intl.DateTimeFormat(LOCALES[lang], { month: 'short' }).format(
+                new Date(2026, m - 1, 1),
+              ),
+            )
+            .join(' · ')
+        : state.season.map((season) => local(SEASON_LABELS[season], lang)).join(' · '),
+    },
+    {
+      icon: 'map' as const,
+      label: profile ? x(lang, 'transport') : t('Gateway airports', 'สนามบินหลัก'),
+      value: profile?.planning
+        ? x(lang, profile.planning.transport)
+        : profile
+          ? local(profile.access, lang)
+          : state.hub,
+    },
+  ];
   return (
     <main className="destination-page" id="destination-guide">
       <div className="guide-breadcrumb container">
@@ -117,6 +177,13 @@ export default function DestinationPage({
           fetchPriority="high"
         />
         <div className="destination-hero-shade" />
+        <button
+          className="button gallery-open destination-gallery-open"
+          onClick={() => setGallery(state.photos.indexOf(photo))}
+        >
+          <Icon name="search" size={16} />
+          {t('View fullscreen', 'ดูเต็มจอ')} · {galleryPhotos.length}
+        </button>
         <div className="destination-hero-copy container">
           <span className="eyebrow">
             {local(REGION_LABELS[state.region], lang)} · {state.code} / USA
@@ -132,33 +199,57 @@ export default function DestinationPage({
               className="button button-red hero-primary-action"
               onClick={() => (placeIndex === undefined ? onAdd() : onAddPlace(placeIndex))}
             >
-              {t('Add to my trip', 'เพิ่มในทริปของฉัน')}
+              {placeIndex === undefined && inTrip
+                ? t('View my trip', 'ดูทริปของฉัน')
+                : t('Add to my trip', 'เพิ่มในทริปของฉัน')}
             </button>
             <button
-              className="button gallery-open"
-              onClick={() => setGallery(state.photos.indexOf(photo))}
+              className="button gallery-open hero-save"
+              aria-pressed={isSaved}
+              onClick={toggleSave}
             >
-              <Icon name="search" size={16} />
-              {t('View fullscreen', 'ดูเต็มจอ')} · {galleryPhotos.length}
+              <Icon name="heart" size={17} />
+              {isSaved
+                ? t('Saved', 'บันทึกแล้ว')
+                : placeIndex === undefined
+                  ? t('Save this state', 'บันทึกรัฐนี้')
+                  : x(lang, 'savePlace')}
             </button>
           </div>
         </div>
       </section>
       <p className="destination-hero-credit container photo-credit">
-        <a href={photo.source} target="_blank" rel="noreferrer">
-          {photo.author}
+        <a href={credit.source} target="_blank" rel="noreferrer">
+          {credit.author}
         </a>{' '}
         ·{' '}
-        <a href={photo.licenseUrl} target="_blank" rel="noreferrer">
-          {photo.license}
+        <a href={credit.licenseUrl} target="_blank" rel="noreferrer">
+          {credit.license}
         </a>{' '}
         · {t('Resized for display', 'ปรับขนาดเพื่อแสดงผล')}
       </p>
-      <div className="container compare-guide-link">
-        <button className="text-link" onClick={onCompare}>
-          {t('Compare destinations', 'เปรียบเทียบจุดหมาย')}
-        </button>
-      </div>
+      <section className="guide-overview container" aria-label={t('At a glance', 'ข้อมูลสำคัญ')}>
+        <dl>
+          {overview.map((fact) => (
+            <div key={fact.label}>
+              <dt>
+                <Icon name={fact.icon} size={18} />
+                {fact.label}
+              </dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+        {profile?.advisory && (
+          <aside className="day-warning guide-advisory">
+            <p>{local(profile.advisory.text, lang)}</p>
+            <a href={profile.advisory.source} target="_blank" rel="noreferrer">
+              {t('Official visitor information', 'ข้อมูลจากหน่วยงานท่องเที่ยว')} ·{' '}
+              {profile.advisory.checkedAt}
+            </a>
+          </aside>
+        )}
+      </section>
       <nav className="guide-toc container" aria-label={x(lang, 'practical')}>
         <a href="#guide-story">{x(lang, 'story')}</a>
         {placeIndex !== undefined && <a href="#guide-practical">{x(lang, 'practical')}</a>}
@@ -180,9 +271,9 @@ export default function DestinationPage({
             )}
           </p>
           {placeIndex !== undefined && (
-            <PlacePractical profile={state.destinations[placeIndex]} lang={lang} />
+            <PlacePractical profile={state.destinations[placeIndex]} lang={lang} overviewShown />
           )}
-          <div className="detail-facts">
+          <div className="detail-facts" hidden={placeIndex === undefined}>
             <div>
               <Icon name="sun" />
               <span>{t('Good seasons to explore', 'ฤดูกาลน่าเที่ยว')}</span>
@@ -210,6 +301,7 @@ export default function DestinationPage({
           <div className="place-story-list" id="guide-photos">
             {indices.map((index) => {
               const item = state.photos.find((p) => p.placeIndex === index) ?? photo;
+              const itemCredit = photoDetails(item);
               const record = findPlace(placeId(state, index));
               return (
                 <section className="place-story" key={index}>
@@ -295,12 +387,12 @@ export default function DestinationPage({
                       )}
                     </div>
                     <p className="photo-credit">
-                      <a href={item.source} target="_blank" rel="noreferrer">
-                        {item.author}
+                      <a href={itemCredit.source} target="_blank" rel="noreferrer">
+                        {itemCredit.author}
                       </a>{' '}
                       ·{' '}
-                      <a href={item.licenseUrl} target="_blank" rel="noreferrer">
-                        {item.license}
+                      <a href={itemCredit.licenseUrl} target="_blank" rel="noreferrer">
+                        {itemCredit.license}
                       </a>{' '}
                       · {t('Resized for display', 'ปรับขนาดเพื่อแสดงผล')}
                     </p>
@@ -380,9 +472,16 @@ export default function DestinationPage({
                   ? t('View my trip', 'ดูทริปของฉัน')
                   : t('Add to my trip', 'เพิ่มในทริปของฉัน')}
             </button>
-            <button className="button button-outline" aria-pressed={saved} onClick={onSave}>
+            <button className="button button-outline" aria-pressed={isSaved} onClick={toggleSave}>
               <Icon name="heart" size={17} />
-              {saved ? t('Saved', 'บันทึกแล้ว') : t('Save this state', 'บันทึกรัฐนี้')}
+              {isSaved
+                ? t('Saved', 'บันทึกแล้ว')
+                : placeIndex === undefined
+                  ? t('Save this state', 'บันทึกรัฐนี้')
+                  : x(lang, 'savePlace')}
+            </button>
+            <button className="text-link" onClick={onCompare}>
+              {t('Compare destinations', 'เปรียบเทียบจุดหมาย')}
             </button>
             <button className="text-link" onClick={share}>
               <Icon name="external" size={15} />

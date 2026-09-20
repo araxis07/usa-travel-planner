@@ -164,63 +164,6 @@ export default function TripPlanner({
           : t('Saved automatically on this browser', 'บันทึกอัตโนมัติในเบราว์เซอร์นี้')}
       </p>
       <TripPrint trip={trip} lang={lang} />
-      <details className="planner-utility" open={!matchMedia('(max-width: 760px)').matches}>
-        <summary>
-          {w(lang, 'tools')}{' '}
-          <span>
-            {t('Print / Save as PDF', 'พิมพ์ / บันทึกเป็น PDF')} ·{' '}
-            {t('Save for offline', 'เก็บไว้อ่านออฟไลน์')}
-          </span>
-        </summary>
-        <div className="planner-tools">
-          <button
-            className="button button-outline"
-            disabled={!trip.stops.length}
-            onClick={() => window.print()}
-          >
-            {t('Print / Save as PDF', 'พิมพ์ / บันทึกเป็น PDF')}
-          </button>
-          <button
-            className="button button-outline"
-            disabled={offlineBusy || !trip.stops.length}
-            onClick={async () => {
-              setOfflineBusy(true);
-              setOfflineReady(false);
-              try {
-                await saveOffline(trip);
-                setOfflineReady(true);
-              } catch {
-                notify(
-                  t(
-                    'Offline download failed. Connect to the internet and try again on the published site.',
-                    'ดาวน์โหลดออฟไลน์ไม่สำเร็จ เชื่อมต่ออินเทอร์เน็ตแล้วลองอีกครั้งบนเว็บไซต์ที่เผยแพร่แล้ว',
-                  ),
-                );
-              } finally {
-                setOfflineBusy(false);
-              }
-            }}
-          >
-            {offlineBusy
-              ? t('Downloading…', 'กำลังดาวน์โหลด…')
-              : t('Save for offline', 'เก็บไว้อ่านออฟไลน์')}
-          </button>
-          {import.meta.env.VITE_SUPABASE_URL && (
-            <button className="button button-outline" onClick={() => setAccount(true)}>
-              {t('Account & sharing', 'บัญชีและการแชร์')}
-            </button>
-          )}
-        </div>
-        {offlineReady && (
-          <p role="status">
-            {t(
-              'Ready offline on this device. Your saved plan and these photos are available without internet; live maps need a connection.',
-              'พร้อมอ่านออฟไลน์บนอุปกรณ์นี้ เปิดแผนและภาพที่บันทึกได้โดยไม่ใช้อินเทอร์เน็ต แผนที่ออนไลน์ยังต้องเชื่อมต่อ',
-            )}
-          </p>
-        )}
-        <OfflineStatus trip={trip} lang={lang} refresh={offlineReady} />
-      </details>
       {account && (
         <Suspense fallback={<p role="status">{t('Loading…', 'กำลังโหลด…')}</p>}>
           <CloudPanel
@@ -261,7 +204,6 @@ export default function TripPlanner({
           {w(lang, 'budget')}
         </button>
       </div>
-      <TripChecklist trip={trip} setTrip={setTrip} lang={lang} />
       {budgetOpen && (
         <Suspense fallback={<p role="status">{t('Loading…', 'กำลังโหลด…')}</p>}>
           <TripBudget trip={trip} lang={lang} setTrip={setTrip} />
@@ -527,6 +469,64 @@ export default function TripPlanner({
           )}
         </p>
       )}
+      <TripChecklist trip={trip} setTrip={setTrip} lang={lang} />
+      <details className="planner-utility" open={!matchMedia('(max-width: 760px)').matches}>
+        <summary>
+          {w(lang, 'tools')}{' '}
+          <span>
+            {t('Print / Save as PDF', 'พิมพ์ / บันทึกเป็น PDF')} ·{' '}
+            {t('Save for offline', 'เก็บไว้อ่านออฟไลน์')}
+          </span>
+        </summary>
+        <div className="planner-tools">
+          <button
+            className="button button-outline"
+            disabled={!trip.stops.length}
+            onClick={() => window.print()}
+          >
+            {t('Print / Save as PDF', 'พิมพ์ / บันทึกเป็น PDF')}
+          </button>
+          <button
+            className="button button-outline"
+            disabled={offlineBusy || !trip.stops.length}
+            onClick={async () => {
+              setOfflineBusy(true);
+              setOfflineReady(false);
+              try {
+                await saveOffline(trip);
+                setOfflineReady(true);
+              } catch {
+                notify(
+                  t(
+                    'Offline download failed. Connect to the internet and try again on the published site.',
+                    'ดาวน์โหลดออฟไลน์ไม่สำเร็จ เชื่อมต่ออินเทอร์เน็ตแล้วลองอีกครั้งบนเว็บไซต์ที่เผยแพร่แล้ว',
+                  ),
+                );
+              } finally {
+                setOfflineBusy(false);
+              }
+            }}
+          >
+            {offlineBusy
+              ? t('Downloading…', 'กำลังดาวน์โหลด…')
+              : t('Save for offline', 'เก็บไว้อ่านออฟไลน์')}
+          </button>
+          {import.meta.env.VITE_SUPABASE_URL && (
+            <button className="button button-outline" onClick={() => setAccount(true)}>
+              {t('Account & sharing', 'บัญชีและการแชร์')}
+            </button>
+          )}
+        </div>
+        {offlineReady && (
+          <p role="status">
+            {t(
+              'Ready offline on this device. Your saved plan and these photos are available without internet; live maps need a connection.',
+              'พร้อมอ่านออฟไลน์บนอุปกรณ์นี้ เปิดแผนและภาพที่บันทึกได้โดยไม่ใช้อินเทอร์เน็ต แผนที่ออนไลน์ยังต้องเชื่อมต่อ',
+            )}
+          </p>
+        )}
+        <OfflineStatus trip={trip} lang={lang} refresh={offlineReady} />
+      </details>
       <div className="backup-actions">
         <button
           className="text-link"

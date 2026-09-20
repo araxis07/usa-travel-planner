@@ -68,8 +68,12 @@ test('choose day and duration before adding, search all states, and undo deletio
   await expect(page.locator('.day-activity')).toHaveCount(2);
 });
 
-test('comparison limits three choices, persists them and remains accessible', async ({ page }) => {
+test('comparison limits three choices, persists them and remains accessible', async ({
+  page,
+  isMobile,
+}) => {
   await page.goto('/?lang=en');
+  if (isMobile) await page.getByRole('button', { name: 'Toggle navigation' }).click();
   await page.getByRole('button', { name: 'Compare destinations', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: 'Compare destinations' });
   const select = dialog.getByLabel('Add a destination to compare');
@@ -87,6 +91,7 @@ test('comparison limits three choices, persists them and remains accessible', as
   await dialog.getByRole('button', { name: 'Remove New York', exact: true }).click();
   await expect(select).toBeEnabled();
   await page.reload();
+  if (isMobile) await page.getByRole('button', { name: 'Toggle navigation' }).click();
   await page.getByRole('button', { name: 'Compare destinations', exact: true }).click();
   await expect(page.getByRole('dialog').locator('thead th')).toHaveCount(3);
 });

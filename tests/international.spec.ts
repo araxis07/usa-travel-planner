@@ -12,6 +12,7 @@ test('all published content has five languages and three credited local destinat
   for (const state of catalog.states) {
     expect(state.photos.length).toBeGreaterThanOrEqual(3);
     expect(new Set(state.photos.map((p) => p.placeIndex)).size).toBe(3);
+    expect(state.photos.every((photo) => photo.displayCaption?.length === 5)).toBe(true);
     for (const text of [
       state.names,
       state.description,
@@ -46,7 +47,7 @@ for (const [lang, headline, name] of [
     await expect(page.locator('html')).toHaveAttribute('lang', lang);
     await expect(page.getByRole('heading', { level: 1 })).toContainText(headline);
     await expect(page.getByRole('combobox', { name: 'Language / ภาษา' })).toHaveValue(lang);
-    await page.locator('.destination-grid .card-image-button').first().click();
+    await page.locator('.destination-grid .card-quick-view').first().click();
     let dialog = page.getByRole('dialog');
     await expect(dialog).toHaveAccessibleName(name);
     await expect(dialog.locator('.photo-gallery button')).toHaveCount(
@@ -127,6 +128,7 @@ test('all fifty states load real covers and every language keeps the atlas avail
       }),
     ),
   );
+  await page.locator('#map').scrollIntoViewIfNeeded();
   for (const lang of LANGUAGES) {
     await page.getByRole('combobox', { name: 'Language / ภาษา' }).selectOption(lang);
     await expect(page.locator('#map svg.usa-map')).toHaveCount(1);

@@ -270,6 +270,7 @@ test('contextual scenes switch to photographs and advisories appear in destinati
   page,
 }) => {
   await page.goto('/en/');
+  await page.locator('#map').scrollIntoViewIfNeeded();
   const select = page.getByLabel('Jump to a state');
   for (const code of ['CA', 'NY', 'AZ']) {
     await select.selectOption(code);
@@ -279,12 +280,13 @@ test('contextual scenes switch to photographs and advisories appear in destinati
   await page.getByRole('button', { name: 'Photo mode', exact: true }).click();
   await expect(page.locator('.landmark-scene img')).toBeVisible();
   await page.reload();
+  await page.locator('#map').scrollIntoViewIfNeeded();
   await expect(page.getByRole('button', { name: '3D scene', exact: true })).toHaveAttribute(
     'aria-pressed',
     'true',
   );
   await page.goto('/en/states/california/big-sur/');
-  await expect(page.locator('.place-practical .day-warning').first()).toContainText('September 2');
+  await expect(page.locator('.guide-overview .guide-advisory')).toContainText('September 2');
   await expect(page.locator('.place-practical')).toContainText(
     'Big Sur Station visitor information',
   );

@@ -32,16 +32,30 @@ export default function StateCard({
   return (
     <article className="state-card">
       <div className="state-card-visual">
-        <button
-          className="card-image-button"
-          onClick={onSelect}
-          aria-label={`${t('Explore', 'สำรวจ')} ${name}`}
+        <a
+          className="card-image-button card-full-guide"
+          href={destinationUrl(state, lang)}
+          onClick={(event) => {
+            if (
+              onOpen &&
+              !event.ctrlKey &&
+              !event.metaKey &&
+              !event.shiftKey &&
+              !event.altKey &&
+              event.button === 0
+            ) {
+              event.preventDefault();
+              onOpen();
+            }
+          }}
+          aria-label={`${t('Open full guide', 'เปิดคู่มือเต็มหน้า')} ${name}`}
         >
           {photo && (
             <TravelImage
               src={photo.src}
               alt={local(state.placeNames[photo.placeIndex], lang)}
               loading="lazy"
+              sizes="(max-width: 1100px) calc((100vw - 64px) / 2), 25vw"
               width="600"
               height="700"
             />
@@ -51,7 +65,7 @@ export default function StateCard({
             <span>{state.code} / USA</span>
             <h3>{name}</h3>
           </div>
-        </button>
+        </a>
         <button
           className={`save-button ${saved ? 'saved' : ''}`}
           aria-pressed={saved}
@@ -67,26 +81,14 @@ export default function StateCard({
           <Icon name="clock" size={14} />
           {state.days} {t('days to explore', 'วันแนะนำ')}
         </span>
-        {onOpen ? (
-          <a
-            className="card-full-guide"
-            href={destinationUrl(state, lang)}
-            aria-label={`${t('Open full guide', 'เปิดคู่มือเต็มหน้า')} ${name}`}
-            onClick={(event) => {
-              if (!event.ctrlKey && !event.metaKey && !event.shiftKey && event.button === 0) {
-                event.preventDefault();
-                onOpen();
-              }
-            }}
-          >
-            <span>{t('Full guide', 'คู่มือเต็ม')}</span>
-            <Icon name="arrow" size={19} />
-          </a>
-        ) : (
-          <button onClick={onSelect} aria-label={`${t('View guide for', 'ดูรายละเอียด')} ${name}`}>
-            <Icon name="arrow" size={19} />
-          </button>
-        )}
+        <button
+          className="card-quick-view"
+          onClick={onSelect}
+          aria-label={`${t('Quick view', 'ดูตัวอย่าง')} ${name}`}
+        >
+          {t('Quick view', 'ดูตัวอย่าง')}
+          <Icon name="plus" size={16} />
+        </button>
       </div>
     </article>
   );

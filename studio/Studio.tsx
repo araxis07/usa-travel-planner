@@ -7,7 +7,7 @@ import {
   type Catalog,
 } from '../lib/content';
 import { LANGUAGES, LANGUAGE_NAMES, type Language } from '../lib/i18n';
-import { local, type LocalText, type StateGuide } from '../data/travel';
+import { local, type LocalText } from '../data/travel';
 import { downloadFile } from '../lib/storage';
 import StateDetail from '../components/StateDetail';
 import Icon from '../components/Icon';
@@ -68,7 +68,7 @@ export default function Studio() {
   const reviews = catalog ? reviewQueue(catalog) : [];
   const issues = catalog ? contentIssues(catalog) : [];
   const state = catalog?.states.find((s) => s.code === selected);
-  const change = (fields: Partial<StateGuide>) =>
+  const change = (fields: Partial<Catalog['states'][number]>) =>
     setCatalog((value) =>
       value
         ? {

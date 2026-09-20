@@ -1611,3 +1611,685 @@ html[lang='ko'] .discovery-place h3 {
     font-size: 12px;
   }
 }
+
+/* Discovery and planning: keep the next useful action in view. */
+:root {
+  --header-height: 86px;
+}
+.mobile-compare-link {
+  display: none;
+}
+.language-selector {
+  font-family: system-ui, sans-serif;
+}
+.hero-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  margin: 24px 0 16px;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--navy);
+  box-shadow: 0 8px 28px #10243c24;
+}
+.hero-search .search-destination {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: 12px;
+  padding: 4px 8px;
+}
+.hero-search .search-destination > span {
+  flex: 1;
+  min-width: 0;
+}
+.hero-search .search-label {
+  margin-bottom: 3px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.hero-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  padding: 6px 0;
+  background: transparent;
+  color: var(--navy);
+  font: inherit;
+  font-size: 15px;
+}
+.hero-search input::placeholder {
+  color: #596570;
+}
+.hero-search .search-submit {
+  flex-shrink: 0;
+  min-height: 50px;
+  padding: 14px;
+}
+.site .hero .hero-content {
+  max-width: 800px;
+  padding-bottom: 48px;
+}
+.site .hero .hero-content h1 {
+  font-size: clamp(52px, 5.5vw, 76px);
+  line-height: 1.08;
+}
+.hero-wizard {
+  color: white;
+  border: 1px solid #ffffff80;
+  background: #152e4055;
+}
+.hero-wizard:hover {
+  background: #172f50;
+}
+.hero-cta {
+  flex-wrap: wrap;
+}
+.hero-map-link {
+  min-height: 44px;
+}
+.hero .hero-location {
+  left: auto;
+  right: 70px;
+  bottom: 40px;
+}
+.hero .hero-footnote {
+  margin-top: 22px;
+}
+.adventure-search {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 0;
+  min-height: 80px;
+}
+.adventure-search select {
+  font-size: 14px;
+  min-height: 44px;
+}
+.adventure-search .search-label {
+  font-size: 11px;
+  margin-bottom: 0;
+}
+.atlas-loading {
+  min-height: 820px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+.state-card {
+  display: flex;
+  flex-direction: column;
+}
+.state-card .card-image-button {
+  display: block;
+  color: #fff;
+}
+.state-card .card-image-button:focus-visible {
+  outline-offset: 4px;
+}
+.state-card > p {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.state-card-bottom {
+  gap: 8px;
+}
+.state-card-bottom .card-quick-view {
+  width: auto;
+  height: auto;
+  min-height: 44px;
+  padding: 6px 10px;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--navy);
+}
+.state-card-bottom .card-quick-view:hover {
+  background: #eee8dd;
+}
+.guide-overview {
+  padding-block: 12px 20px;
+}
+.guide-overview dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border-block: 1px solid var(--line);
+}
+.guide-overview dl > div {
+  padding: 22px;
+  border-right: 1px solid var(--line);
+}
+.guide-overview dl > div:first-child {
+  padding-left: 0;
+}
+.guide-overview dl > div:last-child {
+  border-right: 0;
+}
+.guide-overview dt {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.guide-overview dt svg {
+  color: var(--red);
+  flex-shrink: 0;
+}
+.guide-overview dd {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 650;
+}
+.guide-advisory {
+  margin-top: 20px;
+}
+.destination-gallery-open {
+  position: absolute;
+  right: 28px;
+  top: 24px;
+  z-index: 2;
+}
+.destination-hero-actions .hero-save {
+  display: inline-flex;
+  color: #fff;
+  border: 1px solid #ffffffa8;
+}
+.destination-hero-actions .hero-save[aria-pressed='true'] {
+  background: #fff;
+  color: var(--red);
+}
+.hero-save[aria-pressed='true'] svg,
+.save-button.saved svg {
+  fill: currentColor;
+}
+.destination-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.destination-hero-actions .hero-primary-action {
+  margin: 0;
+}
+.guide-plan-card > .text-link {
+  min-height: 44px;
+}
+.day-navigation {
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+.day-navigation .day-planner-heading {
+  gap: 20px;
+  margin: 16px 0;
+}
+.day-navigation .day-planner-heading > div {
+  margin-right: auto;
+}
+.day-navigation .add-activity-toggle {
+  position: static;
+  margin: 0;
+  border-radius: 7px;
+  box-shadow: none;
+}
+.day-navigation .day-strip {
+  margin-block: 12px 16px;
+}
+.day-period.is-empty {
+  padding: 0;
+  min-height: 0;
+  align-self: start;
+  background: transparent;
+  border: 1px dashed #bec4c5;
+}
+.day-period.is-empty h4 {
+  display: none;
+}
+.day-period .period-empty {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  min-height: 54px;
+  margin: 0;
+  padding: 12px 18px;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: left;
+}
+.day-period .period-empty:hover {
+  color: var(--navy);
+  background: #f0efe8;
+}
+.day-help {
+  margin: 22px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.day-help summary {
+  min-height: 44px;
+  padding-block: 12px;
+  cursor: pointer;
+}
+.day-help p {
+  max-width: 760px;
+}
+.day-activity {
+  scroll-margin-block: 220px 90px;
+}
+.day-summary {
+  margin-bottom: 16px;
+}
+.planner-save-status {
+  font-size: 13px;
+}
+.planner-page-top .text-link {
+  min-height: 44px;
+}
+.landmark-scene {
+  background: linear-gradient(160deg, #fffdf8, #eee8da);
+}
+.landmark-scene canvas {
+  filter: drop-shadow(0 12px 9px #172f5022);
+}
+.landmark-scene figcaption {
+  gap: 12px;
+}
+.landmark-scene .text-link {
+  min-height: 44px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-motion='on'] .landmark-scene {
+    animation: scene-arrive 0.28s ease-out;
+  }
+  [data-motion='on'] .activity-selected {
+    animation: activity-arrive 0.3s ease-out;
+  }
+  [data-motion='on'] .save-button.saved svg,
+  [data-motion='on'] .hero-save[aria-pressed='true'] svg {
+    animation: saved-pulse 0.28s ease-out;
+  }
+  [data-motion='on'] .map-state {
+    transition:
+      filter 0.2s ease,
+      opacity 0.2s ease,
+      stroke-width 0.2s ease;
+  }
+}
+@keyframes scene-arrive {
+  from {
+    opacity: 0.35;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes activity-arrive {
+  from {
+    box-shadow: 0 0 0 5px #b83d4329;
+  }
+  to {
+    box-shadow: 0 0 0 2px #a52b3d22;
+  }
+}
+@keyframes saved-pulse {
+  50% {
+    transform: scale(1.2);
+  }
+}
+@media (max-width: 1100px) {
+  .hero .hero-location {
+    right: 26px;
+    bottom: 28px;
+  }
+  .site .hero .hero-content {
+    max-width: 680px;
+    padding-bottom: 120px;
+  }
+}
+@media (max-width: 760px) {
+  :root {
+    --header-height: 64px;
+  }
+  .header {
+    height: var(--header-height);
+  }
+  .header .header-inner {
+    padding-inline: 16px;
+    gap: 10px;
+  }
+  .header .header-actions {
+    gap: 6px;
+  }
+  .header .brand > span:last-child {
+    font-size: 30px;
+  }
+  .header .brand-symbol {
+    width: 26px;
+  }
+  .header .header-compare {
+    display: none;
+  }
+  .header .header-trip {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .header .header-trip > span:not(.trip-count) {
+    display: none;
+  }
+  .header .header-trip .icon {
+    display: block;
+    width: 19px;
+  }
+  .header .trip-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 3px;
+    font-size: 10px;
+  }
+  .header .menu-button {
+    width: 44px;
+    height: 44px;
+  }
+  .header .language-selector {
+    min-width: 48px;
+    width: 48px;
+    min-height: 44px;
+  }
+  .header .language-selector select {
+    min-height: 44px;
+  }
+  .header .desktop-nav.mobile-open {
+    top: var(--header-height);
+  }
+  .desktop-nav.mobile-open .mobile-compare-link {
+    display: flex;
+    gap: 12px;
+    min-height: 44px;
+    align-items: center;
+    font-size: 14px;
+  }
+  .site.is-planner .announcement {
+    display: none;
+  }
+  .site .hero {
+    min-height: 0;
+  }
+  .site .hero .hero-content {
+    padding: 30px 24px 78px;
+    max-width: 100%;
+  }
+  .site .hero .hero-content h1 {
+    font-size: clamp(36px, 10.5vw, 55px);
+    letter-spacing: -0.035em;
+    margin-top: 22px;
+    line-height: 1.14;
+  }
+  .site .hero .hero-content > p {
+    margin: 18px 0;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 100%;
+  }
+  .hero-search {
+    margin-top: 20px;
+    gap: 4px;
+  }
+  .hero-search .search-destination {
+    padding: 2px 4px;
+    gap: 6px;
+  }
+  .hero-search .search-destination > svg {
+    display: none;
+  }
+  .hero-search input {
+    font-size: 16px;
+  }
+  .hero-search .search-submit {
+    font-size: 12px;
+    max-width: 110px;
+    min-height: 52px;
+  }
+  .hero-search .search-submit svg {
+    display: none;
+  }
+  .hero .hero-cta {
+    gap: 4px 16px;
+    align-items: center;
+  }
+  .hero .hero-cta .button {
+    font-size: 13px;
+    padding: 10px 12px;
+    min-height: 44px;
+  }
+  .hero .hero-map-link {
+    font-size: 13px;
+  }
+  .hero .hero-location {
+    right: auto;
+    left: 24px;
+    bottom: 18px;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    color: white;
+  }
+  .hero-location .location-icon {
+    border: 0;
+    width: 20px;
+    height: 24px;
+    color: #f1d390;
+  }
+  .hero-location small,
+  .hero-location > .icon,
+  .hero-location strong + span {
+    display: none;
+  }
+  .hero-location strong {
+    color: white;
+    font-size: 12px;
+  }
+  .hero .motion-button {
+    bottom: 16px;
+  }
+  .hero-footnote {
+    display: none;
+  }
+  .search-shell .adventure-search {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+  }
+  .adventure-search label,
+  .adventure-search label:first-child {
+    padding: 0 8px;
+  }
+  .adventure-search label > svg {
+    display: none;
+  }
+  .adventure-search .search-season {
+    display: flex;
+    padding: 0 8px;
+  }
+  .adventure-search .search-label {
+    line-height: 1.5;
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+  .adventure-search select {
+    font-size: 13px;
+  }
+  .state-card .card-image-button {
+    aspect-ratio: 4 / 5;
+    height: auto;
+  }
+  .state-card-bottom {
+    flex-wrap: wrap;
+  }
+  .state-card-bottom > span {
+    font-size: 12px;
+  }
+  .state-card-bottom .card-quick-view {
+    font-size: 12px;
+    padding-inline: 8px;
+  }
+  .guide-overview dl {
+    grid-template-columns: 1fr 1fr;
+  }
+  .guide-overview dl > div,
+  .guide-overview dl > div:first-child {
+    padding: 16px 12px;
+  }
+  .guide-overview dl > div:nth-child(2n) {
+    border-right: 0;
+  }
+  .guide-overview dl > div:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+  .guide-overview dd {
+    font-size: 14px;
+  }
+  .destination-gallery-open {
+    top: 16px;
+    right: 16px;
+    min-height: 44px;
+    font-size: 12px;
+  }
+  .destination-hero-actions .button {
+    min-height: 44px;
+    font-size: 13px;
+    padding: 12px;
+  }
+  .planner-page {
+    padding-top: 12px;
+  }
+  .planner-page .planner-page-top {
+    gap: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+  }
+  .planner-page-top > .text-link {
+    font-size: 12px;
+    min-height: 32px;
+  }
+  .planner-page .planner-page-top h1 {
+    font-size: 20px;
+  }
+  .planner-page .planner-save-status {
+    margin: 0 0 8px;
+    font-size: 12px;
+  }
+  .planner-tabs {
+    margin: 0 0 8px;
+  }
+  .planner-page .day-navigation {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 25;
+    margin-bottom: 12px;
+    padding: 8px 0;
+  }
+  .day-navigation .day-planner-heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 8px;
+    gap: 10px;
+  }
+  .day-navigation .day-planner-heading > div {
+    display: none;
+  }
+  .day-navigation .day-planner-heading label {
+    display: block;
+    font-size: 0;
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+  }
+  .day-navigation select {
+    width: 100%;
+    font-size: 14px;
+    margin: 0;
+    padding: 10px;
+  }
+  .day-navigation .add-activity-toggle {
+    flex-shrink: 0;
+    padding: 10px 12px;
+    font-size: 13px;
+    min-height: 44px;
+  }
+  .planner-page .day-navigation .day-strip {
+    position: static;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+  }
+  .day-navigation .day-strip button {
+    min-height: 44px;
+    min-width: 68px;
+    padding: 8px 10px;
+  }
+  .day-navigation .day-strip button span {
+    font-size: 13px;
+  }
+  .day-navigation .day-strip button small {
+    font-size: 10px;
+  }
+  .day-summary {
+    padding: 10px 12px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .daily-quick-actions {
+    margin-bottom: 12px;
+    gap: 6px;
+  }
+  .daily-quick-actions .button {
+    padding: 8px;
+  }
+  .daily-quick-actions .mobile-workspace-switch {
+    margin-left: auto;
+  }
+  .daily-planner {
+    padding-bottom: 0;
+  }
+  .trip-checklist summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .trip-checklist summary > span {
+    display: inline;
+    margin: 0 0 0 auto;
+    font-size: 12px;
+  }
+  .trip-checklist summary strong {
+    font-size: 14px;
+  }
+}
+@media print {
+  .day-navigation,
+  .day-help,
+  .hero-search,
+  .guide-overview {
+    display: none !important;
+  }
+}
