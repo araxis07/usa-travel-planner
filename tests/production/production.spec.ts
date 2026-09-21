@@ -84,6 +84,35 @@ test('mobile home defers guide details and atlas while credits and practical gui
   await context.close();
 });
 
+test('corrected Mississippi photographs bypass previously saved Florida images', async ({
+  page,
+}) => {
+  await page.goto('/en/states/mississippi/');
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+    const cache = await caches.open('roam-trip-photos-v1');
+    for (const old of ['/images/states/ms-3.jpg', '/images/places/ms-2-3.jpg']) {
+      await cache.put(
+        old,
+        new Response('old-photo', { headers: { 'Content-Type': 'image/jpeg' } }),
+      );
+    }
+  });
+  await page.reload();
+  await page.locator('.place-story h3 a').nth(2).click();
+  const images = page.locator('.destination-hero img, .place-gallery-strip img');
+  await page.locator('.place-gallery-strip').scrollIntoViewIfNeeded();
+  await expect
+    .poll(() =>
+      images.evaluateAll((items) =>
+        items.every((item) => (item as HTMLImageElement).naturalWidth > 0),
+      ),
+    )
+    .toBe(true);
+  await expect(images.first()).toHaveAttribute('src', '/images/states/ms-3-horn-island.jpg');
+  await expect(images.last()).toHaveAttribute('src', '/images/places/ms-2-3-davis-bayou.jpg');
+});
+
 test('all language pages contain readable content without JavaScript and reciprocal SEO links', async ({
   browser,
   baseURL,

@@ -13,6 +13,23 @@ test('all published content has five languages and three credited local destinat
     expect(state.photos.length).toBeGreaterThanOrEqual(3);
     expect(new Set(state.photos.map((p) => p.placeIndex)).size).toBe(3);
     expect(state.photos.every((photo) => photo.displayCaption?.length === 5)).toBe(true);
+    for (let index = 0; index < 3; index++) {
+      const photos = state.photos.filter((p) => p.placeIndex === index);
+      expect(photos).toHaveLength(3);
+      for (let lang = 0; lang < 5; lang++) {
+        const captions = photos.map((p) => p.displayCaption![lang]);
+        expect(new Set(captions).size).toBe(3);
+        expect(
+          captions.every(
+            (caption) => !/photograph \d|ภาพที่ \d|照片 \d|写真 \d|사진 \d/.test(caption),
+          ),
+        ).toBe(true);
+      }
+      expect(state.destinations[index].officialUrl).not.toContain('visittheusa.com/destinations/');
+      expect(state.destinations[index].access[0]).not.toContain(
+        'Group nearby sights into a walkable neighborhood.',
+      );
+    }
     for (const text of [
       state.names,
       state.description,

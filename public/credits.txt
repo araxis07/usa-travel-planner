@@ -1467,10 +1467,10 @@ Source: https://commons.wikimedia.org/wiki/File:Eola_view,_U.S._Courthouse,_Natc
 License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
 
 Mississippi — Gulf Islands National Seashore
-File: /images/states/ms-3.jpg
-Author: National Park Service
-Source: https://commons.wikimedia.org/wiki/File:Gulf_Islands_NS.jpg
-License: Public domain — https://creativecommons.org/publicdomain/mark/1.0/
+File: /images/states/ms-3-horn-island.jpg
+Author: NPS/Kiss
+Source: https://www.nps.gov/guis/index.htm
+License: Public domain — https://www.nps.gov/aboutus/disclaimer.htm
 
 Mississippi — Clarksdale
 File: /images/places/ms-0-2.jpg
@@ -1503,8 +1503,8 @@ Source: https://www.nps.gov/guis/index.htm
 License: Public domain — https://www.nps.gov/aboutus/disclaimer.htm
 
 Mississippi — Gulf Islands National Seashore
-File: /images/places/ms-2-3.jpg
-Author: NPS/Doggrell
+File: /images/places/ms-2-3-davis-bayou.jpg
+Author: NPS/Breault
 Source: https://www.nps.gov/guis/index.htm
 License: Public domain — https://www.nps.gov/aboutus/disclaimer.htm
 

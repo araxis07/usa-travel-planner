@@ -1,7 +1,7 @@
 import { chromium } from '@playwright/test';
 import fs from 'node:fs/promises';
 import { preview } from 'vite';
-const output = 'artifacts/v3.4';
+const output = 'artifacts/v3.5';
 const screensOnly = process.argv.includes('--screens-only');
 const performanceOnly = process.argv.includes('--performance-only');
 await fs.mkdir(output, { recursive: true });
@@ -164,6 +164,13 @@ try {
     await page.locator('.destination-grid .card-image-button').first().click();
     await page.locator('.guide-overview').waitFor();
     await page.screenshot({ path: `${output}/${name}-guide.png`, fullPage: true });
+    await page.locator('.place-story h3 a').first().click();
+    await page.locator('.place-practical').waitFor();
+    await page.screenshot({ path: `${output}/${name}-place-guide.png`, fullPage: true });
+    await page.locator('.place-practical .guide-details summary').click();
+    await page
+      .locator('.place-practical')
+      .screenshot({ path: `${output}/${name}-practical-open.png` });
     await page.locator('.guide-breadcrumb button').click();
     await page.locator('#map').scrollIntoViewIfNeeded();
     for (const code of ['CA', 'NY', 'AZ']) {

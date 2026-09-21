@@ -73,49 +73,7 @@ export default function PlacePractical({
           </a>
         </aside>
       )}
-      {profile.planning && (
-        <div className="place-planning-facts">
-          <div>
-            <span>{x(lang, 'transport')}</span>
-            <strong>{x(lang, profile.planning.transport)}</strong>
-          </div>
-          <div>
-            <span>{x(lang, 'walking')}</span>
-            <strong>{x(lang, profile.planning.walking)}</strong>
-          </div>
-          <div>
-            <span>{x(lang, 'interest')}</span>
-            <strong>{x(lang, profile.planning.setting)}</strong>
-          </div>
-          <div>
-            <span>{x(lang, 'months')}</span>
-            <strong>
-              {profile.planning.months
-                .map((m) =>
-                  new Intl.DateTimeFormat(LOCALES[lang], { month: 'short' }).format(
-                    new Date(2026, m - 1, 1),
-                  ),
-                )
-                .join(' · ')}
-            </strong>
-          </div>
-        </div>
-      )}
-      <p className="fine-print">{x(lang, 'editorial')}</p>
-      <p className="fine-print">{x(lang, 'accessNote')}</p>
       <dl className="practical-grid">
-        <div>
-          <dt>{t('Suggested time', 'เวลาแนะนำ')}</dt>
-          <dd>
-            {profile.visitMinutes} {t('minutes', 'นาที')}
-            <small>
-              {t(
-                'An editorial starting point; adjust for your activities.',
-                'แนวทางจากผู้จัดทำ ปรับตามกิจกรรมที่เลือก',
-              )}
-            </small>
-          </dd>
-        </div>
         <div>
           <dt>{t('Getting around', 'การเดินทางในพื้นที่')}</dt>
           <dd>{local(profile.access, lang)}</dd>
@@ -123,22 +81,6 @@ export default function PlacePractical({
         <div>
           <dt>{t('Where to look for a stay', 'บริเวณที่พักให้ลองสำรวจ')}</dt>
           <dd>{local(profile.stay, lang)}</dd>
-        </div>
-        <div>
-          <dt>
-            {profile.locationKind === 'area'
-              ? t('Area reference', 'ตำแหน่งพื้นที่โดยประมาณ')
-              : profile.locationKind === 'visitor-center'
-                ? t('Visitor center reference', 'ตำแหน่งศูนย์บริการนักท่องเที่ยว')
-                : t('Entrance / parking', 'ทางเข้า / ที่จอดรถ')}
-          </dt>
-          <dd>
-            {local(profile.locationLabel, lang)}
-            <small>{profile.coordinates.map((n) => n.toFixed(5)).join(', ')}</small>
-            <a href={profile.locationSource} target="_blank" rel="noreferrer">
-              {t('Location reference', 'แหล่งอ้างอิงตำแหน่ง')} · {date(profile.locationCheckedAt)}
-            </a>
-          </dd>
         </div>
       </dl>
       <div className="practical-links">
@@ -156,6 +98,75 @@ export default function PlacePractical({
           </a>
         )}
       </div>
+      <details className="guide-details">
+        <summary>{x(lang, 'guideDetails')}</summary>
+        {profile.planning && (
+          <div className="place-planning-facts">
+            {!overviewShown && (
+              <div>
+                <span>{x(lang, 'transport')}</span>
+                <strong>{x(lang, profile.planning.transport)}</strong>
+              </div>
+            )}
+            <div>
+              <span>{x(lang, 'walking')}</span>
+              <strong>{x(lang, profile.planning.walking)}</strong>
+            </div>
+            <div>
+              <span>{x(lang, 'setting')}</span>
+              <strong>{x(lang, profile.planning.setting)}</strong>
+            </div>
+            {!overviewShown && (
+              <div>
+                <span>{x(lang, 'months')}</span>
+                <strong>
+                  {profile.planning.months
+                    .map((m) =>
+                      new Intl.DateTimeFormat(LOCALES[lang], { month: 'short' }).format(
+                        new Date(2026, m - 1, 1),
+                      ),
+                    )
+                    .join(' · ')}
+                </strong>
+              </div>
+            )}
+          </div>
+        )}
+        <p className="fine-print">{x(lang, 'editorial')}</p>
+        <p className="fine-print">{x(lang, 'accessNote')}</p>
+        <dl className="practical-reference">
+          {!overviewShown && (
+            <div>
+              <dt>{t('Suggested time', 'เวลาแนะนำ')}</dt>
+              <dd>
+                {profile.visitMinutes} {t('minutes', 'นาที')}
+                <small>
+                  {t(
+                    'An editorial starting point; adjust for your activities.',
+                    'แนวทางจากผู้จัดทำ ปรับตามกิจกรรมที่เลือก',
+                  )}
+                </small>
+              </dd>
+            </div>
+          )}
+          <div>
+            <dt>
+              {profile.locationKind === 'area'
+                ? t('Area reference', 'ตำแหน่งพื้นที่โดยประมาณ')
+                : profile.locationKind === 'visitor-center'
+                  ? t('Visitor center reference', 'ตำแหน่งศูนย์บริการนักท่องเที่ยว')
+                  : t('Entrance / parking', 'ทางเข้า / ที่จอดรถ')}
+            </dt>
+            <dd>
+              {local(profile.locationLabel, lang)}
+              <small>{profile.coordinates.map((n) => n.toFixed(5)).join(', ')}</small>
+              <a href={profile.locationSource} target="_blank" rel="noreferrer">
+                {t('Location reference', 'แหล่งอ้างอิงตำแหน่ง')} · {date(profile.locationCheckedAt)}
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </details>
       {park && facts ? (
         <div className="park-snapshot">
           <div className="park-snapshot-heading">

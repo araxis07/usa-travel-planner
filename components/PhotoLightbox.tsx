@@ -106,7 +106,11 @@ export default function PhotoLightbox({
           <img
             key={photo.src}
             src={photo.src}
-            alt={local(state.placeNames[photo.placeIndex], lang)}
+            alt={
+              photo.displayCaption
+                ? local(photo.displayCaption, lang)
+                : local(state.placeNames[photo.placeIndex], lang)
+            }
             onError={() => setFailed(true)}
           />
         )}

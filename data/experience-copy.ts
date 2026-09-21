@@ -159,8 +159,23 @@ export const EXPERIENCE_COPY = {
     '탐방로 또는 시설별 확인',
   ],
   indoors: ['Indoor options', 'มีตัวเลือกในร่ม', '室内选择', '屋内の選択肢', '실내 선택지'],
+  setting: ['Activity setting', 'พื้นที่ทำกิจกรรม', '活动环境', '活動場所', '활동 환경'],
   outdoors: ['Outdoor experience', 'กิจกรรมกลางแจ้ง', '户外体验', '屋外の体験', '야외 체험'],
   practical: ['Before you go', 'ก่อนออกเดินทาง', '出发前须知', '出発前に', '출발 전 안내'],
+  guideDetails: [
+    'Walking, facilities & map reference',
+    'การเดิน สิ่งอำนวยความสะดวก และพิกัดอ้างอิง',
+    '步行、设施与地图参考',
+    '徒歩・設備・地図の参考情報',
+    '도보, 시설 및 지도 참고 정보',
+  ],
+  stateContext: [
+    'Planning a longer stay in this state',
+    'วางแผนเที่ยวต่อในรัฐนี้',
+    '在本州安排更长的行程',
+    'この州での滞在を延ばすなら',
+    '이 주에서 더 오래 머무는 여행 계획',
+  ],
   story: ['The experience', 'ประสบการณ์ที่รออยู่', '旅行体验', 'この場所の魅力', '여행 경험'],
   photos: ['Photo journal', 'ภาพจากจุดหมาย', '旅行影集', 'フォトジャーナル', '여행 사진'],
   directions: [

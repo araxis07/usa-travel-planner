@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { EMPTY_TRIP } from '../data/travel';
 import { LANGUAGES } from '../lib/i18n';
+import catalog from '../content/states.json' with { type: 'json' };
 
 test('home search, language controls and trip shortcuts fit all five languages', async ({
   page,
@@ -114,4 +115,45 @@ test('place overview exposes access notices and saving applies to that place', a
     JSON.parse(localStorage.getItem('roam.collections.v1')!),
   );
   expect(stored.groups[0].places).toContain('CA-2');
+});
+
+test('guide keeps arrival advice visible and exposes references and photo captions in five languages', async ({
+  page,
+}) => {
+  const state = catalog.states.find((s) => s.code === 'MS')!;
+  const profile = state.destinations[2];
+  const photos = state.photos.filter((p) => p.placeIndex === 2);
+  await page.goto('/en/states/mississippi/');
+  await page.locator('.place-story').nth(2).locator('h3 a').click();
+  for (const [i, lang] of LANGUAGES.entries()) {
+    await page.getByLabel('Language / ภาษา', { exact: true }).selectOption(lang);
+    const practical = page.locator('.place-practical');
+    await expect(practical.locator('.practical-grid')).toContainText(profile.access[i]);
+    await expect(practical.locator('.practical-grid')).toContainText(profile.stay[i]);
+    await expect(practical.locator('.practical-links .button')).toHaveAttribute(
+      'href',
+      profile.officialUrl,
+    );
+    const details = practical.locator('.guide-details');
+    await expect(details).not.toHaveAttribute('open', '');
+    await expect(details.locator('.practical-reference')).not.toBeVisible();
+    await details.locator('summary').focus();
+    await page.keyboard.press('Enter');
+    await expect(details.locator('.practical-reference')).toBeVisible();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('.place-gallery-strip figcaption')).toHaveText(
+      photos.map((p) => p.displayCaption[i]),
+    );
+    const button = page.locator('.place-gallery-strip button').last();
+    await button.click();
+    await expect(page.locator('.photo-lightbox .lightbox-stage img')).toHaveAttribute(
+      'alt',
+      photos[2].displayCaption[i],
+    );
+    await page.keyboard.press('Escape');
+    await expect(button).toBeFocused();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
 });

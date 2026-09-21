@@ -190,7 +190,7 @@ test('place discovery filters, saves collections and opens a guide with its tabl
   await expect(page.locator('.guide-toc')).toBeVisible();
   await page.locator('.guide-toc').getByRole('link', { name: 'Before you go' }).click();
   await expect(page.locator('#guide-practical')).toBeInViewport();
-  await expect(page.locator('.place-planning-facts')).toContainText('Transit-friendly base');
+  await expect(page.locator('.guide-overview')).toContainText('Transit-friendly base');
   await page.locator(isMobile ? '.bottom-nav button:nth-child(3)' : '.header-saved').click();
   await expect(page.locator('.collection-places')).toContainText('San Francisco');
   await page.locator('.collection-places').getByRole('checkbox', { name: 'Visited' }).check();

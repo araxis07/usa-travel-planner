@@ -175,7 +175,11 @@ export default function DestinationPage({
         <TravelImage
           src={photo.src}
           sizes="100vw"
-          alt={local(state.placeNames[photo.placeIndex], lang)}
+          alt={
+            credit.displayCaption
+              ? local(credit.displayCaption, lang)
+              : local(state.placeNames[photo.placeIndex], lang)
+          }
           fetchPriority="high"
         />
         <div className="destination-hero-shade" />
@@ -273,30 +277,41 @@ export default function DestinationPage({
             )}
           </p>
           {profile && <PlacePractical profile={profile} lang={lang} overviewShown />}
-          <div className="detail-facts" hidden={placeIndex === undefined}>
-            <div>
-              <Icon name="sun" />
-              <span>{t('Good seasons to explore', 'ฤดูกาลน่าเที่ยว')}</span>
-              <strong>{state.season.map((s) => local(SEASON_LABELS[s], lang)).join(' · ')}</strong>
-            </div>
-            <div>
-              <Icon name="calendar" />
-              <span>{t('Suggested days in this state', 'จำนวนวันแนะนำในรัฐนี้')}</span>
-              <strong>
-                {state.days} {t('days', 'วัน')}
-              </strong>
-            </div>
-            <div>
-              <Icon name="compass" />
-              <span>{t('Gateway airports', 'สนามบินหลัก')}</span>
-              <strong>{state.hub}</strong>
-            </div>
-          </div>
+          {placeIndex !== undefined && (
+            <details className="guide-details">
+              <summary>{x(lang, 'stateContext')}</summary>
+              <div className="detail-facts">
+                <div>
+                  <Icon name="sun" />
+                  <span>{t('Good seasons to explore', 'ฤดูกาลน่าเที่ยว')}</span>
+                  <strong>
+                    {state.season.map((s) => local(SEASON_LABELS[s], lang)).join(' · ')}
+                  </strong>
+                </div>
+                <div>
+                  <Icon name="calendar" />
+                  <span>{t('Suggested days in this state', 'จำนวนวันแนะนำในรัฐนี้')}</span>
+                  <strong>
+                    {state.days} {t('days', 'วัน')}
+                  </strong>
+                </div>
+                <div>
+                  <Icon name="compass" />
+                  <span>{t('Gateway airports', 'สนามบินหลัก')}</span>
+                  <strong>{state.hub}</strong>
+                </div>
+              </div>
+            </details>
+          )}
           <div className="guide-section-heading">
             <h2>
-              {placeIndex === undefined ? t('Three places to start', 'สามจุดหมายเริ่มต้น') : title}
+              {placeIndex === undefined
+                ? t('Three places to start', 'สามจุดหมายเริ่มต้น')
+                : x(lang, 'photos')}
             </h2>
-            <span className="eyebrow">{state.code} — 01 / 03</span>
+            <span className="eyebrow">
+              {state.code} · {galleryPhotos.length}
+            </span>
           </div>
           <div className="place-story-list" id="guide-photos">
             {indices.map((index) => {
@@ -305,46 +320,58 @@ export default function DestinationPage({
               const record = findPlace(placeId(state, index));
               return (
                 <section className="place-story" key={index}>
-                  <button
-                    className="place-story-image"
-                    onClick={() => setGallery(state.photos.indexOf(item))}
-                    aria-label={`${t('View photo', 'ดูภาพ')} ${local(state.placeNames[index], lang)}`}
-                  >
-                    <TravelImage
-                      src={item.src}
-                      alt={local(state.placeNames[index], lang)}
-                      loading="lazy"
-                    />
-                    <span>0{index + 1}</span>
-                  </button>
+                  {placeIndex === undefined && (
+                    <button
+                      className="place-story-image"
+                      onClick={() => setGallery(state.photos.indexOf(item))}
+                      aria-label={`${t('View photo', 'ดูภาพ')} ${local(state.placeNames[index], lang)}`}
+                    >
+                      <TravelImage
+                        src={item.src}
+                        alt={
+                          itemCredit.displayCaption
+                            ? local(itemCredit.displayCaption, lang)
+                            : local(state.placeNames[index], lang)
+                        }
+                        loading="lazy"
+                      />
+                      <span>0{index + 1}</span>
+                    </button>
+                  )}
                   <div>
-                    <h3>
-                      <a
-                        href={destinationUrl(state, lang, index)}
-                        onClick={(event) => open(event, index)}
-                      >
-                        {local(state.placeNames[index], lang)}
-                      </a>
-                    </h3>
+                    {placeIndex === undefined && (
+                      <h3>
+                        <a
+                          href={destinationUrl(state, lang, index)}
+                          onClick={(event) => open(event, index)}
+                        >
+                          {local(state.placeNames[index], lang)}
+                        </a>
+                      </h3>
+                    )}
                     {placeIndex === undefined && (
                       <p>{local(state.destinations[index].summary, lang)}</p>
                     )}
                     <div className="place-gallery-strip">
                       {state.photos
                         .filter((p) => p.placeIndex === index)
-                        .map((p) => (
-                          <button
-                            key={p.src}
-                            onClick={() => setGallery(state.photos.indexOf(p))}
-                            aria-label={`${t('View photo', 'ดูภาพ')} ${local(state.placeNames[index], lang)} ${state.photos.indexOf(p) + 1}`}
-                          >
-                            <TravelImage
-                              src={p.src}
-                              alt={local(state.placeNames[index], lang)}
-                              loading="lazy"
-                            />
-                          </button>
-                        ))}
+                        .map((p) => {
+                          const caption = photoDetails(p).displayCaption;
+                          const label = caption
+                            ? local(caption, lang)
+                            : local(state.placeNames[index], lang);
+                          return (
+                            <figure key={p.src}>
+                              <button
+                                onClick={() => setGallery(state.photos.indexOf(p))}
+                                aria-label={`${t('View photo', 'ดูภาพ')} ${label}`}
+                              >
+                                <TravelImage src={p.src} alt={label} loading="lazy" />
+                              </button>
+                              <figcaption>{label}</figcaption>
+                            </figure>
+                          );
+                        })}
                     </div>
                     <div className="place-story-actions">
                       <button className="text-link" onClick={() => onAddPlace(index)}>
