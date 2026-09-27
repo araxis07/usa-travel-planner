@@ -2,7 +2,9 @@
 
 This release has automated Chromium desktop/mobile, Firefox desktop and WebKit touch coverage. Browser emulation is not a physical iPhone/Android test. No recruited user study or native-speaker review has been performed.
 
-The v3.4 touch checks also run with Pixel 7 and iPhone 13 profiles: five-language forms, a 390 × 360 constrained viewport, portrait/landscape changes, focused-field submission, persistence and dialog dismissal. A resized viewport does not emulate the OS keyboard. On 2026-09-21 no connected USB mobile device was detected; Android/iOS device tooling was unavailable, so the physical checks below remain pending.
+On 2026-09-28 an additional automated 320 px check confirmed that all six updated destination advisories, their official links and all five localized layouts remain usable without horizontal overflow. This is browser emulation; the physical-device, screen-reader and recruited-user items below are still pending.
+
+The v3.4 touch checks also run with Pixel 7 and iPhone 13 profiles: five-language forms, a 390 × 360 constrained viewport, portrait/landscape changes, focused-field submission, persistence and dialog dismissal. A resized viewport does not emulate the OS keyboard. On 2026-09-28 no connected USB mobile device was detected; Android `adb` and Apple's `devicectl` were unavailable, so the physical checks below remain pending.
 
 ## Ten-minute task for 3–5 first-time visitors
 

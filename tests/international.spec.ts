@@ -129,6 +129,44 @@ test('cross-language place search works regardless of the current interface lang
   await page.goto('/');
   await expect(page.locator('html')).toHaveAttribute('lang', 'ja');
 });
+test('updated access notices stay readable and linked on a narrow screen in all languages', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  for (const [path, code, index] of [
+    ['/en/states/california/big-sur/', 'CA', 2],
+    ['/en/states/hawaii/kauai/', 'HI', 2],
+    ['/en/states/alaska/denali-national-park/', 'AK', 0],
+    ['/en/states/nevada/valley-of-fire-state-park/', 'NV', 1],
+    ['/en/states/oregon/crater-lake-national-park/', 'OR', 2],
+    ['/en/states/wisconsin/apostle-islands-national-lakeshore/', 'WI', 2],
+  ] as const) {
+    const profile = catalog.states.find((state) => state.code === code)!.destinations[index];
+    await page.goto(path);
+    for (const [i, lang] of LANGUAGES.entries()) {
+      await page.getByLabel('Language / ภาษา').selectOption(lang);
+      await expect(page.locator('.guide-advisory p')).toHaveText(profile.advisory!.text[i]);
+      await expect(page.locator('.guide-advisory a')).toHaveAttribute(
+        'href',
+        profile.advisory!.source,
+      );
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    }
+  }
+});
+test('dated access notices warn visitors when their saved check becomes stale', async ({
+  page,
+}) => {
+  await page.clock.setFixedTime(new Date('2026-10-07T00:00:00Z'));
+  await page.goto('/en/states/oregon/crater-lake-national-park/');
+  await expect(page.locator('.guide-advisory .fine-print')).toContainText('over 7 days old');
+  await expect(page.locator('.guide-advisory a')).toHaveAttribute(
+    'href',
+    'https://www.nps.gov/crla/planyourvisit/conditions.htm',
+  );
+});
 test('all fifty states load real covers and every language keeps the atlas available', async ({
   page,
 }) => {

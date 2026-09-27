@@ -77,7 +77,7 @@ test('all 150 places have traceable map coordinates and unique shareable slugs',
       expect(p.coordinates![1]).toBeGreaterThan(-180);
       expect(p.coordinates![1]).toBeLessThan(-60);
       expect(p.source).toMatch(
-        /^https:\/\/(en\.wikipedia\.org|www\.wikidata\.org|www\.nps\.gov|californiacoastaltrail\.org)\//,
+        /^https:\/\/(en\.wikipedia\.org|www\.wikidata\.org|www\.nps\.gov|www\.fws\.gov|californiacoastaltrail\.org)\//,
       );
     });
   }

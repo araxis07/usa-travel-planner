@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 const root = 'public/images';
+const generator = await fs.stat(new URL(import.meta.url));
 let written = 0;
 async function walk(dir) {
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
@@ -30,11 +31,11 @@ async function walk(dir) {
       for (const width of [480, 800]) {
         const output = path.join(root, 'responsive', `hero-mobile-${width}.webp`);
         const stat = await fs.stat(output).catch(() => null);
-        if (stat && stat.mtimeMs >= source.mtimeMs) continue;
+        if (stat && stat.mtimeMs >= Math.max(source.mtimeMs, generator.mtimeMs)) continue;
         await sharp(file)
           .rotate()
           .resize({ width, height: Math.round((width * 4) / 3), fit: 'cover' })
-          .webp({ quality: 75, effort: 4 })
+          .webp({ quality: 60, effort: 4 })
           .toFile(output);
         written++;
       }

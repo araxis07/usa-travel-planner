@@ -253,6 +253,14 @@ export default function DestinationPage({
               {t('Official visitor information', 'ข้อมูลจากหน่วยงานท่องเที่ยว')} ·{' '}
               {profile.advisory.checkedAt}
             </a>
+            {Date.now() - Date.parse(profile.advisory.checkedAt) > 7 * 86400000 && (
+              <p className="fine-print">
+                {t(
+                  'This snapshot is over 7 days old. Check the official site for current conditions.',
+                  'ข้อมูลชุดนี้เก่ากว่า 7 วัน ตรวจสภาพล่าสุดที่เว็บไซต์ทางการ',
+                )}
+              </p>
+            )}
           </aside>
         )}
       </section>
