@@ -716,8 +716,6 @@ h4 {
 .destinations {
   padding-top: 64px;
   padding-bottom: 66px;
-  background: #fffdf8;
-  color: #172f50;
 }
 .section-heading {
   display: flex;
@@ -728,16 +726,6 @@ h4 {
 }
 .section-heading h2 {
   margin: 14px 0;
-}
-.destinations .section-heading h2 {
-  color: #172f50;
-  font-weight: 700;
-}
-.destinations .section-heading h2 em {
-  color: #8a2d34;
-}
-html[lang='th'] .destinations .section-heading h2 em {
-  font-weight: 700;
 }
 .section-heading p {
   font-size: 12px;
@@ -858,13 +846,15 @@ html[lang='th'] .destinations .section-heading h2 em {
   top: 15px;
   left: 14px;
   z-index: 2;
-  background: #fffdf2ed;
-  border: 1px solid #fff5;
+  background: #fffdf8;
+  color: #172f50;
+  border: 1px solid #d9dfe0;
   border-radius: 3px;
-  padding: 5px 8px;
-  font-size: 8px;
+  padding: 6px 10px;
+  font-size: 11px;
   letter-spacing: 0.2px;
-  font-weight: 600;
+  line-height: 1.4;
+  font-weight: 700;
 }
 .save-button {
   position: absolute;
@@ -3071,7 +3061,7 @@ html[lang='th'] .guide-card h3 {
     font-size: 10px;
   }
   .card-region {
-    font-size: 9px;
+    font-size: 11px;
   }
   .atlas-layout {
     grid-template-columns: 1fr 1.35fr;
@@ -3488,10 +3478,10 @@ html[lang='th'] .guide-card h3 {
     aspect-ratio: 3/4;
   }
   .card-region {
-    font-size: 7px;
+    font-size: 10px;
     top: 12px;
     left: 10px;
-    padding: 4px 6px;
+    padding: 6px 8px;
     max-width: calc(100% - 50px);
   }
   .save-button {
