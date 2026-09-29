@@ -389,8 +389,8 @@
           "locationCheckedAt": "2026-09-15",
           "officialUrl": "https://parks.ca.gov/?page_id=29170",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-28",
-          "reviewAfter": "2026-10-05",
+          "reviewedAt": "2026-09-30",
+          "reviewAfter": "2026-10-07",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -400,7 +400,7 @@
             "months": [4, 5, 6, 7, 8, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-09-28",
+            "checkedAt": "2026-09-30",
             "source": "https://parks.ca.gov/?page_id=29170",
             "text": [
               "The official September 2 notice reports Big Sur park and Highway 1 closures due to fires. This is a saved notice; confirm current access before travel.",
@@ -1579,8 +1579,8 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://www.gohawaii.com/islands/kauai/travel-info/transportation",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-28",
-          "reviewAfter": "2026-10-05",
+          "reviewedAt": "2026-09-30",
+          "reviewAfter": "2026-10-07",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "boat",
@@ -1590,14 +1590,14 @@
             "months": [4, 5, 6, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-09-28",
-            "source": "https://www.gohawaii.com/lowell",
+            "checkedAt": "2026-09-30",
+            "source": "https://dlnr.hawaii.gov/dsp/",
             "text": [
-              "GoHawaii's September 23 update says most Kauaʻi businesses have reopened. Confirm North Shore access and outdoor activities directly before booking.",
-              "ข้อมูล GoHawaii วันที่ 23 กันยายนระบุว่าธุรกิจส่วนใหญ่บนเกาะคาไวกลับมาเปิดแล้ว โปรดตรวจเส้นทางฝั่งเหนือและกิจกรรมกลางแจ้งกับผู้ให้บริการก่อนจอง",
-              "GoHawaii 9月23日的更新称，可爱岛大多数商家已恢复营业。预订前请直接确认北岸交通和户外活动安排。",
-              "GoHawaiiの9月23日更新によると、カウアイ島の多くの事業者は営業を再開しています。予約前にノースショアへのアクセスと屋外アクティビティを直接確認してください。",
-              "GoHawaii의 9월 23일 안내에 따르면 카우아이의 대부분 업체가 영업을 재개했습니다. 예약 전 북쪽 해안 접근과 야외 활동을 직접 확인하세요."
+              "Hawaiʻi State Parks' September 28 notice says Kōkeʻe Road, most Kauaʻi state parks and camping remain closed; only limited Wailua River access has reopened. Check current park notices before travel.",
+              "ประกาศอุทยานรัฐฮาวายวันที่ 28 กันยายนระบุว่าถนน Kōkeʻe อุทยานของรัฐส่วนใหญ่บนเกาะคาไว และพื้นที่ตั้งแคมป์ยังปิดอยู่ โดยเปิดพื้นที่บางส่วนของ Wailua River เท่านั้น ตรวจประกาศล่าสุดก่อนเดินทาง",
+              "夏威夷州立公园9月28日公告称，Kōkeʻe 公路、可爱岛大多数州立公园及露营地仍关闭；Wailua River 仅部分区域重新开放。出行前请查看最新公园公告。",
+              "ハワイ州立公園の9月28日のお知らせでは、Kōkeʻe Road、カウアイ島のほとんどの州立公園とキャンプ場は引き続き閉鎖中で、Wailua River は一部のみ再開しています。出発前に最新の公園情報を確認してください。",
+              "하와이 주립공원의 9월 28일 공지에 따르면 Kōkeʻe Road, 카우아이섬의 대부분 주립공원과 캠핑장은 여전히 폐쇄 중이며 Wailua River는 일부 구역만 다시 열렸습니다. 출발 전 최신 공지를 확인하세요."
             ]
           }
         }
@@ -3902,8 +3902,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/dena/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/dena/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-28",
-          "reviewAfter": "2026-10-05",
+          "reviewedAt": "2026-09-30",
+          "reviewAfter": "2026-10-07",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -3921,7 +3921,7 @@
               "Pretty Rocks 다리가 완공되었습니다. 2026년 가을 자가용의 약 30마일 지점까지 통행은 날씨에 따라 달라지며, 전 구간 버스 운행은 2027년 재개 예정입니다. 여행 날짜의 도로와 버스 상황을 NPS에서 확인하세요."
             ],
             "source": "https://www.nps.gov/dena/planyourvisit/conditions.htm",
-            "checkedAt": "2026-09-28"
+            "checkedAt": "2026-09-30"
           }
         },
         {
@@ -12223,8 +12223,8 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://parks.nv.gov/parks/valley-of-fire",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-28",
-          "reviewAfter": "2026-10-05",
+          "reviewedAt": "2026-09-30",
+          "reviewAfter": "2026-10-07",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -12242,7 +12242,7 @@
               "일부 탐방로는 5월 15일~9월 30일에 폐쇄되고, 서쪽 입구는 2026년 공사 기간 월~목요일에 닫힙니다. 공원 전체는 12월 1~14일 정비로 휴장합니다. 탐방로와 입구를 정하기 전에 최신 공지를 확인하세요."
             ],
             "source": "https://parks.nv.gov/parks/valley-of-fire",
-            "checkedAt": "2026-09-28"
+            "checkedAt": "2026-09-30"
           }
         },
         {
@@ -15432,8 +15432,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/crla/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/crla/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-28",
-          "reviewAfter": "2026-10-05",
+          "reviewedAt": "2026-09-30",
+          "reviewAfter": "2026-10-07",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -15451,7 +15451,7 @@
               "Cleetwood Cove Trail은 공사로 계속 폐쇄되어 호숫가 접근을 계획하지 않아야 합니다. East Rim Drive는 통과 주행이 가능하지만 공사 구간에서 교통 통제가 있을 수 있습니다. 출발 전 NPS 현황을 확인하세요."
             ],
             "source": "https://www.nps.gov/crla/planyourvisit/conditions.htm",
-            "checkedAt": "2026-09-28"
+            "checkedAt": "2026-09-30"
           }
         }
       ]
@@ -19369,8 +19369,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/apis/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/apis/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-28",
-          "reviewAfter": "2026-10-05",
+          "reviewedAt": "2026-09-30",
+          "reviewAfter": "2026-10-07",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "boat",
@@ -19388,7 +19388,7 @@
               "Little Sand Bay 방문자 센터는 2026년 공사 기간에 폐쇄됩니다. 보트와 카약 접근은 별도 안내를 따르므로 출항 지점을 정하기 전에 최신 공사 공지를 확인하세요."
             ],
             "source": "https://www.nps.gov/apis/learn/infrastructure-projects.htm",
-            "checkedAt": "2026-09-28"
+            "checkedAt": "2026-09-30"
           }
         }
       ]

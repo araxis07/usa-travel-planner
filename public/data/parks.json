@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-09-27T15:27:54.403Z",
+  "checkedAt": "2026-09-29T17:30:47.584Z",
   "source": "https://www.nps.gov/subjects/developer/",
   "parks": [
     {
@@ -322,9 +322,9 @@
           "id": "7FB2991F-FED2-4E87-8002-B4BADAD2749F",
           "title": "Glacier Point Road is temporarily closed due to the Dome Fire",
           "category": "Park Closure",
-          "description": "The Dome Fire is burning in the wilderness northeast of Wawona. Glacier Point Road is temporarily closed because of reduced visibility along the road due to smoke and to safely allow firefighting operations. Additionally, there are some trail closures south of Glacier Point Road.. Smoky conditions are possible, with unhealthy air quality in some places at some times..",
+          "description": "The Dome Fire is burning in the wilderness northeast of Wawona. Glacier Point Road is temporarily closed because of reduced visibility along the road due to smoke and to safely allow firefighting operations. Additionally, there are some trail closures south of Glacier Point Road.. Smoky conditions are possible, with brief periods of unhealthy air quality in some places at some times..",
           "url": "https://inciweb.wildfire.gov/incident-information/caynp-dome-fire",
-          "lastIndexedDate": "2026-09-24 00:00:00.0"
+          "lastIndexedDate": "2026-09-28 00:00:00.0"
         }
       ]
     },
@@ -725,30 +725,6 @@
           "lastIndexedDate": "2026-09-24 00:00:00.0"
         },
         {
-          "id": "4AF3C2F6-CAD0-427C-94E8-49C0FAF9FDC7",
-          "title": "Temporary Park Wide Closures Ahead of Tropical Storm Nolo",
-          "category": "Danger",
-          "description": "Backcountry trails and campgrounds begin closing today, with all backcountry areas closed by 5 PM on Thursday, September 24, 2026. All remaining park areas, including Nāmakanipaio tent camping, will close by 5 PM Thursday to all recreational activities; Kahuku Unit will close at 4 PM. Lodging guests and staff will shelter in place by 5 PM on Thursday.",
-          "url": "",
-          "lastIndexedDate": "2026-09-24 00:00:00.0"
-        },
-        {
-          "id": "523CCC87-B90A-4643-9114-645976206127",
-          "title": "Crater Rim Drive West Closed from Kilauea Military Camp to Uēkahuna",
-          "category": "Park Closure",
-          "description": "Crater Rim Drive West is closed between Kilauea Military Camp and the Uēkahuna parking area due to a downed utility pole. This section of road will be closed to all vehicle use until further notice. Crater Rim Trail and overlooks toward Uēkahuna remain open to hikers.",
-          "url": "",
-          "lastIndexedDate": "2026-09-22 00:00:00.0"
-        },
-        {
-          "id": "087F24F9-9479-445F-87B0-80252CC25036",
-          "title": "Overflow Parking at Kīlauea Military Camp Ballfield is Temporarily Closed",
-          "category": "Park Closure",
-          "description": "Overflow parking at the Kīlauea Military Camp ballfield is temporarily closed until further notice due to a downed utility pole. Parking at the visitor center may be limited. Additional parking is available elsewhere within the Kīlauea Military Camp area. Please park where space is available, and follow posted signs and ranger directions.",
-          "url": "",
-          "lastIndexedDate": "2026-09-22 00:00:00.0"
-        },
-        {
           "id": "611B580A-2CFD-4331-B712-E8E46FC6683D",
           "title": "Mauna Loa Road Closed Past Second Cattle Guard for Tree Removal ",
           "category": "Park Closure",
@@ -1091,6 +1067,14 @@
       ],
       "alerts": [
         {
+          "id": "1DD0491A-94FA-447F-A3B5-C986EB20C474",
+          "title": "Upper Emerald Pools Trail Closed",
+          "category": "Park Closure",
+          "description": "The Upper Emerald Pools area is closed until further notice due to an ongoing search and rescue operation. Lower Emerald Pools and Middle Emerald Pools remain open at this time.",
+          "url": "",
+          "lastIndexedDate": "2026-09-29 00:00:00.0"
+        },
+        {
           "id": "83AE2DD9-F167-445F-8B00-A4F9E5A993D8",
           "title": "Large vehicle restrictions on Zion-Mt. Carmel Highway",
           "category": "Caution",
@@ -1344,12 +1328,12 @@
       ],
       "alerts": [
         {
-          "id": "8A8EA50F-0E00-4B54-ACD8-67D9C5EC1599",
-          "title": "Trail Closure due to recent weather event",
+          "id": "FC27643B-95B4-4158-9028-BEB8E235FF66",
+          "title": "Trail Closures Due to Recent Rains",
           "category": "Park Closure",
-          "description": "Wall Street is closed until further notice.",
+          "description": "Wall Street and the Bryce Connector trails are closed until further notice. Other park trails are open but muddy, and hikers are urged to use caution.",
           "url": "",
-          "lastIndexedDate": "2026-09-24 00:00:00.0"
+          "lastIndexedDate": "2026-09-29 00:00:00.0"
         },
         {
           "id": "FDF5B1EA-4A56-4D29-8BE0-C55822069481",
@@ -3581,9 +3565,9 @@
           "id": "CB5AE302-9DA5-48D9-81D9-4998F5807010",
           "title": "Fryingpan Creek Bridge Replacement Project: Traffic and Trail Impacts",
           "category": "Information",
-          "description": "Starting September 28, 2026, parking at the Summerland Trailhead will be unavailable on either side of Fryingpan Creek Bridge due to construction through 2029. Access to Summerland remains open via the Wonderland Trail with limited parking at White River Campground. Expect traffic delays of up to 30 minutes due to one-lane traffic on White River Road while it remains open for the season.",
+          "description": "Starting September 27, 2026, parking at the Summerland Trailhead will be unavailable on either side of Fryingpan Creek Bridge due to construction through 2029. Access to Summerland remains open via the Wonderland Trail with limited parking at White River Campground. Expect traffic delays of up to 30 minutes due to one-lane traffic on White River Road while it remains open for the season.",
           "url": "https://www.nps.gov/mora/planyourvisit/park-construction.htm/#fryingpan-creek-bridge",
-          "lastIndexedDate": "2026-09-21 00:00:00.0"
+          "lastIndexedDate": "2026-09-28 00:00:00.0"
         },
         {
           "id": "73CE219E-D823-4452-A8C1-67869DC3CD1A",
@@ -5628,6 +5612,13 @@
           "url": "https://www.nps.gov/common/uploads/structured_data/0DB94E27-0FF0-E98D-2F0AA9F8B4800869.jpg"
         },
         {
+          "credit": "NPS Photo / J. Wheet",
+          "title": "Autumn at Sloans Pond",
+          "altText": "Trees with colorful autumn leaves surround a large pond and reflect off of its surface.",
+          "caption": "Autumn arrives at Sloans Crossing Pond Trail, an accessible boardwalk path.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/145F1ECE-0B89-0D9E-48F101A0B0F88BEC.jpg"
+        },
+        {
           "credit": "NPS Photo/ Thomas DiGiovannangelo",
           "title": "Historic Entrance",
           "altText": "A long staircase travels down a slope into the dark cave opening.",
@@ -7271,11 +7262,19 @@
       "alerts": [
         {
           "id": "C5BF3086-2CF1-4A49-BF6C-EE020984369C",
-          "title": "Increased Bear Activity and Dryweed Island Area Closures",
+          "title": "Increased bear activity and Dryweed Island area closures",
           "category": "Park Closure",
           "description": "Due to unsafe bear‑human interactions, all of the Dryweed Island area's campsites, houseboat sites, and day use sites are closed. See below for a full list of sites covered by the closure. This time of year typically brings increased bear activity throughout the park. Visitors should remain bear aware and follow all food‑storage requirements.",
           "url": "https://www.nps.gov/voya/planyourvisit/conditions.htm",
-          "lastIndexedDate": "2026-09-03 00:00:00.0"
+          "lastIndexedDate": "2026-09-29 00:00:00.0"
+        },
+        {
+          "id": "25C4E33F-FD4E-4FAC-BC56-11B9020595ED",
+          "title": "Partial boat launch closure at Kabetogama Lake Sept 28 - Oct 2",
+          "category": "Park Closure",
+          "description": "The boat launch at Kabetogama Lake Visitor Center will be partially closed from September 28 through October 2 to allow for the removal of construction vessels from the lake. The boat launch's south lane will remain open, while the north lane will be closed. Additional work will be taking place in the vicinity. Please stay out of all marked work zones.",
+          "url": "https://www.nps.gov/voya/learn/news/great-american-outdoors-act-funds-major-infrastructure-improvements-for-kettle-falls-2026.htm?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEyQUVrUEE3QTFzZVlyY1J1T3NydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4ZXS0uvCNo-wp-veKLUbTm97uqmnRd",
+          "lastIndexedDate": "2026-09-29 00:00:00.0"
         }
       ]
     },
@@ -7974,20 +7973,6 @@
               "exceptions": [
                 {
                   "exceptionHours": {
-                    "wednesday": "9:00AM - 5:00PM",
-                    "monday": "9:00AM - 5:00PM",
-                    "thursday": "9:00AM - 5:00PM",
-                    "sunday": "9:00AM - 5:00PM",
-                    "tuesday": "9:00AM - 5:00PM",
-                    "friday": "9:00AM - 5:00PM",
-                    "saturday": "9:00AM - 5:00PM"
-                  },
-                  "startDate": "2026-09-07",
-                  "name": "Fall Season",
-                  "endDate": "2026-10-31"
-                },
-                {
-                  "exceptionHours": {
                     "wednesday": "Closed",
                     "monday": "Closed",
                     "thursday": "Closed",
@@ -8017,6 +8002,20 @@
                   "startDate": "2027-01-01",
                   "name": "New Year's Day",
                   "endDate": "2027-01-01"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "9:00AM - 5:00PM",
+                    "monday": "9:00AM - 5:00PM",
+                    "thursday": "9:00AM - 5:00PM",
+                    "sunday": "9:00AM - 5:00PM",
+                    "tuesday": "9:00AM - 5:00PM",
+                    "friday": "9:00AM - 5:00PM",
+                    "saturday": "9:00AM - 5:00PM"
+                  },
+                  "startDate": "2026-05-31",
+                  "name": "Fall Season",
+                  "endDate": "2026-10-31"
                 }
               ],
               "description": "Alley Mill is open daily during the summer season, typically from Memorial Day Weekend through the end of October.",
@@ -8024,7 +8023,7 @@
                 "wednesday": "9:00AM - 5:00PM",
                 "monday": "9:00AM - 5:00PM",
                 "thursday": "9:00AM - 5:00PM",
-                "sunday": "9:00AM - 7:00PM",
+                "sunday": "9:00AM - 5:00PM",
                 "tuesday": "9:00AM - 5:00PM",
                 "friday": "9:00AM - 5:00PM",
                 "saturday": "9:00AM - 5:00PM"
@@ -8452,9 +8451,9 @@
                     "friday": "9:00AM - 4:00PM",
                     "saturday": "9:00AM - 4:00PM"
                   },
-                  "startDate": "2026-09-14",
+                  "startDate": "2027-09-14",
                   "name": "Fall Hours",
-                  "endDate": "2026-09-27"
+                  "endDate": "2027-09-27"
                 },
                 {
                   "exceptionHours": {
@@ -11794,9 +11793,9 @@
           "id": "2DC60C7E-23DA-4C5F-915E-5971F1B408F6",
           "title": "Active Closures",
           "category": "Park Closure",
-          "description": "Due to recent wildlife interactions and out of an abundance of caution, the Appalachian Trail from Lewis Mountain to Big Meadows is closed to backcountry camping until further notice. The trail is still accessible to hikers. Naked Creek Overlook remains closed for an ongoing investigation.",
+          "description": "Due to recent wildlife interactions and out of an abundance of caution, the Appalachian Trail from Lewis Mountain to Big Meadows is closed to backcountry camping until further notice. The trail is still accessible to hikers. The Naked Creek backcountry zone remains closed for an ongoing investigation.",
           "url": "",
-          "lastIndexedDate": "2026-09-25 00:00:00.0"
+          "lastIndexedDate": "2026-09-28 00:00:00.0"
         },
         {
           "id": "F4AB8754-5847-4FB2-AB55-670DAD3FE1DF",
@@ -12659,6 +12658,14 @@
         }
       ],
       "alerts": [
+        {
+          "id": "B6383EB2-7031-4126-A1A9-A5144A653025",
+          "title": "Hunting Season Safety",
+          "category": "Caution",
+          "description": "Hunting is allowed in parts of Apostle Islands National Lakeshore from mid-September through early January. Wear blaze orange to stay visible and keep pets leashed and in bright vests. Make noise while hiking so others can hear you. Stay aware and enjoy a safe visit. Click the link below for more information on hunting and trapping in the Lakeshore.",
+          "url": "https://www.nps.gov/apis/planyourvisit/hunting.htm",
+          "lastIndexedDate": "2026-09-28 00:00:00.0"
+        },
         {
           "id": "DE62B81B-5FFC-4742-A7C6-F4895FAC3DAC",
           "title": "Construction Activity at Meyers Beach; Visitor and Kayak Access Maintained",

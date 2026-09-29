@@ -159,7 +159,9 @@ test('updated access notices stay readable and linked on a narrow screen in all 
 test('dated access notices warn visitors when their saved check becomes stale', async ({
   page,
 }) => {
-  await page.clock.setFixedTime(new Date('2026-10-07T00:00:00Z'));
+  const checkedAt = catalog.states.find((state) => state.code === 'OR')!.destinations[2].advisory!
+    .checkedAt;
+  await page.clock.setFixedTime(new Date(Date.parse(checkedAt) + 8 * 86400000));
   await page.goto('/en/states/oregon/crater-lake-national-park/');
   await expect(page.locator('.guide-advisory .fine-print')).toContainText('over 7 days old');
   await expect(page.locator('.guide-advisory a')).toHaveAttribute(

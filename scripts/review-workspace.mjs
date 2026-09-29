@@ -46,6 +46,9 @@ try {
         for (const e of list.getEntries()) {
           window.__lab.lcp = e.startTime;
           window.__lab.element = e.element?.className;
+          window.__lab.lcpUrl = e.url;
+          window.__lab.lcpLoadMs = e.loadTime;
+          window.__lab.lcpRenderMs = e.renderTime;
         }
       }).observe({ type: 'largest-contentful-paint', buffered: true });
       new PerformanceObserver((list) => {
@@ -68,6 +71,10 @@ try {
       await page.evaluate(() => ({
         lcpMs: window.__lab.lcp,
         lcpElement: window.__lab.element,
+        lcpUrl: window.__lab.lcpUrl,
+        lcpLoadMs: window.__lab.lcpLoadMs,
+        lcpRenderMs: window.__lab.lcpRenderMs,
+        documentResponseMs: performance.getEntriesByType('navigation')[0]?.responseEnd,
         resources: performance
           .getEntriesByType('resource')
           .map((e) => ({
