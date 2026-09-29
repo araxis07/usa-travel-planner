@@ -716,6 +716,8 @@ h4 {
 .destinations {
   padding-top: 64px;
   padding-bottom: 66px;
+  background: #fffdf8;
+  color: #172f50;
 }
 .section-heading {
   display: flex;
@@ -726,6 +728,16 @@ h4 {
 }
 .section-heading h2 {
   margin: 14px 0;
+}
+.destinations .section-heading h2 {
+  color: #172f50;
+  font-weight: 700;
+}
+.destinations .section-heading h2 em {
+  color: #8a2d34;
+}
+html[lang='th'] .destinations .section-heading h2 em {
+  font-weight: 700;
 }
 .section-heading p {
   font-size: 12px;
