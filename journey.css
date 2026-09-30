@@ -86,8 +86,7 @@
 .gallery-open {
   border: 1px solid #ffffff70;
   color: white;
-  background: #192f3c85;
-  backdrop-filter: blur(6px);
+  background: var(--navy);
 }
 .destination-layout {
   display: grid;

@@ -1679,7 +1679,7 @@ html[lang='ko'] .discovery-place h3 {
 .hero-wizard {
   color: white;
   border: 1px solid #ffffff80;
-  background: #152e4055;
+  background: var(--navy);
 }
 .hero-wizard:hover {
   background: #172f50;
@@ -1726,7 +1726,9 @@ html[lang='ko'] .discovery-place h3 {
   color: #fff;
 }
 .state-card .card-image-button:focus-visible {
-  outline-offset: 4px;
+  outline: 3px solid #fff;
+  outline-offset: -6px;
+  box-shadow: inset 0 0 0 9px var(--navy);
 }
 .state-card > p {
   flex: 1;
@@ -2135,10 +2137,6 @@ html[lang='ko'] .discovery-place h3 {
   }
   .adventure-search select {
     font-size: 13px;
-  }
-  .state-card .card-image-button {
-    aspect-ratio: 4 / 5;
-    height: auto;
   }
   .state-card-bottom {
     flex-wrap: wrap;

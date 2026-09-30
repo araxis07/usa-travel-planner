@@ -149,6 +149,8 @@ State geometry comes from the ISC-licensed [US Atlas](https://github.com/topojso
 
 ## v3.5 destination guides and photo review
 
+The [October 1 readability pass](docs/2026-10-01-readability.md) improves photo labels, quick-view facts, supporting text and keyboard focus, with contrast checks across nine surfaces in all five languages and narrow mobile layouts.
+
 The September 28 maintenance pass refreshed the dated NPS snapshot and corrected changing access notices for Kauaʻi, Denali, Valley of Fire, Crater Lake and Wichita Mountains. See [the source-by-source maintenance note](docs/2026-09-28-maintenance.md). The [September 30 follow-up](docs/2026-09-30-maintenance.md) records the next NPS and advisory review, plus the measured mobile LCP breakdown.
 
 The remaining 126 destinations now have source-checked arrival routes, named base areas and specific official links in five languages. All 450 photos have descriptive captions; two Mississippi images were replaced with photographs from the correct park section. Arrival and accommodation guidance stays visible, with secondary map references and state planning details expandable. See [the content review and source inventory](docs/v3.5-content-review.md) and [release checks](docs/v3.5-release.md).
