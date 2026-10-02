@@ -389,8 +389,8 @@
           "locationCheckedAt": "2026-09-15",
           "officialUrl": "https://parks.ca.gov/?page_id=29170",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-30",
-          "reviewAfter": "2026-10-07",
+          "reviewedAt": "2026-10-03",
+          "reviewAfter": "2026-10-10",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -400,7 +400,7 @@
             "months": [4, 5, 6, 7, 8, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-09-30",
+            "checkedAt": "2026-10-03",
             "source": "https://parks.ca.gov/?page_id=29170",
             "text": [
               "The official September 2 notice reports Big Sur park and Highway 1 closures due to fires. This is a saved notice; confirm current access before travel.",
@@ -1084,8 +1084,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/grca/planyourvisit/directions_s_rim.htm",
           "bookingUrl": "https://www.nps.gov/grca/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-15",
-          "reviewAfter": "2026-12-01",
+          "reviewedAt": "2026-10-03",
+          "reviewAfter": "2026-10-10",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1093,6 +1093,17 @@
             "walking": "varied",
             "interest": "Nature",
             "months": [4, 5, 6, 9, 10]
+          },
+          "advisory": {
+            "checkedAt": "2026-10-03",
+            "source": "https://www.nps.gov/grca/learn/news/grand-canyon-national-park-to-close-overnight-hotel-accommodations-beginning-august-31.htm",
+            "text": [
+              "NPS reports that South Rim hotels inside Grand Canyon have suspended overnight stays because of water restrictions; only dry camping is allowed. Day visits remain open. Check current lodging and water rules before booking.",
+              "NPS ระบุว่าที่พักค้างคืนภายใน South Rim ของ Grand Canyon หยุดให้บริการเนื่องจากข้อจำกัดด้านน้ำ อนุญาตเฉพาะการตั้งแคมป์แบบไม่มีน้ำใช้ แต่ยังเข้าชมแบบไปเช้าเย็นกลับได้ ตรวจสถานะที่พักและข้อกำหนดเรื่องน้ำก่อนจอง",
+              "NPS 公告称，因限水，大峡谷南缘园内酒店暂停过夜住宿，仅允许无供水露营；日间游览仍开放。预订前请核对最新住宿及用水规定。",
+              "NPSによると、給水制限のためグランドキャニオン・サウスリムの園内ホテルは宿泊を停止し、給水のないキャンプのみ可能です。日帰り訪問は可能です。予約前に宿泊と給水の最新情報を確認してください。",
+              "NPS에 따르면 물 사용 제한으로 그랜드캐니언 사우스 림 공원 내 숙박시설의 숙박이 중단됐고, 급수 없는 캠핑만 가능합니다. 당일 방문은 가능합니다. 예약 전 숙박과 급수 규정을 확인하세요."
+            ]
           }
         },
         {
@@ -1529,8 +1540,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/havo/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/havo/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-15",
-          "reviewAfter": "2026-12-01",
+          "reviewedAt": "2026-10-03",
+          "reviewAfter": "2026-10-10",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1538,6 +1549,17 @@
             "walking": "varied",
             "interest": "Nature",
             "months": [4, 5, 6, 9, 10]
+          },
+          "advisory": {
+            "checkedAt": "2026-10-03",
+            "source": "https://www.nps.gov/havo/planyourvisit/conditions.htm",
+            "text": [
+              "NPS reports the Keanakākoʻi area temporarily closed because of volcanic unrest, including nearby overlooks and the trail to the crater. Devastation parking remains open. Check current closures before visiting.",
+              "NPS ระบุว่าพื้นที่ Keanakākoʻi ปิดชั่วคราวเนื่องจากภูเขาไฟมีความเคลื่อนไหว รวมถึงจุดชมวิวใกล้เคียงและเส้นทางไปยังปากปล่อง แต่ที่จอดรถ Devastation ยังเปิดอยู่ ตรวจพื้นที่ปิดล่าสุดก่อนเดินทาง",
+              "NPS 通报因火山活动，Keanakākoʻi 区域暂时关闭，包括附近观景点及通往火山口的步道；Devastation 停车场仍开放。出行前请核对最新关闭区域。",
+              "NPSによると、火山活動のため Keanakākoʻi 周辺は一時閉鎖中で、近くの展望地点や火口へのトレイルも対象です。Devastation 駐車場は利用できます。訪問前に最新の閉鎖情報を確認してください。",
+              "NPS에 따르면 화산 활동으로 Keanakākoʻi 일대가 임시 폐쇄됐으며 인근 전망대와 분화구로 향하는 탐방로도 포함됩니다. Devastation 주차장은 열려 있습니다. 방문 전 최신 폐쇄 정보를 확인하세요."
+            ]
           }
         },
         {
@@ -1579,8 +1601,8 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://www.gohawaii.com/islands/kauai/travel-info/transportation",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-30",
-          "reviewAfter": "2026-10-07",
+          "reviewedAt": "2026-10-03",
+          "reviewAfter": "2026-10-10",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "boat",
@@ -1590,14 +1612,14 @@
             "months": [4, 5, 6, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-09-30",
+            "checkedAt": "2026-10-03",
             "source": "https://dlnr.hawaii.gov/dsp/",
             "text": [
-              "Hawaiʻi State Parks' September 28 notice says Kōkeʻe Road, most Kauaʻi state parks and camping remain closed; only limited Wailua River access has reopened. Check current park notices before travel.",
-              "ประกาศอุทยานรัฐฮาวายวันที่ 28 กันยายนระบุว่าถนน Kōkeʻe อุทยานของรัฐส่วนใหญ่บนเกาะคาไว และพื้นที่ตั้งแคมป์ยังปิดอยู่ โดยเปิดพื้นที่บางส่วนของ Wailua River เท่านั้น ตรวจประกาศล่าสุดก่อนเดินทาง",
-              "夏威夷州立公园9月28日公告称，Kōkeʻe 公路、可爱岛大多数州立公园及露营地仍关闭；Wailua River 仅部分区域重新开放。出行前请查看最新公园公告。",
-              "ハワイ州立公園の9月28日のお知らせでは、Kōkeʻe Road、カウアイ島のほとんどの州立公園とキャンプ場は引き続き閉鎖中で、Wailua River は一部のみ再開しています。出発前に最新の公園情報を確認してください。",
-              "하와이 주립공원의 9월 28일 공지에 따르면 Kōkeʻe Road, 카우아이섬의 대부분 주립공원과 캠핑장은 여전히 폐쇄 중이며 Wailua River는 일부 구역만 다시 열렸습니다. 출발 전 최신 공지를 확인하세요."
+              "Hawaiʻi State Parks' October 2 notice says Kōkeʻe Road, most Kauaʻi state parks and camping remain closed; only limited Wailua River access has reopened. Check current park notices before travel.",
+              "ประกาศอุทยานรัฐฮาวายวันที่ 2 ตุลาคมระบุว่าถนน Kōkeʻe อุทยานของรัฐส่วนใหญ่บนเกาะคาไว และพื้นที่ตั้งแคมป์ยังปิดอยู่ โดยเปิดพื้นที่บางส่วนของ Wailua River เท่านั้น ตรวจประกาศล่าสุดก่อนเดินทาง",
+              "夏威夷州立公园10月2日公告称，Kōkeʻe 公路、可爱岛大多数州立公园及露营地仍关闭；Wailua River 仅部分区域重新开放。出行前请查看最新公园公告。",
+              "ハワイ州立公園の10月2日のお知らせでは、Kōkeʻe Road、カウアイ島のほとんどの州立公園とキャンプ場は引き続き閉鎖中で、Wailua River は一部のみ再開しています。出発前に最新の公園情報を確認してください。",
+              "하와이 주립공원의 10월 2일 공지에 따르면 Kōkeʻe Road, 카우아이섬의 대부분 주립공원과 캠핑장은 여전히 폐쇄 중이며 Wailua River는 일부 구역만 다시 열렸습니다. 출발 전 최신 공지를 확인하세요."
             ]
           }
         }
@@ -1891,8 +1913,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/zion/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/zion/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-15",
-          "reviewAfter": "2026-12-01",
+          "reviewedAt": "2026-10-03",
+          "reviewAfter": "2026-10-10",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1900,6 +1922,17 @@
             "walking": "varied",
             "interest": "Nature",
             "months": [4, 5, 9, 10]
+          },
+          "advisory": {
+            "checkedAt": "2026-10-03",
+            "source": "https://www.nps.gov/zion/planyourvisit/conditions.htm",
+            "text": [
+              "NPS reports Zion–Mt. Carmel Highway closed between Canyon Junction and the East Entrance, with no through traffic until further notice. Zion Canyon Scenic Drive remains open to shuttles and lodge guests. Check conditions before choosing an approach.",
+              "NPS ระบุว่าถนน Zion–Mt. Carmel ปิดระหว่าง Canyon Junction กับ East Entrance จึงขับรถผ่านไม่ได้จนกว่าจะมีประกาศใหม่ ส่วน Zion Canyon Scenic Drive ยังเปิดให้รถรับส่งและผู้เข้าพักที่ลอดจ์ใช้ ตรวจสภาพถนนก่อนเลือกเส้นทางเข้า",
+              "NPS 通报 Zion–Mt. Carmel 公路从 Canyon Junction 至东入口关闭，恢复前无法穿行。Zion Canyon Scenic Drive 仍供接驳车及山庄住客通行。选择入园路线前请核对最新路况。",
+              "NPSによると、Zion–Mt. Carmel Highway は Canyon Junction から東入口まで閉鎖され、再開まで通り抜けできません。Zion Canyon Scenic Drive はシャトルとロッジ宿泊者が利用できます。入園経路を決める前に最新状況を確認してください。",
+              "NPS에 따르면 Zion–Mt. Carmel Highway의 Canyon Junction부터 동쪽 입구까지 폐쇄되어 재개 공지 전에는 통과할 수 없습니다. Zion Canyon Scenic Drive는 셔틀과 롯지 투숙객이 이용할 수 있습니다. 진입 경로를 정하기 전 최신 도로 상황을 확인하세요."
+            ]
           }
         },
         {
@@ -3902,8 +3935,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/dena/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/dena/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-30",
-          "reviewAfter": "2026-10-07",
+          "reviewedAt": "2026-10-03",
+          "reviewAfter": "2026-10-10",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -3921,7 +3954,7 @@
               "Pretty Rocks 다리가 완공되었습니다. 2026년 가을 자가용의 약 30마일 지점까지 통행은 날씨에 따라 달라지며, 전 구간 버스 운행은 2027년 재개 예정입니다. 여행 날짜의 도로와 버스 상황을 NPS에서 확인하세요."
             ],
             "source": "https://www.nps.gov/dena/planyourvisit/conditions.htm",
-            "checkedAt": "2026-09-30"
+            "checkedAt": "2026-10-03"
           }
         },
         {
@@ -12223,8 +12256,8 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://parks.nv.gov/parks/valley-of-fire",
           "bookingUrl": "",
-          "reviewedAt": "2026-09-30",
-          "reviewAfter": "2026-10-07",
+          "reviewedAt": "2026-10-03",
+          "reviewAfter": "2026-10-10",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -12242,7 +12275,7 @@
               "일부 탐방로는 5월 15일~9월 30일에 폐쇄되고, 서쪽 입구는 2026년 공사 기간 월~목요일에 닫힙니다. 공원 전체는 12월 1~14일 정비로 휴장합니다. 탐방로와 입구를 정하기 전에 최신 공지를 확인하세요."
             ],
             "source": "https://parks.nv.gov/parks/valley-of-fire",
-            "checkedAt": "2026-09-30"
+            "checkedAt": "2026-10-03"
           }
         },
         {
@@ -15432,8 +15465,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/crla/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/crla/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-30",
-          "reviewAfter": "2026-10-07",
+          "reviewedAt": "2026-10-03",
+          "reviewAfter": "2026-10-10",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -15451,7 +15484,7 @@
               "Cleetwood Cove Trail은 공사로 계속 폐쇄되어 호숫가 접근을 계획하지 않아야 합니다. East Rim Drive는 통과 주행이 가능하지만 공사 구간에서 교통 통제가 있을 수 있습니다. 출발 전 NPS 현황을 확인하세요."
             ],
             "source": "https://www.nps.gov/crla/planyourvisit/conditions.htm",
-            "checkedAt": "2026-09-30"
+            "checkedAt": "2026-10-03"
           }
         }
       ]
@@ -19369,8 +19402,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/apis/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/apis/planyourvisit/fees.htm",
-          "reviewedAt": "2026-09-30",
-          "reviewAfter": "2026-10-07",
+          "reviewedAt": "2026-10-03",
+          "reviewAfter": "2026-10-10",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "boat",
@@ -19388,7 +19421,7 @@
               "Little Sand Bay 방문자 센터는 2026년 공사 기간에 폐쇄됩니다. 보트와 카약 접근은 별도 안내를 따르므로 출항 지점을 정하기 전에 최신 공사 공지를 확인하세요."
             ],
             "source": "https://www.nps.gov/apis/learn/infrastructure-projects.htm",
-            "checkedAt": "2026-09-30"
+            "checkedAt": "2026-10-03"
           }
         }
       ]

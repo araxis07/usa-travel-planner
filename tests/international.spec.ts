@@ -135,7 +135,10 @@ test('updated access notices stay readable and linked on a narrow screen in all 
   await page.setViewportSize({ width: 320, height: 700 });
   for (const [path, code, index] of [
     ['/en/states/california/big-sur/', 'CA', 2],
+    ['/en/states/arizona/grand-canyon-south-rim/', 'AZ', 0],
+    ['/en/states/hawaii/hawaii-volcanoes-national-park/', 'HI', 1],
     ['/en/states/hawaii/kauai/', 'HI', 2],
+    ['/en/states/utah/zion-national-park/', 'UT', 0],
     ['/en/states/alaska/denali-national-park/', 'AK', 0],
     ['/en/states/nevada/valley-of-fire-state-park/', 'NV', 1],
     ['/en/states/oregon/crater-lake-national-park/', 'OR', 2],

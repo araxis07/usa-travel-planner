@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-09-29T17:30:47.584Z",
+  "checkedAt": "2026-10-02T22:01:23.425Z",
   "source": "https://www.nps.gov/subjects/developer/",
   "parks": [
     {
@@ -484,6 +484,14 @@
       ],
       "alerts": [
         {
+          "id": "4CC2EC5B-2CAD-44DC-90C1-86856D021228",
+          "title": "Overnight Lodging Suspended and Parkwide Stage 4 Water Restrictions",
+          "category": "Caution",
+          "description": "Grand Canyon National Park has implemented Stage 4 water restrictions on the South Rim due to extensive flash flood damage to the Transcanyon Waterline. Overnight accommodations are suspended, and only dry camping is allowed. The park remains open for day use, with food and beverage services, the Grand Canyon Clinic, and Post Office remaining open. Visitors are asked to bring water with them when visiting the park.",
+          "url": "https://www.nps.gov/grca/learn/news/grand-canyon-national-park-to-close-overnight-hotel-accommodations-beginning-august-31.htm",
+          "lastIndexedDate": "2026-09-30 00:00:00.0"
+        },
+        {
           "id": "BD6EC75E-89ED-4345-BE71-4A2EA5FF186E",
           "title": "INNER CANYON TRAIL CLOSURES",
           "category": "Danger",
@@ -717,6 +725,22 @@
       ],
       "alerts": [
         {
+          "id": "372637DA-0B8C-422B-B98B-9ACF44B56C46",
+          "title": "Sulphur Banks Bridge Closed; Boardwalk is Open",
+          "category": "Information",
+          "description": "The Sulphur Banks Bridge is damaged and closed until further notice. The Haʻakulamanu area, boardwalk and Sulphur Banks Trail are open and accessible from the west side near Steam Vents.",
+          "url": "",
+          "lastIndexedDate": "2026-10-01 00:00:00.0"
+        },
+        {
+          "id": "C8F694F3-2542-4433-A7E7-B2EFC3BDA48A",
+          "title": "Keanakākoʻi Side of Kīlauea Volcano Closed Due to Volcanic Unrest",
+          "category": "Park Closure",
+          "description": "Due to increased earthquakes below the summit of Kīlauea and volcanic unrest, the Keanakākoʻi area is temporarily closed for safety. This includes old Crater Rim Drive, the overlooks near Keanakākoʻi crater and Crater Rim Trail to Keanakākoʻi crater. Devastation parking lot remains open.",
+          "url": "",
+          "lastIndexedDate": "2026-10-01 00:00:00.0"
+        },
+        {
           "id": "031E225F-49AB-4264-9DD6-4402E620DC1B",
           "title": "Kīlauea eruption",
           "category": "Information",
@@ -755,14 +779,6 @@
           "description": "Upper Kahuku Road remains closed beyond the boot decontamination station due to storm damage. The Visitor Contact Station and most trails in the Kahuku Unit are now open following Hurricane Lala. Kahuku Road above the Lower Palm Trailhead is deeply rutted by the recent heavy rains. A 4WD is recommended to access areas above the Lower Palm Trailhead.",
           "url": "",
           "lastIndexedDate": "2026-09-03 00:00:00.0"
-        },
-        {
-          "id": "372637DA-0B8C-422B-B98B-9ACF44B56C46",
-          "title": "Sulphur Banks Bridge Closed; Boardwalk is Open",
-          "category": "Park Closure",
-          "description": "The Sulphur Banks Bridge is damaged and closed until further notice. The Haʻakulamanu area, boardwalk and Sulphur Banks Trail are open and accessible from the west side near Steam Vents.",
-          "url": "",
-          "lastIndexedDate": "2026-08-26 00:00:00.0"
         },
         {
           "id": "37CFEFAB-CC85-4ED3-8850-D1EE86A7F0DF",
@@ -1067,10 +1083,18 @@
       ],
       "alerts": [
         {
-          "id": "1DD0491A-94FA-447F-A3B5-C986EB20C474",
-          "title": "Upper Emerald Pools Trail Closed",
+          "id": "76DA8D85-4EC6-4988-A71B-6E6F6E939274",
+          "title": "Zion-Mt. Carmel Highway closed from Canyon Junction to East Entrance",
           "category": "Park Closure",
-          "description": "The Upper Emerald Pools area is closed until further notice due to an ongoing search and rescue operation. Lower Emerald Pools and Middle Emerald Pools remain open at this time.",
+          "description": "The Zion-Mt. Carmel Highway is partially closed. There will be no through traffic until further notice. Zion Canyon Scenic Drive remains open to shuttles and lodge guests.",
+          "url": "",
+          "lastIndexedDate": "2026-09-30 00:00:00.0"
+        },
+        {
+          "id": "CDD9D321-49B3-4C74-89AD-A186807220E6",
+          "title": "Watchman Trail closed",
+          "category": "Park Closure",
+          "description": "The Watchman Trail is closed pending repairs.",
           "url": "",
           "lastIndexedDate": "2026-09-29 00:00:00.0"
         },
@@ -1113,14 +1137,6 @@
           "description": "Zion has limited parking. Once parking spaces in Zion are full, visitors should park in Springdale. Please park only in designated spaces. Vehicles parked outside of designated spaces are subject to citation and towing.",
           "url": "https://www.nps.gov/zion/planyourvisit/traffic.htm#parking",
           "lastIndexedDate": "2026-09-16 00:00:00.0"
-        },
-        {
-          "id": "CDD9D321-49B3-4C74-89AD-A186807220E6",
-          "title": "Watchman Trail Closed",
-          "category": "Park Closure",
-          "description": "The Watchman Trail is closed pending repairs.",
-          "url": "",
-          "lastIndexedDate": "2026-09-01 00:00:00.0"
         }
       ]
     },
@@ -1331,9 +1347,9 @@
           "id": "FC27643B-95B4-4158-9028-BEB8E235FF66",
           "title": "Trail Closures Due to Recent Rains",
           "category": "Park Closure",
-          "description": "Wall Street and the Bryce Connector trails are closed until further notice. Other park trails are open but muddy, and hikers are urged to use caution.",
+          "description": "Wall Street is closed until further notice. Other park trails are open but muddy, and hikers are urged to use caution.",
           "url": "",
-          "lastIndexedDate": "2026-09-29 00:00:00.0"
+          "lastIndexedDate": "2026-09-30 00:00:00.0"
         },
         {
           "id": "FDF5B1EA-4A56-4D29-8BE0-C55822069481",
@@ -2737,30 +2753,6 @@
       ],
       "visitorCenters": [
         {
-          "id": "7B570FEB-479E-4B29-BD2E-8DC63017033D",
-          "name": "Kalaloch Ranger Station",
-          "url": "https://www.nps.gov/olym/planyourvisit/visitorcenters.htm",
-          "latitude": "47.602878078650036",
-          "longitude": "-124.36967655565815",
-          "directionsInfo": "Kalaloch Ranger Station is located 36 miles south of Forks off of Highway 101.",
-          "operatingHours": [
-            {
-              "exceptions": [],
-              "description": "Visitor information about the coast, Forks, and other areas on the west side of the Olympic Peninsula; passport stamping station, book store. Guided walks and talks are offered during the summer. Passport stamp available at the Kalaloch Lodge when closed. Open intermittently in summer from Memorial Day weekend-September 30th.",
-              "standardHours": {
-                "wednesday": "9:00AM - 5:00PM",
-                "monday": "9:00AM - 5:00PM",
-                "thursday": "9:00AM - 5:00PM",
-                "sunday": "9:00AM - 5:00PM",
-                "tuesday": "9:00AM - 5:00PM",
-                "friday": "9:00AM - 5:00PM",
-                "saturday": "9:00AM - 5:00PM"
-              },
-              "name": "Kalaloch Ranger Station"
-            }
-          ]
-        },
-        {
           "id": "5A32C014-1C40-4187-A04A-845AEA3730D5",
           "name": "Hoh Rain Forest Visitor Center",
           "url": "https://www.nps.gov/olym/planyourvisit/visitorcenters.htm",
@@ -2781,30 +2773,6 @@
                 "saturday": "9:00AM - 5:30PM"
               },
               "name": "Hoh Rain Forest Visitor Center"
-            }
-          ]
-        },
-        {
-          "id": "97A7FD63-11F7-4D5D-800F-3CA42FAB6BEA",
-          "name": "Quinault Rain Forest Ranger Station",
-          "url": "https://www.nps.gov/olym/planyourvisit/visitorcenters.htm",
-          "latitude": "47.504958647483775",
-          "longitude": "-123.82085380175738",
-          "directionsInfo": "Quinault Rain Forest Ranger Station is located along the North Shore Road in the Quinault Rain Forest. The North Shore Road is accessible via Highway 101.",
-          "operatingHours": [
-            {
-              "exceptions": [],
-              "description": "Exhibits, information, and passport stamp station. Wilderness Information Center. Two self-guided nature trails start near the ranger station. Ranger programs are offered during the summer.",
-              "standardHours": {
-                "wednesday": "Closed",
-                "monday": "9:00AM - 5:00PM",
-                "thursday": "9:00AM - 5:00PM",
-                "sunday": "9:00AM - 5:00PM",
-                "tuesday": "Closed",
-                "friday": "9:00AM - 5:00PM",
-                "saturday": "9:00AM - 5:00PM"
-              },
-              "name": "Quinault Rain Forest Ranger Station"
             }
           ]
         },
@@ -2862,6 +2830,54 @@
           ]
         },
         {
+          "id": "97A7FD63-11F7-4D5D-800F-3CA42FAB6BEA",
+          "name": "Quinault Rain Forest Ranger Station",
+          "url": "https://www.nps.gov/olym/planyourvisit/visitorcenters.htm",
+          "latitude": "47.504958647694224",
+          "longitude": "-123.82085380179683",
+          "directionsInfo": "Quinault Rain Forest Ranger Station is located along the North Shore Road in the Quinault Rain Forest. The North Shore Road is accessible via Highway 101.",
+          "operatingHours": [
+            {
+              "exceptions": [],
+              "description": "Exhibits, information, and passport stamp station. Wilderness Information Center. Two self-guided nature trails start near the ranger station. Ranger programs are offered during the summer.",
+              "standardHours": {
+                "wednesday": "Closed",
+                "monday": "Closed",
+                "thursday": "Closed",
+                "sunday": "Closed",
+                "tuesday": "Closed",
+                "friday": "Closed",
+                "saturday": "Closed"
+              },
+              "name": "Quinault Rain Forest Ranger Station"
+            }
+          ]
+        },
+        {
+          "id": "7B570FEB-479E-4B29-BD2E-8DC63017033D",
+          "name": "Kalaloch Ranger Station",
+          "url": "https://www.nps.gov/olym/planyourvisit/visitorcenters.htm",
+          "latitude": "47.602878078471015",
+          "longitude": "-124.36967655606401",
+          "directionsInfo": "Kalaloch Ranger Station is located 36 miles south of Forks off of Highway 101.",
+          "operatingHours": [
+            {
+              "exceptions": [],
+              "description": "Visitor information about the coast, Forks, and other areas on the west side of the Olympic Peninsula; passport stamping station, book store. Guided walks and talks are offered during the summer. Passport stamp available at the Kalaloch Lodge when closed. Open intermittently in summer from Memorial Day weekend-September 30th.",
+              "standardHours": {
+                "wednesday": "Closed",
+                "monday": "Closed",
+                "thursday": "Closed",
+                "sunday": "Closed",
+                "tuesday": "Closed",
+                "friday": "Closed",
+                "saturday": "Closed"
+              },
+              "name": "Kalaloch Ranger Station"
+            }
+          ]
+        },
+        {
           "id": "30FCBA69-55A9-40F4-A345-2E1F68C621EE",
           "name": "Hurricane Ridge Visitor Contact Station",
           "url": "",
@@ -2888,20 +2904,20 @@
       ],
       "alerts": [
         {
+          "id": "487BC261-D8E4-4740-9E89-B71B9E784521",
+          "title": "Crews Responding to Mount Tom Creek Fire",
+          "category": "Danger",
+          "description": "Fire managers are responding to a lightning fire in a remote area of Olympic National Park. The Mount Tom Creek Fire has burned 69 acres 5 miles west-northwest of Mount Olympus. Firefighters are using indirect confinement tactics as part of a full-suppression strategy. There are no evacuation orders or closures.",
+          "url": "https://www.nps.gov/olym/planyourvisit/fire-conditions-and-updates.htm",
+          "lastIndexedDate": "2026-10-01 00:00:00.0"
+        },
+        {
           "id": "73549B6B-64CF-4B70-A42B-581EB4D11DA5",
           "title": "Highway 101 Closed at Hoh River Bridge",
           "category": "Park Closure",
           "description": "The Highway 101 closure cuts off the only direct route between some of the most popular areas of the park. There are no detours available. Taking alternate routes around the east side of the Olympic Peninsula will add at least four hours to travel times.",
           "url": "https://www.nps.gov/olym/planyourvisit/hwy-101-closure-at-hoh-river-bridge.htm",
           "lastIndexedDate": "2026-09-25 00:00:00.0"
-        },
-        {
-          "id": "487BC261-D8E4-4740-9E89-B71B9E784521",
-          "title": "Crews Responding to Mount Tom Creek Fire",
-          "category": "Danger",
-          "description": "Fire managers are responding to a lightning fire in a remote area of Olympic National Park. The Mount Tom Creek Fire has burned 69 acres 5 miles west-northwest of Mount Olympus. Firefighters are using indirect confinement tactics as part of a full-suppression strategy. Backpackers are encouraged to consider alternative routes to the Hoh River Trail should fire activity increase. There are no evacuation orders or closures.",
-          "url": "https://www.nps.gov/olym/planyourvisit/fire-conditions-and-updates.htm",
-          "lastIndexedDate": "2026-09-12 00:00:00.0"
         },
         {
           "id": "4D18B12B-E625-4D7C-825A-C779A6EACCA5",
@@ -3385,9 +3401,9 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-08-07",
+                  "startDate": "2027-08-07",
                   "name": "Closed due to Grand Park 2 Fire",
-                  "endDate": "2026-09-30"
+                  "endDate": "2027-09-30"
                 },
                 {
                   "exceptionHours": {
@@ -4068,9 +4084,23 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-04-20",
+                  "startDate": "2027-04-20",
                   "name": "Closed in Summer",
-                  "endDate": "2026-09-30"
+                  "endDate": "2027-09-30"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "8:00AM - 4:00PM",
+                    "monday": "8:00AM - 4:00PM",
+                    "thursday": "8:00AM - 4:00PM",
+                    "sunday": "8:00AM - 4:00PM",
+                    "tuesday": "8:00AM - 4:00PM",
+                    "friday": "8:00AM - 4:00PM",
+                    "saturday": "8:00AM - 4:00PM"
+                  },
+                  "startDate": "2027-06-01",
+                  "name": "Summer Hours (June 1-September 30)",
+                  "endDate": "2027-09-30"
                 },
                 {
                   "exceptionHours": {
@@ -4082,9 +4112,9 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-11-26",
-                  "name": "Closed on Thanksgiving",
-                  "endDate": "2026-11-26"
+                  "startDate": "2026-11-25",
+                  "name": "Thanksgiving",
+                  "endDate": "2026-11-25"
                 },
                 {
                   "exceptionHours": {
@@ -4097,7 +4127,7 @@
                     "saturday": "Closed"
                   },
                   "startDate": "2026-12-25",
-                  "name": "Closed on Christmas",
+                  "name": "Christmas",
                   "endDate": "2026-12-25"
                 },
                 {
@@ -5011,12 +5041,12 @@
       ],
       "alerts": [
         {
-          "id": "C4DE06EF-EAB3-4F28-8E6B-B22CA4AEC781",
-          "title": "Craters of the Moon Bookstore CLOSED on September 30",
-          "category": "Information",
-          "description": "The Craters of the Moon bookstore and museum will be CLOSED on September 30, 2026 due to inventory. Rangers will still be available for cave permits, information, and Junior Ranger activities. Please plan accordingly.",
+          "id": "4AA213B4-7A8E-4D01-A02C-2448A2BC5954",
+          "title": "Park Bookstore Update",
+          "category": "Park Closure",
+          "description": "The park bookstore is currently transitioning to a new partner. The park is working to identify and establish a new bookstore provider, and additional information will be shared as it becomes available. Due to this transition, a bookstore with items for purchase will not be in service until a new partner is established. Thank you for your patience during this transition.",
           "url": "",
-          "lastIndexedDate": "2026-09-15 00:00:00.0"
+          "lastIndexedDate": "2026-09-30 00:00:00.0"
         },
         {
           "id": "7D2EBFB8-4ACF-498E-B6E7-E4E50D4649A7",
@@ -5560,14 +5590,6 @@
         }
       ],
       "alerts": [
-        {
-          "id": "F988CC14-1A16-4C09-A2E6-E09ED1784585",
-          "title": "Bison are in the Breeding Season",
-          "category": "Caution",
-          "description": "A reminder that bison are going about their normal life cycle and may be more aggressive. A raised tail is a warning sign and the animal may charge or give chase. Please give a wide distance, at least 100 yards. There are other trails you may choose to hike without encountering the bison.",
-          "url": "",
-          "lastIndexedDate": "2026-08-25 00:00:00.0"
-        },
         {
           "id": "49AA3E71-0DE2-43B6-98CB-6F2E5FB4114F",
           "title": "Dangerous Highway Crossing",
@@ -6169,20 +6191,12 @@
       ],
       "alerts": [
         {
-          "id": "D3E90E5C-ABED-4EDD-B17F-7D4744770978",
-          "title": "Southern Section of Ocean Path Closed for Repairs",
-          "category": "Park Closure",
-          "description": "Starting Aug 31, a section of Ocean Path will be closed for repairs from a trailhead across from the Otter Point parking lot to the trail's southern terminus.",
-          "url": "",
-          "lastIndexedDate": "2026-09-16 00:00:00.0"
-        },
-        {
           "id": "F8AFCEAD-7E34-4C99-8AF6-C0B7C376C8FB",
-          "title": "Eastern Section of Beech Mountain Loop Road Closed for Repairs",
+          "title": "Eastern Section of Beech Mountain Loop Trail Closed for Repairs",
           "category": "Park Closure",
           "description": "Starting Sept 21, the eastern section of the Beech Mountain Loop Trail will be closed for repairs from a junction just beyond the parking lot to just below the summit at the fire tower. Three alternate routes to the summit are available: the outer loop of the Beech Mountain Loop Trail, Beech South Ridge Trail and Beech West Ridge Trail.",
           "url": "",
-          "lastIndexedDate": "2026-08-24 00:00:00.0"
+          "lastIndexedDate": "2026-09-30 00:00:00.0"
         },
         {
           "id": "96A00261-453A-467D-A1D5-24D68A59AB50",
@@ -6190,7 +6204,15 @@
           "category": "Park Closure",
           "description": "Starting Aug 31, the Schoodic Mountain Road will be closed for repairs from Schoodic Loop Road to the summit of Schoodic Head. Workers will be operating heavy equipment for resurfacing, regrading and ditching.",
           "url": "",
-          "lastIndexedDate": "2026-08-24 00:00:00.0"
+          "lastIndexedDate": "2026-09-30 00:00:00.0"
+        },
+        {
+          "id": "D3E90E5C-ABED-4EDD-B17F-7D4744770978",
+          "title": "Southern Section of Ocean Path Closed for Repairs",
+          "category": "Park Closure",
+          "description": "Starting Aug 31, a section of Ocean Path will be closed for repairs from a trailhead across from the Otter Point parking lot to the trail's southern terminus.",
+          "url": "",
+          "lastIndexedDate": "2026-09-16 00:00:00.0"
         }
       ]
     },
@@ -6495,9 +6517,9 @@
           "id": "CA2DB2F7-145C-4C6A-A84D-7289EA0E1FBC",
           "title": "OSV Status",
           "category": "Information",
-          "description": "9/22/26 MD OSV closed due to overwash. VA South OSV is closed due to overwash. The VA North OSV fishing mile is closed.",
+          "description": "10/2/26 MD OSV open to KM 21.5. VA South OSV is closed due to overwash. The VA North OSV fishing mile is closed.",
           "url": "",
-          "lastIndexedDate": "2026-09-24 00:00:00.0"
+          "lastIndexedDate": "2026-10-02 00:00:00.0"
         },
         {
           "id": "15AB7E15-6916-483C-B211-1CE0B768FCBD",
@@ -6932,6 +6954,14 @@
       ],
       "alerts": [
         {
+          "id": "C10CFD0A-1F34-4F58-8A91-537CA544B4DB",
+          "title": "Expect Delays - Sleeping Bear Marathon",
+          "category": "Information",
+          "description": "Sleeping Bear Marathon beginning at 7:30 AM through 1:30 PM on Saturday, October 3rd, 2026. All roads are open to vehicle traffic on race day. Parking may be limited at the Dune Climb. Volunteers and police will be stationed at major intersections to aid with traffic. Majority of the race takes place on the Sleeping Bear Heritage Trail.",
+          "url": "https://www.sleepingbearmarathon.com/Race/SleepingBear/Page/Events",
+          "lastIndexedDate": "2026-10-02 00:00:00.0"
+        },
+        {
           "id": "7AC60BAF-D4C0-4CDD-A83A-F5FA059FA1AC",
           "title": "Fall Hunting Seasons",
           "category": "Information",
@@ -7261,19 +7291,19 @@
       ],
       "alerts": [
         {
+          "id": "25C4E33F-FD4E-4FAC-BC56-11B9020595ED",
+          "title": "Partial boat launch closure at Kabetogama Lake Sept 28 - Oct 5",
+          "category": "Park Closure",
+          "description": "The boat launch at Kabetogama Lake Visitor Center will be partially closed from September 28 through October 5 to allow for the removal of construction vessels from the lake. The boat launch's south lane will remain open, while the north lane will be closed. Additional work will be taking place in the vicinity. Please stay out of all marked work zones.",
+          "url": "https://www.nps.gov/voya/learn/news/great-american-outdoors-act-funds-major-infrastructure-improvements-for-kettle-falls-2026.htm?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEyQUVrUEE3QTFzZVlyY1J1T3NydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4ZXS0uvCNo-wp-veKLUbTm97uqmnRd",
+          "lastIndexedDate": "2026-09-30 00:00:00.0"
+        },
+        {
           "id": "C5BF3086-2CF1-4A49-BF6C-EE020984369C",
           "title": "Increased bear activity and Dryweed Island area closures",
           "category": "Park Closure",
           "description": "Due to unsafe bear‑human interactions, all of the Dryweed Island area's campsites, houseboat sites, and day use sites are closed. See below for a full list of sites covered by the closure. This time of year typically brings increased bear activity throughout the park. Visitors should remain bear aware and follow all food‑storage requirements.",
           "url": "https://www.nps.gov/voya/planyourvisit/conditions.htm",
-          "lastIndexedDate": "2026-09-29 00:00:00.0"
-        },
-        {
-          "id": "25C4E33F-FD4E-4FAC-BC56-11B9020595ED",
-          "title": "Partial boat launch closure at Kabetogama Lake Sept 28 - Oct 2",
-          "category": "Park Closure",
-          "description": "The boat launch at Kabetogama Lake Visitor Center will be partially closed from September 28 through October 2 to allow for the removal of construction vessels from the lake. The boat launch's south lane will remain open, while the north lane will be closed. Additional work will be taking place in the vicinity. Please stay out of all marked work zones.",
-          "url": "https://www.nps.gov/voya/learn/news/great-american-outdoors-act-funds-major-infrastructure-improvements-for-kettle-falls-2026.htm?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEyQUVrUEE3QTFzZVlyY1J1T3NydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4ZXS0uvCNo-wp-veKLUbTm97uqmnRd",
           "lastIndexedDate": "2026-09-29 00:00:00.0"
         }
       ]
@@ -8326,73 +8356,6 @@
       ],
       "visitorCenters": [
         {
-          "id": "254D26CE-476D-4453-B230-A4A549252157",
-          "name": "Apgar Visitor Center",
-          "url": "https://www.nps.gov/glac/planyourvisit/visitor-centers.htm",
-          "latitude": "48.523107",
-          "longitude": "-113.988484",
-          "directionsInfo": "Enter the park from Hwy 2 at West Glacier and proceed through the entrance station 2 miles to the visitor center.",
-          "operatingHours": [
-            {
-              "exceptions": [
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "10:00AM - 4:00PM",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "10:00AM - 4:00PM"
-                  },
-                  "startDate": "2026-10-05",
-                  "name": "Fall Hours",
-                  "endDate": "2026-10-25"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-10-26",
-                  "name": "Late Fall Hours",
-                  "endDate": "2026-12-18"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "10:00AM - 4:00PM",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "10:00AM - 4:00PM"
-                  },
-                  "startDate": "2026-12-19",
-                  "name": "Winter Hours",
-                  "endDate": "2027-05-08"
-                }
-              ],
-              "description": "The Apgar Visitor Center is open seven days a week in the summer. In the winters the Apgar Visitor Center is sometimes open on weekends.",
-              "standardHours": {
-                "wednesday": "8:00AM - 5:30PM",
-                "monday": "8:00AM - 5:30PM",
-                "thursday": "8:00AM - 5:30PM",
-                "sunday": "8:00AM - 5:30PM",
-                "tuesday": "8:00AM - 5:30PM",
-                "friday": "8:00AM - 5:30PM",
-                "saturday": "8:00AM - 5:30PM"
-              },
-              "name": "Apgar Visitor Center"
-            }
-          ]
-        },
-        {
           "id": "44CE0C47-E859-4962-9E49-53A231732E0F",
           "name": "St. Mary Visitor Center",
           "url": "https://www.nps.gov/glac/planyourvisit/visitor-centers.htm",
@@ -8432,11 +8395,92 @@
           ]
         },
         {
+          "id": "254D26CE-476D-4453-B230-A4A549252157",
+          "name": "Apgar Visitor Center",
+          "url": "https://www.nps.gov/glac/planyourvisit/visitor-centers.htm",
+          "latitude": "48.523107",
+          "longitude": "-113.988484",
+          "directionsInfo": "Enter the park from Hwy 2 at West Glacier and proceed through the entrance station 2 miles to the visitor center.",
+          "operatingHours": [
+            {
+              "exceptions": [
+                {
+                  "exceptionHours": {
+                    "wednesday": "10:00AM - 4:00PM",
+                    "monday": "10:00AM - 4:00PM",
+                    "thursday": "10:00AM - 4:00PM",
+                    "sunday": "10:00AM - 4:00PM",
+                    "tuesday": "10:00AM - 4:00PM",
+                    "friday": "10:00AM - 4:00PM",
+                    "saturday": "10:00AM - 4:00PM"
+                  },
+                  "startDate": "2026-10-05",
+                  "name": "Summer to Fall Transition",
+                  "endDate": "2026-10-11"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "10:00AM - 4:00PM",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "10:00AM - 4:00PM"
+                  },
+                  "startDate": "2026-10-12",
+                  "name": "Fall Hours",
+                  "endDate": "2026-10-25"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2026-10-26",
+                  "name": "Late Fall Closure",
+                  "endDate": "2026-12-18"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "10:00AM - 4:00PM",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "10:00AM - 4:00PM"
+                  },
+                  "startDate": "2026-12-19",
+                  "name": "Winter Hours",
+                  "endDate": "2027-05-08"
+                }
+              ],
+              "description": "The Apgar Visitor Center is open seven days a week in the summer. In the winter, the Apgar Visitor Center is typically open on weekends.",
+              "standardHours": {
+                "wednesday": "8:00AM - 5:30PM",
+                "monday": "8:00AM - 5:30PM",
+                "thursday": "8:00AM - 5:30PM",
+                "sunday": "8:00AM - 5:30PM",
+                "tuesday": "8:00AM - 5:30PM",
+                "friday": "8:00AM - 5:30PM",
+                "saturday": "8:00AM - 5:30PM"
+              },
+              "name": "Apgar Visitor Center"
+            }
+          ]
+        },
+        {
           "id": "4574CA53-4A17-427C-8C0C-307606DD80FA",
           "name": "Logan Pass Visitor Center",
           "url": "https://www.nps.gov/glac/planyourvisit/visitor-centers.htm",
-          "latitude": "48.6952798478",
-          "longitude": "-113.717926135",
+          "latitude": "48.695279798616156",
+          "longitude": "-113.71792615101242",
           "directionsInfo": "The Logan Pass Visitor Center sits in the middle of the park at the highest point along the Going-to-the-Sun Road, approximately 32 miles (51.5 km) from the West Entrance and 18 miles from the St. Mary Entrance.",
           "operatingHours": [
             {
@@ -9681,13 +9725,13 @@
               "standardHours": {
                 "wednesday": "Closed",
                 "monday": "10:00AM - 5:00PM",
-                "thursday": "Closed",
+                "thursday": "10:00AM - 5:00PM",
                 "sunday": "10:00AM - 5:00PM",
                 "tuesday": "Closed",
                 "friday": "10:00AM - 5:00PM",
                 "saturday": "10:00AM - 5:00PM"
               },
-              "name": "Rocky Knob Visitor Center (Milepost 167)"
+              "name": "Rocky Knob Visitor Center (Milepost 169)"
             }
           ]
         },
@@ -10469,6 +10513,20 @@
           "altText": "View of the Congaree River during the Fall",
           "caption": "View of the Congaree River during the Fall",
           "url": "https://www.nps.gov/common/uploads/structured_data/3C862C60-1DD8-B71B-0BB65F7B652BA840.jpg"
+        },
+        {
+          "credit": "NPS Photo",
+          "title": "Canoeing Cedar Creek",
+          "altText": "Two people in a canoe on a narrow creek surrounded by forest",
+          "caption": "Two people canoeing on Cedar Creek within Congaree National Park",
+          "url": "https://www.nps.gov/common/uploads/structured_data/54E0D8B1-B893-2056-1DEEF741AEAC3F52.jpg"
+        },
+        {
+          "credit": "NPS Photo",
+          "title": "Barred Owl on Harry Hampton Visitor Center Roof",
+          "altText": "An owl perched on a wooden building",
+          "caption": "A barred owl perched on the Harry Hampton Visitor Center roof at Congaree National Park",
+          "url": "https://www.nps.gov/common/uploads/structured_data/54922A45-987E-B325-F2FB1725D5303BBA.jpg"
         }
       ],
       "visitorCenters": [
@@ -10815,7 +10873,7 @@
           "category": "Park Closure",
           "description": "Notch Trail and all areas within 100’ of the designated trail closed while park staff are repairing the section of the Notch trail ladder that has become a safety hazard for hikers.",
           "url": "",
-          "lastIndexedDate": "2026-09-06 00:00:00.0"
+          "lastIndexedDate": "2026-10-01 00:00:00.0"
         },
         {
           "id": "768A062E-B105-44FC-8F59-3605699FC4AA",
@@ -11130,36 +11188,12 @@
       ],
       "alerts": [
         {
-          "id": "62E28785-ACF4-4F34-BE93-2FDE36A517F4",
-          "title": "Roadwork on the Gatlinburg Spur to affect traffic",
-          "category": "Park Closure",
-          "description": "The park will conduct single-lane closures on the Gatlinburg Spur near Huskey Grove bridge from 7 a.m. to 3:30 p.m. September 21-30. The park plans to start single-lane closures on the southbound lanes and then shift to the northbound lanes. The single-lane closure will affect the tunnel in the northbound lane. Work is scheduled to conclude for the day at noon on Sept. 25 and will not occur over the weekend.",
-          "url": "https://www.nps.gov/grsm/learn/news/upcoming-single-lane-closures-on-gatlinburg-spur-sept-14-30.htm",
-          "lastIndexedDate": "2026-09-21 00:00:00.0"
-        },
-        {
-          "id": "43BF2886-BD18-4D76-8493-DB84AAC15767",
-          "title": "Abrams Falls Trail Closed",
-          "category": "Park Closure",
-          "description": "Abrams Falls Trail is closed Mondays-Thursdays through September 30 to replace aging footlog bridges and improve visitor safety. The trail will open to hikers Fridays-Sundays and on Labor Day during construction.",
-          "url": "",
-          "lastIndexedDate": "2026-08-24 00:00:00.0"
-        },
-        {
           "id": "A199A455-8045-4391-9CD8-20B24218CF81",
           "title": "Park Headquarters Road is closed",
           "category": "Park Closure",
           "description": "Park Headquarters Road is closed due to rehabilitation work on the Sugarlands water and wastewater systems.",
           "url": "",
           "lastIndexedDate": "2026-06-26 00:00:00.0"
-        },
-        {
-          "id": "50E749F3-7952-42C7-A103-EDB366767919",
-          "title": "Cades Cove Loop Road is closed to motor vehicles every Wednesday",
-          "category": "Information",
-          "description": "Cades Cove Loop Road is closed to motor vehicles every Wednesday through September 30. This allows pedestrians and cyclists to enjoy the cove without the presence of vehicles on the roadway.",
-          "url": "https://www.nps.gov/grsm/planyourvisit/cades-cove-vehicle-free-days.htm",
-          "lastIndexedDate": "2026-05-27 00:00:00.0"
         },
         {
           "id": "8BFDECEA-1900-4FB5-BED6-90A603B42CDB",
@@ -12166,14 +12200,6 @@
       ],
       "alerts": [
         {
-          "id": "DC95423F-782B-4136-9EF3-E714C706D17A",
-          "title": "Possible closures on Hwy 19 at Canyon Rim Visitor Center",
-          "category": "Information",
-          "description": "WV Department of Highways is working on a paving project outside of Canyon Rim Visitor Center. Over the coming few days (starting September 15) the entrance to the visitor center from Rt 19 may be closed periodically. If the entrance is closed, visitors can access the visitor center by driving to the next road north (Lansing Edmond Road). Make a right turn, then turn right at the next intersection onto Fayette Station Road. Immediately bear right at the fork, then stay right at the next intersection.",
-          "url": "",
-          "lastIndexedDate": "2026-09-16 00:00:00.0"
-        },
-        {
           "id": "4565D0AA-7CB9-463F-BFCF-81E20510B907",
           "title": "Burnwood Campground and Restroom Closure",
           "category": "Information",
@@ -12188,14 +12214,6 @@
           "description": "The Rend Trail is closed for trail Improvements that will include a new parking area, restroom, and a small picnic area overlooking Arbuckle Creek at the Minden trailhead, structural improvements to five historic railroad trestles along the trail, and full trail surface rehabilitation. Additionally, construction of a large accessible ramp over the ‘big rock’ will replace a stairway, resulting in the only fully accessible earthen surface trail located within the park.",
           "url": "",
           "lastIndexedDate": "2026-08-06 00:00:00.0"
-        },
-        {
-          "id": "1973ED64-C2FA-4989-A5BF-9E1F7965FA4F",
-          "title": "Church Loop Trail Closure",
-          "category": "Information",
-          "description": "The Church Loop Trail in the Thurmond area of the park is temporarily closed due to downed trees.",
-          "url": "",
-          "lastIndexedDate": "2026-07-06 00:00:00.0"
         },
         {
           "id": "B3619D90-1712-402E-A040-775950BB1B85",
@@ -12499,12 +12517,12 @@
       ],
       "alerts": [
         {
-          "id": "BF7EACB0-BD8C-49C2-B675-6E79E8202597",
+          "id": "2F905BD6-7A86-44B9-B528-96C83963B338",
           "title": "Bridge to Maryland Heights & C&O Canal CLOSED",
           "category": "Park Closure",
-          "description": "The Goodloe Byron Memorial Footbridge to the C&O Canal NHP towpath is CLOSED for repair and construction to improve the stairway. A shuttle with very limited space will run between Harpers Ferry NHP Visitor Center and C&O Canal Lock 34. This will impact access to Maryland Heights, the Appalachian NST, and the Potomac Heritage NST. We strongly advise considering other trails when possible.",
-          "url": "https://www.nps.gov/choh/planyourvisit/byron-bridge.htm",
-          "lastIndexedDate": "2026-09-24 00:00:00.0"
+          "description": "Due to safety concerns, the Goodloe Byron Memorial Footbridge to the C&O Canal NHP towpath is expected to remain closed throughout the month of October. This work is separate from, and in addition to, the staircase replacement. A shuttle with very limited space currently runs between Harpers Ferry NHP Visitor Center and C&O Canal Lock 34. This will impact access to Maryland Heights, the Appalachian NST, and the Potomac Heritage NST. We strongly advise considering other trails when possible.",
+          "url": "",
+          "lastIndexedDate": "2026-10-02 00:00:00.0"
         },
         {
           "id": "84DE1EA4-F781-4C86-9530-5C36A479FEBD",
@@ -12591,6 +12609,20 @@
               "exceptions": [
                 {
                   "exceptionHours": {
+                    "wednesday": "7:00AM - 5:00PM",
+                    "monday": "7:00AM - 5:00PM",
+                    "thursday": "7:00AM - 5:00PM",
+                    "sunday": "7:00AM - 5:00PM",
+                    "tuesday": "7:00AM - 5:00PM",
+                    "friday": "7:00AM - 5:00PM",
+                    "saturday": "7:00AM - 5:00PM"
+                  },
+                  "startDate": "2026-10-01",
+                  "name": "Fall & Winter Hours",
+                  "endDate": "2027-03-31"
+                },
+                {
+                  "exceptionHours": {
                     "wednesday": "9:00AM - 4:00PM",
                     "monday": "9:00AM - 4:00PM",
                     "thursday": "9:00AM - 4:00PM",
@@ -12599,9 +12631,9 @@
                     "friday": "9:00AM - 4:00PM",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-09-08",
+                  "startDate": "2027-09-08",
                   "name": "September 2026 Hours",
-                  "endDate": "2026-09-30"
+                  "endDate": "2027-09-30"
                 },
                 {
                   "exceptionHours": {
@@ -12665,14 +12697,6 @@
           "description": "Hunting is allowed in parts of Apostle Islands National Lakeshore from mid-September through early January. Wear blaze orange to stay visible and keep pets leashed and in bright vests. Make noise while hiking so others can hear you. Stay aware and enjoy a safe visit. Click the link below for more information on hunting and trapping in the Lakeshore.",
           "url": "https://www.nps.gov/apis/planyourvisit/hunting.htm",
           "lastIndexedDate": "2026-09-28 00:00:00.0"
-        },
-        {
-          "id": "DE62B81B-5FFC-4742-A7C6-F4895FAC3DAC",
-          "title": "Construction Activity at Meyers Beach; Visitor and Kayak Access Maintained",
-          "category": "Information",
-          "description": "Construction has begun on the Meyers Beach Access Path Project. Access to the beach and parking lot will remain open, but visitors should expect construction noise and closed lawn areas for staging. Kayak groups should move gear directly to the beach to reduce congestion. The project will upgrade the existing staircase to include a universally designed path, improving access to the beach and kayak launch for all visitors.",
-          "url": "https://www.nps.gov/apis/learn/infrastructure-projects.htm",
-          "lastIndexedDate": "2026-07-28 00:00:00.0"
         },
         {
           "id": "814A1150-8BC2-4A64-816A-7DF0DEBED4A3",
@@ -13289,9 +13313,9 @@
                     "friday": "10:00AM - 3:00PM",
                     "saturday": "10:00AM - 3:00PM"
                   },
-                  "startDate": "2026-08-24",
+                  "startDate": "2027-08-24",
                   "name": "Alternate Summer Hours",
-                  "endDate": "2026-10-03"
+                  "endDate": "2027-09-12"
                 },
                 {
                   "exceptionHours": {
@@ -13663,9 +13687,9 @@
                     "friday": "8:00AM - 6:00PM",
                     "saturday": "8:00AM - 6:00PM"
                   },
-                  "startDate": "2026-09-05",
+                  "startDate": "2027-09-05",
                   "name": "September Hours",
-                  "endDate": "2026-10-01"
+                  "endDate": "2027-10-01"
                 },
                 {
                   "exceptionHours": {
@@ -14261,20 +14285,20 @@
       ],
       "alerts": [
         {
+          "id": "BB1BC3DE-956F-41F6-804C-89B50FC74221",
+          "title": "Construction on HWY 26/89/191",
+          "category": "Caution",
+          "description": "Construction taking place on US HWY 26/89/191 south of Moran Junction. Expect 20-minute delays in both directions.",
+          "url": "",
+          "lastIndexedDate": "2026-09-30 00:00:00.0"
+        },
+        {
           "id": "3E0D0431-D76E-4D10-8290-DEAB7FA80B87",
           "title": "Construction in the South End of the Park",
           "category": "Caution",
-          "description": "Moose-Wilson Road between Moose and LSR Preserve closed. Expect occasional short delays between Granite Entrance and LSR Preserve. Possible intermittent delays on Teton Park Road at Cottonwood Creek Picnic Area. Cottonwood Creek picnic area closed. Menor's Ferry Road closed weekdays. Taggart Trail detour in place. Mormon Row area open with some construction activity.",
+          "description": "Moose-Wilson Road between Moose and LSR Preserve closed. Expect occasional short delays between Granite Entrance and LSR Preserve. Possible intermittent delays on Teton Park Road at Cottonwood Creek Picnic Area. Cottonwood Creek picnic area closed. Taggart Trail detour in place. Mormon Row area open with some construction activity.",
           "url": "https://www.nps.gov/grte/planyourvisit/road-construction.htm",
-          "lastIndexedDate": "2026-09-24 00:00:00.0"
-        },
-        {
-          "id": "B0B0DF1C-919D-4A00-BEDF-BDF358197C3B",
-          "title": "Construction on North Park Road",
-          "category": "Caution",
-          "description": "Construction underway on North Park Road between Leeks Marina and Lizard Creek Campground. Expect intermittent delays during the daytime. The section of road is about 7 miles north of Colter Bay and 11.5 miles south of Yellowstone.",
-          "url": "https://www.nps.gov/grte/planyourvisit/road-construction.htm",
-          "lastIndexedDate": "2026-09-18 00:00:00.0"
+          "lastIndexedDate": "2026-09-30 00:00:00.0"
         },
         {
           "id": "8E55AEEE-C63F-44F9-AA7F-3B027CB4210F",

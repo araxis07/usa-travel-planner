@@ -153,6 +153,8 @@ The [October 1 readability pass](docs/2026-10-01-readability.md) improves photo 
 
 The September 28 maintenance pass refreshed the dated NPS snapshot and corrected changing access notices for Kauaʻi, Denali, Valley of Fire, Crater Lake and Wichita Mountains. See [the source-by-source maintenance note](docs/2026-09-28-maintenance.md). The [September 30 follow-up](docs/2026-09-30-maintenance.md) records the next NPS and advisory review, plus the measured mobile LCP breakdown.
 
+The [October 3 maintenance review](docs/2026-10-03-maintenance.md) refreshes the NPS snapshot and adds prominent, sourced access notices for Grand Canyon South Rim, Zion and Hawaiʻi Volcanoes in all five languages. The nine current destination advisories are due for review by October 10.
+
 The remaining 126 destinations now have source-checked arrival routes, named base areas and specific official links in five languages. All 450 photos have descriptive captions; two Mississippi images were replaced with photographs from the correct park section. Arrival and accommodation guidance stays visible, with secondary map references and state planning details expandable. See [the content review and source inventory](docs/v3.5-content-review.md) and [release checks](docs/v3.5-release.md).
 
 ## v3.4 mobile performance and usability
