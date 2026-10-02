@@ -4,9 +4,13 @@ import { GUIDES, local, type Language } from '../data/travel';
 import { ITINERARIES as ROUTES } from '../data/itineraries';
 import { MORE_GUIDES } from '../data/fieldNotes';
 
-export function Brand({ footer = false }: { footer?: boolean }) {
+export function Brand({ lang, footer = false }: { lang: Language; footer?: boolean }) {
   return (
-    <a href="#" className={`brand ${footer ? 'brand-light' : ''}`} aria-label="Roam America home">
+    <a
+      href={`/${lang}/`}
+      className={`brand ${footer ? 'brand-light' : ''}`}
+      aria-label={translate('Roam America home', 'หน้าแรก Roam America', lang)}
+    >
       <span className="brand-symbol">
         <svg viewBox="0 0 40 40" aria-hidden="true">
           <path d="M20 0 24 15 40 20 25 24 20 40 16 25 0 20 15 16Z" fill="currentColor" />
@@ -259,7 +263,7 @@ export function Footer({
       <div className="section-shell">
         <div className="footer-top">
           <div>
-            <Brand footer />
+            <Brand lang={lang} footer />
             <p>
               {t(
                 'For the places. For the people. For the feeling of being somewhere new.',

@@ -2,6 +2,8 @@
 
 This release has automated Chromium desktop/mobile, Firefox desktop and WebKit touch coverage. Browser emulation is not a physical iPhone/Android test. No recruited user study or native-speaker review has been performed.
 
+On 2026-10-02, the local build, 140 browser checks and seven production-build checks passed. A separate 320 px Chromium check found no document-level horizontal overflow on the five homepages. The production checks use a test origin for canonical links and offline behavior; they do not verify a deployed website. Three throttled local mobile LCP runs were 2.456, 2.360 and 2.364 seconds (median 2.364 seconds), with zero measured layout shift. These are lab results, not field Core Web Vitals. The home logo now points to a real language-specific homepage, and comparison/printed-budget tables have accessible captions. The physical-device, screen-reader, first-time visitor and fluent-language reviews below are still pending.
+
 On 2026-09-28 an additional automated 320 px check confirmed that all six updated destination advisories, their official links and all five localized layouts remain usable without horizontal overflow. This is browser emulation; the physical-device, screen-reader and recruited-user items below are still pending.
 
 The v3.4 touch checks also run with Pixel 7 and iPhone 13 profiles: five-language forms, a 390 × 360 constrained viewport, portrait/landscape changes, focused-field submission, persistence and dialog dismissal. A resized viewport does not emulate the OS keyboard. On 2026-09-28 no connected USB mobile device was detected; Android `adb` and Apple's `devicectl` were unavailable, so the physical checks below remain pending.

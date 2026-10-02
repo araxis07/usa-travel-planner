@@ -341,7 +341,7 @@ export default function TravelDialog({
       )}
       {modal.type === 'about' && (
         <div className="about-content">
-          <Brand />
+          <Brand lang={lang} />
           <h2>
             {t('A big country.', 'ประเทศกว้างใหญ่')}
             <br />

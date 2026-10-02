@@ -109,6 +109,9 @@ export default function CompareDestinations({
             aria-label={t('Destination comparison', 'ตารางเปรียบเทียบจุดหมาย')}
           >
             <table className="comparison-table">
+              <caption className="sr-only">
+                {t('Destination comparison', 'ตารางเปรียบเทียบจุดหมาย')}
+              </caption>
               <thead>
                 <tr>
                   <th scope="col">{t('Destination', 'จุดหมาย')}</th>

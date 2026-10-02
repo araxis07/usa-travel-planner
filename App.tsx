@@ -397,7 +397,7 @@ export default function App() {
       </div>
       <header className="header">
         <div className="header-inner">
-          <Brand />
+          <Brand lang={lang} />
           <nav
             id="main-navigation"
             className={`desktop-nav ${mobileNav ? 'mobile-open' : ''}`}

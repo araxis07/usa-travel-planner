@@ -3,6 +3,17 @@ import { EMPTY_TRIP } from '../data/travel';
 import { LANGUAGES } from '../lib/i18n';
 import catalog from '../content/states.json' with { type: 'json' };
 
+test('home logo has a real localized destination from place guides', async ({ page }) => {
+  for (const lang of LANGUAGES) {
+    await page.goto(`/${lang}/states/california/yosemite-national-park/`);
+    const home = page.locator('header .brand');
+    await expect(home).toHaveAttribute('href', `/${lang}/`);
+    await home.click();
+    await expect.poll(() => new URL(page.url()).pathname).toBe(`/${lang}/`);
+    await expect(page.locator('html')).toHaveAttribute('lang', lang);
+  }
+});
+
 test('home search, language controls and trip shortcuts fit all five languages', async ({
   page,
   isMobile,

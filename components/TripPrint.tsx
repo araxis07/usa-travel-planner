@@ -90,12 +90,13 @@ export default function TripPrint({
         <section className="print-budget">
           <h2>{w(lang, 'budget')} · USD</h2>
           <table>
+            <caption className="sr-only">{w(lang, 'budget')} · USD</caption>
             <thead>
               <tr>
-                <th>{w(lang, 'name')}</th>
-                <th>{w(lang, 'category')}</th>
-                <th>{w(lang, 'planned')}</th>
-                <th>{w(lang, 'paid')}</th>
+                <th scope="col">{w(lang, 'name')}</th>
+                <th scope="col">{w(lang, 'category')}</th>
+                <th scope="col">{w(lang, 'planned')}</th>
+                <th scope="col">{w(lang, 'paid')}</th>
               </tr>
             </thead>
             <tbody>
