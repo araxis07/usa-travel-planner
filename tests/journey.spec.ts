@@ -115,6 +115,119 @@ test('trip validation preserves old backups and rejects corrupt daily schedules'
     }),
   ).toThrow();
 });
+test('guide, quick-view and daily map links distinguish areas from arrival points', async ({
+  page,
+}) => {
+  test.setTimeout(60000);
+  await page.setViewportSize({ width: 320, height: 740 });
+  const labels = [
+    'Entrance / parking',
+    'ทางเข้า / ที่จอดรถ',
+    '入口／停车',
+    '入口・駐車場',
+    '입구 / 주차',
+  ];
+  for (const [i, lang] of (['en', 'th', 'zh', 'ja', 'ko'] as const).entries()) {
+    await page.goto(`/${lang}/states/pennsylvania/gettysburg/`);
+    const maps = page.locator('.place-story-actions a[href*="google.com/maps"]');
+    await expect(maps).toBeVisible();
+    const url = new URL((await maps.getAttribute('href'))!);
+    expect(url.searchParams.get('query')).toBe('39.810206,-77.223922');
+    await expect(page.locator('.coordinate-source')).toContainText(labels[i]);
+    await expect(page.locator('.coordinate-source')).toHaveAttribute(
+      'href',
+      'https://www.nps.gov/gett/planyourvisit/directions.htm',
+    );
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    for (const guide of [
+      {
+        path: 'connecticut/mystic-seaport',
+        text: 'Thompson Exhibition Building',
+        source: 'https://mysticseaport.org/visit/directions/',
+      },
+      {
+        path: 'new-york/niagara-falls',
+        text: '333 Prospect Street',
+        source: 'https://www.niagarafallsstatepark.com/park-information/parking/',
+      },
+    ]) {
+      await page.goto(`/${lang}/states/${guide.path}/`);
+      await expect(page.locator('.practical-grid')).toContainText(guide.text);
+      await expect(page.locator('.practical-links .button')).toHaveAttribute('href', guide.source);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    }
+  }
+  await page.goto('/?lang=en');
+  await page.getByRole('button', { name: 'Quick view California', exact: true }).click();
+  const quick = page.getByRole('dialog', { name: 'California', exact: true });
+  const california = STATES.find((s) => s.code === 'CA')!;
+  const links = quick.locator('.places-list a');
+  expect(new URL((await links.nth(0).getAttribute('href'))!).searchParams.get('query')).toBe(
+    'San Francisco, California, USA',
+  );
+  expect(new URL((await links.nth(1).getAttribute('href'))!).searchParams.get('query')).toBe(
+    california.destinations[1].coordinates.join(','),
+  );
+  await expect(links.nth(1)).toContainText('Visitor center reference');
+  await page.keyboard.press('Escape');
+  const arrivalTrip: Trip = {
+    ...EMPTY_TRIP,
+    stops: [
+      {
+        code: 'PA',
+        days: 1,
+        notes: '',
+        activities: [
+          { ...activity, id: 'area-start', placeId: 'PA-0', title: 'Philadelphia' },
+          {
+            ...activity,
+            id: 'parking-stop',
+            placeId: 'PA-2',
+            title: 'Gettysburg',
+            period: 'afternoon',
+          },
+          {
+            ...activity,
+            id: 'custom-stop',
+            placeId: undefined,
+            title: 'Lunch',
+            period: 'afternoon',
+          },
+          { ...activity, id: 'area-end', placeId: 'PA-1', title: 'Pittsburgh', period: 'evening' },
+        ],
+      },
+    ],
+  };
+  await page.evaluate(
+    (value) => localStorage.setItem('roam.trip.v1', JSON.stringify(value)),
+    arrivalTrip,
+  );
+  await page.reload();
+  await page.locator('.header-trip').click();
+  await page.getByRole('button', { name: 'Daily plan', exact: true }).click();
+  await page
+    .locator('.mobile-workspace-switch')
+    .getByRole('button', { name: 'Map', exact: true })
+    .click();
+  const stops = page.locator('.day-directions > li');
+  await expect(stops).toHaveCount(3);
+  await expect(stops.nth(0).getByRole('link', { name: 'Open in Maps', exact: true })).toBeVisible();
+  await expect(stops.nth(1)).toContainText('Entrance / parking');
+  await expect(stops.nth(1)).toContainText('Parking Lot 1');
+  const directions = page.locator('.day-directions a[href*="/dir/"]');
+  const first = new URL((await directions.nth(0).getAttribute('href'))!);
+  expect(first.searchParams.get('origin')).toBe('Philadelphia, Pennsylvania, USA');
+  expect(first.searchParams.get('destination')).toBe('39.810206,-77.223922');
+  expect(first.searchParams.get('travelmode')).toBe('driving');
+  const second = new URL((await directions.nth(1).getAttribute('href'))!);
+  expect(second.searchParams.get('origin')).toBe('39.810206,-77.223922');
+  expect(second.searchParams.get('destination')).toBe('Pittsburgh, Pennsylvania, USA');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
 test('full state and place pages support links, reloads, sharing fallback and browser history', async ({
   page,
 }) => {

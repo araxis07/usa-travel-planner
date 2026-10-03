@@ -631,8 +631,14 @@
   font-size: 13px;
 }
 .day-directions .text-link {
-  font-size: 11px;
-  margin-left: 12px;
+  font-size: 13px;
+  min-height: 44px;
+  margin: 8px 12px 0 0;
+}
+.day-location-reference {
+  display: block;
+  font-size: 12px;
+  line-height: 1.65;
 }
 .day-warning {
   border-left: 3px solid var(--red);

@@ -1,4 +1,12 @@
-import { STATES, local, type StateGuide, type Language, type TripActivity } from '../data/travel';
+import {
+  STATES,
+  local,
+  type StateGuide,
+  type Language,
+  type TripActivity,
+  type PlaceProfile,
+} from '../data/travel';
+import { translate } from './i18n';
 
 export const slug = (name: string) =>
   name
@@ -25,6 +33,19 @@ export function destinationUrl(state: StateGuide, lang: Language, placeIndex?: n
   return `/${lang}/states/${slug(state.name)}/${placeIndex === undefined ? '' : `${slug(state.places[placeIndex])}/`}`;
 }
 export const placeId = (state: StateGuide, index: number) => `${state.code}-${index}`;
+export function mapsQuery(state: StateGuide, index: number) {
+  const profile = state.destinations[index];
+  return profile.locationKind === 'area'
+    ? `${state.places[index]}, ${state.name}, USA`
+    : profile.coordinates.join(',');
+}
+export function locationKindLabel(kind: PlaceProfile['locationKind'], lang: Language) {
+  return kind === 'area'
+    ? translate('Area reference', 'ตำแหน่งพื้นที่โดยประมาณ', lang)
+    : kind === 'visitor-center'
+      ? translate('Visitor center reference', 'ตำแหน่งศูนย์บริการนักท่องเที่ยว', lang)
+      : translate('Entrance / parking', 'ทางเข้า / ที่จอดรถ', lang);
+}
 export function findPlace(id: string) {
   const state = STATES.find((item) => item.code === id.split('-')[0]);
   const index = Number(id.split('-')[1]);

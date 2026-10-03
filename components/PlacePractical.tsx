@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { local, type PlaceProfile, type Language } from '../data/travel';
 import { translate, LOCALES } from '../lib/i18n';
+import { locationKindLabel } from '../lib/destinations';
 import { x } from '../data/experience-copy';
 interface Park {
   id: string;
@@ -150,13 +151,7 @@ export default function PlacePractical({
             </div>
           )}
           <div>
-            <dt>
-              {profile.locationKind === 'area'
-                ? t('Area reference', 'ตำแหน่งพื้นที่โดยประมาณ')
-                : profile.locationKind === 'visitor-center'
-                  ? t('Visitor center reference', 'ตำแหน่งศูนย์บริการนักท่องเที่ยว')
-                  : t('Entrance / parking', 'ทางเข้า / ที่จอดรถ')}
-            </dt>
+            <dt>{locationKindLabel(profile.locationKind, lang)}</dt>
             <dd>
               {local(profile.locationLabel, lang)}
               <small>{profile.coordinates.map((n) => n.toFixed(5)).join(', ')}</small>

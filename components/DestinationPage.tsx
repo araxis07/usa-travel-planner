@@ -13,7 +13,13 @@ import {
   type StateGuide,
 } from '../data/travel';
 import { translate, LOCALES } from '../lib/i18n';
-import { destinationUrl, findPlace, placeId } from '../lib/destinations';
+import {
+  destinationUrl,
+  findPlace,
+  locationKindLabel,
+  mapsQuery,
+  placeId,
+} from '../lib/destinations';
 import PhotoLightbox from './PhotoLightbox';
 import RouteMap from './RouteMap';
 import Icon from './Icon';
@@ -403,7 +409,7 @@ export default function DestinationPage({
                       </button>
                       <a
                         className="text-link"
-                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${state.places[index]}, ${state.name}, USA`)}`}
+                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery(state, index))}`}
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -438,7 +444,8 @@ export default function DestinationPage({
                         target="_blank"
                         rel="noreferrer"
                       >
-                        {t('Location reference', 'แหล่งอ้างอิงตำแหน่ง')} · {record.title}
+                        {locationKindLabel(record.kind, lang)} ·{' '}
+                        {local(record.profile.locationLabel, lang)}
                       </a>
                     )}
                   </div>

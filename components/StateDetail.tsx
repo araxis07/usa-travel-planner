@@ -10,7 +10,7 @@ import {
 } from '../data/travel';
 import Icon from './Icon';
 import PhotoLightbox from './PhotoLightbox';
-import { destinationUrl } from '../lib/destinations';
+import { destinationUrl, locationKindLabel, mapsQuery } from '../lib/destinations';
 import { photoDetails } from '../data/photo-details';
 
 export default function StateDetail({
@@ -119,7 +119,7 @@ export default function StateDetail({
           {state.places.map((place, i) => (
             <a
               key={place}
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${place}, ${state.name}, USA`)}`}
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery(state, i))}`}
               target="_blank"
               rel="noreferrer"
             >
@@ -131,6 +131,11 @@ export default function StateDetail({
                     {place}
                   </small>
                 )}
+                <small className="place-original">
+                  {locationKindLabel(state.destinations[i].locationKind, lang)}
+                  {state.destinations[i].locationKind !== 'area' &&
+                    ` · ${local(state.destinations[i].locationLabel, lang)}`}
+                </small>
               </span>
               <Icon name="external" size={16} />
             </a>

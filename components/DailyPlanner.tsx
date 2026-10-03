@@ -9,7 +9,15 @@ import {
   type DayPeriod,
 } from '../data/travel';
 import { translate, LOCALES } from '../lib/i18n';
-import { activityName, findPlace, PERIODS, placeId, sortedActivities } from '../lib/destinations';
+import {
+  activityName,
+  findPlace,
+  locationKindLabel,
+  mapsQuery,
+  PERIODS,
+  placeId,
+  sortedActivities,
+} from '../lib/destinations';
 import RouteMap from './RouteMap';
 import Icon from './Icon';
 import { x } from '../data/experience-copy';
@@ -135,7 +143,16 @@ export default function DailyPlanner({
   const points = today.flatMap((a) => {
     const p = a.placeId ? findPlace(a.placeId) : undefined;
     return p?.coordinates
-      ? [{ id: a.id, name: activityName(a, lang), coordinates: p.coordinates as [number, number] }]
+      ? [
+          {
+            id: a.id,
+            name: activityName(a, lang),
+            coordinates: p.coordinates as [number, number],
+            query: mapsQuery(p.state, p.index),
+            kind: p.kind,
+            reference: local(p.profile.locationLabel, lang),
+          },
+        ]
       : [];
   });
   const total = today.reduce((sum, a) => sum + a.minutes, 0);
@@ -663,14 +680,27 @@ export default function DailyPlanner({
               {points.map((point, i) => (
                 <li key={point.id}>
                   <span>{point.name}</span>
+                  <small className="day-location-reference">
+                    {locationKindLabel(point.kind, lang)}
+                    {point.kind !== 'area' && ` · ${point.reference}`}
+                  </small>
+                  <a
+                    className="text-link"
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(point.query)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {t('Open in Maps', 'เปิดในแผนที่')}
+                    <Icon name="external" size={14} />
+                  </a>
                   {i > 0 && (
                     <a
                       className="text-link"
-                      href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(points[i - 1].coordinates.join(','))}&destination=${encodeURIComponent(point.coordinates.join(','))}&travelmode=driving`}
+                      href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(points[i - 1].query)}&destination=${encodeURIComponent(point.query)}&travelmode=driving`}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {t('Directions from previous stop', 'เส้นทางจากจุดก่อนหน้า')}
+                      {t('Driving directions from previous stop', 'เส้นทางขับรถจากจุดก่อนหน้า')}
                       <Icon name="external" size={14} />
                     </a>
                   )}
