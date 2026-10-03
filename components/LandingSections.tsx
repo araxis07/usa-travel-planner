@@ -3,6 +3,7 @@ import Icon, { type IconName } from './Icon';
 import { GUIDES, local, type Language } from '../data/travel';
 import { ITINERARIES as ROUTES } from '../data/itineraries';
 import { MORE_GUIDES } from '../data/fieldNotes';
+import TravelImage from './TravelImage';
 
 export function Brand({ lang, footer = false }: { lang: Language; footer?: boolean }) {
   return (
@@ -60,7 +61,7 @@ export function RoadTrips({ lang, onRoute }: { lang: Language; onRoute: (id: str
             className={`route-card route-card-${index}`}
             onClick={() => onRoute(item.id)}
           >
-            {item.image && <img src={`/images/${item.image}.jpg`} alt="" loading="lazy" />}
+            {item.image && <TravelImage src={`/images/${item.image}.jpg`} alt="" loading="lazy" />}
             {!item.image && (
               <div className="autumn-art" aria-hidden="true">
                 <span />

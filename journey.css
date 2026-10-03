@@ -351,9 +351,13 @@
 .lightbox-footer p {
   color: #d6dce0;
   text-align: center;
-  font-size: 11px;
+  font-size: 12px;
   margin: 0;
   max-width: 680px;
+  min-width: 0;
+  max-height: 25dvh;
+  overflow: auto;
+  overscroll-behavior: contain;
 }
 .lightbox-footer a {
   text-decoration: underline;
@@ -810,7 +814,6 @@
     padding-inline: 16px;
   }
   .lightbox-footer p {
-    font-size: 10px;
     overflow-wrap: anywhere;
   }
   .planner-tabs {

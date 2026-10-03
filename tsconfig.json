@@ -26,5 +26,6 @@
     "paths": {
       "@/*": ["./*"]
     }
-  }
+  },
+  "exclude": ["node_modules", "dist", "dist-ssr", "artifacts", "test-results", "playwright-report"]
 }

@@ -56,6 +56,15 @@ function render(lang, state, index) {
       ? state.photos.find((p) => p.placeIndex === index)
       : state.photos[state.cover]
     : null;
+  const coverBase = photo?.src
+    .replace('/images/', '/images/responsive/')
+    .replace(/\.(jpg|jpeg|png)$/, '');
+  const coverSources = photo
+    ? [480, 640, 960]
+        .filter((_, i, sizes) => i === 0 || photo.width > sizes[i - 1])
+        .map((width) => `${coverBase}-${width}.webp ${Math.min(width, photo.width)}w`)
+        .join(', ')
+    : '';
   const canonical = origin ? `${origin}${path}` : '';
   const alternatives = origin
     ? langs
@@ -86,18 +95,12 @@ function render(lang, state, index) {
     : catalog.states
         .map((s) => `<li><a href="${pagePath(lang, s)}">${escape(s.names[l])}</a></li>`)
         .join('');
-  const content = `<header><a href="/${lang}/">Roam America</a><nav style="font-family:system-ui,sans-serif">${langs.map((code, i) => `<a lang="${code}" href="${pagePath(code, state, index)}">${labels[i]}</a>`).join(' · ')}</nav></header><main style="max-width:1000px;margin:auto;padding:32px"><h1>${escape(name)}</h1>${photo ? `<img src="${photo.src}" alt="${escape(photo.displayCaption?.[l] ?? name)}" width="960" style="max-width:100%;height:auto"/>` : ''}<p>${escape(description)}</p>${profile ? `${profile.advisory ? `<aside><p>${escape(profile.advisory.text[l])}</p><a href="${escape(profile.advisory.source)}">${escape(profile.advisory.checkedAt)}</a></aside>` : ''}<p>${escape(profile.access[l])}</p><p>${escape(profile.stay[l])}</p><a href="${escape(profile.officialUrl)}">${escape(profile.officialUrl)}</a><p><a href="${escape(profile.summarySources[l])}">Wikipedia contributors</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">${escape(profile.summaryLicense)}</a></p>` : ''}<ul>${links}</ul></main>`;
+  const content = `<header><a href="/${lang}/">Roam America</a><nav style="font-family:system-ui,sans-serif">${langs.map((code, i) => `<a lang="${code}" href="${pagePath(code, state, index)}">${labels[i]}</a>`).join(' · ')}</nav></header><main style="max-width:1000px;margin:auto;padding:32px"><h1>${escape(name)}</h1>${photo ? `<img src="${photo.src}" srcset="${coverSources}" sizes="100vw" alt="${escape(photo.displayCaption?.[l] ?? name)}" width="960" height="${Math.round((960 * photo.height) / photo.width)}" style="max-width:100%;height:auto"/>` : ''}<p>${escape(description)}</p>${profile ? `${profile.advisory ? `<aside><p>${escape(profile.advisory.text[l])}</p><a href="${escape(profile.advisory.source)}">${escape(profile.advisory.checkedAt)}</a></aside>` : ''}<p>${escape(profile.access[l])}</p><p>${escape(profile.stay[l])}</p><a href="${escape(profile.officialUrl)}">${escape(profile.officialUrl)}</a><p><a href="${escape(profile.summarySources[l])}">Wikipedia contributors</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">${escape(profile.summaryLicense)}</a></p>` : ''}<ul>${links}</ul></main>`;
   const json = state
     ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': profile ? 'TouristAttraction' : 'TouristDestination', name, description, ...(canonical ? { url: canonical } : {}), ...(photo && origin ? { image: origin + photo.src } : {}), ...(profile ? { geo: { '@type': 'GeoCoordinates', latitude: profile.coordinates[0], longitude: profile.coordinates[1] } } : {}) }).replace(/</g, '\\u003c')}</script>`
     : '';
-  const coverBase = photo?.src
-    .replace('/images/', '/images/responsive/')
-    .replace(/\.(jpg|jpeg|png)$/, '');
   const coverPreload = photo
-    ? `<link rel="preload" as="image" href="${coverBase}-960.webp" imagesrcset="${[480, 640, 960]
-        .filter((_, i, sizes) => i === 0 || photo.width > sizes[i - 1])
-        .map((width) => `${coverBase}-${width}.webp ${Math.min(width, photo.width)}w`)
-        .join(', ')}" imagesizes="100vw" fetchpriority="high"/>`
+    ? `<link rel="preload" as="image" href="${coverBase}-960.webp" imagesrcset="${coverSources}" imagesizes="100vw" fetchpriority="high"/>`
     : null;
   const html = template
     .replace(/<link\s+data-roam-cover\s[^>]+>/, (tag) => coverPreload ?? tag)
@@ -153,22 +156,34 @@ await writeFile(
 );
 // Only first-party application assets are cached. Public map tiles are never cached or prefetched.
 const assets = (await readdir(outDir + '/assets')).map((name) => '/assets/' + name);
+const initialAssets = [
+  ...new Set(
+    [...template.matchAll(/(?:src|href)="(\/assets\/[^"<>]+)"/g)].map((match) => match[1]),
+  ),
+];
+if (!initialAssets.length) throw Error('Build template has no application entry assets');
 const fonts = (await readdir(outDir + '/fonts'))
   .filter((name) => /\.(woff2|css)$/.test(name))
   .map((name) => '/fonts/' + name);
-const shell = ['/', '/index.html', '/favicon.svg', '/data/parks.json', ...assets, ...fonts];
+const shell = ['/', '/index.html', '/favicon.svg', '/data/parks.json', ...initialAssets, ...fonts];
 const version = createHash('sha256')
-  .update(JSON.stringify(shell) + (await readFile(outDir + '/data/parks.json')))
+  .update(
+    JSON.stringify({ shell, assets }) +
+      pages[0].html +
+      (await readFile(outDir + '/data/parks.json')),
+  )
+  .update(await readFile(new URL(import.meta.url)))
   .digest('hex')
   .slice(0, 16);
-const sw = `const CACHE='roam-shell-${version}',PHOTOS='roam-trip-photos-v1',SHELL=${JSON.stringify(shell)};
-self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(SHELL);})()));
+const sw = `const CACHE='roam-shell-${version}',PHOTOS='roam-trip-photos-v1',SHELL=${JSON.stringify(shell)},ASSETS=${JSON.stringify(assets)};
+self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);const saved=await caches.has(PHOTOS)&&(await(await caches.open(PHOTOS)).keys()).length>0;await cache.addAll(saved?[...new Set([...SHELL,...ASSETS])]:SHELL);})()));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('roam-shell-')&&key!==CACHE)await caches.delete(key);await self.clients.claim();})()));
 self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(url.origin!==self.location.origin||event.request.method!=='GET'||url.pathname.startsWith('/api/'))return;
  if(event.request.mode==='navigate'){event.respondWith(fetch(event.request).catch(async()=>{const cache=await caches.open(CACHE);return await cache.match('/index.html')||Response.error();}));return;}
- if(SHELL.includes(url.pathname)||url.pathname.startsWith('/images/'))event.respondWith((async()=>{const hit=await caches.match(url.pathname);return hit||fetch(event.request);})());
+ if(SHELL.includes(url.pathname)||ASSETS.includes(url.pathname)){event.respondWith((async()=>{const cache=await caches.open(CACHE);const hit=await cache.match(url.pathname);if(hit)return hit;const response=await fetch(event.request);if(response.ok&&!response.headers.get('content-type')?.includes('text/html'))await cache.put(url.pathname,response.clone()).catch(()=>{});return response;})());return;}
+ if(url.pathname.startsWith('/images/'))event.respondWith((async()=>{const hit=await caches.match(url.pathname);return hit||fetch(event.request);})());
 });
-self.addEventListener('message',event=>{if(event.data?.type!=='SAVE_TRIP')return;event.waitUntil((async()=>{try{const photos=event.data.photos;if(!Array.isArray(photos)||photos.length>1800||photos.some(p=>typeof p!=='string'||!/^\\/images\\/(?:[a-zA-Z0-9_-]+\\/)*[a-zA-Z0-9_-]+\\.(jpg|jpeg|png|webp)$/.test(p)))throw Error();const cache=await caches.open(PHOTOS);for(const path of new Set(photos)){if(!await cache.match(path)){const response=await fetch(path);if(!response.ok||!response.headers.get('content-type')?.startsWith('image/'))throw Error();await cache.put(path,response);}}event.ports[0]?.postMessage({ok:true});}catch{event.ports[0]?.postMessage({ok:false});}})());});`;
+self.addEventListener('message',event=>{if(event.data?.type!=='SAVE_TRIP')return;event.waitUntil((async()=>{try{const photos=event.data.photos;if(!Array.isArray(photos)||photos.length>1800||photos.some(p=>typeof p!=='string'||!/^\\/images\\/(?:[a-zA-Z0-9_-]+\\/)*[a-zA-Z0-9_-]+\\.(jpg|jpeg|png|webp)$/.test(p)))throw Error();const app=await caches.open(CACHE);const missing=[];for(const path of ASSETS)if(!await app.match(path))missing.push(path);await app.addAll(missing);const cache=await caches.open(PHOTOS);for(const path of new Set(photos)){if(!await cache.match(path)){const response=await fetch(path);if(!response.ok||!response.headers.get('content-type')?.startsWith('image/'))throw Error();await cache.put(path,response);}}event.ports[0]?.postMessage({ok:true});}catch{event.ports[0]?.postMessage({ok:false});}})());});`;
 await writeFile(outDir + '/sw.js', sw);
 console.log(
   `Generated ${pages.length} localized pages, offline service worker${origin ? ' and production sitemap' : ' (set SITE_URL to add absolute SEO metadata and sitemap)'}.`,

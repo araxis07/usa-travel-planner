@@ -147,3 +147,47 @@ test('enlarged text keeps narrow-screen navigation and sticky day controls reach
     );
   }
 });
+
+test('gallery keeps the photo and controls visible with enlarged captions on short screens', async ({
+  page,
+}) => {
+  test.setTimeout(60000);
+  for (const lang of LANGUAGES) {
+    await page.setViewportSize({ width: 320, height: 360 });
+    await page.goto(`/${lang}/states/pennsylvania/gettysburg/`);
+    // Keyboard opening gives Safari a focus origin; touch taps do not focus native buttons.
+    await page.locator('.destination-gallery-open').press('Enter');
+    const dialog = page.locator('.photo-lightbox');
+    await dialog.evaluate((el) => {
+      const elements = [...el.querySelectorAll('*')].filter(
+        (node): node is HTMLElement => node instanceof HTMLElement,
+      );
+      const sizes = elements.map((node) => parseFloat(getComputedStyle(node).fontSize));
+      elements.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
+    });
+    for (const viewport of [
+      { width: 320, height: 360 },
+      { width: 844, height: 320 },
+    ]) {
+      await page.setViewportSize(viewport);
+      expect((await dialog.locator('.lightbox-stage').boundingBox())!.height).toBeGreaterThan(80);
+      for (const button of await dialog.getByRole('button').all()) {
+        const box = (await button.boundingBox())!;
+        expect(box.y).toBeGreaterThanOrEqual(0);
+        expect(box.y + box.height).toBeLessThanOrEqual(viewport.height);
+        expect(box.x).toBeGreaterThanOrEqual(0);
+        expect(box.x + box.width).toBeLessThanOrEqual(viewport.width);
+      }
+      expect(await dialog.evaluate((el) => el.scrollWidth <= innerWidth)).toBe(true);
+    }
+    const details = dialog.locator('.lightbox-footer p');
+    await details.focus();
+    await page.keyboard.press('End');
+    await expect
+      .poll(() => details.evaluate((el) => el.scrollTop + el.clientHeight >= el.scrollHeight - 2))
+      .toBe(true);
+    await page.keyboard.press('Escape');
+    await expect(dialog).toHaveCount(0);
+    await expect(page.locator('.destination-gallery-open')).toBeFocused();
+  }
+});

@@ -123,7 +123,7 @@ export default function PhotoLightbox({
         >
           <Icon name="arrow" style={{ transform: 'rotate(180deg)' }} />
         </button>
-        <p>
+        <p role="region" aria-label={t('Photo details', 'รายละเอียดภาพ')} tabIndex={0}>
           <span className="photo-caption">
             {photo.displayCaption
               ? local(photo.displayCaption, lang)

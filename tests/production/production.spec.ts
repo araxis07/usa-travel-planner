@@ -37,7 +37,7 @@ test('mobile home defers guide details and atlas while credits and practical gui
   const context = await browser.newContext({
     viewport: { width: 390, height: 844 },
     deviceScaleFactor: 3,
-    serviceWorkers: 'block',
+    serviceWorkers: 'allow',
   });
   const page = await context.newPage();
   const requests: string[] = [];
@@ -45,6 +45,21 @@ test('mobile home defers guide details and atlas while credits and practical gui
   await page.goto(`${baseURL}/en/`);
   await page.locator('.hero-search input').waitFor();
   await page.waitForLoadState('networkidle');
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  const cached = await page.evaluate(async () => {
+    const name = (await caches.keys()).find((key) => key.startsWith('roam-shell-'))!;
+    return (await (await caches.open(name)).keys()).map((request) => request.url);
+  });
+  expect(
+    cached.some((url) =>
+      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|place-details|TripPlanner|leaflet-src)-/.test(
+        url,
+      ),
+    ),
+  ).toBe(false);
+  expect(requests.some((url) => new URL(url).pathname === '/images/hero.jpg')).toBe(false);
   expect(
     requests.some((url) =>
       /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|place-details)-/.test(url),
@@ -81,7 +96,50 @@ test('mobile home defers guide details and atlas while credits and practical gui
     );
   }
   expect(requests.some((url) => /\/place-details-/.test(url))).toBe(true);
+  const used = await page.evaluate(async () => {
+    const name = (await caches.keys()).find((key) => key.startsWith('roam-shell-'))!;
+    return (await (await caches.open(name)).keys()).map((request) => request.url);
+  });
+  expect(used.some((url) => /\/place-details-/.test(url))).toBe(true);
   await context.close();
+});
+
+test('new worker installs keep previously saved offline trips and photos available', async ({
+  page,
+  context,
+}) => {
+  await page.goto('/favicon.svg');
+  await page.evaluate(async (trip) => {
+    localStorage.setItem('roam.trip.v1', JSON.stringify(trip));
+    const photos = await caches.open('roam-trip-photos-v1');
+    await photos.put('/images/states/ca-1.jpg', await fetch('/images/states/ca-1.jpg'));
+    const previous = await caches.open('roam-shell-previous-build');
+    await previous.put('/index.html', new Response('previous build'));
+  }, sample);
+  await page.goto('/en/?view=planner');
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  await page.waitForFunction(() => !!navigator.serviceWorker.controller);
+  const cached = await page.evaluate(async () => {
+    const names = await caches.keys();
+    const name = names.find((key) => key.startsWith('roam-shell-'))!;
+    return { names, paths: (await (await caches.open(name)).keys()).map((request) => request.url) };
+  });
+  expect(cached.names).not.toContain('roam-shell-previous-build');
+  expect(cached.paths.some((url) => /\/TripPrint-/.test(url))).toBe(true);
+  expect(cached.paths.some((url) => /\/place-details-/.test(url))).toBe(true);
+  await context.setOffline(true);
+  await page.reload();
+  await expect(page.locator('#planner-page')).toBeVisible();
+  await page.getByRole('button', { name: 'Daily plan', exact: true }).click();
+  await page.locator('.day-strip button').nth(1).click();
+  await expect(page.locator('.day-activity h5')).toHaveText('Yosemite National Park');
+  expect(
+    await page.evaluate(async () =>
+      (await fetch('/images/states/ca-1.jpg')).headers.get('content-type'),
+    ),
+  ).toContain('image/');
 });
 
 test('corrected Mississippi photographs bypass previously saved Florida images', async ({
@@ -124,6 +182,10 @@ test('all language pages contain readable content without JavaScript and recipro
     await page.goto(`${baseURL}/${lang}/states/california/yosemite-national-park/`);
     await expect(page.locator('h1')).toHaveText(ca.placeNames[1][i]);
     await expect(page.locator('main')).toContainText(ca.destinations[1].summary[i]);
+    await expect(page.locator('main img')).toHaveAttribute('srcset', /\/images\/responsive\//);
+    expect(
+      await page.locator('main img').evaluate((img: HTMLImageElement) => img.currentSrc),
+    ).toContain('/images/responsive/');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',
       `https://roam.example/${lang}/states/california/yosemite-national-park/`,
