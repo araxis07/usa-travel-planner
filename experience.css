@@ -1964,14 +1964,21 @@ html[lang='ko'] .discovery-place h3 {
     --header-height: 64px;
   }
   .header {
-    height: var(--header-height);
+    height: auto;
+    min-height: 64px;
   }
   .header .header-inner {
+    height: auto;
+    min-height: 64px;
+    flex-wrap: wrap;
+    padding-block: 8px;
     padding-inline: 16px;
     gap: 10px;
   }
   .header .header-actions {
     gap: 6px;
+    flex-shrink: 0;
+    margin-left: auto;
   }
   .header .brand > span:last-child {
     font-size: 30px;
@@ -2001,7 +2008,9 @@ html[lang='ko'] .discovery-place h3 {
     top: -4px;
     right: -4px;
     min-width: 18px;
-    height: 18px;
+    min-height: 18px;
+    height: auto;
+    line-height: 1.5;
     padding: 0 3px;
     font-size: 10px;
   }
@@ -2018,7 +2027,7 @@ html[lang='ko'] .discovery-place h3 {
     min-height: 44px;
   }
   .header .desktop-nav.mobile-open {
-    top: var(--header-height);
+    top: 100%;
   }
   .desktop-nav.mobile-open .mobile-compare-link {
     display: flex;

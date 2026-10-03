@@ -108,6 +108,7 @@ export default function App() {
   const [toast, setToast] = useState('');
   const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const heroRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const discoveryScroll = useRef<number | null>(null);
   const [homeVisited, setHomeVisited] = useState(
     () =>
@@ -137,6 +138,20 @@ export default function App() {
     setModal({ type: 'trip', daily: true });
   };
   useEffect(() => () => clearTimeout(toastTimer.current), []);
+  useEffect(() => {
+    const header = headerRef.current!;
+    const observer = new ResizeObserver(() =>
+      document.documentElement.style.setProperty(
+        '--header-height',
+        `${header.getBoundingClientRect().height}px`,
+      ),
+    );
+    observer.observe(header);
+    return () => {
+      observer.disconnect();
+      document.documentElement.style.removeProperty('--header-height');
+    };
+  }, []);
   useEffect(() => {
     try {
       localStorage.setItem('roam.compare.v1', JSON.stringify(comparison));
@@ -395,7 +410,7 @@ export default function App() {
           {t('LET’S TAKE THE SCENIC ROUTE', 'ออกไปพบเส้นทางที่น่าจดจำ')}
         </span>
       </div>
-      <header className="header">
+      <header className="header" ref={headerRef}>
         <div className="header-inner">
           <Brand lang={lang} />
           <nav

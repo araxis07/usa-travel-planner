@@ -3,11 +3,11 @@ import { expect, test } from '@playwright/test';
 import { EMPTY_TRIP } from '../data/travel';
 import { LANGUAGES } from '../lib/i18n';
 
-test('main page and planner meet automated WCAG 2.1 AA checks', async ({ page }) => {
+test('main page and planner meet automated WCAG 2.2 AA checks', async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => document.fonts.ready);
   const audit = () =>
-    new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+    new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
   const home = await audit();
   expect(
     home.violations.map((item) => ({

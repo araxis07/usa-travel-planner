@@ -14,6 +14,7 @@
     "format:check": "prettier --check .",
     "studio": "vite --mode studio --host 127.0.0.1 --port 5174 --strictPort",
     "check:content": "node scripts/check-content.mjs",
+    "check:site": "node scripts/check-site.mjs",
     "refresh:parks": "node scripts/refresh-parks.mjs",
     "test:cloud": "node scripts/test-cloud.mjs",
     "test:production": "playwright test --config playwright.production.config.ts",

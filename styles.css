@@ -18,7 +18,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  scroll-padding-top: calc(var(--header-height, 88px) + 12px);
 }
 body {
   margin: 0;
@@ -3200,9 +3200,6 @@ html[lang='th'] .guide-card h3 {
   }
 }
 @media (max-width: 700px) {
-  html {
-    scroll-padding-top: 85px;
-  }
   .section-shell,
   .search-shell {
     padding-left: 23px;

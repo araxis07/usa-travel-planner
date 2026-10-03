@@ -24,6 +24,8 @@ Deploy the complete `dist/` directory at the domain root. The build generates 1,
 
 The repository has no hosting-specific deployment workflow. A Git push runs verification; your host must deploy the build separately.
 
+After deployment, run `npm run check:site -- https://your-domain` with the real domain root. Set `SITE_URL` to that origin before building. The read-only check samples a homepage, state guide and place guide in each of the five languages, without JavaScript, and verifies canonical/alternate links, sitemap coverage, robots.txt and application asset responses. A host returning an HTML fallback for a missing guide or JavaScript asset fails the check. Install Chromium with `npx playwright install chromium` if it is not installed. This checks the published files; use the [device and user protocol](docs/usability-check.md) for physical-device, accessibility and usability review.
+
 ## What is included
 
 - **50 state guides, 150 place profiles and 450 local photographs.** Every place has three distinct photos with individual source and license links. Profiles include five-language highlights, planning duration, accommodation areas, access guidance, source dates and official links. Galleries support keyboard arrows, swipe, zoom and source captions.
@@ -124,7 +126,7 @@ npm run test:production
 npm run format:check
 ```
 
-The 86-test regular Chromium suite covers multi-trip switching, collections import/export, templates, the trip helper, editable timelines and the existing desktop/mobile flows, five languages, galleries, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
+The regular browser suite runs 143 checks across desktop/mobile Chromium and targeted Firefox, WebKit and Android profiles. It covers multi-trip switching, collections import/export, templates, the trip helper, editable timelines, five languages, galleries, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility, enlarged-text navigation and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
 
 `test:production` builds to ignored `artifacts/production/`, serves port 5198, checks static SEO without JavaScript, client metadata, offline reloads, all saved photos and PDFs in five languages. Account tests intercept Supabase HTTP requests to exercise the real browser client without sending emails or changing a remote database. Reports and PDFs are in `artifacts/production-results/` and `artifacts/production-report/`. Tests close their servers when finished. GitHub Actions runs all three suites.
 

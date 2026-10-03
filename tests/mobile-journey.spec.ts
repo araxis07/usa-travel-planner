@@ -81,3 +81,69 @@ test('guide dialog accepts a focused-field touch submit and dismisses after rota
   await add.tap();
   await expect(dialog).toBeVisible();
 });
+
+test('enlarged text keeps narrow-screen navigation and sticky day controls reachable in five languages', async ({
+  page,
+}) => {
+  test.setTimeout(60000);
+  await page.setViewportSize({ width: 320, height: 740 });
+  const enlargeText = () =>
+    page.evaluate(() => {
+      // Layout stress check; this does not emulate a phone's OS text-size setting.
+      const elements = [...document.body.querySelectorAll('*')].filter(
+        (el): el is HTMLElement =>
+          el instanceof HTMLElement && !['SCRIPT', 'STYLE'].includes(el.tagName),
+      );
+      const sizes = elements.map((el) => parseFloat(getComputedStyle(el).fontSize));
+      elements.forEach((el, i) => (el.style.fontSize = `${sizes[i] * 2}px`));
+    });
+  for (const lang of LANGUAGES) {
+    await page.goto(`/${lang}/`);
+    await expect(page.locator('.state-card').first()).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    await enlargeText();
+    const menu = page.locator('.menu-button');
+    await expect
+      .poll(() =>
+        page.locator('.header-actions > button, .header select').evaluateAll((controls) =>
+          controls
+            .filter((el) => el.checkVisibility())
+            .every((el) => {
+              const rect = el.getBoundingClientRect();
+              return rect.left >= 0 && rect.right <= innerWidth;
+            }),
+        ),
+      )
+      .toBe(true);
+    await menu.tap();
+    await expect(page.locator('#main-navigation')).toBeVisible();
+    expect(
+      await page.evaluate(
+        () =>
+          document.querySelector('#main-navigation')!.getBoundingClientRect().top >=
+          document.querySelector('.header')!.getBoundingClientRect().bottom - 1,
+      ),
+    ).toBe(true);
+    await menu.tap();
+    await page.goto(`/${lang}/?view=planner`);
+    await expect(page.locator('.daily-planner')).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    await enlargeText();
+    await page.locator('.day-navigation').scrollIntoViewIfNeeded();
+    await page.evaluate(() => scrollBy(0, 200));
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () =>
+            document.querySelector('.day-navigation')!.getBoundingClientRect().top >=
+            document.querySelector('.header')!.getBoundingClientRect().bottom - 1,
+        ),
+      )
+      .toBe(true);
+    await page.locator('.add-activity-toggle').tap();
+    await expect(page.locator('.add-activity')).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
+});
