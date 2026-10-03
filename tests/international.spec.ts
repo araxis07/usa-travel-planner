@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { readFileSync } from 'node:fs';
 import { contentIssues, validateCatalog } from '../lib/content';
-import { LANGUAGES, translate } from '../lib/i18n';
+import { LANGUAGES, LOCALES, translate } from '../lib/i18n';
+import cityContent from '../content/city-guides.json' with { type: 'json' };
 const catalog = validateCatalog(
   JSON.parse(readFileSync(new URL('../content/states.json', import.meta.url), 'utf8')),
 );
@@ -171,6 +172,78 @@ test('dated access notices warn visitors when their saved check becomes stale', 
     'href',
     'https://www.nps.gov/crla/planyourvisit/conditions.htm',
   );
+});
+test('city guides localize neighborhood links, airport steps and complete group budgets', async ({
+  page,
+}) => {
+  test.setTimeout(90000);
+  await page.setViewportSize({ width: 320, height: 740 });
+  const cities = [
+    { path: 'new-york/new-york-city', totals: [850, 1440, 2310] },
+    { path: 'california/san-francisco', totals: [800, 1340, 2170] },
+    { path: 'nevada/las-vegas', totals: [560, 1010, 1920] },
+  ];
+  for (const [city, info] of cities.entries()) {
+    const guide = cityContent.guides[city];
+    for (const [l, lang] of LANGUAGES.entries()) {
+      await page.goto(`/${lang}/states/${info.path}/`);
+      const section = page.locator('#guide-city');
+      await expect(section).toContainText(guide.intro[l]);
+      await page.locator('.guide-toc a[href="#guide-city"]').click();
+      const area = section.locator(':scope > details').first();
+      await area.locator('summary').press('Enter');
+      await expect(area).toContainText(guide.areas[0].text[l]);
+      const url = new URL((await area.locator('a').first().getAttribute('href'))!);
+      expect(url.searchParams.get('query')).toBe(guide.areas[0].mapQuery);
+      for (const [i, day] of guide.days.entries()) {
+        const item = section.locator('.city-day').nth(i);
+        if (i) await item.locator('summary').press('Enter');
+        await expect(item).toContainText(day.alternative[l]);
+      }
+      await page.locator('.guide-toc a[href="#guide-airport"]').click();
+      await expect(section.locator('.city-airport-steps li')).toHaveCount(3);
+      await expect(page.locator('#guide-airport')).toContainText(guide.airport.fare[l]);
+      await expect(page.locator('#guide-airport')).toContainText(guide.reviewAfter);
+      await page.locator('.guide-toc a[href="#guide-city-budget"]').click();
+      await expect(page.locator('#guide-city-budget')).toContainText(
+        cityContent.copy.assumptions[l],
+      );
+      for (const [i, total] of info.totals.entries()) {
+        const budget = section.locator('.city-budget').nth(i);
+        await budget.locator('summary').press('Enter');
+        await expect(budget.locator('dl > div')).toHaveCount(7);
+        const money = (n: number) =>
+          new Intl.NumberFormat(LOCALES[lang], { style: 'currency', currency: 'USD' }).format(n);
+        await expect(budget.locator('.city-budget-total dd')).toHaveText(money(total));
+        await expect(budget.locator('dd').last()).toHaveText(money(total / 2));
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+      if (lang === 'en') {
+        const audit = await new AxeBuilder({ page })
+          .include('#guide-city')
+          .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+          .analyze();
+        expect(audit.violations).toEqual([]);
+      }
+      await section.evaluate((el) => {
+        const nodes = [...el.querySelectorAll('*')].filter(
+          (node): node is HTMLElement => node instanceof HTMLElement,
+        );
+        const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
+        nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
+      });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    }
+  }
+  await page.clock.setFixedTime(new Date('2026-10-12T00:00:00Z'));
+  await page.reload();
+  await expect(page.locator('#guide-airport .day-warning')).toHaveText(cityContent.copy.stale[4]);
+  await page.goto('/en/states/nevada/valley-of-fire-state-park/');
+  await expect(page.locator('#guide-city')).toHaveCount(0);
 });
 test('all fifty states load real covers and every language keeps the atlas available', async ({
   page,

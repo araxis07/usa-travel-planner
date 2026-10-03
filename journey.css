@@ -108,6 +108,70 @@
   font-size: 19px;
   line-height: 1.85;
 }
+.city-guide {
+  margin-block: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.city-guide h2 {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 400;
+}
+.city-guide h3 {
+  margin-block: 28px 12px;
+  font-size: 20px;
+}
+.city-guide .guide-details {
+  margin-block: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+.city-guide summary {
+  min-height: 44px;
+  align-content: center;
+  font-size: 16px;
+}
+.city-guide-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+.city-guide-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--navy);
+  text-decoration: underline;
+}
+.city-airport-steps {
+  padding-inline-start: 24px;
+}
+.city-airport-steps li {
+  padding-block: 6px;
+}
+.city-budget dl {
+  margin-bottom: 0;
+}
+.city-budget dl > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding-block: 10px;
+  border-top: 1px solid var(--line);
+}
+.city-budget dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.city-budget-total {
+  font-weight: 700;
+}
 .destination-story .detail-facts {
   margin-block: 35px 60px;
 }

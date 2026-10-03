@@ -1,0 +1,790 @@
+{
+  "copy": {
+    "title": [
+      "Your city, in detail",
+      "รู้จักเมืองก่อนออกเที่ยว",
+      "深入规划城市之旅",
+      "街をもっと詳しく",
+      "도시 여행을 자세히"
+    ],
+    "areas": [
+      "Choose a neighborhood",
+      "เลือกย่านที่จะเที่ยวและพัก",
+      "选择游览与住宿街区",
+      "巡る・泊まるエリアを選ぶ",
+      "관광과 숙박 지역 선택"
+    ],
+    "days": [
+      "A flexible 1–3 day plan",
+      "แผนยืดหยุ่นสำหรับ 1–3 วัน",
+      "灵活的1至3日安排",
+      "1〜3日間の柔軟なプラン",
+      "유연한 1~3일 일정"
+    ],
+    "day": ["Day {day}", "วันที่ {day}", "第{day}天", "{day}日目", "{day}일차"],
+    "pace": [
+      "For one day, use day one. Add the next days if you have more time. These are editorial suggestions; allow for meals, transfers and rest, and check venue hours and reservations.",
+      "ถ้ามีหนึ่งวันให้ใช้วันที่หนึ่ง แล้วเพิ่มวันถัดไปตามเวลาที่มี แผนนี้เป็นข้อเสนอแนะจากผู้จัดทำ เผื่อมื้ออาหาร การเดินทางและพัก พร้อมตรวจเวลาเปิดและการจอง",
+      "只有一天可采用第一天，再按时间增加后续安排。这是编辑建议；请留出用餐、交通和休息时间，并核对开放时间与预约。",
+      "1日なら初日の案を使い、時間に合わせて日数を追加。編集部の提案なので、食事・移動・休憩を確保し、営業時間と予約を確認してください。",
+      "하루라면 첫날 일정을 이용하고 시간이 더 있으면 다음 날을 추가하세요. 편집 제안이므로 식사와 이동, 휴식 시간을 확보하고 운영 시간과 예약을 확인하세요."
+    ],
+    "alternative": [
+      "Weather alternative",
+      "แผนสำรองเมื่ออากาศไม่เหมาะ",
+      "天气不佳时的备选",
+      "天候が悪い日の代案",
+      "날씨에 따른 대안"
+    ],
+    "map": [
+      "Open area in Maps",
+      "เปิดย่านนี้ใน Maps",
+      "在地图中查看街区",
+      "エリアを地図で開く",
+      "지도에서 지역 보기"
+    ],
+    "airport": [
+      "From the airport",
+      "จากสนามบินเข้าเมือง",
+      "从机场进入市区",
+      "空港から街へ",
+      "공항에서 시내로"
+    ],
+    "fares": ["Fare reference", "ค่าโดยสารอ้างอิง", "票价参考", "運賃の参考", "요금 참고"],
+    "budget": [
+      "Example budgets · USD",
+      "ตัวอย่างงบเที่ยว · USD",
+      "预算示例 · 美元",
+      "予算の例 · 米ドル",
+      "예산 예시 · USD"
+    ],
+    "assumptions": [
+      "Two adults · 3 days · 2 nights · one shared room. Amounts are group planning allowances, not hotel or restaurant quotes. A reserve covers estimated taxes, mandatory fees and tips; replace every allowance with your actual costs. Flights, insurance, entry documents, shopping and car rental are excluded.",
+      "ผู้ใหญ่ 2 คน · 3 วัน · 2 คืน · พักห้องเดียวกัน ตัวเลขเป็นวงเงินตัวอย่างรวมทั้งกลุ่ม ไม่ใช่ราคาจองโรงแรมหรือร้านอาหาร มีเงินเผื่อภาษี ค่าธรรมเนียมที่ต้องจ่ายและทิป เปลี่ยนแต่ละรายการเป็นค่าใช้จ่ายจริง ไม่รวมเที่ยวบิน ประกัน เอกสารเข้าเมือง ช้อปปิ้งและรถเช่า",
+      "两位成人、3天2晚、合住一间房。金额为全组规划额度，并非酒店或餐厅报价；预留款用于估算税费、必付费用和小费。请替换为实际费用。不含机票、保险、入境文件、购物或租车。",
+      "大人2人・3日間・2泊・1室を共有。金額はグループ全体の予算枠で、宿泊・飲食の見積もりではありません。税金・必須料金・チップの予備費を含み、実際の費用に置き換えてください。航空券・保険・入国書類・買い物・レンタカーは含みません。",
+      "성인 2명, 3일, 2박, 객실 1개 공유 기준입니다. 금액은 일행 전체의 예산 배정이며 호텔이나 식당의 견적이 아닙니다. 세금과 필수 수수료, 팁을 위한 예비비를 포함하며 실제 비용으로 바꾸세요. 항공권, 보험, 입국 서류, 쇼핑, 렌터카는 제외합니다."
+    ],
+    "tiers": [
+      ["Economy", "ประหยัด", "节约型", "節約", "절약형"],
+      ["Balanced", "ปานกลาง", "均衡型", "標準", "일반형"],
+      ["More comfort", "สบายขึ้น", "舒适型", "ゆとり", "여유형"]
+    ],
+    "rows": [
+      ["Room · 2 nights", "ห้องพัก · 2 คืน", "客房 · 2晚", "客室 · 2泊", "객실 · 2박"],
+      [
+        "Food · 2 adults × 3 days",
+        "อาหาร · 2 คน × 3 วัน",
+        "餐饮 · 2人×3天",
+        "食事 · 2人×3日",
+        "식사 · 2명 × 3일"
+      ],
+      [
+        "Transport · including airport return",
+        "เดินทาง · รวมสนามบินไปกลับ",
+        "交通 · 含机场往返",
+        "交通 · 空港往復を含む",
+        "교통 · 공항 왕복 포함"
+      ],
+      [
+        "Activities · group allowance",
+        "กิจกรรม · วงเงินทั้งกลุ่ม",
+        "活动 · 全组额度",
+        "体験 · グループ予算",
+        "활동 · 일행 전체 예산"
+      ],
+      [
+        "Reserve · taxes, fees & tips",
+        "เงินเผื่อ · ภาษี ค่าธรรมเนียมและทิป",
+        "预留 · 税费与小费",
+        "予備費 · 税金・料金・チップ",
+        "예비비 · 세금, 수수료, 팁"
+      ]
+    ],
+    "total": ["Group total", "รวมทั้งกลุ่ม", "全组总计", "グループ合計", "일행 전체 합계"],
+    "perPerson": [
+      "Per adult for this trip",
+      "ต่อผู้ใหญ่หนึ่งคนตลอดทริป",
+      "每位成人全程",
+      "旅行全体の大人1人分",
+      "여행 전체 성인 1인당"
+    ],
+    "checked": [
+      "Sources checked",
+      "ตรวจแหล่งข้อมูลเมื่อ",
+      "来源核对日期",
+      "情報源の確認日",
+      "출처 확인일"
+    ],
+    "review": [
+      "Next source review",
+      "กำหนดตรวจแหล่งข้อมูลครั้งถัดไป",
+      "下次来源复核",
+      "次回の情報確認",
+      "다음 출처 검토일"
+    ],
+    "stale": [
+      "This guide is due for review. Confirm fares and routes with the official operators before travel.",
+      "คู่มือนี้ถึงกำหนดตรวจทานแล้ว ตรวจค่าโดยสารและเส้นทางกับผู้ให้บริการทางการก่อนเดินทาง",
+      "本指南已到复核日期。出行前请向官方运营方确认票价与路线。",
+      "このガイドは再確認の時期です。出発前に公式の運賃と経路を確認してください。",
+      "이 안내서는 검토 시기가 되었습니다. 여행 전 공식 운영 기관에서 요금과 경로를 확인하세요."
+    ],
+    "duration": ["1–3 days", "1–3 วัน", "1至3天", "1〜3日", "1~3일"]
+  },
+  "guides": [
+    {
+      "placeId": "NY-0",
+      "checkedAt": "2026-10-04",
+      "reviewAfter": "2026-10-11",
+      "translationsReviewed": [false, false, false, false, false],
+      "intro": [
+        "Give each day one part of the city. Start around Midtown, then add Lower Manhattan and Brooklyn instead of crossing the whole city repeatedly.",
+        "แบ่งเที่ยววันละส่วนของเมือง เริ่มมิดทาวน์ แล้วเพิ่มแมนฮัตตันตอนล่างและบรูคลิน จะได้ไม่เดินทางข้ามเมืองซ้ำไปมา",
+        "每天集中探索一片区域：从中城开始，再加入下曼哈顿和布鲁克林，减少反复跨城。",
+        "1日ごとにエリアを絞りましょう。ミッドタウンから始め、ロウアー・マンハッタン、ブルックリンへと広げれば往復を減らせます。",
+        "하루에 한 지역씩 둘러보세요. 미드타운에서 시작해 로어맨해튼과 브루클린을 추가하면 도시를 반복해서 가로지르지 않아도 됩니다."
+      ],
+      "areas": [
+        {
+          "title": ["Midtown", "มิดทาวน์", "中城", "ミッドタウン", "미드타운"],
+          "text": [
+            "Use the Grand Central and Bryant Park area as a first-day cluster. For a stay, compare the nearest subway station, lift access and the full room price.",
+            "จัดแกรนด์เซ็นทรัลกับไบรอันต์พาร์กไว้วันเดียวกัน เมื่อเลือกที่พักให้เทียบสถานีใกล้ที่สุด ทางเข้าที่มีลิฟต์และราคาห้องรวม",
+            "将中央车站与布莱恩特公园安排在同一天。选住宿时比较最近地铁站、电梯通道和客房总价。",
+            "グランド・セントラルとブライアント・パークを同じ日に。宿泊先は最寄り駅、エレベーター経路、客室の総額で比較しましょう。",
+            "그랜드 센트럴과 브라이언트 파크를 같은 날에 묶으세요. 숙소는 가까운 지하철역, 엘리베이터 경로, 객실 총액을 비교하세요."
+          ],
+          "mapQuery": "Bryant Park Manhattan New York",
+          "source": {
+            "name": "NYC Tourism · Midtown",
+            "url": "https://www.nyctourism.com/neighborhoods/midtown/"
+          }
+        },
+        {
+          "title": [
+            "Lower Manhattan",
+            "แมนฮัตตันตอนล่าง",
+            "下曼哈顿",
+            "ロウアー・マンハッタン",
+            "로어맨해튼"
+          ],
+          "text": [
+            "Group the Financial District and waterfront. Choose one booked attraction rather than adding a ferry, museum and bridge walk to the same short afternoon.",
+            "รวมย่านไฟแนนเชียลกับริมน้ำไว้ด้วยกัน เลือกกิจกรรมที่ต้องจองหนึ่งอย่าง แทนการใส่เรือ พิพิธภัณฑ์และเดินสะพานในบ่ายสั้น ๆ",
+            "将金融区与滨水区一起游览。短暂的下午只选一项预约活动，不要同时塞入渡船、博物馆和桥上步行。",
+            "金融街と水辺をまとめて巡り、予約する体験はひとつに。短い午後にフェリー・博物館・橋の散策を詰め込まないようにしましょう。",
+            "금융가와 수변을 묶어 둘러보세요. 짧은 오후에는 예약 활동 하나를 고르고 페리, 박물관, 다리 산책을 모두 넣지 마세요."
+          ],
+          "mapQuery": "Financial District Manhattan New York",
+          "source": {
+            "name": "NYC Tourism · Downtown Manhattan",
+            "url": "https://www.business.nyctourism.com/travel-trade/articles/exploring-downtown-manhattan"
+          }
+        },
+        {
+          "title": [
+            "DUMBO, Brooklyn",
+            "ดัมโบ บรูคลิน",
+            "布鲁克林DUMBO",
+            "ブルックリンのDUMBO",
+            "브루클린 덤보"
+          ],
+          "text": [
+            "Leave time for the waterfront and a meal. Staying in Brooklyn can suit this day; compare the actual Manhattan connection rather than assuming every Brooklyn address is nearby.",
+            "เผื่อเวลาเดินริมน้ำและกินอาหาร พักบรูคลินอาจเหมาะกับวันนี้ แต่ตรวจเส้นทางไปแมนฮัตตันจากที่พักจริง ไม่ใช่ทุกที่ในบรูคลินจะอยู่ใกล้กัน",
+            "留出滨水散步与用餐时间。住布鲁克林可方便这一天，但须核对实际前往曼哈顿的路线，不能把所有布鲁克林地址都视为附近。",
+            "水辺の散策と食事に余裕を。ブルックリン泊も選択肢ですが、マンハッタンへの実際の経路を確認しましょう。同じ区でも距離は異なります。",
+            "수변 산책과 식사 시간을 남겨 두세요. 브루클린 숙박도 좋지만 실제 맨해튼 연결 경로를 확인하세요. 브루클린의 모든 주소가 가까운 것은 아닙니다."
+          ],
+          "mapQuery": "DUMBO Brooklyn New York",
+          "source": {
+            "name": "NYC Tourism · DUMBO",
+            "url": "https://www.nyctourism.com/neighborhoods/dumbo/"
+          }
+        }
+      ],
+      "days": [
+        {
+          "title": [
+            "Midtown at an easy pace",
+            "มิดทาวน์แบบไม่เร่ง",
+            "轻松游中城",
+            "ゆったりミッドタウン",
+            "여유롭게 미드타운"
+          ],
+          "text": [
+            "Start at Grand Central, pause around Bryant Park, then choose Times Square or a booked indoor visit. Save Central Park for another day if energy is low.",
+            "เริ่มแกรนด์เซ็นทรัล พักแถวไบรอันต์พาร์ก แล้วเลือกไทม์สแควร์หรือกิจกรรมในร่มที่จองไว้ ถ้าเหนื่อยให้เก็บเซ็นทรัลพาร์กไว้วันอื่น",
+            "从中央车站出发，在布莱恩特公园稍作休息，再选时代广场或预约的室内活动。体力不足就把中央公园留到另一天。",
+            "グランド・セントラルからブライアント・パークへ。タイムズ・スクエアか予約した屋内施設を選び、疲れたらセントラル・パークは別日に。",
+            "그랜드 센트럴에서 시작해 브라이언트 파크에서 쉬고 타임스 스퀘어나 예약한 실내 활동을 고르세요. 피곤하면 센트럴 파크는 다른 날로 남겨 두세요."
+          ],
+          "alternative": [
+            "Spend more time inside Grand Central and shorten the outdoor walk.",
+            "ใช้เวลาในแกรนด์เซ็นทรัลมากขึ้นและลดช่วงเดินกลางแจ้ง",
+            "延长中央车站内的停留，缩短户外步行。",
+            "駅の屋内で長めに過ごし、屋外の散策を短く。",
+            "그랜드 센트럴 실내에서 더 머물고 야외 산책을 줄이세요."
+          ]
+        },
+        {
+          "title": [
+            "Lower Manhattan",
+            "แมนฮัตตันตอนล่าง",
+            "下曼哈顿",
+            "ロウアー・マンハッタン",
+            "로어맨해튼"
+          ],
+          "text": [
+            "Take the subway to the Financial District. Choose a waterfront walk and one attraction; leave a Statue of Liberty ferry visit its own booking and time allowance.",
+            "นั่งรถไฟใต้ดินไปไฟแนนเชียลดิสทริกต์ เดินริมน้ำและเลือกกิจกรรมหนึ่งอย่าง ถ้าจะนั่งเรือไปเทพีเสรีภาพให้จองและเผื่อเวลาแยก",
+            "乘地铁到金融区，安排滨水散步与一项景点活动。如去自由女神像，需单独预约渡船并预留时间。",
+            "地下鉄で金融街へ。水辺の散策とひとつの見学を選び、自由の女神へ行くならフェリーの予約と時間を別に確保。",
+            "지하철로 금융가에 가서 수변 산책과 명소 하나를 선택하세요. 자유의 여신상 페리는 별도로 예약하고 시간을 확보하세요."
+          ],
+          "alternative": [
+            "Swap the exposed waterfront for a reserved indoor attraction, checking its opening day.",
+            "เปลี่ยนริมน้ำที่โล่งเป็นกิจกรรมในร่มที่จองไว้ และตรวจวันเปิด",
+            "把露天滨水活动换成预约的室内景点，并确认开放日。",
+            "水辺の代わりに予約した屋内施設へ。営業日を確認してください。",
+            "탁 트인 수변 대신 예약한 실내 명소를 이용하고 운영일을 확인하세요."
+          ]
+        },
+        {
+          "title": [
+            "Brooklyn waterfront",
+            "ริมน้ำบรูคลิน",
+            "布鲁克林滨水区",
+            "ブルックリンの水辺",
+            "브루클린 수변"
+          ],
+          "text": [
+            "Reach DUMBO by transit, explore the waterfront and stop for lunch. The Brooklyn Bridge walk is optional; use transit both ways if a long walk does not suit your group.",
+            "นั่งขนส่งสาธารณะไปดัมโบ เที่ยวริมน้ำและพักกินกลางวัน การเดินสะพานบรูคลินเป็นตัวเลือก ใช้รถไปกลับได้ถ้ากลุ่มไม่สะดวกเดินไกล",
+            "乘公共交通到DUMBO，游览滨水区并用午餐。布鲁克林大桥步行是可选项；不适合长距离步行可往返都乘车。",
+            "交通機関でDUMBOへ行き、水辺とランチを楽しみます。橋を歩くかは自由。長距離歩行が難しければ往復とも交通機関で。",
+            "대중교통으로 덤보에 가서 수변을 둘러보고 점심을 드세요. 브루클린 브리지 산책은 선택 사항이며 긴 걷기가 어렵다면 왕복 모두 교통편을 이용하세요."
+          ],
+          "alternative": [
+            "Keep a short waterfront visit and a longer indoor meal; move the bridge walk to better weather.",
+            "แวะริมน้ำสั้น ๆ แล้วพักกินอาหารในร่มนานขึ้น เลื่อนเดินสะพานไปวันที่อากาศดี",
+            "缩短滨水游览、延长室内用餐，把桥上步行移到天气更好的时候。",
+            "水辺は短く、屋内の食事に余裕を。橋の散策は好天の日へ。",
+            "수변 방문은 짧게 하고 실내 식사 시간을 늘리세요. 다리 산책은 날씨가 좋은 날로 옮기세요."
+          ]
+        }
+      ],
+      "airport": {
+        "code": "JFK",
+        "steps": [
+          [
+            "Follow AirTrain signs; take the Jamaica-bound service.",
+            "ตามป้าย AirTrain แล้วขึ้นสายไป Jamaica",
+            "按AirTrain指示乘往Jamaica的列车。",
+            "AirTrainの案内に従いJamaica方面へ。",
+            "AirTrain 표지판을 따라 Jamaica행에 탑승하세요."
+          ],
+          [
+            "At Jamaica, transfer to the Manhattan-bound E subway.",
+            "ที่ Jamaica ต่อรถไฟใต้ดิน E ฝั่งไปแมนฮัตตัน",
+            "在Jamaica换乘往曼哈顿的E线地铁。",
+            "Jamaicaでマンハッタン方面の地下鉄E線へ。",
+            "Jamaica에서 맨해튼행 E선 지하철로 갈아타세요."
+          ],
+          [
+            "Pay AirTrain and subway separately; both accept contactless payment.",
+            "จ่าย AirTrain กับรถไฟใต้ดินแยกกัน ทั้งคู่รับการแตะจ่าย",
+            "AirTrain与地铁分别付费，两者均支持非接触支付。",
+            "AirTrainと地下鉄は別料金。どちらもタッチ決済対応。",
+            "AirTrain과 지하철 요금은 별도이며 모두 비접촉 결제를 받습니다."
+          ]
+        ],
+        "fare": [
+          "Standard adult single journey: AirTrain $8.75 + subway $3.00 = $11.75. Discounts and LIRR journeys have different conditions.",
+          "เที่ยวเดียวผู้ใหญ่ราคาปกติ: AirTrain $8.75 + รถไฟใต้ดิน $3.00 = $11.75 ส่วนลดและการใช้ LIRR มีเงื่อนไขต่างกัน",
+          "成人标准单程：AirTrain 8.75美元＋地铁3美元＝11.75美元。优惠与LIRR另有条件。",
+          "大人の通常片道：AirTrain 8.75ドル＋地下鉄3ドル＝11.75ドル。割引とLIRRは別条件です。",
+          "성인 일반 편도: AirTrain $8.75 + 지하철 $3.00 = $11.75. 할인과 LIRR 이용 조건은 다릅니다."
+        ],
+        "note": [
+          "Check AirTrain work notices and MTA service/elevator status before departure. With bulky bags, compare LIRR or an official taxi. This route is for JFK, not LGA or EWR.",
+          "ตรวจงานปรับปรุง AirTrain และสถานะรถไฟกับลิฟต์ MTA ก่อนเดินทาง ถ้ามีกระเป๋าใหญ่ให้เทียบ LIRR หรือแท็กซี่ทางการ เส้นทางนี้ใช้กับ JFK ไม่ใช่ LGA หรือ EWR",
+          "出发前核对AirTrain施工及MTA服务、电梯状态。大件行李可比较LIRR或正规出租车。本路线仅适用于JFK，不适用于LGA或EWR。",
+          "AirTrainの工事案内とMTAの運行・エレベーター情報を確認。大きな荷物ならLIRRや正規タクシーも比較を。JFK専用でLGA・EWRには使えません。",
+          "출발 전 AirTrain 공사와 MTA 운행 및 엘리베이터 상태를 확인하세요. 큰 짐이 있으면 LIRR이나 공식 택시도 비교하세요. JFK용 경로이며 LGA나 EWR에는 적용되지 않습니다."
+        ],
+        "sources": [
+          {
+            "name": "MTA · JFK connections",
+            "url": "https://www.mta.info/guides/airports/jfk"
+          },
+          {
+            "name": "JFK · AirTrain and notices",
+            "url": "https://www.jfkairport.com/transportation/airtrain"
+          },
+          {
+            "name": "JFK · Public transport fares",
+            "url": "https://www.jfkairport.com/transportation/public-transport"
+          }
+        ]
+      },
+      "budget": {
+        "amounts": [
+          [360, 560, 840],
+          [210, 360, 570],
+          [90, 120, 220],
+          [40, 160, 320],
+          [150, 240, 360]
+        ],
+        "note": [
+          "The economy transport allowance leaves room for four individual JFK–subway journeys ($47 total at the listed fare) and local rides. Higher tiers allow extra transport; confirm actual fares and any group discounts. Room and meal figures are editorial allowances.",
+          "งบเดินทางแบบประหยัดเผื่อ JFK–รถไฟใต้ดินรวม 4 เที่ยวรายคน ($47 ตามค่าโดยสารที่ระบุ) และรถในเมือง แบบอื่นเผื่อการเดินทางเพิ่ม ตรวจราคาจริงและส่วนลดกลุ่ม ตัวเลขห้องพักกับอาหารเป็นวงเงินจากผู้จัดทำ",
+          "节约型交通额度覆盖四次独立JFK—地铁单程（按所列票价共47美元）并留出市内交通。其他档次增加交通额度；请核对实际票价与团体优惠。住宿和餐饮为编辑预算。",
+          "節約案の交通費はJFKと地下鉄の個別片道4回分（記載運賃で計47ドル）と市内移動を想定。上位案は追加交通費を確保。実際の運賃・グループ割引を確認してください。宿泊と食事は編集部の予算枠です。",
+          "절약형 교통비는 JFK와 지하철의 개별 편도 4회(표시 요금 기준 총 $47)와 시내 이동을 고려합니다. 다른 유형은 교통비를 더 배정하며 실제 요금과 단체 할인을 확인하세요. 숙박과 식사는 편집 예산입니다."
+        ]
+      }
+    },
+    {
+      "placeId": "CA-0",
+      "checkedAt": "2026-10-04",
+      "reviewAfter": "2026-10-11",
+      "translationsReviewed": [false, false, false, false, false],
+      "intro": [
+        "Pair nearby neighborhoods, then give Golden Gate Park a separate day. Allow for hills and choose transit when the walking route does not suit your group.",
+        "จับคู่ย่านใกล้กัน แล้วแยกโกลเดนเกตพาร์กไว้อีกวัน เผื่อทางลาดชันและเลือกขนส่งสาธารณะเมื่อกลุ่มไม่สะดวกเดิน",
+        "把相邻街区组合游览，再为金门公园留出一天。考虑坡度；步行路线不适合同行者时使用公共交通。",
+        "近い街区をまとめ、ゴールデン・ゲート・パークには別の1日を。坂道を考慮し、歩行経路が合わなければ交通機関を使いましょう。",
+        "가까운 동네를 묶고 골든 게이트 파크에는 별도의 하루를 배정하세요. 언덕을 고려하고 걷는 경로가 일행에게 맞지 않으면 대중교통을 이용하세요."
+      ],
+      "areas": [
+        {
+          "title": [
+            "Downtown and the Embarcadero",
+            "ดาวน์ทาวน์และเอ็มบาร์คาเดโร",
+            "市中心与Embarcadero",
+            "ダウンタウンとエンバーカデロ",
+            "다운타운과 엠바카데로"
+          ],
+          "text": [
+            "Start with the Ferry Building and waterfront. For a base, compare a downtown address with its actual BART or Muni connection, including the last walk with bags.",
+            "เริ่มเฟอร์รีบิลดิ้งกับริมน้ำ ถ้าพักดาวน์ทาวน์ให้ตรวจการต่อ BART หรือ Muni จากที่อยู่จริง รวมช่วงเดินสุดท้ายพร้อมกระเป๋า",
+            "从渡轮大厦与滨水区开始。选择市中心住宿时核对实际BART或Muni路线，包括携行李的最后步行路段。",
+            "フェリー・ビルディングと水辺から。宿泊先は実際のBART・Muni経路と、荷物を持つ最後の徒歩区間も確認してください。",
+            "페리 빌딩과 수변에서 시작하세요. 다운타운 숙소는 실제 BART나 Muni 연결과 짐을 들고 걷는 마지막 구간까지 확인하세요."
+          ],
+          "mapQuery": "Ferry Building San Francisco",
+          "source": {
+            "name": "SF Travel · Downtown",
+            "url": "https://www.sftravel.com/neighborhoods/downtown-financial-district"
+          }
+        },
+        {
+          "title": [
+            "Chinatown and North Beach",
+            "ไชน่าทาวน์และนอร์ทบีช",
+            "唐人街与北滩",
+            "チャイナタウンとノース・ビーチ",
+            "차이나타운과 노스 비치"
+          ],
+          "text": [
+            "Combine these neighboring districts for food and street exploration. Keep uphill detours optional and check whether the route has steps before choosing it.",
+            "จับคู่สองย่านใกล้กันเพื่อกินอาหารและเดินชมเมือง ทางแยกขึ้นเนินเป็นตัวเลือก และตรวจว่ามีบันไดหรือไม่ก่อนเลือกเส้นทาง",
+            "将相邻的两区组合，探索餐饮与街道。上坡绕行设为可选项，选路线前确认有无台阶。",
+            "隣り合う街区で食事と街歩きを。坂道への寄り道は任意にし、階段の有無を確認して経路を選びましょう。",
+            "인접한 두 동네를 묶어 음식과 거리 풍경을 즐기세요. 오르막 우회는 선택 사항으로 두고 경로에 계단이 있는지 확인하세요."
+          ],
+          "mapQuery": "Chinatown San Francisco California",
+          "source": {
+            "name": "SF Travel · Neighborhood walk",
+            "url": "https://www.sftravel.com/itinerary/explore-chinatown-nob-hill-north-beach-self-guided-walking-tour"
+          }
+        },
+        {
+          "title": [
+            "Golden Gate Park",
+            "โกลเดนเกตพาร์ก",
+            "金门公园",
+            "ゴールデン・ゲート・パーク",
+            "골든 게이트 파크"
+          ],
+          "text": [
+            "Choose the eastern museum and garden area for a focused visit. A stay near the park suits a quieter plan; compare the transfer back to the airport before booking.",
+            "เลือกโซนพิพิธภัณฑ์และสวนฝั่งตะวันออกเพื่อเที่ยวไม่กระจาย ที่พักใกล้สวนเหมาะกับแผนค่อยเป็นค่อยไป แต่เทียบการต่อรถกลับสนามบินก่อนจอง",
+            "集中游览东侧博物馆与花园区域。住公园附近适合悠闲行程，预订前仍需比较返机场的交通。",
+            "東側の博物館と庭園に絞って巡りましょう。公園近くの宿泊はゆったりした旅に合いますが、空港への乗り継ぎも比較してください。",
+            "동쪽 박물관과 정원 지역에 집중하세요. 공원 근처 숙소는 느긋한 여행에 좋지만 예약 전 공항으로 돌아가는 교통편도 비교하세요."
+          ],
+          "mapQuery": "Music Concourse Golden Gate Park San Francisco",
+          "source": {
+            "name": "SF Travel · Golden Gate Park",
+            "url": "https://www.sftravel.com/article/visitors-guide-to-golden-gate-park"
+          }
+        }
+      ],
+      "days": [
+        {
+          "title": [
+            "Waterfront and Ferry Building",
+            "ริมน้ำและเฟอร์รีบิลดิ้ง",
+            "滨水区与渡轮大厦",
+            "水辺とフェリー・ビルディング",
+            "수변과 페리 빌딩"
+          ],
+          "text": [
+            "Begin at the Ferry Building, take a manageable Embarcadero walk and pause for lunch. Keep a ferry crossing optional and check its return departure before boarding.",
+            "เริ่มเฟอร์รีบิลดิ้ง เดินเอ็มบาร์คาเดโรเท่าที่ไหวแล้วพักกลางวัน การข้ามเรือเป็นตัวเลือก ตรวจรอบกลับก่อนขึ้น",
+            "从渡轮大厦出发，按体力沿Embarcadero散步并用午餐。渡船为可选项，上船前确认返程班次。",
+            "フェリー・ビルディングから無理のない水辺の散策とランチへ。フェリーは任意にし、乗る前に帰りの便を確認。",
+            "페리 빌딩에서 시작해 무리 없는 엠바카데로 산책과 점심을 즐기세요. 페리 탑승은 선택 사항이며 타기 전에 귀환편을 확인하세요."
+          ],
+          "alternative": [
+            "Spend more time in the Ferry Building marketplace and skip the exposed waterfront.",
+            "ใช้เวลาในตลาดเฟอร์รีบิลดิ้งมากขึ้นและข้ามช่วงริมน้ำที่โล่ง",
+            "在渡轮大厦市场多停留，跳过无遮蔽的滨水路段。",
+            "市場で長めに過ごし、吹きさらしの水辺は省略。",
+            "페리 빌딩 시장에서 더 머물고 노출된 수변 구간은 생략하세요."
+          ]
+        },
+        {
+          "title": [
+            "Chinatown to North Beach",
+            "ไชน่าทาวน์สู่นอร์ทบีช",
+            "唐人街到北滩",
+            "チャイナタウンからノース・ビーチへ",
+            "차이나타운에서 노스 비치로"
+          ],
+          "text": [
+            "Start around Dragon Gate, explore Chinatown, then continue to North Beach for a meal. Avoid adding distant bridge viewpoints unless you have time for a separate transfer.",
+            "เริ่มแถวประตูดรากอนเกต เที่ยวไชน่าทาวน์แล้วไปกินอาหารนอร์ทบีช ไม่ต้องเพิ่มจุดชมสะพานที่อยู่ไกล เว้นแต่มีเวลาเดินทางแยก",
+            "从龙门附近探索唐人街，再到北滩用餐。除非留有单独交通时间，否则不要再加入远处的大桥观景点。",
+            "ドラゴン・ゲート周辺からチャイナタウンを巡り、ノース・ビーチで食事。遠い橋の展望場所は移動時間を別に取れる場合だけ追加。",
+            "드래곤 게이트 주변에서 차이나타운을 둘러보고 노스 비치에서 식사하세요. 별도 이동 시간이 없다면 먼 다리 전망대는 추가하지 마세요."
+          ],
+          "alternative": [
+            "Shorten the walk and make a longer indoor meal your main stop.",
+            "ลดระยะเดินและให้มื้ออาหารในร่มเป็นจุดพักหลัก",
+            "缩短步行，以较长的室内用餐作为主要停留。",
+            "散策を短くし、屋内でゆっくり食事を。",
+            "산책을 줄이고 여유로운 실내 식사를 중심으로 쉬세요."
+          ]
+        },
+        {
+          "title": [
+            "One part of Golden Gate Park",
+            "เที่ยวโกลเดนเกตพาร์กหนึ่งโซน",
+            "金门公园的一片区域",
+            "パークのひとつのエリアを",
+            "골든 게이트 파크 한 구역"
+          ],
+          "text": [
+            "Take Muni toward the eastern park and choose a garden or museum near Music Concourse. Leave the western park and ocean for another visit rather than walking the whole park.",
+            "ใช้ Muni ไปสวนฝั่งตะวันออก เลือกสวนหรือพิพิธภัณฑ์ใกล้ Music Concourse เก็บสวนฝั่งตะวันตกและทะเลไว้อีกครั้ง ไม่ต้องเดินครบทั้งสวน",
+            "乘Muni到公园东侧，选择Music Concourse附近的花园或博物馆。西侧与海边留作下次，不必横穿整座公园。",
+            "Muniで公園東側へ。Music Concourse近くの庭園か博物館を選び、西側と海辺は別の機会に。公園全体を歩く必要はありません。",
+            "Muni로 공원 동쪽에 가서 Music Concourse 근처 정원이나 박물관을 고르세요. 서쪽과 해변은 다음 방문으로 남기고 공원 전체를 걷지 않아도 됩니다."
+          ],
+          "alternative": [
+            "Choose de Young or the California Academy of Sciences; check admission and opening days before switching.",
+            "เลือก de Young หรือ California Academy of Sciences ตรวจค่าเข้าและวันเปิดก่อนเปลี่ยนแผน",
+            "可选de Young或加州科学院，换计划前核对门票与开放日。",
+            "de YoungかCalifornia Academy of Sciencesへ。変更前に入場料と営業日を確認。",
+            "de Young이나 California Academy of Sciences를 선택하고 변경 전 입장료와 운영일을 확인하세요."
+          ]
+        }
+      ],
+      "airport": {
+        "code": "SFO",
+        "steps": [
+          [
+            "Use the free AirTrain to the International Terminal BART station.",
+            "ใช้ AirTrain ฟรีไปสถานี BART ที่อาคารระหว่างประเทศ",
+            "乘免费AirTrain到国际航站楼的BART站。",
+            "無料AirTrainで国際線ターミナルのBART駅へ。",
+            "무료 AirTrain으로 국제선 터미널 BART역에 가세요."
+          ],
+          [
+            "Board toward San Francisco; choose your downtown station.",
+            "ขึ้นขบวนไปซานฟรานซิสโก เลือกสถานีดาวน์ทาวน์ที่ตรงกับที่พัก",
+            "乘往旧金山的列车，选择合适的市中心站。",
+            "サンフランシスコ方面に乗り、目的に合う市内駅で下車。",
+            "샌프란시스코 방향에 타고 알맞은 시내 역을 선택하세요."
+          ],
+          [
+            "Tap in and out with the same card/device; each rider needs their own.",
+            "แตะเข้าและออกด้วยบัตรหรืออุปกรณ์เดิม ผู้โดยสารแต่ละคนใช้ของตัวเอง",
+            "进出闸使用同一卡或设备，每人需独立使用。",
+            "同じカード・端末で入出場。乗客ごとにひとつ必要です。",
+            "입장과 퇴장에 같은 카드나 기기를 사용하고 각 승객은 별도 결제 수단을 사용하세요."
+          ]
+        ],
+        "fare": [
+          "BART is distance-priced: check SFO → your station in its trip planner. Muni's $5.70 Day Pass excludes cable cars; the $15 Visitor Passport includes them. Neither includes the SFO BART journey.",
+          "BART คิดตามระยะทาง ตรวจ SFO → สถานีที่ต้องใช้ในตัววางแผน บัตร Muni Day Pass $5.70 ไม่รวมเคเบิลคาร์ ส่วน Visitor Passport $15 รวมเคเบิลคาร์ ทั้งคู่ไม่รวม BART จาก SFO",
+          "BART按距离收费，请在规划器核对SFO到目的站。Muni 5.70美元日票不含缆车，15美元Visitor Passport含缆车；两者均不含SFO的BART行程。",
+          "BARTは距離制なのでSFOから目的駅の運賃を確認。Muniの5.70ドルDay Passはケーブルカー対象外、15ドルVisitor Passportは対象。どちらもSFOのBART運賃は含みません。",
+          "BART는 거리별 요금이므로 SFO에서 목적역까지 조회하세요. Muni $5.70 Day Pass는 케이블카를 제외하고 $15 Visitor Passport는 포함합니다. 둘 다 SFO BART 이용은 포함하지 않습니다."
+        ],
+        "note": [
+          "Confirm BART operating hours for early or late flights and check elevators before using a step-free route. Keep bags clear of doors. This guide covers SFO; OAK and SJC need different routes.",
+          "ตรวจเวลา BART สำหรับเที่ยวบินเช้าหรือดึกและตรวจลิฟต์ก่อนใช้เส้นทางไร้บันได วางกระเป๋าไม่ขวางประตู คู่มือนี้ใช้กับ SFO ส่วน OAK และ SJC ใช้เส้นทางอื่น",
+          "早晚航班需确认BART运营时段；无台阶路线需核对电梯。行李勿挡门。本指南用于SFO，OAK与SJC路线不同。",
+          "早朝・深夜便ではBARTの運行時間を確認し、段差のない経路はエレベーター情報も確認。荷物でドアを塞がないように。OAK・SJCは別経路です。",
+          "이른 아침이나 늦은 항공편은 BART 운행 시간을 확인하고 계단 없는 경로의 엘리베이터 상태도 확인하세요. 짐으로 문을 막지 마세요. SFO용 안내이며 OAK와 SJC는 경로가 다릅니다."
+        ],
+        "sources": [
+          {
+            "name": "BART · SFO connections",
+            "url": "https://www.bart.gov/guide/airport/sfo"
+          },
+          {
+            "name": "BART · Trip planner and fares",
+            "url": "https://www.bart.gov/planner"
+          },
+          {
+            "name": "SFMTA · Day Pass",
+            "url": "https://www.sfmta.com/fares/day-pass"
+          },
+          {
+            "name": "SFMTA · Visitor Passport",
+            "url": "https://www.sfmta.com/fares/1-day-visitor-passport"
+          }
+        ]
+      },
+      "budget": {
+        "amounts": [
+          [320, 500, 760],
+          [210, 360, 570],
+          [100, 140, 240],
+          [40, 140, 300],
+          [130, 200, 300]
+        ],
+        "note": [
+          "Economy assumes Muni and a BART airport return; confirm the BART fare for your station. Cable cars, ferries and extra taxis can change the transport total. Room and meal figures are editorial allowances.",
+          "แบบประหยัดสมมติใช้ Muni และ BART ไปกลับสนามบิน ตรวจค่า BART ของสถานีจริง เคเบิลคาร์ เรือและแท็กซี่เพิ่มอาจเปลี่ยนงบเดินทาง ตัวเลขห้องพักกับอาหารเป็นวงเงินจากผู้จัดทำ",
+          "节约型假设使用Muni与BART机场往返，须核对目的站BART票价。缆车、渡船与额外出租车会改变交通总额。住宿与餐饮为编辑预算。",
+          "節約案はMuniと空港往復のBARTを想定。目的駅の運賃を確認してください。ケーブルカー・フェリー・追加タクシーで交通費は変わります。宿泊と食事は編集部の予算枠です。",
+          "절약형은 Muni와 공항 왕복 BART 이용을 가정합니다. 목적역의 BART 요금을 확인하세요. 케이블카, 페리, 추가 택시로 교통비가 달라질 수 있습니다. 숙박과 식사는 편집 예산입니다."
+        ]
+      }
+    },
+    {
+      "placeId": "NV-0",
+      "checkedAt": "2026-10-04",
+      "reviewAfter": "2026-10-11",
+      "translationsReviewed": [false, false, false, false, false],
+      "intro": [
+        "Treat the Strip, Downtown and Arts District as separate outings. Keep outdoor walks short in heat and compare the complete hotel bill, including mandatory fees.",
+        "แยกสตริป ดาวน์ทาวน์และอาร์ตดิสทริกต์เป็นคนละช่วงเที่ยว ลดการเดินกลางแจ้งเมื่อร้อนและเทียบค่าที่พักรวมค่าธรรมเนียมที่ต้องจ่าย",
+        "将大道、市中心与艺术区分开游览。炎热时缩短户外步行，比较酒店账单总额，包括必付费用。",
+        "ストリップ、ダウンタウン、アーツ・ディストリクトは別の外出に。暑い日は屋外の歩行を短くし、必須料金を含む宿泊総額を比較しましょう。",
+        "스트립, 다운타운, 아츠 디스트릭트를 별도 방문으로 나누세요. 더울 때는 야외 걷기를 줄이고 필수 수수료를 포함한 호텔 총액을 비교하세요."
+      ],
+      "areas": [
+        {
+          "title": ["The Strip", "เดอะสตริป", "拉斯维加斯大道", "ストリップ", "스트립"],
+          "text": [
+            "Choose a base near your main show or attraction. Compare the actual walk from the hotel entrance to a bus stop; large properties can add walking inside the building.",
+            "เลือกที่พักใกล้โชว์หรือกิจกรรมหลัก ตรวจระยะจากทางเข้าโรงแรมถึงป้ายรถจริง เพราะโรงแรมขนาดใหญ่อาจต้องเดินภายในอาคารเพิ่ม",
+            "住在主要演出或景点附近。核对酒店入口到公交站的实际步行距离，大型酒店内部也可能需要走较远。",
+            "主なショーや見学先の近くを拠点に。ホテル入口からバス停までの実際の距離を確認。大きな施設は建物内も歩きます。",
+            "주요 공연이나 명소 근처를 숙소로 선택하세요. 호텔 입구에서 버스 정류장까지 실제 거리를 확인하세요. 큰 호텔은 건물 안에서도 오래 걸을 수 있습니다."
+          ],
+          "mapQuery": "Las Vegas Strip Nevada",
+          "source": {
+            "name": "Visit Las Vegas · The Strip",
+            "url": "https://www.visitlasvegas.com/las-vegas-strip/"
+          }
+        },
+        {
+          "title": [
+            "Downtown and Fremont Street",
+            "ดาวน์ทาวน์และฟรีมอนต์สตรีต",
+            "市中心与Fremont街",
+            "ダウンタウンとフリーモント通り",
+            "다운타운과 프리몬트 스트리트"
+          ],
+          "text": [
+            "Plan this as its own visit rather than an extension of a Strip walk. For accommodation, compare evening noise, transport back and the total nightly charge.",
+            "จัดเป็นทริปย่อยแยกจากการเดินสตริป เมื่อเลือกที่พักให้เทียบเสียงตอนค่ำ การเดินทางกลับและค่าห้องต่อคืนรวม",
+            "单独安排此区域，不要把它当作大道步行的延伸。选住宿时比较夜间噪声、返程交通与每晚总费用。",
+            "ストリップの散策に続けず、別の訪問に。宿泊先は夜の騒音、帰りの交通、1泊の総額で比較してください。",
+            "스트립 산책의 연장이 아니라 별도의 방문으로 계획하세요. 숙소는 저녁 소음, 돌아오는 교통편, 1박 총액을 비교하세요."
+          ],
+          "mapQuery": "Fremont Street Experience Las Vegas Nevada",
+          "source": {
+            "name": "Visit Las Vegas · Downtown",
+            "url": "https://www.visitlasvegas.com/downtown-las-vegas/"
+          }
+        },
+        {
+          "title": [
+            "18b Arts District",
+            "อาร์ตดิสทริกต์ 18b",
+            "18b艺术区",
+            "18bアーツ・ディストリクト",
+            "18b 아츠 디스트릭트"
+          ],
+          "text": [
+            "Use Main Street as a starting point for galleries, shops and a meal. Check individual opening days and event dates; the neighborhood is not a single ticketed attraction.",
+            "เริ่มถนน Main Street เพื่อชมแกลเลอรี ร้านค้าและกินอาหาร ตรวจวันเปิดของแต่ละร้านและวันจัดกิจกรรม ย่านนี้ไม่ใช่สถานที่ขายตั๋วรวมจุดเดียว",
+            "从Main街开始逛画廊、商店与餐饮。核对各店开放日及活动日期；整个街区并非一个统一售票景点。",
+            "Main Streetを起点にギャラリー・店・食事へ。各店の営業日とイベント日を確認。エリア全体がひとつの有料施設ではありません。",
+            "Main Street를 출발점으로 갤러리와 상점, 식사를 즐기세요. 각 매장의 운영일과 행사 날짜를 확인하세요. 동네 전체가 하나의 유료 명소는 아닙니다."
+          ],
+          "mapQuery": "18b Arts District Main Street Las Vegas Nevada",
+          "source": {
+            "name": "Visit Las Vegas · 18b Arts District",
+            "url": "https://www.visitlasvegas.com/experience/post/intro-to-the-18b-arts-district/"
+          }
+        }
+      ],
+      "days": [
+        {
+          "title": [
+            "A focused Strip visit",
+            "เที่ยวสตริปแบบเลือกโซน",
+            "集中游览大道",
+            "ストリップの一部を巡る",
+            "스트립 한 구역 둘러보기"
+          ],
+          "text": [
+            "Choose one section of the Strip near your accommodation and one booked show or attraction. Use transit for distant stops and leave a long break between daytime and evening plans.",
+            "เลือกสตริปโซนใกล้ที่พักและโชว์หรือกิจกรรมที่จองหนึ่งอย่าง ใช้รถเมื่อจุดหมายไกลและพักยาวระหว่างแผนกลางวันกับค่ำ",
+            "选住宿附近的一段大道与一项预约演出或活动。远处景点乘车前往，日间与晚间行程之间留出长休息。",
+            "宿泊先近くの区間と予約したショーか見学をひとつ。遠い場所へは交通機関を使い、昼と夜の予定の間に長めの休憩を。",
+            "숙소 근처 스트립 한 구간과 예약한 공연이나 명소 하나를 고르세요. 먼 곳은 교통편을 이용하고 낮과 저녁 일정 사이에 길게 쉬세요."
+          ],
+          "alternative": [
+            "Move the outdoor walk to cooler hours and use a booked indoor attraction instead; check age restrictions.",
+            "เลื่อนเดินกลางแจ้งไปช่วงเย็นลงและใช้กิจกรรมในร่มที่จองแทน ตรวจข้อจำกัดอายุด้วย",
+            "把户外步行移到较凉时段，改用预约的室内活动，并核对年龄限制。",
+            "屋外は涼しい時間に移し、予約した屋内施設へ。年齢制限も確認。",
+            "야외 산책은 선선한 시간으로 옮기고 예약한 실내 활동을 이용하세요. 연령 제한도 확인하세요."
+          ]
+        },
+        {
+          "title": [
+            "Downtown and Fremont",
+            "ดาวน์ทาวน์และฟรีมอนต์",
+            "市中心与Fremont",
+            "ダウンタウンとフリーモント",
+            "다운타운과 프리몬트"
+          ],
+          "text": [
+            "Take transit to Downtown, make a short Fremont Street visit and choose an indoor stop or meal. Check the return route before evening events change the bus stops.",
+            "ใช้รถไปดาวน์ทาวน์ แวะฟรีมอนต์สั้น ๆ แล้วเลือกจุดเที่ยวในร่มหรือกินอาหาร ตรวจเส้นทางกลับก่อนกิจกรรมค่ำทำให้ป้ายรถเปลี่ยน",
+            "乘车到市中心，短逛Fremont街，再选室内活动或用餐。晚间活动可能调整公交站，提前确认返程路线。",
+            "交通機関でダウンタウンへ。通りを短く巡り、屋内の見学や食事を選びます。夜のイベントによるバス停変更を帰路の確認に含めて。",
+            "교통편으로 다운타운에 가서 프리몬트 스트리트를 짧게 방문하고 실내 활동이나 식사를 선택하세요. 저녁 행사로 정류장이 바뀌기 전에 귀환 경로를 확인하세요."
+          ],
+          "alternative": [
+            "Choose an indoor visit and check its admission; a covered street is not the same as an air-conditioned building.",
+            "เลือกสถานที่ในร่มและตรวจค่าเข้า ถนนที่มีหลังคาไม่เท่ากับอาคารติดแอร์",
+            "选择室内活动并核对门票；有顶棚的街道不等于空调室内。",
+            "屋内施設と入場料を確認。屋根のある通りでも冷房のある建物とは異なります。",
+            "실내 장소를 고르고 입장료를 확인하세요. 지붕 있는 거리는 냉방된 건물과 다릅니다."
+          ]
+        },
+        {
+          "title": [
+            "Arts District and a slow lunch",
+            "อาร์ตดิสทริกต์กับมื้อกลางวันสบาย ๆ",
+            "艺术区与悠闲午餐",
+            "アーツ・ディストリクトとランチ",
+            "아츠 디스트릭트와 느긋한 점심"
+          ],
+          "text": [
+            "Visit the Main Street area for galleries and shops, then take a long lunch. Keep the afternoon flexible for rest or departure instead of adding an out-of-city excursion.",
+            "เที่ยวแถว Main Street ดูแกลเลอรีและร้านค้า แล้วพักกลางวันนานขึ้น ช่วงบ่ายเผื่อพักหรือเดินทางกลับ ไม่ต้องเพิ่มเที่ยวออกนอกเมือง",
+            "在Main街区域逛画廊与商店，再悠闲用午餐。下午留作休息或离境，不再加入出城行程。",
+            "Main Street周辺でギャラリーや店を巡り、ゆっくりランチ。午後は休憩や出発に余白を残し、郊外への遠出は追加しません。",
+            "Main Street 주변의 갤러리와 상점을 둘러보고 여유롭게 점심을 드세요. 오후는 휴식이나 출발을 위해 남기고 도시 밖 여행은 추가하지 마세요."
+          ],
+          "alternative": [
+            "Choose an open gallery and nearby indoor meal; check hours before leaving your hotel.",
+            "เลือกแกลเลอรีที่เปิดกับร้านอาหารในร่มใกล้กัน ตรวจเวลาก่อนออกจากโรงแรม",
+            "选已营业的画廊与附近室内餐饮，离开酒店前核对时间。",
+            "営業中のギャラリーと近くの屋内の食事へ。ホテルを出る前に時間を確認。",
+            "운영 중인 갤러리와 근처 실내 식당을 선택하고 호텔에서 출발하기 전 시간을 확인하세요."
+          ]
+        }
+      ],
+      "airport": {
+        "code": "LAS",
+        "steps": [
+          [
+            "From Terminal 3, use the inter-terminal shuttle to Terminal 1.",
+            "จาก Terminal 3 ใช้รถรับส่งระหว่างอาคารไป Terminal 1",
+            "从3号航站楼乘航站楼接驳车到1号航站楼。",
+            "ターミナル3からは連絡シャトルでターミナル1へ。",
+            "터미널 3에서는 터미널 간 셔틀로 터미널 1에 가세요."
+          ],
+          [
+            "At Terminal 1 Level Zero, take RED LINE toward SSTT.",
+            "ที่ Terminal 1 ชั้น Level Zero ขึ้น RED LINE ไป SSTT",
+            "在1号航站楼Level Zero乘RED LINE往SSTT。",
+            "ターミナル1のLevel ZeroでSSTT方面のRED LINEへ。",
+            "터미널 1 Level Zero에서 SSTT 방향 RED LINE에 타세요."
+          ],
+          [
+            "At SSTT, use RTC's planner for your Strip or Downtown connection.",
+            "ที่ SSTT ใช้ตัววางแผน RTC เลือกสายต่อไปสตริปหรือดาวน์ทาวน์",
+            "在SSTT用RTC规划器选择前往大道或市中心的接驳。",
+            "SSTTでRTCの経路検索を使いストリップや市内への乗り継ぎを確認。",
+            "SSTT에서 RTC 경로 검색으로 스트립이나 다운타운 연결편을 확인하세요."
+          ]
+        ],
+        "fare": [
+          "Visitors use Strip & All Access fares: $8 for 24 hours or $20 for a 3-day pass, per adult. Check the pass duration and current route before buying.",
+          "ผู้มาเที่ยวใช้ราคา Strip & All Access: $8 สำหรับ 24 ชั่วโมง หรือ $20 สำหรับบัตร 3 วันต่อผู้ใหญ่หนึ่งคน ตรวจอายุบัตรและเส้นทางปัจจุบันก่อนซื้อ",
+          "游客使用Strip & All Access票价：成人24小时8美元，3日票20美元。购票前核对有效期与当前路线。",
+          "旅行者はStrip & All Access運賃を利用。大人1人24時間8ドル、3日券20ドル。購入前に有効期間と現行経路を確認。",
+          "방문객은 Strip & All Access 요금을 이용합니다. 성인 1명 기준 24시간 $8 또는 3일권 $20이며 구매 전 유효기간과 현재 경로를 확인하세요."
+        ],
+        "note": [
+          "Use the current airport route page: RED LINE replaced Route 109 in August 2026. Allow for transfers with bags and roadwork delays; an official airport taxi can simplify a late arrival.",
+          "ใช้หน้ารถสนามบินปัจจุบัน: RED LINE แทนสาย 109 ตั้งแต่สิงหาคม 2026 เผื่อต่อรถพร้อมกระเป๋าและความล่าช้าจากงานถนน แท็กซี่สนามบินทางการช่วยลดการต่อรถเมื่อมาถึงดึก",
+          "请使用最新机场线路页：RED LINE于2026年8月替代109路。携行李换乘与道路施工需留余量，深夜抵达可考虑正规机场出租车。",
+          "現行の空港経路を確認。RED LINEは2026年8月に109系統を置き換えました。荷物を持つ乗り継ぎと工事の遅延に余裕を。深夜到着なら正規タクシーも選択肢です。",
+          "현재 공항 경로 페이지를 이용하세요. RED LINE은 2026년 8월 109번을 대체했습니다. 짐을 들고 환승할 시간과 도로 공사 지연을 고려하고 늦게 도착하면 공식 공항 택시도 비교하세요."
+        ],
+        "sources": [
+          {
+            "name": "RTC · Airport routes",
+            "url": "https://www.rtcsnv.com/ways-to-travel/transit-services/airport-transit-routes/"
+          },
+          {
+            "name": "RTC · Visitor fares",
+            "url": "https://www.rtcsnv.com/ways-to-travel/fares-passes/"
+          },
+          {
+            "name": "RTC · August 2026 route changes",
+            "url": "https://www.rtcsnv.com/ways-to-travel/schedules-maps/service-changes/aug-2026-service-change/"
+          },
+          {
+            "name": "RTC · Alerts and detours",
+            "url": "https://www.rtcsnv.com/ways-to-travel/alerts-detours/"
+          }
+        ]
+      },
+      "budget": {
+        "amounts": [
+          [180, 320, 600],
+          [180, 330, 540],
+          [40, 80, 180],
+          [40, 80, 280],
+          [120, 200, 320]
+        ],
+        "note": [
+          "Economy transport assumes two adult RTC 3-day passes ($40 total), with airport trips inside their validity. Higher tiers allow extra rides. Check hotel taxes and any mandatory resort fee in the final checkout total; room and meal figures are editorial allowances.",
+          "แบบประหยัดสมมติบัตร RTC 3 วันสำหรับผู้ใหญ่สองคน (รวม $40) และเที่ยวสนามบินอยู่ในช่วงบัตรใช้ได้ แบบอื่นเผื่อรถเพิ่มเติม ตรวจภาษีโรงแรมกับ resort fee ที่ต้องจ่ายจากยอดสุดท้าย ตัวเลขห้องพักและอาหารเป็นวงเงินจากผู้จัดทำ",
+          "节约型交通假设两张成人RTC 3日票（共40美元），机场往返须在有效期内。其他档次预留额外乘车。结账前核对酒店税与必付度假村费；住宿餐饮为编辑预算。",
+          "節約案は大人2人のRTC3日券（計40ドル）で、空港往復も有効期間内を想定。上位案は追加交通費を確保。宿泊税と必須のresort feeを最終総額で確認。宿泊・食事は編集部の予算枠です。",
+          "절약형 교통비는 성인 2명의 RTC 3일권(총 $40)과 유효기간 내 공항 왕복을 가정합니다. 다른 유형은 추가 교통비를 배정합니다. 최종 결제 총액에서 호텔 세금과 필수 리조트 요금을 확인하세요. 숙박과 식사는 편집 예산입니다."
+        ]
+      }
+    }
+  ]
+}

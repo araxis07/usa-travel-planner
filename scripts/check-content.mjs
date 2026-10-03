@@ -12,6 +12,44 @@ const catalog = validateCatalog(JSON.parse(await fs.readFile('content/states.jso
 const issues = contentIssues(catalog);
 if (issues.length) throw Error(JSON.stringify(issues));
 const dictionary = JSON.parse(await fs.readFile('content/translations.json', 'utf8'));
+const cityContent = JSON.parse(await fs.readFile('content/city-guides.json', 'utf8'));
+function checkCityText(value) {
+  if (Array.isArray(value) && value.some((item) => typeof item === 'string')) {
+    if (value.length !== 5 || value.some((text) => typeof text !== 'string' || !text.trim()))
+      throw Error('City guide text must have five nonempty translations');
+  } else if (value && typeof value === 'object') Object.values(value).forEach(checkCityText);
+}
+checkCityText(cityContent);
+const cityIds = new Set();
+for (const guide of cityContent.guides) {
+  if (
+    cityIds.has(guide.placeId) ||
+    !catalog.states.some((state) => state.destinations.some((p) => p.id === guide.placeId)) ||
+    guide.areas.length !== 3 ||
+    guide.days.length !== 3 ||
+    guide.airport.steps.length !== 3 ||
+    !/^[A-Z]{3}$/.test(guide.airport.code) ||
+    cityContent.copy.tiers.length !== 3 ||
+    guide.budget.amounts.length !== cityContent.copy.rows.length ||
+    guide.budget.amounts.some(
+      (row) => row.length !== 3 || row.some((n) => !Number.isSafeInteger(n) || n < 0),
+    ) ||
+    !/^\d{4}-\d{2}-\d{2}$/.test(guide.checkedAt) ||
+    !Number.isFinite(Date.parse(guide.checkedAt)) ||
+    !/^\d{4}-\d{2}-\d{2}$/.test(guide.reviewAfter) ||
+    !(Date.parse(guide.reviewAfter) > Date.parse(guide.checkedAt)) ||
+    guide.translationsReviewed.length !== 5 ||
+    guide.translationsReviewed.some((n) => typeof n !== 'boolean')
+  )
+    throw Error('Invalid city guide: ' + guide.placeId);
+  cityIds.add(guide.placeId);
+  for (const area of guide.areas) if (!area.mapQuery.trim()) throw Error('Missing city map query');
+  for (const link of [...guide.areas.map((area) => area.source), ...guide.airport.sources]) {
+    const url = new URL(link.url);
+    if (url.protocol !== 'https:' || url.username || url.password || !link.name.trim())
+      throw Error('Invalid city guide source');
+  }
+}
 const missing = new Set();
 for (const file of [
   'App.tsx',
@@ -71,5 +109,5 @@ for (const state of catalog.states) {
   }
 }
 console.log(
-  `Content verified: ${catalog.states.length} states, ${photos} local photos, 5 languages, ${Object.keys(dictionary).length} translated interface/article entries.`,
+  `Content verified: ${catalog.states.length} states, ${photos} local photos, ${cityIds.size} detailed city guides, 5 languages, ${Object.keys(dictionary).length} translated interface/article entries.`,
 );

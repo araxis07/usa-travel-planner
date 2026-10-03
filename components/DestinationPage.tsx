@@ -12,7 +12,7 @@ import {
   type Language,
   type StateGuide,
 } from '../data/travel';
-import { translate, LOCALES } from '../lib/i18n';
+import { translate, LOCALES, languageIndex } from '../lib/i18n';
 import {
   destinationUrl,
   findPlace,
@@ -24,6 +24,7 @@ import PhotoLightbox from './PhotoLightbox';
 import RouteMap from './RouteMap';
 import Icon from './Icon';
 import PlacePractical from './PlacePractical';
+import CityGuide, { cityCopy, findCityGuide } from './CityGuide';
 import { x } from '../data/experience-copy';
 import type { PlaceCollections } from '../lib/collections';
 
@@ -105,6 +106,7 @@ export default function DestinationPage({
   );
   const profile =
     placeIndex === undefined ? undefined : placeDetails(state.destinations[placeIndex]);
+  const cityGuide = findCityGuide(profile?.id);
   const isSaved =
     placeIndex === undefined
       ? saved
@@ -134,9 +136,11 @@ export default function DestinationPage({
     {
       icon: 'clock' as const,
       label: t('Suggested time', 'เวลาแนะนำ'),
-      value: profile
-        ? `${profile.visitMinutes} ${t('minutes', 'นาที')}`
-        : `${state.days} ${t('days', 'วัน')}`,
+      value: cityGuide
+        ? cityCopy.duration[languageIndex(lang)]
+        : profile
+          ? `${profile.visitMinutes} ${t('minutes', 'นาที')}`
+          : `${state.days} ${t('days', 'วัน')}`,
     },
     {
       icon: 'sun' as const,
@@ -273,6 +277,13 @@ export default function DestinationPage({
       <nav className="guide-toc container" aria-label={x(lang, 'practical')}>
         <a href="#guide-story">{x(lang, 'story')}</a>
         {placeIndex !== undefined && <a href="#guide-practical">{x(lang, 'practical')}</a>}
+        {cityGuide && (
+          <>
+            <a href="#guide-city">{cityCopy.days[languageIndex(lang)]}</a>
+            <a href="#guide-airport">{cityCopy.airport[languageIndex(lang)]}</a>
+            <a href="#guide-city-budget">{cityCopy.budget[languageIndex(lang)]}</a>
+          </>
+        )}
         <a href="#guide-photos">{x(lang, 'photos')}</a>
         <a href="#guide-map">{x(lang, 'directions')}</a>
       </nav>
@@ -291,6 +302,7 @@ export default function DestinationPage({
             )}
           </p>
           {profile && <PlacePractical profile={profile} lang={lang} overviewShown />}
+          {cityGuide && <CityGuide guide={cityGuide} lang={lang} />}
           {placeIndex !== undefined && (
             <details className="guide-details">
               <summary>{x(lang, 'stateContext')}</summary>

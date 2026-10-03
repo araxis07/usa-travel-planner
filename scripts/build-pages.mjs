@@ -21,6 +21,7 @@ if (configured) {
 const langs = ['en', 'th', 'zh', 'ja', 'ko'];
 const labels = ['English', 'ไทย', '简体中文', '日本語', '한국어'];
 const catalog = JSON.parse(await readFile('content/states.json', 'utf8'));
+const cityContent = JSON.parse(await readFile('content/city-guides.json', 'utf8'));
 const template = await readFile(outDir + '/index.html', 'utf8');
 const escape = (value) =>
   String(value).replace(
@@ -44,10 +45,38 @@ const descriptions = [
   '미국 50개 주와 150개 여행지를 둘러보세요. 일별 여행을 계획하고 장소를 비교하며 일정을 저장하세요.',
 ];
 const pages = [];
+function renderCityGuide(guide, l) {
+  const copy = cityContent.copy;
+  const text = (value) => escape(value[l]);
+  const money = (amount) =>
+    new Intl.NumberFormat(langs[l], { style: 'currency', currency: 'USD' }).format(amount);
+  const sourceLinks = (sources) =>
+    sources.map((s) => `<a href="${escape(s.url)}">${escape(s.name)}</a>`).join(' · ');
+  const areas = guide.areas
+    .map(
+      (area) =>
+        `<details class="guide-details"><summary>${text(area.title)}</summary><p>${text(area.text)}</p><a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(area.mapQuery)}">${text(copy.map)}</a> · ${sourceLinks([area.source])}</details>`,
+    )
+    .join('');
+  const days = guide.days
+    .map(
+      (day, i) =>
+        `<details class="guide-details"${i === 0 ? ' open' : ''}><summary>${text(copy.day).replace('{day}', String(i + 1))} · ${text(day.title)}</summary><p>${text(day.text)}</p><p><strong>${text(copy.alternative)}: </strong>${text(day.alternative)}</p></details>`,
+    )
+    .join('');
+  const budgets = copy.tiers
+    .map((tier, i) => {
+      const total = guide.budget.amounts.reduce((sum, row) => sum + row[i], 0);
+      return `<details class="guide-details city-budget"><summary>${text(tier)} · ${money(total)}</summary><dl>${copy.rows.map((label, row) => `<div><dt>${text(label)}</dt><dd>${money(guide.budget.amounts[row][i])}</dd></div>`).join('')}<div><dt>${text(copy.total)}</dt><dd>${money(total)}</dd></div><div><dt>${text(copy.perPerson)}</dt><dd>${money(total / 2)}</dd></div></dl></details>`;
+    })
+    .join('');
+  return `<section class="city-guide" id="guide-city"><h2>${text(copy.title)}</h2><p>${text(guide.intro)}</p><h3>${text(copy.areas)}</h3>${areas}<h3>${text(copy.days)}</h3><p>${text(copy.pace)}</p>${days}<section id="guide-airport"><h3>${text(copy.airport)} · ${guide.airport.code}</h3><ol>${guide.airport.steps.map((step) => `<li>${text(step)}</li>`).join('')}</ol><p><strong>${text(copy.fares)}: </strong>${text(guide.airport.fare)}</p><p>${text(guide.airport.note)}</p>${sourceLinks(guide.airport.sources)}<p>${text(copy.checked)} · <time datetime="${guide.checkedAt}">${guide.checkedAt}</time> · ${text(copy.review)} · <time datetime="${guide.reviewAfter}">${guide.reviewAfter}</time></p></section><section id="guide-city-budget"><h3>${text(copy.budget)}</h3><p>${text(copy.assumptions)}</p>${budgets}<p>${text(guide.budget.note)}</p></section></section>`;
+}
 function render(lang, state, index) {
   const l = langs.indexOf(lang),
     profile = index === undefined ? undefined : state.destinations[index];
   const name = profile ? state.placeNames[index][l] : state ? state.names[l] : 'Roam America';
+  const cityGuide = cityContent.guides.find((guide) => guide.placeId === profile?.id);
   const description = profile ? profile.summary[l] : state ? state.description[l] : descriptions[l];
   const path = pagePath(lang, state, index),
     title = `${name} — Roam America`;
@@ -95,7 +124,7 @@ function render(lang, state, index) {
     : catalog.states
         .map((s) => `<li><a href="${pagePath(lang, s)}">${escape(s.names[l])}</a></li>`)
         .join('');
-  const content = `<header><a href="/${lang}/">Roam America</a><nav style="font-family:system-ui,sans-serif">${langs.map((code, i) => `<a lang="${code}" href="${pagePath(code, state, index)}">${labels[i]}</a>`).join(' · ')}</nav></header><main style="max-width:1000px;margin:auto;padding:32px"><h1>${escape(name)}</h1>${photo ? `<img src="${photo.src}" srcset="${coverSources}" sizes="100vw" alt="${escape(photo.displayCaption?.[l] ?? name)}" width="960" height="${Math.round((960 * photo.height) / photo.width)}" style="max-width:100%;height:auto"/>` : ''}<p>${escape(description)}</p>${profile ? `${profile.advisory ? `<aside><p>${escape(profile.advisory.text[l])}</p><a href="${escape(profile.advisory.source)}">${escape(profile.advisory.checkedAt)}</a></aside>` : ''}<p>${escape(profile.access[l])}</p><p>${escape(profile.stay[l])}</p><a href="${escape(profile.officialUrl)}">${escape(profile.officialUrl)}</a><p><a href="${escape(profile.summarySources[l])}">Wikipedia contributors</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">${escape(profile.summaryLicense)}</a></p>` : ''}<ul>${links}</ul></main>`;
+  const content = `<header><a href="/${lang}/">Roam America</a><nav style="font-family:system-ui,sans-serif">${langs.map((code, i) => `<a lang="${code}" href="${pagePath(code, state, index)}">${labels[i]}</a>`).join(' · ')}</nav></header><main style="max-width:1000px;margin:auto;padding:32px"><h1>${escape(name)}</h1>${photo ? `<img src="${photo.src}" srcset="${coverSources}" sizes="100vw" alt="${escape(photo.displayCaption?.[l] ?? name)}" width="960" height="${Math.round((960 * photo.height) / photo.width)}" style="max-width:100%;height:auto"/>` : ''}<p>${escape(description)}</p>${profile ? `${profile.advisory ? `<aside><p>${escape(profile.advisory.text[l])}</p><a href="${escape(profile.advisory.source)}">${escape(profile.advisory.checkedAt)}</a></aside>` : ''}<p>${escape(profile.access[l])}</p><p>${escape(profile.stay[l])}</p><a href="${escape(profile.officialUrl)}">${escape(profile.officialUrl)}</a><p><a href="${escape(profile.summarySources[l])}">Wikipedia contributors</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">${escape(profile.summaryLicense)}</a></p>` : ''}${cityGuide ? renderCityGuide(cityGuide, l) : ''}<ul>${links}</ul></main>`;
   const json = state
     ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': profile ? 'TouristAttraction' : 'TouristDestination', name, description, ...(canonical ? { url: canonical } : {}), ...(photo && origin ? { image: origin + photo.src } : {}), ...(profile ? { geo: { '@type': 'GeoCoordinates', latitude: profile.coordinates[0], longitude: profile.coordinates[1] } } : {}) }).replace(/</g, '\\u003c')}</script>`
     : '';
@@ -124,7 +153,7 @@ function render(lang, state, index) {
       `${origin ? `<meta name="roam:site-origin" content="${origin}"/>` : ''}${social}${alternatives}${json}</head>`,
     )
     .replace('<div id="root"></div>', `<div id="root">${content}</div>`);
-  return { path, html, lastmod: profile?.reviewedAt || state?.updatedAt };
+  return { path, html, lastmod: cityGuide?.checkedAt || profile?.reviewedAt || state?.updatedAt };
 }
 for (const lang of langs) {
   pages.push(render(lang));

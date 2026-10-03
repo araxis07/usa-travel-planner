@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { EMPTY_TRIP, STATES, type Trip } from '../../data/travel';
 import { LANGUAGES } from '../../lib/i18n';
 import catalog from '../../content/states.json' with { type: 'json' };
+import cityContent from '../../content/city-guides.json' with { type: 'json' };
 const sample: Trip = {
   ...EMPTY_TRIP,
   name: 'My five-language journey',
@@ -203,6 +204,42 @@ test('all language pages contain readable content without JavaScript and recipro
   await context.close();
 });
 
+test('city plans, airport sources and budget breakdowns are published in all languages without JavaScript', async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width: 320, height: 740 },
+  });
+  const page = await context.newPage();
+  for (const [city, path] of [
+    'new-york/new-york-city',
+    'california/san-francisco',
+    'nevada/las-vegas',
+  ].entries()) {
+    const guide = cityContent.guides[city];
+    for (const [l, lang] of LANGUAGES.entries()) {
+      await page.goto(`http://127.0.0.1:5198/${lang}/states/${path}/`);
+      await expect(page.locator('#guide-city')).toContainText(guide.intro[l]);
+      await expect(page.locator('#guide-airport')).toContainText(guide.airport.fare[l]);
+      await expect(page.locator('#guide-airport a').first()).toHaveAttribute(
+        'href',
+        guide.airport.sources[0].url,
+      );
+      await expect(page.locator('#guide-airport time').first()).toHaveAttribute(
+        'datetime',
+        guide.checkedAt,
+      );
+      await page.locator('.city-budget summary').first().click();
+      await expect(page.locator('.city-budget').first().locator('dl > div')).toHaveCount(7);
+      await expect(page.locator('#guide-city-budget')).toContainText(
+        cityContent.copy.assumptions[l],
+      );
+    }
+  }
+  await context.close();
+});
+
 test('client navigation updates metadata and private planner is not indexed', async ({ page }) => {
   await page.goto('/en/states/california/san-francisco/');
   await page.getByLabel('Language / ภาษา').selectOption('ja');
@@ -301,6 +338,11 @@ test('saved itinerary and all selected state photos reopen offline; print covers
       photos,
     ),
   ).toEqual(Array(36).fill(true));
+  await page.goto('/th/states/california/san-francisco/');
+  await expect(page.locator('#guide-city')).toContainText(cityContent.guides[1].intro[1]);
+  await expect(page.locator('#guide-airport')).toContainText(cityContent.guides[1].airport.fare[1]);
+  await page.locator('.city-budget summary').first().click();
+  await expect(page.locator('.city-budget-total dd').first()).toContainText('800.00');
   const invalid = await page.evaluate(async () => {
     const reg = await navigator.serviceWorker.ready;
     return new Promise((resolve) => {
