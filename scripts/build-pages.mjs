@@ -22,6 +22,7 @@ const langs = ['en', 'th', 'zh', 'ja', 'ko'];
 const labels = ['English', 'ไทย', '简体中文', '日本語', '한국어'];
 const catalog = JSON.parse(await readFile('content/states.json', 'utf8'));
 const cityContent = JSON.parse(await readFile('content/city-guides.json', 'utf8'));
+const preparation = JSON.parse(await readFile('content/travel-preparation.json', 'utf8'));
 const template = await readFile(outDir + '/index.html', 'utf8');
 const escape = (value) =>
   String(value).replace(
@@ -45,13 +46,24 @@ const descriptions = [
   '미국 50개 주와 150개 여행지를 둘러보세요. 일별 여행을 계획하고 장소를 비교하며 일정을 저장하세요.',
 ];
 const pages = [];
+const sourceLinks = (sources) =>
+  sources.map((s) => `<a href="${escape(s.url)}">${escape(s.name)}</a>`).join(' · ');
+function renderPreparationDate(guide, l) {
+  return `<p>${escape(preparation.copy.checked[l])} · <time datetime="${guide.checkedAt}">${guide.checkedAt}</time> · ${escape(preparation.copy.review[l])} · <time datetime="${guide.reviewAfter}">${guide.reviewAfter}</time></p>`;
+}
+function renderParkBooking(guide, l) {
+  const copy = preparation.copy;
+  return `<section class="park-booking" id="guide-booking"><h2>${escape(copy.bookingTitle[l])}</h2><p>${escape(copy.bookingIntro[l])}</p>${guide.notice ? `<aside class="day-warning"><p>${escape(guide.notice.text[l])}</p>${sourceLinks([guide.notice.source])}</aside>` : ''}${renderPreparationDate(guide, l)}${guide.sections.map((section, i) => `<details class="guide-details"${i < 2 ? ' open' : ''}><summary>${escape(copy.rows[i][l])}</summary><p>${escape(section.text[l])}</p><div class="practical-links">${sourceLinks(section.sources)}</div></details>`).join('')}</section>`;
+}
+function renderFirstTrip(l) {
+  const guide = preparation.firstTrip;
+  return `<details id="guide-first-trip" class="guide-details"><summary>${escape(preparation.copy.firstTripTitle[l])}</summary>${renderPreparationDate(guide, l)}${guide.sections.map((section) => `<h2>${escape(section.title[l])}</h2><p>${escape(section.text[l])}</p>`).join('')}<div class="guide-sources">${sourceLinks(guide.sources)}</div></details>`;
+}
 function renderCityGuide(guide, l) {
   const copy = cityContent.copy;
   const text = (value) => escape(value[l]);
   const money = (amount) =>
     new Intl.NumberFormat(langs[l], { style: 'currency', currency: 'USD' }).format(amount);
-  const sourceLinks = (sources) =>
-    sources.map((s) => `<a href="${escape(s.url)}">${escape(s.name)}</a>`).join(' · ');
   const areas = guide.areas
     .map(
       (area) =>
@@ -77,6 +89,7 @@ function render(lang, state, index) {
     profile = index === undefined ? undefined : state.destinations[index];
   const name = profile ? state.placeNames[index][l] : state ? state.names[l] : 'Roam America';
   const cityGuide = cityContent.guides.find((guide) => guide.placeId === profile?.id);
+  const parkBooking = preparation.parks.find((guide) => guide.placeId === profile?.id);
   const description = profile ? profile.summary[l] : state ? state.description[l] : descriptions[l];
   const path = pagePath(lang, state, index),
     title = `${name} — Roam America`;
@@ -124,7 +137,7 @@ function render(lang, state, index) {
     : catalog.states
         .map((s) => `<li><a href="${pagePath(lang, s)}">${escape(s.names[l])}</a></li>`)
         .join('');
-  const content = `<header><a href="/${lang}/">Roam America</a><nav style="font-family:system-ui,sans-serif">${langs.map((code, i) => `<a lang="${code}" href="${pagePath(code, state, index)}">${labels[i]}</a>`).join(' · ')}</nav></header><main style="max-width:1000px;margin:auto;padding:32px"><h1>${escape(name)}</h1>${photo ? `<img src="${photo.src}" srcset="${coverSources}" sizes="100vw" alt="${escape(photo.displayCaption?.[l] ?? name)}" width="960" height="${Math.round((960 * photo.height) / photo.width)}" style="max-width:100%;height:auto"/>` : ''}<p>${escape(description)}</p>${profile ? `${profile.advisory ? `<aside><p>${escape(profile.advisory.text[l])}</p><a href="${escape(profile.advisory.source)}">${escape(profile.advisory.checkedAt)}</a></aside>` : ''}<p>${escape(profile.access[l])}</p><p>${escape(profile.stay[l])}</p><a href="${escape(profile.officialUrl)}">${escape(profile.officialUrl)}</a><p><a href="${escape(profile.summarySources[l])}">Wikipedia contributors</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">${escape(profile.summaryLicense)}</a></p>` : ''}${cityGuide ? renderCityGuide(cityGuide, l) : ''}<ul>${links}</ul></main>`;
+  const content = `<header><a href="/${lang}/">Roam America</a><nav style="font-family:system-ui,sans-serif">${langs.map((code, i) => `<a lang="${code}" href="${pagePath(code, state, index)}">${labels[i]}</a>`).join(' · ')}</nav></header><main style="max-width:1000px;margin:auto;padding:32px"><h1>${escape(name)}</h1>${photo ? `<img src="${photo.src}" srcset="${coverSources}" sizes="100vw" alt="${escape(photo.displayCaption?.[l] ?? name)}" width="960" height="${Math.round((960 * photo.height) / photo.width)}" style="max-width:100%;height:auto"/>` : ''}<p>${escape(description)}</p>${profile ? `${profile.advisory ? `<aside><p>${escape(profile.advisory.text[l])}</p><a href="${escape(profile.advisory.source)}">${escape(profile.advisory.checkedAt)}</a></aside>` : ''}<p>${escape(profile.access[l])}</p><p>${escape(profile.stay[l])}</p><a href="${escape(profile.officialUrl)}">${escape(profile.officialUrl)}</a><p><a href="${escape(profile.summarySources[l])}">Wikipedia contributors</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">${escape(profile.summaryLicense)}</a></p>` : ''}${cityGuide ? renderCityGuide(cityGuide, l) : ''}${parkBooking ? renderParkBooking(parkBooking, l) : ''}${!state ? renderFirstTrip(l) : ''}<ul>${links}</ul></main>`;
   const json = state
     ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': profile ? 'TouristAttraction' : 'TouristDestination', name, description, ...(canonical ? { url: canonical } : {}), ...(photo && origin ? { image: origin + photo.src } : {}), ...(profile ? { geo: { '@type': 'GeoCoordinates', latitude: profile.coordinates[0], longitude: profile.coordinates[1] } } : {}) }).replace(/</g, '\\u003c')}</script>`
     : '';
@@ -153,7 +166,16 @@ function render(lang, state, index) {
       `${origin ? `<meta name="roam:site-origin" content="${origin}"/>` : ''}${social}${alternatives}${json}</head>`,
     )
     .replace('<div id="root"></div>', `<div id="root">${content}</div>`);
-  return { path, html, lastmod: cityGuide?.checkedAt || profile?.reviewedAt || state?.updatedAt };
+  return {
+    path,
+    html,
+    lastmod:
+      cityGuide?.checkedAt ||
+      parkBooking?.checkedAt ||
+      profile?.reviewedAt ||
+      state?.updatedAt ||
+      preparation.firstTrip.checkedAt,
+  };
 }
 for (const lang of langs) {
   pages.push(render(lang));

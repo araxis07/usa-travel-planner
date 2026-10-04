@@ -3,6 +3,7 @@ import { EMPTY_TRIP, STATES, type Trip } from '../../data/travel';
 import { LANGUAGES } from '../../lib/i18n';
 import catalog from '../../content/states.json' with { type: 'json' };
 import cityContent from '../../content/city-guides.json' with { type: 'json' };
+import preparation from '../../content/travel-preparation.json' with { type: 'json' };
 const sample: Trip = {
   ...EMPTY_TRIP,
   name: 'My five-language journey',
@@ -313,6 +314,11 @@ test('saved itinerary and all selected state photos reopen offline; print covers
   }
   await page.goto('/en/states/california/yosemite-national-park/');
   await expect(page.locator('h1')).toContainText('Yosemite');
+  await expect(page.locator('#guide-booking')).toContainText(
+    preparation.parks[0].sections[1].text[0],
+  );
+  await page.locator('#guide-booking details').nth(2).locator('summary').click();
+  await expect(page.locator('#guide-booking details').nth(2)).toContainText('Half Dome');
   await expect(page.locator('.practical-grid')).toContainText(
     catalog.states[0].destinations[1].access[0],
   );
@@ -343,6 +349,13 @@ test('saved itinerary and all selected state photos reopen offline; print covers
   await expect(page.locator('#guide-airport')).toContainText(cityContent.guides[1].airport.fare[1]);
   await page.locator('.city-budget summary').first().click();
   await expect(page.locator('.city-budget-total dd').first()).toContainText('800.00');
+  await page.goto('/th/');
+  await page.locator('.guide-card').first().click();
+  await expect(page.locator('.guide-detail section')).toHaveCount(9);
+  await expect(page.locator('.guide-detail')).toContainText(
+    preparation.firstTrip.sections[6].text[1],
+  );
+  await page.keyboard.press('Escape');
   const invalid = await page.evaluate(async () => {
     const reg = await navigator.serviceWorker.ready;
     return new Promise((resolve) => {
@@ -382,3 +395,47 @@ test('saved itinerary and all selected state photos reopen offline; print covers
 function locationOrigin(url: string) {
   return new URL(url || 'http://127.0.0.1:5198').origin;
 }
+
+test('generated park and preparation guides remain usable without JavaScript', async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width: 320, height: 740 },
+  });
+  const page = await context.newPage();
+  const paths = [
+    'california/yosemite-national-park',
+    'utah/zion-national-park',
+    'arizona/grand-canyon-south-rim',
+    'colorado/rocky-mountain-national-park',
+    'wyoming/yellowstone-national-park',
+  ];
+  for (const [l, lang] of LANGUAGES.entries()) {
+    for (const [p, guide] of preparation.parks.entries()) {
+      await page.goto(`${baseURL}/${lang}/states/${paths[p]}/`);
+      const booking = page.locator('#guide-booking');
+      await expect(booking.getByRole('heading')).toHaveText(preparation.copy.bookingTitle[l]);
+      await expect(booking).toContainText(guide.checkedAt);
+      for (const [i, section] of guide.sections.entries()) {
+        const detail = booking.locator('details').nth(i);
+        if (i > 1) await detail.locator('summary').press('Enter');
+        await expect(detail).toHaveAttribute('open', '');
+        await expect(detail).toContainText(section.text[l]);
+        for (const [s, source] of section.sources.entries())
+          await expect(detail.locator('a').nth(s)).toHaveAttribute('href', source.url);
+      }
+      if (guide.notice) await expect(booking.locator('aside')).toContainText(guide.notice.text[l]);
+    }
+    await page.goto(`${baseURL}/${lang}/`);
+    const guide = page.locator('#guide-first-trip');
+    await guide.locator('summary').press('Enter');
+    await expect(guide).toHaveAttribute('open', '');
+    await expect(guide.locator('h2')).toHaveCount(9);
+    for (const section of preparation.firstTrip.sections)
+      await expect(guide).toContainText(section.text[l]);
+    await expect(guide.locator('time').last()).toHaveText(preparation.firstTrip.reviewAfter);
+  }
+  await context.close();
+});

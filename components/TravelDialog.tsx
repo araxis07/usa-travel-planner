@@ -1,6 +1,7 @@
 import LanguageSelector from './LanguageSelector';
 import { statePlaces } from '../data/travel';
-import { translate } from '../lib/i18n';
+import { translate, languageIndex } from '../lib/i18n';
+import preparation from '../content/travel-preparation.json' with { type: 'json' };
 import Dialog from './Dialog';
 import StateDetail from './StateDetail';
 import StateCard from './StateCard';
@@ -20,6 +21,7 @@ import {
   stateName,
   type StateGuide,
   type Language,
+  type LocalText,
   type Trip,
 } from '../data/travel';
 
@@ -73,6 +75,8 @@ export default function TravelDialog({
       ? [...GUIDES, ...MORE_GUIDES].find((item) => item.id === modal.id)
       : null;
   const route = modal.type === 'route' ? ITINERARIES.find((item) => item.id === modal.id) : null;
+  const guideContent = guide?.id === 'first-trip' ? preparation.firstTrip : guide;
+  const l = languageIndex(lang);
   const template = route ? itineraryTrip(route, lang) : null;
   const title =
     modal.type === 'state'
@@ -184,18 +188,36 @@ export default function TravelDialog({
           </span>
           <h2>{local(guide.title, lang)}</h2>
           <p className="guide-intro">{local(guide.intro, lang)}</p>
-          {guide.sections.map((section, i) => (
+          {guide?.id === 'first-trip' && (
+            <>
+              <p className="content-date">
+                {preparation.copy.checked[l]} ·{' '}
+                <time dateTime={preparation.firstTrip.checkedAt}>
+                  {preparation.firstTrip.checkedAt}
+                </time>
+                {' · '}
+                {preparation.copy.review[l]} ·{' '}
+                <time dateTime={preparation.firstTrip.reviewAfter}>
+                  {preparation.firstTrip.reviewAfter}
+                </time>
+              </p>
+              {Date.now() >= Date.parse(preparation.firstTrip.reviewAfter + 'T00:00:00Z') && (
+                <p className="day-warning">{preparation.copy.stale[l]}</p>
+              )}
+            </>
+          )}
+          {guideContent?.sections.map((section, i) => (
             <section key={i}>
-              <span className="guide-section-number">0{i + 1}</span>
+              <span className="guide-section-number">{String(i + 1).padStart(2, '0')}</span>
               <div>
-                <h3>{local(section.title, lang)}</h3>
-                <p>{local(section.text, lang)}</p>
+                <h3>{local(section.title as LocalText, lang)}</h3>
+                <p>{local(section.text as LocalText, lang)}</p>
               </div>
             </section>
           ))}
           <div className="guide-sources">
             <h3>{t('Keep the official details close', 'ตรวจรายละเอียดจากแหล่งทางการ')}</h3>
-            {guide.sources.map((source) => (
+            {guideContent?.sources.map((source) => (
               <a key={source.url} href={source.url} target="_blank" rel="noreferrer">
                 {source.name}
                 <Icon name="external" size={14} />

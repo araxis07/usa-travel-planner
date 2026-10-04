@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { contentIssues, validateCatalog } from '../lib/content';
 import { LANGUAGES, LOCALES, translate } from '../lib/i18n';
 import cityContent from '../content/city-guides.json' with { type: 'json' };
+import preparation from '../content/travel-preparation.json' with { type: 'json' };
 const catalog = validateCatalog(
   JSON.parse(readFileSync(new URL('../content/states.json', import.meta.url), 'utf8')),
 );
@@ -266,4 +267,131 @@ test('all fifty states load real covers and every language keeps the atlas avail
     await page.getByRole('combobox', { name: 'Language / ภาษา' }).selectOption(lang);
     await expect(page.locator('#map svg.usa-map')).toHaveCount(1);
   }
+});
+
+test('park booking requirements stay distinct, dated and accessible in every language', async ({
+  page,
+}) => {
+  test.setTimeout(90000);
+  await page.clock.setFixedTime(new Date('2026-10-04T03:00:00Z'));
+  await page.setViewportSize({ width: 320, height: 740 });
+  const paths = [
+    'california/yosemite-national-park',
+    'utah/zion-national-park',
+    'arizona/grand-canyon-south-rim',
+    'colorado/rocky-mountain-national-park',
+    'wyoming/yellowstone-national-park',
+  ];
+  for (const [p, guide] of preparation.parks.entries()) {
+    for (const [l, lang] of LANGUAGES.entries()) {
+      await page.goto(`/${lang}/states/${paths[p]}/`);
+      const section = page.locator('#guide-booking');
+      await expect(section.getByRole('heading')).toHaveText(preparation.copy.bookingTitle[l]);
+      await expect(section).toContainText(guide.checkedAt);
+      await expect(section).toContainText(guide.reviewAfter);
+      for (const [i, detail] of guide.sections.entries()) {
+        const item = section.locator('details').nth(i);
+        if (i > 1) await item.locator('summary').press('Enter');
+        await expect(item).toHaveAttribute('open', '');
+        await expect(item.locator('summary')).toHaveText(preparation.copy.rows[i][l]);
+        await expect(item).toContainText(detail.text[l]);
+        for (const [s, source] of detail.sources.entries()) {
+          await expect(item.locator('a').nth(s)).toHaveAttribute('href', source.url);
+          await expect(item.locator('a').nth(s)).toHaveAttribute('rel', 'noreferrer');
+        }
+      }
+      if (guide.notice) await expect(section.locator('aside')).toContainText(guide.notice.text[l]);
+      const profile = catalog.states
+        .flatMap((state) => state.destinations)
+        .find((item) => item.id === guide.placeId)!;
+      if (profile.advisory)
+        await expect(page.locator('.guide-advisory')).toContainText(profile.advisory.text[l]);
+      if (guide.placeId === 'CO-0') {
+        await expect(section.locator('details').nth(1)).toContainText(/09:00[–〜~]14:00/);
+        await expect(section.locator('details').nth(1)).toContainText(/05:00[–〜~]18:00/);
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+      if (lang === 'en') {
+        const audit = await new AxeBuilder({ page })
+          .include('#guide-booking')
+          .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+          .analyze();
+        expect(audit.violations).toEqual([]);
+      }
+      await section.evaluate((el) => {
+        const nodes = [...el.querySelectorAll<HTMLElement>('*')];
+        const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
+        nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
+      });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    }
+  }
+  await page.clock.setFixedTime(new Date('2026-10-12T00:00:00Z'));
+  await page.reload();
+  await expect(page.locator('#guide-booking > .day-warning')).toHaveText(preparation.copy.stale[4]);
+  await page.goto('/en/states/california/san-francisco/');
+  await expect(page.locator('#guide-city')).toBeVisible();
+  await expect(page.locator('#guide-booking')).toHaveCount(0);
+});
+
+test('first-trip field note covers nine preparation topics in all five languages', async ({
+  page,
+}) => {
+  await page.clock.setFixedTime(new Date('2026-10-04T03:00:00Z'));
+  await page.setViewportSize({ width: 320, height: 740 });
+  for (const [l, lang] of LANGUAGES.entries()) {
+    await page.goto('/?lang=' + lang);
+    await page.locator('.guide-card').first().click();
+    const guide = page.locator('.guide-detail');
+    const categoryTop = await guide.locator(':scope > .eyebrow').evaluate((el) => {
+      const text = document.createRange();
+      text.selectNodeContents(el);
+      return text.getBoundingClientRect().top;
+    });
+    const language = await page.locator('.dialog-language').boundingBox();
+    expect(categoryTop).toBeGreaterThanOrEqual(language!.y + language!.height);
+    await expect(guide.locator('section')).toHaveCount(9);
+    for (const [i, section] of preparation.firstTrip.sections.entries()) {
+      await expect(guide.locator('section').nth(i).getByRole('heading')).toHaveText(
+        section.title[l],
+      );
+      await expect(guide.locator('section').nth(i)).toContainText(section.text[l]);
+    }
+    await expect(guide.locator('.guide-section-number').last()).toHaveText('09');
+    await expect(guide.locator('.content-date')).toContainText('2026-10-11');
+    await expect(guide.locator('.day-warning')).toHaveCount(0);
+    for (const [i, source] of preparation.firstTrip.sources.entries()) {
+      await expect(guide.locator('.guide-sources a').nth(i)).toHaveAttribute('href', source.url);
+    }
+    if (lang === 'en') {
+      const audit = await new AxeBuilder({ page })
+        .include('.guide-detail')
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+        .analyze();
+      expect(audit.violations).toEqual([]);
+      expect(
+        await guide
+          .locator('section p')
+          .first()
+          .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+      ).toBeGreaterThanOrEqual(15);
+    }
+    await guide.evaluate((el) => {
+      const nodes = [...el.querySelectorAll<HTMLElement>('*')];
+      const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
+      nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
+    });
+    expect(await page.getByRole('dialog').evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(
+      true,
+    );
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('dialog')).toHaveCount(0);
+  }
+  await page.clock.setFixedTime(new Date('2026-10-12T00:00:00Z'));
+  await page.locator('.guide-card').first().click();
+  await expect(page.locator('.guide-detail .day-warning')).toHaveText(preparation.copy.stale[4]);
 });

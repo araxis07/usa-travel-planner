@@ -13,13 +13,38 @@ const issues = contentIssues(catalog);
 if (issues.length) throw Error(JSON.stringify(issues));
 const dictionary = JSON.parse(await fs.readFile('content/translations.json', 'utf8'));
 const cityContent = JSON.parse(await fs.readFile('content/city-guides.json', 'utf8'));
-function checkCityText(value) {
+const preparation = JSON.parse(await fs.readFile('content/travel-preparation.json', 'utf8'));
+function checkLocalizedText(value) {
+  if (Array.isArray(value) && !value.length) throw Error('Empty guide content');
   if (Array.isArray(value) && value.some((item) => typeof item === 'string')) {
     if (value.length !== 5 || value.some((text) => typeof text !== 'string' || !text.trim()))
-      throw Error('City guide text must have five nonempty translations');
-  } else if (value && typeof value === 'object') Object.values(value).forEach(checkCityText);
+      throw Error('Guide text must have five nonempty translations');
+  } else if (value && typeof value === 'object') Object.values(value).forEach(checkLocalizedText);
 }
-checkCityText(cityContent);
+function checkReview(guide) {
+  const validDate = (value) =>
+    /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+    Number.isFinite(Date.parse(value)) &&
+    new Date(value).toISOString().slice(0, 10) === value;
+  if (
+    !validDate(guide.checkedAt) ||
+    !validDate(guide.reviewAfter) ||
+    !(Date.parse(guide.reviewAfter) > Date.parse(guide.checkedAt)) ||
+    guide.translationsReviewed.length !== 5 ||
+    guide.translationsReviewed.some((n) => typeof n !== 'boolean')
+  )
+    throw Error('Invalid guide review metadata');
+}
+function checkLinks(links) {
+  if (!links.length) throw Error('Missing guide sources');
+  for (const link of links) {
+    const url = new URL(link.url);
+    if (url.protocol !== 'https:' || url.username || url.password || !link.name.trim())
+      throw Error('Invalid guide source');
+  }
+}
+checkLocalizedText(cityContent);
+checkLocalizedText(preparation);
 const cityIds = new Set();
 for (const guide of cityContent.guides) {
   if (
@@ -33,23 +58,35 @@ for (const guide of cityContent.guides) {
     guide.budget.amounts.length !== cityContent.copy.rows.length ||
     guide.budget.amounts.some(
       (row) => row.length !== 3 || row.some((n) => !Number.isSafeInteger(n) || n < 0),
-    ) ||
-    !/^\d{4}-\d{2}-\d{2}$/.test(guide.checkedAt) ||
-    !Number.isFinite(Date.parse(guide.checkedAt)) ||
-    !/^\d{4}-\d{2}-\d{2}$/.test(guide.reviewAfter) ||
-    !(Date.parse(guide.reviewAfter) > Date.parse(guide.checkedAt)) ||
-    guide.translationsReviewed.length !== 5 ||
-    guide.translationsReviewed.some((n) => typeof n !== 'boolean')
+    )
   )
     throw Error('Invalid city guide: ' + guide.placeId);
   cityIds.add(guide.placeId);
+  checkReview(guide);
   for (const area of guide.areas) if (!area.mapQuery.trim()) throw Error('Missing city map query');
-  for (const link of [...guide.areas.map((area) => area.source), ...guide.airport.sources]) {
-    const url = new URL(link.url);
-    if (url.protocol !== 'https:' || url.username || url.password || !link.name.trim())
-      throw Error('Invalid city guide source');
-  }
+  checkLinks([...guide.areas.map((area) => area.source), ...guide.airport.sources]);
 }
+const parkIds = new Set();
+if (
+  preparation.copy.rows.length !== 4 ||
+  preparation.parks.length !== 5 ||
+  preparation.firstTrip.sections.length !== 9
+)
+  throw Error('Incomplete travel preparation guides');
+for (const guide of preparation.parks) {
+  if (
+    parkIds.has(guide.placeId) ||
+    !catalog.states.some((state) => state.destinations.some((p) => p.id === guide.placeId)) ||
+    guide.sections.length !== preparation.copy.rows.length
+  )
+    throw Error('Invalid park booking guide: ' + guide.placeId);
+  parkIds.add(guide.placeId);
+  checkReview(guide);
+  guide.sections.forEach((section) => checkLinks(section.sources));
+  if (guide.notice) checkLinks([guide.notice.source]);
+}
+checkReview(preparation.firstTrip);
+checkLinks(preparation.firstTrip.sources);
 const missing = new Set();
 for (const file of [
   'App.tsx',
@@ -109,5 +146,5 @@ for (const state of catalog.states) {
   }
 }
 console.log(
-  `Content verified: ${catalog.states.length} states, ${photos} local photos, ${cityIds.size} detailed city guides, 5 languages, ${Object.keys(dictionary).length} translated interface/article entries.`,
+  `Content verified: ${catalog.states.length} states, ${photos} local photos, ${cityIds.size} detailed city guides, ${parkIds.size} park booking guides, 9 predeparture topics, 5 languages, ${Object.keys(dictionary).length} translated interface/article entries.`,
 );

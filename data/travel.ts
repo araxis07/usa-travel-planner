@@ -208,46 +208,9 @@ export const GUIDES = [
       'A little preparation leaves more room for the good stuff. Start with the region that excites you, then build a trip around it.',
       'เตรียมพร้อมอีกนิด แล้วเหลือเวลาให้ประสบการณ์ดี ๆ เริ่มจากภูมิภาคที่อยากไป แล้วค่อยวางแผนรอบ ๆ จุดนั้น',
     ] as LocalText,
-    sections: [
-      {
-        title: ['Start with the map', 'เริ่มต้นที่แผนที่'],
-        text: [
-          'The United States is vast. For a first visit, one region usually gives you more time to explore than a coast-to-coast checklist. Group nearby destinations and leave time for arrival, transfers, and rest. Alaska and Hawaii need separate flight planning.',
-          'อเมริกามีพื้นที่กว้างมาก ทริปแรกที่เลือกหนึ่งภูมิภาคจะมีเวลาเที่ยวมากขึ้น จัดจุดหมายใกล้กัน เผื่อวันมาถึง ต่อรถ และพักผ่อน ส่วนอะแลสกากับฮาวายต้องวางแผนเที่ยวบินแยก',
-        ],
-      },
-      {
-        title: ['Check your entry documents', 'ตรวจเอกสารเข้าเมือง'],
-        text: [
-          'Entry requirements depend on your passport and circumstances. Use the U.S. Department of State and CBP websites to check the documents that apply to you before committing to travel. Keep copies of your bookings and travel documents accessible.',
-          'ข้อกำหนดเข้าเมืองขึ้นอยู่กับหนังสือเดินทางและสถานการณ์ของผู้เดินทาง ตรวจข้อมูลที่ตรงกับคุณจากกระทรวงการต่างประเทศสหรัฐฯ และ CBP ก่อนจอง พร้อมเก็บสำเนาเอกสารและการจองให้เปิดดูได้ง่าย',
-        ],
-      },
-      {
-        title: ['Build a realistic day', 'จัดวันเที่ยวให้พอดี'],
-        text: [
-          'Choose one main experience per day, then add nearby possibilities. Check opening days, travel time, accessibility, and advance bookings directly with each venue. Major cities often work well with public transport; rural routes usually need more transport planning.',
-          'เลือกกิจกรรมหลักวันละหนึ่งอย่าง แล้วเพิ่มสถานที่ใกล้กัน ตรวจวันเปิด เวลาเดินทาง การเข้าถึง และการจองกับแต่ละแห่ง เมืองใหญ่หลายเมืองใช้ขนส่งสาธารณะสะดวก ส่วนชนบทควรเตรียมการเดินทางมากขึ้น',
-        ],
-      },
-      {
-        title: ['Keep the practical things handy', 'เตรียมสิ่งจำเป็นให้พร้อม'],
-        text: [
-          'Download offline maps, check your phone’s data options, and save accommodation addresses. Review travel insurance and payment options for your own needs. Your Roam trip is saved on this browser; export a copy to take it with you.',
-          'ดาวน์โหลดแผนที่ออฟไลน์ ตรวจแพ็กเกจมือถือ และบันทึกที่อยู่ที่พัก พิจารณาประกันเดินทางและวิธีชำระเงินให้เหมาะกับคุณ แผน Roam บันทึกในเบราว์เซอร์นี้ จึงควรส่งออกสำเนาไว้ด้วย',
-        ],
-      },
-    ],
-    sources: [
-      {
-        name: 'U.S. Department of State',
-        url: 'https://travel.state.gov/content/travel/en/us-visas/tourism-visit.html',
-      },
-      {
-        name: 'U.S. Customs and Border Protection',
-        url: 'https://www.cbp.gov/travel/international-visitors',
-      },
-    ],
+    // Full preparation guide is loaded with TravelDialog, not the home cards.
+    sections: [],
+    sources: [],
   },
   {
     id: 'parks',
