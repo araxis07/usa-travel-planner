@@ -75,7 +75,13 @@ export default function TravelDialog({
       ? [...GUIDES, ...MORE_GUIDES].find((item) => item.id === modal.id)
       : null;
   const route = modal.type === 'route' ? ITINERARIES.find((item) => item.id === modal.id) : null;
-  const guideContent = guide?.id === 'first-trip' ? preparation.firstTrip : guide;
+  const datedGuide =
+    guide?.id === 'first-trip'
+      ? preparation.firstTrip
+      : guide?.id === 'northeast-rail'
+        ? preparation.intercity
+        : null;
+  const guideContent = datedGuide ?? guide;
   const l = languageIndex(lang);
   const template = route ? itineraryTrip(route, lang) : null;
   const title =
@@ -188,23 +194,29 @@ export default function TravelDialog({
           </span>
           <h2>{local(guide.title, lang)}</h2>
           <p className="guide-intro">{local(guide.intro, lang)}</p>
-          {guide?.id === 'first-trip' && (
+          {datedGuide && (
             <>
               <p className="content-date">
                 {preparation.copy.checked[l]} ·{' '}
-                <time dateTime={preparation.firstTrip.checkedAt}>
-                  {preparation.firstTrip.checkedAt}
-                </time>
+                <time dateTime={datedGuide.checkedAt}>{datedGuide.checkedAt}</time>
                 {' · '}
                 {preparation.copy.review[l]} ·{' '}
-                <time dateTime={preparation.firstTrip.reviewAfter}>
-                  {preparation.firstTrip.reviewAfter}
-                </time>
+                <time dateTime={datedGuide.reviewAfter}>{datedGuide.reviewAfter}</time>
               </p>
-              {Date.now() >= Date.parse(preparation.firstTrip.reviewAfter + 'T00:00:00Z') && (
+              {Date.now() >= Date.parse(datedGuide.reviewAfter + 'T00:00:00Z') && (
                 <p className="day-warning">{preparation.copy.stale[l]}</p>
               )}
             </>
+          )}
+          {guide.id === 'northeast-rail' && (
+            <aside className="day-warning">
+              <p>{preparation.intercity.notice.text[l]}</p>
+              <div className="city-guide-links">
+                <a href={preparation.intercity.notice.source.url} target="_blank" rel="noreferrer">
+                  {preparation.intercity.notice.source.name}
+                </a>
+              </div>
+            </aside>
           )}
           {guideContent?.sections.map((section, i) => (
             <section key={i}>

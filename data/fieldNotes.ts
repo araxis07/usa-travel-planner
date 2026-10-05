@@ -239,4 +239,26 @@ export const MORE_GUIDES: FieldNote[] = [
       },
     ],
   },
+  {
+    id: 'northeast-rail',
+    icon: 'map',
+    category: ['GETTING AROUND', 'การเดินทาง', '交通出行', '移動のヒント', '교통 안내'],
+    title: [
+      'Boston → New York → Philadelphia by train',
+      'Boston → New York → Philadelphia ด้วยรถไฟ',
+      '乘火车：Boston → New York → Philadelphia',
+      '鉄道で Boston → New York → Philadelphia',
+      '기차로 Boston → New York → Philadelphia',
+    ],
+    intro: [
+      'Plan two rail journeys, the right stations and an unhurried arrival in each city.',
+      'วางแผนรถไฟสองขา เลือกสถานีให้ถูก และเผื่อวันมาถึงแต่ละเมืองให้สบาย',
+      '规划两段铁路行程，选对车站，并为每座城市的抵达留出余量。',
+      '2区間の鉄道移動、正しい駅、各都市で余裕のある到着日を計画しましょう。',
+      '두 철도 구간과 정확한 역을 확인하고 각 도시의 도착일에 여유를 두세요.',
+    ],
+    // Full content loads with TravelDialog, like the first-trip guide.
+    sections: [],
+    sources: [],
+  },
 ];

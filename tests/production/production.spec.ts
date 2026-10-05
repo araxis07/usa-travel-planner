@@ -391,6 +391,15 @@ test('saved itinerary and all selected state photos reopen offline; print covers
     preparation.firstTrip.sections[6].text[1],
   );
   await page.keyboard.press('Escape');
+  await page.locator('.guide-card').last().click();
+  await expect(page.locator('.guide-detail section')).toHaveCount(8);
+  await expect(page.locator('.guide-detail')).toContainText(
+    preparation.intercity.sections[0].text[1],
+  );
+  await expect(page.locator('.guide-detail aside')).toContainText(
+    preparation.intercity.notice.text[1],
+  );
+  await page.keyboard.press('Escape');
   const invalid = await page.evaluate(async () => {
     const reg = await navigator.serviceWorker.ready;
     return new Promise((resolve) => {
@@ -471,6 +480,24 @@ test('generated park and preparation guides remain usable without JavaScript', a
     for (const section of preparation.firstTrip.sections)
       await expect(guide).toContainText(section.text[l]);
     await expect(guide.locator('time').last()).toHaveText(preparation.firstTrip.reviewAfter);
+    const intercity = page.locator('#guide-intercity');
+    await intercity.locator('summary').press('Enter');
+    await expect(intercity).toHaveAttribute('open', '');
+    await expect(intercity.locator('summary')).toHaveText(preparation.copy.intercityTitle[l]);
+    await expect(intercity.locator('h2')).toHaveCount(8);
+    for (const section of preparation.intercity.sections)
+      await expect(intercity).toContainText(section.text[l]);
+    await expect(intercity.locator('time').last()).toHaveText(preparation.intercity.reviewAfter);
+    await expect(intercity.locator('aside')).toContainText(preparation.intercity.notice.text[l]);
+    await expect(intercity.locator('aside a')).toHaveAttribute(
+      'href',
+      preparation.intercity.notice.source.url,
+    );
+    for (const [i, source] of preparation.intercity.sources.entries())
+      await expect(intercity.locator('.guide-sources a').nth(i)).toHaveAttribute(
+        'href',
+        source.url,
+      );
   }
   await context.close();
 });

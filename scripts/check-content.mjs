@@ -87,7 +87,8 @@ const parkIds = new Set();
 if (
   preparation.copy.rows.length !== 4 ||
   preparation.parks.length !== 5 ||
-  preparation.firstTrip.sections.length !== 9
+  preparation.firstTrip.sections.length !== 9 ||
+  preparation.intercity.sections.length !== 8
 )
   throw Error('Incomplete travel preparation guides');
 for (const guide of preparation.parks) {
@@ -104,6 +105,9 @@ for (const guide of preparation.parks) {
 }
 checkReview(preparation.firstTrip);
 checkLinks(preparation.firstTrip.sources);
+checkReview(preparation.intercity);
+checkLinks(preparation.intercity.sources);
+checkLinks([preparation.intercity.notice.source]);
 const missing = new Set();
 for (const file of [
   'App.tsx',
@@ -163,5 +167,5 @@ for (const state of catalog.states) {
   }
 }
 console.log(
-  `Content verified: ${catalog.states.length} states, ${photos} local photos, ${cityIds.size} detailed city guides, ${parkIds.size} park booking guides, 9 predeparture topics, 5 languages, ${Object.keys(dictionary).length} translated interface/article entries.`,
+  `Content verified: ${catalog.states.length} states, ${photos} local photos, ${cityIds.size} detailed city guides, ${cityContent.guides.reduce((n, guide) => n + (guide.food?.stops.length || 0), 0)} food stops, ${parkIds.size} park booking guides, 9 predeparture and 8 intercity topics, 5 languages, ${Object.keys(dictionary).length} translated interface/article entries.`,
 );

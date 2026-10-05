@@ -1320,6 +1320,96 @@
           "交通費は編集部の予算枠で、空港運賃の計算ではありません。美術館のチケット、宿泊税、必須料金は異なるため、旅行日の最終総額に置き換えてください。",
           "교통비는 편집 예산이며 공항 요금 계산이 아닙니다. 박물관 티켓, 객실 세금, 필수 호텔 수수료가 달라지므로 여행 날짜의 최종 금액으로 바꾸세요."
         ]
+      },
+      "food": {
+        "checkedAt": "2026-10-06",
+        "reviewAfter": "2026-10-13",
+        "translationsReviewed": [false, false, false, false, false],
+        "intro": [
+          "Pair Back Bay seafood, a North End Italian lunch and a museum-day café with the three Boston days above. A lobster roll can be a special meal; use the actual menu price when replacing your food allowance.",
+          "จับคู่อาหารทะเล Back Bay มื้ออิตาลี North End และคาเฟ่วันพิพิธภัณฑ์กับแผน Boston สามวันด้านบน ล็อบสเตอร์โรลอาจเป็นมื้อพิเศษ ให้ใช้ราคาเมนูจริงแทนเงินเผื่องบอาหาร",
+          "将Back Bay海鲜、North End意大利午餐与博物馆日咖啡馆搭配上方波士顿三日计划。龙虾卷可作为特别一餐，请用实际菜单价格替换餐饮额度。",
+          "上のボストン3日間にバック・ベイのシーフード、ノース・エンドのイタリア料理、美術館の日のカフェを合わせます。ロブスターロールは特別な1食にも。食費は実際のメニュー価格で置き換えてください。",
+          "위의 보스턴 3일 일정에 백 베이 해산물, 노스 엔드 이탈리아 점심, 미술관 방문일의 카페를 맞추세요. 랍스터 롤은 특별한 한 끼로 고를 수 있으며 실제 메뉴 가격으로 식비 예산을 바꾸세요."
+        ],
+        "vegetarian": [
+          "Consider vegetable pasta, a meat-free sandwich or a café salad. Ask about stock, cheese, eggs and dairy; seafood chowder and lobster rolls are not vegetarian choices. Check preparation with staff if you have allergies.",
+          "พิจารณาพาสต้าผัก แซนด์วิชไม่ใส่เนื้อหรือสลัดในคาเฟ่ ถามเรื่องน้ำซุป ชีส ไข่และนม ชาวเดอร์ทะเลกับล็อบสเตอร์โรลไม่ใช่มังสวิรัติ ผู้มีอาการแพ้ควรถามวิธีทำกับพนักงาน",
+          "可考虑蔬菜意面、无肉三明治或咖啡馆沙拉。询问高汤、芝士、鸡蛋和乳制品；海鲜浓汤和龙虾卷不属于素食。过敏时请向员工确认制作方式。",
+          "野菜のパスタ、肉なしサンドイッチ、カフェのサラダなどを検討。だし・チーズ・卵・乳製品を確認し、シーフードチャウダーやロブスターロールはベジタリアン向けではありません。アレルギーは調理方法をスタッフに確認。",
+          "채소 파스타, 고기 없는 샌드위치, 카페 샐러드를 고려하세요. 육수와 치즈, 달걀, 유제품을 문의하세요. 해산물 차우더와 랍스터 롤은 채식 메뉴가 아닙니다. 알레르기가 있다면 직원에게 조리 방법을 확인하세요."
+        ],
+        "stops": [
+          {
+            "day": 1,
+            "title": [
+              "Back Bay · a seafood break",
+              "Back Bay · พักกินอาหารทะเล",
+              "Back Bay · 海鲜休息",
+              "バック・ベイ · シーフード休憩",
+              "백 베이 · 해산물 한 끼"
+            ],
+            "text": [
+              "After Copley Square or Newbury Street, choose a nearby lobster roll or another lunch that fits your budget. Luke’s Lobster in Back Bay is one example in Meet Boston’s guide. Compare portions and the current menu, or choose a meat-free café meal nearby.",
+              "หลัง Copley Square หรือ Newbury Street เลือกล็อบสเตอร์โรลใกล้ทางหรือมื้อที่เหมาะกับงบ Luke’s Lobster ใน Back Bay เป็นตัวอย่างจากคู่มือ Meet Boston เทียบขนาดกับเมนูปัจจุบัน หรือเลือกมื้อไม่ใส่เนื้อในคาเฟ่ใกล้กัน",
+              "逛Copley广场或Newbury街后选附近龙虾卷或符合预算的午餐。Meet Boston指南列有Back Bay的Luke’s Lobster。比较份量和最新菜单，也可选附近咖啡馆的无肉餐。",
+              "Copley SquareやNewbury Streetの後、近くのロブスターロールや予算に合うランチへ。Meet Boston掲載のLuke’s Lobsterは一例。量と最新メニューを比べ、近くのカフェの肉なし料理も検討。",
+              "코플리 광장이나 뉴버리 스트리트 방문 후 가까운 랍스터 롤 또는 예산에 맞는 점심을 고르세요. Meet Boston 안내의 백 베이 Luke’s Lobster가 한 예입니다. 양과 최신 메뉴를 비교하거나 근처 카페의 고기 없는 식사를 선택하세요."
+            ],
+            "allowance": [20, 40],
+            "mapQuery": "Back Bay Boston seafood lunch",
+            "source": {
+              "name": "Meet Boston · lobster rolls",
+              "url": "https://www.meetboston.com/blog/post/lobster-rolls/"
+            }
+          },
+          {
+            "day": 2,
+            "title": [
+              "North End · pasta and a bakery",
+              "North End · พาสต้ากับเบเกอรี",
+              "North End · 意面与烘焙店",
+              "ノース・エンド · パスタとベーカリー",
+              "노스 엔드 · 파스타와 베이커리"
+            ],
+            "text": [
+              "Pause for an Italian lunch along your historic North End walk. Consider pasta with a vegetable sauce and a small cannoli stop, checking cheese and filling ingredients. Keep the bakery treat within your meal allowance and leave time for queues.",
+              "พักกินมื้ออิตาลีระหว่างเดินชมประวัติศาสตร์ North End พิจารณาพาสต้าซอสผักและแวะคันโนลีเล็กน้อย ตรวจส่วนผสมชีสกับไส้ขนม นับขนมในเงินเผื่อมื้อนี้และเผื่อคิว",
+              "North End历史散步途中安排意大利午餐，可考虑蔬菜酱意面和少量意式奶油卷，确认芝士与馅料成分。甜点计入同一餐的额度，并留出排队时间。",
+              "ノース・エンドの歴史散歩でイタリア料理の休憩を。野菜ソースのパスタと少量のカンノーリを検討し、チーズや中身の材料を確認。焼き菓子も同じ食費に含め、行列に余裕を。",
+              "노스 엔드 역사 산책 중 이탈리아 점심으로 쉬어 가세요. 채소 소스 파스타와 작은 카놀리를 고려하고 치즈와 속재료를 확인하세요. 디저트를 같은 한 끼 예산에 포함하고 대기 시간을 확보하세요."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "North End Boston Italian lunch",
+            "source": {
+              "name": "Meet Boston · North End dining",
+              "url": "https://www.meetboston.com/explore/neighborhoods/north-end/"
+            }
+          },
+          {
+            "day": 3,
+            "title": [
+              "Museum day · café lunch",
+              "วันพิพิธภัณฑ์ · มื้อกลางวันในคาเฟ่",
+              "博物馆日 · 咖啡馆午餐",
+              "美術館の日 · カフェランチ",
+              "미술관 방문일 · 카페 점심"
+            ],
+            "text": [
+              "During a booked MFA visit, use a lighter café or Garden Cafeteria lunch and ask about a vegetable sandwich or salad. Museum dining requires admission, which belongs in your activity budget separately from this meal. Check café hours alongside the museum schedule.",
+              "ระหว่างเที่ยว MFA ที่จองไว้ เลือกมื้อเบาในคาเฟ่หรือ Garden Cafeteria และถามแซนด์วิชผักหรือสลัด ร้านในพิพิธภัณฑ์ต้องมีค่าเข้า ให้นับค่าเข้าในงบกิจกรรมแยกจากมื้อนี้ ตรวจเวลาคาเฟ่คู่กับตารางพิพิธภัณฑ์",
+              "已预约参观MFA时，可在咖啡馆或Garden Cafeteria用简便午餐，询问蔬菜三明治或沙拉。馆内用餐需入场，门票另计入活动预算。按博物馆安排核对咖啡馆时间。",
+              "予約したMFAの見学中はカフェやGarden Cafeteriaの軽いランチを検討し、野菜サンドイッチやサラダを相談。館内の飲食には入館が必要で、入館料は食費と別に体験予算へ。カフェと美術館の時間を確認。",
+              "예약한 MFA 방문 중 가벼운 카페나 Garden Cafeteria 점심을 이용하고 채소 샌드위치나 샐러드를 문의하세요. 관내 식사는 입장이 필요하므로 입장료는 식비와 별도로 활동 예산에 넣으세요. 카페 시간과 미술관 일정을 함께 확인하세요."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "Museum of Fine Arts Boston dining",
+            "source": {
+              "name": "MFA Boston · dining and admission",
+              "url": "https://www.mfa.org/visit/dining"
+            }
+          }
+        ]
       }
     },
     {
@@ -1550,6 +1640,96 @@
           "节约型交通假设两张成人CTA3日票（共30美元），机场往返均在有效期内。其余为编辑预算，请核对出行日期的博物馆票价与酒店最终总额。",
           "節約案の交通は大人2人のCTA3日券（計30ドル）で、空港往復も有効期間内。他は編集部の予算枠です。旅行日の博物館チケットと宿の最終総額を確認。",
           "절약형 교통비는 성인 2명의 CTA 3일권(총 $30)과 유효기간 내 공항 왕복을 가정합니다. 나머지는 편집 예산입니다. 여행 날짜의 박물관 티켓과 최종 호텔 총액을 확인하세요."
+        ]
+      },
+      "food": {
+        "checkedAt": "2026-10-06",
+        "reviewAfter": "2026-10-13",
+        "translationsReviewed": [false, false, false, false, false],
+        "intro": [
+          "Match a Loop pizza lunch, River North sandwich and Museum Campus meal to the Chicago day plan. Choose one food stop each day and keep restaurant waits separate from any booked cruise or timed admission.",
+          "จับคู่มื้อพิซซ่า Loop แซนด์วิช River North และอาหาร Museum Campus กับแผน Chicago เลือกวันละหนึ่งจุดกินและเผื่อรอร้านแยกจากเวลาเรือหรือรอบเข้าชมที่จอง",
+          "将Loop披萨午餐、River North三明治与Museum Campus用餐搭配Chicago日程。每天选一处，餐厅等候需与已预约游船或分时入场分开预留。",
+          "シカゴのプランにループのピザ、リバー・ノースのサンドイッチ、Museum Campusの食事を合わせます。1日1か所を選び、予約した船や入場時間とは別に店の待ち時間を確保。",
+          "시카고 일정에 루프의 피자 점심, 리버 노스 샌드위치, 뮤지엄 캠퍼스 식사를 맞추세요. 하루 한 곳을 고르고 식당 대기 시간은 예약한 크루즈나 시간 지정 입장과 별도로 확보하세요."
+        ],
+        "vegetarian": [
+          "Ask about cheese or vegetable pizza, a bean or vegetable bowl, or a café salad. Italian beef and the usual Chicago-style hot dog contain meat. Confirm sauces, dough, dairy and preparation rather than assuming a dish is vegan or allergy-safe.",
+          "ถามพิซซ่าชีสหรือผัก ข้าวหน้าถั่วหรือผัก หรือสลัดคาเฟ่ Italian beef กับฮอตดอกชิคาโกทั่วไปมีเนื้อ ตรวจซอส แป้ง นมและวิธีทำ แทนการสมมติว่าเมนูเป็นวีแกนหรือปลอดสารที่แพ้",
+          "可询问芝士或蔬菜披萨、豆类或蔬菜饭碗、咖啡馆沙拉。意式牛肉三明治与普通Chicago式热狗含肉。核对酱料、面团、乳制品和制作方式，不要假设纯素或过敏安全。",
+          "チーズや野菜のピザ、豆・野菜のボウル、カフェのサラダを相談。Italian beefや通常のシカゴ式ホットドッグには肉が入ります。ソース・生地・乳製品・調理方法を確認し、ヴィーガンやアレルギー対応とは決めつけずに。",
+          "치즈 또는 채소 피자, 콩이나 채소 덮밥, 카페 샐러드를 문의하세요. 이탈리안 비프와 일반적인 시카고식 핫도그에는 고기가 들어갑니다. 소스, 반죽, 유제품, 조리 방법을 확인하고 비건이나 알레르기 안전을 가정하지 마세요."
+        ],
+        "stops": [
+          {
+            "day": 1,
+            "title": [
+              "Loop · Chicago pizza",
+              "Loop · พิซซ่าชิคาโก",
+              "Loop · Chicago披萨",
+              "ループ · シカゴのピザ",
+              "루프 · 시카고 피자"
+            ],
+            "text": [
+              "Choose a deep-dish or another Chicago pizza lunch near your Loop route. Share a pie if it fits your group, ask for cheese or vegetable toppings and leave time for preparation. Use the official food guide to compare options before choosing a branch.",
+              "เลือกมื้อพิซซ่า deep-dish หรือแบบอื่นของชิคาโกใกล้เส้นทาง Loop แบ่งทั้งถาดถ้าเหมาะกับกลุ่ม ถามหน้าชีสหรือผักและเผื่อเวลาทำ ใช้คู่มืออาหารทางการเทียบตัวเลือกก่อนเลือกสาขา",
+              "在Loop路线附近选深盘或其他Chicago披萨午餐。按人数共享整张，询问芝士或蔬菜配料并预留制作时间。选分店前用官方美食指南比较选择。",
+              "ループの経路近くでディープディッシュなどのシカゴのピザを。人数に合えばシェアし、チーズや野菜の具を相談して調理の時間も確保。公式飲食ガイドで支店を比較。",
+              "루프 동선 근처에서 딥디시 또는 다른 시카고 피자로 점심을 드세요. 일행에 맞게 나누고 치즈나 채소 토핑을 문의하며 조리 시간을 확보하세요. 지점을 고르기 전 공식 음식 안내로 선택지를 비교하세요."
+            ],
+            "allowance": [18, 35],
+            "mapQuery": "Loop Chicago pizza lunch",
+            "source": {
+              "name": "Choose Chicago · local dishes",
+              "url": "https://www.choosechicago.com/articles/food-drink/20-things-to-eat-in-chicago/"
+            }
+          },
+          {
+            "day": 2,
+            "title": [
+              "River North · Italian beef or a meat-free lunch",
+              "River North · Italian beef หรือมื้อไม่ใส่เนื้อ",
+              "River North · 意式牛肉或无肉午餐",
+              "リバー・ノース · Italian beefと肉なしの選択肢",
+              "리버 노스 · 이탈리안 비프 또는 고기 없는 점심"
+            ],
+            "text": [
+              "After the Riverwalk, try an Italian beef sandwich if you eat meat; Mr. Beef in River North is one example. For a vegetarian meal, choose a nearby restaurant with a clearly listed meat-free dish. Keep the return to your cruise boarding point in the plan.",
+              "หลัง Riverwalk ลองแซนด์วิช Italian beef ถ้ากินเนื้อ Mr. Beef ใน River North เป็นตัวอย่างหนึ่ง ถ้าต้องการมังสวิรัติเลือกร้านใกล้กันที่ระบุเมนูไม่ใส่เนื้อชัดเจน เผื่อการกลับไปจุดขึ้นเรือไว้ในแผน",
+              "Riverwalk之后，吃肉者可尝试意式牛肉三明治，River North的Mr. Beef是一例。素食者选择附近明确列出无肉菜品的店，并预留返回游船登船点的安排。",
+              "Riverwalkの後、肉を食べるならItalian beefのサンドイッチを。River NorthのMr. Beefは一例。ベジタリアンなら肉なし料理の表示がある近くの店を選び、船の乗船地点へ戻る移動も予定に。",
+              "리버워크 방문 후 고기를 드신다면 이탈리안 비프 샌드위치를 고려하세요. 리버 노스의 Mr. Beef가 한 예입니다. 채식이라면 고기 없는 메뉴를 명확히 표시한 근처 식당을 고르고 크루즈 승선 지점으로 돌아가는 이동을 계획에 넣으세요."
+            ],
+            "allowance": [12, 25],
+            "mapQuery": "River North Chicago lunch",
+            "source": {
+              "name": "Choose Chicago · Italian beef guide",
+              "url": "https://www.choosechicago.com/blog/dining/italian-beef-chicago/"
+            }
+          },
+          {
+            "day": 3,
+            "title": [
+              "Museum Campus · a planned meal break",
+              "Museum Campus · พักมื้ออาหารตามแผน",
+              "Museum Campus · 安排用餐休息",
+              "Museum Campus · 食事休憩を計画",
+              "뮤지엄 캠퍼스 · 계획한 식사 휴식"
+            ],
+            "text": [
+              "If your main visit is the Field Museum, check the Field Bistro or Explorer Cafe and ask about a meat-free lunch. The museum also lists designated tables for visitors with their own snacks. The allowance is for a purchased meal; admission stays in the activity row. Other venues have their own food rules.",
+              "ถ้าจุดหลักคือ Field Museum ให้ตรวจ Field Bistro หรือ Explorer Cafe และถามมื้อไม่ใส่เนื้อ พิพิธภัณฑ์ระบุโต๊ะที่จัดให้ผู้ชมซึ่งนำของกินมาเอง วงเงินนี้สำหรับซื้ออาหาร ค่าเข้าอยู่ในงบกิจกรรม สถานที่อื่นมีกฎอาหารของตนเอง",
+              "主要参观Field Museum时，查看Field Bistro或Explorer Cafe并询问无肉午餐。博物馆也列有供自带零食访客使用的指定餐桌。额度针对购买的餐食，门票仍计活动预算。其他场馆有各自饮食规定。",
+              "Field Museumが中心ならField BistroやExplorer Cafeを確認し、肉なしのランチを相談。持参した軽食用の指定テーブルも案内されています。予算枠は購入する食事で、入場料は体験費へ。他の施設は独自の飲食規則を確認。",
+              "주요 방문지가 필드 박물관이라면 Field Bistro나 Explorer Cafe를 확인하고 고기 없는 점심을 문의하세요. 박물관은 간식을 가져온 방문객을 위한 지정 테이블도 안내합니다. 예산은 구매하는 식사 기준이며 입장료는 활동 항목에 넣으세요. 다른 장소의 음식 규정은 별도로 확인하세요."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "Museum Campus Chicago dining",
+            "source": {
+              "name": "Field Museum · food and amenities",
+              "url": "https://www.fieldmuseum.org/page/amenities"
+            }
+          }
         ]
       }
     }

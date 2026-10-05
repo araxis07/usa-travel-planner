@@ -257,7 +257,13 @@ test('food stops follow each day with localized allowances, sources and independ
   test.setTimeout(90000);
   await page.clock.setFixedTime(new Date('2026-10-06T03:00:00Z'));
   await page.setViewportSize({ width: 320, height: 740 });
-  const paths = ['new-york/new-york-city', 'california/san-francisco', 'nevada/las-vegas'];
+  const paths = [
+    'new-york/new-york-city',
+    'california/san-francisco',
+    'nevada/las-vegas',
+    'massachusetts/boston',
+    'illinois/chicago',
+  ];
   for (const [city, path] of paths.entries()) {
     const guide = cityContent.guides[city];
     const food = 'food' in guide ? guide.food! : undefined;
@@ -274,7 +280,7 @@ test('food stops follow each day with localized allowances, sources and independ
       await expect(section.locator('time').last()).toHaveAttribute('datetime', '2026-10-13');
       await expect(page.locator('#guide-airport time').first()).toHaveAttribute(
         'datetime',
-        '2026-10-04',
+        guide.checkedAt,
       );
       await expect(section.locator('.day-warning')).toHaveCount(0);
       await expect(section.locator('details')).toHaveCount(3);
@@ -318,8 +324,8 @@ test('food stops follow each day with localized allowances, sources and independ
   await page.clock.setFixedTime(new Date('2026-10-13T00:00:00Z'));
   await page.reload();
   await expect(page.locator('#guide-food .day-warning')).toHaveText(cityContent.copy.foodStale[4]);
-  await page.goto('/en/states/massachusetts/boston/');
-  await expect(page.locator('#guide-city')).toBeVisible();
+  await page.goto('/en/states/nevada/valley-of-fire-state-park/');
+  await expect(page.locator('#destination-guide')).toBeVisible();
   await expect(page.locator('#guide-food')).toHaveCount(0);
   await expect(page.locator('.guide-toc a[href="#guide-food"]')).toHaveCount(0);
 });
@@ -471,4 +477,70 @@ test('first-trip field note covers nine preparation topics in all five languages
   await page.clock.setFixedTime(new Date('2026-10-12T00:00:00Z'));
   await page.locator('.guide-card').first().click();
   await expect(page.locator('.guide-detail .day-warning')).toHaveText(preparation.copy.stale[4]);
+});
+
+test('Northeast rail guide preserves station details, dated alerts and all five languages', async ({
+  page,
+}) => {
+  await page.clock.setFixedTime(new Date('2026-10-06T03:00:00Z'));
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.goto('/en/');
+  await expect(page.locator('.guide-card')).toHaveCount(7);
+  const card = page.locator('.guide-card').last();
+  await card.press('Enter');
+  const guide = page.locator('.guide-detail');
+  for (const [l, lang] of LANGUAGES.entries()) {
+    await page.locator('.dialog-language select').selectOption(lang);
+    await expect(page.getByRole('dialog')).toHaveAccessibleName(preparation.copy.intercityTitle[l]);
+    await expect(guide.locator('section')).toHaveCount(8);
+    for (const [i, section] of preparation.intercity.sections.entries()) {
+      await expect(guide.locator('section').nth(i).getByRole('heading')).toHaveText(
+        section.title[l],
+      );
+      await expect(guide.locator('section').nth(i)).toContainText(section.text[l]);
+    }
+    for (const code of ['BOS', 'NYP', 'PHL'])
+      await expect(guide.locator('section').first()).toContainText(code);
+    await expect(guide.locator('.content-date time').first()).toHaveAttribute(
+      'datetime',
+      preparation.intercity.checkedAt,
+    );
+    await expect(guide.locator('.content-date time').last()).toHaveAttribute(
+      'datetime',
+      preparation.intercity.reviewAfter,
+    );
+    await expect(guide.locator(':scope > p.day-warning')).toHaveCount(0);
+    await expect(guide.locator('aside')).toContainText(preparation.intercity.notice.text[l]);
+    await expect(guide.locator('aside a')).toHaveAttribute(
+      'href',
+      preparation.intercity.notice.source.url,
+    );
+    await expect(guide.locator('.guide-sources a')).toHaveCount(
+      preparation.intercity.sources.length,
+    );
+    for (const [i, source] of preparation.intercity.sources.entries()) {
+      await expect(guide.locator('.guide-sources a').nth(i)).toHaveAttribute('href', source.url);
+      await expect(guide.locator('.guide-sources a').nth(i)).toHaveAttribute('rel', 'noreferrer');
+    }
+    if (lang === 'en') {
+      const audit = await new AxeBuilder({ page })
+        .include('.guide-detail')
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+        .analyze();
+      expect(audit.violations).toEqual([]);
+    }
+  }
+  await guide.evaluate((el) => {
+    const nodes = [...el.querySelectorAll<HTMLElement>('*')];
+    const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
+    nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
+  });
+  expect(await page.getByRole('dialog').evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(
+    true,
+  );
+  await page.keyboard.press('Escape');
+  await expect(card).toBeFocused();
+  await page.clock.setFixedTime(new Date('2026-10-13T00:00:00Z'));
+  await card.press('Enter');
+  await expect(guide.locator(':scope > p.day-warning')).toHaveText(preparation.copy.stale[4]);
 });

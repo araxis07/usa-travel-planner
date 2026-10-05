@@ -47,6 +47,13 @@
       "首次赴美行前准备",
       "初めてのアメリカ旅行の準備",
       "첫 미국 여행 준비"
+    ],
+    "intercityTitle": [
+      "Boston → New York → Philadelphia by train",
+      "Boston → New York → Philadelphia ด้วยรถไฟ",
+      "乘火车：Boston → New York → Philadelphia",
+      "鉄道で Boston → New York → Philadelphia",
+      "기차로 Boston → New York → Philadelphia"
     ]
   },
   "parks": [
@@ -638,6 +645,200 @@
       {
         "name": "U.S. Department of State · travel insurance",
         "url": "https://travel.state.gov/en/international-travel/planning/guidance/insurance.html"
+      }
+    ]
+  },
+  "intercity": {
+    "checkedAt": "2026-10-06",
+    "reviewAfter": "2026-10-13",
+    "translationsReviewed": [false, false, false, false, false],
+    "sections": [
+      {
+        "title": [
+          "Choose the exact stations",
+          "เลือกสถานีให้ถูกต้อง",
+          "选择准确车站",
+          "実際の駅を選ぶ",
+          "정확한 역 선택"
+        ],
+        "text": [
+          "Use Amtrak station names and codes: Boston South Station (BOS), New York Moynihan Train Hall at Penn Station (NYP), then Philadelphia William H. Gray III 30th Street Station (PHL). In this guide BOS and PHL identify train stations. Check the full station name on each booking and its entrance before navigating.",
+          "ใช้ชื่อและรหัสสถานี Amtrak: Boston South Station (BOS), New York Moynihan Train Hall at Penn Station (NYP) แล้วไป Philadelphia William H. Gray III 30th Street Station (PHL) รหัส BOS และ PHL ในคู่มือนี้หมายถึงสถานีรถไฟ ตรวจชื่อเต็มในตั๋วแต่ละขากับทางเข้าก่อนเปิดนำทาง",
+          "使用Amtrak车站名称与代码：Boston South Station（BOS）、New York Moynihan Train Hall at Penn Station（NYP）、Philadelphia William H. Gray III 30th Street Station（PHL）。本指南中的BOS与PHL表示火车站。导航前核对每张预订的完整站名与入口。",
+          "Amtrakの駅名・コードで選びます。Boston South Station（BOS）、New York Moynihan Train Hall at Penn Station（NYP）、Philadelphia William H. Gray III 30th Street Station（PHL）。この案内のBOS・PHLは鉄道駅です。各予約の正式駅名と入口を確認してからナビを。",
+          "Amtrak 역 이름과 코드로 고르세요. Boston South Station(BOS), New York Moynihan Train Hall at Penn Station(NYP), Philadelphia William H. Gray III 30th Street Station(PHL)입니다. 이 안내의 BOS와 PHL은 기차역을 뜻합니다. 길찾기 전에 각 예약의 전체 역 이름과 입구를 확인하세요."
+        ]
+      },
+      {
+        "title": [
+          "Search and book both legs",
+          "ค้นหาและจองทั้งสองขา",
+          "查询并预订两段行程",
+          "2区間を検索・予約",
+          "두 구간 검색과 예약"
+        ],
+        "text": [
+          "Search BOS → NYP and NYP → PHL for the actual dates you will move cities. Compare the available Northeast Regional and Acela departures, class, total price and change/refund conditions. If staying in New York, book the two travel dates you need. Save each train number, ticket and reservation reference for offline access.",
+          "ค้นหา BOS → NYP และ NYP → PHL ตามวันที่ย้ายเมืองจริง เปรียบเทียบขบวน Northeast Regional กับ Acela ที่เปิดขาย ชั้นโดยสาร ยอดรวมและเงื่อนไขเปลี่ยนหรือคืนเงิน ถ้าค้างใน New York ให้จองตามวันที่เดินทางสองขาที่ต้องการ เก็บหมายเลขขบวน ตั๋วและเลขจองแต่ละขาเพื่อเปิดออฟไลน์",
+          "按实际换城日期查询BOS → NYP与NYP → PHL，比较可售Northeast Regional和Acela班次、席别、总价及改退条件。若在New York停留，按所需的两次出行日期预订，并保存车次、车票和预订编号以便离线查看。",
+          "移動する日付でBOS → NYPとNYP → PHLを検索。利用可能なNortheast Regional・Acela、クラス、総額、変更・払い戻し条件を比較。New Yorkに泊まるなら必要な2日付で予約し、列車番号・切符・予約番号をオフライン用に保存。",
+          "실제로 도시를 옮기는 날짜에 BOS → NYP와 NYP → PHL을 검색하세요. 판매 중인 Northeast Regional과 Acela 출발편, 좌석 등급, 총액, 변경 및 환불 조건을 비교하세요. 뉴욕에 머문다면 필요한 두 이동 날짜에 예약하고 열차 번호, 티켓, 예약 번호를 오프라인용으로 저장하세요."
+        ]
+      },
+      {
+        "title": [
+          "Boston → New York · departure steps",
+          "Boston → New York · ขั้นตอนออกเดินทาง",
+          "Boston → New York · 出发步骤",
+          "Boston → New York · 出発の手順",
+          "Boston → New York · 출발 단계"
+        ],
+        "text": [
+          "Plan your hotel-to-South Station journey first. Amtrak recommends reaching the station at least 30 minutes before departure, and earlier for busy stations or assistance. Check the departure board and your ticket before boarding for NYP. Keep your New York arrival day flexible for luggage drop-off, a meal and rest.",
+          "วางแผนจากโรงแรมถึง South Station ก่อน Amtrak แนะนำถึงสถานีอย่างน้อย 30 นาทีก่อนออก และเร็วกว่านั้นเมื่อสถานีหนาแน่นหรือต้องการความช่วยเหลือ ตรวจป้ายขบวนกับตั๋วก่อนขึ้นไป NYP เผื่อวันมาถึง New York สำหรับฝากกระเป๋า กินอาหารและพัก",
+          "先规划酒店至South Station的交通。Amtrak建议至少提前30分钟到站，繁忙车站或需要协助时更早。登往NYP的列车前核对出发屏与车票。抵达New York当天留出寄放行李、用餐与休息的余量。",
+          "ホテルからSouth Stationへの移動を先に計画。Amtrakは出発30分以上前の到着、混雑や支援が必要な場合はさらに早めを推奨。発車案内と切符を確認してNYP方面へ。New York到着日は荷物を預け、食事・休憩に余裕を。",
+          "호텔에서 사우스 스테이션까지의 이동을 먼저 계획하세요. Amtrak은 출발 최소 30분 전 도착을 권하며 혼잡하거나 도움이 필요하면 더 일찍 도착하도록 안내합니다. 출발 안내와 티켓을 확인하고 NYP행 열차에 타세요. 뉴욕 도착일은 짐 보관, 식사, 휴식을 위해 유연하게 두세요."
+        ]
+      },
+      {
+        "title": [
+          "New York → Philadelphia · boarding and arrival",
+          "New York → Philadelphia · ขึ้นรถและมาถึง",
+          "New York → Philadelphia · 乘车与抵达",
+          "New York → Philadelphia · 乗車と到着",
+          "New York → Philadelphia · 탑승과 도착"
+        ],
+        "text": [
+          "Return to the NYP station shown on your ticket with the same arrival buffer. Follow the live boarding information at Moynihan/Penn and take your booked train to PHL. At 30th Street Station, confirm the route to your Philadelphia accommodation, its luggage policy and check-in time before adding sightseeing.",
+          "กลับไปสถานี NYP ตามตั๋วพร้อมเวลาเผื่อแบบเดียวกัน ตามข้อมูลขึ้นรถล่าสุดที่ Moynihan/Penn แล้วขึ้นขบวนที่จองไป PHL เมื่อถึง 30th Street Station ตรวจเส้นทางไปที่พัก Philadelphia การรับฝากกระเป๋าและเวลาเช็กอินก่อนเพิ่มเที่ยว",
+          "按车票返回NYP站并保留同样的提前到站时间。遵循Moynihan/Penn实时乘车信息，乘已订列车至PHL。抵达30th Street Station后，先确认到Philadelphia住宿的路线、行李寄存规定与入住时间，再安排观光。",
+          "同じ到着の余裕を取り、切符のNYP駅へ戻ります。Moynihan/Pennの最新の乗車案内に従い、予約列車でPHLへ。30th Street Station到着後は宿への経路、荷物預かり、チェックインを確認してから観光を追加。",
+          "같은 도착 여유 시간을 두고 티켓에 적힌 NYP 역으로 돌아가세요. Moynihan/Penn의 실시간 탑승 안내를 따라 예약한 열차로 PHL에 가세요. 30th Street Station 도착 후 필라델피아 숙소까지의 경로, 짐 보관 규정, 체크인 시간을 확인하고 관광을 추가하세요."
+        ]
+      },
+      {
+        "title": [
+          "Pack for the train you book",
+          "จัดสัมภาระตามขบวนที่จอง",
+          "按所订列车准备行李",
+          "予約する列車に合わせて荷物を準備",
+          "예약한 열차에 맞게 짐 준비"
+        ],
+        "text": [
+          "Amtrak currently lists one personal item and two carry-on bags per passenger; each carry-on can weigh up to 50 lb (23 kg). Check the linked size and weight limits, lift/storage needs and whether your train and both stations offer checked baggage. Keep tickets, medication and overnight essentials easy to reach.",
+          "Amtrak ปัจจุบันระบุของใช้ส่วนตัวหนึ่งชิ้นกับกระเป๋าถือขึ้นรถสองใบต่อคน กระเป๋าถือแต่ละใบหนักได้ไม่เกิน 50 ปอนด์ (23 กก.) ตรวจขนาดและน้ำหนักจากลิงก์ การยกและเก็บกระเป๋า รวมถึงบริการโหลดของขบวนและสถานีทั้งสอง เก็บตั๋ว ยาและของจำเป็นค้างคืนให้หยิบง่าย",
+          "Amtrak目前列明每位乘客可带一件随身小物与两件手提行李，每件手提行李最多50磅（23公斤）。通过链接核对尺寸重量、提放需求，以及列车和两端车站是否提供托运。车票、药品与过夜必需品应便于取用。",
+          "Amtrakの現在の案内は身の回り品1個と手荷物2個、手荷物は1個50ポンド（23kg）まで。リンクで寸法・重量、持ち上げと収納、列車と両駅の預け荷物サービスを確認。切符・薬・宿泊の必需品は取り出しやすく。",
+          "현재 Amtrak 안내는 승객당 개인 물품 1개와 휴대 가방 2개이며 각 휴대 가방은 최대 50파운드(23kg)입니다. 링크에서 크기와 무게, 들어 올리기와 보관, 해당 열차와 양쪽 역의 위탁 수하물 서비스를 확인하세요. 티켓, 약, 숙박 필수품은 꺼내기 쉽게 두세요."
+        ]
+      },
+      {
+        "title": [
+          "Plan the station-to-hotel journey",
+          "วางแผนจากสถานีถึงที่พัก",
+          "规划车站至住宿的交通",
+          "駅から宿への移動を計画",
+          "역에서 숙소까지 이동 계획"
+        ],
+        "text": [
+          "Use MBTA in Boston, MTA in New York and SEPTA in Philadelphia to check the actual local route and payment method. Local tickets are separate from the Amtrak booking. Compare stairs, lifts, walking with luggage and an alternative ride; arrange any assistance directly with the operator before travel.",
+          "ใช้ MBTA ใน Boston, MTA ใน New York และ SEPTA ใน Philadelphia ตรวจเส้นทางท้องถิ่นกับวิธีจ่ายจริง ตั๋วรถท้องถิ่นแยกจากการจอง Amtrak เทียบบันได ลิฟต์ การเดินพร้อมกระเป๋ากับรถทางเลือก และแจ้งความช่วยเหลือกับผู้ให้บริการก่อนเดินทาง",
+          "用Boston的MBTA、New York的MTA、Philadelphia的SEPTA核对实际本地路线与支付方式。本地车票与Amtrak预订分开。比较楼梯、电梯、带行李步行和替代交通，出行前直接向运营方安排所需协助。",
+          "BostonはMBTA、New YorkはMTA、PhiladelphiaはSEPTAで実際の経路と支払いを確認。市内の切符はAmtrakの予約と別です。階段・エレベーター・荷物を持った徒歩・別の交通手段を比較し、必要な支援は事前に運営者へ相談。",
+          "보스턴 MBTA, 뉴욕 MTA, 필라델피아 SEPTA에서 실제 지역 경로와 결제 방법을 확인하세요. 지역 교통 티켓은 Amtrak 예약과 별개입니다. 계단, 엘리베이터, 짐을 들고 걷는 경로와 대체 교통편을 비교하고 필요한 지원을 여행 전에 운영 기관에 요청하세요."
+        ]
+      },
+      {
+        "title": [
+          "Leave room between cities",
+          "เผื่อวันย้ายเมือง",
+          "换城之间保留余量",
+          "都市間の移動日に余白を",
+          "도시 이동 사이 여유 확보"
+        ],
+        "text": [
+          "One editorial nine-day outline: Boston on days 1–3; rail to New York with a light arrival day on day 4; New York on days 5–7; rail to Philadelphia on day 8; a focused Philadelphia visit on day 9. Adjust the stays to your booking times and interests. Check the train’s actual duration and avoid tightly timed onward flights or prepaid activities.",
+          "ตัวอย่างเก้าวันจากผู้จัดทำ: Boston วันที่ 1–3; รถไฟไป New York และวันมาถึงเบา ๆ วันที่ 4; New York วันที่ 5–7; รถไฟไป Philadelphia วันที่ 8; เที่ยว Philadelphia แบบเลือกโซนวันที่ 9 ปรับวันพักตามเวลาจองและความสนใจ ตรวจเวลาขบวนจริงและเผื่อเที่ยวบินต่อหรือกิจกรรมที่จ่ายแล้วให้ยืดหยุ่น",
+          "编辑的九日示例：第1至3天Boston；第4天乘车到New York并轻松安排抵达日；第5至7天New York；第8天乘车到Philadelphia；第9天集中游览Philadelphia。按预订时间和兴趣调整停留，核对实际车程，避免衔接紧迫的航班或预付活动。",
+          "編集部の9日間例：1〜3日目Boston、4日目に鉄道でNew Yorkへ到着して軽めの予定、5〜7日目New York、8日目にPhiladelphiaへ、9日目はPhiladelphiaの一部を巡ります。予約時間と関心に合わせて泊数を調整し、実際の所要時間を確認。後の飛行機や前払い体験は余裕を。",
+          "편집한 9일 예시: 1~3일차 보스턴, 4일차 기차로 뉴욕 이동 후 가벼운 도착 일정, 5~7일차 뉴욕, 8일차 기차로 필라델피아 이동, 9일차 필라델피아 한 구역 방문입니다. 예약 시간과 관심에 맞게 체류를 조정하고 실제 열차 시간을 확인하세요. 이후 항공편이나 선결제 활동에 촉박하게 연결하지 마세요."
+        ]
+      },
+      {
+        "title": [
+          "Budget and check again before departure",
+          "คิดงบและตรวจซ้ำก่อนออกเดินทาง",
+          "预算与出发前复核",
+          "予算と出発前の再確認",
+          "예산과 출발 전 재확인"
+        ],
+        "text": [
+          "No fixed rail fare or journey time is quoted here: use the live booking result for your dates. Record both rail legs separately from the city-only budget examples, plus local transfers, meals and any extra fees without counting them twice. Check service alerts and train status again before each departure; contact Amtrak to review your booking if plans change.",
+          "คู่มือนี้ไม่ระบุราคาหรือเวลาเดินรถตายตัว ให้ใช้ผลจองล่าสุดของวันที่เดินทาง บันทึกรถไฟสองขาแยกจากตัวอย่างงบเที่ยวในเมือง พร้อมรถต่อ อาหารและค่าธรรมเนียมโดยไม่นับซ้ำ ตรวจประกาศบริการกับสถานะขบวนอีกครั้งก่อนแต่ละขา และติดต่อ Amtrak ทบทวนการจองหากแผนเปลี่ยน",
+          "本指南不列固定票价或车程，请以出行日期的实时预订结果为准。两段城际火车另于仅含市内行程的预算示例记录，再计本地交通、餐饮和附加费，避免重复。每次出发前复核公告及车次状态，计划变化时联系Amtrak处理预订。",
+          "運賃や所要時間は固定せず、旅行日の予約結果で確認。2区間の鉄道は市内だけの予算例と別に記録し、市内交通・食事・追加料金を二重計上せず加えます。各出発前に運行告知と列車状況を再確認し、予定変更はAmtrakへ相談。",
+          "고정 철도 요금이나 소요 시간은 제시하지 않으므로 여행 날짜의 실시간 예약 결과를 이용하세요. 두 철도 구간을 도시 내 예산 예시와 별도로 기록하고 지역 이동, 식사, 추가 요금도 중복 없이 계산하세요. 출발 전에 운행 공지와 열차 상태를 다시 확인하고 일정이 바뀌면 Amtrak에 예약 검토를 문의하세요."
+        ]
+      }
+    ],
+    "notice": {
+      "text": [
+        "At the October 6 source check, Amtrak listed reduced New York–Boston weekend service for September 12–November 1, 2026, and Portal North Bridge work affecting Northeast Corridor service October 9–November 15, 2026. Check which trains and dates are affected before booking.",
+        "เมื่อตรวจแหล่งข้อมูลวันที่ 6 ตุลาคม Amtrak ระบุลดบริการสุดสัปดาห์ New York–Boston ช่วง 12 กันยายน–1 พฤศจิกายน 2026 และงาน Portal North Bridge ที่กระทบ Northeast Corridor ช่วง 9 ตุลาคม–15 พฤศจิกายน 2026 ตรวจขบวนกับวันที่ได้รับผลก่อนจอง",
+        "10月6日核对时，Amtrak列明2026年9月12日至11月1日减少New York–Boston周末服务，以及10月9日至11月15日Portal North Bridge施工影响Northeast Corridor服务。预订前确认受影响车次与日期。",
+        "10月6日の確認時、Amtrakは2026年9月12日〜11月1日のNew York–Boston週末便減便と、10月9日〜11月15日のPortal North Bridge工事によるNortheast Corridorへの影響を掲載。予約前に対象列車と日付を確認。",
+        "10월 6일 출처 확인 시 Amtrak은 2026년 9월 12일~11월 1일 뉴욕–보스턴 주말 감편과 10월 9일~11월 15일 Portal North Bridge 공사로 인한 Northeast Corridor 영향을 안내했습니다. 예약 전에 해당 열차와 날짜를 확인하세요."
+      ],
+      "source": {
+        "name": "Amtrak · service alerts",
+        "url": "https://www.amtrak.com/service-alerts-and-notices"
+      }
+    },
+    "sources": [
+      {
+        "name": "Amtrak · Northeast Regional and booking",
+        "url": "https://www.amtrak.com/northeast-regional-train"
+      },
+      {
+        "name": "Amtrak · Boston South Station (BOS)",
+        "url": "https://www.amtrak.com/stations/bos"
+      },
+      {
+        "name": "Amtrak · New York Moynihan/Penn (NYP)",
+        "url": "https://www.amtrak.com/stations/nyp"
+      },
+      {
+        "name": "Amtrak · Philadelphia 30th Street (PHL)",
+        "url": "https://www.amtrak.com/stations/phl"
+      },
+      {
+        "name": "Amtrak · arrival and boarding",
+        "url": "https://www.amtrak.com/at-the-station"
+      },
+      {
+        "name": "Amtrak · carry-on baggage",
+        "url": "https://www.amtrak.com/carry-on-baggage"
+      },
+      {
+        "name": "Amtrak · changes and refunds",
+        "url": "https://www.amtrak.com/changes-refunds"
+      },
+      {
+        "name": "Amtrak · train status",
+        "url": "https://www.amtrak.com/track-your-train.html"
+      },
+      {
+        "name": "MBTA · trip planner",
+        "url": "https://www.mbta.com/trip-planner"
+      },
+      {
+        "name": "MTA · subway rider guide",
+        "url": "https://www.mta.info/guides/riding-the-subway"
+      },
+      {
+        "name": "SEPTA · trip planning",
+        "url": "https://www.septa.org/"
       }
     ]
   }
