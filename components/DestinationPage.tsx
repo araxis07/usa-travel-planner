@@ -282,6 +282,7 @@ export default function DestinationPage({
             <a href="#guide-city">{cityCopy.days[languageIndex(lang)]}</a>
             <a href="#guide-airport">{cityCopy.airport[languageIndex(lang)]}</a>
             <a href="#guide-city-budget">{cityCopy.budget[languageIndex(lang)]}</a>
+            {'food' in cityGuide && <a href="#guide-food">{cityCopy.food[languageIndex(lang)]}</a>}
           </>
         )}
         <a href="#guide-photos">{x(lang, 'photos')}</a>

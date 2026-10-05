@@ -183,6 +183,8 @@ test('city guides localize neighborhood links, airport steps and complete group 
     { path: 'new-york/new-york-city', totals: [850, 1440, 2310] },
     { path: 'california/san-francisco', totals: [800, 1340, 2170] },
     { path: 'nevada/las-vegas', totals: [560, 1010, 1920] },
+    { path: 'massachusetts/boston', totals: [730, 1270, 2050] },
+    { path: 'illinois/chicago', totals: [620, 1140, 1920] },
   ];
   for (const [city, info] of cities.entries()) {
     const guide = cityContent.guides[city];
@@ -196,10 +198,13 @@ test('city guides localize neighborhood links, airport steps and complete group 
       await expect(area).toContainText(guide.areas[0].text[l]);
       const url = new URL((await area.locator('a').first().getAttribute('href'))!);
       expect(url.searchParams.get('query')).toBe(guide.areas[0].mapQuery);
-      for (const [i, day] of guide.days.entries()) {
+      for (let i = 0; i < guide.days.length; i++) {
+        const day = guide.days[i];
         const item = section.locator('.city-day').nth(i);
         if (i) await item.locator('summary').press('Enter');
         await expect(item).toContainText(day.alternative[l]);
+        if ('source' in day)
+          await expect(item.locator('a')).toHaveAttribute('href', day.source.url);
       }
       await page.locator('.guide-toc a[href="#guide-airport"]').click();
       await expect(section.locator('.city-airport-steps li')).toHaveCount(3);
@@ -240,11 +245,83 @@ test('city guides localize neighborhood links, airport steps and complete group 
       );
     }
   }
-  await page.clock.setFixedTime(new Date('2026-10-12T00:00:00Z'));
+  await page.clock.setFixedTime(new Date('2026-10-14T00:00:00Z'));
   await page.reload();
   await expect(page.locator('#guide-airport .day-warning')).toHaveText(cityContent.copy.stale[4]);
   await page.goto('/en/states/nevada/valley-of-fire-state-park/');
   await expect(page.locator('#guide-city')).toHaveCount(0);
+});
+test('food stops follow each day with localized allowances, sources and independent review dates', async ({
+  page,
+}) => {
+  test.setTimeout(90000);
+  await page.clock.setFixedTime(new Date('2026-10-06T03:00:00Z'));
+  await page.setViewportSize({ width: 320, height: 740 });
+  const paths = ['new-york/new-york-city', 'california/san-francisco', 'nevada/las-vegas'];
+  for (const [city, path] of paths.entries()) {
+    const guide = cityContent.guides[city];
+    const food = 'food' in guide ? guide.food! : undefined;
+    expect(food).toBeTruthy();
+    for (const [l, lang] of LANGUAGES.entries()) {
+      await page.goto(`/${lang}/states/${path}/`);
+      await page.locator('.guide-toc a[href="#guide-food"]').click();
+      const section = page.locator('#guide-food');
+      await expect(section.getByRole('heading')).toHaveText(cityContent.copy.food[l]);
+      await expect(section).toContainText(food!.intro[l]);
+      await expect(section).toContainText(cityContent.copy.foodAssumptions[l]);
+      await expect(section).toContainText(food!.vegetarian[l]);
+      await expect(section.locator('time').first()).toHaveAttribute('datetime', '2026-10-06');
+      await expect(section.locator('time').last()).toHaveAttribute('datetime', '2026-10-13');
+      await expect(page.locator('#guide-airport time').first()).toHaveAttribute(
+        'datetime',
+        '2026-10-04',
+      );
+      await expect(section.locator('.day-warning')).toHaveCount(0);
+      await expect(section.locator('details')).toHaveCount(3);
+      for (const [i, stop] of food!.stops.entries()) {
+        const item = section.locator('details').nth(i);
+        if (i) await item.locator('summary').press('Enter');
+        await expect(item).toHaveAttribute('open', '');
+        await expect(item.locator('summary')).toHaveText(
+          cityContent.copy.day[l].replace('{day}', String(i + 1)) + ' · ' + stop.title[l],
+        );
+        await expect(item).toContainText(stop.text[l]);
+        const money = (n: number) =>
+          new Intl.NumberFormat(LOCALES[lang], { style: 'currency', currency: 'USD' }).format(n);
+        await expect(item.locator('.city-meal-allowance')).toHaveText(
+          `${cityContent.copy.mealAllowance[l]}: ${money(stop.allowance[0])}–${money(stop.allowance[1])}`,
+        );
+        const url = new URL((await item.locator('a').first().getAttribute('href'))!);
+        expect(url.searchParams.get('query')).toBe(stop.mapQuery);
+        await expect(item.locator('a').last()).toHaveAttribute('href', stop.source.url);
+        await expect(item.locator('a').last()).toHaveAttribute('rel', 'noreferrer');
+      }
+      if (lang === 'en') {
+        const audit = await new AxeBuilder({ page })
+          .include('#guide-food')
+          .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+          .analyze();
+        expect(audit.violations).toEqual([]);
+      }
+      await section.evaluate((el) => {
+        const nodes = [...el.querySelectorAll('*')].filter(
+          (node): node is HTMLElement => node instanceof HTMLElement,
+        );
+        const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
+        nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
+      });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    }
+  }
+  await page.clock.setFixedTime(new Date('2026-10-13T00:00:00Z'));
+  await page.reload();
+  await expect(page.locator('#guide-food .day-warning')).toHaveText(cityContent.copy.foodStale[4]);
+  await page.goto('/en/states/massachusetts/boston/');
+  await expect(page.locator('#guide-city')).toBeVisible();
+  await expect(page.locator('#guide-food')).toHaveCount(0);
+  await expect(page.locator('.guide-toc a[href="#guide-food"]')).toHaveCount(0);
 });
 test('all fifty states load real covers and every language keeps the atlas available', async ({
   page,

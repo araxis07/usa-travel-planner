@@ -73,7 +73,7 @@ function renderCityGuide(guide, l) {
   const days = guide.days
     .map(
       (day, i) =>
-        `<details class="guide-details"${i === 0 ? ' open' : ''}><summary>${text(copy.day).replace('{day}', String(i + 1))} · ${text(day.title)}</summary><p>${text(day.text)}</p><p><strong>${text(copy.alternative)}: </strong>${text(day.alternative)}</p></details>`,
+        `<details class="guide-details"${i === 0 ? ' open' : ''}><summary>${text(copy.day).replace('{day}', String(i + 1))} · ${text(day.title)}</summary><p>${text(day.text)}</p><p><strong>${text(copy.alternative)}: </strong>${text(day.alternative)}</p>${day.source ? sourceLinks([day.source]) : ''}</details>`,
     )
     .join('');
   const budgets = copy.tiers
@@ -82,7 +82,11 @@ function renderCityGuide(guide, l) {
       return `<details class="guide-details city-budget"><summary>${text(tier)} · ${money(total)}</summary><dl>${copy.rows.map((label, row) => `<div><dt>${text(label)}</dt><dd>${money(guide.budget.amounts[row][i])}</dd></div>`).join('')}<div><dt>${text(copy.total)}</dt><dd>${money(total)}</dd></div><div><dt>${text(copy.perPerson)}</dt><dd>${money(total / 2)}</dd></div></dl></details>`;
     })
     .join('');
-  return `<section class="city-guide" id="guide-city"><h2>${text(copy.title)}</h2><p>${text(guide.intro)}</p><h3>${text(copy.areas)}</h3>${areas}<h3>${text(copy.days)}</h3><p>${text(copy.pace)}</p>${days}<section id="guide-airport"><h3>${text(copy.airport)} · ${guide.airport.code}</h3><ol>${guide.airport.steps.map((step) => `<li>${text(step)}</li>`).join('')}</ol><p><strong>${text(copy.fares)}: </strong>${text(guide.airport.fare)}</p><p>${text(guide.airport.note)}</p>${sourceLinks(guide.airport.sources)}<p>${text(copy.checked)} · <time datetime="${guide.checkedAt}">${guide.checkedAt}</time> · ${text(copy.review)} · <time datetime="${guide.reviewAfter}">${guide.reviewAfter}</time></p></section><section id="guide-city-budget"><h3>${text(copy.budget)}</h3><p>${text(copy.assumptions)}</p>${budgets}<p>${text(guide.budget.note)}</p></section></section>`;
+  const food = guide.food;
+  const meals = food
+    ? `<section id="guide-food"><h3>${text(copy.food)}</h3><p>${text(food.intro)}</p><p>${text(copy.foodAssumptions)}</p><p><strong>${text(copy.vegetarian)}: </strong>${text(food.vegetarian)}</p>${food.stops.map((stop, i) => `<details class="guide-details city-food-stop"${i === 0 ? ' open' : ''}><summary>${text(copy.day).replace('{day}', String(stop.day))} · ${text(stop.title)}</summary><p>${text(stop.text)}</p><p class="city-meal-allowance"><strong>${text(copy.mealAllowance)}: </strong>${money(stop.allowance[0])}–${money(stop.allowance[1])}</p><a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(stop.mapQuery)}">${text(copy.map)}</a> · ${sourceLinks([stop.source])}</details>`).join('')}<p>${text(copy.checked)} · <time datetime="${food.checkedAt}">${food.checkedAt}</time> · ${text(copy.review)} · <time datetime="${food.reviewAfter}">${food.reviewAfter}</time></p>${Date.now() >= Date.parse(food.reviewAfter + 'T00:00:00Z') ? `<p class="day-warning">${text(copy.foodStale)}</p>` : ''}</section>`
+    : '';
+  return `<section class="city-guide" id="guide-city"><h2>${text(copy.title)}</h2><p>${text(guide.intro)}</p><h3>${text(copy.areas)}</h3>${areas}<h3>${text(copy.days)}</h3><p>${text(copy.pace)}</p>${days}<section id="guide-airport"><h3>${text(copy.airport)} · ${guide.airport.code}</h3><ol>${guide.airport.steps.map((step) => `<li>${text(step)}</li>`).join('')}</ol><p><strong>${text(copy.fares)}: </strong>${text(guide.airport.fare)}</p><p>${text(guide.airport.note)}</p>${sourceLinks(guide.airport.sources)}<p>${text(copy.checked)} · <time datetime="${guide.checkedAt}">${guide.checkedAt}</time> · ${text(copy.review)} · <time datetime="${guide.reviewAfter}">${guide.reviewAfter}</time></p></section><section id="guide-city-budget"><h3>${text(copy.budget)}</h3><p>${text(copy.assumptions)}</p>${budgets}<p>${text(guide.budget.note)}</p></section>${meals}</section>`;
 }
 function render(lang, state, index) {
   const l = langs.indexOf(lang),
@@ -170,7 +174,7 @@ function render(lang, state, index) {
     path,
     html,
     lastmod:
-      cityGuide?.checkedAt ||
+      (cityGuide && [cityGuide.checkedAt, cityGuide.food?.checkedAt || ''].sort().at(-1)) ||
       parkBooking?.checkedAt ||
       profile?.reviewedAt ||
       state?.updatedAt ||

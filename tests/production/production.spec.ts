@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { EMPTY_TRIP, STATES, type Trip } from '../../data/travel';
-import { LANGUAGES } from '../../lib/i18n';
+import { LANGUAGES, LOCALES } from '../../lib/i18n';
 import catalog from '../../content/states.json' with { type: 'json' };
 import cityContent from '../../content/city-guides.json' with { type: 'json' };
 import preparation from '../../content/travel-preparation.json' with { type: 'json' };
@@ -217,6 +217,8 @@ test('city plans, airport sources and budget breakdowns are published in all lan
     'new-york/new-york-city',
     'california/san-francisco',
     'nevada/las-vegas',
+    'massachusetts/boston',
+    'illinois/chicago',
   ].entries()) {
     const guide = cityContent.guides[city];
     for (const [l, lang] of LANGUAGES.entries()) {
@@ -236,8 +238,35 @@ test('city plans, airport sources and budget breakdowns are published in all lan
       await expect(page.locator('#guide-city-budget')).toContainText(
         cityContent.copy.assumptions[l],
       );
+      if ('food' in guide) {
+        const food = guide.food!;
+        await expect(page.locator('#guide-food')).toContainText(food.vegetarian[l]);
+        await expect(page.locator('#guide-food')).toContainText(
+          cityContent.copy.foodAssumptions[l],
+        );
+        await expect(page.locator('#guide-food time').first()).toHaveAttribute(
+          'datetime',
+          food.checkedAt,
+        );
+        await expect(page.locator('#guide-food details')).toHaveCount(3);
+        for (const [i, stop] of food.stops.entries()) {
+          const item = page.locator('#guide-food details').nth(i);
+          if (i) await item.locator('summary').press('Enter');
+          await expect(item).toContainText(stop.text[l]);
+          await expect(item.locator('a').last()).toHaveAttribute('href', stop.source.url);
+          const money = (n: number) =>
+            new Intl.NumberFormat(LOCALES[lang], { style: 'currency', currency: 'USD' }).format(n);
+          await expect(item.locator('.city-meal-allowance')).toHaveText(
+            `${cityContent.copy.mealAllowance[l]}: ${money(stop.allowance[0])}–${money(stop.allowance[1])}`,
+          );
+        }
+      } else await expect(page.locator('#guide-food')).toHaveCount(0);
     }
   }
+  const sitemap = await (await page.request.get('http://127.0.0.1:5198/sitemap.xml')).text();
+  expect(sitemap).toContain(
+    '<loc>https://roam.example/en/states/new-york/new-york-city/</loc><lastmod>2026-10-06</lastmod>',
+  );
   await context.close();
 });
 
@@ -349,6 +378,12 @@ test('saved itinerary and all selected state photos reopen offline; print covers
   await expect(page.locator('#guide-airport')).toContainText(cityContent.guides[1].airport.fare[1]);
   await page.locator('.city-budget summary').first().click();
   await expect(page.locator('.city-budget-total dd').first()).toContainText('800.00');
+  await page.locator('.guide-toc a[href="#guide-food"]').click();
+  await expect(page.locator('#guide-food')).toContainText(cityContent.copy.foodAssumptions[1]);
+  await page.locator('#guide-food details').last().locator('summary').press('Enter');
+  await expect(page.locator('#guide-food details').last()).toContainText(
+    cityContent.guides[1].food!.stops[2].text[1],
+  );
   await page.goto('/th/');
   await page.locator('.guide-card').first().click();
   await expect(page.locator('.guide-detail section')).toHaveCount(9);

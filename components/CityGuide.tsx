@@ -12,6 +12,7 @@ export default function CityGuide({
   lang: Language;
 }) {
   const l = languageIndex(lang);
+  const food = 'food' in guide ? guide.food : undefined;
   const money = (amount: number) =>
     new Intl.NumberFormat(LOCALES[lang], { style: 'currency', currency: 'USD' }).format(amount);
   const map = (query: string) =>
@@ -47,6 +48,13 @@ export default function CityGuide({
             <strong>{cityCopy.alternative[l]}: </strong>
             {day.alternative[l]}
           </p>
+          {'source' in day && (
+            <div className="city-guide-links">
+              <a href={day.source.url} target="_blank" rel="noreferrer">
+                {day.source.name}
+              </a>
+            </div>
+          )}
         </details>
       ))}
       <section id="guide-airport" aria-labelledby="city-airport-title">
@@ -110,6 +118,45 @@ export default function CityGuide({
         })}
         <p>{guide.budget.note[l]}</p>
       </section>
+      {food && (
+        <section id="guide-food" aria-labelledby="city-food-title">
+          <h3 id="city-food-title">{cityCopy.food[l]}</h3>
+          <p>{food.intro[l]}</p>
+          <p>{cityCopy.foodAssumptions[l]}</p>
+          <p>
+            <strong>{cityCopy.vegetarian[l]}: </strong>
+            {food.vegetarian[l]}
+          </p>
+          {food.stops.map((stop, index) => (
+            <details className="guide-details city-food-stop" key={stop.day} open={index === 0}>
+              <summary>
+                {cityCopy.day[l].replace('{day}', String(stop.day))} · {stop.title[l]}
+              </summary>
+              <p>{stop.text[l]}</p>
+              <p className="city-meal-allowance">
+                <strong>{cityCopy.mealAllowance[l]}: </strong>
+                {money(stop.allowance[0])}–{money(stop.allowance[1])}
+              </p>
+              <div className="city-guide-links">
+                <a href={map(stop.mapQuery)} target="_blank" rel="noreferrer">
+                  {cityCopy.map[l]} · {stop.title[l]}
+                </a>
+                <a href={stop.source.url} target="_blank" rel="noreferrer">
+                  {stop.source.name}
+                </a>
+              </div>
+            </details>
+          ))}
+          <p className="content-date">
+            {cityCopy.checked[l]} · <time dateTime={food.checkedAt}>{food.checkedAt}</time>
+            {' · '}
+            {cityCopy.review[l]} · <time dateTime={food.reviewAfter}>{food.reviewAfter}</time>
+          </p>
+          {Date.now() >= Date.parse(food.reviewAfter + 'T00:00:00Z') && (
+            <p className="day-warning">{cityCopy.foodStale[l]}</p>
+          )}
+        </section>
+      )}
     </section>
   );
 }

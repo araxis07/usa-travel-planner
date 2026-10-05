@@ -130,7 +130,42 @@
       "このガイドは再確認の時期です。出発前に公式の運賃と経路を確認してください。",
       "이 안내서는 검토 시기가 되었습니다. 여행 전 공식 운영 기관에서 요금과 경로를 확인하세요."
     ],
-    "duration": ["1–3 days", "1–3 วัน", "1至3天", "1〜3日", "1~3일"]
+    "duration": ["1–3 days", "1–3 วัน", "1至3天", "1〜3日", "1~3일"],
+    "food": [
+      "Food along your route",
+      "แวะกินตามเส้นทางเที่ยว",
+      "沿途美食",
+      "旅の途中で食事を",
+      "여행 동선 속 먹거리"
+    ],
+    "mealAllowance": [
+      "Planning allowance · per adult, per meal",
+      "เงินเผื่อต่อมื้อ · ต่อผู้ใหญ่หนึ่งคน",
+      "规划额度 · 每位成人每餐",
+      "予算枠 · 大人1人・1食",
+      "계획 예산 · 성인 1명, 한 끼"
+    ],
+    "foodAssumptions": [
+      "These are editorial allowances for a casual meal, not restaurant prices. Add drinks, tax and any tip; check current menus, hours and dietary options. Count each meal within the food row above, rather than adding it twice. Maps searches show dining areas, not confirmed restaurant entrances.",
+      "ตัวเลขเป็นเงินเผื่อมื้อทั่วไปจากผู้จัดทำ ไม่ใช่ราคาของร้าน เผื่อเครื่องดื่ม ภาษีและทิป พร้อมตรวจเมนู เวลาเปิดและตัวเลือกอาหารปัจจุบัน นับมื้อนี้ในงบอาหารด้านบนเพื่อไม่ให้บวกซ้ำ Maps แสดงย่านกินอาหาร ไม่ใช่ทางเข้าร้านที่ยืนยันแล้ว",
+      "数字为编辑设定的普通用餐额度，并非餐厅价格。另计饮料、税费及小费，并核对最新菜单、营业时间和饮食选项。每餐计入上方餐饮预算，避免重复相加。地图搜索显示餐饮街区，并非已确认的餐厅入口。",
+      "金額は気軽な食事の編集部の予算枠で、店の価格ではありません。飲み物・税金・チップを加え、最新のメニュー・営業時間・食事の選択肢を確認。上の食費に含め、二重に加算しないでください。地図検索は飲食エリアで、確認済みの店の入口ではありません。",
+      "금액은 간단한 식사를 위한 편집 예산이며 식당 가격이 아닙니다. 음료와 세금, 팁을 더하고 최신 메뉴와 운영 시간, 식단 선택지를 확인하세요. 위의 식비 항목에 포함해 중복 계산하지 마세요. 지도 검색은 식당 입구가 아닌 식사 지역을 보여 줍니다."
+    ],
+    "vegetarian": [
+      "Vegetarian choices",
+      "ตัวเลือกมังสวิรัติ",
+      "素食选择",
+      "ベジタリアンの選択肢",
+      "채식 선택지"
+    ],
+    "foodStale": [
+      "Food information is due for review. Confirm menus and opening hours with the venue before visiting.",
+      "ข้อมูลอาหารถึงกำหนดตรวจทานแล้ว ตรวจเมนูและเวลาเปิดกับร้านก่อนแวะ",
+      "餐饮信息已到复核日期。前往前请向店家确认菜单与营业时间。",
+      "食事情報は再確認の時期です。訪問前に店のメニューと営業時間を確認してください。",
+      "음식 정보의 검토 시기가 되었습니다. 방문 전 식당에서 메뉴와 운영 시간을 확인하세요."
+    ]
   },
   "guides": [
     {
@@ -343,6 +378,96 @@
           "节约型交通额度覆盖四次独立JFK—地铁单程（按所列票价共47美元）并留出市内交通。其他档次增加交通额度；请核对实际票价与团体优惠。住宿和餐饮为编辑预算。",
           "節約案の交通費はJFKと地下鉄の個別片道4回分（記載運賃で計47ドル）と市内移動を想定。上位案は追加交通費を確保。実際の運賃・グループ割引を確認してください。宿泊と食事は編集部の予算枠です。",
           "절약형 교통비는 JFK와 지하철의 개별 편도 4회(표시 요금 기준 총 $47)와 시내 이동을 고려합니다. 다른 유형은 교통비를 더 배정하며 실제 요금과 단체 할인을 확인하세요. 숙박과 식사는 편집 예산입니다."
+        ]
+      },
+      "food": {
+        "checkedAt": "2026-10-06",
+        "reviewAfter": "2026-10-13",
+        "translationsReviewed": [false, false, false, false, false],
+        "intro": [
+          "Try a New York bagel, a quick Downtown lunch and Brooklyn pizza on the same neighborhoods as your three-day plan. Choose one meal stop each day and leave time for queues.",
+          "ลองเบเกิลนิวยอร์ก มื้อกลางวันดาวน์ทาวน์ และพิซซ่าบรูคลินในย่านเดียวกับแผนสามวัน เลือกวันละหนึ่งจุดและเผื่อเวลาต่อคิว",
+          "在三日行程的同一街区尝试纽约贝果、市中心简餐与布鲁克林披萨。每天选一处，并留出排队时间。",
+          "3日間のプランと同じエリアでニューヨークのベーグル、ダウンタウンのランチ、ブルックリンのピザを。1日1か所を選び、行列の時間も確保。",
+          "3일 일정과 같은 지역에서 뉴욕 베이글, 다운타운의 간단한 점심, 브루클린 피자를 맛보세요. 하루 한 곳을 고르고 대기 시간을 확보하세요."
+        ],
+        "vegetarian": [
+          "Ask for vegetable fillings, a cheese pizza or a meat-free sandwich. Vegetarian does not automatically mean vegan: check dairy, eggs and preparation with staff, especially if you have allergies.",
+          "ถามหาไส้ผัก พิซซ่าชีส หรือแซนด์วิชไม่ใส่เนื้อ มังสวิรัติไม่ได้แปลว่าวีแกนเสมอ ตรวจนม ไข่และวิธีทำกับพนักงาน โดยเฉพาะผู้มีอาการแพ้",
+          "可询问蔬菜馅、芝士披萨或无肉三明治。素食不一定是纯素；请向员工确认乳制品、鸡蛋及制作方式，尤其有过敏情况时。",
+          "野菜の具、チーズピザ、肉なしのサンドイッチを相談。ベジタリアンでもヴィーガンとは限りません。乳製品・卵・調理方法はスタッフに、特にアレルギーがある場合は確認を。",
+          "채소 속재료, 치즈 피자, 고기 없는 샌드위치를 문의하세요. 채식이 반드시 비건은 아니므로 유제품과 달걀, 조리 방법을 직원에게 확인하세요. 알레르기가 있다면 특히 확인하세요."
+        ],
+        "stops": [
+          {
+            "day": 1,
+            "title": [
+              "Midtown · bagel break",
+              "มิดทาวน์ · พักกินเบเกิล",
+              "Midtown · 贝果休息",
+              "ミッドタウン · ベーグル休憩",
+              "미드타운 · 베이글 한 끼"
+            ],
+            "text": [
+              "Fit a bagel or deli sandwich into your Midtown day before the next sight. Ess-a-Bagel lists Midtown menus; choose a branch along your route. Ask about vegetable spreads and avoid planning a long cross-city detour for breakfast.",
+              "แวะเบเกิลหรือแซนด์วิชเดลีระหว่างเที่ยวมิดทาวน์ Ess-a-Bagel มีเมนูสาขามิดทาวน์ให้ตรวจ เลือกสาขาตามทาง ถามสเปรดผัก และไม่ต้องอ้อมข้ามเมืองเพื่อมื้อเช้า",
+              "在Midtown行程中安排贝果或熟食三明治。Ess-a-Bagel提供Midtown菜单，可按路线选分店并询问蔬菜抹酱，不必为早餐绕行全城。",
+              "ミッドタウンの観光の合間にベーグルやデリのサンドイッチを。Ess-a-Bagelのメニューで経路に合う支店を選び、野菜のスプレッドを相談。朝食のための遠回りは省きます。",
+              "미드타운 관광 중 베이글이나 델리 샌드위치를 드세요. Ess-a-Bagel의 미드타운 메뉴를 확인해 동선에 맞는 지점을 고르고 채소 스프레드를 문의하세요. 아침 식사를 위해 도시를 가로질러 이동하지 않아도 됩니다."
+            ],
+            "allowance": [12, 25],
+            "mapQuery": "Midtown Manhattan New York bagels",
+            "source": {
+              "name": "Ess-a-Bagel · menus",
+              "url": "https://www.ess-a-bagel.com/menus/"
+            }
+          },
+          {
+            "day": 2,
+            "title": [
+              "Lower Manhattan · quick lunch",
+              "โลเวอร์แมนฮัตตัน · มื้อกลางวันง่าย ๆ",
+              "Lower Manhattan · 简便午餐",
+              "ロウアー・マンハッタン · 手軽なランチ",
+              "로어 맨해튼 · 간단한 점심"
+            ],
+            "text": [
+              "Choose a deli sandwich, salad or vegetable bowl near your Financial District and waterfront stops. The Downtown Alliance dining directory helps compare nearby options. Eat before a booked ferry visit and check its boarding time separately.",
+              "เลือกแซนด์วิชเดลี สลัดหรือข้าวหน้าผักใกล้จุดเที่ยวไฟแนนเชียลดิสทริกต์และริมน้ำ ใช้สารบัญร้านของ Downtown Alliance เปรียบเทียบร้านใกล้ทาง กินก่อนเที่ยวเรือที่จองไว้และตรวจเวลาขึ้นเรือแยกกัน",
+              "在金融区与滨水行程附近选熟食三明治、沙拉或蔬菜饭碗。Downtown Alliance餐饮目录可比较附近选择；预约乘船前先用餐，并单独确认登船时间。",
+              "金融街や水辺の立ち寄り先の近くでデリのサンドイッチ、サラダ、野菜のボウルを。Downtown Allianceの飲食案内で比較し、予約した船の前に食事を。乗船時間は別に確認。",
+              "금융지구와 강변 방문지 근처에서 델리 샌드위치, 샐러드, 채소 덮밥을 고르세요. Downtown Alliance 식당 안내에서 가까운 선택지를 비교하세요. 예약한 배를 타기 전에 식사하고 승선 시간은 별도로 확인하세요."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "Financial District Manhattan New York lunch",
+            "source": {
+              "name": "Downtown Alliance · food and drink",
+              "url": "https://downtownny.com/explore/things-to-do/food-drink/"
+            }
+          },
+          {
+            "day": 3,
+            "title": [
+              "DUMBO · Brooklyn pizza",
+              "ดัมโบ · พิซซ่าบรูคลิน",
+              "DUMBO · 布鲁克林披萨",
+              "DUMBO · ブルックリンのピザ",
+              "덤보 · 브루클린 피자"
+            ],
+            "text": [
+              "Take a pizza break near Old Fulton Street on your Brooklyn waterfront day; Juliana’s is one nearby example. Share a whole pie if that suits your group, ask about cheese or vegetable toppings and keep a backup if the queue is long.",
+              "พักกินพิซซ่าแถว Old Fulton Street ระหว่างเที่ยวริมน้ำบรูคลิน Juliana’s เป็นตัวอย่างร้านใกล้ย่านนี้ แบ่งพิซซ่าทั้งถาดถ้าเหมาะกับกลุ่ม ถามหน้าชีสหรือผักและเผื่อร้านสำรองถ้าคิวยาว",
+              "布鲁克林滨水行程可在Old Fulton街附近吃披萨，Juliana’s是附近一例。按人数共享整张披萨，询问芝士或蔬菜配料，排队较长时换备用店。",
+              "ブルックリンの水辺を巡る日にOld Fulton Street付近でピザ休憩。Juliana’sは近くの一例です。人数に応じてシェアし、チーズや野菜の具を相談。行列が長い場合の代案も用意。",
+              "브루클린 강변 일정 중 Old Fulton Street 근처에서 피자로 쉬어 가세요. Juliana’s가 가까운 예입니다. 일행에 맞게 한 판을 나누고 치즈나 채소 토핑을 문의하세요. 줄이 길면 다른 식당을 이용하세요."
+            ],
+            "allowance": [18, 35],
+            "mapQuery": "Old Fulton Street Brooklyn New York pizza",
+            "source": {
+              "name": "Juliana’s Pizza · official venue",
+              "url": "https://www.julianaspizza.com/"
+            }
+          }
         ]
       }
     },
@@ -567,6 +692,96 @@
           "節約案はMuniと空港往復のBARTを想定。目的駅の運賃を確認してください。ケーブルカー・フェリー・追加タクシーで交通費は変わります。宿泊と食事は編集部の予算枠です。",
           "절약형은 Muni와 공항 왕복 BART 이용을 가정합니다. 목적역의 BART 요금을 확인하세요. 케이블카, 페리, 추가 택시로 교통비가 달라질 수 있습니다. 숙박과 식사는 편집 예산입니다."
         ]
+      },
+      "food": {
+        "checkedAt": "2026-10-06",
+        "reviewAfter": "2026-10-13",
+        "translationsReviewed": [false, false, false, false, false],
+        "intro": [
+          "Follow the waterfront market, Chinatown and the eastern side of Golden Gate Park for three different food stops. These choices fit the day plans above without adding a separate neighborhood transfer.",
+          "ตามเส้นทางตลาดริมน้ำ ไชน่าทาวน์ และฝั่งตะวันออกของ Golden Gate Park เพื่อแวะกินสามแบบ จุดเหล่านี้เข้ากับแผนด้านบนโดยไม่ต้องเพิ่มการเดินทางไปอีกย่าน",
+          "沿滨水市场、唐人街与金门公园东侧安排三种用餐体验，与上方日程衔接，无须另加跨街区交通。",
+          "水辺の市場、チャイナタウン、ゴールデン・ゲート・パーク東側で3種類の食事を。上のプランに合わせ、別エリアへの移動を増やしません。",
+          "해변 시장, 차이나타운, 골든 게이트 파크 동쪽에서 서로 다른 세 끼를 계획하세요. 위의 일정과 맞아 별도 지역 이동을 추가하지 않아도 됩니다."
+        ],
+        "vegetarian": [
+          "Look for vegetable sandwiches, tofu dishes or a bakery’s meat-free pizza. Check stocks, sauces, dairy and eggs with staff; a vegetable dish or shared kitchen is not a guarantee of vegan or allergy-safe preparation.",
+          "มองหาแซนด์วิชผัก เมนูเต้าหู้หรือพิซซ่าไม่ใส่เนื้อจากเบเกอรี ถามน้ำซุป ซอส นมและไข่กับพนักงาน เมนูผักหรือครัวร่วมไม่ได้รับประกันว่าวีแกนหรือปลอดสารที่แพ้",
+          "可选择蔬菜三明治、豆腐菜或烘焙店的无肉披萨。向员工确认高汤、酱料、乳制品和鸡蛋；蔬菜菜品或共用厨房并不保证纯素或过敏安全。",
+          "野菜サンドイッチ、豆腐料理、ベーカリーの肉なしピザなどを検討。だし・ソース・乳製品・卵はスタッフに確認。野菜料理や共用厨房でもヴィーガン・アレルギー対応の保証はありません。",
+          "채소 샌드위치, 두부 요리, 베이커리의 고기 없는 피자를 찾아보세요. 육수와 소스, 유제품, 달걀은 직원에게 확인하세요. 채소 요리나 공용 주방이 비건 또는 알레르기 안전을 보장하지는 않습니다."
+        ],
+        "stops": [
+          {
+            "day": 1,
+            "title": [
+              "Ferry Building · market lunch",
+              "Ferry Building · มื้อกลางวันในตลาด",
+              "Ferry Building · 市场午餐",
+              "フェリー・ビルディング · 市場のランチ",
+              "페리 빌딩 · 시장 점심"
+            ],
+            "text": [
+              "Browse the Ferry Building’s bread, pastries and food counters between waterfront stops. Try a sourdough sandwich or seasonal vegetable lunch and check each merchant’s hours; the farmers market does not run every day.",
+              "ดูขนมปัง ขนมอบและร้านอาหารใน Ferry Building ระหว่างเที่ยวริมน้ำ ลองแซนด์วิชซาวร์โดหรือมื้อผักตามฤดูกาล ตรวจเวลาของแต่ละร้าน ตลาดเกษตรกรไม่ได้มีทุกวัน",
+              "滨水行程中可逛Ferry Building的面包、糕点与餐饮柜台，尝试酸种三明治或时令蔬菜午餐。核对各商家时间；农夫市场并非每天举行。",
+              "水辺の散策の合間にフェリー・ビルディングのパン、焼き菓子、食事の店を。サワードウのサンドイッチや季節の野菜ランチを検討。各店の時間を確認し、農産物市場は毎日ではない点に注意。",
+              "해변 일정 중 페리 빌딩의 빵, 페이스트리, 음식 판매대를 둘러보세요. 사워도우 샌드위치나 제철 채소 점심을 고려하고 상점별 시간을 확인하세요. 농산물 시장은 매일 열리지 않습니다."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "Ferry Building Marketplace San Francisco",
+            "source": {
+              "name": "SF Travel · Ferry Building food guide",
+              "url": "https://www.sftravel.com/article/eat-your-way-through-san-franciscos-ferry-building"
+            }
+          },
+          {
+            "day": 2,
+            "title": [
+              "Chinatown · dim sum and noodles",
+              "ไชน่าทาวน์ · ติ่มซำและบะหมี่",
+              "唐人街 · 点心与面食",
+              "チャイナタウン · 点心と麺",
+              "차이나타운 · 딤섬과 면"
+            ],
+            "text": [
+              "Pause for dim sum or noodles before continuing toward North Beach. Ask which vegetable dumplings or tofu dishes have meat-free filling and broth. Pick one seated meal instead of stacking two restaurant visits into the same afternoon.",
+              "พักกินติ่มซำหรือบะหมี่ก่อนเที่ยวต่อไป North Beach ถามเกี๊ยวผักหรือเต้าหู้ว่ามีไส้และน้ำซุปไม่ใส่เนื้อหรือไม่ เลือกนั่งกินหนึ่งมื้อแทนการใส่ร้านสองแห่งในบ่ายเดียว",
+              "前往North Beach前可吃点心或面食。询问蔬菜饺子、豆腐菜的馅料与汤底是否无肉；一个下午选一顿坐下用餐即可。",
+              "ノース・ビーチへ進む前に点心や麺で休憩。野菜の餃子や豆腐料理の具・だしが肉なしなのか確認を。午後に2店を詰めず、座って食べる1食を選びます。",
+              "노스 비치로 향하기 전에 딤섬이나 면으로 쉬어 가세요. 채소 만두나 두부 요리의 속과 육수에 고기가 없는지 문의하세요. 같은 오후에 식당 두 곳을 넣기보다 앉아서 먹는 한 끼를 선택하세요."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "Chinatown San Francisco dim sum",
+            "source": {
+              "name": "SF Travel · Chinatown dining",
+              "url": "https://www.sftravel.com/article/where-to-eat-chinatown"
+            }
+          },
+          {
+            "day": 3,
+            "title": [
+              "Inner Sunset · park-side bakery",
+              "อินเนอร์ซันเซ็ต · เบเกอรีข้างสวน",
+              "Inner Sunset · 公园旁烘焙店",
+              "インナー・サンセット · 公園近くのベーカリー",
+              "이너 선셋 · 공원 옆 베이커리"
+            ],
+            "text": [
+              "Use the Ninth Avenue and Irving Street area for lunch near the park’s southeast side. A bakery pizza, pastry or noodle bowl keeps this day relaxed. Arizmendi’s changing pizza menu is one option; check today’s toppings and hours before leaving the park.",
+              "แวะมื้อกลางวันแถว Ninth Avenue และ Irving Street ใกล้ฝั่งตะวันออกเฉียงใต้ของสวน เลือกพิซซ่าเบเกอรี ขนมอบหรือบะหมี่เพื่อเที่ยวสบาย ๆ Arizmendi เป็นตัวเลือกที่เมนูพิซซ่าเปลี่ยน ตรวจหน้าพิซซ่าและเวลาเปิดของวันนั้นก่อนออกจากสวน",
+              "在公园东南侧附近的Ninth Avenue与Irving街用午餐。烘焙店披萨、糕点或面食让行程更轻松。Arizmendi的披萨菜单会变化，离开公园前核对当天配料与营业时间。",
+              "公園南東側に近いNinth AvenueとIrving Street周辺でランチ。ベーカリーのピザ、焼き菓子、麺でゆったりと。日替わりピザのArizmendiも候補。公園を出る前に当日の具と時間を確認。",
+              "공원 남동쪽 근처 Ninth Avenue와 Irving Street 주변에서 점심을 드세요. 베이커리 피자, 페이스트리, 면 요리로 여유 있게 즐기세요. 피자 메뉴가 바뀌는 Arizmendi도 선택지입니다. 공원을 떠나기 전 당일 토핑과 시간을 확인하세요."
+            ],
+            "allowance": [12, 25],
+            "mapQuery": "Ninth Avenue Irving Street San Francisco food",
+            "source": {
+              "name": "SF Travel · Sunset dining",
+              "url": "https://www.sftravel.com/article/where-to-eat-inner-outer-sunset"
+            }
+          }
+        ]
       }
     },
     {
@@ -783,6 +998,558 @@
           "节约型交通假设两张成人RTC 3日票（共40美元），机场往返须在有效期内。其他档次预留额外乘车。结账前核对酒店税与必付度假村费；住宿餐饮为编辑预算。",
           "節約案は大人2人のRTC3日券（計40ドル）で、空港往復も有効期間内を想定。上位案は追加交通費を確保。宿泊税と必須のresort feeを最終総額で確認。宿泊・食事は編集部の予算枠です。",
           "절약형 교통비는 성인 2명의 RTC 3일권(총 $40)과 유효기간 내 공항 왕복을 가정합니다. 다른 유형은 추가 교통비를 배정합니다. 최종 결제 총액에서 호텔 세금과 필수 리조트 요금을 확인하세요. 숙박과 식사는 편집 예산입니다."
+        ]
+      },
+      "food": {
+        "checkedAt": "2026-10-06",
+        "reviewAfter": "2026-10-13",
+        "translationsReviewed": [false, false, false, false, false],
+        "intro": [
+          "Las Vegas mixes cuisines from many places. Pair a Strip food hall, Downtown lunch and an Arts District meal with the existing three-day plan; you do not need a buffet or a tasting menu for every meal.",
+          "Las Vegas รวมอาหารจากหลายวัฒนธรรม จับคู่ฟู้ดฮอลล์สตริป มื้อกลางวันดาวน์ทาวน์ และอาหารอาร์ตดิสทริกต์กับแผนสามวัน ไม่จำเป็นต้องบุฟเฟต์หรือคอร์สหรูทุกมื้อ",
+          "拉斯维加斯汇集多地料理。将大道美食大厅、市中心午餐与艺术区用餐搭配三日行程，不必每餐都选自助餐或品鉴套餐。",
+          "ラスベガスには各地の料理が集まります。ストリップのフードホール、ダウンタウンのランチ、アーツ地区の食事を3日間の案に。毎食ビュッフェやコースにする必要はありません。",
+          "라스베이거스에는 여러 지역의 요리가 모입니다. 스트립 푸드홀, 다운타운 점심, 아츠 디스트릭트 식사를 3일 일정에 맞추세요. 매 끼니 뷔페나 코스 요리를 고를 필요는 없습니다."
+        ],
+        "vegetarian": [
+          "Look for clearly marked meat-free dishes and ask about sauces and shared fryers. The Arts District has plant-based Mexican options such as Tacotarian. Confirm today’s menu; a restaurant listing does not certify allergy-safe preparation.",
+          "หาเมนูที่ระบุไม่ใส่เนื้อและถามเรื่องซอสกับน้ำมันทอดร่วม อาร์ตดิสทริกต์มีอาหารเม็กซิกันจากพืช เช่น Tacotarian ตรวจเมนูปัจจุบัน รายชื่อร้านไม่ได้รับรองการทำอาหารปลอดสารที่แพ้",
+          "选择明确标注无肉的菜品，并询问酱料和共用炸锅。艺术区有Tacotarian等植物性墨西哥料理。确认当天菜单；餐厅名录并非过敏安全认证。",
+          "肉なしの表示を探し、ソースや共用の揚げ油を確認。アーツ地区にはTacotarianなど植物性のメキシコ料理もあります。当日のメニューを確認し、掲載はアレルギー対応の認証ではない点に注意。",
+          "고기 없는 메뉴 표시를 찾고 소스와 공용 튀김기에 관해 문의하세요. 아츠 디스트릭트에는 Tacotarian 같은 식물성 멕시코 음식점이 있습니다. 당일 메뉴를 확인하세요. 식당 목록이 알레르기 안전을 인증하지는 않습니다."
+        ],
+        "stops": [
+          {
+            "day": 1,
+            "title": [
+              "Strip · casual food hall",
+              "สตริป · ฟู้ดฮอลล์มื้อง่าย ๆ",
+              "大道 · 休闲美食大厅",
+              "ストリップ · 気軽なフードホール",
+              "스트립 · 간단한 푸드홀 식사"
+            ],
+            "text": [
+              "Pick a food hall in the same Strip section as your hotel or show. Proper Eats at ARIA is an example with several cuisines. Compare counter menus for a sandwich, noodle bowl or pizza and a meat-free option, rather than walking the whole Strip for lunch.",
+              "เลือกฟู้ดฮอลล์โซนเดียวกับโรงแรมหรือโชว์ Proper Eats ที่ ARIA เป็นตัวอย่างที่รวมหลายอาหาร เปรียบเทียบเมนูแซนด์วิช บะหมี่หรือพิซซ่ากับตัวเลือกไม่ใส่เนื้อ ไม่ต้องเดินทั้งสตริปเพื่อมื้อกลางวัน",
+              "选择与酒店或演出同一段大道的美食大厅，ARIA的Proper Eats是一例。比较三明治、面食、披萨与无肉选项，不必为午餐走完整条大道。",
+              "ホテルやショーと同じ区間のフードホールを選びます。ARIAのProper Eatsは多国籍料理の一例。サンドイッチ、麺、ピザと肉なしの選択肢を比べ、ランチのために全区間を歩かずに。",
+              "호텔이나 공연과 같은 스트립 구역의 푸드홀을 고르세요. ARIA의 Proper Eats가 여러 요리를 갖춘 예입니다. 샌드위치, 면, 피자와 고기 없는 선택지를 비교하고 점심을 위해 스트립 전체를 걷지 마세요."
+            ],
+            "allowance": [20, 35],
+            "mapQuery": "ARIA Las Vegas food hall",
+            "source": {
+              "name": "Visit Las Vegas · Proper Eats",
+              "url": "https://www.visitlasvegas.com/listing/proper-eats-food-hall/38584/"
+            }
+          },
+          {
+            "day": 2,
+            "title": [
+              "Downtown · lunch near Fremont",
+              "ดาวน์ทาวน์ · มื้อกลางวันใกล้ฟรีมอนต์",
+              "市中心 · Fremont附近午餐",
+              "ダウンタウン · フリーモント近くのランチ",
+              "다운타운 · 프리몬트 근처 점심"
+            ],
+            "text": [
+              "Use the Downtown restaurant directory to find a nearby diner, pizza or sandwich stop after your Fremont visit. Ask for a vegetable or meat-free dish and check seating and age rules. Leave a meal break before the journey back to your hotel.",
+              "ใช้สารบัญร้านดาวน์ทาวน์หาร้านไดเนอร์ พิซซ่าหรือแซนด์วิชใกล้ทางหลังเที่ยวฟรีมอนต์ ถามเมนูผักหรือไม่ใส่เนื้อ ตรวจที่นั่งและข้อจำกัดอายุ แล้วพักกินก่อนกลับโรงแรม",
+              "逛Fremont后用市中心餐厅目录寻找附近简餐、披萨或三明治。询问蔬菜或无肉菜品并核对座位与年龄规定，回酒店前留出用餐休息。",
+              "フリーモントの後はダウンタウンの飲食案内で近くのダイナー、ピザ、サンドイッチを。野菜や肉なしの料理、席と年齢制限を確認。ホテルに戻る前に食事休憩を。",
+              "프리몬트 방문 후 다운타운 식당 안내에서 가까운 다이너, 피자, 샌드위치 가게를 찾으세요. 채소나 고기 없는 요리와 좌석, 연령 규정을 확인하고 호텔로 돌아가기 전에 식사하며 쉬세요."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "Fremont Street Las Vegas lunch",
+            "source": {
+              "name": "Visit Las Vegas · Downtown restaurants",
+              "url": "https://www.visitlasvegas.com/restaurants-and-nightlife/restaurants/downtown-restaurants/"
+            }
+          },
+          {
+            "day": 3,
+            "title": [
+              "Arts District · neighborhood lunch",
+              "อาร์ตดิสทริกต์ · มื้อกลางวันในย่าน",
+              "艺术区 · 街区午餐",
+              "アーツ地区 · 街のランチ",
+              "아츠 디스트릭트 · 동네 점심"
+            ],
+            "text": [
+              "Pause around Main Street between gallery visits. Choose a café lunch or plant-based tacos; Tacotarian is one example in the official district guide. Keep dinner flexible and check restaurant hours instead of assuming galleries and kitchens open together.",
+              "พักแถว Main Street ระหว่างชมแกลเลอรี เลือกมื้อในคาเฟ่หรือทาโก้จากพืช Tacotarian เป็นตัวอย่างในคู่มือย่านทางการ เผื่อมื้อค่ำยืดหยุ่นและตรวจเวลาร้าน ไม่ควรสมมติว่าครัวเปิดพร้อมแกลเลอรี",
+              "逛画廊之间在Main街附近休息，选咖啡馆午餐或植物性塔可。官方街区指南列有Tacotarian一例。晚餐保持灵活，单独核对餐厅时间，不要假设厨房与画廊同时营业。",
+              "ギャラリーの合間にMain Street周辺で休憩。カフェのランチや植物性タコスを選べます。公式地区ガイドのTacotarianは一例。夕食は柔軟にし、画廊と厨房が同時に開くとは考えず時間を確認。",
+              "갤러리 방문 사이 Main Street 주변에서 쉬어 가세요. 카페 점심이나 식물성 타코를 고를 수 있으며 공식 지역 안내의 Tacotarian이 한 예입니다. 저녁은 유연하게 두고 갤러리와 주방이 동시에 연다고 가정하지 말고 시간을 확인하세요."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "Main Street Arts District Las Vegas restaurants",
+            "source": {
+              "name": "Visit Las Vegas · 18b Arts District",
+              "url": "https://www.visitlasvegas.com/experience/post/intro-to-the-18b-arts-district/"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "placeId": "MA-0",
+      "checkedAt": "2026-10-06",
+      "reviewAfter": "2026-10-13",
+      "translationsReviewed": [false, false, false, false, false],
+      "intro": [
+        "Build a Boston visit around its historic center, North End and Back Bay. Add one day at a time and use transit between neighborhoods; a short trip need not cover the entire Freedom Trail.",
+        "วางทริป Boston รอบใจกลางเมืองเก่า North End และ Back Bay เพิ่มทีละวันและใช้รถระหว่างย่าน ทริปสั้นไม่จำเป็นต้องเดิน Freedom Trail ทั้งเส้น",
+        "围绕波士顿历史中心、North End与Back Bay安排旅程。逐日增加行程，街区之间利用公共交通；短途不必走完整条自由之路。",
+        "ボストンの歴史ある中心部、ノース・エンド、バック・ベイを軸に。1日ずつ追加し、エリア間は交通機関で。短い旅で自由の道を全て歩く必要はありません。",
+        "보스턴의 역사 중심지, 노스 엔드, 백 베이를 중심으로 계획하세요. 하루씩 추가하고 지역 사이는 교통편을 이용하세요. 짧은 여행에 프리덤 트레일 전체를 걸을 필요는 없습니다."
+      ],
+      "areas": [
+        {
+          "title": [
+            "Downtown · historic center",
+            "ดาวน์ทาวน์ · ใจกลางเมืองเก่า",
+            "市中心 · 历史中心",
+            "ダウンタウン · 歴史の中心",
+            "다운타운 · 역사 중심지"
+          ],
+          "text": [
+            "A useful base for central sights and transit connections. Compare the walk from your hotel to the station, room access and final price; avoid treating every Downtown hotel as equally close to the waterfront.",
+            "เป็นฐานเที่ยวจุดกลางเมืองและต่อรถได้สะดวก เปรียบเทียบระยะเดินจากโรงแรมถึงสถานี การเข้าห้องพักและยอดราคาสุดท้าย โรงแรมดาวน์ทาวน์แต่ละแห่งไม่ได้ใกล้ริมน้ำเท่ากัน",
+            "适合中心景点与交通换乘。比较酒店到车站的步行路线、客房通行条件与最终价格；市中心酒店并非都同样靠近滨水区。",
+            "中心部の観光と交通の拠点に。ホテルから駅への道、客室へのアクセス、最終価格を比較。ダウンタウンでも水辺までの距離は宿ごとに異なります。",
+            "중심 명소와 환승을 위한 거점으로 고려하세요. 호텔에서 역까지의 도보 경로, 객실 접근성, 최종 가격을 비교하세요. 다운타운 호텔이 모두 해변에 같은 거리로 가깝지는 않습니다."
+          ],
+          "mapQuery": "Downtown Crossing Boston Massachusetts",
+          "source": {
+            "name": "Meet Boston · Downtown",
+            "url": "https://www.meetboston.com/explore/neighborhoods/downtown-crossing-financial-district/"
+          }
+        },
+        {
+          "title": [
+            "Back Bay · Copley and Newbury",
+            "Back Bay · Copley และ Newbury",
+            "Back Bay · Copley与Newbury",
+            "バック・ベイ · CopleyとNewbury",
+            "백 베이 · 코플리와 뉴버리"
+          ],
+          "text": [
+            "Copley Square and Newbury Street suit a slower day of architecture, cafés and shops. For a stay, compare nearby transit and the room’s noise exposure rather than assuming a shopping street is quiet.",
+            "Copley Square และ Newbury Street เหมาะกับวันชมสถาปัตยกรรม คาเฟ่และร้านค้าแบบสบาย ๆ ถ้าพักย่านนี้ให้เทียบรถใกล้ที่พักกับเสียงในห้อง ถนนช้อปปิ้งไม่ได้เงียบเสมอ",
+            "Copley广场与Newbury街适合慢游建筑、咖啡馆和商店。住宿时比较附近交通与客房噪声，不要假设购物街安静。",
+            "Copley SquareとNewbury Streetで建築、カフェ、買い物をゆっくり。宿泊は交通と部屋の騒音条件を比較し、買い物通りが静かとは限らない点も考慮。",
+            "코플리 광장과 뉴버리 스트리트는 건축, 카페, 상점을 느긋하게 즐기기에 좋습니다. 숙박 시 가까운 교통편과 객실 소음 조건을 비교하고 쇼핑 거리가 조용하다고 가정하지 마세요."
+          ],
+          "mapQuery": "Copley Square Boston Massachusetts",
+          "source": {
+            "name": "Meet Boston · Back Bay",
+            "url": "https://www.meetboston.com/explore/neighborhoods/back-bay/"
+          }
+        },
+        {
+          "title": [
+            "North End · history and a meal",
+            "North End · ประวัติศาสตร์และมื้ออาหาร",
+            "North End · 历史与用餐",
+            "ノース・エンド · 歴史と食事",
+            "노스 엔드 · 역사와 식사"
+          ],
+          "text": [
+            "Use North End for a historic walk and Italian meal near the waterfront. If choosing a room in an older building, ask about lifts and stairs and check the route to transit before booking.",
+            "ใช้ North End เดินชมประวัติศาสตร์และกินอาหารอิตาลีใกล้ริมน้ำ ถ้าเลือกพักอาคารเก่าให้ถามลิฟต์ บันไดและเส้นทางถึงรถก่อนจอง",
+            "在North End安排历史散步与滨水附近的意大利餐。若选老建筑住宿，预订前询问电梯、楼梯并核对到公共交通的路线。",
+            "ノース・エンドで歴史散歩と水辺に近いイタリア料理を。古い建物に泊まる場合はエレベーターと階段を相談し、予約前に交通機関への道を確認。",
+            "노스 엔드에서 역사 산책과 해변 근처 이탈리아 식사를 계획하세요. 오래된 건물에 숙박한다면 예약 전에 엘리베이터와 계단, 교통편까지의 경로를 확인하세요."
+          ],
+          "mapQuery": "North End Boston Massachusetts",
+          "source": {
+            "name": "Meet Boston · North End",
+            "url": "https://www.meetboston.com/explore/neighborhoods/north-end/"
+          }
+        }
+      ],
+      "days": [
+        {
+          "title": [
+            "Common to Back Bay",
+            "Boston Common ไป Back Bay",
+            "Boston Common至Back Bay",
+            "コモンからバック・ベイへ",
+            "보스턴 커먼에서 백 베이까지"
+          ],
+          "text": [
+            "Start with Boston Common and the Public Garden, then choose Copley Square and a short Newbury Street walk. Add a meal and rest rather than a second distant neighborhood.",
+            "เริ่ม Boston Common และ Public Garden แล้วเลือก Copley Square กับเดิน Newbury Street ช่วงสั้น ๆ แทรกมื้ออาหารและพักแทนเพิ่มย่านที่ไกลอีกแห่ง",
+            "从Boston Common与Public Garden开始，再选Copley广场及Newbury街短途散步。留出用餐休息，不再增加远处街区。",
+            "Boston CommonとPublic Gardenから、Copley SquareとNewbury Streetの短い散歩へ。遠いエリアを追加せず、食事と休憩を入れます。",
+            "보스턴 커먼과 퍼블릭 가든에서 시작해 코플리 광장과 뉴버리 스트리트를 짧게 걸으세요. 먼 지역을 더 넣기보다 식사와 휴식을 확보하세요."
+          ],
+          "alternative": [
+            "Use the Central Library in Copley Square if open; check holiday closures before setting out.",
+            "ถ้าเปิดให้ใช้ Central Library ที่ Copley Square แทน ตรวจวันหยุดปิดก่อนออกเดินทาง",
+            "开放时可改逛Copley广场中央图书馆，出发前核对节假日闭馆。",
+            "開館中ならCopley Squareの中央図書館へ。祝日の休館を出発前に確認。",
+            "운영 중이면 코플리 광장의 중앙 도서관을 이용하세요. 출발 전에 공휴일 휴관을 확인하세요."
+          ],
+          "source": {
+            "name": "Boston Public Library · visit",
+            "url": "https://www.bpl.org/locations/central/"
+          }
+        },
+        {
+          "title": [
+            "Historic Downtown and North End",
+            "เมืองเก่ากับ North End",
+            "历史市中心与North End",
+            "歴史の中心部とノース・エンド",
+            "역사 중심지와 노스 엔드"
+          ],
+          "text": [
+            "Choose a short section of the Freedom Trail around Downtown and North End, then pause for lunch and a waterfront walk. Check admission separately for any historic interior you want to enter.",
+            "เลือก Freedom Trail ช่วงสั้น ๆ แถวดาวน์ทาวน์และ North End แล้วพักมื้อกลางวันกับเดินริมน้ำ ตรวจค่าเข้าแยกสำหรับอาคารประวัติศาสตร์ที่อยากเข้าชม",
+            "选择市中心与North End附近的一小段自由之路，再午餐与滨水散步。欲进入历史建筑内部时单独核对门票。",
+            "ダウンタウンとノース・エンド付近の自由の道を短い区間で。ランチと水辺の散歩を挟み、歴史建築の内部は入場条件を別に確認。",
+            "다운타운과 노스 엔드 주변 프리덤 트레일의 짧은 구간을 선택하고 점심과 해변 산책으로 쉬어 가세요. 역사 건물 내부를 방문하려면 입장 조건을 따로 확인하세요."
+          ],
+          "alternative": [
+            "Shorten the outdoor route and choose one open historic interior plus a nearby indoor meal; reservations and admission may apply.",
+            "ลดช่วงกลางแจ้ง เลือกอาคารประวัติศาสตร์ที่เปิดหนึ่งแห่งกับอาหารในร่มใกล้กัน อาจต้องจองและมีค่าเข้า",
+            "缩短户外路线，选一处开放的历史建筑内部与附近室内用餐；可能需预约和购票。",
+            "屋外を短縮し、開いている歴史建築ひとつと近くの屋内の食事へ。予約や入場料が必要な場合があります。",
+            "야외 경로를 줄이고 운영 중인 역사 건물 한 곳과 근처 실내 식사를 선택하세요. 예약과 입장료가 필요할 수 있습니다."
+          ],
+          "source": {
+            "name": "Meet Boston · North End",
+            "url": "https://www.meetboston.com/explore/neighborhoods/north-end/"
+          }
+        },
+        {
+          "title": [
+            "A museum day near Fenway",
+            "วันพิพิธภัณฑ์แถว Fenway",
+            "Fenway附近的博物馆日",
+            "フェンウェイ周辺の美術館へ",
+            "펜웨이 근처 박물관 하루"
+          ],
+          "text": [
+            "Take transit to the Museum of Fine Arts and make it your main visit, with a nearby lunch and an unhurried return. Check tickets and open days; do not add a ballpark tour without a separate reservation.",
+            "ใช้รถไป Museum of Fine Arts เป็นจุดหลักของวัน กินกลางวันใกล้กันและกลับแบบไม่เร่ง ตรวจตั๋วกับวันเปิด ไม่เพิ่มทัวร์สนามเบสบอลหากยังไม่ได้จองแยก",
+            "乘公共交通到Museum of Fine Arts作为当天主要参观，附近午餐后从容返回。核对门票与开放日期；未单独预约时不加球场导览。",
+            "交通機関でMuseum of Fine Artsを主な訪問先に。近くでランチを取り、ゆっくり戻ります。チケットと開館日を確認し、球場ツアーは別予約なしに追加しません。",
+            "교통편으로 미술관에 가서 하루의 주요 방문지로 삼고 가까운 점심과 여유 있는 귀환을 계획하세요. 티켓과 운영일을 확인하고 별도 예약 없이 야구장 투어를 추가하지 마세요."
+          ],
+          "alternative": [
+            "Keep the museum visit indoors and remove extra walking in rain or cold; check the entrance and any access needs with the museum.",
+            "คงการเที่ยวพิพิธภัณฑ์ในร่มและตัดการเดินเพิ่มเมื่อฝนตกหรือหนาว ตรวจทางเข้าและความต้องการด้านการเข้าถึงกับพิพิธภัณฑ์",
+            "雨天或寒冷时保留室内博物馆参观，取消额外步行。向馆方确认入口与无障碍需求。",
+            "雨や寒さの日は屋内の美術館を中心にし、追加の徒歩を省略。入口と必要なアクセス対応は美術館に確認。",
+            "비나 추위에는 실내 미술관 방문을 유지하고 추가 산책을 빼세요. 입구와 필요한 접근 지원은 미술관에 확인하세요."
+          ],
+          "source": {
+            "name": "Museum of Fine Arts · visit",
+            "url": "https://www.mfa.org/visit"
+          }
+        }
+      ],
+      "airport": {
+        "code": "BOS",
+        "steps": [
+          [
+            "After arrivals, follow terminal signs for Silver Line SL1 toward South Station.",
+            "หลังออกจากขาเข้า ตามป้ายในอาคารไป Silver Line SL1 มุ่งหน้า South Station",
+            "抵达后按航站楼标识找到前往South Station的Silver Line SL1。",
+            "到着後はターミナルの案内でSouth Station方面のSilver Line SL1へ。",
+            "도착 후 터미널 안내를 따라 사우스 스테이션행 Silver Line SL1으로 가세요."
+          ],
+          [
+            "At South Station, choose onward transit to the station nearest your accommodation.",
+            "ที่ South Station เลือกรถต่อไปสถานีใกล้ที่พัก",
+            "在South Station选择交通前往住宿附近车站。",
+            "South Stationで宿の最寄り駅への交通を選びます。",
+            "사우스 스테이션에서 숙소에 가까운 역으로 가는 교통편을 선택하세요."
+          ],
+          [
+            "Check your return route, service alerts and the correct departure terminal before leaving the hotel.",
+            "ก่อนออกจากโรงแรม ตรวจเส้นทางกลับ ประกาศบริการและอาคารขาออกที่ถูกต้อง",
+            "离开酒店前确认返程路线、服务公告与出发航站楼。",
+            "ホテルを出る前に帰路、運行情報、出発ターミナルを確認。",
+            "호텔 출발 전 돌아갈 경로, 운행 안내, 출발 터미널을 확인하세요."
+          ]
+        ],
+        "fare": [
+          "SL1 from Logan to the city is free. The reverse journey is paid; consult the current MBTA fare page. The free airport shuttle does not make Blue Line travel free.",
+          "SL1 จาก Logan เข้าเมืองฟรี ขากลับต้องจ่ายค่าโดยสาร ให้ตรวจราคาปัจจุบันที่ MBTA รถรับส่งสนามบินฟรีไม่ได้หมายความว่านั่ง Blue Line ฟรี",
+          "从Logan进入市区的SL1免费，反向行程需付费，请查最新MBTA票价。免费机场接驳不代表Blue Line免费。",
+          "Loganから市内へのSL1は無料。逆方向は有料なので最新のMBTA運賃を確認。無料空港シャトルでもBlue Lineは無料になりません。",
+          "로건에서 시내로 가는 SL1은 무료입니다. 반대 방향은 유료이므로 최신 MBTA 요금을 확인하세요. 무료 공항 셔틀이 블루 라인 무료 이용을 뜻하지는 않습니다."
+        ],
+        "note": [
+          "For the Blue Line instead, take a free airport shuttle from your terminal to Airport station. Allow for traffic, waiting and luggage; check the paid return fare with MBTA before travel.",
+          "ถ้าจะใช้ Blue Line ให้ขึ้นรถรับส่งสนามบินฟรีจากอาคารไปสถานี Airport เผื่อรถติด เวลารอและสัมภาระ พร้อมตรวจค่าโดยสารขากลับที่ต้องจ่ายกับ MBTA ก่อนเดินทาง",
+          "如改乘Blue Line，从航站楼乘免费机场接驳至Airport站。预留堵车、等候和行李时间，出行前向MBTA核对付费返程票价。",
+          "Blue Lineならターミナルから無料空港シャトルでAirport駅へ。渋滞・待ち時間・荷物に余裕を取り、有料の帰りの運賃を出発前にMBTAで確認。",
+          "블루 라인을 이용한다면 터미널에서 무료 공항 셔틀로 Airport 역에 가세요. 교통 체증, 대기, 짐을 고려하고 여행 전 MBTA에서 유료 귀환 요금을 확인하세요."
+        ],
+        "sources": [
+          {
+            "name": "Meet Boston · Logan connections",
+            "url": "https://www.meetboston.com/plan/getting-here/logan-airport/"
+          },
+          {
+            "name": "Massport · free outbound SL1 (May 2026)",
+            "url": "https://www.massport.com/media/newsroom/massport-launch-first-its-kind-remote-terminal-june-1"
+          },
+          {
+            "name": "MBTA · subway fares",
+            "url": "https://www.mbta.com/fares/subway-fares"
+          }
+        ]
+      },
+      "budget": {
+        "amounts": [
+          [320, 520, 800],
+          [210, 330, 510],
+          [40, 80, 180],
+          [40, 140, 260],
+          [120, 200, 300]
+        ],
+        "note": [
+          "Transport is an editorial allowance, not an airport fare calculation. Museum tickets, room taxes and any mandatory hotel fees vary; replace these amounts with the final totals for your dates.",
+          "ค่ารถเป็นวงเงินเผื่อจากผู้จัดทำ ไม่ใช่การคำนวณราคาสนามบิน ตั๋วพิพิธภัณฑ์ ภาษีห้องพักและค่าธรรมเนียมโรงแรมที่ต้องจ่ายแตกต่างกัน เปลี่ยนเป็นยอดสุดท้ายของวันที่จะเที่ยว",
+          "交通为编辑预算，并非机场票价计算。博物馆门票、住宿税与酒店必付费用不同，请用出行日期的最终总额替换。",
+          "交通費は編集部の予算枠で、空港運賃の計算ではありません。美術館のチケット、宿泊税、必須料金は異なるため、旅行日の最終総額に置き換えてください。",
+          "교통비는 편집 예산이며 공항 요금 계산이 아닙니다. 박물관 티켓, 객실 세금, 필수 호텔 수수료가 달라지므로 여행 날짜의 최종 금액으로 바꾸세요."
+        ]
+      }
+    },
+    {
+      "placeId": "IL-0",
+      "checkedAt": "2026-10-06",
+      "reviewAfter": "2026-10-13",
+      "translationsReviewed": [false, false, false, false, false],
+      "intro": [
+        "Use the Loop, riverfront and Museum Campus as three focused Chicago days. Leave room for lakefront wind and transit, and choose one major paid activity per day.",
+        "แบ่ง Chicago เป็นสามวันเน้น Loop ริมแม่น้ำและ Museum Campus เผื่อลมริมทะเลสาบกับการเดินทาง และเลือกกิจกรรมหลักที่เสียเงินวันละอย่าง",
+        "将Chicago分为Loop、河滨与Museum Campus三个重点日。预留湖边风与交通的余量，每天选一项主要付费活动。",
+        "シカゴはループ、川沿い、Museum Campusの3日間に分けて。湖畔の風と移動に余白を取り、主な有料体験は1日ひとつを選びます。",
+        "시카고는 루프, 강변, 뮤지엄 캠퍼스를 중심으로 3일을 나누세요. 호숫가 바람과 이동을 고려하고 하루 주요 유료 활동 하나를 선택하세요."
+      ],
+      "areas": [
+        {
+          "title": [
+            "Loop · central sights",
+            "Loop · จุดเที่ยวใจกลางเมือง",
+            "Loop · 中心景点",
+            "ループ · 中心部の名所",
+            "루프 · 중심 명소"
+          ],
+          "text": [
+            "Stay near central sights and rail connections if that suits your plan. Compare the specific station and hotel entrance; the Loop covers several blocks and stations are not interchangeable.",
+            "พิจารณาพักใกล้จุดกลางเมืองกับรถไฟถ้าเข้ากับแผน เทียบสถานีกับทางเข้าโรงแรมจริง Loop มีหลายบล็อกและไม่ใช่ทุกสถานีใช้แทนกันได้",
+            "若适合行程，可住中心景点与铁路附近。比较具体车站及酒店入口；Loop范围较大，车站不能随意互换。",
+            "中心の観光と鉄道に近い宿を行程に合わせて検討。実際の駅とホテル入口を比較し、ループの駅は全て同じではない点に注意。",
+            "일정에 맞다면 중심 명소와 철도 가까운 숙소를 고려하세요. 실제 역과 호텔 입구를 비교하세요. 루프는 여러 블록에 걸쳐 있어 역을 서로 바꾸어 이용할 수 있는 것은 아닙니다."
+          ],
+          "mapQuery": "Loop Chicago Illinois",
+          "source": {
+            "name": "Choose Chicago · Loop",
+            "url": "https://www.choosechicago.com/neighborhoods/loop/"
+          }
+        },
+        {
+          "title": [
+            "River North · galleries and dining",
+            "River North · แกลเลอรีและอาหาร",
+            "River North · 画廊与餐饮",
+            "リバー・ノース · ギャラリーと食事",
+            "리버 노스 · 갤러리와 식사"
+          ],
+          "text": [
+            "A base for galleries, dining and river views. Ask about nighttime noise if staying near bars, and check the walk to your chosen station rather than selecting a hotel by neighborhood name alone.",
+            "เป็นฐานดูแกลเลอรี กินอาหารและชมแม่น้ำ ถ้าพักใกล้บาร์ให้ถามเสียงตอนกลางคืน ตรวจทางเดินถึงสถานีที่เลือก ไม่เลือกโรงแรมจากชื่อย่านอย่างเดียว",
+            "适合画廊、餐饮与河景。住酒吧附近时询问夜间噪声，核对到选定车站的步行路线，不只按街区名选酒店。",
+            "ギャラリー、食事、川の眺めの拠点に。バーの近くなら夜の騒音を相談し、地区名だけで選ばず利用駅への道を確認。",
+            "갤러리, 식사, 강 전망을 위한 거점입니다. 바 근처 숙박이라면 야간 소음을 문의하고 지역 이름만 보고 고르지 말고 이용할 역까지의 경로를 확인하세요."
+          ],
+          "mapQuery": "River North Chicago Illinois",
+          "source": {
+            "name": "Choose Chicago · River North",
+            "url": "https://www.choosechicago.com/neighborhoods/river-north/"
+          }
+        },
+        {
+          "title": [
+            "South Loop · Museum Campus access",
+            "South Loop · ไป Museum Campus",
+            "South Loop · 前往Museum Campus",
+            "サウス・ループ · Museum Campusへ",
+            "사우스 루프 · 뮤지엄 캠퍼스 접근"
+          ],
+          "text": [
+            "Consider South Loop for Museum Campus and lakefront plans. Check the actual walking route or bus connection from the room; the museums are spread out and lakefront weather can change the day.",
+            "พิจารณา South Loop ถ้าเน้น Museum Campus และริมทะเลสาบ ตรวจทางเดินหรือรถบัสจากที่พักจริง พิพิธภัณฑ์กระจายกันและอากาศริมทะเลสาบอาจเปลี่ยนแผน",
+            "若重点是Museum Campus与湖滨，可考虑South Loop。核对住宿到景点的步行或公交路线；博物馆分散，湖滨天气可能影响当天安排。",
+            "Museum Campusと湖畔が中心ならサウス・ループを検討。部屋からの徒歩やバスを確認。博物館は点在し、湖畔の天候で予定が変わることも。",
+            "뮤지엄 캠퍼스와 호숫가 일정에 사우스 루프를 고려하세요. 숙소에서 실제 도보 경로나 버스를 확인하세요. 박물관이 흩어져 있고 호숫가 날씨가 일정을 바꿀 수 있습니다."
+          ],
+          "mapQuery": "South Loop Chicago Illinois",
+          "source": {
+            "name": "Choose Chicago · South Loop",
+            "url": "https://www.choosechicago.com/neighborhoods/south-loop/"
+          }
+        }
+      ],
+      "days": [
+        {
+          "title": [
+            "Loop and Millennium Park",
+            "Loop และ Millennium Park",
+            "Loop与Millennium Park",
+            "ループとミレニアム・パーク",
+            "루프와 밀레니엄 파크"
+          ],
+          "text": [
+            "Start around Millennium Park and central Loop architecture, then choose a nearby lunch and one indoor visit. Keep the walk short enough for rest and check any event restrictions at the park.",
+            "เริ่มแถว Millennium Park และสถาปัตยกรรมกลาง Loop แล้วกินใกล้กันกับเที่ยวในร่มหนึ่งแห่ง เดินพอมีเวลาพักและตรวจข้อจำกัดหากสวนจัดงาน",
+            "从Millennium Park与Loop中心建筑开始，选附近午餐和一处室内参观。步行留有休息余量，并核对公园活动限制。",
+            "Millennium Parkとループの建築から、近くのランチと屋内の見学ひとつへ。休憩できる短い徒歩にし、公園のイベント規制を確認。",
+            "밀레니엄 파크와 루프 중심 건축에서 시작해 가까운 점심과 실내 방문 한 곳을 선택하세요. 쉴 수 있게 산책을 짧게 두고 공원 행사 제한을 확인하세요."
+          ],
+          "alternative": [
+            "Choose the Chicago Cultural Center’s free general admission if open; check exhibitions and holiday hours.",
+            "เลือก Chicago Cultural Center ที่เข้าชมทั่วไปฟรีถ้าเปิด ตรวจนิทรรศการและเวลาในวันหยุด",
+            "开放时可选Chicago Cultural Center的免费普通入场，核对展览与假日时间。",
+            "開館中なら一般入場無料のChicago Cultural Centerへ。展示と祝日の時間を確認。",
+            "운영 중이면 시카고 문화 센터의 무료 일반 입장을 이용하세요. 전시와 공휴일 시간을 확인하세요."
+          ],
+          "source": {
+            "name": "City of Chicago · Cultural Center",
+            "url": "https://www.chicago.gov/city/en/depts/dca/supp_info/chicago_culturalcenter.html"
+          }
+        },
+        {
+          "title": [
+            "Riverwalk and River North",
+            "Riverwalk และ River North",
+            "Riverwalk与River North",
+            "リバーウォークとリバー・ノース",
+            "리버워크와 리버 노스"
+          ],
+          "text": [
+            "Take a short Riverwalk visit, then a River North meal or gallery. If you book an architecture cruise, use its actual departure point and leave boarding time instead of adding another distant attraction.",
+            "แวะ Riverwalk ช่วงสั้นแล้วกินหรือดูแกลเลอรี River North ถ้าจองเรือชมสถาปัตยกรรมให้ใช้จุดออกเรือจริงและเผื่อขึ้นเรือ แทนเพิ่มจุดเที่ยวไกลอีกแห่ง",
+            "短逛Riverwalk，再到River North用餐或看画廊。若预约建筑游船，使用实际码头并留出登船时间，不再增加远处景点。",
+            "Riverwalkを短く巡り、River Northの食事やギャラリーへ。建築クルーズを予約したら実際の出発点と乗船時間を優先し、遠い名所は追加しません。",
+            "리버워크를 짧게 방문한 뒤 리버 노스에서 식사나 갤러리를 즐기세요. 건축 크루즈를 예약했다면 실제 출발 지점과 승선 시간을 확인하고 먼 명소를 더 넣지 마세요."
+          ],
+          "alternative": [
+            "Replace the cruise or river walk with an open gallery or the Driehaus Museum; check admission and cancellation terms first.",
+            "แทนเรือหรือเดินริมแม่น้ำด้วยแกลเลอรีที่เปิดหรือ Driehaus Museum ตรวจค่าเข้าและเงื่อนไขยกเลิกก่อน",
+            "用开放的画廊或Driehaus Museum替代游船或河边散步，先核对门票与取消条款。",
+            "船や川沿いの散歩を営業中のギャラリーやDriehaus Museumへ変更。入場料とキャンセル条件を先に確認。",
+            "크루즈나 강변 산책을 운영 중인 갤러리 또는 드리하우스 박물관으로 바꾸세요. 입장료와 취소 조건을 먼저 확인하세요."
+          ],
+          "source": {
+            "name": "Choose Chicago · River North",
+            "url": "https://www.choosechicago.com/neighborhoods/river-north/"
+          }
+        },
+        {
+          "title": [
+            "One Museum Campus visit",
+            "เลือกหนึ่งแห่งใน Museum Campus",
+            "选一处Museum Campus场馆",
+            "Museum Campusでひとつ選ぶ",
+            "뮤지엄 캠퍼스 한 곳 선택"
+          ],
+          "text": [
+            "Choose the Field Museum or Shedd Aquarium as the main activity, with a nearby meal and a lakefront stop only if conditions suit. Check timed admission and travel between buildings rather than treating all museums as one stop.",
+            "เลือก Field Museum หรือ Shedd Aquarium เป็นกิจกรรมหลัก กินใกล้กันและแวะริมทะเลสาบเฉพาะเมื่ออากาศเหมาะ ตรวจตั๋วตามรอบกับการเดินทางระหว่างอาคาร ไม่ถือว่าทุกพิพิธภัณฑ์เป็นจุดเดียว",
+            "选Field Museum或Shedd Aquarium为主要活动，附近用餐，天气合适才加湖边停留。核对分时门票与楼间交通，不将所有博物馆当成一站。",
+            "Field MuseumかShedd Aquariumを中心に、近くの食事と天候に合う場合の湖畔の立ち寄りを。時間指定の入場と建物間の移動を確認し、全館をひとつの立ち寄り先にはしません。",
+            "필드 박물관이나 셰드 수족관 하나를 주요 활동으로 고르고 가까운 식사와 날씨가 좋을 때만 호숫가 방문을 더하세요. 시간 지정 입장과 건물 사이 이동을 확인하고 모든 박물관을 한 곳으로 보지 마세요."
+          ],
+          "alternative": [
+            "Keep the booked indoor museum and remove the lakefront walk during strong wind, cold or rain; allow extra time for transit.",
+            "คงพิพิธภัณฑ์ในร่มที่จองและตัดเดินริมทะเลสาบเมื่อลมแรง หนาวหรือฝนตก เผื่อเวลาเดินทางเพิ่ม",
+            "强风、寒冷或雨天时保留已预约的室内场馆，取消湖边步行，并增加交通余量。",
+            "強風・寒さ・雨では予約した屋内施設を残し、湖畔の散歩を省略。移動に余裕を。",
+            "강풍, 추위, 비에는 예약한 실내 박물관을 유지하고 호숫가 산책을 빼세요. 이동 시간을 넉넉히 두세요."
+          ],
+          "source": {
+            "name": "Choose Chicago · South Loop",
+            "url": "https://www.choosechicago.com/neighborhoods/south-loop/"
+          }
+        }
+      ],
+      "airport": {
+        "code": "ORD",
+        "steps": [
+          [
+            "From Terminals 1–3, follow CTA train signs. From Terminal 5, take the free ATS to Terminal 2 first.",
+            "จากอาคาร 1–3 ตามป้ายรถไฟ CTA ถ้าลงอาคาร 5 ให้นั่ง ATS ฟรีไปอาคาร 2 ก่อน",
+            "从1至3号航站楼按CTA列车标识前往；5号航站楼先乘免费ATS至2号。",
+            "ターミナル1〜3はCTA列車の案内へ。5からは無料ATSで2へ移動。",
+            "터미널 1~3에서는 CTA 열차 안내를 따르세요. 터미널 5에서는 무료 ATS로 터미널 2에 먼저 가세요."
+          ],
+          [
+            "Choose a Ventra ticket, pass or accepted contactless payment, then take the Blue Line toward Downtown.",
+            "เลือกตั๋ว Ventra บัตรเหมาหรือการแตะจ่ายที่รองรับ แล้วขึ้น Blue Line ไปดาวน์ทาวน์",
+            "选择Ventra车票、通票或支持的非接触支付，再乘Blue Line进入市中心。",
+            "Ventraのチケット・パスまたは対応するタッチ決済を選び、Blue Lineで中心部へ。",
+            "Ventra 티켓, 패스 또는 지원되는 비접촉 결제를 선택하고 블루 라인으로 다운타운에 가세요."
+          ],
+          [
+            "Choose the station nearest your hotel and check Blue Line alerts before both airport journeys.",
+            "เลือกสถานีใกล้โรงแรมและตรวจประกาศ Blue Line ก่อนเที่ยวสนามบินทั้งสองขา",
+            "选择酒店附近车站，两次机场行程前均核对Blue Line公告。",
+            "ホテルに合う駅を選び、空港往復ともBlue Lineの運行情報を確認。",
+            "호텔에 맞는 역을 고르고 공항 왕복 전에 블루 라인 운행 안내를 확인하세요."
+          ]
+        ],
+        "fare": [
+          "CTA lists $5 from O’Hare and $2.50 for a regular rail ride back. A CTA 3-day pass is $15 per adult and covers O’Hare boarding without a surcharge; travel must fit its validity.",
+          "CTA ระบุจาก O’Hare $5 และรถไฟปกติขากลับ $2.50 บัตร CTA 3 วัน $15 ต่อผู้ใหญ่ ใช้ขึ้นจาก O’Hare โดยไม่เพิ่มค่าโดยสาร การเดินทางต้องอยู่ในอายุบัตร",
+          "CTA列出O’Hare出发5美元、普通铁路返程2.50美元。成人3日票15美元，从O’Hare上车无附加费，须在有效期内出行。",
+          "CTA掲載はO’Hare発5ドル、通常の鉄道の帰り2.50ドル。大人3日券15ドルはO’Hare乗車の追加料金なし。有効期間内の利用が条件です。",
+          "CTA 안내는 오헤어 출발 $5, 일반 철도 귀환 $2.50입니다. 성인 3일권 $15로 오헤어에서 추가 요금 없이 탑승할 수 있으며 유효기간 내 이용해야 합니다."
+        ],
+        "note": [
+          "The Blue Line normally runs around the clock. Allow extra time for waiting, luggage and current construction; verify live alerts rather than relying on a guaranteed arrival time.",
+          "Blue Line ปกติวิ่งตลอดวัน เผื่อรอรถ สัมภาระและงานก่อสร้างปัจจุบัน ตรวจประกาศสดแทนการคาดว่าเวลาถึงแน่นอน",
+          "Blue Line通常全天运行。预留等车、行李与施工余量，核对实时公告，不将到达时间视为保证。",
+          "Blue Lineは通常24時間運行。待ち時間・荷物・工事に余裕を取り、到着時刻を保証とせず最新情報を確認。",
+          "블루 라인은 보통 24시간 운행합니다. 대기와 짐, 현재 공사를 고려하고 도착 시간이 보장된다고 생각하기보다 실시간 안내를 확인하세요."
+        ],
+        "sources": [
+          {
+            "name": "CTA · airport directions",
+            "url": "https://www.transitchicago.com/airports/"
+          },
+          {
+            "name": "CTA · current fare chart",
+            "url": "https://www.transitchicago.com/fares/default.aspx"
+          },
+          {
+            "name": "CTA · Blue Line and alerts",
+            "url": "https://www.transitchicago.com/blueline/default.aspx"
+          }
+        ]
+      },
+      "budget": {
+        "amounts": [
+          [260, 440, 700],
+          [180, 300, 480],
+          [30, 80, 180],
+          [40, 140, 280],
+          [110, 180, 280]
+        ],
+        "note": [
+          "Economy transport assumes two adult CTA 3-day passes ($30 total), with both airport journeys inside their validity. Other amounts are editorial allowances; check museum tickets and the final hotel total for your dates.",
+          "ค่ารถแบบประหยัดสมมติบัตร CTA 3 วันผู้ใหญ่สองคน (รวม $30) และเที่ยวสนามบินทั้งสองขาอยู่ในอายุบัตร ตัวเลขอื่นเป็นเงินเผื่อจากผู้จัดทำ ตรวจตั๋วพิพิธภัณฑ์กับยอดโรงแรมสุดท้ายของวันที่จะเที่ยว",
+          "节约型交通假设两张成人CTA3日票（共30美元），机场往返均在有效期内。其余为编辑预算，请核对出行日期的博物馆票价与酒店最终总额。",
+          "節約案の交通は大人2人のCTA3日券（計30ドル）で、空港往復も有効期間内。他は編集部の予算枠です。旅行日の博物館チケットと宿の最終総額を確認。",
+          "절약형 교통비는 성인 2명의 CTA 3일권(총 $30)과 유효기간 내 공항 왕복을 가정합니다. 나머지는 편집 예산입니다. 여행 날짜의 박물관 티켓과 최종 호텔 총액을 확인하세요."
         ]
       }
     }

@@ -65,6 +65,23 @@ for (const guide of cityContent.guides) {
   checkReview(guide);
   for (const area of guide.areas) if (!area.mapQuery.trim()) throw Error('Missing city map query');
   checkLinks([...guide.areas.map((area) => area.source), ...guide.airport.sources]);
+  for (const day of guide.days) if (day.source) checkLinks([day.source]);
+  if (guide.food) {
+    checkReview(guide.food);
+    if (
+      guide.food.stops.length !== 3 ||
+      guide.food.stops.some(
+        (stop, i) =>
+          stop.day !== i + 1 ||
+          !stop.mapQuery.trim() ||
+          stop.allowance.length !== 2 ||
+          stop.allowance.some((n) => !Number.isSafeInteger(n) || n < 0) ||
+          stop.allowance[0] > stop.allowance[1],
+      )
+    )
+      throw Error('Invalid city food guide: ' + guide.placeId);
+    checkLinks(guide.food.stops.map((stop) => stop.source));
+  }
 }
 const parkIds = new Set();
 if (
