@@ -369,6 +369,58 @@
 .route-card-content h3 {
   font-size: 28px;
 }
+.route-travel-mode {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.route-detail-stats {
+  flex-wrap: wrap;
+}
+.route-travel-mode .icon {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.guide-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.guide-topics button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--navy);
+  border-radius: 4px;
+  color: var(--navy);
+  background: var(--cream);
+  font-size: 15px;
+}
+.guide-topics button[aria-pressed='true'] {
+  background: var(--navy);
+  color: #fff;
+}
+.guide-result-count {
+  margin: 16px 0;
+  color: var(--navy);
+  font-size: 14px;
+}
+.more-field-notes {
+  margin-top: 28px;
+}
+.more-field-notes > summary {
+  min-height: 44px;
+  padding: 12px 0;
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.more-field-notes[open] > summary {
+  margin-bottom: 16px;
+}
 .route-card:nth-child(n + 4) {
   min-height: 310px;
 }

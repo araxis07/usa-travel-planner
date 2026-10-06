@@ -4,6 +4,7 @@ import { LANGUAGES, LOCALES } from '../../lib/i18n';
 import catalog from '../../content/states.json' with { type: 'json' };
 import cityContent from '../../content/city-guides.json' with { type: 'json' };
 import preparation from '../../content/travel-preparation.json' with { type: 'json' };
+import { EXPERIENCE_COPY } from '../../data/experience-copy';
 const sample: Trip = {
   ...EMPTY_TRIP,
   name: 'My five-language journey',
@@ -219,6 +220,7 @@ test('city plans, airport sources and budget breakdowns are published in all lan
     'nevada/las-vegas',
     'massachusetts/boston',
     'illinois/chicago',
+    'pennsylvania/philadelphia',
   ].entries()) {
     const guide = cityContent.guides[city];
     for (const [l, lang] of LANGUAGES.entries()) {
@@ -391,6 +393,10 @@ test('saved itinerary and all selected state photos reopen offline; print covers
     preparation.firstTrip.sections[6].text[1],
   );
   await page.keyboard.press('Escape');
+  await page
+    .locator('.guide-topics')
+    .getByRole('button', { name: 'เดินทางย้ายเมือง', exact: true })
+    .click();
   await page.locator('.guide-card').last().click();
   await expect(page.locator('.guide-detail section')).toHaveCount(8);
   await expect(page.locator('.guide-detail')).toContainText(
@@ -500,4 +506,53 @@ test('generated park and preparation guides remain usable without JavaScript', a
       );
   }
   await context.close();
+});
+
+test('nine-day rail trip and Philadelphia photos and food reopen after explicit offline saving', async ({
+  page,
+  context,
+}) => {
+  test.setTimeout(90000);
+  await page.goto('/en/');
+  await page.locator('.route-card').last().click();
+  await page.getByRole('button', { name: EXPERIENCE_COPY.usePlan[0], exact: true }).click();
+  await expect(page.locator('#planner-page')).toBeVisible();
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  if (!(await page.evaluate(() => !!navigator.serviceWorker.controller))) await page.reload();
+  await page.waitForFunction(() => !!navigator.serviceWorker.controller);
+  await page.getByRole('button', { name: 'Save for offline', exact: true }).click();
+  await expect(page.getByText('Ready offline on this device.', { exact: false })).toBeVisible({
+    timeout: 30000,
+  });
+  await context.setOffline(true);
+  await page.reload();
+  const trip = await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!));
+  expect(trip.stops.map((stop: { code: string; days: number }) => [stop.code, stop.days])).toEqual([
+    ['MA', 3],
+    ['NY', 4],
+    ['PA', 2],
+  ]);
+  await page.goto('/th/states/pennsylvania/philadelphia/');
+  await expect(page.locator('#guide-city')).toContainText(cityContent.guides[5].intro[1]);
+  await page.locator('.guide-toc a[href="#guide-food"]').click();
+  await expect(page.locator('#guide-food')).toContainText(cityContent.guides[5].food.intro[1]);
+  await page.locator('#guide-food details').last().locator('summary').click();
+  await expect(page.locator('#guide-food')).toContainText(
+    cityContent.guides[5].food.stops[2].text[1],
+  );
+  await expect
+    .poll(() =>
+      page.locator('.destination-hero img').evaluate((img: HTMLImageElement) => img.naturalWidth),
+    )
+    .toBeGreaterThan(0);
+  await page.goto('/th/');
+  await page
+    .locator('.guide-topics')
+    .getByRole('button', { name: EXPERIENCE_COPY.guideTransport[1], exact: true })
+    .click();
+  await page.locator('.guide-card').last().click();
+  await page.getByRole('button', { name: EXPERIENCE_COPY.previewRail[1], exact: true }).click();
+  await expect(page.locator('.template-day')).toHaveCount(9);
 });

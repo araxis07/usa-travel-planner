@@ -5,6 +5,7 @@ import { contentIssues, validateCatalog } from '../lib/content';
 import { LANGUAGES, LOCALES, translate } from '../lib/i18n';
 import cityContent from '../content/city-guides.json' with { type: 'json' };
 import preparation from '../content/travel-preparation.json' with { type: 'json' };
+import { EXPERIENCE_COPY } from '../data/experience-copy';
 const catalog = validateCatalog(
   JSON.parse(readFileSync(new URL('../content/states.json', import.meta.url), 'utf8')),
 );
@@ -185,6 +186,7 @@ test('city guides localize neighborhood links, airport steps and complete group 
     { path: 'nevada/las-vegas', totals: [560, 1010, 1920] },
     { path: 'massachusetts/boston', totals: [730, 1270, 2050] },
     { path: 'illinois/chicago', totals: [620, 1140, 1920] },
+    { path: 'pennsylvania/philadelphia', totals: [630, 1140, 1880] },
   ];
   for (const [city, info] of cities.entries()) {
     const guide = cityContent.guides[city];
@@ -263,6 +265,7 @@ test('food stops follow each day with localized allowances, sources and independ
     'nevada/las-vegas',
     'massachusetts/boston',
     'illinois/chicago',
+    'pennsylvania/philadelphia',
   ];
   for (const [city, path] of paths.entries()) {
     const guide = cityContent.guides[city];
@@ -486,6 +489,10 @@ test('Northeast rail guide preserves station details, dated alerts and all five 
   await page.setViewportSize({ width: 320, height: 740 });
   await page.goto('/en/');
   await expect(page.locator('.guide-card')).toHaveCount(7);
+  await page
+    .locator('.guide-topics')
+    .getByRole('button', { name: 'Between cities', exact: true })
+    .click();
   const card = page.locator('.guide-card').last();
   await card.press('Enter');
   const guide = page.locator('.guide-detail');
@@ -543,4 +550,53 @@ test('Northeast rail guide preserves station details, dated alerts and all five 
   await page.clock.setFixedTime(new Date('2026-10-13T00:00:00Z'));
   await card.press('Enter');
   await expect(guide.locator(':scope > p.day-warning')).toHaveText(preparation.copy.stale[4]);
+});
+
+test('guide topics keep all seven notes reachable and remember the chosen topic in five languages', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 740 });
+  for (const [l, lang] of LANGUAGES.entries()) {
+    await page.goto('/' + lang + '/');
+    const topics = page.locator('.guide-topics');
+    await topics.getByRole('button', { name: EXPERIENCE_COPY.guideAll[l], exact: true }).click();
+    await expect(page.locator('.guide-card:visible')).toHaveCount(3);
+    await page.locator('.more-field-notes > summary').press('Enter');
+    await expect(page.locator('.guide-card:visible')).toHaveCount(7);
+    await topics.getByRole('button', { name: EXPERIENCE_COPY.guideNature[l], exact: true }).click();
+    await expect(page.locator('.guide-card')).toHaveCount(2);
+    await expect(page.locator('.guide-result-count')).toHaveText(
+      EXPERIENCE_COPY.guideCount[l].replace('{count}', '2'),
+    );
+    await topics
+      .getByRole('button', { name: EXPERIENCE_COPY.guideTransport[l], exact: true })
+      .click();
+    const selected = topics.getByRole('button', {
+      name: EXPERIENCE_COPY.guideTransport[l],
+      exact: true,
+    });
+    await expect(selected).toHaveAttribute('aria-pressed', 'true');
+    await page.locator('.guide-card').last().press('Enter');
+    await expect(page.getByRole('dialog')).toHaveAccessibleName(preparation.copy.intercityTitle[l]);
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.guide-card').last()).toBeFocused();
+    await page.reload();
+    await expect(selected).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('.guide-card')).toHaveCount(2);
+    if (lang === 'en') {
+      const audit = await new AxeBuilder({ page })
+        .include('#guides')
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+        .analyze();
+      expect(audit.violations).toEqual([]);
+    }
+    await page.locator('#guides').evaluate((el) => {
+      const nodes = [...el.querySelectorAll<HTMLElement>('*')];
+      const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
+      nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
+    });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
 });

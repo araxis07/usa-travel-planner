@@ -185,6 +185,33 @@ export const ITINERARIES: Itinerary[] = [
     schedules: [[null, 'WY-1', 'WY-1', null, 'WY-0', 'WY-0', 'WY-0']],
     car: true,
   },
+  {
+    id: 'northeast-rail',
+    title: [
+      'Boston → New York → Philadelphia',
+      'Boston → New York → Philadelphia',
+      'Boston → New York → Philadelphia',
+      'Boston → New York → Philadelphia',
+      'Boston → New York → Philadelphia',
+    ],
+    subtitle: [
+      'Nine days, three cities and two flexible rail-arrival days.',
+      'เก้าวัน สามเมือง และสองวันย้ายเมืองด้วยรถไฟที่ปรับเวลาได้',
+      '九天三座城，预留两天灵活的铁路抵达安排。',
+      '9日間、3都市、時間を調整できる鉄道の到着日が2日。',
+      '9일, 세 도시, 시간을 조정할 수 있는 두 번의 철도 도착일.',
+    ],
+    label: cityLabel,
+    image: 'states/pa-1',
+    codes: ['MA', 'NY', 'PA'],
+    days: [3, 4, 2],
+    schedules: [
+      ['MA-0', 'MA-0', 'MA-0'],
+      [null, 'NY-0', 'NY-0', 'NY-0'],
+      [null, 'PA-0'],
+    ],
+    car: false,
+  },
 ];
 const CITY_FOCUS: Record<string, LocalText[]> = {
   'new-york-weekend': [
@@ -256,6 +283,87 @@ const CITY_FOCUS: Record<string, LocalText[]> = {
       '호숫가 휴식과 동네 식사',
     ],
   ],
+  'northeast-rail': [
+    [
+      'Boston Common and Back Bay',
+      'Boston Common กับ Back Bay',
+      'Boston Common与Back Bay',
+      'Boston CommonとBack Bay',
+      '보스턴 코먼과 백 베이',
+    ],
+    [
+      'Freedom Trail and North End',
+      'Freedom Trail กับ North End',
+      'Freedom Trail与North End',
+      'Freedom TrailとNorth End',
+      '프리덤 트레일과 노스 엔드',
+    ],
+    [
+      'Choose an MFA visit and nearby lunch',
+      'เลือกเที่ยว MFA และมื้อใกล้กัน',
+      '选择MFA参观与附近午餐',
+      'MFAの見学と近くのランチを選ぶ',
+      'MFA 방문과 가까운 점심 선택',
+    ],
+    [
+      'Hotel bag drop or check-in in New York',
+      'ฝากกระเป๋าหรือเช็กอินที่พักใน New York',
+      'New York住宿寄存行李或入住',
+      'New Yorkの宿で荷物を預けるかチェックイン',
+      '뉴욕 숙소에 짐 보관 또는 체크인',
+    ],
+    [
+      'Midtown and a short Central Park walk',
+      'Midtown และเดิน Central Park ช่วงสั้น',
+      'Midtown与Central Park短途散步',
+      'MidtownとCentral Parkで短い散歩',
+      '미드타운과 센트럴파크 짧은 산책',
+    ],
+    [
+      'Lower Manhattan at an easy pace',
+      'Lower Manhattan ในจังหวะสบาย',
+      '轻松游览Lower Manhattan',
+      'Lower Manhattanをゆっくり巡る',
+      '로어맨해튼을 여유롭게',
+    ],
+    [
+      'Choose a Brooklyn / DUMBO visit',
+      'เลือกเที่ยว Brooklyn / DUMBO',
+      '选择Brooklyn / DUMBO游览',
+      'Brooklyn / DUMBOの訪問を選ぶ',
+      '브루클린 / 덤보 방문 선택',
+    ],
+    [
+      'Hotel bag drop or check-in in Philadelphia',
+      'ฝากกระเป๋าหรือเช็กอินที่พักใน Philadelphia',
+      'Philadelphia住宿寄存行李或入住',
+      'Philadelphiaの宿で荷物を預けるかチェックイン',
+      '필라델피아 숙소에 짐 보관 또는 체크인',
+    ],
+    [
+      'Old City and a nearby meal',
+      'Old City กับมื้อใกล้กัน',
+      'Old City与附近用餐',
+      'Old Cityと近くの食事',
+      '올드 시티와 가까운 식사',
+    ],
+  ],
+};
+const RAIL_LEGS: Record<string, LocalText> = {
+  NY: [
+    'BOS → NYP · train and arrival',
+    'BOS → NYP · รถไฟและวันมาถึง',
+    'BOS → NYP · 列车与抵达',
+    'BOS → NYP · 鉄道と到着',
+    'BOS → NYP · 열차와 도착',
+  ],
+  PA: [
+    'NYP → PHL · train and arrival',
+    'NYP → PHL · รถไฟและวันมาถึง',
+    'NYP → PHL · 列车与抵达',
+    'NYP → PHL · 鉄道と到着',
+    'NYP → PHL · 열차와 도착',
+  ],
 };
 export function itineraryTrip(route: Itinerary, lang: Language): Trip {
   return {
@@ -264,13 +372,15 @@ export function itineraryTrip(route: Itinerary, lang: Language): Trip {
     stops: route.codes.map((code, i) => ({
       code,
       days: route.days[i],
-      notes: '',
+      notes: route.id === 'northeast-rail' ? x(lang, 'railScheduleNote') : '',
       activities: route.schedules[i].flatMap((id, d): TripActivity[] => {
         const place = id ? findPlace(id) : undefined;
         const free = id === 'free';
-        const focus = CITY_FOCUS[route.id]?.[d];
+        const rail = route.id === 'northeast-rail';
+        const focus =
+          CITY_FOCUS[route.id]?.[route.days.slice(0, i).reduce((n, days) => n + days, 0) + d];
         const mainMinutes = place ? Math.min(240, place.profile.visitMinutes) : free ? 90 : 360;
-        return [
+        const activities: TripActivity[] = [
           {
             id: crypto.randomUUID(),
             day: d + 1,
@@ -317,6 +427,17 @@ export function itineraryTrip(route: Itinerary, lang: Language): Trip {
             bufferMinutes: 0,
           },
         ];
+        if (rail) {
+          activities.forEach((activity) => delete activity.startTime);
+          if (!place) {
+            activities[0].title = local(RAIL_LEGS[code], lang);
+            activities[0].notes = x(lang, 'railTransferNote');
+            const arrival = activities[2];
+            activities[2] = activities[1];
+            activities[1] = arrival;
+          }
+        }
+        return activities;
       }),
     })),
   };

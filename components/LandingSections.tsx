@@ -1,9 +1,20 @@
+import { useState } from 'react';
 import { translate } from '../lib/i18n';
 import Icon, { type IconName } from './Icon';
 import { GUIDES, local, type Language } from '../data/travel';
 import { ITINERARIES as ROUTES } from '../data/itineraries';
 import { MORE_GUIDES } from '../data/fieldNotes';
 import TravelImage from './TravelImage';
+import { x, type ExperienceKey } from '../data/experience-copy';
+import { readLocal } from '../lib/storage';
+
+const GUIDE_TOPICS: { id: string; label: ExperienceKey; guides: string[] }[] = [
+  { id: 'all', label: 'guideAll', guides: [] },
+  { id: 'preparation', label: 'guidePreparation', guides: ['first-trip'] },
+  { id: 'cities', label: 'guideCities', guides: ['car-free', 'comfortable-days'] },
+  { id: 'nature', label: 'guideNature', guides: ['parks', 'season-planning'] },
+  { id: 'transport', label: 'guideTransport', guides: ['road-trip', 'northeast-rail'] },
+];
 
 export function Brand({ lang, footer = false }: { lang: Language; footer?: boolean }) {
   return (
@@ -81,6 +92,13 @@ export function RoadTrips({ lang, onRoute }: { lang: Language; onRoute: (id: str
               <span className="eyebrow">{local(item.label, lang)}</span>
               <h3>{local(item.title, lang)}</h3>
               <p>{item.codes.join(' → ')}</p>
+              <p className="route-travel-mode">
+                <Icon name="route" size={16} />
+                {x(
+                  lang,
+                  item.id === 'northeast-rail' ? 'railRoute' : item.car ? 'carRoute' : 'cityRoute',
+                )}
+              </p>
               <span className="route-explore">
                 {t('Take this route', 'ดูเส้นทางนี้')}
                 <span>
@@ -187,6 +205,45 @@ export function PlannerBanner({
 export function FieldNotes({ lang, onGuide }: { lang: Language; onGuide: (id: string) => void }) {
   const t = (en: string, th: string, values?: Record<string, string | number>) =>
     translate(en, th, lang, values);
+  const [topic, setTopic] = useState(() =>
+    readLocal('roam.guide-topic.v1', 'all', (value) =>
+      typeof value === 'string' && GUIDE_TOPICS.some((item) => item.id === value) ? value : 'all',
+    ),
+  );
+  const guides = [...GUIDES, ...MORE_GUIDES];
+  const filtered =
+    topic === 'all'
+      ? guides
+      : guides.filter((item) =>
+          GUIDE_TOPICS.find((group) => group.id === topic)!.guides.includes(item.id),
+        );
+  const featured = filtered.filter((item) =>
+    ['first-trip', 'parks', 'northeast-rail'].includes(item.id),
+  );
+  const cards = (items: typeof guides) => (
+    <div className="guide-grid">
+      {items.map((item) => {
+        const index = guides.indexOf(item);
+        return (
+          <button className="guide-card" key={item.id} onClick={() => onGuide(item.id)}>
+            <div className={`guide-illustration guide-illustration-${index}`}>
+              <Icon name={item.icon as IconName} size={54} />
+              <span className="guide-number">0{index + 1}</span>
+              <span className="guide-doodle" aria-hidden="true">
+                ✦
+              </span>
+            </div>
+            <span className="eyebrow">{local(item.category, lang)}</span>
+            <h3>{local(item.title, lang)}</h3>
+            <span className="text-link">
+              {t('Read the field note', 'อ่านคู่มือ')}
+              <Icon name="arrow" size={16} />
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
   return (
     <>
       <section id="guides" className="guides section-shell section-anchor">
@@ -206,25 +263,34 @@ export function FieldNotes({ lang, onGuide }: { lang: Language; onGuide: (id: st
             {t('The Roam field notes', 'บันทึกนักเดินทาง Roam')}
           </span>
         </div>
-        <div className="guide-grid">
-          {[...GUIDES, ...MORE_GUIDES].map((item, index) => (
-            <button className="guide-card" key={item.id} onClick={() => onGuide(item.id)}>
-              <div className={`guide-illustration guide-illustration-${index}`}>
-                <Icon name={item.icon as IconName} size={54} />
-                <span className="guide-number">0{index + 1}</span>
-                <span className="guide-doodle" aria-hidden="true">
-                  ✦
-                </span>
-              </div>
-              <span className="eyebrow">{local(item.category, lang)}</span>
-              <h3>{local(item.title, lang)}</h3>
-              <span className="text-link">
-                {t('Read the field note', 'อ่านคู่มือ')}
-                <Icon name="arrow" size={16} />
-              </span>
+        <div className="guide-topics" role="group" aria-label={x(lang, 'guideTopics')}>
+          {GUIDE_TOPICS.map((group) => (
+            <button
+              key={group.id}
+              aria-pressed={topic === group.id}
+              onClick={() => {
+                setTopic(group.id);
+                try {
+                  localStorage.setItem('roam.guide-topic.v1', JSON.stringify(group.id));
+                } catch {
+                  /* Optional reading preference. */
+                }
+              }}
+            >
+              {x(lang, group.label)}
             </button>
           ))}
         </div>
+        <p className="guide-result-count" role="status">
+          {x(lang, 'guideCount', { count: filtered.length })}
+        </p>
+        {cards(topic === 'all' ? featured : filtered)}
+        {topic === 'all' && (
+          <details className="more-field-notes">
+            <summary>{x(lang, 'allGuides', { count: guides.length })}</summary>
+            {cards(filtered.filter((item) => !featured.includes(item)))}
+          </details>
+        )}
       </section>
       <section className="closing-note section-shell">
         <span className="closing-star" aria-hidden="true">

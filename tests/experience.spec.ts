@@ -9,7 +9,7 @@ import { validateCollections } from '../lib/collections';
 import { EXPERIENCE_COPY } from '../data/experience-copy';
 
 test('all templates have complete valid days and five-language experience copy', () => {
-  expect(ITINERARIES).toHaveLength(8);
+  expect(ITINERARIES).toHaveLength(9);
   expect(
     starterTrip('CA-0', 4, 'en')
       .stops[0].activities!.filter((a) => a.day > 1)
@@ -26,6 +26,45 @@ test('all templates have complete valid days and five-language experience copy',
         expect(timeline.some((a) => a.overlap)).toBe(false);
       }
     });
+  }
+  for (const lang of ['en', 'th', 'zh', 'ja', 'ko'] as const) {
+    const rail = validateTrip(
+      itineraryTrip(
+        ITINERARIES.find((route) => route.id === 'northeast-rail')!,
+        lang,
+      ),
+    );
+    expect(rail.stops.map((stop) => [stop.code, stop.days])).toEqual([
+      ['MA', 3],
+      ['NY', 4],
+      ['PA', 2],
+    ]);
+    expect(
+      rail.stops
+        .flatMap((stop) => stop.activities!)
+        .every((activity) => activity.startTime === undefined),
+    ).toBe(true);
+    for (const [i, leg] of [
+      [1, 'BOS → NYP'],
+      [2, 'NYP → PHL'],
+    ] as const) {
+      const arrival = rail.stops[i].activities!.filter((activity) => activity.day === 1);
+      expect(arrival.map((activity) => activity.placeId)).toEqual([
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+      ]);
+      expect(arrival[0].title).toContain(leg);
+      expect(arrival[0].minutes).toBe(360);
+      expect(arrival[0].notes).toBe(
+        EXPERIENCE_COPY.railTransferNote[['en', 'th', 'zh', 'ja', 'ko'].indexOf(lang)],
+      );
+      expect(arrival[1].title).not.toBe(arrival[2].title);
+      expect(rail.stops[i].notes).toContain(
+        EXPERIENCE_COPY.railScheduleNote[['en', 'th', 'zh', 'ja', 'ko'].indexOf(lang)],
+      );
+    }
   }
   Object.values(EXPERIENCE_COPY).forEach((v) => {
     expect(v).toHaveLength(5);
@@ -174,6 +213,84 @@ test('wizard explains car-free matches and creates a daily trip without losing t
   await expect(page.locator('.day-activity')).toHaveCount(3);
   const library = await page.evaluate(() => JSON.parse(localStorage.getItem('roam.library.v1')!));
   expect(library.trips).toHaveLength(2);
+});
+
+test('rail guide creates nine editable days while preserving the original trip and expenses', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    if (!localStorage.getItem('roam.trip.v1'))
+      localStorage.setItem(
+        'roam.trip.v1',
+        JSON.stringify({
+          name: 'Original rail holiday',
+          startDate: '',
+          travelers: 2,
+          dailyBudget: 100,
+          budgetMode: 'items',
+          expenses: [
+            { id: 'deposit', name: 'Hotel deposit', category: 'lodging', planned: 500, paid: 100 },
+          ],
+          stops: [{ code: 'CA', days: 2, notes: 'Keep my booking', activities: [] }],
+        }),
+      );
+  });
+  for (const [l, lang] of ['en', 'th', 'zh', 'ja', 'ko'].entries()) {
+    await page.goto('/' + lang + '/');
+    await page
+      .locator('.guide-topics')
+      .getByRole('button', { name: EXPERIENCE_COPY.guideTransport[l], exact: true })
+      .click();
+    await page.locator('.guide-card').last().press('Enter');
+    await page.getByRole('button', { name: EXPERIENCE_COPY.previewRail[l], exact: true }).click();
+    const preview = page.getByRole('dialog');
+    await expect(preview.locator('.template-day')).toHaveCount(9);
+    const dayLabels = await preview.locator('.template-day > strong').allTextContents();
+    expect(dayLabels.map((text) => Number(text.match(/\d+/)![0]))).toEqual([
+      1, 2, 3, 4, 5, 6, 7, 8, 9,
+    ]);
+    await expect(preview).toContainText(EXPERIENCE_COPY.railScheduleNote[l]);
+    await expect(preview.locator('.template-day').nth(3)).toContainText('BOS → NYP');
+    await expect(preview.locator('.template-day').nth(7)).toContainText('NYP → PHL');
+    await preview.getByRole('button', { name: EXPERIENCE_COPY.usePlan[l], exact: true }).click();
+    await expect(page.locator('#planner-page')).toBeVisible();
+    await expect(page.locator('.day-strip button')).toHaveCount(3);
+    await page.locator('.day-planner-heading select').selectOption('NY');
+    await expect(page.locator('.day-strip button')).toHaveCount(4);
+    await expect(page.locator('.day-strip button span').first()).toContainText('4');
+    if (lang === 'en') {
+      const transfer = page.locator('.day-activity').first();
+      await transfer.getByRole('button', { name: 'Edit activity', exact: true }).click();
+      await transfer.getByLabel('Starts at', { exact: true }).fill('10:00');
+      await transfer.getByRole('spinbutton', { name: /^Duration for/ }).fill('180');
+    }
+    await page.locator('.day-planner-heading select').selectOption('PA');
+    await expect(page.locator('.day-strip button')).toHaveCount(2);
+    await expect(page.locator('.day-strip button span').first()).toContainText('8');
+    const current = validateTrip(
+      await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!)),
+    );
+    expect(current.stops.map((stop) => [stop.code, stop.days])).toEqual([
+      ['MA', 3],
+      ['NY', 4],
+      ['PA', 2],
+    ]);
+    expect(current.expenses ?? []).toHaveLength(0);
+    const library = validateLibrary(
+      await page.evaluate(() => JSON.parse(localStorage.getItem('roam.library.v1')!)),
+    );
+    const original = library.trips.find((item) => item.trip.name === 'Original rail holiday')!.trip;
+    expect(original.stops[0].notes).toBe('Keep my booking');
+    expect(original.expenses).toEqual([
+      { id: 'deposit', name: 'Hotel deposit', category: 'lodging', planned: 500, paid: 100 },
+    ]);
+    await page.reload();
+    await expect(page.locator('.day-strip button')).toHaveCount(3);
+    if (lang === 'en') {
+      const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!));
+      expect(saved.stops[1].activities[0]).toMatchObject({ startTime: '10:00', minutes: 180 });
+    }
+  }
 });
 
 test('place discovery filters, saves collections and opens a guide with its table of contents', async ({

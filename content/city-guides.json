@@ -1732,6 +1732,327 @@
           }
         ]
       }
+    },
+    {
+      "placeId": "PA-0",
+      "checkedAt": "2026-10-06",
+      "reviewAfter": "2026-10-13",
+      "translationsReviewed": [false, false, false, false, false],
+      "intro": [
+        "Keep a short Philadelphia stay around Old City, Center City and one Parkway museum. After arriving at 30th Street Station, leave time for the hotel and luggage before starting a neighborhood visit.",
+        "จัดทริปสั้นใน Philadelphia รอบ Old City, Center City และพิพิธภัณฑ์บน Parkway หนึ่งแห่ง เมื่อถึงสถานี 30th Street ให้เผื่อไปที่พักกับจัดกระเป๋าก่อนเริ่มเที่ยวในย่าน",
+        "短途Philadelphia行程可围绕Old City、Center City与一座Parkway博物馆。到达30th Street Station后，先为前往住宿与安置行李留出时间，再开始街区游览。",
+        "Philadelphiaの短い滞在はOld City、Center City、Parkwayの美術館ひとつを中心に。30th Street Station到着後は宿と荷物の時間を確保してから街歩きへ。",
+        "필라델피아의 짧은 일정은 올드 시티, 센터 시티, 파크웨이의 박물관 한 곳을 중심으로 잡으세요. 30th Street 역 도착 후 숙소 이동과 짐 정리 시간을 확보하고 동네 관광을 시작하세요."
+      ],
+      "areas": [
+        {
+          "title": [
+            "Old City · history nearby",
+            "Old City · ใกล้ย่านประวัติศาสตร์",
+            "Old City · 历史街区",
+            "Old City · 歴史地区の近く",
+            "올드 시티 · 역사 지구 가까이"
+          ],
+          "text": [
+            "Consider this base for Independence Hall, the Liberty Bell and nearby historic streets. Compare the walk from the exact hotel to your booked visit and the connection from 30th Street Station; a neighborhood label does not verify every entrance.",
+            "พิจารณาฐานพักสำหรับ Independence Hall, Liberty Bell และถนนประวัติศาสตร์ใกล้กัน เทียบทางเดินจากโรงแรมจริงถึงจุดเข้าชมที่จองกับการต่อจากสถานี 30th Street ชื่อย่านไม่ได้ยืนยันทางเข้าทุกแห่ง",
+            "可作为Independence Hall、Liberty Bell及附近历史街道的据点。比较具体酒店到预约地点的步行路线与30th Street Station接驳，街区名称不能确认每个入口。",
+            "Independence Hall、Liberty Bell、歴史的な街並みの拠点に。実際の宿から予約施設への徒歩と30th Street Stationからの接続を比較し、各入口も確認。",
+            "독립기념관, 자유의 종, 주변 역사 거리의 거점으로 고려하세요. 실제 호텔에서 예약 장소까지의 도보와 30th Street 역 연결편을 비교하세요. 동네 이름만으로 각 입구를 확인할 수는 없습니다."
+          ],
+          "mapQuery": "Old City Philadelphia",
+          "source": {
+            "name": "Visit Philadelphia · Old City",
+            "url": "https://www.visitphilly.com/areas/philadelphia-neighborhoods/old-city/"
+          }
+        },
+        {
+          "title": [
+            "Center City · market and local connections",
+            "Center City · ตลาดและการต่อรถ",
+            "Center City · 市场与本地交通",
+            "Center City · 市場と市内の移動",
+            "센터 시티 · 시장과 지역 교통"
+          ],
+          "text": [
+            "Compare stays around City Hall and Reading Terminal Market. Center City covers several neighborhoods, so check the particular block, useful SEPTA station and return route before choosing a room.",
+            "เทียบที่พักรอบ City Hall และ Reading Terminal Market เพราะ Center City ครอบคลุมหลายย่าน ให้ตรวจบล็อกจริง สถานี SEPTA ที่ใช้และทางกลับก่อนเลือกห้อง",
+            "比较City Hall与Reading Terminal Market附近住宿。Center City包含多个街区，选房前核对具体街段、适用SEPTA车站与返程。",
+            "City HallやReading Terminal Market周辺の宿を比較。Center Cityには複数の地区があるため、実際の街区、利用するSEPTA駅、帰路を確認して選びましょう。",
+            "시청과 리딩 터미널 마켓 주변 숙소를 비교하세요. 센터 시티는 여러 동네를 포함하므로 객실 선택 전에 실제 블록, 이용할 SEPTA 역, 귀환 경로를 확인하세요."
+          ],
+          "mapQuery": "Center City Philadelphia City Hall",
+          "source": {
+            "name": "Visit Philadelphia · Center City",
+            "url": "https://www.visitphilly.com/areas/philadelphia-neighborhoods/center-city/"
+          }
+        },
+        {
+          "title": [
+            "Fairmount / Parkway · an art-focused day",
+            "Fairmount / Parkway · วันเที่ยวศิลปะ",
+            "Fairmount / Parkway · 艺术主题日",
+            "Fairmount / Parkway · アートの日",
+            "페어마운트 / 파크웨이 · 예술 중심 하루"
+          ],
+          "text": [
+            "Consider this area for a museum-focused stay. Choose one institution and plan its actual entrance, ticket and route separately; nearby museum names do not mean one ticket covers them all.",
+            "พิจารณาพื้นที่นี้สำหรับทริปเน้นพิพิธภัณฑ์ เลือกหนึ่งแห่งแล้วตรวจทางเข้าจริง ตั๋วและเส้นทางแยกกัน พิพิธภัณฑ์ที่อยู่ใกล้กันไม่ได้ใช้ตั๋วเดียวทั้งหมด",
+            "可作为博物馆主题住宿区域。选一座机构，分别确认实际入口、门票与路线；附近的博物馆不代表共用一张票。",
+            "美術館を中心に過ごすならこのエリアを検討。施設をひとつ選び、実際の入口、チケット、経路を個別に確認。近くても共通券とは限りません。",
+            "박물관 중심 숙박 거점으로 고려하세요. 기관 하나를 고르고 실제 입구, 티켓, 경로를 각각 확인하세요. 가까운 박물관이라고 티켓 한 장으로 모두 입장하는 것은 아닙니다."
+          ],
+          "mapQuery": "Fairmount Philadelphia Benjamin Franklin Parkway",
+          "source": {
+            "name": "Visit Philadelphia · Fairmount",
+            "url": "https://www.visitphilly.com/areas/philadelphia-neighborhoods/fairmount/"
+          }
+        }
+      ],
+      "days": [
+        {
+          "title": [
+            "Old City and Independence Hall",
+            "Old City กับ Independence Hall",
+            "Old City与Independence Hall",
+            "Old CityとIndependence Hall",
+            "올드 시티와 독립기념관"
+          ],
+          "text": [
+            "Start with the historic district and choose Independence Hall or the Liberty Bell as the main visit. Check NPS ticket requirements for your chosen Hall session and allow for security screening. Keep the afternoon to a short Old City walk, a meal and rest.",
+            "เริ่มย่านประวัติศาสตร์แล้วเลือก Independence Hall หรือ Liberty Bell เป็นจุดหลัก ตรวจเงื่อนไขตั๋ว NPS ของรอบ Hall ที่เลือกและเผื่อตรวจความปลอดภัย ช่วงบ่ายเดิน Old City ระยะสั้น กินอาหารและพัก",
+            "从历史街区开始，选Independence Hall或Liberty Bell为主要参观。按所选Hall场次核对NPS票务要求并预留安检，下午安排短途Old City散步、用餐与休息。",
+            "歴史地区から始め、Independence HallかLiberty Bellを主な訪問に。Hallの回に必要なチケットをNPSで確認し、保安検査にも余裕を。午後は短いOld City散歩と食事、休憩を。",
+            "역사 지구에서 시작해 독립기념관이나 자유의 종을 주요 방문지로 고르세요. 선택한 기념관 회차의 NPS 티켓 요건과 보안 검색 시간을 확인하세요. 오후에는 짧은 올드 시티 산책, 식사, 휴식을 넣으세요."
+          ],
+          "alternative": [
+            "Shorten the outdoor walk and choose an indoor historic attraction in the same area after checking its hours and ticket requirements.",
+            "ลดการเดินกลางแจ้งแล้วเลือกสถานที่ประวัติศาสตร์ในร่มในย่านเดียวกัน หลังตรวจเวลาเปิดกับเงื่อนไขตั๋ว",
+            "缩短户外步行，核对开放时间与票务后选同一区域的室内历史景点。",
+            "屋外の散歩を短くし、時間とチケットを確認して同じ地区の屋内の歴史施設へ。",
+            "야외 산책을 줄이고 운영 시간과 티켓 조건을 확인한 뒤 같은 지역의 실내 역사 명소를 고르세요."
+          ],
+          "source": {
+            "name": "NPS · Independence Hall tickets and screening",
+            "url": "https://www.nps.gov/inde/planyourvisit/independencehall.htm"
+          }
+        },
+        {
+          "title": [
+            "Reading Terminal Market and Center City",
+            "Reading Terminal Market กับ Center City",
+            "Reading Terminal Market与Center City",
+            "Reading Terminal MarketとCenter City",
+            "리딩 터미널 마켓과 센터 시티"
+          ],
+          "text": [
+            "Choose a market lunch and a short City Hall-area walk rather than crossing the whole city. Check individual merchant hours and leave room for queues. Add a nearby café or hotel break before the evening.",
+            "เลือกมื้อกลางวันที่ตลาดกับเดินรอบ City Hall ช่วงสั้นแทนข้ามทั้งเมือง ตรวจเวลาร้านแต่ละร้านและเผื่อคิว เพิ่มคาเฟ่ใกล้กันหรือพักโรงแรมก่อนช่วงเย็น",
+            "安排市场午餐与City Hall附近短途散步，不必横跨全城。核对各商户营业时间、留出排队余量，傍晚前加附近咖啡馆或酒店休息。",
+            "市場のランチとCity Hall周辺の短い散歩を選び、街全体を横断しない日へ。各店舗の時間と行列を確認し、夕方前に近くのカフェや宿で休憩。",
+            "도시 전체를 가로지르기보다 시장 점심과 시청 주변 짧은 산책을 고르세요. 개별 상점의 운영 시간과 대기 시간을 확인하고 저녁 전에 가까운 카페나 호텔 휴식을 넣으세요."
+          ],
+          "alternative": [
+            "Keep more of the visit inside the market and shorten the outside segment; verify that the merchants you want are open on your date.",
+            "เพิ่มเวลาในตลาดและลดช่วงกลางแจ้ง ตรวจร้านที่ต้องการว่าเปิดในวันที่ไป",
+            "延长市场内停留、缩短户外部分，确认目标商户在出行日期营业。",
+            "市場内の時間を増やして屋外を短くし、訪問日の各店舗の営業を確認。",
+            "시장 안에서 더 오래 머물고 야외 구간을 줄이세요. 방문일에 원하는 상점이 여는지 확인하세요."
+          ],
+          "source": {
+            "name": "Reading Terminal Market · merchants and visits",
+            "url": "https://readingterminalmarket.org/"
+          }
+        },
+        {
+          "title": [
+            "One Parkway museum and a slower afternoon",
+            "พิพิธภัณฑ์บน Parkway หนึ่งแห่งและบ่ายสบาย ๆ",
+            "一座Parkway博物馆与轻松下午",
+            "Parkwayの美術館ひとつとゆったりした午後",
+            "파크웨이 박물관 한 곳과 여유로운 오후"
+          ],
+          "text": [
+            "Choose the Philadelphia Museum of Art or another Parkway institution, check its current admission and open day, and leave time for the collections. Keep a nearby lunch and an optional short outdoor stop rather than booking a second large museum.",
+            "เลือก Philadelphia Museum of Art หรือพิพิธภัณฑ์อื่นบน Parkway ตรวจค่าเข้ากับวันเปิดปัจจุบันและเผื่อเวลาชมงาน จับคู่มื้อใกล้กันกับจุดกลางแจ้งสั้น ๆ ตามสะดวกแทนจองพิพิธภัณฑ์ใหญ่อีกแห่ง",
+            "选择Philadelphia Museum of Art或另一家Parkway机构，核对现行门票与开放日并留出观展时间。搭配附近午餐与可选短途户外停留，不必再预约第二座大型博物馆。",
+            "Philadelphia Museum of ArtなどParkwayの施設をひとつ選び、最新の入館料と営業日を確認して展示の時間を確保。近くのランチと短い屋外の立ち寄りを合わせましょう。",
+            "필라델피아 미술관 또는 파크웨이의 다른 기관 하나를 고르고 현재 입장 조건과 운영일을 확인하세요. 전시 관람 시간을 확보하고 가까운 점심과 선택적인 짧은 야외 방문을 함께 잡으세요."
+          ],
+          "alternative": [
+            "Spend longer inside the chosen museum if it is open; check its current visitor rules and shorten any exposed outdoor walk.",
+            "ใช้เวลาในพิพิธภัณฑ์ที่เลือกให้นานขึ้นถ้าเปิด ตรวจข้อกำหนดผู้เข้าชมปัจจุบันและลดการเดินกลางแจ้ง",
+            "若所选博物馆开放可延长室内参观，核对当前访客规定并缩短无遮蔽的户外步行。",
+            "営業していれば選んだ施設の屋内で長めに過ごし、最新の来館ルールを確認して屋外の散歩を短く。",
+            "선택한 박물관이 열면 실내 관람을 늘리세요. 현재 방문 규정을 확인하고 노출된 야외 산책은 줄이세요."
+          ],
+          "source": {
+            "name": "Philadelphia Museum of Art · visitor guidance",
+            "url": "https://www.philamuseum.org/know-before-you-go"
+          }
+        }
+      ],
+      "airport": {
+        "code": "PHL",
+        "steps": [
+          [
+            "After baggage claim, follow the signs to your terminal’s SEPTA Airport Regional Rail station and check the departure information.",
+            "หลังรับกระเป๋า เดินตามป้ายไปสถานี SEPTA Airport Regional Rail ของอาคารที่มาถึงแล้วตรวจป้ายออกเดินทาง",
+            "领取行李后按指示到所在航站楼的SEPTA Airport Regional Rail站，核对发车信息。",
+            "荷物を受け取ったら到着ターミナルのSEPTA Airport Regional Rail駅への表示に従い、出発案内を確認。",
+            "짐을 찾은 뒤 도착 터미널의 SEPTA 공항 지역철도 역 표지를 따라가서 출발 정보를 확인하세요."
+          ],
+          [
+            "Choose your Center City stop from the actual hotel route: 30th Street, Suburban or Jefferson may serve different bases. Check the operator’s current timetable and any transfer.",
+            "เลือกป้าย Center City ตามทางไปโรงแรมจริง 30th Street, Suburban หรือ Jefferson เหมาะกับฐานพักต่างกัน ตรวจตารางผู้ให้บริการล่าสุดกับการต่อรถ",
+            "按实际酒店路线选择Center City车站，30th Street、Suburban或Jefferson适合不同据点。核对运营方最新时刻与换乘。",
+            "宿への実際の経路からCenter Cityの駅を選択。30th Street、Suburban、Jeffersonは拠点によって使い分け、最新の時刻と乗り換えを確認。",
+            "실제 호텔 경로에 맞춰 센터 시티 역을 고르세요. 30th Street, Suburban, Jefferson은 숙소에 따라 다르므로 최신 시간표와 환승을 확인하세요."
+          ],
+          [
+            "Plan the last walk or local ride with luggage, check lifts where needed, and keep the return-to-airport journey separate from an Amtrak departure.",
+            "วางแผนเดินหรือรถช่วงสุดท้ายพร้อมกระเป๋า ตรวจลิฟต์ตามความต้องการ และแยกแผนกลับสนามบินจากการออกเดินทางด้วย Amtrak",
+            "安排携行李步行或本地交通，必要时核对电梯，并将返机场行程与Amtrak出发分别规划。",
+            "荷物を持った最後の徒歩や市内交通を計画し、必要なエレベーターを確認。空港への帰路とAmtrakの出発は別に計画。",
+            "짐을 들고 이동할 마지막 도보나 지역 교통, 필요한 엘리베이터를 확인하세요. 공항 귀환과 Amtrak 출발은 별도로 계획하세요."
+          ]
+        ],
+        "fare": [
+          "Check current Airport Regional Rail fares and payment options with SEPTA. Do not assume a city Metro fare or pass has the same coverage. Amtrak tickets are separate.",
+          "ตรวจค่าโดยสาร Airport Regional Rail กับวิธีจ่ายปัจจุบันที่ SEPTA อย่าสมมติว่าค่า Metro หรือบัตรในเมืองครอบคลุมเหมือนกัน ตั๋ว Amtrak แยกต่างหาก",
+          "向SEPTA核对现行Airport Regional Rail票价与支付方式，不要假设市内Metro票或通票覆盖相同。Amtrak车票另算。",
+          "Airport Regional Railの最新運賃と支払いをSEPTAで確認。市内Metroの運賃やパスと同じ対象とは限りません。Amtrakの切符は別です。",
+          "SEPTA에서 현재 공항 지역철도 요금과 결제 방법을 확인하세요. 시내 메트로 요금이나 패스가 같은 범위를 포함한다고 가정하지 마세요. Amtrak 티켓은 별도입니다."
+        ],
+        "note": [
+          "PHL is also Amtrak’s code for the city’s 30th Street rail station. Confirm the full airport or station name before navigating. Allow for waiting, luggage and actual flight check-in requirements; no fixed journey time is promised here.",
+          "PHL ยังเป็นรหัส Amtrak ของสถานี 30th Street ในเมือง ตรวจชื่อเต็มว่าสนามบินหรือสถานีก่อนนำทาง เผื่อรอ กระเป๋าและเงื่อนไขเช็กอินเที่ยวบินจริง คู่มือนี้ไม่รับรองเวลาเดินทางตายตัว",
+          "PHL也是Amtrak市内30th Street火车站的代码。导航前确认机场或车站全名，预留等候、行李与实际航班值机时间；不承诺固定车程。",
+          "PHLは市内30th Street駅のAmtrakコードでもあります。ナビ前に空港か駅の正式名を確認。待ち時間・荷物・実際の航空便の手続きに余裕を取り、固定の所要時間は示しません。",
+          "PHL은 시내 30th Street 역의 Amtrak 코드이기도 합니다. 길찾기 전에 공항인지 역인지 전체 이름을 확인하세요. 대기, 수하물, 실제 항공편 체크인 요건을 고려하세요. 고정 이동 시간은 보장하지 않습니다."
+        ],
+        "sources": [
+          {
+            "name": "PHL Airport · public transportation",
+            "url": "https://www.phl.org/getting-around/public-transportation"
+          },
+          {
+            "name": "SEPTA · Airport Line schedules",
+            "url": "https://www.septa.org/schedules/rail/airport/"
+          },
+          {
+            "name": "Amtrak · Philadelphia 30th Street Station",
+            "url": "https://www.amtrak.com/stations/phl"
+          }
+        ]
+      },
+      "budget": {
+        "amounts": [
+          [260, 440, 700],
+          [180, 300, 480],
+          [40, 80, 160],
+          [40, 140, 260],
+          [110, 180, 280]
+        ],
+        "note": [
+          "Transport is an editorial allowance including an airport return, not a quoted SEPTA fare calculation. For a rail arrival, replace those airport trips with your local transfers. Intercity trains are extra; check museum tickets, room taxes and mandatory fees for your dates.",
+          "ค่ารถเป็นวงเงินเผื่อรวมสนามบินไปกลับ ไม่ใช่การคำนวณราคา SEPTA ที่ยืนยัน หากมาด้วยรถไฟให้แทนเที่ยวสนามบินด้วยรถต่อในเมือง รถไฟย้ายเมืองแยกเพิ่ม ตรวจตั๋วพิพิธภัณฑ์ ภาษีห้องและค่าธรรมเนียมตามวันจริง",
+          "交通为含机场往返的编辑额度，并非核实的SEPTA票价计算。铁路抵达时用实际本地接驳替换机场行程。城际车票另算，并按日期核对博物馆门票、房税与必付费用。",
+          "交通費は空港往復を含む編集部の予算枠で、SEPTA運賃の計算ではありません。鉄道で到着する場合は市内の接続交通に置き換え。都市間列車は別に加え、入館料・宿泊税・必須料金を確認。",
+          "교통비는 공항 왕복을 포함한 편집 예산이며 확인된 SEPTA 요금 계산이 아닙니다. 철도로 도착하면 공항 이동을 실제 시내 연결편으로 바꾸세요. 도시 간 열차는 별도이며 날짜별 박물관 티켓, 객실 세금, 필수 요금을 확인하세요."
+        ]
+      },
+      "food": {
+        "checkedAt": "2026-10-06",
+        "reviewAfter": "2026-10-13",
+        "translationsReviewed": [false, false, false, false, false],
+        "intro": [
+          "Pair an Old City lunch, Reading Terminal Market and a Fairmount café with the three days above. Use one nearby meal stop per day and update the food budget from the menu you actually choose.",
+          "จับคู่มื้อ Old City, Reading Terminal Market และคาเฟ่ Fairmount กับสามวันด้านบน เลือกมื้อใกล้ทางวันละจุดและปรับงบอาหารจากเมนูที่เลือกจริง",
+          "将Old City午餐、Reading Terminal Market与Fairmount咖啡馆搭配上方三日安排。每天选一处附近餐饮，并按实际菜单更新食费。",
+          "上の3日間にOld Cityのランチ、Reading Terminal Market、Fairmountのカフェを合わせ、1日1か所の近くの食事を。実際のメニューで食費を更新。",
+          "위 3일 일정에 올드 시티 점심, 리딩 터미널 마켓, 페어마운트 카페를 맞추세요. 하루 한 곳의 가까운 식사를 고르고 실제 메뉴로 식비를 갱신하세요."
+        ],
+        "vegetarian": [
+          "Ask for a clearly listed vegetable sandwich, bean dish or meat-free bowl. A standard cheesesteak contains meat; check broth, cheese, dairy and preparation with staff rather than assuming vegetarian, vegan or allergy suitability.",
+          "ถามแซนด์วิชผัก เมนูถั่วหรืออาหารไม่ใส่เนื้อที่ระบุชัด ชีสสเต๊กทั่วไปมีเนื้อ ตรวจน้ำซุป ชีส นมและวิธีทำกับพนักงานแทนสมมติว่าเหมาะกับมังสวิรัติ วีแกนหรือผู้แพ้อาหาร",
+          "询问明确列出的蔬菜三明治、豆类菜肴或无肉碗餐。常规cheesesteak含肉；向员工核对高汤、芝士、乳制品与制作方式，不要假设素食、纯素或过敏适用。",
+          "野菜サンドイッチ、豆料理、肉なしのボウルなど明記されたものを相談。通常のcheesesteakは肉入り。だし・チーズ・乳製品・調理を確認し、食事条件への対応を決めつけないでください。",
+          "명확하게 표시된 채소 샌드위치, 콩 요리, 고기 없는 볼 메뉴를 문의하세요. 일반 치즈스테이크에는 고기가 들어갑니다. 직원에게 육수, 치즈, 유제품, 조리 방법을 확인하고 채식이나 알레르기 적합성을 가정하지 마세요."
+        ],
+        "stops": [
+          {
+            "day": 1,
+            "title": [
+              "Old City · a nearby lunch",
+              "Old City · มื้อกลางวันใกล้ทาง",
+              "Old City · 附近午餐",
+              "Old City · 近くのランチ",
+              "올드 시티 · 가까운 점심"
+            ],
+            "text": [
+              "After the historic visit, choose a sandwich or café meal in Old City. A cheesesteak is one possible choice; compare the current menu or ask for a clearly listed meat-free alternative. Eat outside the Independence Hall screening area and check its food rules.",
+              "หลังเที่ยวประวัติศาสตร์ เลือกแซนด์วิชหรือคาเฟ่ใน Old City ชีสสเต๊กเป็นตัวเลือกหนึ่ง เทียบเมนูปัจจุบันหรือถามทางเลือกไม่ใส่เนื้อที่ระบุชัด กินนอกพื้นที่ตรวจเข้า Independence Hall และตรวจข้อกำหนดอาหาร",
+              "历史游览后在Old City选择三明治或咖啡馆餐饮。Cheesesteak是一种选择；比较最新菜单或询问明确无肉选项。在Independence Hall安检区外用餐并核对食物规定。",
+              "歴史の見学後はOld Cityでサンドイッチやカフェの食事へ。Cheesesteakも一例。最新メニューや明記された肉なし料理を確認。Independence Hallの保安検査区域の外で食べ、食品のルールを確認。",
+              "역사 관광 후 올드 시티의 샌드위치나 카페 식사를 고르세요. 치즈스테이크는 한 가지 선택이며 최신 메뉴나 명확한 고기 없는 대안을 확인하세요. 독립기념관 검색 구역 밖에서 식사하고 음식 규정을 확인하세요."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "Old City Philadelphia lunch",
+            "source": {
+              "name": "Visit Philadelphia · Old City",
+              "url": "https://www.visitphilly.com/areas/philadelphia-neighborhoods/old-city/"
+            }
+          },
+          {
+            "day": 2,
+            "title": [
+              "Reading Terminal Market · choose a merchant",
+              "Reading Terminal Market · เลือกร้านในตลาด",
+              "Reading Terminal Market · 选择商户",
+              "Reading Terminal Market · 店舗を選ぶ",
+              "리딩 터미널 마켓 · 상점 선택"
+            ],
+            "text": [
+              "Choose one market merchant for lunch and check its individual menu and hours. Ask about a vegetable or bean option and keep any bakery treat inside the same meal allowance. Leave time for queues and finding a seat.",
+              "เลือกร้านในตลาดหนึ่งร้านสำหรับมื้อกลางวัน ตรวจเมนูกับเวลาเปิดของร้านนั้น ถามตัวเลือกผักหรือถั่วและนับขนมเบเกอรีในเงินเผื่อมื้อเดียวกัน เผื่อคิวกับหาที่นั่ง",
+              "午餐选一家市场商户并核对其菜单和营业时间，询问蔬菜或豆类选项，烘焙甜点也计入同餐额度。为排队与找座位留余量。",
+              "ランチは市場の店舗をひとつ選び、個別のメニューと時間を確認。野菜や豆の料理を相談し、焼き菓子も同じ食費枠に。行列と席探しに余裕を。",
+              "점심으로 시장 상점 하나를 골라 개별 메뉴와 시간을 확인하세요. 채소나 콩 메뉴를 문의하고 빵이나 디저트도 같은 한 끼 예산에 포함하세요. 대기와 자리 찾을 시간을 확보하세요."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "Reading Terminal Market Philadelphia",
+            "source": {
+              "name": "Reading Terminal Market · merchants and visits",
+              "url": "https://readingterminalmarket.org/"
+            }
+          },
+          {
+            "day": 3,
+            "title": [
+              "Fairmount · a café near the museum route",
+              "Fairmount · คาเฟ่ใกล้ทางพิพิธภัณฑ์",
+              "Fairmount · 博物馆路线附近咖啡馆",
+              "Fairmount · 美術館の経路近くのカフェ",
+              "페어마운트 · 박물관 경로 근처 카페"
+            ],
+            "text": [
+              "Choose a neighborhood café or lunch spot near your actual Parkway museum route. Consider a salad or vegetable sandwich after checking ingredients. Museum admission stays in the activity budget; this allowance covers the meal only.",
+              "เลือกคาเฟ่หรือร้านกลางวันในย่านใกล้เส้นทางพิพิธภัณฑ์บน Parkway ที่ใช้จริง พิจารณาสลัดหรือแซนด์วิชผักหลังตรวจส่วนผสม ค่าเข้าพิพิธภัณฑ์อยู่ในงบกิจกรรม เงินเผื่อนี้เฉพาะมื้ออาหาร",
+              "在实际Parkway博物馆路线附近选街区咖啡馆或午餐店。核对配料后可考虑沙拉或蔬菜三明治。门票归活动预算，此额度仅含餐饮。",
+              "実際に利用するParkwayの美術館への経路近くでカフェやランチを選び、材料を確認してサラダや野菜サンドイッチを検討。入館料は体験予算、ここは食費のみです。",
+              "실제 파크웨이 박물관 경로 근처의 동네 카페나 점심 식당을 고르세요. 재료를 확인한 뒤 샐러드나 채소 샌드위치를 고려하세요. 박물관 입장료는 활동 예산에 넣고 이 금액은 식사에만 사용하세요."
+            ],
+            "allowance": [15, 30],
+            "mapQuery": "Fairmount Philadelphia cafes",
+            "source": {
+              "name": "Visit Philadelphia · Fairmount",
+              "url": "https://www.visitphilly.com/areas/philadelphia-neighborhoods/fairmount/"
+            }
+          }
+        ]
+      }
     }
   ]
 }

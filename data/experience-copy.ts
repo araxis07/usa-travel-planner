@@ -2,6 +2,68 @@ import { languageIndex, type Language } from '../lib/i18n';
 
 // Every new experience string ships together in EN / TH / ZH / JA / KO.
 export const EXPERIENCE_COPY = {
+  guideTopics: ['Guide topics', 'หมวดคู่มือ', '指南主题', 'ガイドのテーマ', '가이드 주제'],
+  guideAll: ['All topics', 'ทุกหมวด', '全部主题', 'すべてのテーマ', '모든 주제'],
+  guidePreparation: ['Before you go', 'ก่อนเดินทาง', '行前准备', '出発前の準備', '여행 전 준비'],
+  guideCities: ['City travel', 'เที่ยวเมือง', '城市旅行', '都市の旅', '도시 여행'],
+  guideNature: ['Parks & seasons', 'อุทยานและฤดูกาล', '公园与季节', '公園と季節', '공원과 계절'],
+  guideTransport: [
+    'Between cities',
+    'เดินทางย้ายเมือง',
+    '城际交通',
+    '都市間の移動',
+    '도시 간 이동',
+  ],
+  allGuides: [
+    'Show all {count} guides',
+    'ดูคู่มือทั้งหมด {count} เรื่อง',
+    '查看全部{count}篇指南',
+    '全{count}件のガイドを見る',
+    '가이드 {count}개 모두 보기',
+  ],
+  guideCount: [
+    '{count} guides',
+    'คู่มือ {count} เรื่อง',
+    '{count}篇指南',
+    'ガイド{count}件',
+    '가이드 {count}개',
+  ],
+  railRoute: ['By train', 'เดินทางด้วยรถไฟ', '铁路旅行', '鉄道の旅', '기차 여행'],
+  carRoute: [
+    'Car or arranged transfers',
+    'ขับรถหรือจัดรถรับส่ง',
+    '驾车或安排接送',
+    '車や手配した送迎',
+    '자동차 또는 예약 이동편',
+  ],
+  cityRoute: [
+    'Local transit & walking',
+    'รถในเมืองและเดิน',
+    '市内交通与步行',
+    '市内交通と徒歩',
+    '지역 교통과 도보',
+  ],
+  previewRail: [
+    'Preview the 9-day train trip',
+    'ดูแผนรถไฟเก้าวันก่อนสร้าง',
+    '预览九日铁路行程',
+    '9日間の鉄道プランを見る',
+    '9일 기차 일정 미리보기',
+  ],
+  railScheduleNote: [
+    'Editable planning blocks, not a train timetable. Departure times are unset; set them from your tickets. Each rail-and-arrival block reserves 6 hours for planning only: replace its duration with your actual door-to-door journey. Check station access, luggage, hotel check-in and service alerts. City budget examples and rail fares are not imported as expenses.',
+    'ช่วงเวลาในแผนแก้ไขได้ ไม่ใช่ตารางรถไฟ ยังไม่ตั้งเวลาออกเดินทาง ให้ใส่ตามตั๋วจริง ช่วงรถไฟและวันมาถึงเผื่อ 6 ชั่วโมงเพื่อวางแผนเท่านั้น เปลี่ยนเป็นเวลาจากที่พักถึงปลายทางจริง ตรวจสถานี สัมภาระ เช็กอินและประกาศบริการ ตัวอย่างงบเมืองกับค่ารถไฟไม่ได้บันทึกเป็นค่าใช้จ่าย',
+    '可编辑的规划时段，并非列车时刻表。出发时间未设置，请按车票填写。每个铁路与抵达时段仅暂留6小时，须改为实际门到门时间。核对车站、行李、入住与服务公告；市内预算示例与车票未导入为费用。',
+    '編集できる計画枠で、鉄道の時刻表ではありません。出発時刻は未設定なので切符から入力。鉄道と到着の枠は計画用に6時間を確保していますが、実際の玄関から玄関までの時間に変更してください。駅・荷物・チェックイン・運行告知を確認。予算例や運賃は支出に取り込まれません。',
+    '수정 가능한 계획 블록이며 열차 시간표가 아닙니다. 출발 시간은 미설정이므로 티켓에 맞춰 입력하세요. 철도와 도착 블록은 계획용으로 6시간을 잡았으며 실제 숙소에서 목적지까지의 시간으로 바꾸세요. 역, 짐, 체크인, 운행 공지를 확인하세요. 도시 예산과 열차 요금은 지출로 가져오지 않습니다.',
+  ],
+  railTransferNote: [
+    'Planning allowance, not rail travel time. Set the booked departure and actual journey duration. Confirm the full Amtrak station names; arrive at least 30 minutes early, earlier for assistance or busy periods. Include local transfers and check the current service alerts.',
+    'เวลานี้เป็นช่วงเผื่อสำหรับวางแผน ไม่ใช่เวลาเดินรถ ใส่เวลาออกกับระยะเวลาตามการจองจริง ตรวจชื่อเต็มสถานี Amtrak ไปถึงก่อนอย่างน้อย 30 นาทีและเร็วกว่านั้นหากต้องการช่วยเหลือหรือช่วงคนมาก รวมรถต่อในเมืองและตรวจประกาศบริการล่าสุด',
+    '这是规划余量，不是车程。填写预订发车时间与实际行程时长，确认Amtrak完整站名，至少提前30分钟到站，需要协助或繁忙时更早，并计入本地接驳及复核服务公告。',
+    '計画用の余裕枠で、列車の所要時間ではありません。予約した出発と実際の時間を入力。正式駅名を確認し、少なくとも30分前、支援や混雑時はさらに早く到着。市内の接続と最新の運行告知も確認。',
+    '이 시간은 계획 여유분이며 열차 소요 시간이 아닙니다. 예약 출발과 실제 이동 시간을 입력하세요. Amtrak 전체 역 이름을 확인하고 최소 30분 전에 도착하세요. 지원이 필요하거나 혼잡하면 더 일찍 가세요. 지역 연결편과 최신 운행 공지도 확인하세요.',
+  ],
   start: [
     'Your journey starts here',
     'เริ่มต้นการเดินทางของคุณ',

@@ -236,8 +236,19 @@ export default function TravelDialog({
               </a>
             ))}
           </div>
-          <button className="button button-navy" onClick={() => setModal({ type: 'trip' })}>
-            {t('Put it into a plan', 'เริ่มวางแผนเที่ยว')}
+          <button
+            className="button button-navy"
+            onClick={() =>
+              setModal(
+                guide.id === 'northeast-rail'
+                  ? { type: 'route', id: 'northeast-rail' }
+                  : { type: 'trip' },
+              )
+            }
+          >
+            {guide.id === 'northeast-rail'
+              ? x(lang, 'previewRail')
+              : t('Put it into a plan', 'เริ่มวางแผนเที่ยว')}
             <Icon name="arrow" size={17} />
           </button>
         </article>
@@ -268,6 +279,17 @@ export default function TravelDialog({
                 <Icon name="map" size={17} />
                 {route.codes.length} {t('states to explore', 'รัฐให้ค้นพบ')}
               </span>
+              <span>
+                <Icon name="route" size={17} />
+                {x(
+                  lang,
+                  route.id === 'northeast-rail'
+                    ? 'railRoute'
+                    : route.car
+                      ? 'carRoute'
+                      : 'cityRoute',
+                )}
+              </span>
             </div>
             <ol className="route-stop-preview">
               {route.codes.map((code, index) => {
@@ -282,7 +304,11 @@ export default function TravelDialog({
                           {route.days[index]} {t('days', 'วัน')}
                         </small>
                       </h3>
-                      <p>{statePlaces(state, lang).join(' · ')}</p>
+                      <p>
+                        {route.id === 'northeast-rail'
+                          ? local(state.placeNames[0], lang)
+                          : statePlaces(state, lang).join(' · ')}
+                      </p>
                       <p className="route-tip">{local(state.tip, lang)}</p>
                     </div>
                   </li>
@@ -292,7 +318,7 @@ export default function TravelDialog({
             {template && (
               <details className="template-schedule" open>
                 <summary>{x(lang, 'suggested')}</summary>
-                {template.stops.map((stop) => (
+                {template.stops.map((stop, stopIndex) => (
                   <section key={stop.code}>
                     <h3>
                       {stateName(
@@ -303,7 +329,12 @@ export default function TravelDialog({
                     {Array.from({ length: stop.days }, (_, i) => (
                       <div className="template-day" key={i}>
                         <strong>
-                          {t('Day', 'วันที่')} {i + 1}
+                          {t('Day', 'วันที่')}{' '}
+                          {template.stops
+                            .slice(0, stopIndex)
+                            .reduce((n, previous) => n + previous.days, 0) +
+                            i +
+                            1}
                         </strong>
                         <ul>
                           {stop.activities
@@ -324,6 +355,9 @@ export default function TravelDialog({
             <p className="fine-print">
               {x(lang, 'templateNote')} {x(lang, 'preserveTrip')}
             </p>
+            {route.id === 'northeast-rail' && (
+              <p className="day-warning">{x(lang, 'railScheduleNote')}</p>
+            )}
             {template && (
               <button className="button button-navy" onClick={() => onCreateTrip(template)}>
                 {x(lang, 'usePlan')}
