@@ -2,6 +2,49 @@ import { languageIndex, type Language } from '../lib/i18n';
 
 // Every new experience string ships together in EN / TH / ZH / JA / KO.
 export const EXPERIENCE_COPY = {
+  cityPlan: [
+    'Use this city guide as a trip',
+    'ใช้คู่มือเมืองนี้สร้างทริป',
+    '用这篇城市指南创建行程',
+    'この都市ガイドから旅を作る',
+    '이 도시 가이드로 여행 만들기',
+  ],
+  cityPlanDays: ['Choose 1–3 days', 'เลือกแผน 1–3 วัน', '选择1–3天', '1〜3日を選ぶ', '1~3일 선택'],
+  cityPlanDuration: [
+    '{days}-day plan',
+    'แผน {days} วัน',
+    '{days}天行程',
+    '{days}日間のプラン',
+    '{days}일 일정',
+  ],
+  cityPlanName: [
+    '{city} · {days}-day guide',
+    '{city} · แผน {days} วัน',
+    '{city} · {days}日行程',
+    '{city} · {days}日間のプラン',
+    '{city} · {days}일 일정',
+  ],
+  cityPlanNote: [
+    'A flexible city plan with local travel, a visit, a nearby meal and rest each day. Start times are suggested until you set them. Check opening hours, tickets, weather and actual travel times. Example budgets are not added to expenses. Your current trip stays in the library.',
+    'แผนเมืองที่ปรับได้ มีรถต่อในเมือง จุดเที่ยว มื้อใกล้กันและพักในแต่ละวัน เวลาเริ่มเป็นเวลาเสนอจนกว่าจะกำหนดเอง ตรวจเวลาเปิด ตั๋ว อากาศและเวลาเดินทางจริง งบตัวอย่างไม่ถูกเพิ่มเป็นค่าใช้จ่าย ทริปปัจจุบันยังอยู่ในคลัง',
+    '灵活的城市行程，每天安排本地交通、游览、附近用餐与休息。未自行设置的开始时间为建议值。核对开放时间、门票、天气与实际交通时间。预算示例不会导入费用，当前行程保留在行程库中。',
+    '毎日、市内の移動・見学・近くの食事・休憩を入れた調整可能なプラン。自分で設定するまで開始時刻は目安です。営業時間、チケット、天候、実際の移動時間を確認。予算例は支出に追加されず、現在の旅はライブラリに残ります。',
+    '매일 지역 이동, 방문, 가까운 식사와 휴식을 넣은 수정 가능한 도시 일정입니다. 직접 설정하기 전 시작 시간은 제안값입니다. 운영 시간, 티켓, 날씨와 실제 이동 시간을 확인하세요. 예산 예시는 지출에 추가되지 않으며 현재 여행은 보관함에 남습니다.',
+  ],
+  cityTransferNote: [
+    'A 30-minute planning allowance for local travel, not a researched journey time. Set the actual route, entrance and duration for your accommodation and chosen visit; adjust the activity and buffer before departure.',
+    'เผื่อรถต่อในเมือง 30 นาทีเพื่อวางแผน ไม่ใช่เวลาเดินทางที่ตรวจแล้ว กำหนดเส้นทาง ทางเข้าและเวลาจริงจากที่พักถึงจุดเที่ยวที่เลือก ปรับกิจกรรมกับเวลาเผื่อก่อนเดินทาง',
+    '本地交通暂留30分钟作规划，并非已核实的车程。按住宿与所选地点设置实际路线、入口与时长，出发前调整活动与余量。',
+    '市内の移動に計画用の30分を確保。確認済みの所要時間ではありません。宿と訪問先に合わせて経路、入口、実際の時間を設定し、出発前に活動と余裕を調整してください。',
+    '지역 이동에 계획용 30분을 잡았으며 확인된 이동 시간이 아닙니다. 숙소와 선택한 방문지에 맞춰 실제 경로, 입구와 시간을 정하고 출발 전에 활동과 여유 시간을 조정하세요.',
+  ],
+  estimatedTime: [
+    'Suggested start',
+    'เวลาเริ่มโดยประมาณ',
+    '建议开始时间',
+    '開始時刻の目安',
+    '예상 시작 시간',
+  ],
   guideTopics: ['Guide topics', 'หมวดคู่มือ', '指南主题', 'ガイドのテーマ', '가이드 주제'],
   guideAll: ['All topics', 'ทุกหมวด', '全部主题', 'すべてのテーマ', '모든 주제'],
   guidePreparation: ['Before you go', 'ก่อนเดินทาง', '行前准备', '出発前の準備', '여행 전 준비'],

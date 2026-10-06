@@ -195,7 +195,10 @@ test('city guides localize neighborhood links, airport steps and complete group 
       const section = page.locator('#guide-city');
       await expect(section).toContainText(guide.intro[l]);
       await page.locator('.guide-toc a[href="#guide-city"]').click();
-      const area = section.locator(':scope > details').first();
+      const area = section
+        .locator(':scope > details')
+        .filter({ hasText: guide.areas[0].title[l] })
+        .first();
       await area.locator('summary').press('Enter');
       await expect(area).toContainText(guide.areas[0].text[l]);
       const url = new URL((await area.locator('a').first().getAttribute('href'))!);
@@ -595,6 +598,51 @@ test('guide topics keep all seven notes reachable and remember the chosen topic 
       const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
       nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
     });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
+});
+
+test('guide contents follow scrolling, keep anchor headings visible and work with enlarged five-language text', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 740 });
+  for (const lang of LANGUAGES) {
+    await page.goto(`/${lang}/states/pennsylvania/philadelphia/`);
+    const nav = page.locator('.guide-toc');
+    for (const id of [
+      'guide-practical',
+      'guide-city',
+      'guide-airport',
+      'guide-city-budget',
+      'guide-food',
+      'guide-photos',
+      'guide-map',
+    ]) {
+      const link = nav.locator(`a[href="#${id}"]`);
+      await link.click();
+      await expect(link).toHaveAttribute('aria-current', 'location');
+      await expect(nav.locator('[aria-current="location"]')).toHaveCount(1);
+      const heading = await page.locator(`#${id}`).boundingBox();
+      const toc = await nav.boundingBox();
+      expect(heading!.y).toBeGreaterThanOrEqual(toc!.y + toc!.height - 1);
+    }
+    await page.locator('#guide-airport').evaluate((el) => el.scrollIntoView());
+    await expect(nav.locator('a[href="#guide-airport"]')).toHaveAttribute(
+      'aria-current',
+      'location',
+    );
+    await nav.evaluate((el) => {
+      const nodes = [...el.querySelectorAll<HTMLElement>('*')];
+      const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
+      nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
+    });
+    await nav.locator('a[href="#guide-food"]').press('Enter');
+    await expect(nav.locator('a[href="#guide-food"]')).toHaveAttribute('aria-current', 'location');
+    const heading = await page.locator('#guide-food').boundingBox();
+    const toc = await nav.boundingBox();
+    expect(heading!.y).toBeGreaterThanOrEqual(toc!.y + toc!.height - 1);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );

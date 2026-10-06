@@ -1,9 +1,13 @@
 import { chromium } from '@playwright/test';
 import fs from 'node:fs/promises';
 import { preview } from 'vite';
-const output = 'artifacts/v3.5';
+const output =
+  process.argv.find((arg) => arg.startsWith('--output='))?.slice(9) || 'artifacts/v3.5';
 const screensOnly = process.argv.includes('--screens-only');
 const performanceOnly = process.argv.includes('--performance-only');
+const paths = process.argv.includes('--all-pages')
+  ? ['/en/', '/th/states/pennsylvania/philadelphia/', '/th/?view=planner']
+  : ['/en/'];
 await fs.mkdir(output, { recursive: true });
 const server = await preview({ preview: { host: '127.0.0.1', port: 5177, strictPort: true } });
 const browser = await chromium.launch();
@@ -14,7 +18,8 @@ const report = {
   screens: [],
 };
 try {
-  for (let run = 0; run < (screensOnly ? 0 : 3); run++) {
+  for (let run = 0; run < (screensOnly ? 0 : paths.length * 3); run++) {
+    const path = paths[Math.floor(run / 3)];
     const context = await browser.newContext({
       viewport: { width: 390, height: 844 },
       isMobile: true,
@@ -23,6 +28,36 @@ try {
       serviceWorkers: 'block',
     });
     const page = await context.newPage();
+    if (path.includes('view=planner')) {
+      await page.addInitScript(() =>
+        localStorage.setItem(
+          'roam.trip.v1',
+          JSON.stringify({
+            name: 'Philadelphia lab plan',
+            startDate: '',
+            travelers: 2,
+            dailyBudget: 100,
+            stops: [
+              {
+                code: 'PA',
+                days: 3,
+                notes: '',
+                activities: [
+                  {
+                    id: 'lab-visit',
+                    day: 1,
+                    period: 'morning',
+                    title: 'Old City',
+                    minutes: 180,
+                    notes: '',
+                  },
+                ],
+              },
+            ],
+          }),
+        ),
+      );
+    }
     const cdp = await context.newCDPSession(page);
     await cdp.send('Network.enable');
     await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
@@ -65,10 +100,11 @@ try {
         }
       }).observe({ type: 'layout-shift', buffered: true });
     });
-    await page.goto('http://127.0.0.1:5177/en/', { waitUntil: 'load' });
+    await page.goto(`http://127.0.0.1:5177${path}`, { waitUntil: 'load' });
     await page.waitForTimeout(3000);
     report.runs.push(
       await page.evaluate(() => ({
+        path: location.pathname + location.search,
         lcpMs: window.__lab.lcp,
         lcpElement: window.__lab.element,
         lcpUrl: window.__lab.lcpUrl,

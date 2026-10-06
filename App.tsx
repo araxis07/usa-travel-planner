@@ -565,6 +565,7 @@ export default function App() {
             onSave={() => saveState(destination.state)}
             onAdd={() => addState(destination.state)}
             onAddPlace={(index) => addPlace(destination.state, index)}
+            onCreateTrip={createTrip}
             onOpen={openDestination}
             onBack={returnToDiscovery}
             notify={notify}

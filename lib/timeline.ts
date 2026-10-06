@@ -28,6 +28,6 @@ export function dayTimeline(activities: TripActivity[]) {
       far = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)) > 120;
     }
     if (point) previousPoint = point;
-    return { activity, start, end, buffer, overlap, far };
+    return { activity, start, end, buffer, overlap, far, estimated: !activity.startTime };
   });
 }

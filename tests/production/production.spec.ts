@@ -556,3 +556,73 @@ test('nine-day rail trip and Philadelphia photos and food reopen after explicit 
   await page.getByRole('button', { name: EXPERIENCE_COPY.previewRail[1], exact: true }).click();
   await expect(page.locator('.template-day')).toHaveCount(9);
 });
+
+test('deferred guide and planner loading reserve the viewport so the footer does not flash above the fold', async ({
+  context,
+}) => {
+  for (const path of ['/th/states/pennsylvania/philadelphia/', '/th/?view=planner']) {
+    const page = await context.newPage();
+    await page.setViewportSize({ width: 390, height: 844 });
+    let release!: () => void;
+    const hold = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    await page.route(/\/assets\/(DestinationPage|TripPlanner)-[^/]+\.js$/, async (route) => {
+      await hold;
+      await route.continue();
+    });
+    try {
+      await page.goto(path);
+      await expect(page.locator('.page-loading')).toBeVisible();
+      const footer = await page.locator('.footer').boundingBox();
+      expect(footer!.y).toBeGreaterThanOrEqual(844);
+      release();
+      await expect(
+        page.locator(path.includes('planner') ? '#planner-page' : '.city-guide'),
+      ).toBeVisible();
+      await expect(page.locator('.page-loading')).toHaveCount(0);
+    } finally {
+      release();
+      await page.close();
+    }
+  }
+});
+
+test('Philadelphia city plan preview, creation and suggested-start printing remain usable offline', async ({
+  page,
+  context,
+}) => {
+  await page.goto('/en/states/pennsylvania/philadelphia/');
+  const preview = page.locator('.city-plan-preview');
+  await preview.locator('summary').click();
+  await preview.getByLabel(EXPERIENCE_COPY.cityPlanDays[0], { exact: true }).selectOption('3');
+  await preview.getByRole('button', { name: EXPERIENCE_COPY.usePlan[0], exact: true }).click();
+  await expect(page.locator('.day-strip button')).toHaveCount(3);
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  if (!(await page.evaluate(() => !!navigator.serviceWorker.controller))) await page.reload();
+  await page.waitForFunction(() => !!navigator.serviceWorker.controller);
+  await page.getByRole('button', { name: 'Save for offline', exact: true }).click();
+  await expect(page.getByText('Ready offline on this device.', { exact: false })).toBeVisible({
+    timeout: 30000,
+  });
+  await context.setOffline(true);
+  await page.goto('/ko/states/pennsylvania/philadelphia/');
+  await preview.locator('summary').click();
+  await preview.getByLabel(EXPERIENCE_COPY.cityPlanDays[4], { exact: true }).selectOption('2');
+  await expect(preview.locator('.template-day')).toHaveCount(2);
+  await preview.getByRole('button', { name: EXPERIENCE_COPY.usePlan[4], exact: true }).click();
+  await expect(page.locator('.day-strip button')).toHaveCount(2);
+  await page.reload();
+  await expect(page.locator('.day-activity .estimated-time')).toHaveCount(4);
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('roam.library.v1')!));
+  const cityTrips = saved.trips.filter((item: { trip: Trip }) => item.trip.stops[0]?.code === 'PA');
+  expect(cityTrips).toHaveLength(2);
+  expect(cityTrips.map((item: { trip: Trip }) => item.trip.stops[0].days).sort()).toEqual([2, 3]);
+  await page.emulateMedia({ media: 'print' });
+  await expect(page.locator('.print-itinerary .estimated-time')).toHaveCount(8);
+  await expect(page.locator('.print-itinerary')).toContainText(
+    cityContent.guides[5].food.stops[1].text[4],
+  );
+});

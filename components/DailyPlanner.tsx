@@ -490,6 +490,9 @@ export default function DailyPlanner({
                       <time>
                         {clockLabel(timeline.find((item) => item.activity.id === a.id)!.start)}–
                         {clockLabel(timeline.find((item) => item.activity.id === a.id)!.end)}
+                        {timeline.find((item) => item.activity.id === a.id)!.estimated && (
+                          <span className="estimated-time">{x(lang, 'estimatedTime')}</span>
+                        )}
                       </time>
                       <span>
                         {a.minutes} {t('minutes', 'นาที')}

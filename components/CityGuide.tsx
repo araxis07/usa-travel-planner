@@ -1,17 +1,66 @@
 import content from '../content/city-guides.json' with { type: 'json' };
-import { languageIndex, LOCALES, type Language } from '../lib/i18n';
+import { languageIndex, LOCALES, translate, type Language } from '../lib/i18n';
+import { useMemo, useState } from 'react';
+import { starterTrip } from '../data/itineraries';
+import { x } from '../data/experience-copy';
+import type { Trip, TripActivity } from '../data/travel';
 
 export const cityCopy = content.copy;
 export const findCityGuide = (id?: string) => content.guides.find((guide) => guide.placeId === id);
+type City = NonNullable<ReturnType<typeof findCityGuide>>;
+
+export function cityGuideTrip(guide: City, days: number, lang: Language): Trip {
+  if (guide.placeId !== 'PA-0' || !Number.isInteger(days) || days < 1 || days > 3)
+    throw new Error('Invalid city plan');
+  const l = languageIndex(lang);
+  const trip = starterTrip(guide.placeId, days, lang);
+  trip.name = x(lang, 'cityPlanName', { city: trip.name, days });
+  const stop = trip.stops[0];
+  stop.notes = x(lang, 'cityPlanNote');
+  stop.activities = Array.from({ length: days }, (_, i) => {
+    const [visit, meal, rest] = stop.activities!.filter((a) => a.day === i + 1);
+    visit.title = guide.days[i].title[l];
+    visit.minutes = 180;
+    visit.notes = `${guide.days[i].text[l]}\n${cityCopy.alternative[l]}: ${guide.days[i].alternative[l]}`;
+    // ponytail: neighborhood visits stay unmapped until individual entrances are source-checked.
+    delete visit.placeId;
+    meal.title = guide.food.stops[i].title[l];
+    meal.notes = guide.food.stops[i].text[l];
+    const activities: TripActivity[] = [
+      {
+        id: crypto.randomUUID(),
+        day: i + 1,
+        period: 'morning' as const,
+        title: x(lang, 'cityRoute'),
+        minutes: 30,
+        bufferMinutes: 15,
+        notes: x(lang, 'cityTransferNote'),
+      },
+      visit,
+      meal,
+      rest,
+    ];
+    activities.forEach((activity) => delete activity.startTime);
+    return activities;
+  }).flat();
+  return trip;
+}
 
 export default function CityGuide({
   guide,
   lang,
+  onCreateTrip,
 }: {
-  guide: NonNullable<ReturnType<typeof findCityGuide>>;
+  guide: City;
   lang: Language;
+  onCreateTrip: (trip: Trip) => void;
 }) {
   const l = languageIndex(lang);
+  const [days, setDays] = useState(3);
+  const plan = useMemo(
+    () => (guide.placeId === 'PA-0' ? cityGuideTrip(guide, days, lang) : null),
+    [guide, days, lang],
+  );
   const food = 'food' in guide ? guide.food : undefined;
   const money = (amount: number) =>
     new Intl.NumberFormat(LOCALES[lang], { style: 'currency', currency: 'USD' }).format(amount);
@@ -21,6 +70,43 @@ export default function CityGuide({
     <section className="city-guide" id="guide-city" aria-labelledby="city-guide-title">
       <h2 id="city-guide-title">{cityCopy.title[l]}</h2>
       <p>{guide.intro[l]}</p>
+      {plan && (
+        <details className="guide-details city-plan-preview">
+          <summary>{x(lang, 'cityPlan')}</summary>
+          <div className="city-plan-duration">
+            <label htmlFor="city-plan-days">{x(lang, 'cityPlanDays')}</label>
+            <select
+              id="city-plan-days"
+              value={days}
+              onChange={(event) => setDays(Number(event.target.value))}
+            >
+              {[1, 2, 3].map((day) => (
+                <option key={day} value={day}>
+                  {x(lang, 'cityPlanDuration', { days: day })}
+                </option>
+              ))}
+            </select>
+          </div>
+          <p>{x(lang, 'cityPlanNote')}</p>
+          {Array.from({ length: days }, (_, i) => (
+            <div className="template-day" key={i}>
+              <strong>{cityCopy.day[l].replace('{day}', String(i + 1))}</strong>
+              <ul>
+                {plan.stops[0]
+                  .activities!.filter((a) => a.day === i + 1)
+                  .map((a) => (
+                    <li key={a.id}>
+                      {a.title} · {a.minutes} {translate('minutes', 'นาที', lang)}
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ))}
+          <button className="button button-navy" onClick={() => onCreateTrip(plan)}>
+            {x(lang, 'usePlan')}
+          </button>
+        </details>
+      )}
       <h3>{cityCopy.areas[l]}</h3>
       {guide.areas.map((area) => (
         <details className="guide-details" key={area.mapQuery}>

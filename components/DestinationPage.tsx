@@ -1,7 +1,7 @@
 import TravelImage from './TravelImage';
 import { photoDetails } from '../data/photo-details';
 import { placeDetails } from '../data/place-details';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   local,
   stateName,
@@ -11,6 +11,7 @@ import {
   INTEREST_LABELS,
   type Language,
   type StateGuide,
+  type Trip,
 } from '../data/travel';
 import { translate, LOCALES, languageIndex } from '../lib/i18n';
 import {
@@ -38,6 +39,7 @@ export default function DestinationPage({
   onCompare,
   onAdd,
   onAddPlace,
+  onCreateTrip,
   onOpen,
   onBack,
   notify,
@@ -52,6 +54,7 @@ export default function DestinationPage({
   onCompare: () => void;
   onAdd: () => void;
   onAddPlace: (index: number) => void;
+  onCreateTrip: (trip: Trip) => void;
   onOpen: (state: StateGuide, index?: number) => void;
   onBack: () => void;
   notify: (message: string) => void;
@@ -60,6 +63,8 @@ export default function DestinationPage({
   const t = (en: string, th: string) => translate(en, th, lang);
   const [gallery, setGallery] = useState<number | null>(null);
   const [shareFallback, setShareFallback] = useState(false);
+  const tocRef = useRef<HTMLElement>(null);
+  const [activeGuide, setActiveGuide] = useState('#guide-story');
   useEffect(() => {
     document.querySelector<HTMLElement>('.destination-hero h1')?.focus({ preventScroll: true });
   }, []);
@@ -107,6 +112,49 @@ export default function DestinationPage({
   const profile =
     placeIndex === undefined ? undefined : placeDetails(state.destinations[placeIndex]);
   const cityGuide = findCityGuide(profile?.id);
+  useEffect(() => {
+    const nav = tocRef.current!;
+    const links = [...nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')];
+    const targets = links.map((link) => document.getElementById(link.hash.slice(1))!);
+    let frame = 0;
+    let previous = '';
+    const update = () => {
+      frame = 0;
+      const header = document.querySelector('.header')!.getBoundingClientRect().bottom;
+      const current = targets.reduce(
+        (id, target) =>
+          target.getBoundingClientRect().top <= header + nav.offsetHeight + 40
+            ? '#' + target.id
+            : id,
+        links[0].hash,
+      );
+      if (current !== previous) {
+        previous = current;
+        setActiveGuide(current);
+        const link = links.find((item) => item.hash === current)!;
+        const left = link.getBoundingClientRect().left - nav.getBoundingClientRect().left;
+        if (left < 0 || left + link.offsetWidth > nav.clientWidth)
+          nav.scrollBy({ left: left - 12, behavior: 'instant' });
+      }
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    const resize = new ResizeObserver(() => {
+      document.documentElement.style.setProperty('--guide-toc-height', `${nav.offsetHeight}px`);
+      schedule();
+    });
+    resize.observe(nav);
+    resize.observe(document.querySelector('.header')!);
+    window.addEventListener('scroll', schedule, { passive: true });
+    schedule();
+    return () => {
+      cancelAnimationFrame(frame);
+      resize.disconnect();
+      window.removeEventListener('scroll', schedule);
+      document.documentElement.style.removeProperty('--guide-toc-height');
+    };
+  }, [lang]);
   const isSaved =
     placeIndex === undefined
       ? saved
@@ -274,19 +322,60 @@ export default function DestinationPage({
           </aside>
         )}
       </section>
-      <nav className="guide-toc container" aria-label={x(lang, 'practical')}>
-        <a href="#guide-story">{x(lang, 'story')}</a>
-        {placeIndex !== undefined && <a href="#guide-practical">{x(lang, 'practical')}</a>}
+      <nav className="guide-toc container" ref={tocRef} aria-label={x(lang, 'practical')}>
+        <a
+          href="#guide-story"
+          aria-current={activeGuide === '#guide-story' ? 'location' : undefined}
+        >
+          {x(lang, 'story')}
+        </a>
+        {placeIndex !== undefined && (
+          <a
+            href="#guide-practical"
+            aria-current={activeGuide === '#guide-practical' ? 'location' : undefined}
+          >
+            {x(lang, 'practical')}
+          </a>
+        )}
         {cityGuide && (
           <>
-            <a href="#guide-city">{cityCopy.days[languageIndex(lang)]}</a>
-            <a href="#guide-airport">{cityCopy.airport[languageIndex(lang)]}</a>
-            <a href="#guide-city-budget">{cityCopy.budget[languageIndex(lang)]}</a>
-            {'food' in cityGuide && <a href="#guide-food">{cityCopy.food[languageIndex(lang)]}</a>}
+            <a
+              href="#guide-city"
+              aria-current={activeGuide === '#guide-city' ? 'location' : undefined}
+            >
+              {cityCopy.days[languageIndex(lang)]}
+            </a>
+            <a
+              href="#guide-airport"
+              aria-current={activeGuide === '#guide-airport' ? 'location' : undefined}
+            >
+              {cityCopy.airport[languageIndex(lang)]}
+            </a>
+            <a
+              href="#guide-city-budget"
+              aria-current={activeGuide === '#guide-city-budget' ? 'location' : undefined}
+            >
+              {cityCopy.budget[languageIndex(lang)]}
+            </a>
+            {'food' in cityGuide && (
+              <a
+                href="#guide-food"
+                aria-current={activeGuide === '#guide-food' ? 'location' : undefined}
+              >
+                {cityCopy.food[languageIndex(lang)]}
+              </a>
+            )}
           </>
         )}
-        <a href="#guide-photos">{x(lang, 'photos')}</a>
-        <a href="#guide-map">{x(lang, 'directions')}</a>
+        <a
+          href="#guide-photos"
+          aria-current={activeGuide === '#guide-photos' ? 'location' : undefined}
+        >
+          {x(lang, 'photos')}
+        </a>
+        <a href="#guide-map" aria-current={activeGuide === '#guide-map' ? 'location' : undefined}>
+          {x(lang, 'directions')}
+        </a>
       </nav>
       <div className="destination-layout container">
         <article className="destination-story" id="guide-story">
@@ -303,7 +392,7 @@ export default function DestinationPage({
             )}
           </p>
           {profile && <PlacePractical profile={profile} lang={lang} overviewShown />}
-          {cityGuide && <CityGuide guide={cityGuide} lang={lang} />}
+          {cityGuide && <CityGuide guide={cityGuide} lang={lang} onCreateTrip={onCreateTrip} />}
           {placeIndex !== undefined && (
             <details className="guide-details">
               <summary>{x(lang, 'stateContext')}</summary>

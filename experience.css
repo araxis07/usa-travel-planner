@@ -425,12 +425,21 @@
   min-height: 310px;
 }
 .guide-toc {
+  position: sticky;
+  top: var(--header-height, 86px);
+  z-index: 10;
+  background: var(--cream);
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
   padding-block: 15px;
   border-block: 1px solid var(--line);
   margin-top: 20px;
+}
+.page-loading {
+  min-height: calc(100vh - var(--header-height, 86px));
+  min-height: calc(100svh - var(--header-height, 86px));
+  padding-block: 32px;
 }
 .guide-toc a {
   min-height: 44px;
@@ -440,12 +449,42 @@
   font-weight: 600;
   border-bottom: 2px solid transparent;
 }
-.guide-toc a:hover {
+.guide-toc a:hover,
+.guide-toc a[aria-current='location'] {
   border-color: var(--red);
   color: var(--red);
 }
 [id^='guide-'] {
-  scroll-margin-top: 100px;
+  scroll-margin-top: calc(var(--guide-toc-height, 76px) + 16px);
+}
+.city-plan-duration {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+.city-plan-duration select {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--navy);
+  border-radius: 4px;
+  color: var(--navy);
+  background: var(--cream);
+  font: inherit;
+}
+.city-plan-preview .template-day li {
+  display: list-item;
+}
+.city-plan-preview > .button {
+  margin-top: 20px;
+}
+.estimated-time {
+  display: block;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 500;
 }
 .destination-intro {
   max-width: 68ch;
@@ -1119,6 +1158,13 @@ html[lang='ko'] .discovery-place h3 {
   }
   .guide-toc {
     gap: 8px 18px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+  .guide-toc a {
+    flex-shrink: 0;
+    max-width: 100%;
   }
   .guide-toc a {
     font-size: 12px;

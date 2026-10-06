@@ -62,7 +62,7 @@ export default function TripPrint({
                     <p>{t('Leave some room for discovery.', 'เว้นที่ว่างให้การค้นพบใหม่ ๆ')}</p>
                   )}
                   <ol>
-                    {dayTimeline(activities).map(({ activity: a, start, end }) => (
+                    {dayTimeline(activities).map(({ activity: a, start, end, estimated }) => (
                       <li key={a.id}>
                         <strong>
                           {a.period === 'morning'
@@ -72,6 +72,9 @@ export default function TripPrint({
                               : t('Evening', 'เย็น')}{' '}
                           · {activityName(a, lang)} · {clockLabel(start)}–{clockLabel(end)}
                         </strong>
+                        {estimated && (
+                          <span className="estimated-time">{x(lang, 'estimatedTime')}</span>
+                        )}
                         <span>
                           {' '}
                           · {a.minutes} {t('minutes', 'นาที')}
