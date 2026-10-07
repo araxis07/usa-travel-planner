@@ -137,6 +137,10 @@ try {
         initialPlaceDetailsLoaded: performance
           .getEntriesByType('resource')
           .some((e) => /\/place-details-/.test(e.name)),
+        stateDetailsLoaded: performance
+          .getEntriesByType('resource')
+          .filter((e) => /\/state-details-/.test(e.name))
+          .map((e) => e.name.split('/').at(-1)),
       })),
     );
     await context.close();

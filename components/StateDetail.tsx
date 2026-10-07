@@ -193,7 +193,7 @@ export default function StateDetail({
       </div>
       {lightbox && (
         <PhotoLightbox
-          state={state}
+          state={{ ...state, photos: state.photos.map(photoDetails) }}
           lang={lang}
           initialIndex={selectedPhoto}
           onClose={() => setLightbox(false)}

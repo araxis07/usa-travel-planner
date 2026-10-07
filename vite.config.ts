@@ -1,4 +1,6 @@
 import { defineConfig } from 'vite';
+import { readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 import { studioPlugin } from './studio/server';
 import type { Catalog } from './lib/content';
 export default defineConfig(({ mode }) => ({
@@ -11,9 +13,28 @@ export default defineConfig(({ mode }) => ({
     {
       name: 'catalog-views',
       enforce: 'pre',
+      resolveId(id) {
+        if (id === 'virtual:state-details') return '\0virtual:state-details';
+      },
+      async load(id) {
+        if (id !== '\0virtual:state-details') return;
+        const path = new URL('./content/states.json', import.meta.url);
+        this.addWatchFile(fileURLToPath(path));
+        const catalog = JSON.parse(await readFile(path, 'utf8')) as Catalog;
+        return `export default {${catalog.states
+          .map(
+            (state) => `"${state.code}":()=>import("/content/states.json?details=${state.code}")`,
+          )
+          .join(',')}}`;
+      },
       transform(source, id) {
-        if (!/\/content\/states\.json\?(overview|photos|practical)$/.test(id)) return;
+        if (!/\/content\/states\.json\?(overview|photos|details=[A-Z]{2})$/.test(id)) return;
         const catalog = JSON.parse(source) as Catalog;
+        if (id.includes('?details=')) {
+          const state = catalog.states.find((s) => s.code === id.split('?details=')[1]);
+          if (!state) throw Error(`Unknown state details: ${id}`);
+          return JSON.stringify({ photos: state.photos, destinations: state.destinations });
+        }
         // Keep one editorial source; practical details and photo credits load with guides.
         const practicalFields = new Set([
           'summarySources',
@@ -26,19 +47,6 @@ export default defineConfig(({ mode }) => ({
           'reviewAfter',
           'translationsReviewed',
         ]);
-        if (id.endsWith('?practical'))
-          return JSON.stringify(
-            Object.fromEntries(
-              catalog.states.flatMap((state) =>
-                state.destinations.map((profile) => [
-                  profile.id,
-                  Object.fromEntries(
-                    Object.entries(profile).filter(([key]) => practicalFields.has(key)),
-                  ),
-                ]),
-              ),
-            ),
-          );
         return JSON.stringify(
           id.endsWith('?photos')
             ? Object.fromEntries(
@@ -67,12 +75,14 @@ export default defineConfig(({ mode }) => ({
     ...(mode === 'studio' ? [studioPlugin(process.env.STUDIO_CONTENT_ROOT || process.cwd())] : []),
   ],
   build: {
+    manifest: true,
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.endsWith('/content/states.json?overview')) return 'state-guides';
           if (id.endsWith('/content/states.json?photos')) return 'photo-details';
-          if (id.endsWith('/content/states.json?practical')) return 'place-details';
+          if (/\/content\/states\.json\?details=[A-Z]{2}$/.test(id))
+            return 'state-details-' + id.split('?details=')[1];
           if (id.endsWith('/content/translations.json')) return 'translations';
           if (id.endsWith('/data/map-paths.json')) return 'atlas-geometry';
         },

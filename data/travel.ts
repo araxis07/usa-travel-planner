@@ -109,7 +109,8 @@ export type PlaceOverview = Omit<
 export const STATES = catalog.states as unknown as StateGuide[];
 export const statePlaces = (state: StateGuide, lang: Language) =>
   state.placeNames.map((name) => local(name, lang));
-export const statePhoto = (state: StateGuide) => state.photos[state.cover] ?? state.photos[0];
+export const statePhoto = <T extends PhotoAsset>(state: { photos: T[]; cover: number }) =>
+  state.photos[state.cover] ?? state.photos[0];
 
 export const stateName = (state: StateGuide, lang: Language) => local(state.names, lang);
 export const tourismUrl = (state: StateGuide) =>

@@ -1,7 +1,6 @@
 import TravelImage from './TravelImage';
-import { photoDetails } from '../data/photo-details';
-import { placeDetails } from '../data/place-details';
-import { useEffect, useRef, useState } from 'react';
+import { loadStateDetails } from '../data/state-details';
+import { use, useEffect, useRef, useState } from 'react';
 import {
   local,
   stateName,
@@ -30,7 +29,7 @@ import { x } from '../data/experience-copy';
 import type { PlaceCollections } from '../lib/collections';
 
 export default function DestinationPage({
-  state,
+  state: overviewState,
   placeIndex,
   lang,
   saved,
@@ -60,6 +59,7 @@ export default function DestinationPage({
   notify: (message: string) => void;
   collections: PlaceCollections;
 }) {
+  const state = { ...overviewState, ...use(loadStateDetails(overviewState.code)) };
   const t = (en: string, th: string) => translate(en, th, lang);
   const [gallery, setGallery] = useState<number | null>(null);
   const [shareFallback, setShareFallback] = useState(false);
@@ -72,7 +72,7 @@ export default function DestinationPage({
     placeIndex === undefined
       ? statePhoto(state)
       : (state.photos.find((item) => item.placeIndex === placeIndex) ?? statePhoto(state));
-  const credit = photoDetails(photo);
+  const credit = photo;
   const title =
     placeIndex === undefined ? stateName(state, lang) : local(state.placeNames[placeIndex], lang);
   const indices = placeIndex === undefined ? [0, 1, 2] : [placeIndex];
@@ -109,8 +109,7 @@ export default function DestinationPage({
   const galleryPhotos = state.photos.filter(
     (p) => placeIndex === undefined || p.placeIndex === placeIndex,
   );
-  const profile =
-    placeIndex === undefined ? undefined : placeDetails(state.destinations[placeIndex]);
+  const profile = placeIndex === undefined ? undefined : state.destinations[placeIndex];
   const cityGuide = findCityGuide(profile?.id);
   useEffect(() => {
     const nav = tocRef.current!;
@@ -432,7 +431,7 @@ export default function DestinationPage({
           <div className="place-story-list" id="guide-photos">
             {indices.map((index) => {
               const item = state.photos.find((p) => p.placeIndex === index) ?? photo;
-              const itemCredit = photoDetails(item);
+              const itemCredit = item;
               const record = findPlace(placeId(state, index));
               return (
                 <section className="place-story" key={index}>
@@ -472,7 +471,7 @@ export default function DestinationPage({
                       {state.photos
                         .filter((p) => p.placeIndex === index)
                         .map((p) => {
-                          const caption = photoDetails(p).displayCaption;
+                          const caption = p.displayCaption;
                           const label = caption
                             ? local(caption, lang)
                             : local(state.placeNames[index], lang);

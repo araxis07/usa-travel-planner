@@ -24,11 +24,34 @@ const catalog = JSON.parse(await readFile('content/states.json', 'utf8'));
 const cityContent = JSON.parse(await readFile('content/city-guides.json', 'utf8'));
 const preparation = JSON.parse(await readFile('content/travel-preparation.json', 'utf8'));
 const template = await readFile(outDir + '/index.html', 'utf8');
+const manifest = JSON.parse(await readFile(outDir + '/.vite/manifest.json', 'utf8'));
 const escape = (value) =>
   String(value).replace(
     /[&<>"']/g,
     (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c],
   );
+function modulePreloads(...keys) {
+  const files = new Set();
+  function collect(key) {
+    const chunk = manifest[key];
+    if (!chunk) throw Error(`Missing guide module: ${key}`);
+    if (files.has(chunk.file)) return;
+    files.add(chunk.file);
+    for (const dependency of chunk.imports || []) collect(dependency);
+  }
+  keys.forEach(collect);
+  return [...files]
+    .filter((file) => !template.includes(`href="/${file}"`) && !template.includes(`src="/${file}"`))
+    .map((file) => `<link rel="modulepreload" crossorigin href="/${escape(file)}"/>`)
+    .join('');
+}
+// Only guide entry pages need these modules; keep home discovery deferred.
+const guidePreloads = Object.fromEntries(
+  catalog.states.map((state) => [
+    state.code,
+    modulePreloads('components/DestinationPage.tsx', `content/states.json?details=${state.code}`),
+  ]),
+);
 const slug = (name) =>
   name
     .normalize('NFKD')
@@ -166,7 +189,7 @@ function render(lang, state, index) {
     )
     .replace(
       '</head>',
-      `${origin ? `<meta name="roam:site-origin" content="${origin}"/>` : ''}${social}${alternatives}${json}</head>`,
+      `${state ? guidePreloads[state.code] : ''}${origin ? `<meta name="roam:site-origin" content="${origin}"/>` : ''}${social}${alternatives}${json}</head>`,
     )
     .replace('<div id="root"></div>', `<div id="root">${content}</div>`);
   return {

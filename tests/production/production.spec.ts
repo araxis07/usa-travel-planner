@@ -33,6 +33,58 @@ const sample: Trip = {
   ],
 };
 
+test('direct city, park and state guides start loading details before the application entry finishes', async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({ serviceWorkers: 'block' });
+  for (const [path, heading, code] of [
+    [
+      '/th/states/pennsylvania/philadelphia/',
+      STATES.find((s) => s.code === 'PA')!.placeNames[0][1],
+      'PA',
+    ],
+    ['/ja/states/california/yosemite-national-park/', STATES[0].placeNames[1][3], 'CA'],
+    ['/en/states/washington/', 'Washington', 'WA'],
+  ]) {
+    const page = await context.newPage();
+    const requests: string[] = [];
+    page.on('request', (request) => requests.push(request.url()));
+    let release!: () => void;
+    const hold = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    await page.route(/\/assets\/index-[^/]+\.js$/, async (route) => {
+      await hold;
+      await route.continue();
+    });
+    try {
+      await page.goto(baseURL + path, { waitUntil: 'commit' });
+      await expect(page.locator('main h1')).toHaveText(heading);
+      for (const module of ['DestinationPage', `state-details-${code}`])
+        await expect
+          .poll(() => requests.some((url) => url.includes(`/assets/${module}-`)))
+          .toBe(true);
+      const preloads = await page
+        .locator('link[rel="modulepreload"]')
+        .evaluateAll((links) => links.map((link) => (link as HTMLLinkElement).href));
+      expect(new Set(preloads).size).toBe(preloads.length);
+      expect(requests.some((url) => /\/photo-details-/.test(url))).toBe(false);
+      expect(requests.filter((url) => /\/state-details-/.test(url))).toHaveLength(1);
+      release();
+      await expect(page.locator('.destination-hero h1')).toHaveText(heading);
+      await expect(page.locator('.destination-page > .photo-credit a').first()).toHaveAttribute(
+        'href',
+        /^https:\/\//,
+      );
+    } finally {
+      release();
+      await page.close();
+    }
+  }
+  await context.close();
+});
+
 test('mobile home defers guide details and atlas while credits and practical guidance remain available', async ({
   browser,
   baseURL,
@@ -57,7 +109,7 @@ test('mobile home defers guide details and atlas while credits and practical gui
   });
   expect(
     cached.some((url) =>
-      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|place-details|TripPlanner|leaflet-src)-/.test(
+      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|state-details|TripPlanner|leaflet-src)-/.test(
         url,
       ),
     ),
@@ -65,7 +117,7 @@ test('mobile home defers guide details and atlas while credits and practical gui
   expect(requests.some((url) => new URL(url).pathname === '/images/hero.jpg')).toBe(false);
   expect(
     requests.some((url) =>
-      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|place-details)-/.test(url),
+      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|state-details)-/.test(url),
     ),
   ).toBe(false);
   expect(
@@ -86,7 +138,8 @@ test('mobile home defers guide details and atlas while credits and practical gui
   await page.locator('.destination-gallery-open').click();
   await expect(page.locator('.photo-lightbox .photo-caption')).not.toBeEmpty();
   await expect(page.locator('.lightbox-footer a').first()).toHaveAttribute('href', /^https:\/\//);
-  expect(requests.some((url) => /\/photo-details-/.test(url))).toBe(true);
+  expect(requests.some((url) => /\/state-details-CA-/.test(url))).toBe(true);
+  expect(requests.some((url) => /\/photo-details-/.test(url))).toBe(false);
   await page.goto(`${baseURL}/en/states/california/san-francisco/`);
   const profile = catalog.states[0].destinations[0];
   for (const [i, lang] of LANGUAGES.entries()) {
@@ -98,12 +151,12 @@ test('mobile home defers guide details and atlas while credits and practical gui
       profile.officialUrl,
     );
   }
-  expect(requests.some((url) => /\/place-details-/.test(url))).toBe(true);
+  expect(new Set(requests.filter((url) => /\/state-details-/.test(url))).size).toBe(1);
   const used = await page.evaluate(async () => {
     const name = (await caches.keys()).find((key) => key.startsWith('roam-shell-'))!;
     return (await (await caches.open(name)).keys()).map((request) => request.url);
   });
-  expect(used.some((url) => /\/place-details-/.test(url))).toBe(true);
+  expect(used.some((url) => /\/state-details-CA-/.test(url))).toBe(true);
   await context.close();
 });
 
@@ -131,7 +184,7 @@ test('new worker installs keep previously saved offline trips and photos availab
   });
   expect(cached.names).not.toContain('roam-shell-previous-build');
   expect(cached.paths.some((url) => /\/TripPrint-/.test(url))).toBe(true);
-  expect(cached.paths.some((url) => /\/place-details-/.test(url))).toBe(true);
+  expect(cached.paths.filter((url) => /\/state-details-/.test(url))).toHaveLength(50);
   await context.setOffline(true);
   await page.reload();
   await expect(page.locator('#planner-page')).toBeVisible();
@@ -557,17 +610,21 @@ test('nine-day rail trip and Philadelphia photos and food reopen after explicit 
   await expect(page.locator('.template-day')).toHaveCount(9);
 });
 
-test('deferred guide and planner loading reserve the viewport so the footer does not flash above the fold', async ({
+test('deferred guide, state details and planner loading reserve the viewport so the footer does not flash above the fold', async ({
   context,
 }) => {
-  for (const path of ['/th/states/pennsylvania/philadelphia/', '/th/?view=planner']) {
+  for (const [path, module] of [
+    ['/th/states/pennsylvania/philadelphia/', 'DestinationPage'],
+    ['/th/states/pennsylvania/philadelphia/', 'state-details-PA'],
+    ['/th/?view=planner', 'TripPlanner'],
+  ]) {
     const page = await context.newPage();
     await page.setViewportSize({ width: 390, height: 844 });
     let release!: () => void;
     const hold = new Promise<void>((resolve) => {
       release = resolve;
     });
-    await page.route(/\/assets\/(DestinationPage|TripPlanner)-[^/]+\.js$/, async (route) => {
+    await page.route(new RegExp(`/assets/${module}-[^/]+\\.js$`), async (route) => {
       await hold;
       await route.continue();
     });
