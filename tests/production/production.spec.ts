@@ -5,6 +5,7 @@ import catalog from '../../content/states.json' with { type: 'json' };
 import cityContent from '../../content/city-guides.json' with { type: 'json' };
 import preparation from '../../content/travel-preparation.json' with { type: 'json' };
 import { EXPERIENCE_COPY } from '../../data/experience-copy';
+import { destinationUrl } from '../../lib/destinations';
 const sample: Trip = {
   ...EMPTY_TRIP,
   name: 'My five-language journey',
@@ -231,6 +232,7 @@ test('all language pages contain readable content without JavaScript and recipro
   browser,
   baseURL,
 }) => {
+  test.setTimeout(90000);
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   const ca = STATES.find((s) => s.code === 'CA')!;
@@ -255,6 +257,26 @@ test('all language pages contain readable content without JavaScript and recipro
   const sitemap = await (await page.request.get('/sitemap.xml')).text();
   await page.goto(`${baseURL}/en/states/california/big-sur/`);
   await expect(page.locator('main aside')).toContainText('September 2');
+  for (const state of catalog.states) {
+    for (const [index, profile] of state.destinations.entries()) {
+      const advisory = 'advisory' in profile ? profile.advisory : undefined;
+      if (!advisory) continue;
+      for (const [l, lang] of LANGUAGES.entries()) {
+        await page.goto(
+          `${baseURL}${destinationUrl(
+            STATES.find((s) => s.code === state.code)!,
+            lang,
+            index,
+          )}`,
+        );
+        const notice = page.locator('main > aside');
+        await expect(notice).toHaveCount(1);
+        await expect(notice.locator('p')).toHaveText(advisory.text[l]);
+        await expect(notice.locator('a')).toHaveAttribute('href', advisory.source);
+        await expect(notice.locator('a')).toHaveText(advisory.checkedAt);
+      }
+    }
+  }
   expect(sitemap.match(/<loc>/g)).toHaveLength(1005);
   await context.close();
 });
@@ -611,41 +633,51 @@ test('nine-day rail trip and Philadelphia photos and food reopen after explicit 
 });
 
 test('deferred guide, state details and planner loading reserve the viewport so the footer does not flash above the fold', async ({
-  context,
+  browser,
+  baseURL,
 }) => {
-  for (const [path, module] of [
-    ['/th/states/pennsylvania/philadelphia/', 'DestinationPage'],
-    ['/th/states/pennsylvania/philadelphia/', 'state-details-PA'],
-    ['/th/?view=planner', 'TripPlanner'],
-  ]) {
-    const page = await context.newPage();
-    await page.setViewportSize({ width: 390, height: 844 });
-    let release!: () => void;
-    const hold = new Promise<void>((resolve) => {
-      release = resolve;
-    });
-    await page.route(new RegExp(`/assets/${module}-[^/]+\\.js$`), async (route) => {
-      await hold;
-      await route.continue();
-    });
-    try {
-      await page.goto(path);
-      await expect(page.locator('.page-loading')).toBeVisible();
-      const footer = await page.locator('.footer').boundingBox();
-      expect(footer!.y).toBeGreaterThanOrEqual(844);
-      release();
-      await expect(
-        page.locator(path.includes('planner') ? '#planner-page' : '.city-guide'),
-      ).toBeVisible();
-      await expect(page.locator('.page-loading')).toHaveCount(0);
-    } finally {
-      release();
-      await page.close();
+  const context = await browser.newContext({
+    serviceWorkers: 'block',
+    reducedMotion: 'reduce',
+    baseURL,
+  });
+  try {
+    for (const [path, module] of [
+      ['/th/states/pennsylvania/philadelphia/', 'DestinationPage'],
+      ['/th/states/pennsylvania/philadelphia/', 'state-details-PA'],
+      ['/th/?view=planner', 'TripPlanner'],
+    ]) {
+      const page = await context.newPage();
+      await page.setViewportSize({ width: 390, height: 844 });
+      let release!: () => void;
+      const hold = new Promise<void>((resolve) => {
+        release = resolve;
+      });
+      await page.route(new RegExp(`/assets/${module}-[^/]+\\.js$`), async (route) => {
+        await hold;
+        await route.continue();
+      });
+      try {
+        await page.goto(path);
+        await expect(page.locator('.page-loading')).toBeVisible();
+        const footer = await page.locator('.footer').boundingBox();
+        expect(footer!.y).toBeGreaterThanOrEqual(844);
+        release();
+        await expect(
+          page.locator(path.includes('planner') ? '#planner-page' : '.city-guide'),
+        ).toBeVisible();
+        await expect(page.locator('.page-loading')).toHaveCount(0);
+      } finally {
+        release();
+        await page.close();
+      }
     }
+  } finally {
+    await context.close();
   }
 });
 
-test('Philadelphia city plan preview, creation and suggested-start printing remain usable offline', async ({
+test('all six city plans can be previewed, created and printed after explicit offline saving', async ({
   page,
   context,
 }) => {
@@ -682,4 +714,35 @@ test('Philadelphia city plan preview, creation and suggested-start printing rema
   await expect(page.locator('.print-itinerary')).toContainText(
     cityContent.guides[5].food.stops[1].text[4],
   );
+  await page.emulateMedia({ media: 'screen' });
+  for (const [i, path] of [
+    'new-york/new-york-city',
+    'california/san-francisco',
+    'nevada/las-vegas',
+    'massachusetts/boston',
+    'illinois/chicago',
+  ].entries()) {
+    const days = (i % 3) + 1;
+    await page.goto(`/${LANGUAGES[i]}/states/${path}/`);
+    await page
+      .getByRole('button', { name: EXPERIENCE_COPY.cityPlanPreview[i], exact: true })
+      .click();
+    await expect(preview.locator('summary')).toBeFocused();
+    await preview
+      .getByLabel(EXPERIENCE_COPY.cityPlanDays[i], { exact: true })
+      .selectOption(String(days));
+    await expect(preview.locator('.template-day')).toHaveCount(days);
+    await preview.getByRole('button', { name: EXPERIENCE_COPY.usePlan[i], exact: true }).click();
+    await page.reload();
+    await expect(page.locator('.day-strip button')).toHaveCount(days);
+    await page.emulateMedia({ media: 'print' });
+    await expect(page.locator('.print-itinerary .estimated-time')).toHaveCount(days * 4);
+    await expect(page.locator('.print-itinerary')).toContainText(
+      cityContent.guides[i].food.stops[days - 1].text[i],
+    );
+    await page.emulateMedia({ media: 'screen' });
+  }
+  expect(
+    await page.evaluate(() => JSON.parse(localStorage.getItem('roam.library.v1')!).trips.length),
+  ).toBe(saved.trips.length + 5);
 });

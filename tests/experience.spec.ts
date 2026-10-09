@@ -9,6 +9,15 @@ import { validateCollections } from '../lib/collections';
 import { EXPERIENCE_COPY } from '../data/experience-copy';
 import { cityGuideTrip, findCityGuide } from '../components/CityGuide';
 
+const CITY_PLAN_CASES = [
+  ['NY-0', 'new-york/new-york-city'],
+  ['CA-0', 'california/san-francisco'],
+  ['NV-0', 'nevada/las-vegas'],
+  ['MA-0', 'massachusetts/boston'],
+  ['IL-0', 'illinois/chicago'],
+  ['PA-0', 'pennsylvania/philadelphia'],
+] as const;
+
 test('all templates have complete valid days and five-language experience copy', () => {
   expect(ITINERARIES).toHaveLength(9);
   expect(
@@ -76,105 +85,145 @@ test('all templates have complete valid days and five-language experience copy',
   });
 });
 
-test('Philadelphia city plans validate all durations and preserve guide visits, food and weather choices', () => {
-  const guide = findCityGuide('PA-0')!;
-  for (const [l, lang] of (['en', 'th', 'zh', 'ja', 'ko'] as const).entries()) {
-    for (const days of [1, 2, 3]) {
-      const trip = validateTrip(cityGuideTrip(guide, days, lang));
-      expect(trip.stops).toHaveLength(1);
-      expect(trip.stops[0].days).toBe(days);
-      expect(trip.expenses ?? []).toHaveLength(0);
-      for (let day = 1; day <= days; day++) {
-        const timeline = dayTimeline(trip.stops[0].activities!.filter((a) => a.day === day));
-        expect(timeline).toHaveLength(4);
-        expect(timeline.every((a) => a.estimated && !a.overlap)).toBe(true);
-        expect(timeline[1].activity.title).toBe(guide.days[day - 1].title[l]);
-        expect(timeline[1].activity.notes).toContain(guide.days[day - 1].alternative[l]);
-        expect(timeline[2].activity.title).toBe(guide.food.stops[day - 1].title[l]);
-        expect(timeline.every((a) => !a.activity.placeId)).toBe(true);
+test('six city plans validate 90 combinations and preserve visits, food and weather choices', () => {
+  for (const [id] of CITY_PLAN_CASES) {
+    const guide = findCityGuide(id)!;
+    for (const [l, lang] of (['en', 'th', 'zh', 'ja', 'ko'] as const).entries()) {
+      for (const days of [1, 2, 3]) {
+        const trip = validateTrip(cityGuideTrip(guide, days, lang));
+        expect(trip.stops).toHaveLength(1);
+        expect(trip.stops[0].days).toBe(days);
+        expect(trip.stops[0].code).toBe(id.slice(0, 2));
+        expect(trip.expenses ?? []).toHaveLength(0);
+        for (let day = 1; day <= days; day++) {
+          const timeline = dayTimeline(trip.stops[0].activities!.filter((a) => a.day === day));
+          expect(timeline).toHaveLength(4);
+          expect(timeline.every((a) => a.estimated && !a.overlap)).toBe(true);
+          expect(timeline[1].activity.title).toBe(guide.days[day - 1].title[l]);
+          expect(timeline[1].activity.notes).toContain(guide.days[day - 1].alternative[l]);
+          expect(timeline[2].activity.title).toBe(guide.food.stops[day - 1].title[l]);
+          expect(timeline.every((a) => !a.activity.placeId)).toBe(true);
+        }
       }
     }
+    for (const days of [-1, 0, 4, 1.5, NaN, Infinity])
+      expect(() => cityGuideTrip(guide, days, 'en')).toThrow();
+    expect(() => cityGuideTrip({ ...guide, placeId: 'CA-1' }, 3, 'en')).toThrow();
   }
-  for (const days of [0, 4, 1.5]) expect(() => cityGuideTrip(guide, days, 'en')).toThrow();
-  expect(() => cityGuideTrip(findCityGuide('NY-0')!, 3, 'en')).toThrow();
 });
 
-test('Philadelphia guide creates 1–3 day trips in five languages and labels suggested starts until edited', async ({
-  page,
-}) => {
-  test.setTimeout(90000);
-  await page.addInitScript(() => {
-    if (!localStorage.getItem('roam.trip.v1'))
-      localStorage.setItem(
-        'roam.trip.v1',
-        JSON.stringify({
-          name: 'Original city holiday',
-          startDate: '',
-          travelers: 2,
-          dailyBudget: 100,
-          budgetMode: 'items',
-          expenses: [
-            { id: 'deposit', name: 'Hotel deposit', category: 'lodging', planned: 500, paid: 100 },
-          ],
-          stops: [{ code: 'CA', days: 2, notes: 'Keep my booking', activities: [] }],
-        }),
-      );
-  });
-  for (const [l, lang] of (['en', 'th', 'zh', 'ja', 'ko'] as const).entries()) {
-    for (const days of [1, 2, 3]) {
-      await page.goto(`/${lang}/states/pennsylvania/philadelphia/`);
-      const preview = page.locator('.city-plan-preview');
-      await preview.locator('summary').press('Enter');
-      await preview
-        .getByLabel(EXPERIENCE_COPY.cityPlanDays[l], { exact: true })
-        .selectOption(String(days));
-      await expect(preview.locator('.template-day')).toHaveCount(days);
-      await expect(preview.locator('.template-day li')).toHaveCount(days * 4);
-      if (lang === 'en' && days === 3) {
-        const audit = await new AxeBuilder({ page })
-          .include('#guide-city')
-          .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
-          .analyze();
-        expect(audit.violations).toEqual([]);
-      }
-      await preview.getByRole('button', { name: EXPERIENCE_COPY.usePlan[l], exact: true }).click();
-      await expect(page.locator('.day-strip button')).toHaveCount(days);
-      await expect(page.locator('.day-activity .estimated-time')).toHaveCount(4);
-      const current = validateTrip(
-        await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!)),
-      );
-      expect(current.stops[0].activities).toHaveLength(days * 4);
-      expect(current.expenses ?? []).toHaveLength(0);
-      const library = validateLibrary(
-        await page.evaluate(() => JSON.parse(localStorage.getItem('roam.library.v1')!)),
-      );
-      const original = library.trips.find(
-        (item) => item.trip.name === 'Original city holiday',
-      )!.trip;
-      expect(original.stops[0].notes).toBe('Keep my booking');
-      expect(original.expenses).toEqual([
-        { id: 'deposit', name: 'Hotel deposit', category: 'lodging', planned: 500, paid: 100 },
-      ]);
-      if (lang === 'en' && days === 3) {
-        const transfer = page.locator('.day-activity').first();
-        await transfer.getByRole('button', { name: 'Edit activity', exact: true }).click();
-        await transfer.getByLabel('Starts at', { exact: true }).fill('10:00');
-        await expect(transfer.locator('.estimated-time')).toHaveCount(0);
-        await expect(page.locator('.day-activity .estimated-time')).toHaveCount(3);
-        await page.emulateMedia({ media: 'print' });
-        await expect(page.locator('.print-itinerary .estimated-time')).toHaveCount(11);
-        await expect(page.locator('.print-itinerary')).toContainText(
-          findCityGuide('PA-0')!.days[2].alternative[0],
+for (const [id, path] of CITY_PLAN_CASES) {
+  test(`${id} guide previews and creates 1–3 day trips in five languages, preserving existing work`, async ({
+    page,
+  }) => {
+    test.setTimeout(90000);
+    await page.addInitScript(() => {
+      if (!localStorage.getItem('roam.trip.v1'))
+        localStorage.setItem(
+          'roam.trip.v1',
+          JSON.stringify({
+            name: 'Original city holiday',
+            startDate: '',
+            travelers: 2,
+            dailyBudget: 100,
+            budgetMode: 'items',
+            expenses: [
+              {
+                id: 'deposit',
+                name: 'Hotel deposit',
+                category: 'lodging',
+                planned: 500,
+                paid: 100,
+              },
+            ],
+            stops: [{ code: 'CA', days: 2, notes: 'Keep my booking', activities: [] }],
+          }),
         );
-        await page.emulateMedia({ media: 'screen' });
+    });
+    for (const [l, lang] of (['en', 'th', 'zh', 'ja', 'ko'] as const).entries()) {
+      for (const days of [1, 2, 3]) {
+        await page.goto(`/${lang}/states/${path}/`);
+        const preview = page.locator('.city-plan-preview');
+        await expect(page.locator('.city-plan-entry')).toBeVisible();
+        const previousWork = await page.evaluate(() => [
+          localStorage.getItem('roam.trip.v1'),
+          localStorage.getItem('roam.library.v1'),
+        ]);
+        await expect(preview).not.toHaveAttribute('open', '');
+        await page
+          .getByRole('button', { name: EXPERIENCE_COPY.cityPlanPreview[l], exact: true })
+          .press('Enter');
+        await expect(preview).toHaveAttribute('open', '');
+        await expect(preview.locator('summary')).toBeFocused();
+        const position = await preview.evaluate((element) => ({
+          top: element.getBoundingClientRect().top,
+          headerBottom: document.querySelector('.header')!.getBoundingClientRect().bottom,
+          tocHeight: document.querySelector('.guide-toc')!.getBoundingClientRect().height,
+        }));
+        expect(position.top).toBeGreaterThanOrEqual(position.headerBottom + position.tocHeight);
+        await preview
+          .getByLabel(EXPERIENCE_COPY.cityPlanDays[l], { exact: true })
+          .selectOption(String(days));
+        await expect(preview.locator('.template-day')).toHaveCount(days);
+        await expect(preview.locator('.template-day li')).toHaveCount(days * 4);
+        await expect(preview).toContainText(findCityGuide(id)!.days[days - 1].title[l]);
+        await expect(preview).toContainText(findCityGuide(id)!.food.stops[days - 1].title[l]);
+        expect(
+          await page.evaluate(() => [
+            localStorage.getItem('roam.trip.v1'),
+            localStorage.getItem('roam.library.v1'),
+          ]),
+        ).toEqual(previousWork);
+        if (lang === 'en' && days === 3) {
+          const audit = await new AxeBuilder({ page })
+            .include('#guide-city')
+            .include('.guide-overview')
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+            .analyze();
+          expect(audit.violations).toEqual([]);
+        }
+        await preview
+          .getByRole('button', { name: EXPERIENCE_COPY.usePlan[l], exact: true })
+          .click();
+        await expect(page.locator('.day-strip button')).toHaveCount(days);
+        await expect(page.locator('.day-activity .estimated-time')).toHaveCount(4);
+        const current = validateTrip(
+          await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!)),
+        );
+        expect(current.stops[0].activities).toHaveLength(days * 4);
+        expect(current.stops[0].code).toBe(id.slice(0, 2));
+        expect(current.expenses ?? []).toHaveLength(0);
+        const library = validateLibrary(
+          await page.evaluate(() => JSON.parse(localStorage.getItem('roam.library.v1')!)),
+        );
+        const original = library.trips.find(
+          (item) => item.trip.name === 'Original city holiday',
+        )!.trip;
+        expect(original.stops[0].notes).toBe('Keep my booking');
+        expect(original.expenses).toEqual([
+          { id: 'deposit', name: 'Hotel deposit', category: 'lodging', planned: 500, paid: 100 },
+        ]);
+        if (lang === 'en' && days === 3) {
+          const transfer = page.locator('.day-activity').first();
+          await transfer.getByRole('button', { name: 'Edit activity', exact: true }).click();
+          await transfer.getByLabel('Starts at', { exact: true }).fill('10:00');
+          await expect(transfer.locator('.estimated-time')).toHaveCount(0);
+          await expect(page.locator('.day-activity .estimated-time')).toHaveCount(3);
+          await page.emulateMedia({ media: 'print' });
+          await expect(page.locator('.print-itinerary .estimated-time')).toHaveCount(11);
+          await expect(page.locator('.print-itinerary')).toContainText(
+            findCityGuide(id)!.days[2].alternative[0],
+          );
+          await page.emulateMedia({ media: 'screen' });
+        }
+        await page.reload();
+        await expect(page.locator('.day-strip button')).toHaveCount(days);
+        if (lang === 'en' && days === 3)
+          await expect(page.locator('.day-activity .estimated-time')).toHaveCount(3);
       }
-      await page.reload();
-      await expect(page.locator('.day-strip button')).toHaveCount(days);
-      if (lang === 'en' && days === 3)
-        await expect(page.locator('.day-activity .estimated-time')).toHaveCount(3);
     }
-  }
-});
+  });
+}
 
 test('library and schedule validation reject corrupt data and retain new fields', () => {
   const trip: Trip = {

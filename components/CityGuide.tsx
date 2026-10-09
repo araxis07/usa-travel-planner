@@ -10,7 +10,7 @@ export const findCityGuide = (id?: string) => content.guides.find((guide) => gui
 type City = NonNullable<ReturnType<typeof findCityGuide>>;
 
 export function cityGuideTrip(guide: City, days: number, lang: Language): Trip {
-  if (guide.placeId !== 'PA-0' || !Number.isInteger(days) || days < 1 || days > 3)
+  if (!findCityGuide(guide.placeId) || !Number.isInteger(days) || days < 1 || days > 3)
     throw new Error('Invalid city plan');
   const l = languageIndex(lang);
   const trip = starterTrip(guide.placeId, days, lang);
@@ -57,10 +57,7 @@ export default function CityGuide({
 }) {
   const l = languageIndex(lang);
   const [days, setDays] = useState(3);
-  const plan = useMemo(
-    () => (guide.placeId === 'PA-0' ? cityGuideTrip(guide, days, lang) : null),
-    [guide, days, lang],
-  );
+  const plan = useMemo(() => cityGuideTrip(guide, days, lang), [guide, days, lang]);
   const food = 'food' in guide ? guide.food : undefined;
   const money = (amount: number) =>
     new Intl.NumberFormat(LOCALES[lang], { style: 'currency', currency: 'USD' }).format(amount);
@@ -70,43 +67,41 @@ export default function CityGuide({
     <section className="city-guide" id="guide-city" aria-labelledby="city-guide-title">
       <h2 id="city-guide-title">{cityCopy.title[l]}</h2>
       <p>{guide.intro[l]}</p>
-      {plan && (
-        <details className="guide-details city-plan-preview">
-          <summary>{x(lang, 'cityPlan')}</summary>
-          <div className="city-plan-duration">
-            <label htmlFor="city-plan-days">{x(lang, 'cityPlanDays')}</label>
-            <select
-              id="city-plan-days"
-              value={days}
-              onChange={(event) => setDays(Number(event.target.value))}
-            >
-              {[1, 2, 3].map((day) => (
-                <option key={day} value={day}>
-                  {x(lang, 'cityPlanDuration', { days: day })}
-                </option>
-              ))}
-            </select>
+      <details className="guide-details city-plan-preview" id="guide-city-plan">
+        <summary>{x(lang, 'cityPlan')}</summary>
+        <div className="city-plan-duration">
+          <label htmlFor="city-plan-days">{x(lang, 'cityPlanDays')}</label>
+          <select
+            id="city-plan-days"
+            value={days}
+            onChange={(event) => setDays(Number(event.target.value))}
+          >
+            {[1, 2, 3].map((day) => (
+              <option key={day} value={day}>
+                {x(lang, 'cityPlanDuration', { days: day })}
+              </option>
+            ))}
+          </select>
+        </div>
+        <p>{x(lang, 'cityPlanNote')}</p>
+        {Array.from({ length: days }, (_, i) => (
+          <div className="template-day" key={i}>
+            <strong>{cityCopy.day[l].replace('{day}', String(i + 1))}</strong>
+            <ul>
+              {plan.stops[0]
+                .activities!.filter((a) => a.day === i + 1)
+                .map((a) => (
+                  <li key={a.id}>
+                    {a.title} · {a.minutes} {translate('minutes', 'นาที', lang)}
+                  </li>
+                ))}
+            </ul>
           </div>
-          <p>{x(lang, 'cityPlanNote')}</p>
-          {Array.from({ length: days }, (_, i) => (
-            <div className="template-day" key={i}>
-              <strong>{cityCopy.day[l].replace('{day}', String(i + 1))}</strong>
-              <ul>
-                {plan.stops[0]
-                  .activities!.filter((a) => a.day === i + 1)
-                  .map((a) => (
-                    <li key={a.id}>
-                      {a.title} · {a.minutes} {translate('minutes', 'นาที', lang)}
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          ))}
-          <button className="button button-navy" onClick={() => onCreateTrip(plan)}>
-            {x(lang, 'usePlan')}
-          </button>
-        </details>
-      )}
+        ))}
+        <button className="button button-navy" onClick={() => onCreateTrip(plan)}>
+          {x(lang, 'usePlan')}
+        </button>
+      </details>
       <h3>{cityCopy.areas[l]}</h3>
       {guide.areas.map((area) => (
         <details className="guide-details" key={area.mapQuery}>

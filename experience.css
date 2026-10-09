@@ -464,6 +464,19 @@
   gap: 12px;
   margin: 20px 0;
 }
+.city-plan-entry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 24px;
+}
+.city-plan-entry p {
+  flex: 1 1 280px;
+  margin: 0;
+  max-width: 60ch;
+  line-height: 1.7;
+}
 .city-plan-duration select {
   min-height: 44px;
   max-width: 100%;

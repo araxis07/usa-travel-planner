@@ -135,6 +135,7 @@ test('cross-language place search works regardless of the current interface lang
 test('updated access notices stay readable and linked on a narrow screen in all languages', async ({
   page,
 }) => {
+  test.setTimeout(90000);
   await page.setViewportSize({ width: 320, height: 700 });
   for (const [path, code, index] of [
     ['/en/states/california/big-sur/', 'CA', 2],
@@ -197,7 +198,7 @@ test('city guides localize neighborhood links, airport steps and complete group 
       await page.locator('.guide-toc a[href="#guide-city"]').click();
       const area = section
         .locator(':scope > details')
-        .filter({ hasText: guide.areas[0].title[l] })
+        .filter({ has: page.locator('summary', { hasText: guide.areas[0].title[l] }) })
         .first();
       await area.locator('summary').press('Enter');
       await expect(area).toContainText(guide.areas[0].text[l]);

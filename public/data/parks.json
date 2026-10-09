@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-02T22:01:23.425Z",
+  "checkedAt": "2026-10-09T10:48:39.988Z",
   "source": "https://www.nps.gov/subjects/developer/",
   "parks": [
     {
@@ -322,9 +322,9 @@
           "id": "7FB2991F-FED2-4E87-8002-B4BADAD2749F",
           "title": "Glacier Point Road is temporarily closed due to the Dome Fire",
           "category": "Park Closure",
-          "description": "The Dome Fire is burning in the wilderness northeast of Wawona. Glacier Point Road is temporarily closed because of reduced visibility along the road due to smoke and to safely allow firefighting operations. Additionally, there are some trail closures south of Glacier Point Road.. Smoky conditions are possible, with brief periods of unhealthy air quality in some places at some times..",
+          "description": "The Dome Fire is burning in the wilderness northeast of Wawona. Glacier Point Road is temporarily closed because of reduced visibility along the road due to smoke and to safely allow firefighting operations. Additionally, there are some trail closures south of Glacier Point Road.. Smoky conditions are possible at times.",
           "url": "https://inciweb.wildfire.gov/incident-information/caynp-dome-fire",
-          "lastIndexedDate": "2026-09-28 00:00:00.0"
+          "lastIndexedDate": "2026-10-07 00:00:00.0"
         }
       ]
     },
@@ -469,13 +469,13 @@
               "exceptions": [],
               "description": "Hours of operation may vary with the seasons and available staffing.",
               "standardHours": {
-                "wednesday": "8:00AM - 7:00PM",
-                "monday": "8:00AM - 7:00PM",
-                "thursday": "8:00AM - 7:00PM",
-                "sunday": "8:00AM - 7:00PM",
-                "tuesday": "8:00AM - 7:00PM",
-                "friday": "8:00AM - 7:00PM",
-                "saturday": "8:00AM - 7:00PM"
+                "wednesday": "8:00AM - 6:00PM",
+                "monday": "8:00AM - 6:00PM",
+                "thursday": "8:00AM - 6:00PM",
+                "sunday": "8:00AM - 6:00PM",
+                "tuesday": "8:00AM - 6:00PM",
+                "friday": "8:00AM - 6:00PM",
+                "saturday": "8:00AM - 6:00PM"
               },
               "name": "Verkamp's Visitor Center (South Rim)"
             }
@@ -725,6 +725,38 @@
       ],
       "alerts": [
         {
+          "id": "611B580A-2CFD-4331-B712-E8E46FC6683D",
+          "title": "Mauna Loa Road Closed Past Second Cattle Guard for Tree Removal ",
+          "category": "Information",
+          "description": "Mauna Loa Road will be closed to all use from the second cattle guard (about two miles past Kīpukapuaulu) to Mauna Loa Lookout for tree removal starting September 23 through October 29, 2026. The tree work will prepare the area for the Mauna Loa Road Rehabilitation Project. Vehicles, bicyclists and pedestrians will not be allowed during the closure. ",
+          "url": "",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
+        },
+        {
+          "id": "E184228C-9A0B-4463-9848-44AF5D566030",
+          "title": "Hilina Pali Road Shoulder Work Scheduled 9/14/26 to 11/19/26",
+          "category": "Information",
+          "description": "Hilina Pali Road beyond the Maunaiki Trailhead will be closed to motorized vehicles on September 14, 2026 from 6 a.m. to 4:30 p.m. Monday through Thursday for shoulder work. Hikers, bicyclists and backcountry permit holders will be given access but should expect delays while heavy machinery works on the road. The entire road will be open to all use outside of those hours including weekends and holidays. The work is expected to be complete by November 19, 2026.",
+          "url": "",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
+        },
+        {
+          "id": "8A75DF70-5B3C-4878-8E33-C3EFBBA3204D",
+          "title": "Kīpukapuaulu Trail Closed Due to Hazardous Trees and Hanging Limbs",
+          "category": "Caution",
+          "description": "Kīpukapuaulu Trail remains closed due to numerous hazardous trees and hanging limbs resulting from several recent storms. Managers are developing a plan and will reopen the trail when it is safe.",
+          "url": "",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
+        },
+        {
+          "id": "E6380F1D-EB3A-44EC-B206-6A65019B38D5",
+          "title": "Halemaʻumaʻu Trail and Part of Byron Ledge Trail Closed Due to Safety Risks",
+          "category": "Park Closure",
+          "description": "Halemaʻumaʻu Trail and part of Byron Ledge Trail are temporarily closed due to continued inflation and increased seismicity at the summit of Kīlauea volcano. The closure is a total of 1.3 miles. The increased seismicity could trigger additional rock falls and presents a serious safety risk. Both trails descend from the caldera rim to the floor and have been the site of dangerous rock falls in the past.",
+          "url": "",
+          "lastIndexedDate": "2026-10-07 00:00:00.0"
+        },
+        {
           "id": "372637DA-0B8C-422B-B98B-9ACF44B56C46",
           "title": "Sulphur Banks Bridge Closed; Boardwalk is Open",
           "category": "Information",
@@ -747,30 +779,6 @@
           "description": "Volcanic eruptions can be hazardous. Stay out of closed areas and monitor air quality. Eruptions can last a few hours and are often separated by pauses lasting several weeks.",
           "url": "https://www.nps.gov/havo/planyourvisit/lava2.htm",
           "lastIndexedDate": "2026-09-24 00:00:00.0"
-        },
-        {
-          "id": "611B580A-2CFD-4331-B712-E8E46FC6683D",
-          "title": "Mauna Loa Road Closed Past Second Cattle Guard for Tree Removal ",
-          "category": "Park Closure",
-          "description": "Mauna Loa Road will be closed to all use from the second cattle guard (about two miles past Kīpukapuaulu) to Mauna Loa Lookout for tree removal starting September 23 through October 29, 2026. The tree work will prepare the area for the Mauna Loa Road Rehabilitation Project. Vehicles, bicyclists and pedestrians will not be allowed during the closure. ",
-          "url": "",
-          "lastIndexedDate": "2026-09-21 00:00:00.0"
-        },
-        {
-          "id": "E184228C-9A0B-4463-9848-44AF5D566030",
-          "title": "Hilina Pali Road Shoulder Work Scheduled 9/14/26 to 11/19/26",
-          "category": "Park Closure",
-          "description": "Hilina Pali Road beyond the Maunaiki Trailhead will be closed to motorized vehicles on September 14, 2026 from 6 a.m. to 4:30 p.m. Monday through Thursday for shoulder work. Hikers, bicyclists and backcountry permit holders will be given access but should expect delays while heavy machinery works on the road. The entire road will be open to all use outside of those hours including weekends and holidays. The work is expected to be complete by November 19, 2026.",
-          "url": "",
-          "lastIndexedDate": "2026-09-11 00:00:00.0"
-        },
-        {
-          "id": "8A75DF70-5B3C-4878-8E33-C3EFBBA3204D",
-          "title": "Kīpukapuaulu Trail Closed Due to Hazardous Trees and Hanging Limbs",
-          "category": "Park Closure",
-          "description": "Kīpukapuaulu Trail remains closed due to numerous hazardous trees and hanging limbs resulting from several recent storms. Managers are developing a plan and will reopen the trail when it is safe.",
-          "url": "",
-          "lastIndexedDate": "2026-09-09 00:00:00.0"
         },
         {
           "id": "9EA3FC4B-73DA-4CD9-BB0D-6A1F3DFF7407",
@@ -1083,12 +1091,12 @@
       ],
       "alerts": [
         {
-          "id": "76DA8D85-4EC6-4988-A71B-6E6F6E939274",
-          "title": "Zion-Mt. Carmel Highway closed from Canyon Junction to East Entrance",
+          "id": "FC405217-4B9B-4042-8D9C-96475F3997D0",
+          "title": "Zion-Mt. Carmel Highway closed from Canyon Junction to Great Arch Pullout",
           "category": "Park Closure",
-          "description": "The Zion-Mt. Carmel Highway is partially closed. There will be no through traffic until further notice. Zion Canyon Scenic Drive remains open to shuttles and lodge guests.",
+          "description": "The Zion-Mt. Carmel Highway is currently closed from Canyon Junction to Great Arch Pullout to all pedestrian, bicycle, and vehicle traffic. Zion-Mt. Carmel Highway is open from East Entrance to Great Arch Pullout. There will be no through traffic until further notice.",
           "url": "",
-          "lastIndexedDate": "2026-09-30 00:00:00.0"
+          "lastIndexedDate": "2026-10-06 00:00:00.0"
         },
         {
           "id": "CDD9D321-49B3-4C74-89AD-A186807220E6",
@@ -1120,14 +1128,6 @@
           "category": "Information",
           "description": "All hikers need a permit to hike Angels Landing. Learn why you need a permit and how to get one using the link below.",
           "url": "https://www.nps.gov/zion/planyourvisit/angels-landing-hiking-permits.htm",
-          "lastIndexedDate": "2026-09-16 00:00:00.0"
-        },
-        {
-          "id": "4F7A97F4-90C4-44BE-A2D0-B0B6C19E6AB4",
-          "title": "Fire restrictions are in effect",
-          "category": "Information",
-          "description": "Campfires are only allowed in designated fire rings at Watchman Campground, South Campground, and Lava Point Campground. Smoking near vegetation is not allowed. Fireworks are never allowed within the park.",
-          "url": "https://www.nps.gov/zion/learn/news/zion-national-park-rescinds-stage-2-fire-restrictions-resumes-year-round-fire-restrictions.htm",
           "lastIndexedDate": "2026-09-16 00:00:00.0"
         },
         {
@@ -2753,26 +2753,26 @@
       ],
       "visitorCenters": [
         {
-          "id": "5A32C014-1C40-4187-A04A-845AEA3730D5",
-          "name": "Hoh Rain Forest Visitor Center",
+          "id": "7B570FEB-479E-4B29-BD2E-8DC63017033D",
+          "name": "Kalaloch Ranger Station",
           "url": "https://www.nps.gov/olym/planyourvisit/visitorcenters.htm",
-          "latitude": "47.86086245157094",
-          "longitude": "-123.93479170615859",
-          "directionsInfo": "Hoh Rain Forest Visitor Center is located at the terminus of the Upper Hoh Road. The Upper Hoh Road is accessible via Highway 101, south of Forks, WA.",
+          "latitude": "47.602878078471015",
+          "longitude": "-124.36967655606401",
+          "directionsInfo": "Kalaloch Ranger Station is located 36 miles south of Forks off of Highway 101.",
           "operatingHours": [
             {
               "exceptions": [],
-              "description": "Visitor information, exhibits, passport stamping station, book store. Two self-guided nature trails and the Hoh River Trail start near the visitor center. Guided walks and talks are offered during the summer. Wilderness Camping Permits should be picked up at a Wilderness Information Center.\nNo food service is available in the Hoh Rain Forest and the closest gas station is 31 miles away.",
+              "description": "Visitor information about the coast, Forks, and other areas on the west side of the Olympic Peninsula; passport stamping station, book store. Guided walks and talks are offered during the summer. Passport stamp available at the Kalaloch Lodge when closed. Open intermittently in summer from Memorial Day weekend-September 30th.",
               "standardHours": {
-                "wednesday": "9:00AM - 5:30PM",
-                "monday": "9:00AM - 5:30PM",
-                "thursday": "9:00AM - 5:30PM",
-                "sunday": "9:00AM - 5:30PM",
-                "tuesday": "9:00AM - 5:30PM",
-                "friday": "9:00AM - 5:30PM",
-                "saturday": "9:00AM - 5:30PM"
+                "wednesday": "Closed",
+                "monday": "Closed",
+                "thursday": "Closed",
+                "sunday": "Closed",
+                "tuesday": "Closed",
+                "friday": "Closed",
+                "saturday": "Closed"
               },
-              "name": "Hoh Rain Forest Visitor Center"
+              "name": "Kalaloch Ranger Station"
             }
           ]
         },
@@ -2817,13 +2817,13 @@
               ],
               "description": "This the main park visitor center located in Port Angeles. Hours vary by season. Closed Thanksgiving and Christmas Day.",
               "standardHours": {
-                "wednesday": "9:00AM - 5:00PM",
-                "monday": "9:00AM - 5:00PM",
-                "thursday": "9:00AM - 5:00PM",
-                "sunday": "9:00AM - 5:00PM",
-                "tuesday": "9:00AM - 5:00PM",
-                "friday": "9:00AM - 5:00PM",
-                "saturday": "9:00AM - 5:00PM"
+                "wednesday": "9:00AM - 4:00PM",
+                "monday": "9:00AM - 4:00PM",
+                "thursday": "9:00AM - 4:00PM",
+                "sunday": "9:00AM - 4:00PM",
+                "tuesday": "9:00AM - 4:00PM",
+                "friday": "9:00AM - 4:00PM",
+                "saturday": "9:00AM - 4:00PM"
               },
               "name": "Olympic National Park Visitor Center"
             }
@@ -2854,26 +2854,26 @@
           ]
         },
         {
-          "id": "7B570FEB-479E-4B29-BD2E-8DC63017033D",
-          "name": "Kalaloch Ranger Station",
+          "id": "5A32C014-1C40-4187-A04A-845AEA3730D5",
+          "name": "Hoh Rain Forest Visitor Center",
           "url": "https://www.nps.gov/olym/planyourvisit/visitorcenters.htm",
-          "latitude": "47.602878078471015",
-          "longitude": "-124.36967655606401",
-          "directionsInfo": "Kalaloch Ranger Station is located 36 miles south of Forks off of Highway 101.",
+          "latitude": "47.86086245157094",
+          "longitude": "-123.93479170615859",
+          "directionsInfo": "Hoh Rain Forest Visitor Center is located at the terminus of the Upper Hoh Road. The Upper Hoh Road is accessible via Highway 101, south of Forks, WA.",
           "operatingHours": [
             {
               "exceptions": [],
-              "description": "Visitor information about the coast, Forks, and other areas on the west side of the Olympic Peninsula; passport stamping station, book store. Guided walks and talks are offered during the summer. Passport stamp available at the Kalaloch Lodge when closed. Open intermittently in summer from Memorial Day weekend-September 30th.",
+              "description": "Visitor information, exhibits, passport stamping station, book store. Two self-guided nature trails and the Hoh River Trail start near the visitor center. Guided walks and talks are offered during the summer. Wilderness Camping Permits should be picked up at a Wilderness Information Center.\nNo food service is available in the Hoh Rain Forest and the closest gas station is 31 miles away.",
               "standardHours": {
-                "wednesday": "Closed",
-                "monday": "Closed",
-                "thursday": "Closed",
-                "sunday": "Closed",
-                "tuesday": "Closed",
-                "friday": "Closed",
-                "saturday": "Closed"
+                "wednesday": "9:00AM - 4:30PM",
+                "monday": "9:00AM - 4:30PM",
+                "thursday": "9:00AM - 4:30PM",
+                "sunday": "9:00AM - 4:30PM",
+                "tuesday": "9:00AM - 4:30PM",
+                "friday": "9:00AM - 4:30PM",
+                "saturday": "9:00AM - 4:30PM"
               },
-              "name": "Kalaloch Ranger Station"
+              "name": "Hoh Rain Forest Visitor Center"
             }
           ]
         },
@@ -2889,13 +2889,13 @@
               "exceptions": [],
               "description": "Temporary facility. Hurricane Ridge Day Lodge burned down in May 2023.",
               "standardHours": {
-                "wednesday": "10:00PM - 4:00PM",
-                "monday": "10:00AM - 4:00PM",
-                "thursday": "10:00AM - 4:00PM",
-                "sunday": "10:00AM - 4:00PM",
-                "tuesday": "10:00AM - 4:00PM",
-                "friday": "10:00AM - 4:00PM",
-                "saturday": "10:00AM - 4:00PM"
+                "wednesday": "Closed",
+                "monday": "Closed",
+                "thursday": "Closed",
+                "sunday": "Closed",
+                "tuesday": "Closed",
+                "friday": "Closed",
+                "saturday": "Closed"
               },
               "name": "Hurricane Ridge Visitor Contact Station"
             }
@@ -2904,12 +2904,20 @@
       ],
       "alerts": [
         {
-          "id": "487BC261-D8E4-4740-9E89-B71B9E784521",
-          "title": "Crews Responding to Mount Tom Creek Fire",
+          "id": "BD0ECF54-649B-46A7-A9B1-3C185F62D8E1",
+          "title": "Bat Tests Positive for Rabies, Visitors Urged to Report Potential Contact",
+          "category": "Caution",
+          "description": "A rabid bat was found at Olympic National Park near Staircase Bridge on August 9th. At approximately 2 p.m., the bat swooped down onto an unidentified woman and was temporarily caught in her hair. This individual is at risk for rabies and should seek healthcare immediately, as well as contact the Mason County Health Department at 360-427-9670, ext. 405. More at the link.",
+          "url": "https://www.nps.gov/olym/learn/news/bat-tests-positive-for-rabies-at-olympic-national-park.htm",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
+        },
+        {
+          "id": "5A258C0A-F669-4319-B11F-14295742D42D",
+          "title": "Boil Water Advisory at Hoh Rainforest - Bring Water",
           "category": "Danger",
-          "description": "Fire managers are responding to a lightning fire in a remote area of Olympic National Park. The Mount Tom Creek Fire has burned 69 acres 5 miles west-northwest of Mount Olympus. Firefighters are using indirect confinement tactics as part of a full-suppression strategy. There are no evacuation orders or closures.",
-          "url": "https://www.nps.gov/olym/planyourvisit/fire-conditions-and-updates.htm",
-          "lastIndexedDate": "2026-10-01 00:00:00.0"
+          "description": "There is currently NO POTABLE WATER available at the Hoh Rainforest. Bring what you need. A boil water advisory has been issued for the Hoh Rainforest Visitor Center, campground, and all park facilities in the Hoh area today, October 8. It is unknown when the advisory will be lifted.",
+          "url": "",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
         },
         {
           "id": "73549B6B-64CF-4B70-A42B-581EB4D11DA5",
@@ -2926,14 +2934,6 @@
           "description": "South Shore Road – which is maintained by Jefferson County – is closed due to a major wash-out. For more information, visit the Jefferson County website.",
           "url": "https://jeffersoncountypublichealth.org/1935/Quinault-South-Shore-Rd-MP-13---CLOSED",
           "lastIndexedDate": "2026-08-23 00:00:00.0"
-        },
-        {
-          "id": "BD0ECF54-649B-46A7-A9B1-3C185F62D8E1",
-          "title": "Bat Tests Positive for Rabies, Visitors Urged to Report Potential Contact",
-          "category": "Danger",
-          "description": "A rabid bat was found at Olympic National Park near Staircase Bridge on August 9th. At approximately 2 p.m., the bat swooped down onto an unidentified woman and was temporarily caught in her hair. This individual is at risk for rabies and should seek healthcare immediately, as well as contact the Mason County Health Department at 360-427-9670 ext. 405. More at the link.",
-          "url": "https://www.nps.gov/olym/learn/news/bat-tests-positive-for-rabies-at-olympic-national-park.htm",
-          "lastIndexedDate": "2026-08-12 00:00:00.0"
         },
         {
           "id": "8889EA7E-7113-4F30-A234-F417065A7A3E",
@@ -3578,12 +3578,20 @@
       ],
       "alerts": [
         {
+          "id": "DB1ECFED-518B-4A64-AADD-27F15142929E",
+          "title": "Overnight closure of SR 706 on October 16; no access to Nisqually Entrance.",
+          "category": "Information",
+          "description": "SR706 outside of the park will be fully CLOSED overnight from 9 pm Friday 10/16 until 6 am Saturday 10/17, for road repairs to replace a failing culvert. The closure will be from Kernahan Road East to the Nisqually Entrance. There will be NO ACCESS to the Nisqually Entrance during the closure. To reach Paradise during the closure plan to enter the park through the Stevens Canyon Entrance via SR123 on the east side of the park.",
+          "url": "https://wsdot.wa.gov/about/news/2026/overnight-closure-sr-706-near-mount-rainier-national-park-friday-oct-16",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
+        },
+        {
           "id": "CB5AE302-9DA5-48D9-81D9-4998F5807010",
           "title": "Fryingpan Creek Bridge Replacement Project: Traffic and Trail Impacts",
           "category": "Information",
-          "description": "Starting September 27, 2026, parking at the Summerland Trailhead will be unavailable on either side of Fryingpan Creek Bridge due to construction through 2029. Access to Summerland remains open via the Wonderland Trail with limited parking at White River Campground. Expect traffic delays of up to 30 minutes due to one-lane traffic on White River Road while it remains open for the season.",
+          "description": "Parking is closed at the Summerland Trailhead on either side of Fryingpan Creek Bridge due to construction through 2029. Access to Summerland remains open via the Wonderland Trail with limited parking at White River Campground. Expect traffic delays of up to 30 minutes due to one-lane traffic on White River Road while it remains open for the season.",
           "url": "https://www.nps.gov/mora/planyourvisit/park-construction.htm/#fryingpan-creek-bridge",
-          "lastIndexedDate": "2026-09-28 00:00:00.0"
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
         },
         {
           "id": "73CE219E-D823-4452-A8C1-67869DC3CD1A",
@@ -4090,20 +4098,6 @@
                 },
                 {
                   "exceptionHours": {
-                    "wednesday": "8:00AM - 4:00PM",
-                    "monday": "8:00AM - 4:00PM",
-                    "thursday": "8:00AM - 4:00PM",
-                    "sunday": "8:00AM - 4:00PM",
-                    "tuesday": "8:00AM - 4:00PM",
-                    "friday": "8:00AM - 4:00PM",
-                    "saturday": "8:00AM - 4:00PM"
-                  },
-                  "startDate": "2027-06-01",
-                  "name": "Summer Hours (June 1-September 30)",
-                  "endDate": "2027-09-30"
-                },
-                {
-                  "exceptionHours": {
                     "wednesday": "Closed",
                     "monday": "Closed",
                     "thursday": "Closed",
@@ -4112,9 +4106,9 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-11-25",
-                  "name": "Thanksgiving",
-                  "endDate": "2026-11-25"
+                  "startDate": "2026-11-26",
+                  "name": "Closed on Thanksgiving",
+                  "endDate": "2026-11-26"
                 },
                 {
                   "exceptionHours": {
@@ -4127,7 +4121,7 @@
                     "saturday": "Closed"
                   },
                   "startDate": "2026-12-25",
-                  "name": "Christmas",
+                  "name": "Closed on Christmas",
                   "endDate": "2026-12-25"
                 },
                 {
@@ -4185,14 +4179,6 @@
         }
       ],
       "alerts": [
-        {
-          "id": "3CDA21AC-B403-4E50-BBB6-7DCDEF85676B",
-          "title": "Teklanika Area Closures",
-          "category": "Park Closure",
-          "description": "The Park Road is closed to pedestrians and cyclists from mile 26 to mile 37 for wildlife management activities. Vehicles may still drive to the Teklanika Rest Stop at mile 30, but visitors may not walk outside of the rest stop area. Backcountry units 29 and 6 are closed to both overnight and day use.",
-          "url": "",
-          "lastIndexedDate": "2026-09-24 00:00:00.0"
-        },
         {
           "id": "08FD4C32-0851-4EFD-811E-FF9740E965FB",
           "title": "Road Open To: Mile 30 (Teklanika River)",
@@ -4655,73 +4641,6 @@
       ],
       "visitorCenters": [
         {
-          "id": "9E702F42-1153-4C94-8C88-E2D802A13DF1",
-          "name": "Buffalo Point Visitor Contact Station",
-          "url": "",
-          "latitude": "36.0787703988",
-          "longitude": "-92.5738843833",
-          "directionsInfo": "Using Harrison, Arkansas as a starting point to reach the Buffalo Point Visitor Contact Station, visitors take Highway 65 south from Harrison for five miles, then take Highway 62/412 to the east to Yellville. Once in Yellville take Highway 14 south. Approximately 14 miles south of Yellville on Highway 14 there will be a left turn onto Highway 268 East. The Buffalo Point Visitor Contact Station is 3 miles down on Highway 268.",
-          "operatingHours": [
-            {
-              "exceptions": [
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-11-26",
-                  "name": "Thanksgiving Day",
-                  "endDate": "2026-11-26"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-12-25",
-                  "name": "Christmas Day",
-                  "endDate": "2026-12-25"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2027-01-01",
-                  "name": "New Year's Day",
-                  "endDate": "2027-01-01"
-                }
-              ],
-              "description": "The Buffalo Point Visitor Contact Station is a ranger station where visitors can receive information about the area and shop at a small bookstore.",
-              "standardHours": {
-                "wednesday": "Closed",
-                "monday": "8:30AM - 4:00PM",
-                "thursday": "8:30AM - 4:00PM",
-                "sunday": "8:30AM - 4:00PM",
-                "tuesday": "Closed",
-                "friday": "8:30AM - 4:00PM",
-                "saturday": "8:30AM - 4:00PM"
-              },
-              "name": "Buffalo Point Visitor Contact Station"
-            }
-          ]
-        },
-        {
           "id": "230E3359-63AB-474B-A11C-D2726F1A1FC9",
           "name": "Tyler Bend Visitor Center",
           "url": "",
@@ -4785,6 +4704,73 @@
                 "saturday": "8:30AM - 4:00PM"
               },
               "name": "Tyler Bend Visitor Center"
+            }
+          ]
+        },
+        {
+          "id": "9E702F42-1153-4C94-8C88-E2D802A13DF1",
+          "name": "Buffalo Point Visitor Contact Station",
+          "url": "",
+          "latitude": "36.0787703988",
+          "longitude": "-92.5738843833",
+          "directionsInfo": "Using Harrison, Arkansas as a starting point to reach the Buffalo Point Visitor Contact Station, visitors take Highway 65 south from Harrison for five miles, then take Highway 62/412 to the east to Yellville. Once in Yellville take Highway 14 south. Approximately 14 miles south of Yellville on Highway 14 there will be a left turn onto Highway 268 East. The Buffalo Point Visitor Contact Station is 3 miles down on Highway 268.",
+          "operatingHours": [
+            {
+              "exceptions": [
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2026-11-26",
+                  "name": "Thanksgiving Day",
+                  "endDate": "2026-11-26"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2026-12-25",
+                  "name": "Christmas Day",
+                  "endDate": "2026-12-25"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2027-01-01",
+                  "name": "New Year's Day",
+                  "endDate": "2027-01-01"
+                }
+              ],
+              "description": "The Buffalo Point Visitor Contact Station is a ranger station where visitors can receive information about the area and shop at a small bookstore.",
+              "standardHours": {
+                "wednesday": "Closed",
+                "monday": "8:30AM - 4:00PM",
+                "thursday": "8:30AM - 4:00PM",
+                "sunday": "8:30AM - 4:00PM",
+                "tuesday": "Closed",
+                "friday": "8:30AM - 4:00PM",
+                "saturday": "8:30AM - 4:00PM"
+              },
+              "name": "Buffalo Point Visitor Contact Station"
             }
           ]
         },
@@ -5204,20 +5190,6 @@
               "exceptions": [
                 {
                   "exceptionHours": {
-                    "wednesday": "8:30AM - 4:30PM",
-                    "monday": "8:30AM - 4:30PM",
-                    "thursday": "8:30AM - 4:30PM",
-                    "sunday": "8:30AM - 4:30PM",
-                    "tuesday": "8:30AM - 4:30PM",
-                    "friday": "8:30AM - 4:30PM",
-                    "saturday": "8:30AM - 4:30PM"
-                  },
-                  "startDate": "2026-09-07",
-                  "name": "Winter Hours",
-                  "endDate": "2027-05-31"
-                },
-                {
-                  "exceptionHours": {
                     "wednesday": "Closed",
                     "monday": "Closed",
                     "thursday": "Closed",
@@ -5257,6 +5229,20 @@
                   "startDate": "2027-01-01",
                   "name": "New Years Day",
                   "endDate": "2027-01-01"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "8:30AM - 4:30PM",
+                    "monday": "8:30AM - 4:30PM",
+                    "thursday": "8:30AM - 4:30PM",
+                    "sunday": "8:30AM - 4:30PM",
+                    "tuesday": "8:30AM - 4:30PM",
+                    "friday": "8:30AM - 4:30PM",
+                    "saturday": "8:30AM - 4:30PM"
+                  },
+                  "startDate": "2026-09-06",
+                  "name": "Winter Hours",
+                  "endDate": "2027-05-31"
                 }
               ],
               "description": "The Indiana Dunes Visitor Center is open daily with the exception of Thanksgiving Day, Christmas Day, and New Year's Day.",
@@ -5999,12 +5985,12 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-10-11",
+                  "startDate": "2026-10-13",
                   "name": "Winter Closure",
                   "endDate": "2027-06-14"
                 }
               ],
-              "description": "Sieur de Monts Nature Center is open 9 am to 5 pm June 14 through Oct 17, 2026.",
+              "description": "Sieur de Monts Nature Center is open 9 am to 5 pm June 14 through Oct 12, 2026.",
               "standardHours": {
                 "wednesday": "9:00AM - 5:00PM",
                 "monday": "9:00AM - 5:00PM",
@@ -6052,12 +6038,12 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-10-15",
+                  "startDate": "2026-10-13",
                   "name": "Off Season, Fall Closing to Dec 31",
                   "endDate": "2026-12-31"
                 }
               ],
-              "description": "8 am to 6 pm, Wed May 20 to Wed Oct 14, 2026",
+              "description": "8 am to 6 pm, Wed May 20 to Mon Oct 12, 2026",
               "standardHours": {
                 "wednesday": "8:00AM - 6:00PM",
                 "monday": "8:00PM - 6:00PM",
@@ -6497,15 +6483,15 @@
                   "endDate": "2026-12-25"
                 }
               ],
-              "description": "Hours change seasonally. Contact the Ranger Station/Campground Office for current hours of operation. \nCurrently open 9 am - 5 pm daily as of March 18, 2024.",
+              "description": "Hours change seasonally. Contact the Ranger Station/Campground Office for current hours of operation. \nCurrently open 9 am - 5 pm daily as of October 7, 2026",
               "standardHours": {
-                "wednesday": "8:00AM - 6:00PM",
-                "monday": "8:00AM - 6:00PM",
-                "thursday": "8:00AM - 6:00PM",
-                "sunday": "8:00AM - 6:00PM",
-                "tuesday": "8:00AM - 6:00PM",
-                "friday": "8:00AM - 6:00PM",
-                "saturday": "8:00AM - 6:00PM"
+                "wednesday": "9:00AM - 5:00PM",
+                "monday": "9:00AM - 5:00PM",
+                "thursday": "9:00AM - 5:00PM",
+                "sunday": "9:00AM - 5:00PM",
+                "tuesday": "9:00AM - 5:00PM",
+                "friday": "9:00AM - 5:00PM",
+                "saturday": "9:00AM - 5:00PM"
               },
               "name": "Maryland District Ranger Contact Station & Campground Office"
             }
@@ -6793,6 +6779,45 @@
       ],
       "visitorCenters": [
         {
+          "id": "99EA284D-DDFF-429B-8D82-F2B7300EFCBA",
+          "name": "South Manitou Island Visitor Center",
+          "url": "",
+          "latitude": "45.009783",
+          "longitude": "-86.094244",
+          "directionsInfo": "",
+          "operatingHours": [
+            {
+              "exceptions": [
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2026-09-09",
+                  "name": "Closed during winter",
+                  "endDate": "2027-05-31"
+                }
+              ],
+              "description": "The South Manitou Island Visitor Center is closed in 2026.",
+              "standardHours": {
+                "wednesday": "Closed",
+                "monday": "Closed",
+                "thursday": "Closed",
+                "sunday": "Closed",
+                "tuesday": "Closed",
+                "friday": "Closed",
+                "saturday": "Closed"
+              },
+              "name": "South Manitou Island Visitor Center"
+            }
+          ]
+        },
+        {
           "id": "21568D77-B254-4430-8B3D-463EA2948E90",
           "name": "Philip A. Hart Visitor Center",
           "url": "https://www.nps.gov/slbe/planyourvisit/visitorcenters.htm",
@@ -6874,45 +6899,6 @@
           ]
         },
         {
-          "id": "99EA284D-DDFF-429B-8D82-F2B7300EFCBA",
-          "name": "South Manitou Island Visitor Center",
-          "url": "",
-          "latitude": "45.009783",
-          "longitude": "-86.094244",
-          "directionsInfo": "",
-          "operatingHours": [
-            {
-              "exceptions": [
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-09-09",
-                  "name": "Closed during winter",
-                  "endDate": "2027-05-31"
-                }
-              ],
-              "description": "The South Manitou Island Visitor Center is closed in 2026.",
-              "standardHours": {
-                "wednesday": "Closed",
-                "monday": "Closed",
-                "thursday": "Closed",
-                "sunday": "Closed",
-                "tuesday": "Closed",
-                "friday": "Closed",
-                "saturday": "Closed"
-              },
-              "name": "South Manitou Island Visitor Center"
-            }
-          ]
-        },
-        {
           "id": "C390A6AA-497B-44F2-BDFD-5D74CB9FF948",
           "name": "Port Oneida Heritage Center",
           "url": "https://phsb.org/",
@@ -6953,14 +6939,6 @@
         }
       ],
       "alerts": [
-        {
-          "id": "C10CFD0A-1F34-4F58-8A91-537CA544B4DB",
-          "title": "Expect Delays - Sleeping Bear Marathon",
-          "category": "Information",
-          "description": "Sleeping Bear Marathon beginning at 7:30 AM through 1:30 PM on Saturday, October 3rd, 2026. All roads are open to vehicle traffic on race day. Parking may be limited at the Dune Climb. Volunteers and police will be stationed at major intersections to aid with traffic. Majority of the race takes place on the Sleeping Bear Heritage Trail.",
-          "url": "https://www.sleepingbearmarathon.com/Race/SleepingBear/Page/Events",
-          "lastIndexedDate": "2026-10-02 00:00:00.0"
-        },
         {
           "id": "7AC60BAF-D4C0-4CDD-A83A-F5FA059FA1AC",
           "title": "Fall Hunting Seasons",
@@ -7071,6 +7049,20 @@
                   "startDate": "2027-04-01",
                   "name": "April 1 - Memorial Day Weekend Closure",
                   "endDate": "2027-05-28"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "10:00AM - 4:00PM",
+                    "monday": "10:00AM - 4:00PM",
+                    "thursday": "10:00AM - 4:00PM",
+                    "sunday": "10:00AM - 4:00PM",
+                    "tuesday": "10:00AM - 4:00PM",
+                    "friday": "10:00AM - 4:00PM",
+                    "saturday": "10:00AM - 4:00PM"
+                  },
+                  "startDate": "2026-10-01",
+                  "name": "Fall Hours",
+                  "endDate": "2026-11-30"
                 },
                 {
                   "exceptionHours": {
@@ -7290,14 +7282,6 @@
         }
       ],
       "alerts": [
-        {
-          "id": "25C4E33F-FD4E-4FAC-BC56-11B9020595ED",
-          "title": "Partial boat launch closure at Kabetogama Lake Sept 28 - Oct 5",
-          "category": "Park Closure",
-          "description": "The boat launch at Kabetogama Lake Visitor Center will be partially closed from September 28 through October 5 to allow for the removal of construction vessels from the lake. The boat launch's south lane will remain open, while the north lane will be closed. Additional work will be taking place in the vicinity. Please stay out of all marked work zones.",
-          "url": "https://www.nps.gov/voya/learn/news/great-american-outdoors-act-funds-major-infrastructure-improvements-for-kettle-falls-2026.htm?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEyQUVrUEE3QTFzZVlyY1J1T3NydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4ZXS0uvCNo-wp-veKLUbTm97uqmnRd",
-          "lastIndexedDate": "2026-09-30 00:00:00.0"
-        },
         {
           "id": "C5BF3086-2CF1-4A49-BF6C-EE020984369C",
           "title": "Increased bear activity and Dryweed Island area closures",
@@ -7733,6 +7717,22 @@
         }
       ],
       "alerts": [
+        {
+          "id": "660FD693-2370-4C15-BF70-DCE12CB5975C",
+          "title": "Hurricane Isaias Closures Florida",
+          "category": "Park Closure",
+          "description": "Severe weather conditions are possible in Florida and Mississippi. All of the areas are closed until further notice. Highway 399 will close at 8 a.m. Oct 9. Fort Pickens Area and Fort Pickens Campground Okaloosa Area and Crab Island Santa Rosa Area (Opal Beach) Perdido Key Area (Johnson Beach) Fort Barrancas Area Naval Live Oaks Area",
+          "url": "",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
+        },
+        {
+          "id": "04A0DE94-18CF-4DD5-BA62-7B39906F9634",
+          "title": "Hurricane Isaias Closures Mississippi",
+          "category": "Park Closure",
+          "description": "Severe weather conditions are possible in Florida and Mississippi. The following areas will remain closed until further notice. Mississippi Barrier Islands (Horn, Cat, Ship, Petit Bois and West Petit Bois) Davis Bayou Area",
+          "url": "",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
+        },
         {
           "id": "D9579078-040B-4933-8A1A-D005244C2795",
           "title": "Battery 234 Loop Road Closure",
@@ -8198,14 +8198,6 @@
           "lastIndexedDate": "2026-07-10 00:00:00.0"
         },
         {
-          "id": "068C2208-B0CD-4253-8DC9-962F357BCA5D",
-          "title": "Round Spring Lower River Landing Closed",
-          "category": "Park Closure",
-          "description": "The lower river landing at Round Spring, located in the campground, is closed until further notice for paving. Floaters putting in or taking out at Round Spring should plan to use the upper landing behind Carr's Store.",
-          "url": "",
-          "lastIndexedDate": "2026-07-10 00:00:00.0"
-        },
-        {
           "id": "E17127D6-5488-4FED-9D55-DFAEE46965C6",
           "title": "Reservations Required for All Campgrounds",
           "category": "Information",
@@ -8356,45 +8348,6 @@
       ],
       "visitorCenters": [
         {
-          "id": "44CE0C47-E859-4962-9E49-53A231732E0F",
-          "name": "St. Mary Visitor Center",
-          "url": "https://www.nps.gov/glac/planyourvisit/visitor-centers.htm",
-          "latitude": "48.74748440705955",
-          "longitude": "-113.43909177010931",
-          "directionsInfo": "The St. Mary Visitor Center is reached off of Hwy 89 at the community of St. Mary, Montana. It is approximately 1 mile past the park entrance.",
-          "operatingHours": [
-            {
-              "exceptions": [
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-10-05",
-                  "name": "Closed In Winter",
-                  "endDate": "2027-05-21"
-                }
-              ],
-              "description": "The St. Mary Visitor Center is open seven days a week in the summer.",
-              "standardHours": {
-                "wednesday": "8:00AM - 5:30PM",
-                "monday": "8:00AM - 5:30PM",
-                "thursday": "8:00AM - 5:30PM",
-                "sunday": "8:00AM - 5:30PM",
-                "tuesday": "8:00AM - 5:30PM",
-                "friday": "8:00AM - 5:30PM",
-                "saturday": "8:00AM - 5:30PM"
-              },
-              "name": "St. Mary Visitor Center"
-            }
-          ]
-        },
-        {
           "id": "254D26CE-476D-4453-B230-A4A549252157",
           "name": "Apgar Visitor Center",
           "url": "https://www.nps.gov/glac/planyourvisit/visitor-centers.htm",
@@ -8472,6 +8425,45 @@
                 "saturday": "8:00AM - 5:30PM"
               },
               "name": "Apgar Visitor Center"
+            }
+          ]
+        },
+        {
+          "id": "44CE0C47-E859-4962-9E49-53A231732E0F",
+          "name": "St. Mary Visitor Center",
+          "url": "https://www.nps.gov/glac/planyourvisit/visitor-centers.htm",
+          "latitude": "48.74748440705955",
+          "longitude": "-113.43909177010931",
+          "directionsInfo": "The St. Mary Visitor Center is reached off of Hwy 89 at the community of St. Mary, Montana. It is approximately 1 mile past the park entrance.",
+          "operatingHours": [
+            {
+              "exceptions": [
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2026-10-05",
+                  "name": "Closed In Winter",
+                  "endDate": "2027-05-21"
+                }
+              ],
+              "description": "The St. Mary Visitor Center is open seven days a week in the summer.",
+              "standardHours": {
+                "wednesday": "8:00AM - 5:30PM",
+                "monday": "8:00AM - 5:30PM",
+                "thursday": "8:00AM - 5:30PM",
+                "sunday": "8:00AM - 5:30PM",
+                "tuesday": "8:00AM - 5:30PM",
+                "friday": "8:00AM - 5:30PM",
+                "saturday": "8:00AM - 5:30PM"
+              },
+              "name": "St. Mary Visitor Center"
             }
           ]
         },
@@ -10508,6 +10500,20 @@
       "fees": [],
       "images": [
         {
+          "credit": "NPS Photo",
+          "title": "Floodplain Forest",
+          "altText": "A view of a bottomland/floodplain forest, with wide based cypress and tupelo trees, cypress knees",
+          "caption": "Cypress trees and knees by Weston Lake",
+          "url": "https://www.nps.gov/common/uploads/structured_data/1E4A1941-EF4F-C617-E6E802845527D9B9.jpg"
+        },
+        {
+          "credit": "NPS Photo",
+          "title": "Barred Owl on Harry Hampton Visitor Center Roof",
+          "altText": "An owl perched on a wooden building",
+          "caption": "A barred owl perched on the Harry Hampton Visitor Center roof at Congaree National Park",
+          "url": "https://www.nps.gov/common/uploads/structured_data/54922A45-987E-B325-F2FB1725D5303BBA.jpg"
+        },
+        {
           "credit": "NPS",
           "title": "Congaree River",
           "altText": "View of the Congaree River during the Fall",
@@ -10523,10 +10529,10 @@
         },
         {
           "credit": "NPS Photo",
-          "title": "Barred Owl on Harry Hampton Visitor Center Roof",
-          "altText": "An owl perched on a wooden building",
-          "caption": "A barred owl perched on the Harry Hampton Visitor Center roof at Congaree National Park",
-          "url": "https://www.nps.gov/common/uploads/structured_data/54922A45-987E-B325-F2FB1725D5303BBA.jpg"
+          "title": "Loblolly Pine",
+          "altText": "A very large tree surrounded by smaller trees in a forest",
+          "caption": "A former Champion loblolly pine, more than 250 years old, just off the Boardwalk Trail",
+          "url": "https://www.nps.gov/common/uploads/structured_data/1E585A90-E69A-91CF-E766E47D418A6DFF.jpg"
         }
       ],
       "visitorCenters": [
@@ -10599,12 +10605,12 @@
       ],
       "alerts": [
         {
-          "id": "F8635D8E-B321-48CD-B0E7-DDCFC2FC7C4D",
-          "title": "Being Prepared for Excessive Heat & Humidity",
-          "category": "Caution",
-          "description": "Congaree can be hot & humid from late spring through early fall. Be sure that you & your party (including pets) have adequate water & choose activities that fit your level of physical fitness. Consider visiting early in the morning when it is cooler.",
-          "url": "https://www.ready.gov/heat",
-          "lastIndexedDate": "2026-06-10 00:00:00.0"
+          "id": "1BCED3CD-DDA5-4888-8D05-EF5518DEEF43",
+          "title": "Visitor Center Closed Oct 12",
+          "category": "Information",
+          "description": "The Harry Hampton Visitor Center will be closed Monday, October 12 for the holiday.",
+          "url": "https://www.nps.gov/cong/planyourvisit/hours.htm",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
         },
         {
           "id": "F0DB9548-4A6F-4D8A-A12F-443FABB37F2F",
@@ -10970,6 +10976,73 @@
       ],
       "visitorCenters": [
         {
+          "id": "8800994D-88AD-4058-A5A8-D6B826FECC70",
+          "name": "Kuwohi Visitor Center",
+          "url": "https://www.nps.gov/grsm/planyourvisit/visitorcenters.htm#CP_JUMP_899351",
+          "latitude": "35.55744395735922",
+          "longitude": "-83.4960401058197",
+          "directionsInfo": "Located at the end of Clingmans Dome Road, seven miles from Newfound Gap Road.",
+          "operatingHours": [
+            {
+              "exceptions": [
+                {
+                  "exceptionHours": {
+                    "wednesday": "9:00AM - 6:00PM",
+                    "monday": "9:00AM - 6:00PM",
+                    "thursday": "9:00AM - 6:00PM",
+                    "sunday": "9:00AM - 6:00PM",
+                    "tuesday": "9:00AM - 6:00PM",
+                    "friday": "9:00AM - 6:00PM",
+                    "saturday": "9:00AM - 6:00PM"
+                  },
+                  "startDate": "2027-07-01",
+                  "name": "July and August",
+                  "endDate": "2027-08-31"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "9:00AM - 6:00PM",
+                    "monday": "9:00AM - 6:00PM",
+                    "thursday": "9:00AM - 6:00PM",
+                    "sunday": "9:00AM - 6:00PM",
+                    "tuesday": "9:00AM - 6:00PM",
+                    "friday": "9:00AM - 6:00PM",
+                    "saturday": "9:00AM - 6:00PM"
+                  },
+                  "startDate": "2027-07-01",
+                  "name": "July and August",
+                  "endDate": "2027-08-31"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2026-12-01",
+                  "name": "Closed in Winter",
+                  "endDate": "2027-04-01"
+                }
+              ],
+              "description": "Hours vary seasonally. Closed in winter.",
+              "standardHours": {
+                "wednesday": "9:00AM - 5:00PM",
+                "monday": "9:00AM - 5:00PM",
+                "thursday": "9:00AM - 5:00PM",
+                "sunday": "9:00AM - 5:00PM",
+                "tuesday": "9:00AM - 5:00PM",
+                "friday": "9:00AM - 5:00PM",
+                "saturday": "9:00AM - 5:00PM"
+              },
+              "name": "Kuwohi Visitor Center"
+            }
+          ]
+        },
+        {
           "id": "58AD6BD5-0BA6-4CF6-9B77-9C30D7C75DD0",
           "name": "Oconaluftee Visitor Center",
           "url": "https://www.nps.gov/grsm/planyourvisit/visitorcenters.htm#CP_JUMP_897119",
@@ -11056,73 +11129,6 @@
                 "saturday": "9:00AM - 5:00PM"
               },
               "name": "Sugarlands Visitor Center"
-            }
-          ]
-        },
-        {
-          "id": "8800994D-88AD-4058-A5A8-D6B826FECC70",
-          "name": "Kuwohi Visitor Center",
-          "url": "https://www.nps.gov/grsm/planyourvisit/visitorcenters.htm#CP_JUMP_899351",
-          "latitude": "35.55744395735922",
-          "longitude": "-83.4960401058197",
-          "directionsInfo": "Located at the end of Clingmans Dome Road, seven miles from Newfound Gap Road.",
-          "operatingHours": [
-            {
-              "exceptions": [
-                {
-                  "exceptionHours": {
-                    "wednesday": "9:00AM - 6:00PM",
-                    "monday": "9:00AM - 6:00PM",
-                    "thursday": "9:00AM - 6:00PM",
-                    "sunday": "9:00AM - 6:00PM",
-                    "tuesday": "9:00AM - 6:00PM",
-                    "friday": "9:00AM - 6:00PM",
-                    "saturday": "9:00AM - 6:00PM"
-                  },
-                  "startDate": "2027-07-01",
-                  "name": "July and August",
-                  "endDate": "2027-08-31"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "9:00AM - 6:00PM",
-                    "monday": "9:00AM - 6:00PM",
-                    "thursday": "9:00AM - 6:00PM",
-                    "sunday": "9:00AM - 6:00PM",
-                    "tuesday": "9:00AM - 6:00PM",
-                    "friday": "9:00AM - 6:00PM",
-                    "saturday": "9:00AM - 6:00PM"
-                  },
-                  "startDate": "2027-07-01",
-                  "name": "July and August",
-                  "endDate": "2027-08-31"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-12-01",
-                  "name": "Closed in Winter",
-                  "endDate": "2027-04-01"
-                }
-              ],
-              "description": "Hours vary seasonally. Closed in winter.",
-              "standardHours": {
-                "wednesday": "9:00AM - 5:00PM",
-                "monday": "9:00AM - 5:00PM",
-                "thursday": "9:00AM - 5:00PM",
-                "sunday": "9:00AM - 5:00PM",
-                "tuesday": "9:00AM - 5:00PM",
-                "friday": "9:00AM - 5:00PM",
-                "saturday": "9:00AM - 5:00PM"
-              },
-              "name": "Kuwohi Visitor Center"
             }
           ]
         },
@@ -11454,45 +11460,6 @@
           ]
         },
         {
-          "id": "C5F00E54-BF45-46E1-8ACF-BBE615867B78",
-          "name": "Panther Junction Visitor Center",
-          "url": "https://www.nps.gov/bibe/planyourvisit/big-bend-visitor-centers.htm",
-          "latitude": "29.3278272156",
-          "longitude": "-103.20588915",
-          "directionsInfo": "Panther Junction Visitor Center is located in the center of the park. It is 68 miles south of the town of Marathon, and 29 miles east of the town of Study Butte.",
-          "operatingHours": [
-            {
-              "exceptions": [
-                {
-                  "exceptionHours": {
-                    "wednesday": "8:30AM - 12:00PM",
-                    "monday": "8:30AM - 12:00PM",
-                    "thursday": "8:30AM - 12:00PM",
-                    "sunday": "8:30AM - 12:00PM",
-                    "tuesday": "8:30AM - 12:00PM",
-                    "friday": "8:30AM - 12:00PM",
-                    "saturday": "8:30AM - 12:00PM"
-                  },
-                  "startDate": "2026-12-25",
-                  "name": "Christmas Day--Reduced Hours",
-                  "endDate": "2026-12-25"
-                }
-              ],
-              "description": "Open all year, 8:30 am-5:00 pm. Reduced hours on Christmas day: 8:30 am-12:00 pm",
-              "standardHours": {
-                "wednesday": "8:30AM - 5:00PM",
-                "monday": "8:30AM - 5:00PM",
-                "thursday": "8:30AM - 5:00PM",
-                "sunday": "8:30AM - 5:00PM",
-                "tuesday": "8:30AM - 5:00PM",
-                "friday": "8:30AM - 5:00PM",
-                "saturday": "8:30AM - 5:00PM"
-              },
-              "name": "Panther Junction Visitor Center"
-            }
-          ]
-        },
-        {
           "id": "8A1B0CBB-A862-4658-8587-D282A756CCB3",
           "name": "Persimmon Gap Visitor Center",
           "url": "https://www.nps.gov/bibe/planyourvisit/big-bend-visitor-centers.htm",
@@ -11542,6 +11509,45 @@
                 "saturday": "10:00AM - 4:00PM"
               },
               "name": "Persimmon Gap Visitor Center"
+            }
+          ]
+        },
+        {
+          "id": "C5F00E54-BF45-46E1-8ACF-BBE615867B78",
+          "name": "Panther Junction Visitor Center",
+          "url": "https://www.nps.gov/bibe/planyourvisit/big-bend-visitor-centers.htm",
+          "latitude": "29.3278272156",
+          "longitude": "-103.20588915",
+          "directionsInfo": "Panther Junction Visitor Center is located in the center of the park. It is 68 miles south of the town of Marathon, and 29 miles east of the town of Study Butte.",
+          "operatingHours": [
+            {
+              "exceptions": [
+                {
+                  "exceptionHours": {
+                    "wednesday": "8:30AM - 12:00PM",
+                    "monday": "8:30AM - 12:00PM",
+                    "thursday": "8:30AM - 12:00PM",
+                    "sunday": "8:30AM - 12:00PM",
+                    "tuesday": "8:30AM - 12:00PM",
+                    "friday": "8:30AM - 12:00PM",
+                    "saturday": "8:30AM - 12:00PM"
+                  },
+                  "startDate": "2026-12-25",
+                  "name": "Christmas Day--Reduced Hours",
+                  "endDate": "2026-12-25"
+                }
+              ],
+              "description": "Open all year, 8:30 am-5:00 pm. Reduced hours on Christmas day: 8:30 am-12:00 pm",
+              "standardHours": {
+                "wednesday": "8:30AM - 5:00PM",
+                "monday": "8:30AM - 5:00PM",
+                "thursday": "8:30AM - 5:00PM",
+                "sunday": "8:30AM - 5:00PM",
+                "tuesday": "8:30AM - 5:00PM",
+                "friday": "8:30AM - 5:00PM",
+                "saturday": "8:30AM - 5:00PM"
+              },
+              "name": "Panther Junction Visitor Center"
             }
           ]
         },
@@ -11825,11 +11831,11 @@
       "alerts": [
         {
           "id": "2DC60C7E-23DA-4C5F-915E-5971F1B408F6",
-          "title": "Active Closures",
+          "title": "Active Closure",
           "category": "Park Closure",
-          "description": "Due to recent wildlife interactions and out of an abundance of caution, the Appalachian Trail from Lewis Mountain to Big Meadows is closed to backcountry camping until further notice. The trail is still accessible to hikers. The Naked Creek backcountry zone remains closed for an ongoing investigation.",
-          "url": "",
-          "lastIndexedDate": "2026-09-28 00:00:00.0"
+          "description": "Due to recent wildlife interactions and out of an abundance of caution, the Naked Creek backcountry zone is closed until further notice.",
+          "url": "https://www.nps.gov/shen/planyourvisit/naked-creek-backcountry-zone-closure.htm",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
         },
         {
           "id": "F4AB8754-5847-4FB2-AB55-670DAD3FE1DF",
@@ -11958,112 +11964,6 @@
       ],
       "visitorCenters": [
         {
-          "id": "909864BB-10F6-4856-AEF5-3AAFCEC6D4A6",
-          "name": "Grandview Visitor Center",
-          "url": "https://www.nps.gov/neri/planyourvisit/grandview.htm",
-          "latitude": "37.831658",
-          "longitude": "-81.064841",
-          "directionsInfo": "To reach Grandview from Beckley follow I-64 East five miles to Exit 129 B. From Lewisburg follow I-64 West forty miles to Exit 129. From either exit, turn right and follow Route 9 North six miles to Grandview.",
-          "operatingHours": [
-            {
-              "exceptions": [
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-10-26",
-                  "name": "Grandview Visitor Center Winter Hours",
-                  "endDate": "2027-05-27"
-                }
-              ],
-              "description": "Visitor Center open daily from Memorial Day through October 25 12:00 p.m. to 5:00 p.m.",
-              "standardHours": {
-                "wednesday": "12:00PM - 5:00PM",
-                "monday": "12:00PM - 5:00PM",
-                "thursday": "12:00PM - 5:00PM",
-                "sunday": "12:00PM - 5:00PM",
-                "tuesday": "12:00PM - 5:00PM",
-                "friday": "12:00PM - 5:00PM",
-                "saturday": "12:00PM - 5:00PM"
-              },
-              "name": "Grandview Visitor Center"
-            }
-          ]
-        },
-        {
-          "id": "B4C827BA-6A6A-4017-8A2E-D7FC434F2D8D",
-          "name": "Canyon Rim Visitor Center",
-          "url": "https://www.nps.gov/neri/planyourvisit/crvc.htm",
-          "latitude": "38.070050800525664",
-          "longitude": "-81.07593529999019",
-          "directionsInfo": "Canyon Rim Visitor Center is located on U.S. Route 19, just north of Fayetteville, WV. U.S. Route 19 is easily reached from Interstates I-64 and I-79, as well as U.S. Route 60. GPS Coordinates: 38.07003 N, 81.07583 W",
-          "operatingHours": [
-            {
-              "exceptions": [
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-11-26",
-                  "name": "Thanksgiving",
-                  "endDate": "2026-11-26"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-12-25",
-                  "name": "Christmas",
-                  "endDate": "2026-12-25"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2027-01-01",
-                  "name": "New Years Day",
-                  "endDate": "2027-01-01"
-                }
-              ],
-              "description": "Canyon Rim is open year round from 9:00 am to 5:00 pm. Closed on Thanksgiving, Christmas, and New Years Day.",
-              "standardHours": {
-                "wednesday": "9:00AM - 5:00PM",
-                "monday": "9:00AM - 5:00PM",
-                "thursday": "9:00AM - 5:00PM",
-                "sunday": "9:00AM - 5:00PM",
-                "tuesday": "9:00AM - 5:00PM",
-                "friday": "9:00AM - 5:00PM",
-                "saturday": "9:00AM - 5:00PM"
-              },
-              "name": "Canyon Rim Visitor Center"
-            }
-          ]
-        },
-        {
           "id": "5CC35373-7ADE-4A62-AB6F-18C8EBA219C7",
           "name": "Sandstone Visitor Center",
           "url": "https://www.nps.gov/neri/planyourvisit/sandstone.htm",
@@ -12145,6 +12045,45 @@
           ]
         },
         {
+          "id": "909864BB-10F6-4856-AEF5-3AAFCEC6D4A6",
+          "name": "Grandview Visitor Center",
+          "url": "https://www.nps.gov/neri/planyourvisit/grandview.htm",
+          "latitude": "37.831658",
+          "longitude": "-81.064841",
+          "directionsInfo": "To reach Grandview from Beckley follow I-64 East five miles to Exit 129 B. From Lewisburg follow I-64 West forty miles to Exit 129. From either exit, turn right and follow Route 9 North six miles to Grandview.",
+          "operatingHours": [
+            {
+              "exceptions": [
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2026-10-26",
+                  "name": "Grandview Visitor Center Winter Hours",
+                  "endDate": "2027-05-27"
+                }
+              ],
+              "description": "Visitor Center open daily from Memorial Day through October 25 12:00 p.m. to 5:00 p.m.",
+              "standardHours": {
+                "wednesday": "12:00PM - 5:00PM",
+                "monday": "12:00PM - 5:00PM",
+                "thursday": "12:00PM - 5:00PM",
+                "sunday": "12:00PM - 5:00PM",
+                "tuesday": "12:00PM - 5:00PM",
+                "friday": "12:00PM - 5:00PM",
+                "saturday": "12:00PM - 5:00PM"
+              },
+              "name": "Grandview Visitor Center"
+            }
+          ]
+        },
+        {
           "id": "71B22575-6A91-43EE-91DE-6C8B75207DDC",
           "name": "Thurmond Depot Visitor Center",
           "url": "https://www.nps.gov/neri/planyourvisit/thurmond.htm",
@@ -12159,20 +12098,6 @@
                     "wednesday": "Closed",
                     "monday": "Closed",
                     "thursday": "Closed",
-                    "sunday": "10:00AM - 5:00PM",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "10:00AM - 5:00PM"
-                  },
-                  "startDate": "2026-09-08",
-                  "name": "Fall Hours",
-                  "endDate": "2026-10-25"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
                     "sunday": "Closed",
                     "tuesday": "Closed",
                     "friday": "Closed",
@@ -12181,6 +12106,20 @@
                   "startDate": "2026-10-31",
                   "name": "Thurmond Depot Winter Hours",
                   "endDate": "2027-05-26"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "10:00AM - 5:00PM",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "10:00AM - 5:00PM"
+                  },
+                  "startDate": "2026-09-08",
+                  "name": "Fall Hours",
+                  "endDate": "2026-10-25"
                 }
               ],
               "description": "Open daily Memorial Day through Labor Day, and weekends in September and October",
@@ -12196,9 +12135,84 @@
               "name": "Thurmond Depot Visitor Center"
             }
           ]
+        },
+        {
+          "id": "B4C827BA-6A6A-4017-8A2E-D7FC434F2D8D",
+          "name": "Canyon Rim Visitor Center",
+          "url": "https://www.nps.gov/neri/planyourvisit/crvc.htm",
+          "latitude": "38.070050800525664",
+          "longitude": "-81.07593529999019",
+          "directionsInfo": "Canyon Rim Visitor Center is located on U.S. Route 19, just north of Fayetteville, WV. U.S. Route 19 is easily reached from Interstates I-64 and I-79, as well as U.S. Route 60. GPS Coordinates: 38.07003 N, 81.07583 W",
+          "operatingHours": [
+            {
+              "exceptions": [
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2026-11-26",
+                  "name": "Thanksgiving",
+                  "endDate": "2026-11-26"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2026-12-25",
+                  "name": "Christmas",
+                  "endDate": "2026-12-25"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2027-01-01",
+                  "name": "New Years Day",
+                  "endDate": "2027-01-01"
+                }
+              ],
+              "description": "Canyon Rim is open year round from 9:00 am to 5:00 pm. Closed on Thanksgiving, Christmas, and New Years Day.",
+              "standardHours": {
+                "wednesday": "9:00AM - 5:00PM",
+                "monday": "9:00AM - 5:00PM",
+                "thursday": "9:00AM - 5:00PM",
+                "sunday": "9:00AM - 5:00PM",
+                "tuesday": "9:00AM - 5:00PM",
+                "friday": "9:00AM - 5:00PM",
+                "saturday": "9:00AM - 5:00PM"
+              },
+              "name": "Canyon Rim Visitor Center"
+            }
+          ]
         }
       ],
       "alerts": [
+        {
+          "id": "04D33070-0985-4FEA-8B07-E8B506B8BC0E",
+          "title": "Train derailment at Thurmond",
+          "category": "Information",
+          "description": "Due to a recent train derailment in the Thurmond area, visitors are encouraged to visit other areas of the park during cleanup activities, which is expected to last through Friday (Oct. 10). Check back here for updates.",
+          "url": "",
+          "lastIndexedDate": "2026-10-07 00:00:00.0"
+        },
         {
           "id": "4565D0AA-7CB9-463F-BFCF-81E20510B907",
           "title": "Burnwood Campground and Restroom Closure",
@@ -12405,11 +12419,54 @@
       ],
       "visitorCenters": [
         {
+          "id": "B2411AA9-8E7D-4E6A-B377-FEC29814AAE1",
+          "name": "Lower Town Information Center",
+          "url": "",
+          "latitude": "39.32261033616703",
+          "longitude": "-77.7303553522969",
+          "directionsInfo": "",
+          "operatingHours": [
+            {
+              "exceptions": [
+                {
+                  "exceptionHours": {},
+                  "startDate": "2026-11-26",
+                  "name": "Thanksgiving",
+                  "endDate": "2026-11-26"
+                },
+                {
+                  "exceptionHours": {},
+                  "startDate": "2026-12-25",
+                  "name": "Christmas",
+                  "endDate": "2026-12-25"
+                },
+                {
+                  "exceptionHours": {},
+                  "startDate": "2027-01-01",
+                  "name": "New Year's",
+                  "endDate": "2027-01-01"
+                }
+              ],
+              "description": "The Lower Town Information Center is currently closed. Maps and information are available at the nearby \"Place in Time\" exhibit, a few doors down the street towards the shuttle bus stop, or at the park's Visitor Center, located at 171 Shoreline Drive, Harpers Ferry, WV 25425.",
+              "standardHours": {
+                "wednesday": "Closed",
+                "monday": "Closed",
+                "thursday": "Closed",
+                "sunday": "Closed",
+                "tuesday": "Closed",
+                "friday": "Closed",
+                "saturday": "Closed"
+              },
+              "name": "Lower Town Information Center"
+            }
+          ]
+        },
+        {
           "id": "995B7397-AC56-4D73-9F03-E2213C45FEEB",
           "name": "Harpers Ferry NHP Visitor Center",
           "url": "",
-          "latitude": "39.3165716839",
-          "longitude": "-77.7567536571",
+          "latitude": "39.31657168394498",
+          "longitude": "-77.75675365712027",
           "directionsInfo": "",
           "operatingHours": [
             {
@@ -12470,49 +12527,6 @@
               "name": "Harpers Ferry NHP Visitor Center"
             }
           ]
-        },
-        {
-          "id": "B2411AA9-8E7D-4E6A-B377-FEC29814AAE1",
-          "name": "Lower Town Information Center",
-          "url": "",
-          "latitude": "39.32261037999074",
-          "longitude": "-77.73035532267136",
-          "directionsInfo": "",
-          "operatingHours": [
-            {
-              "exceptions": [
-                {
-                  "exceptionHours": {},
-                  "startDate": "2026-11-26",
-                  "name": "Thanksgiving",
-                  "endDate": "2026-11-26"
-                },
-                {
-                  "exceptionHours": {},
-                  "startDate": "2026-12-25",
-                  "name": "Christmas",
-                  "endDate": "2026-12-25"
-                },
-                {
-                  "exceptionHours": {},
-                  "startDate": "2027-01-01",
-                  "name": "New Year's",
-                  "endDate": "2027-01-01"
-                }
-              ],
-              "description": "The Lower Town Information Center is currently closed. Maps and information are available at the nearby \"Place in Time\" exhibit, a few doors down the street towards the shuttle bus stop, or at the park's Visitor Center, located at 171 Shoreline Drive, Harpers Ferry, WV 25425.",
-              "standardHours": {
-                "wednesday": "Closed",
-                "monday": "Closed",
-                "thursday": "Closed",
-                "sunday": "Closed",
-                "tuesday": "Closed",
-                "friday": "Closed",
-                "saturday": "Closed"
-              },
-              "name": "Lower Town Information Center"
-            }
-          ]
         }
       ],
       "alerts": [
@@ -12520,9 +12534,9 @@
           "id": "2F905BD6-7A86-44B9-B528-96C83963B338",
           "title": "Bridge to Maryland Heights & C&O Canal CLOSED",
           "category": "Park Closure",
-          "description": "Due to safety concerns, the Goodloe Byron Memorial Footbridge to the C&O Canal NHP towpath is expected to remain closed throughout the month of October. This work is separate from, and in addition to, the staircase replacement. A shuttle with very limited space currently runs between Harpers Ferry NHP Visitor Center and C&O Canal Lock 34. This will impact access to Maryland Heights, the Appalachian NST, and the Potomac Heritage NST. We strongly advise considering other trails when possible.",
+          "description": "Due to safety concerns, the Goodloe Byron Memorial Footbridge to the C&O Canal NHP towpath is expected to remain closed this fall for safety repairs on the pedestrian bridge. This work is in addition to the staircase replacement. A shuttle with very limited space currently runs between Harpers Ferry NHP Visitor Center and C&O Canal Lock 34. This will impact access to Maryland Heights, the Appalachian NST, and the Potomac Heritage NST. We strongly advise considering other trails when possible.",
           "url": "",
-          "lastIndexedDate": "2026-10-02 00:00:00.0"
+          "lastIndexedDate": "2026-10-06 00:00:00.0"
         },
         {
           "id": "84DE1EA4-F781-4C86-9530-5C36A479FEBD",
@@ -12607,20 +12621,6 @@
           "operatingHours": [
             {
               "exceptions": [
-                {
-                  "exceptionHours": {
-                    "wednesday": "7:00AM - 5:00PM",
-                    "monday": "7:00AM - 5:00PM",
-                    "thursday": "7:00AM - 5:00PM",
-                    "sunday": "7:00AM - 5:00PM",
-                    "tuesday": "7:00AM - 5:00PM",
-                    "friday": "7:00AM - 5:00PM",
-                    "saturday": "7:00AM - 5:00PM"
-                  },
-                  "startDate": "2026-10-01",
-                  "name": "Fall & Winter Hours",
-                  "endDate": "2027-03-31"
-                },
                 {
                   "exceptionHours": {
                     "wednesday": "9:00AM - 4:00PM",
@@ -13486,9 +13486,9 @@
                     "friday": "8:00AM - 6:00PM",
                     "saturday": "8:00AM - 6:00PM"
                   },
-                  "startDate": "2026-09-06",
+                  "startDate": "2027-09-06",
                   "name": "September Hours",
-                  "endDate": "2026-10-03"
+                  "endDate": "2027-10-03"
                 },
                 {
                   "exceptionHours": {
@@ -13722,6 +13722,14 @@
         }
       ],
       "alerts": [
+        {
+          "id": "3A28F80C-D5A9-4CA7-8169-545AEDCDA941",
+          "title": "Beartooth Highway Temporary Closure",
+          "category": "Park Closure",
+          "description": "The Beartooth Highway (US-212) between Red Lodge and Cooke City/Silver Gate, Montana, will close temporarily at 2:30 p.m. Friday, Oct. 9 in preparation for winter weather and anticipated hazardous driving conditions. The forecast calls for ice and snow Saturday through Monday. The highway is scheduled to close for the season Monday, Oct. 12 and, depending on conditions, may not reopen until next spring.",
+          "url": "https://www.nps.gov/yell/planyourvisit/parkroads.htm#Beartooth",
+          "lastIndexedDate": "2026-10-08 00:00:00.0"
+        },
         {
           "id": "00D47802-8E06-4418-80D8-69D37A885146",
           "title": "West Thumb Geyser Basin Boardwalk - Partial Closure",
@@ -14289,8 +14297,8 @@
           "title": "Construction on HWY 26/89/191",
           "category": "Caution",
           "description": "Construction taking place on US HWY 26/89/191 south of Moran Junction. Expect 20-minute delays in both directions.",
-          "url": "",
-          "lastIndexedDate": "2026-09-30 00:00:00.0"
+          "url": "https://www.nps.gov/grte/planyourvisit/road-construction.htm",
+          "lastIndexedDate": "2026-10-05 00:00:00.0"
         },
         {
           "id": "3E0D0431-D76E-4D10-8290-DEAB7FA80B87",

@@ -303,6 +303,24 @@ export default function DestinationPage({
             </div>
           ))}
         </dl>
+        {cityGuide && (
+          <div className="city-plan-entry">
+            <button
+              className="button button-navy"
+              aria-controls="guide-city-plan"
+              onClick={() => {
+                const preview = document.getElementById('guide-city-plan') as HTMLDetailsElement;
+                preview.open = true;
+                preview.scrollIntoView({ block: 'start' });
+                preview.querySelector('summary')?.focus({ preventScroll: true });
+              }}
+            >
+              {x(lang, 'cityPlanPreview')}
+              <Icon name="arrow" size={16} />
+            </button>
+            <p>{x(lang, 'cityPlanEntryNote')}</p>
+          </div>
+        )}
         {profile?.advisory && (
           <aside className="day-warning guide-advisory">
             <p>{local(profile.advisory.text, lang)}</p>

@@ -2,6 +2,20 @@ import { languageIndex, type Language } from '../lib/i18n';
 
 // Every new experience string ships together in EN / TH / ZH / JA / KO.
 export const EXPERIENCE_COPY = {
+  cityPlanPreview: [
+    'Preview a 1–3 day plan',
+    'ดูตัวอย่างแผน 1–3 วัน',
+    '预览1至3日行程',
+    '1〜3日間のプランを見る',
+    '1~3일 일정 미리 보기',
+  ],
+  cityPlanEntryNote: [
+    'Choose the length and review the activities before creating a new trip. Your saved trips stay in the library.',
+    'เลือกจำนวนวันและดูกิจกรรมก่อนสร้างทริปใหม่ ทริปที่บันทึกไว้ยังอยู่ในคลัง',
+    '先选择天数并查看活动，再创建新行程。已保存的行程仍保留在行程库中。',
+    '日数を選び、活動を確認してから新しい旅を作成。保存済みの旅はライブラリに残ります。',
+    '일수와 활동을 확인한 뒤 새 여행을 만드세요. 저장된 여행은 보관함에 남습니다.',
+  ],
   cityPlan: [
     'Use this city guide as a trip',
     'ใช้คู่มือเมืองนี้สร้างทริป',
@@ -25,11 +39,11 @@ export const EXPERIENCE_COPY = {
     '{city} · {days}일 일정',
   ],
   cityPlanNote: [
-    'A flexible city plan with local travel, a visit, a nearby meal and rest each day. Start times are suggested until you set them. Check opening hours, tickets, weather and actual travel times. Example budgets are not added to expenses. Your current trip stays in the library.',
-    'แผนเมืองที่ปรับได้ มีรถต่อในเมือง จุดเที่ยว มื้อใกล้กันและพักในแต่ละวัน เวลาเริ่มเป็นเวลาเสนอจนกว่าจะกำหนดเอง ตรวจเวลาเปิด ตั๋ว อากาศและเวลาเดินทางจริง งบตัวอย่างไม่ถูกเพิ่มเป็นค่าใช้จ่าย ทริปปัจจุบันยังอยู่ในคลัง',
-    '灵活的城市行程，每天安排本地交通、游览、附近用餐与休息。未自行设置的开始时间为建议值。核对开放时间、门票、天气与实际交通时间。预算示例不会导入费用，当前行程保留在行程库中。',
-    '毎日、市内の移動・見学・近くの食事・休憩を入れた調整可能なプラン。自分で設定するまで開始時刻は目安です。営業時間、チケット、天候、実際の移動時間を確認。予算例は支出に追加されず、現在の旅はライブラリに残ります。',
-    '매일 지역 이동, 방문, 가까운 식사와 휴식을 넣은 수정 가능한 도시 일정입니다. 직접 설정하기 전 시작 시간은 제안값입니다. 운영 시간, 티켓, 날씨와 실제 이동 시간을 확인하세요. 예산 예시는 지출에 추가되지 않으며 현재 여행은 보관함에 남습니다.',
+    'A flexible city plan with local travel, a visit, a nearby meal and rest each day. Durations are planning allowances. Start times are suggested until you set them. Check opening hours, tickets, weather and actual travel times. Example budgets are not added to expenses. Your current trip stays in the library.',
+    'แผนเมืองที่ปรับได้ มีรถต่อในเมือง จุดเที่ยว มื้อใกล้กันและพักในแต่ละวัน ระยะเวลาแต่ละกิจกรรมเป็นเวลาเผื่อสำหรับวางแผน เวลาเริ่มเป็นเวลาเสนอจนกว่าจะกำหนดเอง ตรวจเวลาเปิด ตั๋ว อากาศและเวลาเดินทางจริง งบตัวอย่างไม่ถูกเพิ่มเป็นค่าใช้จ่าย ทริปปัจจุบันยังอยู่ในคลัง',
+    '灵活的城市行程，每天安排本地交通、游览、附近用餐与休息。活动时长为规划预留时间。未自行设置的开始时间为建议值。核对开放时间、门票、天气与实际交通时间。预算示例不会导入费用，当前行程保留在行程库中。',
+    '毎日、市内の移動・見学・近くの食事・休憩を入れた調整可能なプラン。所要時間は計画用の目安です。自分で設定するまで開始時刻は目安です。営業時間、チケット、天候、実際の移動時間を確認。予算例は支出に追加されず、現在の旅はライブラリに残ります。',
+    '매일 지역 이동, 방문, 가까운 식사와 휴식을 넣은 수정 가능한 도시 일정입니다. 활동 시간은 계획을 위해 잡은 예상치입니다. 직접 설정하기 전 시작 시간은 제안값입니다. 운영 시간, 티켓, 날씨와 실제 이동 시간을 확인하세요. 예산 예시는 지출에 추가되지 않으며 현재 여행은 보관함에 남습니다.',
   ],
   cityTransferNote: [
     'A 30-minute planning allowance for local travel, not a researched journey time. Set the actual route, entrance and duration for your accommodation and chosen visit; adjust the activity and buffer before departure.',
