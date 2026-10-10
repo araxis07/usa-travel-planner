@@ -251,7 +251,9 @@ test('city guides localize neighborhood links, airport steps and complete group 
       );
     }
   }
-  await page.clock.setFixedTime(new Date('2026-10-14T00:00:00Z'));
+  await page.clock.setFixedTime(
+    new Date(cityContent.guides[cityContent.guides.length - 1].reviewAfter + 'T00:00:00Z'),
+  );
   await page.reload();
   await expect(page.locator('#guide-airport .day-warning')).toHaveText(cityContent.copy.stale[4]);
   await page.goto('/en/states/nevada/valley-of-fire-state-park/');
@@ -283,8 +285,8 @@ test('food stops follow each day with localized allowances, sources and independ
       await expect(section).toContainText(food!.intro[l]);
       await expect(section).toContainText(cityContent.copy.foodAssumptions[l]);
       await expect(section).toContainText(food!.vegetarian[l]);
-      await expect(section.locator('time').first()).toHaveAttribute('datetime', '2026-10-06');
-      await expect(section.locator('time').last()).toHaveAttribute('datetime', '2026-10-13');
+      await expect(section.locator('time').first()).toHaveAttribute('datetime', food!.checkedAt);
+      await expect(section.locator('time').last()).toHaveAttribute('datetime', food!.reviewAfter);
       await expect(page.locator('#guide-airport time').first()).toHaveAttribute(
         'datetime',
         guide.checkedAt,
@@ -328,7 +330,9 @@ test('food stops follow each day with localized allowances, sources and independ
       );
     }
   }
-  await page.clock.setFixedTime(new Date('2026-10-13T00:00:00Z'));
+  await page.clock.setFixedTime(
+    new Date(cityContent.guides[cityContent.guides.length - 1].food.reviewAfter + 'T00:00:00Z'),
+  );
   await page.reload();
   await expect(page.locator('#guide-food .day-warning')).toHaveText(cityContent.copy.foodStale[4]);
   await page.goto('/en/states/nevada/valley-of-fire-state-park/');
@@ -420,7 +424,9 @@ test('park booking requirements stay distinct, dated and accessible in every lan
       );
     }
   }
-  await page.clock.setFixedTime(new Date('2026-10-12T00:00:00Z'));
+  await page.clock.setFixedTime(
+    new Date(preparation.parks[preparation.parks.length - 1].reviewAfter + 'T00:00:00Z'),
+  );
   await page.reload();
   await expect(page.locator('#guide-booking > .day-warning')).toHaveText(preparation.copy.stale[4]);
   await page.goto('/en/states/california/san-francisco/');
@@ -452,7 +458,7 @@ test('first-trip field note covers nine preparation topics in all five languages
       await expect(guide.locator('section').nth(i)).toContainText(section.text[l]);
     }
     await expect(guide.locator('.guide-section-number').last()).toHaveText('09');
-    await expect(guide.locator('.content-date')).toContainText('2026-10-11');
+    await expect(guide.locator('.content-date')).toContainText(preparation.firstTrip.reviewAfter);
     await expect(guide.locator('.day-warning')).toHaveCount(0);
     for (const [i, source] of preparation.firstTrip.sources.entries()) {
       await expect(guide.locator('.guide-sources a').nth(i)).toHaveAttribute('href', source.url);
@@ -481,7 +487,7 @@ test('first-trip field note covers nine preparation topics in all five languages
     await page.keyboard.press('Escape');
     await expect(page.getByRole('dialog')).toHaveCount(0);
   }
-  await page.clock.setFixedTime(new Date('2026-10-12T00:00:00Z'));
+  await page.clock.setFixedTime(new Date(preparation.firstTrip.reviewAfter + 'T00:00:00Z'));
   await page.locator('.guide-card').first().click();
   await expect(page.locator('.guide-detail .day-warning')).toHaveText(preparation.copy.stale[4]);
 });
@@ -551,7 +557,7 @@ test('Northeast rail guide preserves station details, dated alerts and all five 
   );
   await page.keyboard.press('Escape');
   await expect(card).toBeFocused();
-  await page.clock.setFixedTime(new Date('2026-10-13T00:00:00Z'));
+  await page.clock.setFixedTime(new Date(preparation.intercity.reviewAfter + 'T00:00:00Z'));
   await card.press('Enter');
   await expect(guide.locator(':scope > p.day-warning')).toHaveText(preparation.copy.stale[4]);
 });

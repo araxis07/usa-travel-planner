@@ -59,8 +59,8 @@
   "parks": [
     {
       "placeId": "CA-1",
-      "checkedAt": "2026-10-04",
-      "reviewAfter": "2026-10-11",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-17",
       "translationsReviewed": [false, false, false, false, false],
       "sections": [
         {
@@ -135,20 +135,20 @@
     },
     {
       "placeId": "UT-0",
-      "checkedAt": "2026-10-04",
-      "reviewAfter": "2026-10-11",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-17",
       "translationsReviewed": [false, false, false, false, false],
       "notice": {
         "text": [
-          "Recreation.gov lists Angels Landing maintenance for October 5–8, 2026, with no permits issued on those dates. Check updates before choosing a hiking day.",
-          "Recreation.gov ระบุว่าปรับปรุงเส้นทาง Angels Landing วันที่ 5–8 ตุลาคม 2026 และไม่ออกใบอนุญาตสำหรับวันดังกล่าว ตรวจประกาศก่อนเลือกวันเดินป่า",
-          "Recreation.gov列明Angels Landing于2026年10月5日至8日维护，这些日期不发放许可。选择徒步日期前请核对更新。",
-          "Recreation.govによると、2026年10月5〜8日はエンジェルスランディングの整備のため許可が発行されません。日程を決める前に最新情報を確認してください。",
-          "Recreation.gov는 2026년 10월 5~8일 엔젤스 랜딩 정비로 해당 날짜에 허가를 발급하지 않는다고 안내합니다. 하이킹 날짜를 정하기 전에 업데이트를 확인하세요."
+          "The scheduled October 5–8 Angels Landing maintenance window has passed. This does not confirm reopening; check current NPS trail and road closures as well as your permit before choosing a hiking day.",
+          "กำหนดซ่อม Angels Landing วันที่ 5–8 ตุลาคมผ่านไปแล้ว แต่ไม่ได้ยืนยันว่าเปิดแล้ว ตรวจข้อปิดเส้นทางเดินกับถนนปัจจุบันของ NPS และใบอนุญาตก่อนเลือกวันเดิน",
+          "Angels Landing原定10月5–8日维护时段已过，但不代表已重新开放。选择徒步日期前核对NPS当前步道、道路关闭与许可证。",
+          "Angels Landingの予定保守期間10月5〜8日は終了しましたが、再開の確認ではありません。NPSの最新の登山道・道路の閉鎖と許可証を確認して日程を選んでください。",
+          "Angels Landing의 예정된 10월 5~8일 정비 기간은 지났지만 재개방을 확인한 것은 아닙니다. 하이킹 날짜를 고르기 전에 NPS의 현재 탐방로와 도로 폐쇄, 허가를 확인하세요."
         ],
         "source": {
-          "name": "Recreation.gov · Angels Landing (Sep–Nov)",
-          "url": "https://www.recreation.gov/permits/4675325"
+          "name": "NPS · current Zion conditions",
+          "url": "https://www.nps.gov/zion/planyourvisit/conditions.htm"
         }
       },
       "sections": [
@@ -224,8 +224,8 @@
     },
     {
       "placeId": "AZ-0",
-      "checkedAt": "2026-10-04",
-      "reviewAfter": "2026-10-11",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-17",
       "translationsReviewed": [false, false, false, false, false],
       "sections": [
         {
@@ -283,11 +283,11 @@
         },
         {
           "text": [
-            "As checked October 4, 2026, park concession overnight accommodation is suspended because of waterline damage. Tusayan lodging outside the park is unaffected by that suspension. Check lodging and camping restrictions before making any booking.",
-            "ตรวจวันที่ 4 ตุลาคม 2026 ที่พักค้างคืนของผู้ให้บริการภายในอุทยานยังหยุดให้บริการจากความเสียหายของท่อส่งน้ำ การหยุดดังกล่าวไม่กระทบที่พัก Tusayan นอกอุทยาน ตรวจข้อจำกัดที่พักและแคมป์ก่อนจอง",
-            "截至2026年10月4日核对，因输水管道损坏，园内特许经营住宿暂停过夜服务。园外Tusayan住宿不受该暂停影响。预订前请核对住宿与露营限制。",
-            "2026年10月4日の確認時点では、水道設備の損傷により園内の営業宿泊施設は宿泊を停止しています。園外の Tusayan はこの停止の対象外です。宿泊とキャンプの制限を予約前に確認してください。",
-            "2026년 10월 4일 확인 기준으로 송수관 손상 때문에 공원 내 위탁 운영 숙박시설의 숙박이 중단됐습니다. 공원 밖 Tusayan 숙소는 이 중단의 영향을 받지 않습니다. 예약 전에 숙박과 캠핑 제한을 확인하세요."
+            "As checked October 10, 2026, park concession overnight accommodation is suspended because of waterline damage. Tusayan lodging outside the park is unaffected by that suspension. Check lodging and camping restrictions before making any booking.",
+            "ตรวจวันที่ 10 ตุลาคม 2026 ที่พักค้างคืนของผู้ให้บริการภายในอุทยานยังหยุดให้บริการจากความเสียหายของท่อส่งน้ำ การหยุดดังกล่าวไม่กระทบที่พัก Tusayan นอกอุทยาน ตรวจข้อจำกัดที่พักและแคมป์ก่อนจอง",
+            "截至2026年10月10日核对，因输水管道损坏，园内特许经营住宿暂停过夜服务。园外Tusayan住宿不受该暂停影响。预订前请核对住宿与露营限制。",
+            "2026年10月10日の確認時点では、水道設備の損傷により園内の営業宿泊施設は宿泊を停止しています。園外の Tusayan はこの停止の対象外です。宿泊とキャンプの制限を予約前に確認してください。",
+            "2026년 10월 10일 확인 기준으로 송수관 손상 때문에 공원 내 위탁 운영 숙박시설의 숙박이 중단됐습니다. 공원 밖 Tusayan 숙소는 이 중단의 영향을 받지 않습니다. 예약 전에 숙박과 캠핑 제한을 확인하세요."
           ],
           "sources": [
             {
@@ -304,8 +304,8 @@
     },
     {
       "placeId": "CO-0",
-      "checkedAt": "2026-10-04",
-      "reviewAfter": "2026-10-11",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-12",
       "translationsReviewed": [false, false, false, false, false],
       "sections": [
         {
@@ -376,8 +376,8 @@
     },
     {
       "placeId": "WY-0",
-      "checkedAt": "2026-10-04",
-      "reviewAfter": "2026-10-11",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-17",
       "translationsReviewed": [false, false, false, false, false],
       "sections": [
         {
@@ -452,8 +452,8 @@
     }
   ],
   "firstTrip": {
-    "checkedAt": "2026-10-04",
-    "reviewAfter": "2026-10-11",
+    "checkedAt": "2026-10-10",
+    "reviewAfter": "2026-10-17",
     "translationsReviewed": [false, false, false, false, false],
     "sections": [
       {
@@ -649,8 +649,8 @@
     ]
   },
   "intercity": {
-    "checkedAt": "2026-10-06",
-    "reviewAfter": "2026-10-13",
+    "checkedAt": "2026-10-10",
+    "reviewAfter": "2026-10-17",
     "translationsReviewed": [false, false, false, false, false],
     "sections": [
       {
@@ -784,11 +784,11 @@
     ],
     "notice": {
       "text": [
-        "At the October 6 source check, Amtrak listed reduced New York–Boston weekend service for September 12–November 1, 2026, and Portal North Bridge work affecting Northeast Corridor service October 9–November 15, 2026. Check which trains and dates are affected before booking.",
-        "เมื่อตรวจแหล่งข้อมูลวันที่ 6 ตุลาคม Amtrak ระบุลดบริการสุดสัปดาห์ New York–Boston ช่วง 12 กันยายน–1 พฤศจิกายน 2026 และงาน Portal North Bridge ที่กระทบ Northeast Corridor ช่วง 9 ตุลาคม–15 พฤศจิกายน 2026 ตรวจขบวนกับวันที่ได้รับผลก่อนจอง",
-        "10月6日核对时，Amtrak列明2026年9月12日至11月1日减少New York–Boston周末服务，以及10月9日至11月15日Portal North Bridge施工影响Northeast Corridor服务。预订前确认受影响车次与日期。",
-        "10月6日の確認時、Amtrakは2026年9月12日〜11月1日のNew York–Boston週末便減便と、10月9日〜11月15日のPortal North Bridge工事によるNortheast Corridorへの影響を掲載。予約前に対象列車と日付を確認。",
-        "10월 6일 출처 확인 시 Amtrak은 2026년 9월 12일~11월 1일 뉴욕–보스턴 주말 감편과 10월 9일~11월 15일 Portal North Bridge 공사로 인한 Northeast Corridor 영향을 안내했습니다. 예약 전에 해당 열차와 날짜를 확인하세요."
+        "At the October 10 source check, Amtrak listed reduced New York–Boston weekend service for September 12–November 1, 2026, and Portal North Bridge work affecting Northeast Corridor service October 9–November 15, 2026. Check which trains and dates are affected before booking.",
+        "เมื่อตรวจแหล่งข้อมูลวันที่ 10 ตุลาคม Amtrak ระบุลดบริการสุดสัปดาห์ New York–Boston ช่วง 12 กันยายน–1 พฤศจิกายน 2026 และงาน Portal North Bridge ที่กระทบ Northeast Corridor ช่วง 9 ตุลาคม–15 พฤศจิกายน 2026 ตรวจขบวนกับวันที่ได้รับผลก่อนจอง",
+        "10月10日核对时，Amtrak列明2026年9月12日至11月1日减少New York–Boston周末服务，以及10月9日至11月15日Portal North Bridge施工影响Northeast Corridor服务。预订前确认受影响车次与日期。",
+        "10月10日の確認時、Amtrakは2026年9月12日〜11月1日のNew York–Boston週末便減便と、10月9日〜11月15日のPortal North Bridge工事によるNortheast Corridorへの影響を掲載。予約前に対象列車と日付を確認。",
+        "10월 10일 출처 확인 시 Amtrak은 2026년 9월 12일~11월 1일 뉴욕–보스턴 주말 감편과 10월 9일~11월 15일 Portal North Bridge 공사로 인한 Northeast Corridor 영향을 안내했습니다. 예약 전에 해당 열차와 날짜를 확인하세요."
       ],
       "source": {
         "name": "Amtrak · service alerts",

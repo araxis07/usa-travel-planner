@@ -6,7 +6,7 @@ import { validateLibrary } from '../lib/journeyLibrary';
 import { dayTimeline } from '../lib/timeline';
 import { ITINERARIES, itineraryTrip, starterTrip } from '../data/itineraries';
 import { validateCollections } from '../lib/collections';
-import { EXPERIENCE_COPY } from '../data/experience-copy';
+import { EXPERIENCE_COPY, x } from '../data/experience-copy';
 import { cityGuideTrip, findCityGuide } from '../components/CityGuide';
 
 const CITY_PLAN_CASES = [
@@ -154,7 +154,7 @@ for (const [id, path] of CITY_PLAN_CASES) {
           .getByRole('button', { name: EXPERIENCE_COPY.cityPlanPreview[l], exact: true })
           .press('Enter');
         await expect(preview).toHaveAttribute('open', '');
-        await expect(preview.locator('summary')).toBeFocused();
+        await expect(preview.locator(':scope > summary')).toBeFocused();
         const position = await preview.evaluate((element) => ({
           top: element.getBoundingClientRect().top,
           headerBottom: document.querySelector('.header')!.getBoundingClientRect().bottom,
@@ -168,6 +168,30 @@ for (const [id, path] of CITY_PLAN_CASES) {
         await expect(preview.locator('.template-day li')).toHaveCount(days * 4);
         await expect(preview).toContainText(findCityGuide(id)!.days[days - 1].title[l]);
         await expect(preview).toContainText(findCityGuide(id)!.food.stops[days - 1].title[l]);
+        const timeline = dayTimeline(
+          cityGuideTrip(findCityGuide(id)!, days, lang).stops[0].activities!.filter(
+            (a) => a.day === days,
+          ),
+        );
+        const activity = timeline.reduce((sum, row) => sum + row.activity.minutes, 0);
+        const buffer = timeline.reduce((sum, row) => sum + row.buffer, 0);
+        const day = preview.locator('.template-day').last();
+        await expect(day.locator('.city-plan-total')).toHaveText(
+          x(lang, 'cityPlanTotal', { minutes: activity + buffer }),
+        );
+        await expect(day.locator('.city-plan-day-heading')).toContainText(
+          x(lang, 'cityPlanBreakdown', { activity, buffer }),
+        );
+        await expect(day.locator('.city-plan-alternative')).toBeVisible();
+        await expect(day.locator('.city-plan-alternative')).toContainText(
+          findCityGuide(id)!.days[days - 1].alternative[l],
+        );
+        await expect(day.locator('li').nth(1)).toContainText(
+          findCityGuide(id)!.days[days - 1].text[l],
+        );
+        await expect(day.locator('li').nth(2)).toContainText(
+          findCityGuide(id)!.food.stops[days - 1].text[l],
+        );
         expect(
           await page.evaluate(() => [
             localStorage.getItem('roam.trip.v1'),

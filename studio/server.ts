@@ -4,17 +4,20 @@ import { randomBytes, createHash, randomUUID } from 'node:crypto';
 import { readFile, writeFile, mkdir, rename, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { validateCatalog, contentIssues, migrateCatalog } from '../lib/content';
+import { validateCityContent, cityContentIssues } from '../lib/city-content';
 
 export function studioPlugin(root = process.cwd()): Plugin {
   const contentFile = path.join(root, 'content/states.json');
   const draftFile = path.join(root, '.studio/draft.json');
   const token = randomBytes(32).toString('hex');
   let busy = false;
-  const read = async () => {
-    const published = await readFile(contentFile, 'utf8');
+  const cityFile = path.join(root, 'content/city-guides.json');
+  const cityDraft = path.join(root, '.studio/city-draft.json');
+  const read = async (city = false) => {
+    const published = await readFile(city ? cityFile : contentFile, 'utf8');
     let draft = '';
     try {
-      draft = await readFile(draftFile, 'utf8');
+      draft = await readFile(city ? cityDraft : draftFile, 'utf8');
     } catch (e) {
       if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
     }
@@ -22,9 +25,13 @@ export function studioPlugin(root = process.cwd()): Plugin {
       .update(published + '\0' + draft)
       .digest('hex');
     return {
-      catalog: validateCatalog(
-        migrateCatalog(JSON.parse(draft || published), JSON.parse(published)),
-      ),
+      ...(city
+        ? { content: validateCityContent(JSON.parse(draft || published)) }
+        : {
+            catalog: validateCatalog(
+              migrateCatalog(JSON.parse(draft || published), JSON.parse(published)),
+            ),
+          }),
       savedDraft: !!draft,
       revision,
     };
@@ -61,8 +68,9 @@ export function studioPlugin(root = process.cwd()): Plugin {
       reply(res, 403, { error: 'Local same-origin access only' });
       return;
     }
-    if (req.method === 'GET' && req.url === '/api/studio') {
-      reply(res, 200, { ...(await read()), token });
+    const city = req.url === '/api/studio/cities' || req.url?.startsWith('/api/studio/cities/');
+    if (req.method === 'GET' && (req.url === '/api/studio' || req.url === '/api/studio/cities')) {
+      reply(res, 200, { ...(await read(city)), token });
       return;
     }
     if (req.headers['x-studio-token'] !== token) {
@@ -94,9 +102,32 @@ export function studioPlugin(root = process.cwd()): Plugin {
         return;
       }
       const data = JSON.parse((await body(req, 5_000_000)).toString('utf8'));
-      const current = await read();
+      const current = await read(city);
       if (data.revision !== current.revision) {
         reply(res, 409, { error: 'เนื้อหาถูกแก้ไขจากหน้าต่างอื่น กรุณาโหลดข้อมูลล่าสุด' });
+        return;
+      }
+      if (
+        city &&
+        ((req.method === 'PUT' && req.url === '/api/studio/cities/draft') ||
+          (req.method === 'POST' && req.url === '/api/studio/cities/publish'))
+      ) {
+        const content = validateCityContent(data.content);
+        if (
+          !('content' in current) ||
+          JSON.stringify(content.copy) !== JSON.stringify(current.content.copy)
+        )
+          throw Error('ข้อความส่วนกลางแก้ไขผ่านไฟล์ในโปรเจกต์เท่านั้น');
+        if (req.method === 'POST') {
+          const issues = cityContentIssues(content);
+          if (issues.length) {
+            reply(res, 422, { error: 'ยังเผยแพร่ไม่ได้: ข้อมูลไม่ครบ', issues });
+            return;
+          }
+          await atomic(cityFile, JSON.stringify(content, null, 2) + '\n');
+        }
+        await atomic(cityDraft, JSON.stringify(content, null, 2) + '\n');
+        reply(res, 200, { ...(await read(true)), token });
         return;
       }
       if (req.method === 'PUT' && req.url === '/api/studio/draft') {

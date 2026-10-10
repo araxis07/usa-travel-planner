@@ -4,10 +4,11 @@ import { useMemo, useState } from 'react';
 import { starterTrip } from '../data/itineraries';
 import { x } from '../data/experience-copy';
 import type { Trip, TripActivity } from '../data/travel';
+import type { City } from '../lib/city-content';
+import { dayTimeline } from '../lib/timeline';
 
 export const cityCopy = content.copy;
 export const findCityGuide = (id?: string) => content.guides.find((guide) => guide.placeId === id);
-type City = NonNullable<ReturnType<typeof findCityGuide>>;
 
 export function cityGuideTrip(guide: City, days: number, lang: Language): Trip {
   if (!findCityGuide(guide.placeId) || !Number.isInteger(days) || days < 1 || days > 3)
@@ -22,7 +23,7 @@ export function cityGuideTrip(guide: City, days: number, lang: Language): Trip {
     visit.title = guide.days[i].title[l];
     visit.minutes = 180;
     visit.notes = `${guide.days[i].text[l]}\n${cityCopy.alternative[l]}: ${guide.days[i].alternative[l]}`;
-    // ponytail: neighborhood visits stay unmapped until individual entrances are source-checked.
+    // shortcut: neighborhood visits stay unmapped, add pins after individual entrances are source-checked.
     delete visit.placeId;
     meal.title = guide.food.stops[i].title[l];
     meal.notes = guide.food.stops[i].text[l];
@@ -53,7 +54,7 @@ export default function CityGuide({
 }: {
   guide: City;
   lang: Language;
-  onCreateTrip: (trip: Trip) => void;
+  onCreateTrip?: (trip: Trip) => void;
 }) {
   const l = languageIndex(lang);
   const [days, setDays] = useState(3);
@@ -83,24 +84,56 @@ export default function CityGuide({
             ))}
           </select>
         </div>
-        <p>{x(lang, 'cityPlanNote')}</p>
-        {Array.from({ length: days }, (_, i) => (
-          <div className="template-day" key={i}>
-            <strong>{cityCopy.day[l].replace('{day}', String(i + 1))}</strong>
-            <ul>
-              {plan.stops[0]
-                .activities!.filter((a) => a.day === i + 1)
-                .map((a) => (
+        <p>{x(lang, 'cityPlanShortNote')}</p>
+        <details className="city-plan-notes">
+          <summary>{x(lang, 'cityPlanBefore')}</summary>
+          <p>{x(lang, 'cityPlanNote')}</p>
+        </details>
+        {Array.from({ length: days }, (_, i) => {
+          const timeline = dayTimeline(plan.stops[0].activities!.filter((a) => a.day === i + 1));
+          const activityMinutes = timeline.reduce((sum, row) => sum + row.activity.minutes, 0);
+          const bufferMinutes = timeline.reduce((sum, row) => sum + row.buffer, 0);
+          return (
+            <div className="template-day" key={i}>
+              <div className="city-plan-day-heading">
+                <h3>{cityCopy.day[l].replace('{day}', String(i + 1))}</h3>
+                <p className="city-plan-total">
+                  {x(lang, 'cityPlanTotal', { minutes: activityMinutes + bufferMinutes })}
+                </p>
+                <p>
+                  {x(lang, 'cityPlanBreakdown', {
+                    activity: activityMinutes,
+                    buffer: bufferMinutes,
+                  })}
+                </p>
+              </div>
+              <ul>
+                {timeline.map(({ activity: a, buffer }, index) => (
                   <li key={a.id}>
-                    {a.title} · {a.minutes} {translate('minutes', 'นาที', lang)}
+                    <div className="city-plan-activity-heading">
+                      <strong>{a.title}</strong>
+                      <span>
+                        {a.minutes} {translate('minutes', 'นาที', lang)} ·{' '}
+                        {x(lang, 'cityPlanBuffer', { minutes: buffer })}
+                      </span>
+                    </div>
+                    {index === 1 && <p>{guide.days[i].text[l]}</p>}
+                    {index === 2 && <p>{guide.food.stops[i].text[l]}</p>}
                   </li>
                 ))}
-            </ul>
-          </div>
-        ))}
-        <button className="button button-navy" onClick={() => onCreateTrip(plan)}>
-          {x(lang, 'usePlan')}
-        </button>
+              </ul>
+              <p className="city-plan-alternative">
+                <strong>{cityCopy.alternative[l]}: </strong>
+                {guide.days[i].alternative[l]}
+              </p>
+            </div>
+          );
+        })}
+        {onCreateTrip && (
+          <button className="button button-navy" onClick={() => onCreateTrip(plan)}>
+            {x(lang, 'usePlan')}
+          </button>
+        )}
       </details>
       <h3>{cityCopy.areas[l]}</h3>
       {guide.areas.map((area) => (
@@ -129,7 +162,7 @@ export default function CityGuide({
             <strong>{cityCopy.alternative[l]}: </strong>
             {day.alternative[l]}
           </p>
-          {'source' in day && (
+          {day.source && (
             <div className="city-guide-links">
               <a href={day.source.url} target="_blank" rel="noreferrer">
                 {day.source.name}

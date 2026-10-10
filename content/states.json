@@ -389,8 +389,8 @@
           "locationCheckedAt": "2026-09-15",
           "officialUrl": "https://parks.ca.gov/?page_id=29170",
           "bookingUrl": "",
-          "reviewedAt": "2026-10-03",
-          "reviewAfter": "2026-10-10",
+          "reviewedAt": "2026-10-10",
+          "reviewAfter": "2026-10-17",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1064,11 +1064,11 @@
             "AZ 64를 통해 사우스 림으로 가고 방문자 센터 주차와 셔틀을 계획하세요. 노스 림은 멀리 떨어진 별도 도착지이며 가까운 대체 입구가 아닙니다."
           ],
           "stay": [
-            "Explore accommodation around Tusayan / Grand Canyon Village; compare the journey to your chosen sights before booking.",
-            "ลองค้นที่พักบริเวณ Tusayan / Grand Canyon Village แล้วเทียบระยะเดินทางไปจุดที่เลือกก่อนจอง",
-            "可查看 Tusayan / Grand Canyon Village 一带的住宿，预订前比较前往所选景点的路程。",
-            "Tusayan / Grand Canyon Village 周辺の宿を探し、予約前に目的地までの移動を比較しましょう。",
-            "Tusayan / Grand Canyon Village 주변 숙소를 살펴보고 예약 전에 선택한 명소까지의 이동을 비교하세요."
+            "Compare Tusayan lodging outside the park. Park concession overnight stays remain suspended because of waterline damage; check current lodging and camping restrictions before booking.",
+            "เทียบที่พัก Tusayan นอกอุทยาน ที่พักค้างคืนของผู้ให้บริการในอุทยานยังหยุดจากท่อส่งน้ำเสียหาย ตรวจข้อจำกัดที่พักและแคมป์ปัจจุบันก่อนจอง",
+            "比较园外Tusayan住宿。因输水管损坏，园内特许经营过夜住宿仍暂停；预订前核对现行住宿与露营限制。",
+            "園外のTusayanの宿を比較。水道設備の損傷により園内の営業宿泊施設は宿泊を停止中です。予約前に最新の宿泊・キャンプ制限を確認。",
+            "공원 밖 Tusayan 숙소를 비교하세요. 송수관 손상으로 공원 내 위탁 운영 숙박은 계속 중단돼 있습니다. 예약 전에 현재 숙박과 캠핑 제한을 확인하세요."
           ],
           "visitMinutes": 180,
           "coordinates": [36.05921, -112.10928295932486],
@@ -1084,8 +1084,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/grca/planyourvisit/directions_s_rim.htm",
           "bookingUrl": "https://www.nps.gov/grca/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-03",
-          "reviewAfter": "2026-10-10",
+          "reviewedAt": "2026-10-10",
+          "reviewAfter": "2026-10-17",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1540,8 +1540,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/havo/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/havo/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-03",
-          "reviewAfter": "2026-10-10",
+          "reviewedAt": "2026-10-10",
+          "reviewAfter": "2026-10-17",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1601,8 +1601,8 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://www.gohawaii.com/islands/kauai/travel-info/transportation",
           "bookingUrl": "",
-          "reviewedAt": "2026-10-03",
-          "reviewAfter": "2026-10-10",
+          "reviewedAt": "2026-10-10",
+          "reviewAfter": "2026-10-17",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "boat",
@@ -1909,12 +1909,12 @@
             "Zion Canyon Visitor Center",
             "Zion Canyon Visitor Center"
           ],
-          "locationSource": "https://www.nps.gov/zion/learn/nature/zion-canyon-visitor-center.htm",
+          "locationSource": "https://www.nps.gov/zion/planyourvisit/directions.htm",
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/zion/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/zion/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-03",
-          "reviewAfter": "2026-10-10",
+          "reviewedAt": "2026-10-10",
+          "reviewAfter": "2026-10-17",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -3908,11 +3908,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Approach via Alaska Highway 3 and navigate to Denali Park entrance, mile 237. Check road conditions and the exact parking or trailhead before setting out. Summer travel beyond Savage River (mile 15) generally requires a park bus; shoulder-season road access differs. Check the current road limit before booking.",
-            "เดินทางผ่าน Alaska Highway 3 โดยตั้งปลายทางเป็น Denali Park entrance, mile 237 ตรวจสภาพถนนและจุดจอดรถหรือจุดเริ่มเส้นทางให้ชัดเจนก่อนออกเดินทาง ช่วงฤดูร้อน การเดินทางเลย Savage River ไมล์ 15 โดยทั่วไปต้องใช้รถบัสอุทยาน ช่วงรอยต่อฤดูกาลมีข้อกำหนดต่างออกไป ตรวจว่าถนนเปิดถึงจุดใดก่อนจอง",
-            "经 Alaska Highway 3 前往 Denali Park entrance, mile 237。出发前核对路况及具体停车场或步道起点。 夏季前往 Savage River（15英里处）以远通常需乘公园巴士，换季期间通行规则不同。预订前确认当前道路开放范围。",
-            "Alaska Highway 3 経由で Denali Park entrance, mile 237 へ。出発前に道路状況と駐車場・登山口の位置を確認してください。 夏季は Savage River（15マイル地点）より先へ通常は公園バスで移動します。季節の変わり目は扱いが異なるため、予約前に通行可能区間を確認してください。",
-            "Alaska Highway 3 경유로 Denali Park entrance, mile 237(으)로 이동하세요. 출발 전에 도로 상태와 정확한 주차장 또는 탐방로 입구를 확인하세요. 여름에는 Savage River(15마일 지점) 이후 구간에서 일반적으로 공원 버스를 이용해야 합니다. 계절 전환기에는 규정이 다르므로 예약 전 도로 개방 구간을 확인하세요."
+            "Use Alaska Highway 3 to reach the park entrance. October visitors should check the Winter Visitor Center at park headquarters and current road limits; the Denali Visitor Center is seasonal. Summer travel beyond mile 15 generally uses a park bus.",
+            "ใช้ Alaska Highway 3 ไปทางเข้าอุทยาน ผู้เที่ยวเดือนตุลาคมควรตรวจ Winter Visitor Center ที่สำนักงานอุทยานกับระยะถนนที่เปิดล่าสุด Denali Visitor Center เปิดตามฤดูกาล ฤดูร้อนเลยไมล์ 15 โดยทั่วไปใช้รถบัสอุทยาน",
+            "经Alaska Highway 3到公园入口。十月访客应核对总部的Winter Visitor Center及当前道路开放范围；Denali Visitor Center季节性开放。夏季超过15英里处通常乘公园巴士。",
+            "Alaska Highway 3から公園入口へ。10月は公園本部のWinter Visitor Centerと最新の道路開放範囲を確認。Denali Visitor Centerは季節営業です。夏季は通常、15マイルより先は公園バスを利用。",
+            "알래스카 Highway 3로 공원 입구에 가세요. 10월에는 공원 본부의 Winter Visitor Center와 현재 도로 개방 범위를 확인하세요. Denali Visitor Center는 계절 운영이며 여름철 15마일 이후는 보통 공원 버스를 이용합니다."
           ],
           "stay": [
             "Compare stays in Healy / Denali Park entrance as possible bases. Check the journey to your selected entrance, stop or departure point before booking.",
@@ -3935,8 +3935,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/dena/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/dena/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-03",
-          "reviewAfter": "2026-10-10",
+          "reviewedAt": "2026-10-10",
+          "reviewAfter": "2026-10-15",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -12256,8 +12256,8 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://parks.nv.gov/parks/valley-of-fire",
           "bookingUrl": "",
-          "reviewedAt": "2026-10-03",
-          "reviewAfter": "2026-10-10",
+          "reviewedAt": "2026-10-10",
+          "reviewAfter": "2026-10-17",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -15438,11 +15438,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Approach via OR 62 (west/south) / OR 138 (seasonal north entrance) and navigate to Crater Lake visitor facilities. Check road conditions and the exact parking or trailhead before setting out.",
-            "เดินทางผ่าน OR 62 (west/south) / OR 138 (seasonal north entrance) โดยตั้งปลายทางเป็น Crater Lake visitor facilities ตรวจสภาพถนนและจุดจอดรถหรือจุดเริ่มเส้นทางให้ชัดเจนก่อนออกเดินทาง",
-            "经 OR 62 (west/south) / OR 138 (seasonal north entrance) 前往 Crater Lake visitor facilities。出发前核对路况及具体停车场或步道起点。",
-            "OR 62 (west/south) / OR 138 (seasonal north entrance) 経由で Crater Lake visitor facilities へ。出発前に道路状況と駐車場・登山口の位置を確認してください。",
-            "OR 62 (west/south) / OR 138 (seasonal north entrance) 경유로 Crater Lake visitor facilities(으)로 이동하세요. 출발 전에 도로 상태와 정확한 주차장 또는 탐방로 입구를 확인하세요."
+            "Use Highway 62 for the South or West Entrance. The Highway 138 North Entrance is seasonal and closes November 1 or earlier with snow. Check current road and fuel availability before driving; park fuel is listed only through October 13, 2026.",
+            "ใช้ Highway 62 ไปทางใต้หรือตะวันตก ทางเหนือจาก Highway 138 เปิดตามฤดูกาลและปิด 1 พฤศจิกายนหรือเร็วกว่านั้นถ้ามีหิมะ ตรวจถนนและน้ำมันก่อนขับ น้ำมันในอุทยานระบุให้บริการถึง 13 ตุลาคม 2026 เท่านั้น",
+            "经Highway 62到南或西入口。Highway 138北入口季节性开放，11月1日或降雪时更早关闭。驾车前核对道路与燃油供应；园内燃油仅列至2026年10月13日。",
+            "南・西入口はHighway 62から。Highway 138の北入口は季節営業で11月1日、降雪ならそれ以前に閉鎖します。道路と給油の状況を確認。園内の給油は2026年10月13日までと案内されています。",
+            "남쪽이나 서쪽 입구는 Highway 62를 이용하세요. Highway 138 북쪽 입구는 계절 운영이며 11월 1일 또는 눈이 오면 더 일찍 닫힙니다. 도로와 주유 가능 여부를 확인하세요. 공원 내 주유는 2026년 10월 13일까지만 안내돼 있습니다."
           ],
           "stay": [
             "Compare stays in Fort Klamath / Chiloquin as possible bases. Check the journey to your selected entrance, stop or departure point before booking.",
@@ -15465,8 +15465,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/crla/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/crla/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-03",
-          "reviewAfter": "2026-10-10",
+          "reviewedAt": "2026-10-10",
+          "reviewAfter": "2026-10-13",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -19375,11 +19375,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Use Apostle Islands visitor information at 415 Washington Avenue, Bayfield as your arrival point. Check the official visit page for tour times, admission and any required reservations before travelling. The islands require water transport. Meyers Beach is a separate mainland access point off WI 13; book any island boat trip independently and confirm weather and return arrangements.",
-            "ตั้งจุดหมายเป็น Apostle Islands visitor information ที่ 415 Washington Avenue, Bayfield ตรวจรอบเข้าชม ค่าเข้า และการจองที่จำเป็นจากหน้าทางการก่อนเดินทาง ต้องใช้เรือเพื่อไปเกาะ ส่วน Meyers Beach เป็นทางเข้าบนแผ่นดินใหญ่จาก WI 13 จองเรือเที่ยวเกาะแยกต่างหาก พร้อมตรวจอากาศและเที่ยวกลับ",
-            "请以 415 Washington Avenue, Bayfield 的 Apostle Islands visitor information 为抵达点。出发前通过官方参观页面核对导览时间、门票及预约要求。 前往岛屿需水上交通。Meyers Beach 是 WI 13 旁另一处大陆入口；岛屿船程需另行安排，并确认天气及返程。",
-            "415 Washington Avenue, Bayfield の Apostle Islands visitor information を到着地点に設定。公式案内で見学時間、入場料、予約の要否を確認してください。 島へは船が必要です。Meyers Beach は WI 13 沿いの別の本土側入口です。島への船を手配し、天候と帰りの便を確認してください。",
-            "415 Washington Avenue, Bayfield에 있는 Apostle Islands visitor information(을)를 도착 지점으로 설정하세요. 출발 전 공식 방문 안내에서 투어 시간, 입장료와 예약 필요 여부를 확인하세요. 섬은 수상 교통편으로 이동해야 합니다. Meyers Beach는 WI 13 옆의 별도 본토 진입 지점입니다. 섬 투어 배편을 따로 예약하고 날씨와 귀환 일정을 확인하세요."
+            "Use Bayfield Headquarters at 415 Washington Avenue as a map reference; visitor centers open seasonally, so check October hours before expecting indoor information. Islands require water transport. Meyers Beach is a separate mainland access point off WI 13; confirm weather, launch restrictions and the return trip.",
+            "ใช้ Bayfield Headquarters ที่ 415 Washington Avenue เป็นหมุดอ้างอิง ศูนย์บริการเปิดตามฤดูกาล จึงควรตรวจเวลาเดือนตุลาคมก่อนคาดหวังบริการในอาคาร ไปเกาะต้องใช้เรือ Meyers Beach เป็นทางเข้าฝั่งแผ่นดินแยกจาก WI 13 ตรวจอากาศ ข้อจำกัดลงเรือและเที่ยวกลับ",
+            "以415 Washington Avenue的Bayfield Headquarters作地图参考；游客中心季节性开放，十月应先核对室内服务时间。岛屿需水上交通。Meyers Beach是WI 13沿线独立的大陆入口；确认天气、下水限制与返程。",
+            "415 Washington AvenueのBayfield Headquartersを地図の参考地点に。案内所は季節営業なので10月の屋内サービスは時間を確認。島へは水上交通が必要です。Meyers BeachはWI 13沿いの別の本土入口。天候・出艇制限・帰路を確認。",
+            "415 Washington Avenue의 Bayfield Headquarters를 지도 기준점으로 사용하세요. 방문자 센터는 계절 운영이므로 10월 실내 안내 시간을 확인하세요. 섬에는 수상 교통이 필요합니다. Meyers Beach는 WI 13의 별도 본토 입구이며 날씨, 출항 제한, 귀환편을 확인하세요."
           ],
           "stay": [
             "Compare stays in Bayfield / Washburn as possible bases. Check the journey to your selected entrance, stop or departure point before booking.",
@@ -19402,8 +19402,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/apis/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/apis/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-03",
-          "reviewAfter": "2026-10-10",
+          "reviewedAt": "2026-10-10",
+          "reviewAfter": "2026-10-17",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "boat",

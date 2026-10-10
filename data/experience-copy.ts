@@ -2,6 +2,41 @@ import { languageIndex, type Language } from '../lib/i18n';
 
 // Every new experience string ships together in EN / TH / ZH / JA / KO.
 export const EXPERIENCE_COPY = {
+  cityPlanShortNote: [
+    'Local travel, a visit, a nearby meal and rest each day. All durations are planning allowances.',
+    'แต่ละวันมีการเดินทางในเมือง จุดเที่ยว มื้ออาหารใกล้กัน และช่วงพัก ระยะเวลาเป็นค่าประมาณสำหรับวางแผน',
+    '每天安排本地交通、游览、附近用餐与休息。时长为规划预留时间。',
+    '毎日、市内の移動・見学・近くの食事・休憩を。所要時間は計画用の目安です。',
+    '매일 지역 이동, 방문, 가까운 식사와 휴식을 넣습니다. 시간은 계획용 예상치입니다.',
+  ],
+  cityPlanBefore: [
+    'Before creating your trip',
+    'อ่านก่อนสร้างทริป',
+    '创建行程前',
+    '旅を作る前に',
+    '여행을 만들기 전에',
+  ],
+  cityPlanTotal: [
+    'Total allowance · {minutes} min',
+    'เวลาที่วางแผนรวม · {minutes} นาที',
+    '总预留时间 · {minutes}分钟',
+    '確保する時間の合計 · {minutes}分',
+    '총 예상 시간 · {minutes}분',
+  ],
+  cityPlanBreakdown: [
+    'Activities {activity} min + buffers {buffer} min; gaps between suggested periods are extra.',
+    'กิจกรรม {activity} นาที + เวลาเผื่อ {buffer} นาที ยังไม่รวมช่วงว่างระหว่างช่วงเวลาที่เสนอ',
+    '活动{activity}分钟 + 余量{buffer}分钟；建议时段之间的空档另计。',
+    '活動{activity}分 + 余裕{buffer}分。目安の時間帯の間の空き時間は別です。',
+    '활동 {activity}분 + 여유 {buffer}분. 제안 시간대 사이의 빈 시간은 별도입니다.',
+  ],
+  cityPlanBuffer: [
+    'buffer {minutes} min',
+    'เผื่อ {minutes} นาที',
+    '余量{minutes}分钟',
+    '余裕{minutes}分',
+    '여유 {minutes}분',
+  ],
   cityPlanPreview: [
     'Preview a 1–3 day plan',
     'ดูตัวอย่างแผน 1–3 วัน',

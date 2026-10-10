@@ -489,6 +489,51 @@
 }
 .city-plan-preview .template-day li {
   display: list-item;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.city-plan-preview .template-day {
+  grid-template-columns: 1fr;
+  font-size: 16px;
+  padding: 24px 0;
+}
+.city-plan-day-heading h3 {
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+.city-plan-day-heading p,
+.city-plan-preview li p {
+  margin: 8px 0 0;
+  line-height: 1.8;
+}
+.city-plan-total {
+  font-weight: 700;
+  color: var(--navy);
+}
+.city-plan-activity-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 20px;
+}
+.city-plan-activity-heading strong {
+  font-size: 17px;
+}
+.city-plan-activity-heading span {
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+.city-plan-notes summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px 0;
+}
+.city-plan-alternative {
+  background: #e9eee9;
+  color: var(--navy);
+  padding: 16px;
+  border-left: 3px solid var(--navy);
+  line-height: 1.8;
 }
 .city-plan-preview > .button {
   margin-top: 20px;

@@ -170,8 +170,8 @@
   "guides": [
     {
       "placeId": "NY-0",
-      "checkedAt": "2026-10-04",
-      "reviewAfter": "2026-10-11",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-13",
       "translationsReviewed": [false, false, false, false, false],
       "intro": [
         "Give each day one part of the city. Start around Midtown, then add Lower Manhattan and Brooklyn instead of crossing the whole city repeatedly.",
@@ -343,11 +343,11 @@
           "성인 일반 편도: AirTrain $8.75 + 지하철 $3.00 = $11.75. 할인과 LIRR 이용 조건은 다릅니다."
         ],
         "note": [
-          "Check AirTrain work notices and MTA service/elevator status before departure. With bulky bags, compare LIRR or an official taxi. This route is for JFK, not LGA or EWR.",
-          "ตรวจงานปรับปรุง AirTrain และสถานะรถไฟกับลิฟต์ MTA ก่อนเดินทาง ถ้ามีกระเป๋าใหญ่ให้เทียบ LIRR หรือแท็กซี่ทางการ เส้นทางนี้ใช้กับ JFK ไม่ใช่ LGA หรือ EWR",
-          "出发前核对AirTrain施工及MTA服务、电梯状态。大件行李可比较LIRR或正规出租车。本路线仅适用于JFK，不适用于LGA或EWR。",
-          "AirTrainの工事案内とMTAの運行・エレベーター情報を確認。大きな荷物ならLIRRや正規タクシーも比較を。JFK専用でLGA・EWRには使えません。",
-          "출발 전 AirTrain 공사와 MTA 운행 및 엘리베이터 상태를 확인하세요. 큰 짐이 있으면 LIRR이나 공식 택시도 비교하세요. JFK용 경로이며 LGA나 EWR에는 적용되지 않습니다."
+          "JFK lists overnight AirTrain shutdowns October 13–15, 2026, 22:00–06:00 local time, with free replacement buses. Recheck the work notice and allow extra transfer time. Check AirTrain work notices and MTA service/elevator status before departure. With bulky bags, compare LIRR or an official taxi. This route is for JFK, not LGA or EWR.",
+          "JFK แจ้งหยุด AirTrain กลางคืน 13–15 ตุลาคม 2026 เวลา 22:00–06:00 ตามเวลาท้องถิ่น มีรถบัสทดแทนฟรี ตรวจประกาศอีกครั้งและเผื่อเวลาต่อรถเพิ่ม ตรวจงานปรับปรุง AirTrain และสถานะรถไฟกับลิฟต์ MTA ก่อนเดินทาง ถ้ามีกระเป๋าใหญ่ให้เทียบ LIRR หรือแท็กซี่ทางการ เส้นทางนี้ใช้กับ JFK ไม่ใช่ LGA หรือ EWR",
+          "JFK公告2026年10月13–15日当地时间22:00–06:00夜间AirTrain停运，提供免费替代巴士。再次核对施工公告并增加换乘余量。 出发前核对AirTrain施工及MTA服务、电梯状态。大件行李可比较LIRR或正规出租车。本路线仅适用于JFK，不适用于LGA或EWR。",
+          "JFKは2026年10月13〜15日の夜間、現地時間22:00〜06:00にAirTrainを停止し、無料の代行バスを案内。工事情報を再確認し、乗り換えに余裕を。 AirTrainの工事案内とMTAの運行・エレベーター情報を確認。大きな荷物ならLIRRや正規タクシーも比較を。JFK専用でLGA・EWRには使えません。",
+          "JFK는 2026년 10월 13~15일 현지 시각 22:00~06:00 AirTrain 야간 운행 중단과 무료 대체 버스를 안내합니다. 공지와 추가 환승 시간을 확인하세요. 출발 전 AirTrain 공사와 MTA 운행 및 엘리베이터 상태를 확인하세요. 큰 짐이 있으면 LIRR이나 공식 택시도 비교하세요. JFK용 경로이며 LGA나 EWR에는 적용되지 않습니다."
         ],
         "sources": [
           {
@@ -381,8 +381,8 @@
         ]
       },
       "food": {
-        "checkedAt": "2026-10-06",
-        "reviewAfter": "2026-10-13",
+        "checkedAt": "2026-10-10",
+        "reviewAfter": "2026-10-17",
         "translationsReviewed": [false, false, false, false, false],
         "intro": [
           "Try a New York bagel, a quick Downtown lunch and Brooklyn pizza on the same neighborhoods as your three-day plan. Choose one meal stop each day and leave time for queues.",
@@ -473,8 +473,8 @@
     },
     {
       "placeId": "CA-0",
-      "checkedAt": "2026-10-04",
-      "reviewAfter": "2026-10-11",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-17",
       "translationsReviewed": [false, false, false, false, false],
       "intro": [
         "Pair nearby neighborhoods, then give Golden Gate Park a separate day. Allow for hills and choose transit when the walking route does not suit your group.",
@@ -694,8 +694,8 @@
         ]
       },
       "food": {
-        "checkedAt": "2026-10-06",
-        "reviewAfter": "2026-10-13",
+        "checkedAt": "2026-10-10",
+        "reviewAfter": "2026-10-17",
         "translationsReviewed": [false, false, false, false, false],
         "intro": [
           "Follow the waterfront market, Chinatown and the eastern side of Golden Gate Park for three different food stops. These choices fit the day plans above without adding a separate neighborhood transfer.",
@@ -786,8 +786,8 @@
     },
     {
       "placeId": "NV-0",
-      "checkedAt": "2026-10-04",
-      "reviewAfter": "2026-10-11",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-17",
       "translationsReviewed": [false, false, false, false, false],
       "intro": [
         "Treat the Strip, Downtown and Arts District as separate outings. Keep outdoor walks short in heat and compare the complete hotel bill, including mandatory fees.",
@@ -1001,8 +1001,8 @@
         ]
       },
       "food": {
-        "checkedAt": "2026-10-06",
-        "reviewAfter": "2026-10-13",
+        "checkedAt": "2026-10-10",
+        "reviewAfter": "2026-10-17",
         "translationsReviewed": [false, false, false, false, false],
         "intro": [
           "Las Vegas mixes cuisines from many places. Pair a Strip food hall, Downtown lunch and an Arts District meal with the existing three-day plan; you do not need a buffet or a tasting menu for every meal.",
@@ -1012,11 +1012,11 @@
           "라스베이거스에는 여러 지역의 요리가 모입니다. 스트립 푸드홀, 다운타운 점심, 아츠 디스트릭트 식사를 3일 일정에 맞추세요. 매 끼니 뷔페나 코스 요리를 고를 필요는 없습니다."
         ],
         "vegetarian": [
-          "Look for clearly marked meat-free dishes and ask about sauces and shared fryers. The Arts District has plant-based Mexican options such as Tacotarian. Confirm today’s menu; a restaurant listing does not certify allergy-safe preparation.",
-          "หาเมนูที่ระบุไม่ใส่เนื้อและถามเรื่องซอสกับน้ำมันทอดร่วม อาร์ตดิสทริกต์มีอาหารเม็กซิกันจากพืช เช่น Tacotarian ตรวจเมนูปัจจุบัน รายชื่อร้านไม่ได้รับรองการทำอาหารปลอดสารที่แพ้",
-          "选择明确标注无肉的菜品，并询问酱料和共用炸锅。艺术区有Tacotarian等植物性墨西哥料理。确认当天菜单；餐厅名录并非过敏安全认证。",
-          "肉なしの表示を探し、ソースや共用の揚げ油を確認。アーツ地区にはTacotarianなど植物性のメキシコ料理もあります。当日のメニューを確認し、掲載はアレルギー対応の認証ではない点に注意。",
-          "고기 없는 메뉴 표시를 찾고 소스와 공용 튀김기에 관해 문의하세요. 아츠 디스트릭트에는 Tacotarian 같은 식물성 멕시코 음식점이 있습니다. 당일 메뉴를 확인하세요. 식당 목록이 알레르기 안전을 인증하지는 않습니다."
+          "Look for clearly marked meat-free dishes and ask about sauces and shared fryers. Compare current menus in the Arts District or your chosen food hall; a restaurant listing does not certify allergy-safe preparation.",
+          "หาเมนูไม่ใส่เนื้อที่ระบุชัดและถามเรื่องซอสกับหม้อทอดร่วม เทียบเมนูปัจจุบันใน Arts District หรือฟู้ดฮอลล์ที่เลือก รายชื่อร้านไม่รับรองการเตรียมที่ปลอดภัยต่อผู้แพ้อาหาร",
+          "寻找明确标示的无肉菜肴，询问酱料与共用油锅。比较Arts District或所选美食广场的现行菜单；餐厅名录不认证过敏安全。",
+          "肉なしと明記された料理を選び、ソースや共用フライヤーを確認。Arts Districtや選んだフードホールの最新メニューを比較。店舗一覧はアレルギー対応を保証しません。",
+          "고기 없는 메뉴 표시와 소스, 공용 튀김기를 확인하세요. 아트 디스트릭트나 선택한 푸드 홀의 현재 메뉴를 비교하세요. 식당 목록은 알레르기에 안전한 조리를 보증하지 않습니다."
         ],
         "stops": [
           {
@@ -1038,8 +1038,8 @@
             "allowance": [20, 35],
             "mapQuery": "ARIA Las Vegas food hall",
             "source": {
-              "name": "Visit Las Vegas · Proper Eats",
-              "url": "https://www.visitlasvegas.com/listing/proper-eats-food-hall/38584/"
+              "name": "Proper Eats · official food hall at ARIA",
+              "url": "https://www.propereatslasvegas.com/"
             }
           },
           {
@@ -1075,11 +1075,11 @@
               "아츠 디스트릭트 · 동네 점심"
             ],
             "text": [
-              "Pause around Main Street between gallery visits. Choose a café lunch or plant-based tacos; Tacotarian is one example in the official district guide. Keep dinner flexible and check restaurant hours instead of assuming galleries and kitchens open together.",
-              "พักแถว Main Street ระหว่างชมแกลเลอรี เลือกมื้อในคาเฟ่หรือทาโก้จากพืช Tacotarian เป็นตัวอย่างในคู่มือย่านทางการ เผื่อมื้อค่ำยืดหยุ่นและตรวจเวลาร้าน ไม่ควรสมมติว่าครัวเปิดพร้อมแกลเลอรี",
-              "逛画廊之间在Main街附近休息，选咖啡馆午餐或植物性塔可。官方街区指南列有Tacotarian一例。晚餐保持灵活，单独核对餐厅时间，不要假设厨房与画廊同时营业。",
-              "ギャラリーの合間にMain Street周辺で休憩。カフェのランチや植物性タコスを選べます。公式地区ガイドのTacotarianは一例。夕食は柔軟にし、画廊と厨房が同時に開くとは考えず時間を確認。",
-              "갤러리 방문 사이 Main Street 주변에서 쉬어 가세요. 카페 점심이나 식물성 타코를 고를 수 있으며 공식 지역 안내의 Tacotarian이 한 예입니다. 저녁은 유연하게 두고 갤러리와 주방이 동시에 연다고 가정하지 말고 시간을 확인하세요."
+              "Pause around Main Street between gallery visits. Compare current menus for a café lunch or plant-based meal. Keep dinner flexible and check restaurant hours instead of assuming galleries and kitchens open together.",
+              "พักแถว Main Street ระหว่างชมแกลเลอรี เทียบเมนูปัจจุบันสำหรับมื้อคาเฟ่หรืออาหารจากพืช ยืดหยุ่นมื้อเย็นและตรวจเวลาเปิดร้านแทนสมมติว่าแกลเลอรีกับครัวเปิดพร้อมกัน",
+              "画廊参观之间在Main Street附近休息，比较现行菜单选择咖啡馆午餐或植物性餐食。晚餐保持灵活，核对餐厅时间，不要假设画廊与厨房同时营业。",
+              "ギャラリーの間はMain Street周辺で休憩。最新メニューからカフェのランチや植物性の料理を比較。夕食は柔軟にし、ギャラリーと厨房の時間が同じと思わず確認。",
+              "갤러리 방문 사이에 메인 스트리트 주변에서 쉬세요. 현재 메뉴를 비교해 카페 점심이나 식물성 식사를 고르세요. 저녁은 유연하게 두고 갤러리와 주방이 동시에 연다고 가정하지 말고 영업시간을 확인하세요."
             ],
             "allowance": [15, 30],
             "mapQuery": "Main Street Arts District Las Vegas restaurants",
@@ -1093,8 +1093,8 @@
     },
     {
       "placeId": "MA-0",
-      "checkedAt": "2026-10-06",
-      "reviewAfter": "2026-10-13",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-17",
       "translationsReviewed": [false, false, false, false, false],
       "intro": [
         "Build a Boston visit around its historic center, North End and Back Bay. Add one day at a time and use transit between neighborhoods; a short trip need not cover the entire Freedom Trail.",
@@ -1322,8 +1322,8 @@
         ]
       },
       "food": {
-        "checkedAt": "2026-10-06",
-        "reviewAfter": "2026-10-13",
+        "checkedAt": "2026-10-10",
+        "reviewAfter": "2026-10-17",
         "translationsReviewed": [false, false, false, false, false],
         "intro": [
           "Pair Back Bay seafood, a North End Italian lunch and a museum-day café with the three Boston days above. A lobster roll can be a special meal; use the actual menu price when replacing your food allowance.",
@@ -1414,8 +1414,8 @@
     },
     {
       "placeId": "IL-0",
-      "checkedAt": "2026-10-06",
-      "reviewAfter": "2026-10-13",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-17",
       "translationsReviewed": [false, false, false, false, false],
       "intro": [
         "Use the Loop, riverfront and Museum Campus as three focused Chicago days. Leave room for lakefront wind and transit, and choose one major paid activity per day.",
@@ -1643,8 +1643,8 @@
         ]
       },
       "food": {
-        "checkedAt": "2026-10-06",
-        "reviewAfter": "2026-10-13",
+        "checkedAt": "2026-10-10",
+        "reviewAfter": "2026-10-17",
         "translationsReviewed": [false, false, false, false, false],
         "intro": [
           "Match a Loop pizza lunch, River North sandwich and Museum Campus meal to the Chicago day plan. Choose one food stop each day and keep restaurant waits separate from any booked cruise or timed admission.",
@@ -1735,8 +1735,8 @@
     },
     {
       "placeId": "PA-0",
-      "checkedAt": "2026-10-06",
-      "reviewAfter": "2026-10-13",
+      "checkedAt": "2026-10-10",
+      "reviewAfter": "2026-10-17",
       "translationsReviewed": [false, false, false, false, false],
       "intro": [
         "Keep a short Philadelphia stay around Old City, Center City and one Parkway museum. After arriving at 30th Street Station, leave time for the hotel and luggage before starting a neighborhood visit.",
@@ -1964,8 +1964,8 @@
         ]
       },
       "food": {
-        "checkedAt": "2026-10-06",
-        "reviewAfter": "2026-10-13",
+        "checkedAt": "2026-10-10",
+        "reviewAfter": "2026-10-17",
         "translationsReviewed": [false, false, false, false, false],
         "intro": [
           "Pair an Old City lunch, Reading Terminal Market and a Fairmount café with the three days above. Use one nearby meal stop per day and update the food budget from the menu you actually choose.",

@@ -13,6 +13,14 @@ const issues = contentIssues(catalog);
 if (issues.length) throw Error(JSON.stringify(issues));
 const dictionary = JSON.parse(await fs.readFile('content/translations.json', 'utf8'));
 const cityContent = JSON.parse(await fs.readFile('content/city-guides.json', 'utf8'));
+const cityJavascript = ts.transpileModule(await fs.readFile('lib/city-content.ts', 'utf8'), {
+  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
+}).outputText;
+const { validateCityContent, cityContentIssues } = await import(
+  'data:text/javascript;base64,' + Buffer.from(cityJavascript).toString('base64')
+);
+const cityIssues = cityContentIssues(validateCityContent(cityContent));
+if (cityIssues.length) throw Error(JSON.stringify(cityIssues));
 const preparation = JSON.parse(await fs.readFile('content/travel-preparation.json', 'utf8'));
 function checkLocalizedText(value) {
   if (Array.isArray(value) && !value.length) throw Error('Empty guide content');

@@ -4,7 +4,7 @@ import { LANGUAGES, LOCALES } from '../../lib/i18n';
 import catalog from '../../content/states.json' with { type: 'json' };
 import cityContent from '../../content/city-guides.json' with { type: 'json' };
 import preparation from '../../content/travel-preparation.json' with { type: 'json' };
-import { EXPERIENCE_COPY } from '../../data/experience-copy';
+import { EXPERIENCE_COPY, x } from '../../data/experience-copy';
 import { destinationUrl } from '../../lib/destinations';
 const sample: Trip = {
   ...EMPTY_TRIP,
@@ -341,8 +341,12 @@ test('city plans, airport sources and budget breakdowns are published in all lan
     }
   }
   const sitemap = await (await page.request.get('http://127.0.0.1:5198/sitemap.xml')).text();
+  const lastCheck = [
+    cityContent.guides[0].checkedAt,
+    cityContent.guides[0].food.checkedAt,
+  ].sort()[1];
   expect(sitemap).toContain(
-    '<loc>https://roam.example/en/states/new-york/new-york-city/</loc><lastmod>2026-10-06</lastmod>',
+    `<loc>https://roam.example/en/states/new-york/new-york-city/</loc><lastmod>${lastCheck}</lastmod>`,
   );
   await context.close();
 });
@@ -683,7 +687,7 @@ test('all six city plans can be previewed, created and printed after explicit of
 }) => {
   await page.goto('/en/states/pennsylvania/philadelphia/');
   const preview = page.locator('.city-plan-preview');
-  await preview.locator('summary').click();
+  await preview.locator(':scope > summary').click();
   await preview.getByLabel(EXPERIENCE_COPY.cityPlanDays[0], { exact: true }).selectOption('3');
   await preview.getByRole('button', { name: EXPERIENCE_COPY.usePlan[0], exact: true }).click();
   await expect(page.locator('.day-strip button')).toHaveCount(3);
@@ -698,9 +702,15 @@ test('all six city plans can be previewed, created and printed after explicit of
   });
   await context.setOffline(true);
   await page.goto('/ko/states/pennsylvania/philadelphia/');
-  await preview.locator('summary').click();
+  await preview.locator(':scope > summary').click();
   await preview.getByLabel(EXPERIENCE_COPY.cityPlanDays[4], { exact: true }).selectOption('2');
   await expect(preview.locator('.template-day')).toHaveCount(2);
+  await expect(preview.locator('.city-plan-total').last()).toHaveText(
+    x('ko', 'cityPlanTotal', { minutes: 435 }),
+  );
+  await expect(preview.locator('.city-plan-alternative').last()).toContainText(
+    cityContent.guides[5].days[1].alternative[4],
+  );
   await preview.getByRole('button', { name: EXPERIENCE_COPY.usePlan[4], exact: true }).click();
   await expect(page.locator('.day-strip button')).toHaveCount(2);
   await page.reload();
@@ -727,11 +737,17 @@ test('all six city plans can be previewed, created and printed after explicit of
     await page
       .getByRole('button', { name: EXPERIENCE_COPY.cityPlanPreview[i], exact: true })
       .click();
-    await expect(preview.locator('summary')).toBeFocused();
+    await expect(preview.locator(':scope > summary')).toBeFocused();
     await preview
       .getByLabel(EXPERIENCE_COPY.cityPlanDays[i], { exact: true })
       .selectOption(String(days));
     await expect(preview.locator('.template-day')).toHaveCount(days);
+    await expect(preview.locator('.city-plan-total').last()).toHaveText(
+      x(LANGUAGES[i], 'cityPlanTotal', { minutes: 435 }),
+    );
+    await expect(preview.locator('.city-plan-alternative').last()).toContainText(
+      cityContent.guides[i].days[days - 1].alternative[i],
+    );
     await preview.getByRole('button', { name: EXPERIENCE_COPY.usePlan[i], exact: true }).click();
     await page.reload();
     await expect(page.locator('.day-strip button')).toHaveCount(days);
