@@ -33,6 +33,9 @@ export default function PlacePractical({
   const [facts, setFacts] = useState<Snapshot | null>(null);
   const [failed, setFailed] = useState(false);
   useEffect(() => {
+    setFacts(null);
+    setFailed(false);
+    if (!profile.officialUrl.startsWith('https://www.nps.gov/')) return;
     let active = true;
     snapshot ??= fetch('/data/parks.json')
       .then(async (r) => {
@@ -56,7 +59,7 @@ export default function PlacePractical({
     return () => {
       active = false;
     };
-  }, []);
+  }, [profile.id, profile.officialUrl]);
   const park = facts?.parks.find((p) => p.id === profile.id);
   const stale = facts ? Date.now() - Date.parse(facts.checkedAt) > 7 * 86400000 : false;
   const date = (value: string) =>

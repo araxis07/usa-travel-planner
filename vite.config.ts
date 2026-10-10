@@ -15,8 +15,15 @@ export default defineConfig(({ mode }) => ({
       enforce: 'pre',
       resolveId(id) {
         if (id === 'virtual:state-details') return '\0virtual:state-details';
+        if (id === 'virtual:city-details') return '\0virtual:city-details';
       },
       async load(id) {
+        if (id === '\0virtual:city-details') {
+          const path = new URL('./content/city-guides.json', import.meta.url);
+          this.addWatchFile(fileURLToPath(path));
+          const content = JSON.parse(await readFile(path, 'utf8'));
+          return `export default {${content.guides.map((g: { placeId: string }) => `"${g.placeId}":()=>import("/content/city-guides.json?city=${g.placeId}")`).join(',')}}`;
+        }
         if (id !== '\0virtual:state-details') return;
         const path = new URL('./content/states.json', import.meta.url);
         this.addWatchFile(fileURLToPath(path));
@@ -28,6 +35,16 @@ export default defineConfig(({ mode }) => ({
           .join(',')}}`;
       },
       transform(source, id) {
+        if (/\/content\/city-guides\.json\?(copy|city=[A-Z]{2}-0)$/.test(id)) {
+          const content = JSON.parse(source);
+          return JSON.stringify(
+            id.endsWith('?copy')
+              ? { copy: content.copy }
+              : content.guides.find(
+                  (g: { placeId: string }) => g.placeId === id.split('?city=')[1],
+                ),
+          );
+        }
         if (!/\/content\/states\.json\?(overview|photos|details=[A-Z]{2})$/.test(id)) return;
         const catalog = JSON.parse(source) as Catalog;
         if (id.includes('?details=')) {
@@ -79,6 +96,8 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          if (/\/content\/city-guides\.json\?city=[A-Z]{2}-0$/.test(id))
+            return 'city-details-' + id.split('?city=')[1];
           if (id.endsWith('/content/states.json?overview')) return 'state-guides';
           if (id.endsWith('/content/states.json?photos')) return 'photo-details';
           if (/\/content\/states\.json\?details=[A-Z]{2}$/.test(id))

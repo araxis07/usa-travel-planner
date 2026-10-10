@@ -52,6 +52,16 @@ const guidePreloads = Object.fromEntries(
     modulePreloads('components/DestinationPage.tsx', `content/states.json?details=${state.code}`),
   ]),
 );
+const cityPreloads = Object.fromEntries(
+  cityContent.guides.map((g) => [
+    g.placeId,
+    modulePreloads(
+      'components/DestinationPage.tsx',
+      `content/states.json?details=${g.placeId.slice(0, 2)}`,
+      `content/city-guides.json?city=${g.placeId}`,
+    ),
+  ]),
+);
 const slug = (name) =>
   name
     .normalize('NFKD')
@@ -95,7 +105,7 @@ function renderCityGuide(guide, l) {
   const days = guide.days
     .map(
       (day, i) =>
-        `<details class="guide-details"${i === 0 ? ' open' : ''}><summary>${text(copy.day).replace('{day}', String(i + 1))} · ${text(day.title)}</summary><p>${text(day.text)}</p><p><strong>${text(copy.alternative)}: </strong>${text(day.alternative)}</p>${day.source ? sourceLinks([day.source]) : ''}</details>`,
+        `<details class="guide-details"${i === 0 ? ' open' : ''}><summary>${text(copy.day).replace('{day}', String(i + 1))} · ${text(day.title)}</summary><p>${text(day.text)}</p><p><strong>${text(copy.alternative)}: </strong>${text(day.alternative)}</p>${day.arrival ? `<div class="arrival-reference"><p><strong>${text(day.arrival.label)}</strong></p><p>${text(day.arrival.note)}</p><a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(day.arrival.coordinates.join(','))}">${text(copy.map)}</a> · ${sourceLinks([day.arrival.source])} · <a href="${escape(day.arrival.coordinateSource)}">© OpenStreetMap contributors</a> · <a href="${escape(day.arrival.coordinateLicense)}">ODbL</a><p>${text(copy.checked)} · <time datetime="${day.arrival.checkedAt}">${day.arrival.checkedAt}</time></p></div>` : ''}${day.source ? sourceLinks([day.source]) : ''}</details>`,
     )
     .join('');
   const budgets = copy.tiers
@@ -189,7 +199,7 @@ function render(lang, state, index) {
     )
     .replace(
       '</head>',
-      `${state ? guidePreloads[state.code] : ''}${origin ? `<meta name="roam:site-origin" content="${origin}"/>` : ''}${social}${alternatives}${json}</head>`,
+      `${cityGuide ? cityPreloads[cityGuide.placeId] : state ? guidePreloads[state.code] : ''}${origin ? `<meta name="roam:site-origin" content="${origin}"/>` : ''}${social}${alternatives}${json}</head>`,
     )
     .replace('<div id="root"></div>', `<div id="root">${content}</div>`);
   return {

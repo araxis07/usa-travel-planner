@@ -601,6 +601,35 @@ export const EXPERIENCE_COPY = {
     '保存した写真はありません',
     '다운로드한 사진 없음',
   ],
+  arrival: ['Arrival reference', 'จุดเริ่มเข้าชม', '到达参考点', '訪問開始地点', '방문 시작 지점'],
+  arrivalChecked: [
+    'Source checked {date}',
+    'ตรวจแหล่งข้อมูล {date}',
+    '来源核对于{date}',
+    '出典確認 {date}',
+    '출처 확인 {date}',
+  ],
+  arrivalLimit: [
+    'This pin starts the suggested visit. Confirm access on arrival; remove it if you choose another attraction.',
+    'หมุดนี้เป็นจุดเริ่มของกิจกรรมที่แนะนำ ตรวจทางเข้าหน้างาน และลบหมุดหากเลือกสถานที่อื่น',
+    '此标记是建议参观的起点。到达时确认入口；改选景点时请移除。',
+    'おすすめの訪問の開始地点です。現地で入口を確認し、別の施設を選ぶ場合は削除してください。',
+    '추천 방문의 시작 지점입니다. 현장에서 입구를 확인하고 다른 명소를 선택하면 삭제하세요.',
+  ],
+  removeArrival: [
+    'Remove arrival reference',
+    'ลบจุดเริ่มเข้าชม',
+    '移除到达参考点',
+    '訪問開始地点を削除',
+    '방문 시작 지점 삭제',
+  ],
+  mappedRouteNote: [
+    'Use 2–10 mapped stops. Driving estimates exclude live traffic, breaks and seasonal closures. Activities without a pin are excluded. Requests send these coordinates to the routing service.',
+    'ใช้จุดที่มีหมุด 2–10 จุด เวลาขับรถไม่รวมจราจรจริง เวลาพัก และการปิดตามฤดูกาล กิจกรรมที่ไม่มีหมุดไม่ถูกนำมาคำนวณ คำขอจะส่งพิกัดไปยังบริการเส้นทาง',
+    '使用2–10个有标记的地点。驾车估算不含实时路况、休息与季节性关闭；无标记活动不计入。请求会向路线服务发送这些坐标。',
+    '地図上の2〜10地点を使用。運転の目安はリアルタイムの交通、休憩、季節閉鎖を含まず、地点のない活動は除外します。リクエストで座標を経路サービスに送信します。',
+    '지도에 표시된 2–10곳을 사용합니다. 운전 예상 시간은 실시간 교통, 휴식, 계절 폐쇄를 제외하며 핀이 없는 활동은 포함하지 않습니다. 요청 시 좌표를 경로 서비스로 전송합니다.',
+  ],
   readMore: ['Read the guide', 'อ่านคู่มือ', '阅读指南', 'ガイドを読む', '가이드 읽기'],
 } as const;
 

@@ -1,6 +1,7 @@
 import { EMPTY_TRIP, STATES, type Trip, type TripStop, type TripActivity } from '../data/travel';
 import { validateExpenses } from './budget';
 import { recoverLocalTransaction } from './localTransaction';
+import { validateArrival } from './arrival';
 const codes = new Set(STATES.map((state) => state.code));
 export function readLocal<T>(key: string, fallback: T, validate: (data: unknown) => T): T {
   try {
@@ -80,6 +81,7 @@ export function validateTrip(value: unknown): Trip {
               !Number.isInteger(a.bufferMinutes) ||
               a.bufferMinutes < 0 ||
               a.bufferMinutes > 360)) ||
+          (a.arrival !== undefined && a.placeId !== undefined) ||
           (a.placeId !== undefined &&
             (typeof a.placeId !== 'string' ||
               !/^[A-Z]{2}-[0-2]$/.test(a.placeId) ||
@@ -94,6 +96,7 @@ export function validateTrip(value: unknown): Trip {
           title: a.title.trim(),
           minutes: a.minutes,
           notes: a.notes,
+          ...(a.arrival !== undefined ? { arrival: validateArrival(a.arrival) } : {}),
           ...(typeof a.startTime === 'string' ? { startTime: a.startTime } : {}),
           ...(typeof a.bufferMinutes === 'number' ? { bufferMinutes: a.bufferMinutes } : {}),
           ...(typeof a.placeId === 'string' ? { placeId: a.placeId } : {}),

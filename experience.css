@@ -2467,3 +2467,14 @@ html[lang='ko'] .discovery-place h3 {
     display: none !important;
   }
 }
+.arrival-reference {
+  border-left: 3px solid #b73e33;
+  padding: 4px 0 4px 16px;
+  margin: 16px 0;
+  overflow-wrap: anywhere;
+}
+@media print {
+  .print-itinerary .arrival-reference a::after {
+    content: ' (' attr(href) ')';
+  }
+}

@@ -7,7 +7,14 @@ import { dayTimeline } from '../lib/timeline';
 import { ITINERARIES, itineraryTrip, starterTrip } from '../data/itineraries';
 import { validateCollections } from '../lib/collections';
 import { EXPERIENCE_COPY, x } from '../data/experience-copy';
-import { cityGuideTrip, findCityGuide } from '../components/CityGuide';
+import { cityGuideTrip } from '../lib/city-plan';
+import cityContent from '../content/city-guides.json' with { type: 'json' };
+import { validateCityContent } from '../lib/city-content';
+import type { Arrival } from '../lib/arrival';
+import { activityLocation } from '../lib/destinations';
+import { readFileSync } from 'node:fs';
+const guides = validateCityContent(cityContent).guides;
+const findCityGuide = (id: string) => guides.find((guide) => guide.placeId === id);
 
 const CITY_PLAN_CASES = [
   ['NY-0', 'new-york/new-york-city'],
@@ -103,6 +110,7 @@ test('six city plans validate 90 combinations and preserve visits, food and weat
           expect(timeline[1].activity.notes).toContain(guide.days[day - 1].alternative[l]);
           expect(timeline[2].activity.title).toBe(guide.food.stops[day - 1].title[l]);
           expect(timeline.every((a) => !a.activity.placeId)).toBe(true);
+          expect(timeline[1].activity.arrival).toEqual(guide.days[day - 1].arrival);
         }
       }
     }
@@ -110,6 +118,124 @@ test('six city plans validate 90 combinations and preserve visits, food and weat
       expect(() => cityGuideTrip(guide, days, 'en')).toThrow();
     expect(() => cityGuideTrip({ ...guide, placeId: 'CA-1' }, 3, 'en')).toThrow();
   }
+});
+
+test('Philadelphia arrival references survive JSON and library boundaries and reject unsafe imports', () => {
+  const trip = cityGuideTrip(findCityGuide('PA-0')!, 3, 'en');
+  const saved = validateTrip(JSON.parse(JSON.stringify(trip)));
+  expect(saved.stops[0].activities!.filter((a) => a.arrival)).toHaveLength(3);
+  expect(saved).toEqual(trip);
+  expect(activityLocation(saved.stops[0].activities![1], 'th')?.reference).toBe(
+    findCityGuide('PA-0')!.days[0].arrival!.label[1],
+  );
+  for (const arrival of [
+    { ...trip.stops[0].activities![1].arrival!, coordinates: [NaN, -75] },
+    { ...trip.stops[0].activities![1].arrival!, coordinates: [91, -75] },
+    { ...trip.stops[0].activities![1].arrival!, coordinates: [40, -181] },
+    {
+      ...trip.stops[0].activities![1].arrival!,
+      source: { name: 'Unsafe', url: 'javascript:alert(1)' },
+    },
+    {
+      ...trip.stops[0].activities![1].arrival!,
+      coordinateSource: 'https://owner:secret@example.org/',
+    },
+    { ...trip.stops[0].activities![1].arrival!, checkedAt: '2026-02-30' },
+    { ...trip.stops[0].activities![1].arrival!, coordinateLicense: 'https://example.org/license' },
+    { ...trip.stops[0].activities![1].arrival!, label: ['Only English'] },
+  ]) {
+    const invalid = structuredClone(trip);
+    invalid.stops[0].activities![1].arrival = arrival as Arrival;
+    expect(() => validateTrip(invalid)).toThrow();
+    const collection = structuredClone(validateCityContent(cityContent));
+    collection.guides[5].days[0].arrival = arrival as Arrival;
+    expect(() => validateCityContent(collection)).toThrow();
+  }
+  const conflicting = structuredClone(trip);
+  conflicting.stops[0].activities![1].placeId = 'PA-0';
+  expect(() => validateTrip(conflicting)).toThrow();
+});
+
+test('Philadelphia pins route only on request, export and print their sources, and can be removed', async ({
+  page,
+  isMobile,
+}) => {
+  const trip = cityGuideTrip(findCityGuide('PA-0')!, 3, 'en');
+  trip.stops[0].activities![5].day = 1;
+  let requested = '';
+  await page.route('https://routing.openstreetmap.de/**', async (route) => {
+    requested = route.request().url();
+    await route.fulfill({
+      json: {
+        code: 'Ok',
+        routes: [
+          {
+            distance: 2100,
+            duration: 480,
+            geometry: {
+              coordinates: [
+                [-75.1491843, 39.9486324],
+                [-75.1594921, 39.9533467],
+              ],
+            },
+          },
+        ],
+      },
+    });
+  });
+  await page.addInitScript((trip) => {
+    if (!localStorage.getItem('roam.trip.v1'))
+      localStorage.setItem('roam.trip.v1', JSON.stringify(trip));
+  }, trip);
+  await page.goto('/en/?view=planner');
+  await expect(page.locator('.day-directions > li')).toHaveCount(2);
+  await expect(page.locator('.day-directions')).toContainText(
+    trip.stops[0].activities![1].arrival!.label[0],
+  );
+  expect(requested).toBe('');
+  if (isMobile)
+    await page
+      .locator('.mobile-workspace-switch')
+      .getByRole('button', { name: x('en', 'map'), exact: true })
+      .click();
+  await page.getByRole('button', { name: 'Calculate driving route', exact: true }).click();
+  await expect.poll(() => requested).toContain('-75.1491843,39.9486324;-75.1594921,39.9533467');
+  await page.emulateMedia({ media: 'print' });
+  await expect(page.locator('.print-itinerary .arrival-reference')).toHaveCount(3);
+  await expect(page.locator('.print-itinerary')).toContainText('Source checked 2026-10-10');
+  await page.emulateMedia({ media: 'screen' });
+  await page.getByRole('button', { name: 'Trip overview', exact: true }).click();
+  const downloadEvent = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download my itinerary', exact: true }).click();
+  const download = await downloadEvent;
+  const text = readFileSync((await download.path())!, 'utf8');
+  for (const day of findCityGuide('PA-0')!.days) {
+    expect(text).toContain(day.arrival!.coordinateSource);
+    expect(text).toContain(day.arrival!.source.url);
+  }
+  const backupEvent = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export backup', exact: true }).click();
+  const backup = JSON.parse(readFileSync((await (await backupEvent).path())!, 'utf8'));
+  expect(validateTrip(backup.trip)).toEqual(trip);
+  await page.getByRole('button', { name: 'Daily plan', exact: true }).click();
+  if (isMobile)
+    await page
+      .locator('.mobile-workspace-switch')
+      .getByRole('button', { name: x('en', 'list'), exact: true })
+      .click();
+  const visit = page
+    .locator('.day-activity')
+    .filter({ has: page.locator('h5', { hasText: findCityGuide('PA-0')!.days[0].title[0] }) });
+  await visit.getByRole('button', { name: 'Edit activity', exact: true }).click();
+  await visit.getByRole('button', { name: 'Remove arrival reference', exact: true }).click();
+  await expect(page.locator('.day-directions > li')).toHaveCount(1);
+  await page.reload();
+  await expect(page.locator('.day-directions > li')).toHaveCount(1);
+  const saved = validateTrip(
+    await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!)),
+  );
+  expect(saved.stops[0].activities![1].arrival).toBeUndefined();
+  expect(saved.stops[0].activities![1].notes).toBe(trip.stops[0].activities![1].notes);
 });
 
 for (const [id, path] of CITY_PLAN_CASES) {

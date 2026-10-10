@@ -13,7 +13,6 @@ import {
   activityName,
   findPlace,
   locationKindLabel,
-  mapsQuery,
   PERIODS,
   placeId,
   sortedActivities,
@@ -21,6 +20,8 @@ import {
 import RouteMap from './RouteMap';
 import Icon from './Icon';
 import { x } from '../data/experience-copy';
+import ArrivalReference from './ArrivalReference';
+import { activityLocation } from '../lib/destinations';
 import { dayTimeline, clockLabel } from '../lib/timeline';
 
 export default function DailyPlanner({
@@ -141,16 +142,17 @@ export default function DailyPlanner({
     update(next);
   }
   const points = today.flatMap((a) => {
-    const p = a.placeId ? findPlace(a.placeId) : undefined;
+    const p = activityLocation(a, lang);
     return p?.coordinates
       ? [
           {
             id: a.id,
             name: activityName(a, lang),
             coordinates: p.coordinates as [number, number],
-            query: mapsQuery(p.state, p.index),
+            query: p.query,
             kind: p.kind,
-            reference: local(p.profile.locationLabel, lang),
+            reference: p.reference,
+            arrival: a.arrival,
           },
         ]
       : [];
@@ -509,6 +511,17 @@ export default function DailyPlanner({
                       <p className="activity-notes-preview">{a.notes}</p>
                     )}
                     <div hidden={editing !== a.id} className="activity-editor">
+                      {a.arrival && (
+                        <>
+                          <ArrivalReference arrival={a.arrival} lang={lang} />
+                          <button
+                            className="text-link"
+                            onClick={() => edit(a.id, { arrival: undefined })}
+                          >
+                            {x(lang, 'removeArrival')}
+                          </button>
+                        </>
+                      )}
                       <div className="activity-edit-row">
                         <label>
                           {t('Day in this state', 'วันที่ในรัฐนี้')}
@@ -683,19 +696,25 @@ export default function DailyPlanner({
               {points.map((point, i) => (
                 <li key={point.id}>
                   <span>{point.name}</span>
-                  <small className="day-location-reference">
-                    {locationKindLabel(point.kind, lang)}
-                    {point.kind !== 'area' && ` · ${point.reference}`}
-                  </small>
-                  <a
-                    className="text-link"
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(point.query)}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {t('Open in Maps', 'เปิดในแผนที่')}
-                    <Icon name="external" size={14} />
-                  </a>
+                  {point.arrival ? (
+                    <ArrivalReference arrival={point.arrival} lang={lang} />
+                  ) : (
+                    <>
+                      <small className="day-location-reference">
+                        {locationKindLabel(point.kind, lang)}
+                        {point.kind !== 'area' && ` · ${point.reference}`}
+                      </small>
+                      <a
+                        className="text-link"
+                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(point.query)}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {t('Open in Maps', 'เปิดในแผนที่')}
+                        <Icon name="external" size={14} />
+                      </a>
+                    </>
+                  )}
                   {i > 0 && (
                     <a
                       className="text-link"

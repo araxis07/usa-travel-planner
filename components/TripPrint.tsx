@@ -7,6 +7,7 @@ import { dayTimeline, clockLabel } from '../lib/timeline';
 import { checklistItems, checklistLabel } from './TripChecklist';
 import { budgetTotals } from '../lib/budget';
 import { w } from '../data/workspace-copy';
+import ArrivalReference from './ArrivalReference';
 export default function TripPrint({
   trip,
   lang,
@@ -80,6 +81,7 @@ export default function TripPrint({
                           · {a.minutes} {t('minutes', 'นาที')}
                         </span>
                         {a.notes && <p className="preserve-lines">{a.notes}</p>}
+                        {a.arrival && <ArrivalReference arrival={a.arrival} lang={lang} />}
                       </li>
                     ))}
                   </ol>

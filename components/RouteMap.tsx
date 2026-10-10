@@ -3,6 +3,7 @@ import type { Map as LeafletMap } from 'leaflet';
 import { drivingRoute, type RoutePoint, type DrivingRoute } from '../lib/routing';
 import { translate, LOCALES, type Language } from '../lib/i18n';
 import Icon from './Icon';
+import { x } from '../data/experience-copy';
 
 export default function RouteMap({
   points,
@@ -201,14 +202,7 @@ export default function RouteMap({
           'หมุดเป็นจุดอ้างอิงสำหรับวางแผน โปรดยืนยันทางเข้า ที่จอดรถ และการเข้าถึงก่อนเดินทาง',
         )}
       </p>
-      {routing && (
-        <p className="fine-print">
-          {t(
-            'Use 2–10 mapped stops. Driving estimates exclude live traffic, breaks, and seasonal closures. Custom activities are not included. Requests send these coordinates to the routing service.',
-            'ใช้สถานที่บนแผนที่ 2–10 จุด เวลาขับรถไม่รวมจราจรจริง เวลาพัก และการปิดตามฤดูกาล กิจกรรมที่ตั้งเองไม่ถูกนำมาคำนวณ คำขอจะส่งพิกัดเหล่านี้ไปยังบริการเส้นทาง',
-          )}
-        </p>
-      )}
+      {routing && <p className="fine-print">{x(lang, 'mappedRouteNote')}</p>}
       <div className="map-credits">
         <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noreferrer">
           {t('Improve the map', 'ปรับปรุงข้อมูลแผนที่')}

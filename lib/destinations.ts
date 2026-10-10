@@ -6,7 +6,7 @@ import {
   type TripActivity,
   type PlaceProfile,
 } from '../data/travel';
-import { translate } from './i18n';
+import { translate, languageIndex } from './i18n';
 
 export const slug = (name: string) =>
   name
@@ -68,6 +68,26 @@ export function findPlace(id: string) {
 export function activityName(activity: TripActivity, lang: Language) {
   const place = activity.placeId ? findPlace(activity.placeId) : undefined;
   return place ? local(place.state.placeNames[place.index], lang) : activity.title;
+}
+export function activityLocation(activity: TripActivity, lang: Language) {
+  if (activity.arrival) {
+    const a = activity.arrival;
+    return {
+      coordinates: a.coordinates,
+      query: a.coordinates.join(','),
+      kind: 'entrance' as const,
+      reference: a.label[languageIndex(lang)],
+    };
+  }
+  const p = activity.placeId ? findPlace(activity.placeId) : undefined;
+  return (
+    p && {
+      coordinates: p.coordinates,
+      query: mapsQuery(p.state, p.index),
+      kind: p.kind,
+      reference: local(p.profile.locationLabel, lang),
+    }
+  );
 }
 export const PERIODS = ['morning', 'afternoon', 'evening'] as const;
 export const sortedActivities = (activities: TripActivity[]) =>

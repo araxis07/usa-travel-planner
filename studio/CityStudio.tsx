@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { cityContentIssues, type City, type CityContent } from '../lib/city-content';
+import {
+  cityContentIssues,
+  cityReviewQueue,
+  type City,
+  type CityContent,
+} from '../lib/city-content';
 import { LANGUAGES, LANGUAGE_NAMES, type Language } from '../lib/i18n';
 import CityGuide from '../components/CityGuide';
+import ArrivalReference from '../components/ArrivalReference';
 import '../experience.css';
 
 interface Session {
@@ -18,6 +24,8 @@ export default function CityStudio() {
   const [preview, setPreview] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
+  const [reviewFilter, setReviewFilter] = useState('due');
+  const [reviewTarget, setReviewTarget] = useState<'city' | 'food' | null>(null);
   const snapshot = useRef('');
   const dirty = !!content && JSON.stringify(content) !== snapshot.current;
   const accept = (data: Session) => {
@@ -41,6 +49,13 @@ export default function CityStudio() {
   useEffect(() => {
     void load();
   }, []);
+  useEffect(() => {
+    if (!reviewTarget || preview) return;
+    const heading = document.getElementById(`studio-city-${reviewTarget}-heading`);
+    heading?.scrollIntoView({ block: 'start' });
+    heading?.focus({ preventScroll: true });
+    setReviewTarget(null);
+  }, [selected, preview, reviewTarget]);
   useEffect(() => {
     const warn = (e: BeforeUnloadEvent) => {
       if (dirty) e.preventDefault();
@@ -84,6 +99,14 @@ export default function CityStudio() {
   const l = LANGUAGES.indexOf(language);
   const guide = content?.guides.find((g) => g.placeId === selected);
   const issues = content ? cityContentIssues(content) : [];
+  const reviews = content ? cityReviewQueue(content) : [];
+  const queue = reviews.filter(
+    (r) =>
+      reviewFilter === 'all' ||
+      (reviewFilter === 'due' && (r.due || r.undated)) ||
+      (reviewFilter === 'soon' && r.soon) ||
+      (reviewFilter === 'languages' && r.languages.length),
+  );
   const change = (update: (g: City) => void, food = false, languageOnly = false, reset = true) => {
     setContent((value) => {
       if (!value) return value;
@@ -248,6 +271,49 @@ export default function CityStudio() {
               : 'คู่มือเมืองที่เผยแพร่ล่าสุด'}
         </span>
       </div>
+      {content && (
+        <details className="studio-review-queue studio-city-queue">
+          <summary>
+            คิวตรวจคู่มือเมืองและอาหาร ({reviews.filter((r) => r.due || r.undated).length} ถึงกำหนด
+            · {reviews.filter((r) => r.soon).length} ภายใน 7 วัน ·{' '}
+            {reviews.filter((r) => r.languages.length).length} รอตรวจภาษา)
+          </summary>
+          <p>วันที่ใช้ UTC เมืองและอาหารแยกกัน การเปิดรายการไม่เปลี่ยนวันที่หรือยืนยันคำแปล</p>
+          <label>
+            แสดงคิวตรวจ
+            <select value={reviewFilter} onChange={(e) => setReviewFilter(e.target.value)}>
+              <option value="due">ถึงกำหนด / ต้องเติมวันที่</option>
+              <option value="soon">ถึงกำหนดภายใน 7 วัน</option>
+              <option value="languages">ภาษารอตรวจ</option>
+              <option value="all">คู่มือทั้งหมด</option>
+            </select>
+          </label>
+          {!queue.length && <p role="status">ไม่มีรายการในคิวนี้</p>}
+          <ul>
+            {queue.map((r) => (
+              <li key={r.placeId + r.section}>
+                <button
+                  className="button button-outline"
+                  disabled={busy}
+                  onClick={() => {
+                    setSelected(r.placeId);
+                    setPreview(false);
+                    setReviewTarget(r.section);
+                  }}
+                >
+                  {r.airport} · {r.placeId} · {r.section === 'food' ? 'อาหาร' : 'เมือง'} ·{' '}
+                  {r.undated ? 'เติมวันที่ตรวจ' : r.reviewAfter}
+                </button>
+                <p>
+                  {r.languages.length
+                    ? `ภาษารอตรวจ: ${r.languages.map((i) => LANGUAGE_NAMES[LANGUAGES[i]]).join(' · ')}`
+                    : 'ตรวจคำแปลครบแล้ว'}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
       {content && guide && (
         <div className="studio-workspace studio-city-workspace">
           <aside className="studio-sidebar">
@@ -326,7 +392,9 @@ export default function CityStudio() {
               <fieldset disabled={busy} className="studio-fields">
                 <legend className="sr-only">แก้คู่มือเมือง {selected}</legend>
                 <section>
-                  <h3>ภาพรวมและการตรวจทาน</h3>
+                  <h3 id="studio-city-city-heading" tabIndex={-1}>
+                    ภาพรวมและการตรวจทาน
+                  </h3>
                   {text('คำแนะนำเมือง', guide.intro, (g, v) => {
                     g.intro[l] = v;
                   })}
@@ -367,6 +435,7 @@ export default function CityStudio() {
                       {text('รายละเอียดกิจกรรม', d.text, (g, v) => {
                         g.days[i].text[l] = v;
                       })}
+                      {d.arrival && <ArrivalReference arrival={d.arrival} lang={language} />}
                       {text('แผนสำรองตามอากาศ', d.alternative, (g, v) => {
                         g.days[i].alternative[l] = v;
                       })}
@@ -445,7 +514,9 @@ export default function CityStudio() {
                   })}
                 </section>
                 <section>
-                  <h3>อาหารและมื้อใกล้ทาง</h3>
+                  <h3 id="studio-city-food-heading" tabIndex={-1}>
+                    อาหารและมื้อใกล้ทาง
+                  </h3>
                   {text(
                     'คำแนะนำอาหาร',
                     guide.food.intro,

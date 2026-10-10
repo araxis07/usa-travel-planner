@@ -1836,6 +1836,30 @@
           "source": {
             "name": "NPS · Independence Hall tickets and screening",
             "url": "https://www.nps.gov/inde/planyourvisit/independencehall.htm"
+          },
+          "arrival": {
+            "label": [
+              "Independence Hall · 5th Street security approach",
+              "Independence Hall · ทางไปจุดตรวจฝั่ง 5th Street",
+              "Independence Hall · 5th Street安检入口通道",
+              "Independence Hall · 5th Streetの保安検査への入口",
+              "독립기념관 · 5th Street 보안 검색 진입로"
+            ],
+            "note": [
+              "Approach from 5th Street between Chestnut and Walnut. Screening is south of the Hall; follow onsite signs and check tickets for your chosen session.",
+              "เข้าจาก 5th Street ระหว่าง Chestnut กับ Walnut จุดตรวจอยู่ทางใต้ของ Hall ตามป้ายหน้างานและตรวจตั๋วของรอบที่เลือก",
+              "从Chestnut与Walnut之间的5th Street进入。安检在Hall南侧；遵循现场标识并核对所选场次票务。",
+              "ChestnutとWalnutの間の5th Streetから進みます。保安検査はHallの南側。現地の案内と予約回のチケットを確認してください。",
+              "Chestnut과 Walnut 사이의 5th Street에서 접근하세요. 검색대는 기념관 남쪽입니다. 현장 표지와 선택한 회차의 티켓을 확인하세요."
+            ],
+            "coordinates": [39.9486324, -75.1491843],
+            "source": {
+              "name": "NPS · Independence Hall entrance",
+              "url": "https://www.nps.gov/inde/planyourvisit/independencehall.htm"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/3590076334",
+            "checkedAt": "2026-10-10",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/"
           }
         },
         {
@@ -1863,6 +1887,30 @@
           "source": {
             "name": "Reading Terminal Market · merchants and visits",
             "url": "https://readingterminalmarket.org/"
+          },
+          "arrival": {
+            "label": [
+              "Reading Terminal Market · 12th Street entrance",
+              "Reading Terminal Market · ทางเข้าฝั่ง 12th Street",
+              "Reading Terminal Market · 12th Street入口",
+              "Reading Terminal Market · 12th Street側入口",
+              "Reading Terminal Market · 12th Street 입구"
+            ],
+            "note": [
+              "Use 51 N 12th Street for GPS. Check the market map for your door; automatic openers are at Door 6 on 12th Street and Door 9 on Filbert.",
+              "ใช้ 51 N 12th Street เป็นที่อยู่ GPS ตรวจประตูจากแผนที่ตลาด ประตูเปิดอัตโนมัติคือ Door 6 ฝั่ง 12th Street และ Door 9 ฝั่ง Filbert",
+              "导航使用51 N 12th Street。请核对市场入口图；12th Street的6号门及Filbert的9号门有自动开门装置。",
+              "GPS住所は51 N 12th Street。市場の案内図で入口を確認。自動開閉は12th Streetの6番とFilbertの9番です。",
+              "GPS 주소는 51 N 12th Street입니다. 시장 지도로 입구를 확인하세요. 자동문은 12th Street 6번과 Filbert 9번에 있습니다."
+            ],
+            "coordinates": [39.9533467, -75.1594921],
+            "source": {
+              "name": "Reading Terminal Market · visitor FAQ and entrances",
+              "url": "https://readingterminalmarket.org/frequently-asked-questions/"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/14214794491",
+            "checkedAt": "2026-10-10",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/"
           }
         },
         {
@@ -1890,6 +1938,30 @@
           "source": {
             "name": "Philadelphia Museum of Art · visitor guidance",
             "url": "https://www.philamuseum.org/know-before-you-go"
+          },
+          "arrival": {
+            "label": [
+              "Philadelphia Museum of Art · West Entrance",
+              "Philadelphia Museum of Art · West Entrance",
+              "Philadelphia Museum of Art · 西入口",
+              "Philadelphia Museum of Art · 西側入口",
+              "필라델피아 미술관 · 서쪽 입구"
+            ],
+            "note": [
+              "Start at the West Entrance by the West Terrace. Check the museum’s current opening days and admission; this pin is not the Rocky Steps.",
+              "เริ่มที่ West Entrance ใกล้ West Terrace ตรวจวันเปิดและเงื่อนไขเข้าชมปัจจุบัน หมุดนี้ไม่ใช่ Rocky Steps",
+              "从West Terrace旁的西入口开始。核对当前开放日与入馆规定；此标记不是Rocky Steps。",
+              "West Terraceそばの西側入口から。最新の営業日と入館条件を確認。この地点はRocky Stepsではありません。",
+              "West Terrace 옆 서쪽 입구에서 시작하세요. 현재 운영일과 입장 조건을 확인하세요. 이 핀은 Rocky Steps가 아닙니다."
+            ],
+            "coordinates": [39.965633, -75.181009],
+            "source": {
+              "name": "Philadelphia Museum of Art · Main Building",
+              "url": "https://www.philamuseum.org/main-building"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/3787857983",
+            "checkedAt": "2026-10-10",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/"
           }
         }
       ],

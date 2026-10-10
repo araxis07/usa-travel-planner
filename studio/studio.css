@@ -23,6 +23,28 @@
 .studio-city-workspace {
   margin-top: 24px;
 }
+.studio-city-queue {
+  margin: 24px 4vw;
+}
+.studio-city-queue label {
+  display: grid;
+  gap: 8px;
+  max-width: 360px;
+}
+.studio-city-queue select {
+  min-height: 44px;
+  padding: 8px;
+}
+.studio-city-queue ul {
+  padding-left: 20px;
+}
+.studio-city-queue li {
+  margin: 16px 0;
+}
+.studio-city-queue button {
+  white-space: normal;
+  text-align: left;
+}
 .studio-city-workspace h3 {
   margin-bottom: 20px;
 }

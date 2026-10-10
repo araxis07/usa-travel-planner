@@ -210,7 +210,10 @@ test('city guides localize neighborhood links, airport steps and complete group 
         if (i) await item.locator('summary').press('Enter');
         await expect(item).toContainText(day.alternative[l]);
         if ('source' in day)
-          await expect(item.locator('a')).toHaveAttribute('href', day.source.url);
+          await expect(item.locator(':scope > .city-guide-links a')).toHaveAttribute(
+            'href',
+            day.source.url,
+          );
       }
       await page.locator('.guide-toc a[href="#guide-airport"]').click();
       await expect(section.locator('.city-airport-steps li')).toHaveCount(3);

@@ -1,5 +1,5 @@
 import type { TripActivity } from '../data/travel';
-import { sortedActivities, findPlace } from './destinations';
+import { sortedActivities, activityLocation } from './destinations';
 export const clockMinutes = (value: string) =>
   Number(value.slice(0, 2)) * 60 + Number(value.slice(3));
 export const clockLabel = (minutes: number) =>
@@ -16,7 +16,7 @@ export function dayTimeline(activities: TripActivity[]) {
     const buffer = activity.bufferMinutes ?? 30;
     const overlap = start < previousEnd || end + buffer > 1440;
     previousEnd = Math.max(previousEnd, end + buffer);
-    const point = activity.placeId ? findPlace(activity.placeId)?.coordinates : undefined;
+    const point = activityLocation(activity, 'en')?.coordinates;
     let far = false;
     if (point && previousPoint) {
       const radians = Math.PI / 180;

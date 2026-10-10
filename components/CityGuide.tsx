@@ -1,51 +1,12 @@
-import content from '../content/city-guides.json' with { type: 'json' };
 import { languageIndex, LOCALES, translate, type Language } from '../lib/i18n';
 import { useMemo, useState } from 'react';
-import { starterTrip } from '../data/itineraries';
 import { x } from '../data/experience-copy';
-import type { Trip, TripActivity } from '../data/travel';
+import type { Trip } from '../data/travel';
 import type { City } from '../lib/city-content';
 import { dayTimeline } from '../lib/timeline';
 
-export const cityCopy = content.copy;
-export const findCityGuide = (id?: string) => content.guides.find((guide) => guide.placeId === id);
-
-export function cityGuideTrip(guide: City, days: number, lang: Language): Trip {
-  if (!findCityGuide(guide.placeId) || !Number.isInteger(days) || days < 1 || days > 3)
-    throw new Error('Invalid city plan');
-  const l = languageIndex(lang);
-  const trip = starterTrip(guide.placeId, days, lang);
-  trip.name = x(lang, 'cityPlanName', { city: trip.name, days });
-  const stop = trip.stops[0];
-  stop.notes = x(lang, 'cityPlanNote');
-  stop.activities = Array.from({ length: days }, (_, i) => {
-    const [visit, meal, rest] = stop.activities!.filter((a) => a.day === i + 1);
-    visit.title = guide.days[i].title[l];
-    visit.minutes = 180;
-    visit.notes = `${guide.days[i].text[l]}\n${cityCopy.alternative[l]}: ${guide.days[i].alternative[l]}`;
-    // shortcut: neighborhood visits stay unmapped, add pins after individual entrances are source-checked.
-    delete visit.placeId;
-    meal.title = guide.food.stops[i].title[l];
-    meal.notes = guide.food.stops[i].text[l];
-    const activities: TripActivity[] = [
-      {
-        id: crypto.randomUUID(),
-        day: i + 1,
-        period: 'morning' as const,
-        title: x(lang, 'cityRoute'),
-        minutes: 30,
-        bufferMinutes: 15,
-        notes: x(lang, 'cityTransferNote'),
-      },
-      visit,
-      meal,
-      rest,
-    ];
-    activities.forEach((activity) => delete activity.startTime);
-    return activities;
-  }).flat();
-  return trip;
-}
+import { cityCopy, cityGuideTrip } from '../lib/city-plan';
+import ArrivalReference from './ArrivalReference';
 
 export default function CityGuide({
   guide,
@@ -118,6 +79,7 @@ export default function CityGuide({
                       </span>
                     </div>
                     {index === 1 && <p>{guide.days[i].text[l]}</p>}
+                    {a.arrival && <ArrivalReference arrival={a.arrival} lang={lang} />}
                     {index === 2 && <p>{guide.food.stops[i].text[l]}</p>}
                   </li>
                 ))}
@@ -158,6 +120,7 @@ export default function CityGuide({
             {cityCopy.day[l].replace('{day}', String(index + 1))} · {day.title[l]}
           </summary>
           <p>{day.text[l]}</p>
+          {day.arrival && <ArrivalReference arrival={day.arrival} lang={lang} />}
           <p>
             <strong>{cityCopy.alternative[l]}: </strong>
             {day.alternative[l]}

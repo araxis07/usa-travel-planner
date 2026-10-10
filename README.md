@@ -136,7 +136,7 @@ npm run test:production
 npm run format:check
 ```
 
-The regular browser suite runs 184 checks across desktop/mobile Chromium and targeted Firefox, WebKit and Android profiles. It covers multi-trip switching, collections import/export, templates, the trip helper, editable timelines, five languages, galleries, city plans and budgets, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility, enlarged-text navigation/captions and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
+The regular browser suite runs 192 checks across desktop/mobile Chromium and targeted Firefox, WebKit and Android profiles. It covers multi-trip switching, collections import/export, templates, the trip helper, editable timelines, five languages, galleries, city plans and budgets, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility, enlarged-text navigation/captions and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
 
 `test:production` builds to ignored `artifacts/production/`, serves port 5198 and runs fifteen checks covering static SEO without JavaScript, all thirty localized city supplements, responsive covers, early per-state guide loading, client metadata, deferred asset caching, offline reloads over existing saved caches, the nine-day rail trip, all six city plans and print labels offline, all forty-five localized access notices without JavaScript, deferred loading stability, all saved photos and PDFs in five languages. Account tests intercept Supabase HTTP requests to exercise the real browser client without sending emails or changing a remote database. Reports and PDFs are in `artifacts/production-results/` and `artifacts/production-report/`. Tests close their servers when finished. GitHub Actions runs all three suites.
 
@@ -155,9 +155,15 @@ The regular browser suite runs 184 checks across desktop/mobile Chromium and tar
 
 [`public/credits.txt`](public/credits.txt) lists each photograph’s source, author and license, regenerated at build time. Wikimedia Commons images retain individual CC BY, CC BY-SA, CC0, public-domain or Free Art License terms. NPS images use the credits and public-domain status supplied for the selected images. Photos are locally resized and may be cropped by the layout. Hero/route photographs also use Unsplash.
 
+Philadelphia arrival coordinates retain © OpenStreetMap contributors attribution, source-node links and the [ODbL license](https://opendatacommons.org/licenses/odbl/1-0/) in saved and exported references. See [OpenStreetMap’s copyright page](https://www.openstreetmap.org/copyright).
+
 Destination summaries now use concise editorial highlights rather than encyclopedia introductions. Earlier research remains in the source archive. Each profile includes its language-specific source link and CC BY-SA 4.0 attribution. Preserve those references when editing or reusing the summaries. Hours, fees and alerts come from the National Park Service; they are snapshots, not live guarantees.
 
 State geometry comes from the ISC-licensed [US Atlas](https://github.com/topojson/us-atlas), with Alaska and Hawaii in separate insets. D.C. and territories are outside the 50-state count. DM Sans, DM Serif Display and Noto Sans Thai are self-hosted under bundled SIL Open Font Licenses. Chinese, Japanese and Korean use the device’s installed font fallbacks.
+
+## October 10 city arrivals and review queue
+
+City guides load only the selected city, with a matching preload on direct pages. City pages no longer fetch the unrelated NPS snapshot. Philadelphia’s three daily visits have sourced arrival references carried into saved trips, daily maps, text/JSON exports and print; other cities keep their existing area guidance. Studio has separate city/food queues for due reviews, the next seven days and pending languages, with section focus and no automatic review confirmation. See [the implementation, sources and lab measurements](docs/2026-10-10-arrivals-and-review-queue.md).
 
 ## v3.5 destination guides and photo review
 

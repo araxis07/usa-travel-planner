@@ -3,6 +3,7 @@ import { EMPTY_TRIP, STATES, type Trip } from '../../data/travel';
 import { LANGUAGES, LOCALES } from '../../lib/i18n';
 import catalog from '../../content/states.json' with { type: 'json' };
 import cityContent from '../../content/city-guides.json' with { type: 'json' };
+import { validateCityContent } from '../../lib/city-content';
 import preparation from '../../content/travel-preparation.json' with { type: 'json' };
 import { EXPERIENCE_COPY, x } from '../../data/experience-copy';
 import { destinationUrl } from '../../lib/destinations';
@@ -72,8 +73,16 @@ test('direct city, park and state guides start loading details before the applic
       expect(new Set(preloads).size).toBe(preloads.length);
       expect(requests.some((url) => /\/photo-details-/.test(url))).toBe(false);
       expect(requests.filter((url) => /\/state-details-/.test(url))).toHaveLength(1);
+      const cities = requests.filter((url) => /\/city-details-/.test(url));
+      expect(cities).toHaveLength(code === 'PA' ? 1 : 0);
+      if (code === 'PA') expect(cities[0]).toContain('/city-details-PA-0-');
       release();
       await expect(page.locator('.destination-hero h1')).toHaveText(heading);
+      if (code === 'CA')
+        await expect
+          .poll(() => requests.some((url) => url.endsWith('/data/parks.json')))
+          .toBe(true);
+      else expect(requests.some((url) => url.endsWith('/data/parks.json'))).toBe(false);
       await expect(page.locator('.destination-page > .photo-credit a').first()).toHaveAttribute(
         'href',
         /^https:\/\//,
@@ -110,7 +119,7 @@ test('mobile home defers guide details and atlas while credits and practical gui
   });
   expect(
     cached.some((url) =>
-      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|state-details|TripPlanner|leaflet-src)-/.test(
+      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|state-details|city-details|TripPlanner|leaflet-src)-/.test(
         url,
       ),
     ),
@@ -297,10 +306,29 @@ test('city plans, airport sources and budget breakdowns are published in all lan
     'illinois/chicago',
     'pennsylvania/philadelphia',
   ].entries()) {
-    const guide = cityContent.guides[city];
+    const guide = validateCityContent(cityContent).guides[city];
     for (const [l, lang] of LANGUAGES.entries()) {
       await page.goto(`http://127.0.0.1:5198/${lang}/states/${path}/`);
       await expect(page.locator('#guide-city')).toContainText(guide.intro[l]);
+      if (guide.placeId === 'PA-0') {
+        const arrivals = page.locator('#guide-city .arrival-reference');
+        await expect(arrivals).toHaveCount(3);
+        for (const [i, day] of guide.days.entries()) {
+          await expect(arrivals.nth(i)).toContainText(day.arrival!.label[l]);
+          await expect(arrivals.nth(i).locator('a').nth(1)).toHaveAttribute(
+            'href',
+            day.arrival!.source.url,
+          );
+          await expect(arrivals.nth(i).locator('a').nth(2)).toHaveAttribute(
+            'href',
+            day.arrival!.coordinateSource,
+          );
+          await expect(arrivals.nth(i).locator('a').nth(3)).toHaveAttribute(
+            'href',
+            day.arrival!.coordinateLicense,
+          );
+        }
+      }
       await expect(page.locator('#guide-airport')).toContainText(guide.airport.fare[l]);
       await expect(page.locator('#guide-airport a').first()).toHaveAttribute(
         'href',
@@ -717,9 +745,14 @@ test('all six city plans can be previewed, created and printed after explicit of
   await expect(page.locator('.day-activity .estimated-time')).toHaveCount(4);
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('roam.library.v1')!));
   const cityTrips = saved.trips.filter((item: { trip: Trip }) => item.trip.stops[0]?.code === 'PA');
+  for (const item of cityTrips)
+    expect(
+      item.trip.stops[0].activities.filter((a: { arrival?: unknown }) => a.arrival),
+    ).toHaveLength(item.trip.stops[0].days);
   expect(cityTrips).toHaveLength(2);
   expect(cityTrips.map((item: { trip: Trip }) => item.trip.stops[0].days).sort()).toEqual([2, 3]);
   await page.emulateMedia({ media: 'print' });
+  await expect(page.locator('.print-itinerary .arrival-reference')).toHaveCount(2);
   await expect(page.locator('.print-itinerary .estimated-time')).toHaveCount(8);
   await expect(page.locator('.print-itinerary')).toContainText(
     cityContent.guides[5].food.stops[1].text[4],

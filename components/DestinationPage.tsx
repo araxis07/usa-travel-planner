@@ -24,7 +24,9 @@ import PhotoLightbox from './PhotoLightbox';
 import RouteMap from './RouteMap';
 import Icon from './Icon';
 import PlacePractical from './PlacePractical';
-import CityGuide, { cityCopy, findCityGuide } from './CityGuide';
+import CityGuide from './CityGuide';
+import { cityCopy } from '../lib/city-plan';
+import { loadCityGuide } from '../data/city-details';
 import { x } from '../data/experience-copy';
 import type { PlaceCollections } from '../lib/collections';
 
@@ -110,7 +112,7 @@ export default function DestinationPage({
     (p) => placeIndex === undefined || p.placeIndex === placeIndex,
   );
   const profile = placeIndex === undefined ? undefined : state.destinations[placeIndex];
-  const cityGuide = findCityGuide(profile?.id);
+  const cityGuide = use(loadCityGuide(profile?.id));
   useEffect(() => {
     const nav = tocRef.current!;
     const links = [...nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')];

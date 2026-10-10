@@ -1,5 +1,6 @@
 import type content from '../content/city-guides.json';
 import type { ContentIssue } from './content';
+import { validateArrival, type Arrival } from './arrival';
 
 export type City = Omit<(typeof content)['guides'][number], 'days'> & {
   days: {
@@ -7,10 +8,11 @@ export type City = Omit<(typeof content)['guides'][number], 'days'> & {
     text: string[];
     alternative: string[];
     source?: { name: string; url: string };
+    arrival?: Arrival;
   }[];
 };
 export type CityContent = Omit<typeof content, 'guides'> & { guides: City[] };
-const ids = ['NY-0', 'CA-0', 'NV-0', 'MA-0', 'IL-0', 'PA-0'];
+export const CITY_IDS = ['NY-0', 'CA-0', 'NV-0', 'MA-0', 'IL-0', 'PA-0'];
 const record = (v: unknown): v is Record<string, unknown> =>
   !!v && typeof v === 'object' && !Array.isArray(v);
 const string = (v: unknown, max = 4000): v is string => typeof v === 'string' && v.length <= max;
@@ -34,7 +36,7 @@ const review = (v: Record<string, unknown>) =>
 const money = (v: unknown) => Number.isSafeInteger(v) && Number(v) >= 0 && Number(v) <= 1_000_000;
 
 export function validateCityContent(value: unknown): CityContent {
-  if (!record(value) || !record(value.copy) || !list(value.guides, ids.length))
+  if (!record(value) || !record(value.copy) || !list(value.guides, CITY_IDS.length))
     throw Error('Invalid city guide collection');
   for (const key of [
     'title',
@@ -73,7 +75,7 @@ export function validateCityContent(value: unknown): CityContent {
     if (
       !record(g) ||
       typeof g.placeId !== 'string' ||
-      !ids.includes(g.placeId) ||
+      !CITY_IDS.includes(g.placeId) ||
       seen.has(g.placeId) ||
       !review(g) ||
       !texts(g.intro) ||
@@ -85,6 +87,7 @@ export function validateCityContent(value: unknown): CityContent {
     )
       throw Error('Invalid city guide');
     seen.add(g.placeId);
+    for (const d of g.days) if (record(d) && d.arrival !== undefined) validateArrival(d.arrival);
     if (
       g.areas.some(
         (a) =>
@@ -180,4 +183,36 @@ export function cityContentIssues(content: CityContent): ContentIssue[] {
     });
   }
   return issues;
+}
+
+export function cityReviewQueue(
+  content: CityContent,
+  today = new Date().toISOString().slice(0, 10),
+) {
+  const nextWeek = Date.parse(today + 'T00:00:00Z') + 7 * 86400000;
+  return content.guides
+    .flatMap((g) =>
+      (['city', 'food'] as const).map((section) => {
+        const review = section === 'food' ? g.food : g;
+        const date = Date.parse(review.reviewAfter + 'T00:00:00Z');
+        const valid =
+          Number.isFinite(date) && new Date(date).toISOString().slice(0, 10) === review.reviewAfter;
+        return {
+          placeId: g.placeId,
+          airport: g.airport.code,
+          section,
+          reviewAfter: review.reviewAfter,
+          due: valid && review.reviewAfter <= today,
+          soon: valid && review.reviewAfter > today && date <= nextWeek,
+          undated: !valid,
+          languages: review.translationsReviewed.flatMap((done, i) => (done ? [] : [i])),
+        };
+      }),
+    )
+    .sort(
+      (a, b) =>
+        Number(a.undated) - Number(b.undated) ||
+        a.reviewAfter.localeCompare(b.reviewAfter) ||
+        a.placeId.localeCompare(b.placeId),
+    );
 }

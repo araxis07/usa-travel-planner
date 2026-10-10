@@ -1,5 +1,6 @@
 import { statePlaces, statePhoto } from '../data/travel';
-import { translate, LOCALES } from '../lib/i18n';
+import { translate, LOCALES, languageIndex } from '../lib/i18n';
+import { x } from '../data/experience-copy';
 import { lazy, Suspense, useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { EMPTY_TRIP, STATES, stateName, type Language, type Trip } from '../data/travel';
 import { downloadFile, tripDays, validateTrip, validDate } from '../lib/storage';
@@ -89,7 +90,7 @@ export default function TripPlanner({
           stop.notes ? `   ${stop.notes}` : '',
           ...sortedActivities(stop.activities ?? []).map(
             (a) =>
-              `   ${t('Day', 'วันที่')} ${a.day} · ${a.period === 'morning' ? t('Morning', 'เช้า') : a.period === 'afternoon' ? t('Afternoon', 'บ่าย') : t('Evening', 'เย็น')} · ${activityName(a, lang)} · ${a.minutes} ${t('minutes', 'นาที')}${a.notes ? ` — ${a.notes}` : ''}`,
+              `   ${t('Day', 'วันที่')} ${a.day} · ${a.period === 'morning' ? t('Morning', 'เช้า') : a.period === 'afternoon' ? t('Afternoon', 'บ่าย') : t('Evening', 'เย็น')} · ${activityName(a, lang)} · ${a.minutes} ${t('minutes', 'นาที')}${a.notes ? ` — ${a.notes}` : ''}${a.arrival ? `\n      ${a.arrival.label[languageIndex(lang)]} · ${a.arrival.note[languageIndex(lang)]}\n      https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a.arrival.coordinates.join(','))}\n      ${a.arrival.source.url} · ${a.arrival.coordinateSource} · ODbL ${a.arrival.coordinateLicense} · ${x(lang, 'arrivalChecked', { date: a.arrival.checkedAt })}\n      ${x(lang, 'arrivalLimit')}` : ''}`,
           ),
           '',
         ];

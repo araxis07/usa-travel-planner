@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { studioPlugin } from '../studio/server';
 import viteConfig from '../vite.config';
-import { validateCityContent, cityContentIssues } from '../lib/city-content';
+import { validateCityContent, cityContentIssues, cityReviewQueue } from '../lib/city-content';
 import cityContent from '../content/city-guides.json' with { type: 'json' };
 const test = base.extend<{ studio: { url: string; root: string } }>({
   studio: async ({}, use) => {
@@ -45,6 +45,90 @@ const test = base.extend<{ studio: { url: string; root: string } }>({
       await rm(root, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
     }
   },
+});
+test('city review queue separates food deadlines, seven-day boundaries and pending languages', () => {
+  const content = structuredClone(validateCityContent(cityContent));
+  for (const g of content.guides) {
+    g.reviewAfter = g.food.reviewAfter = '2027-01-01';
+    g.translationsReviewed = g.food.translationsReviewed = [true, true, true, true, true];
+  }
+  content.guides[0].reviewAfter = '2026-10-09';
+  content.guides[0].food.reviewAfter = '2026-10-10';
+  content.guides[1].reviewAfter = '2026-10-17';
+  content.guides[1].food.reviewAfter = '2026-10-18';
+  content.guides[1].food.translationsReviewed = [true, false, true, true, false];
+  content.guides[2].reviewAfter = '2026-02-30';
+  const before = JSON.stringify(content);
+  const queue = cityReviewQueue(content, '2026-10-10');
+  expect(queue.filter((r) => r.due).map((r) => [r.placeId, r.section])).toEqual([
+    ['NY-0', 'city'],
+    ['NY-0', 'food'],
+  ]);
+  expect(queue.filter((r) => r.soon).map((r) => [r.placeId, r.section])).toEqual([
+    ['CA-0', 'city'],
+  ]);
+  expect(queue.find((r) => r.placeId === 'NV-0' && r.section === 'city')?.undated).toBe(true);
+  expect(queue.filter((r) => r.languages.length).map((r) => r.languages)).toEqual([[1, 4]]);
+  expect(JSON.stringify(content)).toBe(before);
+});
+
+test('city Studio queue opens the relevant section without confirming reviews or losing edits', async ({
+  page,
+  studio,
+}) => {
+  await page.clock.setFixedTime(new Date('2026-10-10T12:00:00Z'));
+  const content = structuredClone(cityContent);
+  for (const g of content.guides) {
+    g.checkedAt = g.food.checkedAt = '2026-09-01';
+    g.reviewAfter = g.food.reviewAfter = '2027-01-01';
+    g.translationsReviewed = g.food.translationsReviewed = [true, true, true, true, true];
+  }
+  const pa = content.guides[5];
+  pa.reviewAfter = '2026-10-10';
+  pa.food.reviewAfter = '2026-10-17';
+  pa.translationsReviewed = [true, false, true, true, true];
+  await writeFile(path.join(studio.root, 'content/city-guides.json'), JSON.stringify(content));
+  await page.goto(studio.url + '/studio');
+  await page.getByRole('button', { name: 'คู่มือเมืองและอาหาร', exact: true }).click();
+  const queue = page.locator('.studio-city-queue');
+  await queue.locator('summary').click();
+  await expect(queue.locator('summary')).toContainText('1 ถึงกำหนด · 1 ภายใน 7 วัน · 1 รอตรวจภาษา');
+  await queue.getByRole('button', { name: /PA-0 · เมือง/ }).click();
+  await expect(page.locator('#studio-city-city-heading')).toBeFocused();
+  await expect(
+    page.locator('.studio-city-review').first().getByLabel('ตรวจครั้งถัดไป'),
+  ).toHaveValue('2026-10-10');
+  await page.getByRole('textbox', { name: /^คำแนะนำเมือง/ }).fill('งานเมืองที่ยังไม่บันทึก');
+  await queue.getByLabel('แสดงคิวตรวจ').selectOption('soon');
+  await queue.getByRole('button', { name: /PA-0 · อาหาร/ }).click();
+  await expect(page.locator('#studio-city-food-heading')).toBeFocused();
+  await expect(page.getByRole('textbox', { name: /^คำแนะนำเมือง/ })).toHaveValue(
+    'งานเมืองที่ยังไม่บันทึก',
+  );
+  await expect(page.locator('.studio-city-review').nth(1).getByLabel('ตรวจครั้งถัดไป')).toHaveValue(
+    '2026-10-17',
+  );
+  await expect(page.locator('.studio-city-review').first().getByRole('checkbox')).not.toBeChecked();
+  await expect(page.locator('.studio-city-review').nth(1).getByRole('checkbox')).toBeChecked();
+  await queue.getByLabel('แสดงคิวตรวจ').selectOption('languages');
+  await expect(queue.getByRole('button')).toHaveCount(1);
+  await expect(queue).toContainText('ภาษารอตรวจ: ไทย');
+  expect(
+    (
+      await new AxeBuilder({ page })
+        .include('.studio-city-queue')
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+        .analyze()
+    ).violations,
+  ).toEqual([]);
+  await page.getByRole('button', { name: 'บันทึกฉบับร่างเมือง', exact: true }).click();
+  await expect(page.getByRole('status')).toContainText('บันทึกฉบับร่างเมืองแล้ว');
+  const draft = JSON.parse(
+    await readFile(path.join(studio.root, '.studio/city-draft.json'), 'utf8'),
+  );
+  expect(draft.guides[5].checkedAt).toBe(pa.checkedAt);
+  expect(draft.guides[5].reviewAfter).toBe(pa.reviewAfter);
+  expect(draft.guides[5].food).toEqual(pa.food);
 });
 test('city validation rejects unsafe structure and reports independently incomplete reviews', () => {
   expect(cityContentIssues(validateCityContent(cityContent))).toEqual([]);

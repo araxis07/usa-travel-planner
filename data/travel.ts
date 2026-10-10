@@ -1,5 +1,6 @@
 import catalog from '../content/states.json?overview' with { type: 'json' };
 import { translate, languageIndex, type Language } from '../lib/i18n';
+import type { Arrival } from '../lib/arrival';
 export type { Language } from '../lib/i18n';
 export type LocalText = readonly [string, string, ...string[]];
 export type Region = 'West' | 'Southwest' | 'Midwest' | 'Southeast' | 'Northeast';
@@ -123,6 +124,7 @@ export interface TripStop {
 }
 export type DayPeriod = 'morning' | 'afternoon' | 'evening';
 export interface TripActivity {
+  arrival?: Arrival;
   id: string;
   day: number;
   period: DayPeriod;
