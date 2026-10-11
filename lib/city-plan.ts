@@ -4,6 +4,7 @@ import { starterTrip } from '../data/itineraries';
 import { x } from '../data/experience-copy';
 import type { Trip, TripActivity } from '../data/travel';
 import { CITY_IDS, type City } from './city-content';
+import { validateArrival } from './arrival';
 
 export const cityCopy = content.copy;
 
@@ -22,7 +23,7 @@ export function cityGuideTrip(guide: City, days: number, lang: Language): Trip {
     visit.notes = `${guide.days[i].text[l]}\n${cityCopy.alternative[l]}: ${guide.days[i].alternative[l]}`;
     // shortcut: only source-checked arrivals get pins, map other city walks after checking their entrances.
     delete visit.placeId;
-    if (guide.days[i].arrival) visit.arrival = structuredClone(guide.days[i].arrival);
+    if (guide.days[i].arrival) visit.arrival = validateArrival(guide.days[i].arrival);
     meal.title = guide.food.stops[i].title[l];
     meal.notes = guide.food.stops[i].text[l];
     const activities: TripActivity[] = [

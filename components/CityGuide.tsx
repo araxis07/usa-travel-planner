@@ -7,6 +7,7 @@ import { dayTimeline } from '../lib/timeline';
 
 import { cityCopy, cityGuideTrip } from '../lib/city-plan';
 import ArrivalReference from './ArrivalReference';
+import { validateArrival } from '../lib/arrival';
 
 export default function CityGuide({
   guide,
@@ -120,7 +121,7 @@ export default function CityGuide({
             {cityCopy.day[l].replace('{day}', String(index + 1))} · {day.title[l]}
           </summary>
           <p>{day.text[l]}</p>
-          {day.arrival && <ArrivalReference arrival={day.arrival} lang={lang} />}
+          {day.arrival && <ArrivalReference arrival={validateArrival(day.arrival)} lang={lang} />}
           <p>
             <strong>{cityCopy.alternative[l]}: </strong>
             {day.alternative[l]}

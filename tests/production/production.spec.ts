@@ -102,6 +102,63 @@ test('direct city, park and state guides start loading details before the applic
   await context.close();
 });
 
+test('published guide stays readable while city data loads or fails, then opens without an empty frame', async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({ serviceWorkers: 'block' });
+  for (const fail of [false, true]) {
+    const page = await context.newPage();
+    let release!: () => void;
+    const hold = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    await page.route(/\/assets\/city-details-PA-0-[^/]+\.js$/, async (route) => {
+      await hold;
+      if (fail) await route.abort();
+      else await route.continue();
+    });
+    try {
+      await page.goto(baseURL + '/en/states/pennsylvania/philadelphia/#guide-airport', {
+        waitUntil: 'commit',
+      });
+      await expect(page.locator('main h1')).toHaveText('Philadelphia');
+      await page
+        .locator('main h1')
+        .evaluate((el) => el.setAttribute('data-static-heading', 'true'));
+      await page.evaluate(() => {
+        (window as any).missingGuideFrames = 0;
+        function check() {
+          if (!document.querySelector('main h1')) (window as any).missingGuideFrames++;
+          if (!document.querySelector('.destination-hero')) requestAnimationFrame(check);
+        }
+        requestAnimationFrame(check);
+      });
+      await expect(page.locator('#guide-airport')).toBeVisible();
+      await expect(page.locator('[data-static-heading]')).toBeVisible();
+      release();
+      if (fail) {
+        await expect(page.getByRole('button', { name: 'Try again', exact: true })).toBeVisible();
+        await expect(page.locator('[data-static-heading]')).toBeVisible();
+        await expect(page.locator('#guide-airport a').first()).toHaveAttribute(
+          'href',
+          /^https:\/\//,
+        );
+        await page.unroute(/\/assets\/city-details-PA-0-[^/]+\.js$/);
+        await page.getByRole('button', { name: 'Try again', exact: true }).click();
+        await expect(page.locator('.destination-hero h1')).toHaveText('Philadelphia');
+      } else {
+        await expect(page.locator('.destination-hero h1')).toHaveText('Philadelphia');
+        expect(await page.evaluate(() => (window as any).missingGuideFrames)).toBe(0);
+      }
+    } finally {
+      release();
+      await page.close();
+    }
+  }
+  await context.close();
+});
+
 test('mobile home defers guide details and atlas while credits and practical guidance remain available', async ({
   browser,
   baseURL,
@@ -318,7 +375,7 @@ test('city plans, airport sources and budget breakdowns are published in all lan
     for (const [l, lang] of LANGUAGES.entries()) {
       await page.goto(`http://127.0.0.1:5198/${lang}/states/${path}/`);
       await expect(page.locator('#guide-city')).toContainText(guide.intro[l]);
-      if (guide.placeId === 'PA-0') {
+      if (guide.days.some((day) => day.arrival)) {
         const arrivals = page.locator('#guide-city .arrival-reference');
         await expect(arrivals).toHaveCount(3);
         for (const [i, day] of guide.days.entries()) {
@@ -673,7 +730,7 @@ test('nine-day rail trip and Philadelphia photos and food reopen after explicit 
   await expect(page.locator('.template-day')).toHaveCount(9);
 });
 
-test('deferred guide, state details and planner loading reserve the viewport so the footer does not flash above the fold', async ({
+test('deferred guides retain published content and the planner reserves space while loading', async ({
   browser,
   baseURL,
 }) => {
@@ -699,10 +756,16 @@ test('deferred guide, state details and planner loading reserve the viewport so 
         await route.continue();
       });
       try {
-        await page.goto(path);
-        await expect(page.locator('.page-loading')).toBeVisible();
-        const footer = await page.locator('.footer').boundingBox();
-        expect(footer!.y).toBeGreaterThanOrEqual(844);
+        await page.goto(path, { waitUntil: 'commit' });
+        if (path.includes('planner')) {
+          await expect(page.locator('.page-loading')).toBeVisible();
+          const footer = await page.locator('.footer').boundingBox();
+          expect(footer!.y).toBeGreaterThanOrEqual(844);
+        } else {
+          await expect(page.locator('main h1')).toBeVisible();
+          await expect(page.locator('main > img')).toBeVisible();
+          await expect(page.locator('.page-loading')).toHaveCount(0);
+        }
         release();
         await expect(
           page.locator(path.includes('planner') ? '#planner-page' : '.city-guide'),
@@ -798,6 +861,21 @@ test('all six city plans can be previewed, created and printed after explicit of
     await expect(page.locator('.print-itinerary')).toContainText(
       cityContent.guides[i].food.stops[days - 1].text[i],
     );
+    const arrivals = validateCityContent(cityContent)
+      .guides[i].days.slice(0, days)
+      .filter((day) => day.arrival);
+    await expect(page.locator('.print-itinerary .arrival-reference')).toHaveCount(arrivals.length);
+    for (const [index, day] of arrivals.entries()) {
+      await expect(page.locator('.print-itinerary')).toContainText(day.arrival!.label[i]);
+      const source = page
+        .locator('.print-itinerary .arrival-reference')
+        .nth(index)
+        .getByRole('link', { name: /^© OpenStreetMap contributors/ });
+      await expect(source).toHaveAttribute('href', day.arrival!.coordinateSource);
+      expect(await source.evaluate((el) => getComputedStyle(el, '::after').content)).toContain(
+        day.arrival!.coordinateSource,
+      );
+    }
     await page.emulateMedia({ media: 'screen' });
   }
   expect(

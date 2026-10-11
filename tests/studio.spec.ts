@@ -8,6 +8,8 @@ import { studioPlugin } from '../studio/server';
 import viteConfig from '../vite.config';
 import { validateCityContent, cityContentIssues, cityReviewQueue } from '../lib/city-content';
 import cityContent from '../content/city-guides.json' with { type: 'json' };
+import { validateArrival } from '../lib/arrival';
+import { cityGuideTrip } from '../lib/city-plan';
 const test = base.extend<{ studio: { url: string; root: string } }>({
   studio: async ({}, use) => {
     const root = await mkdtemp(path.join(tmpdir(), 'roam-studio-test-'));
@@ -174,6 +176,117 @@ test('city validation rejects unsafe structure and reports independently incompl
     'food.stops.0.allowance',
   ]);
 });
+test('arrival drafts allow missing fields without weakening published trips or URL validation', () => {
+  const content = structuredClone(validateCityContent(cityContent));
+  const arrival = content.guides[5].days[0].arrival!;
+  arrival.label[2] = '';
+  arrival.coordinates[0] = null;
+  arrival.source = { name: '', url: '' };
+  arrival.coordinateSource = '';
+  arrival.checkedAt = '';
+  expect(() => validateCityContent(content)).not.toThrow();
+  expect(cityContentIssues(content).some((i) => i.field === 'guide.days.0.arrival')).toBe(true);
+  expect(() => validateArrival(arrival)).toThrow();
+  expect(() => cityGuideTrip(content.guides[5], 1, 'en')).toThrow();
+  for (const patch of [
+    { source: { name: 'Unsafe', url: 'javascript:alert(1)' } },
+    { source: { name: 'Credentials', url: 'https://user:password@example.org/' } },
+    { coordinates: [91, -71] },
+    { coordinates: [42, Infinity] },
+    { coordinateSource: 'https://example.org/fake-node' },
+    { checkedAt: '2026-02-30' },
+  ])
+    expect(() => validateArrival({ ...arrival, ...patch }, true)).toThrow();
+});
+
+test('city Studio edits, drafts, previews and removes arrivals while preserving trips and review scope', async ({
+  page,
+  studio,
+}) => {
+  test.setTimeout(90000);
+  const cityFile = path.join(studio.root, 'content/city-guides.json');
+  const content = structuredClone(validateCityContent(cityContent));
+  const pa = content.guides[5];
+  pa.translationsReviewed = pa.food.translationsReviewed = [true, true, true, true, true];
+  const original = structuredClone(pa.days[0].arrival!);
+  await writeFile(cityFile, JSON.stringify(content));
+  await page.goto(studio.url + '/studio');
+  const personalTrip = JSON.stringify(cityGuideTrip(pa, 3, 'th'));
+  await page.evaluate((trip) => localStorage.setItem('roam.trip.v1', trip), personalTrip);
+  await page.getByRole('button', { name: 'คู่มือเมืองและอาหาร', exact: true }).click();
+  const selectPA = () =>
+    page
+      .getByRole('navigation', { name: 'เลือกคู่มือเมือง' })
+      .getByRole('button', { name: /PA-0/ })
+      .click();
+  await selectPA();
+  const fields = page.getByRole('group', { name: 'จุดเริ่มเที่ยว · วันที่ 1', exact: true });
+  await fields.getByRole('textbox', { name: /^ชื่อจุดเริ่มเที่ยว/ }).fill('ทางเข้าฉบับแก้ไข');
+  await page.getByRole('button', { name: 'บันทึกฉบับร่างเมือง', exact: true }).click();
+  await expect(page.getByRole('status')).toContainText('บันทึกฉบับร่างเมืองแล้ว');
+  const readDraft = async () =>
+    JSON.parse(await readFile(path.join(studio.root, '.studio/city-draft.json'), 'utf8'));
+  let draft = await readDraft();
+  expect(draft.guides[5].translationsReviewed).toEqual([true, false, true, true, true]);
+  expect(draft.guides[5].food).toEqual(pa.food);
+  await fields.getByRole('button', { name: 'ลบจุดเริ่มเที่ยว', exact: true }).click();
+  await fields.getByRole('button', { name: 'เพิ่มจุดเริ่มเที่ยว', exact: true }).click();
+  await expect(fields.getByLabel('ละติจูด', { exact: true })).toHaveValue('');
+  await expect(fields.getByLabel('วันที่ตรวจจุดเริ่มเที่ยว')).toHaveValue('');
+  await page.getByRole('button', { name: 'บันทึกฉบับร่างเมือง', exact: true }).click();
+  await expect
+    .poll(async () => (await readDraft()).guides[5].days[0].arrival.coordinates)
+    .toEqual([null, null]);
+  await page.reload();
+  await page.getByRole('button', { name: 'คู่มือเมืองและอาหาร', exact: true }).click();
+  await selectPA();
+  await expect(fields.getByLabel('ละติจูด', { exact: true })).toHaveValue('');
+  await expect(
+    page.getByRole('button', { name: 'เผยแพร่คู่มือเมือง', exact: true }),
+  ).toBeDisabled();
+  await expect(
+    page.getByRole('button', { name: 'ดูตัวอย่างคู่มือเมือง', exact: true }),
+  ).toBeDisabled();
+  for (const [i, name] of ['English', 'ไทย', '简体中文', '日本語', '한국어'].entries()) {
+    await page
+      .getByRole('group', { name: 'ภาษาคู่มือเมือง' })
+      .getByRole('button', { name })
+      .click();
+    await fields.getByRole('textbox', { name: /^ชื่อจุดเริ่มเที่ยว/ }).fill(original.label[i]);
+    await fields.getByRole('textbox', { name: /^คำแนะนำจุดเริ่มเที่ยว/ }).fill(original.note[i]);
+  }
+  await fields.getByLabel('ละติจูด', { exact: true }).fill(String(original.coordinates[0]));
+  await fields.getByLabel('ลองจิจูด', { exact: true }).fill(String(original.coordinates[1]));
+  await fields.getByLabel('ชื่อแหล่งข้อมูล', { exact: true }).fill(original.source.name);
+  await fields.getByLabel('ลิงก์ HTTPS', { exact: true }).fill(original.source.url);
+  await fields.getByLabel('ลิงก์พิกัด OpenStreetMap node').fill(original.coordinateSource);
+  await fields.getByLabel('วันที่ตรวจจุดเริ่มเที่ยว').fill(original.checkedAt);
+  expect(
+    (
+      await new AxeBuilder({ page })
+        .include('fieldset.studio-profile')
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+        .analyze()
+    ).violations,
+  ).toEqual([]);
+  await page.getByRole('button', { name: 'ดูตัวอย่างคู่มือเมือง', exact: true }).click();
+  await expect(page.locator('.studio-preview .city-day').first()).toContainText(original.label[4]);
+  await page.getByRole('button', { name: 'กลับไปแก้คู่มือเมือง', exact: true }).click();
+  await page.getByRole('button', { name: 'เผยแพร่คู่มือเมือง', exact: true }).click();
+  await expect(page.getByRole('status')).toContainText('เผยแพร่ลง content/city-guides.json แล้ว');
+  let published = JSON.parse(await readFile(cityFile, 'utf8'));
+  expect(published.guides[5].days[0].arrival).toEqual(original);
+  expect(published.guides[5].translationsReviewed).toEqual([false, false, false, false, false]);
+  expect(published.guides[5].checkedAt).toBe(pa.checkedAt);
+  expect(published.guides[5].food).toEqual(pa.food);
+  await fields.getByRole('button', { name: 'ลบจุดเริ่มเที่ยว', exact: true }).click();
+  await page.getByRole('button', { name: 'เผยแพร่คู่มือเมือง', exact: true }).click();
+  await expect
+    .poll(async () => JSON.parse(await readFile(cityFile, 'utf8')).guides[5].days[0].arrival)
+    .toBeUndefined();
+  expect(await page.evaluate(() => localStorage.getItem('roam.trip.v1'))).toBe(personalTrip);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
 test('city Studio retains both editors, five languages, independent food reviews and safe rendered drafts', async ({
   page,
   studio,
@@ -292,12 +405,22 @@ test('city API protects drafts from stale and cross-site writes and blocks incom
     ).status(),
   ).toBe(403);
   data.content.guides[0].intro[3] = '';
+  data.content.guides[0].days[0].arrival = {
+    ...structuredClone(data.content.guides[5].days[0].arrival),
+    coordinates: [null, null],
+    checkedAt: '',
+  };
   const savedResponse = await request.put(url + '/draft', { data, headers });
   expect(savedResponse.status()).toBe(200);
   const saved = await savedResponse.json();
   expect((await request.put(url + '/draft', { data, headers })).status()).toBe(409);
   data.revision = saved.revision;
   expect((await request.post(url + '/publish', { data, headers })).status()).toBe(422);
+  data.content.guides[0].intro[3] = session.content.guides[0].intro[0];
+  expect((await request.post(url + '/publish', { data, headers })).status()).toBe(422);
+  data.content.guides[0].days[0].arrival.coordinates = [91, -71];
+  expect((await request.put(url + '/draft', { data, headers })).status()).toBe(400);
+  delete data.content.guides[0].days[0].arrival;
   expect(await readFile(path.join(studio.root, 'content/city-guides.json'), 'utf8')).toBe(
     await readFile('content/city-guides.json', 'utf8'),
   );

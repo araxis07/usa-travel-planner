@@ -52,7 +52,12 @@ const interestIcons: Record<Interest, IconName> = {
   Coast: 'waves',
   Culture: 'book',
 };
-export default function App() {
+export default function App({
+  initialGuide,
+}: {
+  initialGuide?: typeof import('./components/DestinationPage').default;
+}) {
+  const Guide = initialGuide ?? DestinationPage;
   const [comparison, setComparison] = useState<string[]>(() =>
     readLocal<string[]>('roam.compare.v1', [], (value) => (validComparison(value) ? value : [])),
   );
@@ -546,7 +551,7 @@ export default function App() {
             />
           </main>
         ) : destination ? (
-          <DestinationPage
+          <Guide
             key={`${destination.state.code}-${destination.placeIndex ?? 'state'}`}
             state={destination.state}
             placeIndex={destination.placeIndex}

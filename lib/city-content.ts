@@ -1,6 +1,6 @@
 import type content from '../content/city-guides.json';
 import type { ContentIssue } from './content';
-import { validateArrival, type Arrival } from './arrival';
+import { validateArrival, type ArrivalDraft } from './arrival';
 
 export type City = Omit<(typeof content)['guides'][number], 'days'> & {
   days: {
@@ -8,7 +8,7 @@ export type City = Omit<(typeof content)['guides'][number], 'days'> & {
     text: string[];
     alternative: string[];
     source?: { name: string; url: string };
-    arrival?: Arrival;
+    arrival?: ArrivalDraft;
   }[];
 };
 export type CityContent = Omit<typeof content, 'guides'> & { guides: City[] };
@@ -87,7 +87,8 @@ export function validateCityContent(value: unknown): CityContent {
     )
       throw Error('Invalid city guide');
     seen.add(g.placeId);
-    for (const d of g.days) if (record(d) && d.arrival !== undefined) validateArrival(d.arrival);
+    for (const d of g.days)
+      if (record(d) && d.arrival !== undefined) validateArrival(d.arrival, true);
     if (
       g.areas.some(
         (a) =>
@@ -167,6 +168,19 @@ export function cityContentIssues(content: CityContent): ContentIssue[] {
   nonempty(content.copy, 'copy', 'copy');
   for (const g of content.guides) {
     nonempty(g, g.placeId, 'guide');
+    g.days.forEach((day, i) => {
+      if (day.arrival) {
+        try {
+          validateArrival(day.arrival);
+        } catch {
+          add(
+            g.placeId,
+            `guide.days.${i}.arrival`,
+            'เติมจุดเริ่มเที่ยวครบ 5 ภาษา พิกัด แหล่งอ้างอิง และวันที่ตรวจจริงก่อนเผยแพร่หรือดูตัวอย่าง',
+          );
+        }
+      }
+    });
     dates(g, g.placeId, 'review');
     dates(g.food, g.placeId, 'food.review');
     if (!/^[A-Z]{3}$/.test(g.airport.code))

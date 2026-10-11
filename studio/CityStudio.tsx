@@ -7,7 +7,6 @@ import {
 } from '../lib/city-content';
 import { LANGUAGES, LANGUAGE_NAMES, type Language } from '../lib/i18n';
 import CityGuide from '../components/CityGuide';
-import ArrivalReference from '../components/ArrivalReference';
 import '../experience.css';
 
 interface Session {
@@ -127,13 +126,14 @@ export default function CityStudio() {
     value: string[],
     update: (g: City, text: string) => void,
     food = false,
+    maxLength = 4000,
   ) => (
     <label>
       {label} · {LANGUAGE_NAMES[language]}
       <textarea
         lang={language}
         rows={3}
-        maxLength={4000}
+        maxLength={maxLength}
         value={value[l]}
         onChange={(e) => change((g) => update(g, e.target.value), food, true)}
       />
@@ -435,7 +435,120 @@ export default function CityStudio() {
                       {text('รายละเอียดกิจกรรม', d.text, (g, v) => {
                         g.days[i].text[l] = v;
                       })}
-                      {d.arrival && <ArrivalReference arrival={d.arrival} lang={language} />}
+                      <fieldset className="studio-profile">
+                        <legend>จุดเริ่มเที่ยว · วันที่ {i + 1}</legend>
+                        {d.arrival ? (
+                          <>
+                            <p>
+                              ตรวจทางเข้าและพิกัดจากแหล่งจริงก่อนเผยแพร่
+                              ช่องว่างบันทึกเป็นฉบับร่างได้ ทริปที่สร้างไว้แล้วจะคงข้อมูลเดิม
+                            </p>
+                            {text(
+                              'ชื่อจุดเริ่มเที่ยว',
+                              d.arrival.label,
+                              (g, v) => {
+                                g.days[i].arrival!.label[l] = v;
+                              },
+                              false,
+                              200,
+                            )}
+                            {text(
+                              'คำแนะนำจุดเริ่มเที่ยว',
+                              d.arrival.note,
+                              (g, v) => {
+                                g.days[i].arrival!.note[l] = v;
+                              },
+                              false,
+                              1000,
+                            )}
+                            <div className="studio-facts">
+                              {(['ละติจูด', 'ลองจิจูด'] as const).map((label, axis) => (
+                                <label key={label}>
+                                  {label}
+                                  <input
+                                    type="number"
+                                    step="any"
+                                    min={axis === 0 ? -90 : -180}
+                                    max={axis === 0 ? 90 : 180}
+                                    value={d.arrival!.coordinates[axis] ?? ''}
+                                    onChange={(e) =>
+                                      change((g) => {
+                                        g.days[i].arrival!.coordinates[axis] = Number.isNaN(
+                                          e.target.valueAsNumber,
+                                        )
+                                          ? null
+                                          : e.target.valueAsNumber;
+                                      })
+                                    }
+                                  />
+                                </label>
+                              ))}
+                            </div>
+                            {source(d.arrival.source, (g, v) => {
+                              g.days[i].arrival!.source = v;
+                            })}
+                            {input(
+                              'ลิงก์พิกัด OpenStreetMap node',
+                              d.arrival.coordinateSource,
+                              (g, v) => {
+                                g.days[i].arrival!.coordinateSource = v;
+                              },
+                            )}
+                            <p>
+                              เครดิตพิกัด: © OpenStreetMap contributors ·{' '}
+                              <a
+                                href={d.arrival.coordinateLicense}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                ODbL
+                              </a>
+                            </p>
+                            <label>
+                              วันที่ตรวจจุดเริ่มเที่ยว
+                              <input
+                                type="date"
+                                value={d.arrival.checkedAt}
+                                onChange={(e) =>
+                                  change((g) => {
+                                    g.days[i].arrival!.checkedAt = e.target.value;
+                                  })
+                                }
+                              />
+                            </label>
+                            <button
+                              className="button button-outline"
+                              onClick={() =>
+                                change((g) => {
+                                  delete g.days[i].arrival;
+                                })
+                              }
+                            >
+                              ลบจุดเริ่มเที่ยว
+                            </button>
+                          </>
+                        ) : (
+                          <button
+                            className="button button-outline"
+                            onClick={() =>
+                              change((g) => {
+                                g.days[i].arrival = {
+                                  label: LANGUAGES.map(() => ''),
+                                  note: LANGUAGES.map(() => ''),
+                                  coordinates: [null, null],
+                                  source: { name: '', url: '' },
+                                  coordinateSource: '',
+                                  coordinateLicense:
+                                    'https://opendatacommons.org/licenses/odbl/1-0/',
+                                  checkedAt: '',
+                                };
+                              })
+                            }
+                          >
+                            เพิ่มจุดเริ่มเที่ยว
+                          </button>
+                        )}
+                      </fieldset>
                       {text('แผนสำรองตามอากาศ', d.alternative, (g, v) => {
                         g.days[i].alternative[l] = v;
                       })}

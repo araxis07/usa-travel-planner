@@ -156,87 +156,93 @@ test('Philadelphia arrival references survive JSON and library boundaries and re
   expect(() => validateTrip(conflicting)).toThrow();
 });
 
-test('Philadelphia pins route only on request, export and print their sources, and can be removed', async ({
-  page,
-  isMobile,
-}) => {
-  const trip = cityGuideTrip(findCityGuide('PA-0')!, 3, 'en');
-  trip.stops[0].activities![5].day = 1;
-  let requested = '';
-  await page.route('https://routing.openstreetmap.de/**', async (route) => {
-    requested = route.request().url();
-    await route.fulfill({
-      json: {
-        code: 'Ok',
-        routes: [
-          {
-            distance: 2100,
-            duration: 480,
-            geometry: {
-              coordinates: [
-                [-75.1491843, 39.9486324],
-                [-75.1594921, 39.9533467],
-              ],
+for (const id of ['PA-0', 'MA-0'])
+  test(`${id} pins route only on request, export and print their sources, and can be removed`, async ({
+    page,
+    isMobile,
+  }) => {
+    const trip = cityGuideTrip(findCityGuide(id)!, 3, 'en');
+    const guide = findCityGuide(id)!;
+    const routePoints = guide.days
+      .slice(0, 2)
+      .map((day) => [...day.arrival!.coordinates].reverse());
+    trip.stops[0].activities![5].day = 1;
+    let requested = '';
+    await page.route('https://routing.openstreetmap.de/**', async (route) => {
+      requested = route.request().url();
+      await route.fulfill({
+        json: {
+          code: 'Ok',
+          routes: [
+            {
+              distance: 2100,
+              duration: 480,
+              geometry: {
+                coordinates: routePoints,
+              },
             },
-          },
-        ],
-      },
+          ],
+        },
+      });
     });
+    await page.addInitScript((trip) => {
+      if (!localStorage.getItem('roam.trip.v1'))
+        localStorage.setItem('roam.trip.v1', JSON.stringify(trip));
+    }, trip);
+    await page.goto('/en/?view=planner');
+    await expect(page.locator('.day-directions > li')).toHaveCount(2);
+    await expect(page.locator('.day-directions')).toContainText(
+      trip.stops[0].activities![1].arrival!.label[0],
+    );
+    expect(requested).toBe('');
+    if (isMobile)
+      await page
+        .locator('.mobile-workspace-switch')
+        .getByRole('button', { name: x('en', 'map'), exact: true })
+        .click();
+    await page.getByRole('button', { name: 'Calculate driving route', exact: true }).click();
+    await expect
+      .poll(() => requested)
+      .toContain(routePoints.map((point) => point.join(',')).join(';'));
+    await page.emulateMedia({ media: 'print' });
+    await expect(page.locator('.print-itinerary .arrival-reference')).toHaveCount(3);
+    await expect(page.locator('.print-itinerary')).toContainText(
+      `Source checked ${guide.days[0].arrival!.checkedAt}`,
+    );
+    await page.emulateMedia({ media: 'screen' });
+    await page.getByRole('button', { name: 'Trip overview', exact: true }).click();
+    const downloadEvent = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Download my itinerary', exact: true }).click();
+    const download = await downloadEvent;
+    const text = readFileSync((await download.path())!, 'utf8');
+    for (const day of findCityGuide(id)!.days) {
+      expect(text).toContain(day.arrival!.coordinateSource);
+      expect(text).toContain(day.arrival!.source.url);
+    }
+    const backupEvent = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Export backup', exact: true }).click();
+    const backup = JSON.parse(readFileSync((await (await backupEvent).path())!, 'utf8'));
+    expect(validateTrip(backup.trip)).toEqual(trip);
+    await page.getByRole('button', { name: 'Daily plan', exact: true }).click();
+    if (isMobile)
+      await page
+        .locator('.mobile-workspace-switch')
+        .getByRole('button', { name: x('en', 'list'), exact: true })
+        .click();
+    const visit = page
+      .locator('.day-activity')
+      .filter({ has: page.locator('h5', { hasText: findCityGuide(id)!.days[0].title[0] }) });
+    await visit.getByRole('button', { name: 'Edit activity', exact: true }).click();
+    await visit.getByRole('button', { name: 'Remove arrival reference', exact: true }).click();
+    await expect(page.locator('.day-directions > li')).toHaveCount(1);
+    await page.reload();
+    await expect(page.locator('.day-directions > li')).toHaveCount(1);
+    const saved = validateTrip(
+      await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!)),
+    );
+    expect(saved.stops[0].activities![1].arrival).toBeUndefined();
+    expect(saved.stops[0].activities![1].notes).toBe(trip.stops[0].activities![1].notes);
   });
-  await page.addInitScript((trip) => {
-    if (!localStorage.getItem('roam.trip.v1'))
-      localStorage.setItem('roam.trip.v1', JSON.stringify(trip));
-  }, trip);
-  await page.goto('/en/?view=planner');
-  await expect(page.locator('.day-directions > li')).toHaveCount(2);
-  await expect(page.locator('.day-directions')).toContainText(
-    trip.stops[0].activities![1].arrival!.label[0],
-  );
-  expect(requested).toBe('');
-  if (isMobile)
-    await page
-      .locator('.mobile-workspace-switch')
-      .getByRole('button', { name: x('en', 'map'), exact: true })
-      .click();
-  await page.getByRole('button', { name: 'Calculate driving route', exact: true }).click();
-  await expect.poll(() => requested).toContain('-75.1491843,39.9486324;-75.1594921,39.9533467');
-  await page.emulateMedia({ media: 'print' });
-  await expect(page.locator('.print-itinerary .arrival-reference')).toHaveCount(3);
-  await expect(page.locator('.print-itinerary')).toContainText('Source checked 2026-10-10');
-  await page.emulateMedia({ media: 'screen' });
-  await page.getByRole('button', { name: 'Trip overview', exact: true }).click();
-  const downloadEvent = page.waitForEvent('download');
-  await page.getByRole('button', { name: 'Download my itinerary', exact: true }).click();
-  const download = await downloadEvent;
-  const text = readFileSync((await download.path())!, 'utf8');
-  for (const day of findCityGuide('PA-0')!.days) {
-    expect(text).toContain(day.arrival!.coordinateSource);
-    expect(text).toContain(day.arrival!.source.url);
-  }
-  const backupEvent = page.waitForEvent('download');
-  await page.getByRole('button', { name: 'Export backup', exact: true }).click();
-  const backup = JSON.parse(readFileSync((await (await backupEvent).path())!, 'utf8'));
-  expect(validateTrip(backup.trip)).toEqual(trip);
-  await page.getByRole('button', { name: 'Daily plan', exact: true }).click();
-  if (isMobile)
-    await page
-      .locator('.mobile-workspace-switch')
-      .getByRole('button', { name: x('en', 'list'), exact: true })
-      .click();
-  const visit = page
-    .locator('.day-activity')
-    .filter({ has: page.locator('h5', { hasText: findCityGuide('PA-0')!.days[0].title[0] }) });
-  await visit.getByRole('button', { name: 'Edit activity', exact: true }).click();
-  await visit.getByRole('button', { name: 'Remove arrival reference', exact: true }).click();
-  await expect(page.locator('.day-directions > li')).toHaveCount(1);
-  await page.reload();
-  await expect(page.locator('.day-directions > li')).toHaveCount(1);
-  const saved = validateTrip(
-    await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!)),
-  );
-  expect(saved.stops[0].activities![1].arrival).toBeUndefined();
-  expect(saved.stops[0].activities![1].notes).toBe(trip.stops[0].activities![1].notes);
-});
 
 for (const [id, path] of CITY_PLAN_CASES) {
   test(`${id} guide previews and creates 1–3 day trips in five languages, preserving existing work`, async ({

@@ -1198,6 +1198,30 @@
           "source": {
             "name": "Boston Public Library · visit",
             "url": "https://www.bpl.org/locations/central/"
+          },
+          "arrival": {
+            "label": [
+              "Boston Common visitor center · Tremont Street",
+              "ศูนย์บริการนักท่องเที่ยว Boston Common · Tremont Street",
+              "Boston Common游客中心 · Tremont Street",
+              "Boston Common案内所 · Tremont Street",
+              "Boston Common 방문자 센터 · Tremont Street"
+            ],
+            "note": [
+              "Start at the visitor center at 139 Tremont Street before walking through the Common and Public Garden. This pin identifies the information office, not a parking entrance. Check opening hours if you need staff assistance.",
+              "เริ่มที่ศูนย์บริการนักท่องเที่ยว 139 Tremont Street แล้วเดินชม Common และ Public Garden หมุดนี้อ้างอิงสำนักงานข้อมูล ไม่ใช่ทางเข้าที่จอดรถ ตรวจเวลาเปิดหากต้องการความช่วยเหลือจากเจ้าหน้าที่",
+              "从139 Tremont Street的游客中心出发，再步行游览Common和Public Garden。此点标示咨询处，不是停车场入口；需要工作人员协助时请先查开放时间。",
+              "139 Tremont Streetの案内所を起点に、CommonとPublic Gardenを歩きます。ピンは案内所の位置で、駐車場入口ではありません。係員の案内が必要なら営業時間を確認してください。",
+              "139 Tremont Street의 방문자 센터에서 시작해 Common과 Public Garden을 걸어보세요. 이 핀은 안내소 위치이며 주차장 입구가 아닙니다. 직원의 도움이 필요하면 운영 시간을 확인하세요."
+            ],
+            "coordinates": [42.3554005, -71.0637636],
+            "source": {
+              "name": "Meet Boston · visitor center",
+              "url": "https://www.meetboston.com/plan/visitor-center/"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/3995359862",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-12"
           }
         },
         {
@@ -1225,6 +1249,30 @@
           "source": {
             "name": "Meet Boston · North End",
             "url": "https://www.meetboston.com/explore/neighborhoods/north-end/"
+          },
+          "arrival": {
+            "label": [
+              "Samuel Adams statue · outside Faneuil Hall",
+              "รูปปั้น Samuel Adams · ด้านนอก Faneuil Hall",
+              "Samuel Adams雕像 · Faneuil Hall外",
+              "Samuel Adams像 · Faneuil Hall前",
+              "Samuel Adams 동상 · Faneuil Hall 앞"
+            ],
+            "note": [
+              "Use the statue outside Faneuil Hall as the starting landmark for a short Downtown–North End walk. The pin is outdoors; it does not identify the hall entrance or reserve a guided tour. Check each historic site separately before entering.",
+              "ใช้รูปปั้นด้านนอก Faneuil Hall เป็นจุดเริ่มเดินช่วงสั้นใน Downtown–North End หมุดอยู่กลางแจ้ง ไม่ใช่ทางเข้าอาคารหรือการจองทัวร์ ตรวจข้อมูลแต่ละสถานที่ประวัติศาสตร์ก่อนเข้าชม",
+              "以Faneuil Hall外的雕像为地标，开始Downtown至North End的短程步行。此点在室外，不代表大厅入口，也不含导览预约。进入各历史场所前请分别核对参观信息。",
+              "Faneuil Hall前の像を目印に、DowntownからNorth Endへ短い散策を始めます。屋外のピンで、建物入口やガイドツアーの予約を示すものではありません。各史跡の入場条件を確認してください。",
+              "Faneuil Hall 앞 동상을 기준으로 Downtown–North End의 짧은 산책을 시작하세요. 야외 위치이며 홀 입구나 가이드 투어 예약을 뜻하지 않습니다. 실내에 들어가기 전 각 유적의 관람 정보를 확인하세요."
+            ],
+            "coordinates": [42.3599824, -71.0567717],
+            "source": {
+              "name": "NPS · Dock Square and Samuel Adams statue",
+              "url": "https://www.nps.gov/places/dock-square.htm"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/4776867029",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-12"
           }
         },
         {
@@ -1252,6 +1300,30 @@
           "source": {
             "name": "Museum of Fine Arts · visit",
             "url": "https://www.mfa.org/visit"
+          },
+          "arrival": {
+            "label": [
+              "Museum of Fine Arts · Huntington Avenue entrance",
+              "Museum of Fine Arts · ทางเข้าฝั่ง Huntington Avenue",
+              "Museum of Fine Arts · Huntington Avenue入口",
+              "Museum of Fine Arts · Huntington Avenue入口",
+              "Museum of Fine Arts · Huntington Avenue 입구"
+            ],
+            "note": [
+              "Approach the MFA from Huntington Avenue, its current main entrance at 465 Huntington Avenue. The Fenway entrance is closed to the public. Visitors needing a level entrance should check the museum’s Linde Family Wing instructions on Museum Road. Confirm tickets and opening days.",
+              "เข้าหา MFA จากฝั่ง Huntington Avenue ซึ่งเป็นทางเข้าหลักปัจจุบันที่ 465 Huntington Avenue ทางเข้าฝั่ง Fenway ปิดสำหรับบุคคลทั่วไป ผู้ที่ต้องการทางเข้าระดับพื้นควรตรวจคำแนะนำ Linde Family Wing บน Museum Road กับพิพิธภัณฑ์ ตรวจตั๋วและวันเปิดก่อนเดินทาง",
+              "从465 Huntington Avenue一侧前往MFA现行主入口。Fenway入口不对公众开放；需要平层入口的访客请查阅博物馆关于Museum Road上Linde Family Wing的说明。出发前确认门票和开放日期。",
+              "465 Huntington AvenueにあるMFAの現在の正面入口へ向かいます。Fenway入口は一般公開されていません。段差のない入口が必要な方は、Museum Road側のLinde Family Wingについて館の案内を確認してください。チケットと開館日も要確認です。",
+              "465 Huntington Avenue의 현재 MFA 정문으로 접근하세요. Fenway 입구는 일반 관람객에게 닫혀 있습니다. 평지 출입구가 필요하면 Museum Road의 Linde Family Wing 안내를 박물관에서 확인하세요. 입장권과 개관일도 확인하세요."
+            ],
+            "coordinates": [42.339, -71.0951092],
+            "source": {
+              "name": "MFA · entrances and accessibility",
+              "url": "https://www.mfa.org/visit/accessibility"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/11541163339",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-12"
           }
         }
       ],

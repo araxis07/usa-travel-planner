@@ -1,6 +1,6 @@
 import TravelImage from './TravelImage';
-import { loadStateDetails } from '../data/state-details';
-import { use, useEffect, useRef, useState } from 'react';
+import { useStateDetails } from '../data/state-details';
+import { useEffect, useRef, useState } from 'react';
 import {
   local,
   stateName,
@@ -26,7 +26,7 @@ import Icon from './Icon';
 import PlacePractical from './PlacePractical';
 import CityGuide from './CityGuide';
 import { cityCopy } from '../lib/city-plan';
-import { loadCityGuide } from '../data/city-details';
+import { useCityGuide } from '../data/city-details';
 import { x } from '../data/experience-copy';
 import type { PlaceCollections } from '../lib/collections';
 
@@ -61,7 +61,7 @@ export default function DestinationPage({
   notify: (message: string) => void;
   collections: PlaceCollections;
 }) {
-  const state = { ...overviewState, ...use(loadStateDetails(overviewState.code)) };
+  const state = { ...overviewState, ...useStateDetails(overviewState.code) };
   const t = (en: string, th: string) => translate(en, th, lang);
   const [gallery, setGallery] = useState<number | null>(null);
   const [shareFallback, setShareFallback] = useState(false);
@@ -112,7 +112,7 @@ export default function DestinationPage({
     (p) => placeIndex === undefined || p.placeIndex === placeIndex,
   );
   const profile = placeIndex === undefined ? undefined : state.destinations[placeIndex];
-  const cityGuide = use(loadCityGuide(profile?.id));
+  const cityGuide = useCityGuide(profile?.id);
   useEffect(() => {
     const nav = tocRef.current!;
     const links = [...nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')];
