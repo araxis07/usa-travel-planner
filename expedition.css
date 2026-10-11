@@ -113,8 +113,10 @@
   min-width: 44px;
 }
 .destination-hero {
-  height: min(580px, 65vh);
-  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: min(580px, 65vh);
 }
 .hero-primary-action {
   display: inline-flex;
@@ -157,9 +159,7 @@
     height: 340px;
   }
   .destination-hero {
-    height: 440px;
-    min-height: 0;
-    max-height: 65svh;
+    min-height: min(440px, 65svh);
   }
   .add-place-sheet {
     padding: 24px;

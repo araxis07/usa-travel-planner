@@ -199,7 +199,7 @@ function render(lang, state, index) {
     )
     .replace(
       '</head>',
-      `${cityGuide ? cityPreloads[cityGuide.placeId] : state ? guidePreloads[state.code] : ''}${origin ? `<meta name="roam:site-origin" content="${origin}"/>` : ''}${social}${alternatives}${json}</head>`,
+      `${cityGuide ? cityPreloads[cityGuide.placeId] : parkBooking ? modulePreloads('components/DestinationPage.tsx', `content/states.json?details=${state.code}`, 'components/ParkBooking.tsx') : state ? guidePreloads[state.code] : ''}${origin ? `<meta name="roam:site-origin" content="${origin}"/>` : ''}${social}${alternatives}${json}</head>`,
     )
     .replace('<div id="root"></div>', `<div id="root">${content}</div>`);
   return {

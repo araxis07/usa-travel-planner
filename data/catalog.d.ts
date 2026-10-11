@@ -6,6 +6,10 @@ declare module '*.json?photos' {
   const photos: unknown;
   export default photos;
 }
+declare module '*.json?park-ids' {
+  const ids: string[];
+  export default ids;
+}
 declare module 'virtual:state-details' {
   const loaders: Record<string, () => Promise<{ default: import('./state-details').StateDetails }>>;
   export default loaders;

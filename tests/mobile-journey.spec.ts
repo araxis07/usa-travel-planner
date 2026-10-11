@@ -82,6 +82,63 @@ test('guide dialog accepts a focused-field touch submit and dismisses after rota
   await expect(dialog).toBeVisible();
 });
 
+test('guide hero grows around enlarged titles and actions on short portrait and landscape screens', async ({
+  page,
+}) => {
+  test.setTimeout(60000);
+  for (const lang of LANGUAGES) {
+    await page.setViewportSize({ width: 320, height: 360 });
+    await page.goto(`/${lang}/states/pennsylvania/philadelphia/`);
+    await expect(page.locator('.destination-hero h1')).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    await page.locator('.destination-hero').evaluate((hero) => {
+      // Layout stress check, not an OS font-size or keyboard simulation.
+      const nodes = [...hero.querySelectorAll<HTMLElement>('*')];
+      const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
+      nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
+    });
+    for (const viewport of [
+      { width: 320, height: 360 },
+      { width: 844, height: 320 },
+    ]) {
+      await page.setViewportSize(viewport);
+      expect(
+        await page.locator('.destination-hero').evaluate((hero) => {
+          const bounds = hero.getBoundingClientRect();
+          const gallery = hero.querySelector('.destination-gallery-open')!;
+          const g = gallery.getBoundingClientRect();
+          return [...hero.querySelectorAll('h1, button, .eyebrow, .destination-original')].every(
+            (node) => {
+              const r = node.getBoundingClientRect();
+              return (
+                r.top >= bounds.top &&
+                r.bottom <= bounds.bottom &&
+                r.left >= 0 &&
+                r.right <= innerWidth &&
+                node.scrollWidth <= node.clientWidth + 1 &&
+                (node === gallery ||
+                  r.bottom <= g.top ||
+                  r.top >= g.bottom ||
+                  r.right <= g.left ||
+                  r.left >= g.right)
+              );
+            },
+          );
+        }),
+        `${lang} at ${viewport.width} × ${viewport.height}`,
+      ).toBe(true);
+    }
+    await page.setViewportSize({ width: 320, height: 360 });
+    await page.locator('.destination-gallery-open').tap();
+    await expect(page.locator('.photo-lightbox')).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.photo-lightbox')).toHaveCount(0);
+    await page.locator('.hero-primary-action').tap();
+    await expect(page.getByRole('dialog')).toBeVisible();
+    await page.keyboard.press('Escape');
+  }
+});
+
 test('enlarged text keeps narrow-screen navigation and sticky day controls reachable in five languages', async ({
   page,
 }) => {

@@ -76,6 +76,11 @@ test('direct city, park and state guides start loading details before the applic
       const cities = requests.filter((url) => /\/city-details-/.test(url));
       expect(cities).toHaveLength(code === 'PA' ? 1 : 0);
       if (code === 'PA') expect(cities[0]).toContain('/city-details-PA-0-');
+      if (code === 'CA')
+        for (const module of ['ParkBooking', 'travel-preparation'])
+          await expect
+            .poll(() => requests.some((url) => url.includes(`/assets/${module}-`)))
+            .toBe(true);
       release();
       await expect(page.locator('.destination-hero h1')).toHaveText(heading);
       if (code === 'CA')
@@ -83,6 +88,8 @@ test('direct city, park and state guides start loading details before the applic
           .poll(() => requests.some((url) => url.endsWith('/data/parks.json')))
           .toBe(true);
       else expect(requests.some((url) => url.endsWith('/data/parks.json'))).toBe(false);
+      if (code !== 'CA')
+        expect(requests.some((url) => /\/(ParkBooking|travel-preparation)-/.test(url))).toBe(false);
       await expect(page.locator('.destination-page > .photo-credit a').first()).toHaveAttribute(
         'href',
         /^https:\/\//,
@@ -293,6 +300,7 @@ test('all language pages contain readable content without JavaScript and recipro
 test('city plans, airport sources and budget breakdowns are published in all languages without JavaScript', async ({
   browser,
 }) => {
+  test.setTimeout(60000);
   const context = await browser.newContext({
     javaScriptEnabled: false,
     viewport: { width: 320, height: 740 },
@@ -330,10 +338,11 @@ test('city plans, airport sources and budget breakdowns are published in all lan
         }
       }
       await expect(page.locator('#guide-airport')).toContainText(guide.airport.fare[l]);
-      await expect(page.locator('#guide-airport a').first()).toHaveAttribute(
-        'href',
-        guide.airport.sources[0].url,
-      );
+      await expect(page.locator('#guide-airport')).toContainText(guide.airport.note[l]);
+      for (const source of guide.airport.sources)
+        await expect(
+          page.locator('#guide-airport a').filter({ hasText: source.name }),
+        ).toHaveAttribute('href', source.url);
       await expect(page.locator('#guide-airport time').first()).toHaveAttribute(
         'datetime',
         guide.checkedAt,

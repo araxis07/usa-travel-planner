@@ -15438,11 +15438,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Use Highway 62 for the South or West Entrance. The Highway 138 North Entrance is seasonal and closes November 1 or earlier with snow. Check current road and fuel availability before driving; park fuel is listed only through October 13, 2026.",
-            "ใช้ Highway 62 ไปทางใต้หรือตะวันตก ทางเหนือจาก Highway 138 เปิดตามฤดูกาลและปิด 1 พฤศจิกายนหรือเร็วกว่านั้นถ้ามีหิมะ ตรวจถนนและน้ำมันก่อนขับ น้ำมันในอุทยานระบุให้บริการถึง 13 ตุลาคม 2026 เท่านั้น",
-            "经Highway 62到南或西入口。Highway 138北入口季节性开放，11月1日或降雪时更早关闭。驾车前核对道路与燃油供应；园内燃油仅列至2026年10月13日。",
-            "南・西入口はHighway 62から。Highway 138の北入口は季節営業で11月1日、降雪ならそれ以前に閉鎖します。道路と給油の状況を確認。園内の給油は2026年10月13日までと案内されています。",
-            "남쪽이나 서쪽 입구는 Highway 62를 이용하세요. Highway 138 북쪽 입구는 계절 운영이며 11월 1일 또는 눈이 오면 더 일찍 닫힙니다. 도로와 주유 가능 여부를 확인하세요. 공원 내 주유는 2026년 10월 13일까지만 안내돼 있습니다."
+            "Use Highway 62 for the South or West Entrance. The Highway 138 North Entrance is seasonal and closes November 1 or earlier with snow. NPS lists fuel at Mazama Village through October 13, 2026 only; for later visits, plan to refuel outside the park and recheck availability. Check road conditions before driving.",
+            "ใช้ Highway 62 ไปทางใต้หรือตะวันตก ทางเหนือจาก Highway 138 เปิดตามฤดูกาลและปิด 1 พฤศจิกายนหรือเร็วกว่านั้นถ้ามีหิมะ NPS ระบุน้ำมันที่ Mazama Village ถึง 13 ตุลาคม 2026 เท่านั้น หากเที่ยวหลังจากนั้นให้วางแผนเติมนอกอุทยานและตรวจการให้บริการอีกครั้ง ตรวจสภาพถนนก่อนขับ",
+            "经Highway 62到南或西入口。Highway 138北入口季节性开放，11月1日或降雪时更早关闭。NPS仅列出Mazama Village供油至2026年10月13日；之后到访请计划在园外加油，并再次核对供应。驾车前检查路况。",
+            "南・西入口はHighway 62から。Highway 138の北入口は季節営業で、11月1日または降雪によりそれ以前に閉鎖します。NPSが案内するMazama Villageの給油は2026年10月13日まで。その後の訪問では園外での給油を計画し、営業状況を再確認してください。運転前に道路状況も確認を。",
+            "남쪽이나 서쪽 입구는 Highway 62를 이용하세요. Highway 138 북쪽 입구는 계절 운영으로 11월 1일 또는 눈이 오면 더 일찍 닫힙니다. NPS는 Mazama Village 주유를 2026년 10월 13일까지만 안내합니다. 이후 방문은 공원 밖 주유를 계획하고 운영 여부를 다시 확인하세요. 운전 전 도로 상황도 확인하세요."
           ],
           "stay": [
             "Compare stays in Fort Klamath / Chiloquin as possible bases. Check the journey to your selected entrance, stop or departure point before booking.",
@@ -15465,7 +15465,7 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/crla/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/crla/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-10",
+          "reviewedAt": "2026-10-11",
           "reviewAfter": "2026-10-13",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
@@ -15484,7 +15484,7 @@
               "Cleetwood Cove Trail은 공사로 계속 폐쇄되어 호숫가 접근을 계획하지 않아야 합니다. East Rim Drive는 통과 주행이 가능하지만 공사 구간에서 교통 통제가 있을 수 있습니다. 출발 전 NPS 현황을 확인하세요."
             ],
             "source": "https://www.nps.gov/crla/planyourvisit/conditions.htm",
-            "checkedAt": "2026-10-09"
+            "checkedAt": "2026-10-11"
           }
         }
       ]

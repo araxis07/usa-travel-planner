@@ -35,6 +35,10 @@ export default defineConfig(({ mode }) => ({
           .join(',')}}`;
       },
       transform(source, id) {
+        if (id.endsWith('/content/travel-preparation.json?park-ids'))
+          return JSON.stringify(
+            JSON.parse(source).parks.map((park: { placeId: string }) => park.placeId),
+          );
         if (/\/content\/city-guides\.json\?(copy|city=[A-Z]{2}-0)$/.test(id)) {
           const content = JSON.parse(source);
           return JSON.stringify(

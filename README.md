@@ -136,7 +136,7 @@ npm run test:production
 npm run format:check
 ```
 
-The regular browser suite runs 192 checks across desktop/mobile Chromium and targeted Firefox, WebKit and Android profiles. It covers multi-trip switching, collections import/export, templates, the trip helper, editable timelines, five languages, galleries, city plans and budgets, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility, enlarged-text navigation/captions and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
+The regular browser suite runs 195 checks across desktop/mobile Chromium and targeted Firefox, WebKit and Android profiles. It covers multi-trip switching, collections import/export, templates, the trip helper, editable timelines, five languages, galleries, city plans and budgets, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility, enlarged-text navigation/heroes/captions and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
 
 `test:production` builds to ignored `artifacts/production/`, serves port 5198 and runs fifteen checks covering static SEO without JavaScript, all thirty localized city supplements, responsive covers, early per-state guide loading, client metadata, deferred asset caching, offline reloads over existing saved caches, the nine-day rail trip, all six city plans and print labels offline, all forty-five localized access notices without JavaScript, deferred loading stability, all saved photos and PDFs in five languages. Account tests intercept Supabase HTTP requests to exercise the real browser client without sending emails or changing a remote database. Reports and PDFs are in `artifacts/production-results/` and `artifacts/production-report/`. Tests close their servers when finished. GitHub Actions runs all three suites.
 
@@ -160,6 +160,10 @@ Philadelphia arrival coordinates retain © OpenStreetMap contributors attributio
 Destination summaries now use concise editorial highlights rather than encyclopedia introductions. Earlier research remains in the source archive. Each profile includes its language-specific source link and CC BY-SA 4.0 attribution. Preserve those references when editing or reusing the summaries. Hours, fees and alerts come from the National Park Service; they are snapshots, not live guarantees.
 
 State geometry comes from the ISC-licensed [US Atlas](https://github.com/topojson/us-atlas), with Alaska and Hawaii in separate insets. D.C. and territories are outside the 50-state count. DM Sans, DM Serif Display and Noto Sans Thai are self-hosted under bundled SIL Open Font Licenses. Chinese, Japanese and Korean use the device’s installed font fallbacks.
+
+## October 11 guide loading, mobile layout and seasonal review
+
+City visits now defer the unrelated park/preparation module; direct park pages preload their booking supplement. Philadelphia's cold mobile lab transfer decreased another 5.4%, with median LCP moving from 3.308 to 3.184 seconds (still above the 2.5-second target). Guide heroes grow around enlarged text and keep gallery/trip actions separate on short screens. Rocky Mountain, Crater Lake and the JFK airport passage received a targeted official-source review; October 12–13 follow-ups remain scheduled. See [scope, sources, mobile journeys and measurements](docs/2026-10-11-guide-mobile-and-seasonal-review.md).
 
 ## October 10 city arrivals and review queue
 

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { local, type PlaceProfile, type Language } from '../data/travel';
 import { translate, LOCALES } from '../lib/i18n';
 import { locationKindLabel } from '../lib/destinations';
 import { x } from '../data/experience-copy';
-import ParkBooking from './ParkBooking';
+import parkIds from '../content/travel-preparation.json?park-ids' with { type: 'json' };
+const ParkBooking = lazy(() => import('./ParkBooking'));
 interface Park {
   id: string;
   url: string;
@@ -103,7 +104,11 @@ export default function PlacePractical({
           </a>
         )}
       </div>
-      <ParkBooking placeId={profile.id} lang={lang} />
+      {parkIds.includes(profile.id) && (
+        <Suspense fallback={<p role="status">{t('Loading…', 'กำลังโหลด…')}</p>}>
+          <ParkBooking placeId={profile.id} lang={lang} />
+        </Suspense>
+      )}
       <details className="guide-details">
         <summary>{x(lang, 'guideDetails')}</summary>
         {profile.planning && (

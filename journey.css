@@ -59,7 +59,7 @@
 }
 .destination-hero-copy {
   position: relative;
-  height: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -73,7 +73,8 @@
   letter-spacing: -2px;
   line-height: 1.05;
   margin: 20px 0;
-  max-width: 1050px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   text-wrap: balance;
 }
 .destination-hero .eyebrow {

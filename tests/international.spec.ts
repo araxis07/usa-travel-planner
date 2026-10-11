@@ -218,6 +218,11 @@ test('city guides localize neighborhood links, airport steps and complete group 
       await page.locator('.guide-toc a[href="#guide-airport"]').click();
       await expect(section.locator('.city-airport-steps li')).toHaveCount(3);
       await expect(page.locator('#guide-airport')).toContainText(guide.airport.fare[l]);
+      await expect(page.locator('#guide-airport')).toContainText(guide.airport.note[l]);
+      for (const source of guide.airport.sources)
+        await expect(
+          page.locator('#guide-airport a').filter({ hasText: source.name }),
+        ).toHaveAttribute('href', source.url);
       await expect(page.locator('#guide-airport')).toContainText(guide.reviewAfter);
       await page.locator('.guide-toc a[href="#guide-city-budget"]').click();
       await expect(page.locator('#guide-city-budget')).toContainText(

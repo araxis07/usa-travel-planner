@@ -343,11 +343,11 @@
           "성인 일반 편도: AirTrain $8.75 + 지하철 $3.00 = $11.75. 할인과 LIRR 이용 조건은 다릅니다."
         ],
         "note": [
-          "JFK lists overnight AirTrain shutdowns October 13–15, 2026, 22:00–06:00 local time, with free replacement buses. Recheck the work notice and allow extra transfer time. Check AirTrain work notices and MTA service/elevator status before departure. With bulky bags, compare LIRR or an official taxi. This route is for JFK, not LGA or EWR.",
-          "JFK แจ้งหยุด AirTrain กลางคืน 13–15 ตุลาคม 2026 เวลา 22:00–06:00 ตามเวลาท้องถิ่น มีรถบัสทดแทนฟรี ตรวจประกาศอีกครั้งและเผื่อเวลาต่อรถเพิ่ม ตรวจงานปรับปรุง AirTrain และสถานะรถไฟกับลิฟต์ MTA ก่อนเดินทาง ถ้ามีกระเป๋าใหญ่ให้เทียบ LIRR หรือแท็กซี่ทางการ เส้นทางนี้ใช้กับ JFK ไม่ใช่ LGA หรือ EWR",
-          "JFK公告2026年10月13–15日当地时间22:00–06:00夜间AirTrain停运，提供免费替代巴士。再次核对施工公告并增加换乘余量。 出发前核对AirTrain施工及MTA服务、电梯状态。大件行李可比较LIRR或正规出租车。本路线仅适用于JFK，不适用于LGA或EWR。",
-          "JFKは2026年10月13〜15日の夜間、現地時間22:00〜06:00にAirTrainを停止し、無料の代行バスを案内。工事情報を再確認し、乗り換えに余裕を。 AirTrainの工事案内とMTAの運行・エレベーター情報を確認。大きな荷物ならLIRRや正規タクシーも比較を。JFK専用でLGA・EWRには使えません。",
-          "JFK는 2026년 10월 13~15일 현지 시각 22:00~06:00 AirTrain 야간 운행 중단과 무료 대체 버스를 안내합니다. 공지와 추가 환승 시간을 확인하세요. 출발 전 AirTrain 공사와 MTA 운행 및 엘리베이터 상태를 확인하세요. 큰 짐이 있으면 LIRR이나 공식 택시도 비교하세요. JFK용 경로이며 LGA나 EWR에는 적용되지 않습니다."
+          "AirTrain work is scheduled on the nights of October 13, 14 and 15, 2026, from 22:00 to 06:00 the following morning, New York local time; the last window ends October 16. Weather permitting, free buses replace service between all stations and terminals. Recheck the Port Authority notice and MTA service/elevator status, and allow extra time. This route serves JFK only; LIRR connections also depend on AirTrain.",
+          "มีกำหนดปรับปรุง AirTrain ในคืนวันที่ 13, 14 และ 15 ตุลาคม 2026 เวลา 22:00 ถึง 06:00 ของเช้าวันถัดไป ตามเวลาท้องถิ่นนิวยอร์ก รอบสุดท้ายสิ้นสุดเช้า 16 ตุลาคม หากสภาพอากาศเอื้อจะดำเนินงานและใช้รถบัสฟรีทดแทนระหว่างทุกสถานีกับอาคารผู้โดยสาร ตรวจประกาศ Port Authority และสถานะรถไฟกับลิฟต์ MTA อีกครั้ง พร้อมเผื่อเวลา เส้นทางนี้ใช้กับ JFK เท่านั้น การต่อ LIRR ก็ยังต้องใช้ AirTrain",
+          "AirTrain计划于2026年10月13、14、15日夜间施工，每晚纽约当地时间22:00至次日06:00，最后一轮于10月16日早晨结束。施工视天气而定，期间各车站和航站楼间有免费替代巴士。再次核对Port Authority公告及MTA列车、电梯状态，并预留额外时间。本路线仅适用于JFK；换乘LIRR也需使用AirTrain。",
+          "AirTrainは2026年10月13・14・15日の各夜、ニューヨーク現地時間22:00〜翌朝06:00に工事を予定しています。最終回は10月16日朝まで。天候により実施し、全駅とターミナル間は無料の代行バスを運行します。Port Authorityの公告とMTAの運行・エレベーター情報を再確認し、時間に余裕を。本経路はJFK専用で、LIRRへの乗り継ぎにもAirTrainを利用します。",
+          "AirTrain 공사는 2026년 10월 13·14·15일 밤, 뉴욕 현지 시각 22:00부터 다음 날 06:00까지 예정되어 있으며 마지막 작업은 10월 16일 아침에 끝납니다. 날씨가 허용하면 작업하며 모든 역과 터미널 사이에 무료 대체 버스를 운행합니다. Port Authority 공지와 MTA 열차·엘리베이터 상태를 다시 확인하고 시간을 넉넉히 잡으세요. JFK 전용 경로이며 LIRR 환승에도 AirTrain을 이용합니다."
         ],
         "sources": [
           {
@@ -355,12 +355,16 @@
             "url": "https://www.mta.info/guides/airports/jfk"
           },
           {
-            "name": "JFK · AirTrain and notices",
+            "name": "JFK · AirTrain fares & connections",
             "url": "https://www.jfkairport.com/transportation/airtrain"
           },
           {
             "name": "JFK · Public transport fares",
             "url": "https://www.jfkairport.com/transportation/public-transport"
+          },
+          {
+            "name": "Port Authority · October 9–15 travel advisory",
+            "url": "https://www.panynj.gov/port-authority/en/press-room/press-release-archives/2026-press-releases/weekly-travel-advisory-for-oct--9-to-15-.html"
           }
         ]
       },
