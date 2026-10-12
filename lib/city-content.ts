@@ -162,36 +162,63 @@ export function cityContentIssues(content: CityContent): ContentIssue[] {
       /^\d{4}-\d{2}-\d{2}$/.test(s) &&
       Number.isFinite(Date.parse(s)) &&
       new Date(s).toISOString().slice(0, 10) === s;
-    if (!valid(v.checkedAt) || !valid(v.reviewAfter) || v.reviewAfter <= v.checkedAt)
-      add(code, field, 'ใช้วันที่จริง และกำหนดตรวจครั้งถัดไปหลังวันที่ตรวจแล้ว');
+    if (!valid(v.checkedAt)) add(code, `${field}checkedAt`, 'ใช้วันที่ตรวจข้อมูลที่มีอยู่จริง');
+    if (!valid(v.reviewAfter) || v.reviewAfter <= v.checkedAt)
+      add(code, `${field}reviewAfter`, 'ใช้วันที่จริง และกำหนดตรวจครั้งถัดไปหลังวันที่ตรวจแล้ว');
   };
   nonempty(content.copy, 'copy', 'copy');
   for (const g of content.guides) {
     nonempty(g, g.placeId, 'guide');
     g.days.forEach((day, i) => {
       if (day.arrival) {
+        day.arrival.coordinates.forEach((n, axis) => {
+          if (typeof n !== 'number' || !Number.isFinite(n) || Math.abs(n) > (axis === 0 ? 90 : 180))
+            add(
+              g.placeId,
+              `guide.days.${i}.arrival.coordinates.${axis}`,
+              axis === 0 ? 'กรอกละติจูดระหว่าง −90 ถึง 90' : 'กรอกลองจิจูดระหว่าง −180 ถึง 180',
+            );
+        });
         try {
           validateArrival(day.arrival);
         } catch {
-          add(
-            g.placeId,
-            `guide.days.${i}.arrival`,
-            'เติมจุดเริ่มเที่ยวครบ 5 ภาษา พิกัด แหล่งอ้างอิง และวันที่ตรวจจริงก่อนเผยแพร่หรือดูตัวอย่าง',
-          );
+          if (
+            !issues.some(
+              (issue) =>
+                issue.code === g.placeId && issue.field.startsWith(`guide.days.${i}.arrival.`),
+            )
+          )
+            add(
+              g.placeId,
+              `guide.days.${i}.arrival`,
+              'เติมจุดเริ่มเที่ยวครบ 5 ภาษา พิกัด แหล่งอ้างอิง และวันที่ตรวจจริงก่อนเผยแพร่หรือดูตัวอย่าง',
+            );
         }
       }
     });
-    dates(g, g.placeId, 'review');
-    dates(g.food, g.placeId, 'food.review');
+    dates(g, g.placeId, '');
+    dates(g.food, g.placeId, 'food.');
     if (!/^[A-Z]{3}$/.test(g.airport.code))
       add(g.placeId, 'airport.code', 'รหัสสนามบินต้องเป็นอักษร A–Z สามตัว');
-    if (g.budget.amounts.some((row) => row.some((n) => !money(n))))
-      add(g.placeId, 'budget.amounts', 'ใช้วงเงินเต็มดอลลาร์ระหว่าง 0–1,000,000');
+    g.budget.amounts.forEach((row, i) =>
+      row.forEach((n, j) => {
+        if (!money(n))
+          add(g.placeId, `budget.amounts.${i}.${j}`, 'ใช้วงเงินเต็มดอลลาร์ระหว่าง 0–1,000,000');
+      }),
+    );
     g.food.stops.forEach((s, i) => {
-      if (s.allowance.some((n) => !money(n)) || s.allowance[0] > s.allowance[1])
+      s.allowance.forEach((n, j) => {
+        if (!money(n))
+          add(
+            g.placeId,
+            `food.stops.${i}.allowance.${j}`,
+            'ใช้วงเงินเต็มดอลลาร์ระหว่าง 0–1,000,000',
+          );
+      });
+      if (s.allowance[0] > s.allowance[1])
         add(
           g.placeId,
-          `food.stops.${i}.allowance`,
+          `food.stops.${i}.allowance.1`,
           'ใช้วงเงินเต็มดอลลาร์ 0–1,000,000 และต่ำสุดต้องไม่เกินสูงสุด',
         );
     });

@@ -82,7 +82,7 @@ test('direct city, park and state guides start loading details before the applic
             .poll(() => requests.some((url) => url.includes(`/assets/${module}-`)))
             .toBe(true);
       release();
-      await expect(page.locator('.destination-hero h1')).toHaveText(heading);
+      await expect(page.locator('#destination-guide .destination-hero h1')).toHaveText(heading);
       if (code === 'CA')
         await expect
           .poll(() => requests.some((url) => url.endsWith('/data/parks.json')))
@@ -130,7 +130,8 @@ test('published guide stays readable while city data loads or fails, then opens 
         (window as any).missingGuideFrames = 0;
         function check() {
           if (!document.querySelector('main h1')) (window as any).missingGuideFrames++;
-          if (!document.querySelector('.destination-hero')) requestAnimationFrame(check);
+          if (!document.querySelector('#destination-guide .destination-hero'))
+            requestAnimationFrame(check);
         }
         requestAnimationFrame(check);
       });
@@ -146,11 +147,73 @@ test('published guide stays readable while city data loads or fails, then opens 
         );
         await page.unroute(/\/assets\/city-details-PA-0-[^/]+\.js$/);
         await page.getByRole('button', { name: 'Try again', exact: true }).click();
-        await expect(page.locator('.destination-hero h1')).toHaveText('Philadelphia');
+        await expect(page.locator('#destination-guide .destination-hero h1')).toHaveText(
+          'Philadelphia',
+        );
       } else {
-        await expect(page.locator('.destination-hero h1')).toHaveText('Philadelphia');
+        await expect(page.locator('#destination-guide .destination-hero h1')).toHaveText(
+          'Philadelphia',
+        );
         expect(await page.evaluate(() => (window as any).missingGuideFrames)).toBe(0);
       }
+      await expect
+        .poll(() =>
+          page.locator('#guide-airport').evaluate((el) => {
+            const top = el.getBoundingClientRect().top;
+            const header = document.querySelector('.header')!.getBoundingClientRect().bottom;
+            const toc = document.querySelector('.guide-toc')!.getBoundingClientRect().height;
+            return top >= header + toc - 2 && top < innerHeight / 2;
+          }),
+        )
+        .toBe(true);
+    } finally {
+      release();
+      await page.close();
+    }
+  }
+  await context.close();
+});
+
+test('published guide covers match the interactive geometry in five languages on mobile', async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({
+    serviceWorkers: 'block',
+    viewport: { width: 390, height: 844 },
+    reducedMotion: 'reduce',
+  });
+  for (const lang of LANGUAGES) {
+    const page = await context.newPage();
+    let release!: () => void;
+    const hold = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    await page.route(/\/assets\/index-[^/]+\.js$/, async (route) => {
+      await hold;
+      await route.continue();
+    });
+    try {
+      await page.goto(baseURL + `/${lang}/states/new-york/new-york-city/`, { waitUntil: 'commit' });
+      const cover = page.locator('[data-published]');
+      await expect(cover.locator('h1')).toBeVisible();
+      await cover.locator('img').evaluate((img: HTMLImageElement) => img.decode());
+      await page.evaluate(() => document.fonts.ready);
+      const before = (await cover.boundingBox())!;
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+      await expect(cover.getByRole('link').last()).toHaveAttribute('href', '#guide-city');
+      release();
+      const interactive = page.locator('#destination-guide .destination-hero');
+      await expect(interactive).toBeVisible();
+      const after = (await interactive.boundingBox())!;
+      expect(Math.abs(after.width - before.width)).toBeLessThanOrEqual(1);
+      expect(Math.abs(after.height - before.height)).toBeLessThanOrEqual(2);
+      expect(Math.abs(after.y - before.y)).toBeLessThanOrEqual(2);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
     } finally {
       release();
       await page.close();
@@ -183,7 +246,7 @@ test('mobile home defers guide details and atlas while credits and practical gui
   });
   expect(
     cached.some((url) =>
-      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|state-details|city-details|TripPlanner|leaflet-src)-/.test(
+      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|state-details|city-details|TripPlanner|CompareDestinations|AddPlaceDialog|leaflet-src)-/.test(
         url,
       ),
     ),
@@ -191,7 +254,9 @@ test('mobile home defers guide details and atlas while credits and practical gui
   expect(requests.some((url) => new URL(url).pathname === '/images/hero.jpg')).toBe(false);
   expect(
     requests.some((url) =>
-      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|state-details)-/.test(url),
+      /\/(Atlas|LandmarkScene|atlas-geometry|photo-details|state-details|CompareDestinations|AddPlaceDialog)-/.test(
+        url,
+      ),
     ),
   ).toBe(false);
   expect(
@@ -204,7 +269,7 @@ test('mobile home defers guide details and atlas while credits and practical gui
       .evaluate((image: HTMLImageElement) => image.currentSrc),
   ).toContain('-640.webp');
   await page.locator('.destination-grid .card-image-button').first().click();
-  await expect(page.locator('.destination-hero h1')).toHaveText('California');
+  await expect(page.locator('#destination-guide .destination-hero h1')).toHaveText('California');
   await expect(page.locator('.destination-page > .photo-credit a').first()).toHaveAttribute(
     'href',
     /^https:\/\//,
@@ -342,7 +407,7 @@ test('all language pages contain readable content without JavaScript and recipro
             index,
           )}`,
         );
-        const notice = page.locator('main > aside');
+        const notice = page.locator('.published-guide-body > aside');
         await expect(notice).toHaveCount(1);
         await expect(notice.locator('p')).toHaveText(advisory.text[l]);
         await expect(notice.locator('a')).toHaveAttribute('href', advisory.source);
@@ -351,6 +416,22 @@ test('all language pages contain readable content without JavaScript and recipro
     }
   }
   expect(sitemap.match(/<loc>/g)).toHaveLength(1005);
+  await page.setViewportSize({ width: 320, height: 740 });
+  for (const lang of LANGUAGES) {
+    await page.goto(`${baseURL}/${lang}/states/new-york/new-york-city/`);
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+      const elements = [...document.body.querySelectorAll('*')].filter(
+        (el): el is HTMLElement =>
+          el instanceof HTMLElement && !['SCRIPT', 'STYLE'].includes(el.tagName),
+      );
+      const sizes = elements.map((el) => parseFloat(getComputedStyle(el).fontSize));
+      elements.forEach((el, i) => (el.style.fontSize = `${sizes[i] * 2}px`));
+    });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
   await context.close();
 });
 
@@ -763,7 +844,7 @@ test('deferred guides retain published content and the planner reserves space wh
           expect(footer!.y).toBeGreaterThanOrEqual(844);
         } else {
           await expect(page.locator('main h1')).toBeVisible();
-          await expect(page.locator('main > img')).toBeVisible();
+          await expect(page.locator('[data-published] > img')).toBeVisible();
           await expect(page.locator('.page-loading')).toHaveCount(0);
         }
         release();

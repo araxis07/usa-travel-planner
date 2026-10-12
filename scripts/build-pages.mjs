@@ -23,6 +23,7 @@ const labels = ['English', 'ไทย', '简体中文', '日本語', '한국어'
 const catalog = JSON.parse(await readFile('content/states.json', 'utf8'));
 const cityContent = JSON.parse(await readFile('content/city-guides.json', 'utf8'));
 const preparation = JSON.parse(await readFile('content/travel-preparation.json', 'utf8'));
+const translations = JSON.parse(await readFile('content/translations.json', 'utf8'));
 const template = await readFile(outDir + '/index.html', 'utf8');
 const manifest = JSON.parse(await readFile(outDir + '/.vite/manifest.json', 'utf8'));
 const escape = (value) =>
@@ -124,6 +125,7 @@ function render(lang, state, index) {
   const l = langs.indexOf(lang),
     profile = index === undefined ? undefined : state.destinations[index];
   const name = profile ? state.placeNames[index][l] : state ? state.names[l] : 'Roam America';
+  const t = (en, th) => escape(l === 0 ? en : l === 1 ? th : translations[en][l - 2]);
   const cityGuide = cityContent.guides.find((guide) => guide.placeId === profile?.id);
   const parkBooking = preparation.parks.find((guide) => guide.placeId === profile?.id);
   const description = profile ? profile.summary[l] : state ? state.description[l] : descriptions[l];
@@ -173,7 +175,20 @@ function render(lang, state, index) {
     : catalog.states
         .map((s) => `<li><a href="${pagePath(lang, s)}">${escape(s.names[l])}</a></li>`)
         .join('');
-  const content = `<header><a href="/${lang}/">Roam America</a><nav style="font-family:system-ui,sans-serif">${langs.map((code, i) => `<a lang="${code}" href="${pagePath(code, state, index)}">${labels[i]}</a>`).join(' · ')}</nav></header><main style="max-width:1000px;margin:auto;padding:32px"><h1>${escape(name)}</h1>${photo ? `<img src="${photo.src}" srcset="${coverSources}" sizes="100vw" alt="${escape(photo.displayCaption?.[l] ?? name)}" width="960" height="${Math.round((960 * photo.height) / photo.width)}" style="max-width:100%;height:auto"/>` : ''}<p>${escape(description)}</p>${profile ? `${profile.advisory ? `<aside><p>${escape(profile.advisory.text[l])}</p><a href="${escape(profile.advisory.source)}">${escape(profile.advisory.checkedAt)}</a></aside>` : ''}<p>${escape(profile.access[l])}</p><p>${escape(profile.stay[l])}</p><a href="${escape(profile.officialUrl)}">${escape(profile.officialUrl)}</a><p><a href="${escape(profile.summarySources[l])}">Wikipedia contributors</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">${escape(profile.summaryLicense)}</a></p>` : ''}${cityGuide ? renderCityGuide(cityGuide, l) : ''}${parkBooking ? renderParkBooking(parkBooking, l) : ''}${!state ? renderPreparationGuide(preparation.firstTrip, preparation.copy.firstTripTitle, 'guide-first-trip', l) + renderPreparationGuide(preparation.intercity, preparation.copy.intercityTitle, 'guide-intercity', l) : ''}<ul>${links}</ul></main>`;
+  const languageLinks = langs
+    .map(
+      (code, i) =>
+        `<a lang="${code}" aria-label="${labels[i]}" ${code === lang ? 'aria-current="page"' : ''} href="${pagePath(code, state, index)}">${state ? code.toUpperCase() : labels[i]}</a>`,
+    )
+    .join(' · ');
+  const header = state
+    ? `<div class="announcement"><span class="little-flag" aria-hidden="true"></span><span>${t('50 states. A million ways to make them yours.', '50 รัฐ หลากล้านประสบการณ์ในแบบของคุณ')}</span></div><header class="header published-header"><div class="header-inner"><a class="brand" href="/${lang}/">ROAM AMERICA</a><nav aria-label="Language / ภาษา">${languageLinks}</nav></div></header>`
+    : `<header><a href="/${lang}/">Roam America</a><nav style="font-family:system-ui,sans-serif">${languageLinks}</nav></header>`;
+  const hero = photo
+    ? `<div class="guide-breadcrumb container"><a class="text-link" href="/${lang}/">${t('All destinations', 'จุดหมายทั้งหมด')}</a><span>/</span><a href="${pagePath(lang, state)}">${escape(state.names[l])}</a></div><section class="destination-hero" data-published><img src="${photo.src}" srcset="${coverSources}" sizes="100vw" alt="${escape(photo.displayCaption?.[l] ?? name)}" width="960" height="${Math.round((960 * photo.height) / photo.width)}" fetchpriority="high" decoding="sync"/><div class="destination-hero-shade"></div><a class="button gallery-open destination-gallery-open" href="${photo.src}">${t('View fullscreen', 'ดูเต็มจอ')}</a><div class="destination-hero-copy container"><span class="eyebrow">${state.code} / USA</span><h1>${escape(name)}</h1>${lang !== 'en' ? `<span class="destination-original" lang="en">${escape(profile ? state.places[index] : state.name)}</span>` : ''}<div class="destination-hero-actions"><a class="button button-red hero-primary-action" href="#${cityGuide ? 'guide-city' : 'guide-story'}">${cityGuide ? escape(cityContent.copy.title[l]) : t('Discover', 'จุดหมาย')}</a></div></div></section><p class="destination-hero-credit container photo-credit"><a href="${escape(photo.source)}">${escape(photo.author)}</a> · <a href="${escape(photo.licenseUrl)}">${escape(photo.license)}</a></p>`
+    : `<h1>${escape(name)}</h1>`;
+  const content = `${header}<main class="published-guide">${photo ? hero : ''}<div class="published-guide-body" id="guide-story">${photo ? '' : hero}<p>${escape(description)}</p>${profile ? `${profile.advisory ? `<aside><p>${escape(profile.advisory.text[l])}</p><a href="${escape(profile.advisory.source)}">${escape(profile.advisory.checkedAt)}</a></aside>` : ''}<p>${escape(profile.access[l])}</p><p>${escape(profile.stay[l])}</p><a href="${escape(profile.officialUrl)}">${escape(profile.officialUrl)}</a><p><a href="${escape(profile.summarySources[l])}">Wikipedia contributors</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">${escape(profile.summaryLicense)}</a></p>` : ''}${cityGuide ? renderCityGuide(cityGuide, l) : ''}${parkBooking ? renderParkBooking(parkBooking, l) : ''}${!state ? renderPreparationGuide(preparation.firstTrip, preparation.copy.firstTripTitle, 'guide-first-trip', l) + renderPreparationGuide(preparation.intercity, preparation.copy.intercityTitle, 'guide-intercity', l) : ''}<ul>${links}</ul></div></main>`;
+
   const json = state
     ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': profile ? 'TouristAttraction' : 'TouristDestination', name, description, ...(canonical ? { url: canonical } : {}), ...(photo && origin ? { image: origin + photo.src } : {}), ...(profile ? { geo: { '@type': 'GeoCoordinates', latitude: profile.coordinates[0], longitude: profile.coordinates[1] } } : {}) }).replace(/</g, '\\u003c')}</script>`
     : '';

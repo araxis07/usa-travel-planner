@@ -148,9 +148,16 @@ export default function DestinationPage({
     resize.observe(nav);
     resize.observe(document.querySelector('.header')!);
     window.addEventListener('scroll', schedule, { passive: true });
+    const anchorFrame = requestAnimationFrame(() => {
+      if (location.hash.startsWith('#guide-'))
+        document
+          .getElementById(location.hash.slice(1))
+          ?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    });
     schedule();
     return () => {
       cancelAnimationFrame(frame);
+      cancelAnimationFrame(anchorFrame);
       resize.disconnect();
       window.removeEventListener('scroll', schedule);
       document.documentElement.style.removeProperty('--guide-toc-height');

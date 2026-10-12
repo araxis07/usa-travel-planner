@@ -7,6 +7,8 @@ import {
 } from '../lib/city-content';
 import { LANGUAGES, LANGUAGE_NAMES, type Language } from '../lib/i18n';
 import CityGuide from '../components/CityGuide';
+import { findPlace } from '../lib/destinations';
+import { cityIssueField, cityIssueLanguage, cityFieldLabel } from './city-fields';
 import '../experience.css';
 
 interface Session {
@@ -25,6 +27,7 @@ export default function CityStudio() {
   const [message, setMessage] = useState('');
   const [reviewFilter, setReviewFilter] = useState('due');
   const [reviewTarget, setReviewTarget] = useState<'city' | 'food' | null>(null);
+  const [issueTarget, setIssueTarget] = useState<string | null>(null);
   const snapshot = useRef('');
   const dirty = !!content && JSON.stringify(content) !== snapshot.current;
   const accept = (data: Session) => {
@@ -55,6 +58,17 @@ export default function CityStudio() {
     heading?.focus({ preventScroll: true });
     setReviewTarget(null);
   }, [selected, preview, reviewTarget]);
+  useEffect(() => {
+    if (!issueTarget || preview) return;
+    const field = document.getElementById(`city-${selected}-${issueTarget}`);
+    if (field) {
+      for (let parent = field.parentElement; parent; parent = parent.parentElement)
+        if (parent instanceof HTMLDetailsElement) parent.open = true;
+      field.scrollIntoView({ block: 'center' });
+      field.focus({ preventScroll: true });
+    }
+    setIssueTarget(null);
+  }, [selected, language, preview, issueTarget]);
   useEffect(() => {
     const warn = (e: BeforeUnloadEvent) => {
       if (dirty) e.preventDefault();
@@ -98,6 +112,20 @@ export default function CityStudio() {
   const l = LANGUAGES.indexOf(language);
   const guide = content?.guides.find((g) => g.placeId === selected);
   const issues = content ? cityContentIssues(content) : [];
+  const fieldIssue = (field: string) =>
+    issues.find((issue) => issue.code === selected && cityIssueField(issue.field) === field);
+  const fieldProps = (field: string, label: string) => ({
+    id: `city-${selected}-${field}`,
+    'aria-label': label,
+    'aria-invalid': !!fieldIssue(field),
+    'aria-describedby': fieldIssue(field) ? `city-error-${selected}-${field}` : undefined,
+  });
+  const fieldError = (field: string) =>
+    fieldIssue(field) && (
+      <small className="studio-field-error" id={`city-error-${selected}-${field}`}>
+        {fieldIssue(field)!.message}
+      </small>
+    );
   const reviews = content ? cityReviewQueue(content) : [];
   const queue = reviews.filter(
     (r) =>
@@ -122,6 +150,7 @@ export default function CityStudio() {
     });
   };
   const text = (
+    field: string,
     label: string,
     value: string[],
     update: (g: City, text: string) => void,
@@ -131,15 +160,18 @@ export default function CityStudio() {
     <label>
       {label} · {LANGUAGE_NAMES[language]}
       <textarea
+        {...fieldProps(`${field}.${l}`, `${label} · ${LANGUAGE_NAMES[language]}`)}
         lang={language}
         rows={3}
         maxLength={maxLength}
         value={value[l]}
         onChange={(e) => change((g) => update(g, e.target.value), food, true)}
       />
+      {fieldError(`${field}.${l}`)}
     </label>
   );
   const input = (
+    field: string,
     label: string,
     value: string,
     update: (g: City, text: string) => void,
@@ -148,13 +180,16 @@ export default function CityStudio() {
     <label>
       {label}
       <input
+        {...fieldProps(field, label)}
         maxLength={500}
         value={value}
         onChange={(e) => change((g) => update(g, e.target.value), food)}
       />
+      {fieldError(field)}
     </label>
   );
   const source = (
+    field: string,
     value: { name: string; url: string },
     update: (g: City, source: { name: string; url: string }) => void,
     food = false,
@@ -163,18 +198,22 @@ export default function CityStudio() {
       <label>
         ชื่อแหล่งข้อมูล
         <input
+          {...fieldProps(`${field}.name`, 'ชื่อแหล่งข้อมูล')}
           value={value.name}
           maxLength={200}
           onChange={(e) => change((g) => update(g, { ...value, name: e.target.value }), food)}
         />
+        {fieldError(`${field}.name`)}
       </label>
       <label>
         ลิงก์ HTTPS
         <input
+          {...fieldProps(`${field}.url`, 'ลิงก์ HTTPS')}
           value={value.url}
           maxLength={2000}
           onChange={(e) => change((g) => update(g, { ...value, url: e.target.value }), food)}
         />
+        {fieldError(`${field}.url`)}
       </label>
     </div>
   );
@@ -191,6 +230,10 @@ export default function CityStudio() {
             <label key={key}>
               {key === 'checkedAt' ? 'ตรวจแหล่งข้อมูลแล้ว' : 'ตรวจครั้งถัดไป'}
               <input
+                {...fieldProps(
+                  `${food ? 'food.' : ''}${key}`,
+                  key === 'checkedAt' ? 'ตรวจแหล่งข้อมูลแล้ว' : 'ตรวจครั้งถัดไป',
+                )}
                 type="date"
                 value={value[key]}
                 onChange={(e) =>
@@ -204,6 +247,7 @@ export default function CityStudio() {
                   )
                 }
               />
+              {fieldError(`${food ? 'food.' : ''}${key}`)}
             </label>
           ))}
         </div>
@@ -377,10 +421,33 @@ export default function CityStudio() {
                 <ul>
                   {issues.map((i, n) => (
                     <li key={n}>
-                      {i.code} · {i.field}: {i.message}
+                      {i.code === 'copy' ? (
+                        <span>
+                          ข้อความส่วนกลาง: {i.message} · แก้ใน content/city-guides.json ส่วน copy
+                        </span>
+                      ) : (
+                        <button
+                          type="button"
+                          className="studio-issue-link"
+                          onClick={() => {
+                            const field = cityIssueField(i.field);
+                            setSelected(i.code);
+                            const lang = cityIssueLanguage(field);
+                            if (lang) setLanguage(lang);
+                            setPreview(false);
+                            setIssueTarget(field);
+                          }}
+                        >
+                          {findPlace(i.code)?.state.placeNames[0][1] ?? i.code} →{' '}
+                          {cityFieldLabel(cityIssueField(i.field))}: {i.message}
+                        </button>
+                      )}
                     </li>
                   ))}
                 </ul>
+                <p>
+                  เติมรายการเหล่านี้ก่อนดูตัวอย่างหรือเผยแพร่คู่มือเมืองทั้งหมด ยังบันทึกฉบับร่างได้
+                </p>
               </div>
             )}
             {preview ? (
@@ -395,7 +462,7 @@ export default function CityStudio() {
                   <h3 id="studio-city-city-heading" tabIndex={-1}>
                     ภาพรวมและการตรวจทาน
                   </h3>
-                  {text('คำแนะนำเมือง', guide.intro, (g, v) => {
+                  {text('intro', 'คำแนะนำเมือง', guide.intro, (g, v) => {
                     g.intro[l] = v;
                   })}
                   {review()}
@@ -407,16 +474,16 @@ export default function CityStudio() {
                       <summary>
                         ย่าน {i + 1} · {a.title[l]}
                       </summary>
-                      {text('ชื่อย่าน', a.title, (g, v) => {
+                      {text(`areas.${i}.title`, 'ชื่อย่าน', a.title, (g, v) => {
                         g.areas[i].title[l] = v;
                       })}
-                      {text('รายละเอียดฐานพัก', a.text, (g, v) => {
+                      {text(`areas.${i}.text`, 'รายละเอียดฐานพัก', a.text, (g, v) => {
                         g.areas[i].text[l] = v;
                       })}
-                      {input('คำค้นแผนที่ย่าน', a.mapQuery, (g, v) => {
+                      {input(`areas.${i}.mapQuery`, 'คำค้นแผนที่ย่าน', a.mapQuery, (g, v) => {
                         g.areas[i].mapQuery = v;
                       })}
-                      {source(a.source, (g, v) => {
+                      {source(`areas.${i}.source`, a.source, (g, v) => {
                         g.areas[i].source = v;
                       })}
                     </details>
@@ -429,10 +496,10 @@ export default function CityStudio() {
                       <summary>
                         วันที่ {i + 1} · {d.title[l]}
                       </summary>
-                      {text('ชื่อแผนวัน', d.title, (g, v) => {
+                      {text(`days.${i}.title`, 'ชื่อแผนวัน', d.title, (g, v) => {
                         g.days[i].title[l] = v;
                       })}
-                      {text('รายละเอียดกิจกรรม', d.text, (g, v) => {
+                      {text(`days.${i}.text`, 'รายละเอียดกิจกรรม', d.text, (g, v) => {
                         g.days[i].text[l] = v;
                       })}
                       <fieldset className="studio-profile">
@@ -444,6 +511,7 @@ export default function CityStudio() {
                               ช่องว่างบันทึกเป็นฉบับร่างได้ ทริปที่สร้างไว้แล้วจะคงข้อมูลเดิม
                             </p>
                             {text(
+                              `days.${i}.arrival.label`,
                               'ชื่อจุดเริ่มเที่ยว',
                               d.arrival.label,
                               (g, v) => {
@@ -453,6 +521,7 @@ export default function CityStudio() {
                               200,
                             )}
                             {text(
+                              `days.${i}.arrival.note`,
                               'คำแนะนำจุดเริ่มเที่ยว',
                               d.arrival.note,
                               (g, v) => {
@@ -466,6 +535,7 @@ export default function CityStudio() {
                                 <label key={label}>
                                   {label}
                                   <input
+                                    {...fieldProps(`days.${i}.arrival.coordinates.${axis}`, label)}
                                     type="number"
                                     step="any"
                                     min={axis === 0 ? -90 : -180}
@@ -481,13 +551,15 @@ export default function CityStudio() {
                                       })
                                     }
                                   />
+                                  {fieldError(`days.${i}.arrival.coordinates.${axis}`)}
                                 </label>
                               ))}
                             </div>
-                            {source(d.arrival.source, (g, v) => {
+                            {source(`days.${i}.arrival.source`, d.arrival.source, (g, v) => {
                               g.days[i].arrival!.source = v;
                             })}
                             {input(
+                              `days.${i}.arrival.coordinateSource`,
                               'ลิงก์พิกัด OpenStreetMap node',
                               d.arrival.coordinateSource,
                               (g, v) => {
@@ -507,6 +579,10 @@ export default function CityStudio() {
                             <label>
                               วันที่ตรวจจุดเริ่มเที่ยว
                               <input
+                                {...fieldProps(
+                                  `days.${i}.arrival.checkedAt`,
+                                  'วันที่ตรวจจุดเริ่มเที่ยว',
+                                )}
                                 type="date"
                                 value={d.arrival.checkedAt}
                                 onChange={(e) =>
@@ -515,6 +591,7 @@ export default function CityStudio() {
                                   })
                                 }
                               />
+                              {fieldError(`days.${i}.arrival.checkedAt`)}
                             </label>
                             <button
                               className="button button-outline"
@@ -549,11 +626,11 @@ export default function CityStudio() {
                           </button>
                         )}
                       </fieldset>
-                      {text('แผนสำรองตามอากาศ', d.alternative, (g, v) => {
+                      {text(`days.${i}.alternative`, 'แผนสำรองตามอากาศ', d.alternative, (g, v) => {
                         g.days[i].alternative[l] = v;
                       })}
                       {d.source &&
-                        source(d.source, (g, v) => {
+                        source(`days.${i}.source`, d.source, (g, v) => {
                           g.days[i].source = v;
                         })}
                       {!d.source && (
@@ -573,25 +650,25 @@ export default function CityStudio() {
                 </section>
                 <section>
                   <h3>สนามบินและการต่อรถ</h3>
-                  {input('รหัสสนามบิน', guide.airport.code, (g, v) => {
+                  {input('airport.code', 'รหัสสนามบิน', guide.airport.code, (g, v) => {
                     g.airport.code = v;
                   })}
                   {guide.airport.steps.map((s, i) => (
                     <div key={i}>
-                      {text(`ขั้นตอนสนามบิน ${i + 1}`, s, (g, v) => {
+                      {text(`airport.steps.${i}`, `ขั้นตอนสนามบิน ${i + 1}`, s, (g, v) => {
                         g.airport.steps[i][l] = v;
                       })}
                     </div>
                   ))}
-                  {text('ค่าโดยสารและบัตร', guide.airport.fare, (g, v) => {
+                  {text('airport.fare', 'ค่าโดยสารและบัตร', guide.airport.fare, (g, v) => {
                     g.airport.fare[l] = v;
                   })}
-                  {text('หมายเหตุสนามบิน', guide.airport.note, (g, v) => {
+                  {text('airport.note', 'หมายเหตุสนามบิน', guide.airport.note, (g, v) => {
                     g.airport.note[l] = v;
                   })}
                   {guide.airport.sources.map((s, i) => (
                     <div key={i}>
-                      {source(s, (g, v) => {
+                      {source(`airport.sources.${i}`, s, (g, v) => {
                         g.airport.sources[i] = v;
                       })}
                     </div>
@@ -607,6 +684,10 @@ export default function CityStudio() {
                         <label key={tier}>
                           {content.copy.tiers[tier][1]}
                           <input
+                            {...fieldProps(
+                              `budget.amounts.${i}.${tier}`,
+                              content.copy.tiers[tier][1],
+                            )}
                             type="number"
                             min={0}
                             max={1000000}
@@ -618,11 +699,12 @@ export default function CityStudio() {
                               })
                             }
                           />
+                          {fieldError(`budget.amounts.${i}.${tier}`)}
                         </label>
                       ))}
                     </fieldset>
                   ))}
-                  {text('หมายเหตุงบประมาณ', guide.budget.note, (g, v) => {
+                  {text('budget.note', 'หมายเหตุงบประมาณ', guide.budget.note, (g, v) => {
                     g.budget.note[l] = v;
                   })}
                 </section>
@@ -631,6 +713,7 @@ export default function CityStudio() {
                     อาหารและมื้อใกล้ทาง
                   </h3>
                   {text(
+                    'food.intro',
                     'คำแนะนำอาหาร',
                     guide.food.intro,
                     (g, v) => {
@@ -639,6 +722,7 @@ export default function CityStudio() {
                     true,
                   )}
                   {text(
+                    'food.vegetarian',
                     'คำแนะนำมังสวิรัติ',
                     guide.food.vegetarian,
                     (g, v) => {
@@ -653,6 +737,7 @@ export default function CityStudio() {
                         มื้อวันที่ {s.day} · {s.title[l]}
                       </summary>
                       {text(
+                        `food.stops.${i}.title`,
                         'ชื่อมื้ออาหาร',
                         s.title,
                         (g, v) => {
@@ -661,6 +746,7 @@ export default function CityStudio() {
                         true,
                       )}
                       {text(
+                        `food.stops.${i}.text`,
                         'รายละเอียดมื้ออาหาร',
                         s.text,
                         (g, v) => {
@@ -669,6 +755,7 @@ export default function CityStudio() {
                         true,
                       )}
                       {input(
+                        `food.stops.${i}.mapQuery`,
                         'คำค้นแผนที่อาหาร',
                         s.mapQuery,
                         (g, v) => {
@@ -681,6 +768,10 @@ export default function CityStudio() {
                           <label key={j}>
                             เงินเผื่อมื้อต่อผู้ใหญ่ · {j === 0 ? 'ต่ำสุด' : 'สูงสุด'} (USD)
                             <input
+                              {...fieldProps(
+                                `food.stops.${i}.allowance.${j}`,
+                                `เงินเผื่อมื้อต่อผู้ใหญ่ · ${j === 0 ? 'ต่ำสุด' : 'สูงสุด'} (USD)`,
+                              )}
                               type="number"
                               min={0}
                               max={1000000}
@@ -692,10 +783,12 @@ export default function CityStudio() {
                                 }, true)
                               }
                             />
+                            {fieldError(`food.stops.${i}.allowance.${j}`)}
                           </label>
                         ))}
                       </div>
                       {source(
+                        `food.stops.${i}.source`,
                         s.source,
                         (g, v) => {
                           g.food.stops[i].source = v;

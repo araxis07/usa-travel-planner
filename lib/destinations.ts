@@ -65,6 +65,13 @@ export function findPlace(id: string) {
       }
     : undefined;
 }
+export const validComparison = (value: unknown): value is string[] =>
+  Array.isArray(value) &&
+  value.length <= 3 &&
+  new Set(value).size === value.length &&
+  value.every(
+    (id) => typeof id === 'string' && (STATES.some((s) => s.code === id) || !!findPlace(id)),
+  );
 export function activityName(activity: TripActivity, lang: Language) {
   const place = activity.placeId ? findPlace(activity.placeId) : undefined;
   return place ? local(place.state.placeNames[place.index], lang) : activity.title;

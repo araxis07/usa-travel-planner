@@ -171,9 +171,9 @@ test('city validation rejects unsafe structure and reports independently incompl
   draft.guides[0].food.stops[0].allowance = [30, 15];
   expect(cityContentIssues(validateCityContent(draft)).map((i) => i.field)).toEqual([
     'guide.intro.3',
-    'review',
-    'food.review',
-    'food.stops.0.allowance',
+    'checkedAt',
+    'food.reviewAfter',
+    'food.stops.0.allowance.1',
   ]);
 });
 test('arrival drafts allow missing fields without weakening published trips or URL validation', () => {
@@ -185,7 +185,9 @@ test('arrival drafts allow missing fields without weakening published trips or U
   arrival.coordinateSource = '';
   arrival.checkedAt = '';
   expect(() => validateCityContent(content)).not.toThrow();
-  expect(cityContentIssues(content).some((i) => i.field === 'guide.days.0.arrival')).toBe(true);
+  expect(
+    cityContentIssues(content).some((i) => i.field === 'guide.days.0.arrival.coordinates.0'),
+  ).toBe(true);
   expect(() => validateArrival(arrival)).toThrow();
   expect(() => cityGuideTrip(content.guides[5], 1, 'en')).toThrow();
   for (const patch of [
@@ -287,6 +289,65 @@ test('city Studio edits, drafts, previews and removes arrivals while preserving 
   expect(await page.evaluate(() => localStorage.getItem('roam.trip.v1'))).toBe(personalTrip);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
+test('city issue links select the language, open the day and focus the invalid field without losing edits', async ({
+  page,
+  studio,
+}) => {
+  const content = structuredClone(validateCityContent(cityContent));
+  content.guides[0].intro[3] = '';
+  content.guides[5].days[2].arrival!.note[3] = '';
+  content.guides[5].days[2].arrival!.coordinates[0] = null;
+  content.guides[5].food.reviewAfter = content.guides[5].food.checkedAt;
+  await writeFile(path.join(studio.root, 'content/city-guides.json'), JSON.stringify(content));
+  await page.goto(studio.url + '/studio');
+  await page.getByRole('button', { name: 'คู่มือเมืองและอาหาร', exact: true }).click();
+  await page
+    .getByRole('textbox', { name: 'คำแนะนำเมือง · ไทย', exact: true })
+    .fill('Keep this unsaved city edit');
+  const issues = page.locator('.studio-issues');
+  await expect(issues).not.toContainText('guide.days');
+  await issues
+    .getByRole('button', { name: /ฟิลาเดลเฟีย.*วันที่ 3.*หมายเหตุ.*日本語/ })
+    .press('Enter');
+  const fields = page.getByRole('group', { name: 'จุดเริ่มเที่ยว · วันที่ 3', exact: true });
+  const note = fields.getByRole('textbox', { name: 'คำแนะนำจุดเริ่มเที่ยว · 日本語', exact: true });
+  await expect(note).toBeFocused();
+  await expect(note).toHaveAttribute('aria-invalid', 'true');
+  await expect(note).toHaveAccessibleDescription('กรุณาเติมข้อมูล');
+  expect(
+    (
+      await new AxeBuilder({ page })
+        .include('.studio-editor')
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+        .analyze()
+    ).violations,
+  ).toEqual([]);
+  await note.fill(content.guides[5].days[2].arrival!.note[0]);
+  await expect(note).toHaveAttribute('aria-invalid', 'false');
+  await issues.getByRole('button', { name: /ฟิลาเดลเฟีย.*วันที่ 3.*ละติจูด/ }).click();
+  const latitude = fields.getByRole('spinbutton', { name: 'ละติจูด', exact: true });
+  await expect(latitude).toBeFocused();
+  await expect(latitude).toHaveAccessibleDescription('กรอกละติจูดระหว่าง −90 ถึง 90');
+  await latitude.fill('39.965');
+  await issues.getByRole('button', { name: /ฟิลาเดลเฟีย.*อาหาร.*ตรวจครั้งถัดไป/ }).click();
+  const review = page.locator('.studio-city-review').last().getByLabel('ตรวจครั้งถัดไป');
+  await expect(review).toBeFocused();
+  await review.fill('2026-10-18');
+  await issues.getByRole('button', { name: /นิวยอร์กซิตี้.*คำแนะนำ · 日本語/ }).click();
+  const intro = page.getByRole('textbox', { name: 'คำแนะนำเมือง · 日本語', exact: true });
+  await expect(intro).toBeFocused();
+  await intro.fill(cityContent.guides[0].intro[3]);
+  await expect(issues).toHaveCount(0);
+  await page.getByRole('button', { name: 'บันทึกฉบับร่างเมือง', exact: true }).click();
+  await expect(page.getByRole('status')).toContainText('บันทึกฉบับร่างเมืองแล้ว');
+  const saved = JSON.parse(
+    await readFile(path.join(studio.root, '.studio/city-draft.json'), 'utf8'),
+  );
+  expect(saved.guides[0].intro[1]).toBe('Keep this unsaved city edit');
+  expect(saved.guides[5].days[2].arrival.coordinates[0]).toBe(39.965);
+  expect(saved.guides[5].food.checkedAt).toBe(content.guides[5].food.checkedAt);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
 test('city Studio retains both editors, five languages, independent food reviews and safe rendered drafts', async ({
   page,
   studio,
@@ -362,7 +423,7 @@ test('city Studio retains both editors, five languages, independent food reviews
   await expect(
     page.getByRole('button', { name: 'เผยแพร่คู่มือเมือง', exact: true }),
   ).toBeDisabled();
-  await expect(page.locator('.studio-issues:visible')).toContainText('guide.intro.3');
+  await expect(page.locator('.studio-issues:visible')).toContainText('คำแนะนำ · 日本語');
   await intro.fill(value);
   await languages.getByRole('button', { name: 'ไทย' }).click();
   await page.getByRole('button', { name: 'ดูตัวอย่างคู่มือเมือง', exact: true }).click();

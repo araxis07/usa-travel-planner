@@ -983,3 +983,34 @@
 .site[data-motion='paused'] .place-story-image img {
   transition: none;
 }
+.published-guide-body {
+  max-width: 1000px;
+  margin: auto;
+  padding: 32px;
+  overflow-wrap: anywhere;
+}
+.published-header .header-inner {
+  gap: 12px;
+}
+.published-header nav {
+  font-family: system-ui, sans-serif;
+  flex-shrink: 0;
+}
+.published-header nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.published-header .brand {
+  min-width: 0;
+  font-size: clamp(12px, 3vw, 18px);
+}
+.published-guide .guide-breadcrumb .text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  flex-shrink: 0;
+}
+.published-guide [id] {
+  scroll-margin-top: 100px;
+}

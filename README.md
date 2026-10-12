@@ -111,6 +111,8 @@ npm run studio
 
 เนื้อหารัฐ คำแปล ภาพ และพิกัดบันทึกใน catalog เดียว ป้องกันการเขียนทับงานจากหน้าต่างอื่นด้วย revision; เมื่อขัดแย้งให้โหลดล่าสุด ฉบับร่างรัฐอยู่ที่ `.studio/draft.json` และฉบับร่างเมืองอยู่ที่ `.studio/city-draft.json` ทั้งสองไม่เข้า Git ภาพอัปโหลดอยู่ใน `public/images/library/` ข้อมูลสำรองรุ่นเดิมจะเติมรายละเอียดสถานที่จากชุดปัจจุบันได้เมื่อชื่อสถานที่ตรงกันเท่านั้น
 
+รายการข้อผิดพลาดในคู่มือเมืองแสดงชื่อเมือง ช่อง และภาษา กดรายการเพื่อเปิดส่วนที่เกี่ยวข้องและย้ายไปช่องที่ต้องแก้ได้ งานที่ยังไม่บันทึกยังอยู่ และบันทึกฉบับร่างได้ระหว่างเติมข้อมูล
+
 Studio เปิดเฉพาะ localhost ในโหมด `studio`; production ไม่มี API เขียนไฟล์ คำแปลที่เพิ่มเข้ามายังอยู่ในคิวรอการตรวจทานโดยเจ้าของภาษา ไม่ได้ถูกทำเครื่องหมายว่าผ่านการตรวจโดยคนแล้ว
 
 `content/states.json` is the published source of truth for all 50 states and their three destination slots. Original interface/article translations are maintained in `content/translations.json`, with English/Thai strings alongside the UI. New experience copy, itineraries and field notes keep five languages together in `data/experience-copy.ts`, `data/itineraries.ts` and `data/fieldNotes.ts`. Photos have concise localized place/photo labels; the full original source caption and NPS excerpts retain their source language.
@@ -138,9 +140,9 @@ npm run test:production
 npm run format:check
 ```
 
-The regular browser suite runs 201 checks across desktop/mobile Chromium and targeted Firefox, WebKit and Android profiles. It covers multi-trip switching, collections import/export, templates, the trip helper, editable timelines, five languages, galleries, city plans and budgets, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility, enlarged-text navigation/heroes/captions and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
+The regular browser suite runs 205 checks across desktop/mobile Chromium and targeted Firefox, WebKit and Android profiles. It covers multi-trip switching, collections import/export, templates, the trip helper, editable timelines, five languages, galleries, city plans and budgets, imports, history, comparisons, undo, routing failures, occupied-day protection, accessibility, enlarged-text navigation/heroes/captions and isolated Studio persistence/security checks. `test:cloud` runs the migration against PGlite PostgreSQL and checks ownership, anonymous access, revision permissions, stale saves, sharing, revocation and expiry.
 
-`test:production` builds to ignored `artifacts/production/`, serves port 5198 and runs sixteen checks covering static SEO without JavaScript, all thirty localized city supplements, responsive covers, early per-state guide loading, client metadata, deferred asset caching, offline reloads over existing saved caches, the nine-day rail trip, all six city plans and print labels offline, all forty-five localized access notices without JavaScript, deferred loading stability, readable guide startup after delayed/failed modules, all saved photos and PDFs in five languages. Account tests intercept Supabase HTTP requests to exercise the real browser client without sending emails or changing a remote database. Reports and PDFs are in `artifacts/production-results/` and `artifacts/production-report/`. Tests close their servers when finished. GitHub Actions runs all three suites.
+`test:production` builds to ignored `artifacts/production/`, serves port 5198 and runs seventeen checks covering static SEO without JavaScript, all thirty localized city supplements, responsive covers, early per-state guide loading, client metadata, deferred asset caching, offline reloads over existing saved caches, the nine-day rail trip, all six city plans and print labels offline, all forty-five localized access notices without JavaScript, deferred loading stability, readable guide startup after delayed/failed modules, all saved photos and PDFs in five languages. Account tests intercept Supabase HTTP requests to exercise the real browser client without sending emails or changing a remote database. Reports and PDFs are in `artifacts/production-results/` and `artifacts/production-report/`. Tests close their servers when finished. GitHub Actions runs all three suites.
 
 | Location                                                                                 | Responsibility                                                             |
 | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
@@ -157,11 +159,15 @@ The regular browser suite runs 201 checks across desktop/mobile Chromium and tar
 
 [`public/credits.txt`](public/credits.txt) lists each photograph’s source, author and license, regenerated at build time. Wikimedia Commons images retain individual CC BY, CC BY-SA, CC0, public-domain or Free Art License terms. NPS images use the credits and public-domain status supplied for the selected images. Photos are locally resized and may be cropped by the layout. Hero/route photographs also use Unsplash.
 
-Philadelphia and Boston arrival coordinates retain © OpenStreetMap contributors attribution, source-node links and the [ODbL license](https://opendatacommons.org/licenses/odbl/1-0/) in saved and exported references. See [OpenStreetMap’s copyright page](https://www.openstreetmap.org/copyright).
+Philadelphia, Boston and New York arrival coordinates retain © OpenStreetMap contributors attribution, source-node links and the [ODbL license](https://opendatacommons.org/licenses/odbl/1-0/) in saved and exported references. See [OpenStreetMap’s copyright page](https://www.openstreetmap.org/copyright).
 
 Destination summaries now use concise editorial highlights rather than encyclopedia introductions. Earlier research remains in the source archive. Each profile includes its language-specific source link and CC BY-SA 4.0 attribution. Preserve those references when editing or reusing the summaries. Hours, fees and alerts come from the National Park Service; they are snapshots, not live guarantees.
 
 State geometry comes from the ISC-licensed [US Atlas](https://github.com/topojson/us-atlas), with Alaska and Hawaii in separate insets. D.C. and territories are outside the 50-state count. DM Sans, DM Serif Display and Noto Sans Thai are self-hosted under bundled SIL Open Font Licenses. Chinese, Japanese and Korean use the device’s installed font fallbacks.
+
+## October 12 New York arrivals and Studio issue navigation
+
+Generated guide covers now share the interactive layout, with native links before JavaScript loads and section anchors restored after startup. Comparison/add-place dialogs load on demand. Studio issues identify the city, field and language, open the relevant section and focus the invalid input without losing drafts. New York now has three sourced daily starts in five languages; JFK guidance gained the direct disruption notice and bus-transfer details. New York and Crater Lake retain their October 13 follow-ups. Cold mobile guide LCP measured 2.424 seconds (home: 2.484 seconds); these are local lab results. See [sources, scope and measurements](docs/2026-10-12-new-york-and-studio-navigation.md).
 
 ## October 12 guide startup, Studio arrivals and Boston
 

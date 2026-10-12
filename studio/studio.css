@@ -583,3 +583,22 @@
     padding: 16px;
   }
 }
+.studio-issue-link {
+  color: #783523;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 44px;
+  padding: 8px 0;
+  overflow-wrap: anywhere;
+}
+.studio-field-error {
+  color: #8c3026;
+  font-weight: 600;
+}
+.studio-fields [aria-invalid='true'] {
+  border-color: #a7382c;
+}
+.studio-fields :is(input, textarea) {
+  scroll-margin-block: 140px;
+}

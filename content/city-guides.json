@@ -261,7 +261,31 @@
             "延长中央车站内的停留，缩短户外步行。",
             "駅の屋内で長めに過ごし、屋外の散策を短く。",
             "그랜드 센트럴 실내에서 더 머물고 야외 산책을 줄이세요."
-          ]
+          ],
+          "arrival": {
+            "label": [
+              "Bryant Park · Josephine Shaw Lowell Fountain",
+              "Bryant Park · น้ำพุ Josephine Shaw Lowell",
+              "Bryant Park · Josephine Shaw Lowell喷泉",
+              "Bryant Park · Josephine Shaw Lowell噴水",
+              "Bryant Park · Josephine Shaw Lowell 분수"
+            ],
+            "note": [
+              "Begin beside the fountain on the park’s western terrace before exploring Midtown. The pin marks the fountain, not a walkable entrance or drinking-water point. Check park access and any event restrictions before visiting.",
+              "เริ่มข้างน้ำพุบนลานฝั่งตะวันตกของสวนก่อนเที่ยว Midtown หมุดระบุตัวน้ำพุ ไม่ใช่ทางเข้าเดินหรือจุดน้ำดื่ม ตรวจทางเข้าสวนและข้อจำกัดจากกิจกรรมก่อนเที่ยว",
+              "从公园西侧露台的喷泉旁开始游览Midtown。此点标示喷泉本体，不是步行入口或饮水点。到访前确认公园入口及活动限制。",
+              "公園西側テラスの噴水のそばからMidtown散策を始めます。ピンは噴水本体で、歩行者入口や飲料水の場所ではありません。公園へのアクセスとイベントによる制限を確認してください。",
+              "공원 서쪽 테라스의 분수 옆에서 Midtown 여행을 시작하세요. 핀은 분수 자체이며 보행자 입구나 식수대가 아닙니다. 방문 전 공원 출입과 행사 제한을 확인하세요."
+            ],
+            "coordinates": [40.7539846, -73.9840908],
+            "source": {
+              "name": "Bryant Park · Fountain Terrace",
+              "url": "https://bryantpark.org/the-park/the-grounds"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/1289222389",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-12"
+          }
         },
         {
           "title": [
@@ -284,7 +308,31 @@
             "把露天滨水活动换成预约的室内景点，并确认开放日。",
             "水辺の代わりに予約した屋内施設へ。営業日を確認してください。",
             "탁 트인 수변 대신 예약한 실내 명소를 이용하고 운영일을 확인하세요."
-          ]
+          ],
+          "arrival": {
+            "label": [
+              "Charging Bull · north of Bowling Green",
+              "Charging Bull · ด้านเหนือ Bowling Green",
+              "Charging Bull · Bowling Green北端",
+              "Charging Bull · Bowling Green北側",
+              "Charging Bull · Bowling Green 북쪽"
+            ],
+            "note": [
+              "Use the sculpture at the north end of Bowling Green as an outdoor landmark for Lower Manhattan. Meet on the pedestrian side and follow crossings on site. This is not a ferry boarding point or a guarantee of step-free access; check ferry tickets and boarding locations separately.",
+              "ใช้รูปปั้นด้านเหนือ Bowling Green เป็นจุดอ้างอิงกลางแจ้งสำหรับ Lower Manhattan นัดกันฝั่งทางเดินและใช้ทางข้ามที่จัดไว้ หมุดนี้ไม่ใช่จุดขึ้นเรือหรือการรับรองทางไร้ขั้นบันได ตรวจตั๋วและจุดขึ้นเรือแยกต่างหาก",
+              "以Bowling Green北端雕像作为Lower Manhattan的室外地标。在人行道一侧会合，按现场人行横道通行。此点不是渡轮登船处，也不保证无台阶通行；船票和登船地点请另行确认。",
+              "Bowling Green北端の像をLower Manhattan散策の目印に。歩道側で集合し、現地の横断歩道を使ってください。フェリー乗船場所や段差のない経路を保証するピンではありません。乗船場所とチケットは別途確認を。",
+              "Bowling Green 북쪽 동상을 Lower Manhattan 야외 기준점으로 삼으세요. 보도 쪽에서 만나 현장 횡단보도를 이용하세요. 페리 승선 지점이나 계단 없는 접근을 보장하는 핀이 아닙니다. 배표와 승선 장소는 별도로 확인하세요."
+            ],
+            "coordinates": [40.7055641, -74.0134462],
+            "source": {
+              "name": "NPS · Bowling Green",
+              "url": "https://www.nps.gov/places/bowling-green.htm"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/373069793",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-12"
+          }
         },
         {
           "title": [
@@ -307,7 +355,31 @@
             "缩短滨水游览、延长室内用餐，把桥上步行移到天气更好的时候。",
             "水辺は短く、屋内の食事に余裕を。橋の散策は好天の日へ。",
             "수변 방문은 짧게 하고 실내 식사 시간을 늘리세요. 다리 산책은 날씨가 좋은 날로 옮기세요."
-          ]
+          ],
+          "arrival": {
+            "label": [
+              "Jane’s Carousel · pavilion entrance",
+              "Jane’s Carousel · ทางเข้าศาลา",
+              "Jane’s Carousel · 亭馆入口",
+              "Jane’s Carousel · パビリオン入口",
+              "Jane’s Carousel · 파빌리온 입구"
+            ],
+            "note": [
+              "Start outside the carousel pavilion for a Brooklyn waterfront walk. The operator directs visitors through the Dock Street or Main Street park entrances. The pin marks a pavilion entrance, not a parking space. Riding the carousel is optional; check its current hours and tickets separately.",
+              "เริ่มด้านนอกศาลาม้าหมุนเพื่อเดินริมน้ำ Brooklyn ผู้ให้บริการแนะนำเข้าสวนจาก Dock Street หรือ Main Street หมุดระบุทางเข้าศาลา ไม่ใช่ที่จอดรถ การเล่นม้าหมุนเป็นทางเลือก ตรวจเวลาและตั๋วแยกต่างหาก",
+              "从旋转木马亭馆外开始Brooklyn滨水散步。运营方指引从Dock Street或Main Street公园入口进入。此点为亭馆入口，不是停车位。乘坐旋转木马为可选活动，开放时间和门票请另查。",
+              "Brooklynの水辺散策はメリーゴーランドの建物外から。運営者はDock StreetまたはMain Streetの公園入口を案内しています。ピンはパビリオン入口で駐車場所ではありません。乗車は任意で、営業時間とチケットは別途確認してください。",
+              "회전목마 파빌리온 밖에서 Brooklyn 수변 산책을 시작하세요. 운영자는 Dock Street 또는 Main Street 공원 입구를 안내합니다. 핀은 파빌리온 입구이며 주차 공간이 아닙니다. 탑승은 선택 사항이니 운영 시간과 표는 따로 확인하세요."
+            ],
+            "coordinates": [40.7043363, -73.9924978],
+            "source": {
+              "name": "Jane’s Carousel · directions",
+              "url": "https://janescarousel.com/directions/"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/11687024852",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-12"
+          }
         }
       ],
       "airport": {
@@ -343,11 +415,11 @@
           "성인 일반 편도: AirTrain $8.75 + 지하철 $3.00 = $11.75. 할인과 LIRR 이용 조건은 다릅니다."
         ],
         "note": [
-          "AirTrain work is scheduled on the nights of October 13, 14 and 15, 2026, from 22:00 to 06:00 the following morning, New York local time; the last window ends October 16. Weather permitting, free buses replace service between all stations and terminals. Recheck the Port Authority notice and MTA service/elevator status, and allow extra time. This route serves JFK only; LIRR connections also depend on AirTrain.",
-          "มีกำหนดปรับปรุง AirTrain ในคืนวันที่ 13, 14 และ 15 ตุลาคม 2026 เวลา 22:00 ถึง 06:00 ของเช้าวันถัดไป ตามเวลาท้องถิ่นนิวยอร์ก รอบสุดท้ายสิ้นสุดเช้า 16 ตุลาคม หากสภาพอากาศเอื้อจะดำเนินงานและใช้รถบัสฟรีทดแทนระหว่างทุกสถานีกับอาคารผู้โดยสาร ตรวจประกาศ Port Authority และสถานะรถไฟกับลิฟต์ MTA อีกครั้ง พร้อมเผื่อเวลา เส้นทางนี้ใช้กับ JFK เท่านั้น การต่อ LIRR ก็ยังต้องใช้ AirTrain",
-          "AirTrain计划于2026年10月13、14、15日夜间施工，每晚纽约当地时间22:00至次日06:00，最后一轮于10月16日早晨结束。施工视天气而定，期间各车站和航站楼间有免费替代巴士。再次核对Port Authority公告及MTA列车、电梯状态，并预留额外时间。本路线仅适用于JFK；换乘LIRR也需使用AirTrain。",
-          "AirTrainは2026年10月13・14・15日の各夜、ニューヨーク現地時間22:00〜翌朝06:00に工事を予定しています。最終回は10月16日朝まで。天候により実施し、全駅とターミナル間は無料の代行バスを運行します。Port Authorityの公告とMTAの運行・エレベーター情報を再確認し、時間に余裕を。本経路はJFK専用で、LIRRへの乗り継ぎにもAirTrainを利用します。",
-          "AirTrain 공사는 2026년 10월 13·14·15일 밤, 뉴욕 현지 시각 22:00부터 다음 날 06:00까지 예정되어 있으며 마지막 작업은 10월 16일 아침에 끝납니다. 날씨가 허용하면 작업하며 모든 역과 터미널 사이에 무료 대체 버스를 운행합니다. Port Authority 공지와 MTA 열차·엘리베이터 상태를 다시 확인하고 시간을 넉넉히 잡으세요. JFK 전용 경로이며 LIRR 환승에도 AirTrain을 이용합니다."
+          "AirTrain work is scheduled on the nights of October 13, 14 and 15, 2026, from 22:00 to 06:00 the following morning, New York local time; the last window ends October 16. Weather permitting, free buses replace service between all stations and terminals. Recheck the Port Authority notice and MTA service/elevator status, and allow extra time. This route serves JFK only; LIRR connections also depend on AirTrain. Replacement buses use ground-level station and terminal stops; Jamaica passengers bound for the terminals transfer at Lot 66. Follow staff directions and the linked JFK disruption notice.",
+          "มีกำหนดปรับปรุง AirTrain ในคืนวันที่ 13, 14 และ 15 ตุลาคม 2026 เวลา 22:00 ถึง 06:00 ของเช้าวันถัดไป ตามเวลาท้องถิ่นนิวยอร์ก รอบสุดท้ายสิ้นสุดเช้า 16 ตุลาคม หากสภาพอากาศเอื้อจะดำเนินงานและใช้รถบัสฟรีทดแทนระหว่างทุกสถานีกับอาคารผู้โดยสาร ตรวจประกาศ Port Authority และสถานะรถไฟกับลิฟต์ MTA อีกครั้ง พร้อมเผื่อเวลา เส้นทางนี้ใช้กับ JFK เท่านั้น การต่อ LIRR ก็ยังต้องใช้ AirTrain รถบัสทดแทนใช้จุดจอดระดับพื้นบริเวณสถานีและอาคาร ผู้โดยสารจาก Jamaica ไปอาคารผู้โดยสารต้องเปลี่ยนที่ Lot 66 ให้ตามคำแนะนำเจ้าหน้าที่และประกาศหยุดบริการของ JFK ที่แนบไว้",
+          "AirTrain计划于2026年10月13、14、15日夜间施工，每晚纽约当地时间22:00至次日06:00，最后一轮于10月16日早晨结束。施工视天气而定，期间各车站和航站楼间有免费替代巴士。再次核对Port Authority公告及MTA列车、电梯状态，并预留额外时间。本路线仅适用于JFK；换乘LIRR也需使用AirTrain。 替代巴士停靠车站及航站楼地面层；从Jamaica前往航站楼的乘客在Lot 66换乘。请遵从工作人员指引并查看所附JFK停运公告。",
+          "AirTrainは2026年10月13・14・15日の各夜、ニューヨーク現地時間22:00〜翌朝06:00に工事を予定しています。最終回は10月16日朝まで。天候により実施し、全駅とターミナル間は無料の代行バスを運行します。Port Authorityの公告とMTAの運行・エレベーター情報を再確認し、時間に余裕を。本経路はJFK専用で、LIRRへの乗り継ぎにもAirTrainを利用します。 代行バスは駅・ターミナルの地上階に停車し、Jamaicaからターミナルへ向かう乗客はLot 66で乗り継ぎます。係員の案内とリンク先のJFK運休情報を確認してください。",
+          "AirTrain 공사는 2026년 10월 13·14·15일 밤, 뉴욕 현지 시각 22:00부터 다음 날 06:00까지 예정되어 있으며 마지막 작업은 10월 16일 아침에 끝납니다. 날씨가 허용하면 작업하며 모든 역과 터미널 사이에 무료 대체 버스를 운행합니다. Port Authority 공지와 MTA 열차·엘리베이터 상태를 다시 확인하고 시간을 넉넉히 잡으세요. JFK 전용 경로이며 LIRR 환승에도 AirTrain을 이용합니다. 대체 버스는 역과 터미널 지상층에 정차하며 Jamaica에서 터미널로 가는 승객은 Lot 66에서 환승합니다. 직원 안내와 연결된 JFK 운행 중단 공지를 확인하세요."
         ],
         "sources": [
           {
@@ -365,6 +437,10 @@
           {
             "name": "Port Authority · October 9–15 travel advisory",
             "url": "https://www.panynj.gov/port-authority/en/press-room/press-release-archives/2026-press-releases/weekly-travel-advisory-for-oct--9-to-15-.html"
+          },
+          {
+            "name": "JFK · AirTrain full service disruption",
+            "url": "https://www.jfkairport.com/alerts-advisories/airtrain-jfk-full-service-disruption"
           }
         ]
       },

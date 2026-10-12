@@ -156,7 +156,7 @@ test('Philadelphia arrival references survive JSON and library boundaries and re
   expect(() => validateTrip(conflicting)).toThrow();
 });
 
-for (const id of ['PA-0', 'MA-0'])
+for (const id of ['PA-0', 'MA-0', 'NY-0'])
   test(`${id} pins route only on request, export and print their sources, and can be removed`, async ({
     page,
     isMobile,

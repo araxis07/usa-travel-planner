@@ -24,8 +24,7 @@ import {
 import { readLocal, tripDays, validFavorites } from './lib/storage';
 import './styles.css';
 import './journey.css';
-import CompareDestinations, { validComparison } from './components/CompareDestinations';
-import AddPlaceDialog from './components/AddPlaceDialog';
+import { validComparison } from './lib/destinations';
 import { useTripHistory } from './lib/useTripHistory';
 import './expedition.css';
 import { updatePageMetadata } from './lib/pageMetadata';
@@ -37,6 +36,8 @@ import type { Trip } from './data/travel';
 import './experience.css';
 
 const TripLibrary = lazy(() => import('./components/TripLibrary'));
+const CompareDestinations = lazy(() => import('./components/CompareDestinations'));
+const AddPlaceDialog = lazy(() => import('./components/AddPlaceDialog'));
 const TripWizard = lazy(() => import('./components/TripWizard'));
 const PlaceDiscovery = lazy(() => import('./components/PlaceDiscovery'));
 
@@ -1110,28 +1111,40 @@ export default function App({
           )}
         </Suspense>
       )}
-      {comparing && (
-        <CompareDestinations
-          selected={comparison}
-          onChange={setComparison}
-          lang={lang}
-          onClose={() => setComparing(false)}
-          onOpen={openDestination}
-          onAdd={(state, index) => (index === undefined ? addState(state) : addPlace(state, index))}
-        />
-      )}
-      {pendingPlace && (
-        <AddPlaceDialog
-          state={pendingPlace.state}
-          index={pendingPlace.index}
-          days={
-            trip.stops.find((s) => s.code === pendingPlace.state.code)?.days ??
-            pendingPlace.state.days
+      {(comparing || pendingPlace) && (
+        <Suspense
+          fallback={
+            <p className="floating-loading" role="status">
+              {t('Loading…', 'กำลังโหลด…')}
+            </p>
           }
-          lang={lang}
-          onClose={() => setPendingPlace(null)}
-          onAdd={confirmPlace}
-        />
+        >
+          {comparing && (
+            <CompareDestinations
+              selected={comparison}
+              onChange={setComparison}
+              lang={lang}
+              onClose={() => setComparing(false)}
+              onOpen={openDestination}
+              onAdd={(state, index) =>
+                index === undefined ? addState(state) : addPlace(state, index)
+              }
+            />
+          )}
+          {pendingPlace && (
+            <AddPlaceDialog
+              state={pendingPlace.state}
+              index={pendingPlace.index}
+              days={
+                trip.stops.find((s) => s.code === pendingPlace.state.code)?.days ??
+                pendingPlace.state.days
+              }
+              lang={lang}
+              onClose={() => setPendingPlace(null)}
+              onAdd={confirmPlace}
+            />
+          )}
+        </Suspense>
       )}
       <nav className="bottom-nav" aria-label={t('Quick navigation', 'เมนูด่วน')}>
         <button

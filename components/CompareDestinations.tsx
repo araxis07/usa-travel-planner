@@ -10,16 +10,8 @@ import {
   type Language,
 } from '../data/travel';
 import { translate } from '../lib/i18n';
-import { findPlace } from '../lib/destinations';
 import Dialog from './Dialog';
 import { x } from '../data/experience-copy';
-export const validComparison = (value: unknown): value is string[] =>
-  Array.isArray(value) &&
-  value.length <= 3 &&
-  new Set(value).size === value.length &&
-  value.every(
-    (id) => typeof id === 'string' && (STATES.some((s) => s.code === id) || !!findPlace(id)),
-  );
 export default function CompareDestinations({
   selected,
   onChange,
