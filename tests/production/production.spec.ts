@@ -431,6 +431,19 @@ test('all language pages contain readable content without JavaScript and recipro
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
+    // Wider fallback fonts must not push language links off narrow static pages.
+    await page.locator('.published-header nav').evaluate((nav: HTMLElement) => {
+      nav.style.fontFamily = 'monospace';
+    });
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      `${lang}: enlarged language links with a wider fallback font`,
+    ).toBe(true);
+    for (const link of await page.locator('.published-header nav a').all()) {
+      const box = await link.boundingBox();
+      expect(box!.x).toBeGreaterThanOrEqual(0);
+      expect(box!.x + box!.width).toBeLessThanOrEqual(320);
+    }
   }
   await context.close();
 });

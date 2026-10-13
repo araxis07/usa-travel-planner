@@ -994,7 +994,8 @@
 }
 .published-header nav {
   font-family: system-ui, sans-serif;
-  flex-shrink: 0;
+  min-width: 0;
+  max-width: 100%;
 }
 .published-header nav a {
   display: inline-flex;
