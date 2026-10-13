@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import ts from 'typescript';
+import sharp from 'sharp';
 import { createHash } from 'node:crypto';
 const moduleUrl = (source) =>
   'data:text/javascript;base64,' +
@@ -174,6 +175,9 @@ for (const state of catalog.states) {
     const png = bytes[0] === 137 && bytes[1] === 80;
     const webp = bytes.toString('ascii', 8, 12) === 'WEBP';
     if (!jpeg && !png && !webp) throw Error('Invalid image ' + photo.src);
+    const metadata = await sharp(bytes).metadata();
+    if (metadata.width !== photo.width || metadata.height !== photo.height)
+      throw Error('Photo dimensions differ from the catalog: ' + photo.src);
     photos++;
   }
 }

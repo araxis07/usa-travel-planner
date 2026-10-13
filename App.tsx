@@ -109,7 +109,9 @@ export default function App({
   const [sort, setSort] = useState('curated');
   const [mobileNav, setMobileNav] = useState(false);
   const [motion, setMotion] = useState(
-    () => !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    () =>
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+      !readLocal('roam.motion-paused.v1', false, (v) => v === true),
   );
   const [toast, setToast] = useState('');
   const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -248,7 +250,10 @@ export default function App({
   };
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const change = () => setMotion(!preference.matches);
+    const change = () =>
+      setMotion(
+        !preference.matches && !readLocal('roam.motion-paused.v1', false, (v) => v === true),
+      );
     preference.addEventListener('change', change);
     return () => preference.removeEventListener('change', change);
   }, []);
@@ -734,7 +739,14 @@ export default function App({
               </button>
               <button
                 className="motion-button"
-                onClick={() => setMotion((value) => !value)}
+                onClick={() => {
+                  try {
+                    localStorage.setItem('roam.motion-paused.v1', JSON.stringify(motion));
+                  } catch {
+                    /* Motion controls still work when preference storage is unavailable. */
+                  }
+                  setMotion(!motion);
+                }}
                 aria-label={
                   motion
                     ? t('Pause animations', 'หยุดแอนิเมชัน')

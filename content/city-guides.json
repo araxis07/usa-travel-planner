@@ -171,7 +171,7 @@
     {
       "placeId": "NY-0",
       "checkedAt": "2026-10-10",
-      "reviewAfter": "2026-10-13",
+      "reviewAfter": "2026-10-16",
       "translationsReviewed": [false, false, false, false, false],
       "intro": [
         "Give each day one part of the city. Start around Midtown, then add Lower Manhattan and Brooklyn instead of crossing the whole city repeatedly.",
@@ -650,7 +650,31 @@
             "在渡轮大厦市场多停留，跳过无遮蔽的滨水路段。",
             "市場で長めに過ごし、吹きさらしの水辺は省略。",
             "페리 빌딩 시장에서 더 머물고 노출된 수변 구간은 생략하세요."
-          ]
+          ],
+          "arrival": {
+            "label": [
+              "Ferry Building · mapped entrance",
+              "Ferry Building · ทางเข้าที่ระบุในแผนที่",
+              "Ferry Building · 地图所示入口",
+              "Ferry Building · 地図上の入口",
+              "Ferry Building · 지도상 입구"
+            ],
+            "note": [
+              "Meet outside the mapped entrance before walking the Embarcadero. Check market access and individual business hours. Ferry boarding gates and return departures must be checked separately.",
+              "นัดกันด้านนอกทางเข้าที่ระบุในแผนที่ก่อนเดิน Embarcadero ตรวจการเข้าตลาดและเวลาเปิดของแต่ละร้าน ส่วนประตูขึ้นเรือและเที่ยวกลับต้องตรวจแยกต่างหาก",
+              "在地图所示入口外会合，再沿Embarcadero散步。确认市场通行及各店营业时间。渡轮登船口和返程班次请另行核对。",
+              "地図上の入口の外で集合してからEmbarcaderoを散策。市場への入場と各店の営業時間を確認してください。フェリーの乗船口と帰りの便は別途確認を。",
+              "지도에 표시된 입구 밖에서 만나 Embarcadero를 걸으세요. 시장 출입과 각 매장 운영 시간을 확인하세요. 페리 승선 게이트와 돌아오는 편은 따로 확인하세요."
+            ],
+            "coordinates": [37.7961322, -122.3943127],
+            "source": {
+              "name": "Ferry Building Marketplace · visit",
+              "url": "https://www.ferrybuildingmarketplace.com/visit/"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/10805597212",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-13"
+          }
         },
         {
           "title": [
@@ -673,7 +697,31 @@
             "缩短步行，以较长的室内用餐作为主要停留。",
             "散策を短くし、屋内でゆっくり食事を。",
             "산책을 줄이고 여유로운 실내 식사를 중심으로 쉬세요."
-          ]
+          ],
+          "arrival": {
+            "label": [
+              "Dragon Gate · Grant and Bush",
+              "Dragon Gate · Grant กับ Bush",
+              "Dragon Gate · Grant与Bush交叉口",
+              "Dragon Gate · GrantとBushの交差点",
+              "Dragon Gate · Grant와 Bush 교차로"
+            ],
+            "note": [
+              "Begin on the sidewalk beside Dragon Gate at Grant Avenue and Bush Street. The pin marks the arch, not a vehicle drop-off. Follow crossings and choose a manageable walk toward Chinatown and North Beach.",
+              "เริ่มบนทางเท้าข้าง Dragon Gate ตรง Grant Avenue กับ Bush Street หมุดระบุซุ้มประตู ไม่ใช่จุดจอดส่งรถ ใช้ทางข้ามและเลือกเดินระยะที่เหมาะกับตัวเองไป Chinatown และ North Beach",
+              "从Grant Avenue与Bush Street交叉口的Dragon Gate旁人行道出发。此点标示牌楼，不是车辆下客点。使用人行横道，按体力安排前往Chinatown和North Beach的步行。",
+              "Grant AvenueとBush Streetの交差点、Dragon Gate横の歩道から出発。ピンは門で、車の降車場所ではありません。横断歩道を使い、ChinatownとNorth Beachへ無理のない距離を歩きましょう。",
+              "Grant Avenue와 Bush Street 교차로의 Dragon Gate 옆 보도에서 시작하세요. 핀은 문이며 차량 하차 지점이 아닙니다. 횡단보도를 이용하고 Chinatown과 North Beach까지 무리 없는 거리를 정하세요."
+            ],
+            "coordinates": [37.7906877, -122.4055936],
+            "source": {
+              "name": "San Francisco Travel · Chinatown",
+              "url": "https://www.sftravel.com/neighborhoods/visit-chinatown"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/65328703",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-13"
+          }
         },
         {
           "title": [
@@ -696,7 +744,31 @@
             "可选de Young或加州科学院，换计划前核对门票与开放日。",
             "de YoungかCalifornia Academy of Sciencesへ。変更前に入場料と営業日を確認。",
             "de Young이나 California Academy of Sciences를 선택하고 변경 전 입장료와 운영일을 확인하세요."
-          ]
+          ],
+          "arrival": {
+            "label": [
+              "Golden Gate Bandshell · Music Concourse",
+              "Golden Gate Bandshell · Music Concourse",
+              "Golden Gate Bandshell · Music Concourse",
+              "Golden Gate Bandshell · Music Concourse",
+              "Golden Gate Bandshell · Music Concourse"
+            ],
+            "note": [
+              "Use the bandshell as an outdoor landmark for Music Concourse. The pin marks the structure, not a museum entrance or parking space. Meet in the public concourse nearby and check event access and museum tickets separately.",
+              "ใช้เวทีกลางแจ้งเป็นจุดอ้างอิงของ Music Concourse หมุดระบุตัวอาคาร ไม่ใช่ทางเข้าพิพิธภัณฑ์หรือที่จอดรถ นัดกันบริเวณลานสาธารณะใกล้เคียง และตรวจการเข้าพื้นที่จัดงานกับตั๋วพิพิธภัณฑ์แยกกัน",
+              "以露天音乐台作为Music Concourse的地标。此点标示建筑，不是博物馆入口或停车位。在附近公共广场会合，另查活动通行安排和博物馆门票。",
+              "Music Concourseでは野外音楽堂を目印に。ピンは建物で、博物館入口や駐車場所ではありません。近くの公共広場で集合し、イベント時の通行と博物館チケットは別途確認してください。",
+              "야외 음악당을 Music Concourse의 기준점으로 삼으세요. 핀은 건물이며 박물관 입구나 주차 공간이 아닙니다. 근처 공공 광장에서 만나고 행사 출입과 박물관 표는 따로 확인하세요."
+            ],
+            "coordinates": [37.769675, -122.4683905],
+            "source": {
+              "name": "SF Recreation and Parks · Golden Gate Bandshell",
+              "url": "https://www.sfrecpark.org/1570/Golden-Gate-Bandshell-Concerts"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/343511438",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-13"
+          }
         }
       ],
       "airport": {
@@ -957,7 +1029,31 @@
             "把户外步行移到较凉时段，改用预约的室内活动，并核对年龄限制。",
             "屋外は涼しい時間に移し、予約した屋内施設へ。年齢制限も確認。",
             "야외 산책은 선선한 시간으로 옮기고 예약한 실내 활동을 이용하세요. 연령 제한도 확인하세요."
-          ]
+          ],
+          "arrival": {
+            "label": [
+              "Fountains of Bellagio · lake reference",
+              "Fountains of Bellagio · จุดอ้างอิงบึงน้ำ",
+              "Fountains of Bellagio · 水池参考点",
+              "Fountains of Bellagio · 池の目印",
+              "Fountains of Bellagio · 호수 기준점"
+            ],
+            "note": [
+              "Use the fountains as a reference for a central Strip visit. The pin is on the lake outline, not a walkable entrance: stay on public pedestrian paths outside the water and barriers. Check show times and weather cancellations separately.",
+              "ใช้น้ำพุเป็นจุดอ้างอิงสำหรับเที่ยวช่วงกลาง Strip หมุดอยู่บนแนวขอบบึง ไม่ใช่ทางเข้าเดิน ให้ใช้ทางเดินสาธารณะด้านนอกน้ำและรั้วกั้น ตรวจรอบแสดงและการยกเลิกจากสภาพอากาศแยกต่างหาก",
+              "以喷泉为游览Strip中段的参考。此点位于水池轮廓上，不是步行入口；请留在水域和围栏外的公共步道。另查表演时间及天气取消通知。",
+              "Strip中心部では噴水を目印に。ピンは池の外形上にあり、歩行者入口ではありません。水域や柵の外側の公共歩道を使ってください。ショーの時刻と天候による中止は別途確認を。",
+              "Strip 중심부 방문의 기준점으로 분수를 이용하세요. 핀은 호수 윤곽 위에 있으며 보행자 입구가 아닙니다. 물과 울타리 바깥의 공공 보행로를 이용하세요. 공연 시간과 날씨로 인한 취소는 따로 확인하세요."
+            ],
+            "coordinates": [36.1139574, -115.1732185],
+            "source": {
+              "name": "Bellagio · fountains",
+              "url": "https://bellagio.mgmresorts.com/en/entertainment/fountains-of-bellagio.html"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/2142354688",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-13"
+          }
         },
         {
           "title": [
@@ -980,7 +1076,31 @@
             "选择室内活动并核对门票；有顶棚的街道不等于空调室内。",
             "屋内施設と入場料を確認。屋根のある通りでも冷房のある建物とは異なります。",
             "실내 장소를 고르고 입장료를 확인하세요. 지붕 있는 거리는 냉방된 건물과 다릅니다."
-          ]
+          ],
+          "arrival": {
+            "label": [
+              "Hacienda Horse and Rider · Fremont landmark",
+              "Hacienda Horse and Rider · จุดอ้างอิง Fremont",
+              "Hacienda Horse and Rider · Fremont地标",
+              "Hacienda Horse and Rider · Fremontの目印",
+              "Hacienda Horse and Rider · Fremont 기준점"
+            ],
+            "note": [
+              "Use the restored neon sign at Fremont Street and Las Vegas Boulevard as an outdoor landmark. Meet on the pedestrian side and use crossings. This is not the Neon Museum entrance; check Fremont event access and your return transit stop.",
+              "ใช้ป้ายไฟนีออนที่บูรณะแล้วตรง Fremont Street กับ Las Vegas Boulevard เป็นจุดอ้างอิงกลางแจ้ง นัดกันฝั่งทางเดินและใช้ทางข้าม จุดนี้ไม่ใช่ทางเข้า Neon Museum ตรวจการเข้าพื้นที่งาน Fremont และป้ายรถขากลับ",
+              "以Fremont Street与Las Vegas Boulevard交叉口修复后的霓虹招牌为室外地标。在人行道侧会合并使用人行横道。这里不是Neon Museum入口；请核对Fremont活动通行和返程车站。",
+              "Fremont StreetとLas Vegas Boulevardの交差点にある復元ネオンサインを目印に。歩道側で集合し横断歩道を使ってください。Neon Museumの入口ではありません。イベント時の通行と帰りの停留所を確認しましょう。",
+              "Fremont Street와 Las Vegas Boulevard 교차로의 복원된 네온 간판을 야외 기준점으로 삼으세요. 보도 쪽에서 만나 횡단보도를 이용하세요. Neon Museum 입구가 아닙니다. Fremont 행사 출입과 돌아갈 정류장을 확인하세요."
+            ],
+            "coordinates": [36.1691214, -115.1407477],
+            "source": {
+              "name": "The Neon Museum · restored public signs",
+              "url": "https://neonmuseum.org/about-us/"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/5250961022",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-13"
+          }
         },
         {
           "title": [
@@ -1003,7 +1123,31 @@
             "选已营业的画廊与附近室内餐饮，离开酒店前核对时间。",
             "営業中のギャラリーと近くの屋内の食事へ。ホテルを出る前に時間を確認。",
             "운영 중인 갤러리와 근처 실내 식당을 선택하고 호텔에서 출발하기 전 시간을 확인하세요."
-          ]
+          ],
+          "arrival": {
+            "label": [
+              "The Arts Factory · building reference",
+              "The Arts Factory · จุดอ้างอิงอาคาร",
+              "The Arts Factory · 建筑参考点",
+              "The Arts Factory · 建物の目印",
+              "The Arts Factory · 건물 기준점"
+            ],
+            "note": [
+              "Start near the Arts Factory before exploring the Arts District. This pin marks a building corner, not a verified visitor entrance or parking space. Meet on the public sidewalk and check gallery hours and event restrictions before entering.",
+              "เริ่มใกล้ Arts Factory ก่อนเที่ยว Arts District หมุดระบุมุมอาคาร ไม่ใช่ทางเข้าสำหรับผู้เข้าชมที่ตรวจยืนยันหรือที่จอดรถ นัดกันบนทางเท้าสาธารณะ และตรวจเวลาแกลเลอรีกับข้อจำกัดจากกิจกรรมก่อนเข้า",
+              "从Arts Factory附近开始探索Arts District。此点标示建筑拐角，不是已核实的游客入口或停车位。在公共人行道会合，进入前确认画廊营业时间和活动限制。",
+              "Arts Factory付近からArts Districtを散策。ピンは建物の角で、確認済みの来館者入口や駐車場所ではありません。公共歩道で集合し、入館前にギャラリーの営業時間とイベント制限を確認してください。",
+              "Arts Factory 근처에서 Arts District 탐방을 시작하세요. 핀은 건물 모서리이며 확인된 방문객 입구나 주차 공간이 아닙니다. 공공 보도에서 만나고 입장 전 갤러리 운영 시간과 행사 제한을 확인하세요."
+            ],
+            "coordinates": [36.1594235, -115.1533623],
+            "source": {
+              "name": "Visit Las Vegas · local art and culture",
+              "url": "https://www.visitlasvegas.com/experience/post/las-vegas-art-and-culture/"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/1941783475",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-13"
+          }
         }
       ],
       "airport": {
@@ -1667,6 +1811,30 @@
           "source": {
             "name": "City of Chicago · Cultural Center",
             "url": "https://www.chicago.gov/city/en/depts/dca/supp_info/chicago_culturalcenter.html"
+          },
+          "arrival": {
+            "label": [
+              "Cloud Gate · sculpture reference",
+              "Cloud Gate · จุดอ้างอิงประติมากรรม",
+              "Cloud Gate · 雕塑参考点",
+              "Cloud Gate · 彫刻の目印",
+              "Cloud Gate · 조각 기준점"
+            ],
+            "note": [
+              "Meet on the public plaza near Cloud Gate for the Loop day. The pin marks the sculpture outline, not a park entrance or vehicle drop-off. Check the park’s visitor entrances and event restrictions before arrival.",
+              "นัดกันบนลานสาธารณะใกล้ Cloud Gate เพื่อเริ่มเที่ยว Loop หมุดระบุแนวขอบประติมากรรม ไม่ใช่ทางเข้าสวนหรือจุดจอดส่งรถ ตรวจทางเข้าสำหรับผู้เข้าชมและข้อจำกัดจากกิจกรรมก่อนเดินทาง",
+              "在Cloud Gate附近公共广场会合，开始Loop行程。此点标示雕塑轮廓，不是公园入口或车辆下客点。到访前确认游客入口及活动限制。",
+              "Loop観光はCloud Gate近くの公共広場で集合。ピンは彫刻の外形で、公園入口や車の降車場所ではありません。到着前に来園者入口とイベント制限を確認してください。",
+              "Cloud Gate 근처 공공 광장에서 만나 Loop 일정을 시작하세요. 핀은 조각 윤곽이며 공원 입구나 차량 하차 지점이 아닙니다. 도착 전 방문객 입구와 행사 제한을 확인하세요."
+            ],
+            "coordinates": [41.882674, -87.6232516],
+            "source": {
+              "name": "Choose Chicago · Cloud Gate",
+              "url": "https://www.choosechicago.com/articles/tours-and-attractions/the-bean-chicago/"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/1503537582",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-13"
           }
         },
         {
@@ -1694,6 +1862,30 @@
           "source": {
             "name": "Choose Chicago · River North",
             "url": "https://www.choosechicago.com/neighborhoods/river-north/"
+          },
+          "arrival": {
+            "label": [
+              "McCormick Bridgehouse · Riverwalk landmark",
+              "McCormick Bridgehouse · จุดอ้างอิง Riverwalk",
+              "McCormick Bridgehouse · Riverwalk地标",
+              "McCormick Bridgehouse · Riverwalkの目印",
+              "McCormick Bridgehouse · Riverwalk 기준점"
+            ],
+            "note": [
+              "Use the bridgehouse by Michigan Avenue as a Riverwalk landmark. The museum visit is optional; check its seasonal opening. Follow signed Riverwalk access suitable for your mobility. Cruise boarding locations must be checked with your operator.",
+              "ใช้หอสะพานข้าง Michigan Avenue เป็นจุดอ้างอิง Riverwalk การเข้าพิพิธภัณฑ์เป็นทางเลือกและต้องตรวจฤดูกาลเปิด ใช้ทางเข้า Riverwalk ตามป้ายที่เหมาะกับการเคลื่อนไหวของคุณ ส่วนจุดขึ้นเรือต้องตรวจจากผู้ให้บริการ",
+              "以Michigan Avenue旁桥楼为Riverwalk地标。参观博物馆为可选活动，需确认季节性开放。按标识选择适合自身行动能力的Riverwalk入口。游船登船地点请向运营方确认。",
+              "Michigan Avenue沿いの橋塔をRiverwalkの目印に。博物館見学は任意で、季節営業を確認してください。案内標識に従い、身体状況に合ったRiverwalk入口を選びましょう。クルーズの乗船場所は運航会社に確認を。",
+              "Michigan Avenue 옆 교량 관리동을 Riverwalk의 기준점으로 삼으세요. 박물관 방문은 선택 사항이며 계절 운영을 확인해야 합니다. 안내 표지에 따라 이동 능력에 맞는 Riverwalk 입구를 이용하세요. 유람선 승선 지점은 운영자에게 확인하세요."
+            ],
+            "coordinates": [41.8884954, -87.6246857],
+            "source": {
+              "name": "McCormick Bridgehouse & Chicago River Museum",
+              "url": "https://www.bridgehousemuseum.org/"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/3572913469",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-13"
           }
         },
         {
@@ -1721,6 +1913,30 @@
           "source": {
             "name": "Choose Chicago · South Loop",
             "url": "https://www.choosechicago.com/neighborhoods/south-loop/"
+          },
+          "arrival": {
+            "label": [
+              "Field Museum · East Entrance",
+              "Field Museum · ทางเข้าตะวันออก",
+              "Field Museum · 东入口",
+              "Field Museum · 東入口",
+              "Field Museum · 동쪽 입구"
+            ],
+            "note": [
+              "Begin outside the Field Museum’s East Entrance if this is your chosen museum. The museum identifies it as wheelchair-accessible; check current entry arrangements and tickets. If visiting Shedd instead, use its own entrance and admission information.",
+              "เริ่มด้านนอกทางเข้าตะวันออกของ Field Museum หากเลือกเที่ยวที่นี่ พิพิธภัณฑ์ระบุว่าทางเข้านี้รองรับรถเข็น แต่ควรตรวจการเข้าชมและตั๋วล่าสุด หากเลือก Shedd ให้ใช้ข้อมูลทางเข้าและตั๋วของ Shedd แทน",
+              "若选择Field Museum，从其东入口外开始。馆方标明该入口可供轮椅通行，请确认当前入场安排和门票。若改去Shedd，请使用Shedd自己的入口和入场信息。",
+              "Field Museumを選んだ場合は東入口の外から。博物館は車椅子対応入口と案内していますが、最新の入館方法とチケットを確認してください。Sheddを選ぶ場合は同館の入口・入場案内を使ってください。",
+              "Field Museum을 선택했다면 동쪽 입구 밖에서 시작하세요. 박물관은 이곳을 휠체어 접근 가능 입구로 안내합니다. 현재 입장 방법과 표를 확인하세요. Shedd를 선택했다면 해당 시설의 입구와 입장 정보를 이용하세요."
+            ],
+            "coordinates": [41.8662426, -87.6154507],
+            "source": {
+              "name": "Field Museum · accessibility",
+              "url": "https://www.fieldmuseum.org/page/visit/accessibility"
+            },
+            "coordinateSource": "https://www.openstreetmap.org/node/4931353914",
+            "coordinateLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+            "checkedAt": "2026-10-13"
           }
         }
       ],

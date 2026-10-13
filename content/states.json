@@ -4123,8 +4123,8 @@
           "license": "Public domain",
           "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
           "original": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Hots_Springs_National_Park_aerial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-          "width": 960,
-          "height": 647,
+          "width": 613,
+          "height": 413,
           "displayCaption": [
             "Aerial view · Bathhouse Row",
             "มุมมองจากทางอากาศ · Bathhouse Row",
@@ -4562,8 +4562,8 @@
           "license": "Public domain",
           "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
           "original": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Kent_Falls_State_Park_%2815615230254%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-          "width": 960,
-          "height": 1280,
+          "width": 432,
+          "height": 576,
           "displayCaption": [
             "Waterfall · Kent Falls",
             "น้ำตก · Kent Falls",
@@ -6124,8 +6124,8 @@
           "license": "CC BY-SA 3.0",
           "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
           "original": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Starved_Rock_Illinois_on_Illinois_River.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-          "width": 960,
-          "height": 720,
+          "width": 800,
+          "height": 600,
           "displayCaption": [
             "Cliffside view · Illinois River",
             "ทิวทัศน์ริมหน้าผา · Illinois River",
@@ -6147,11 +6147,11 @@
           "height": 638,
           "caption": "View of Chicago from Willis Tower",
           "displayCaption": [
-            "Aerial view · Willis Tower",
-            "มุมมองจากทางอากาศ · Willis Tower",
-            "空中俯瞰 · Willis Tower",
-            "上空からの眺め · Willis Tower",
-            "하늘에서 본 풍경 · Willis Tower"
+            "Chicago skyline from Willis Tower",
+            "เส้นขอบฟ้าเมืองชิคาโกจาก Willis Tower",
+            "从Willis Tower眺望芝加哥天际线",
+            "Willis Towerから望むシカゴの街並み",
+            "Willis Tower에서 본 시카고 스카이라인"
           ],
           "captionReviewed": [false, false, false, false, false]
         },
@@ -10038,8 +10038,8 @@
           "license": "Public domain",
           "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
           "original": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Voyageurs_National_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-          "width": 960,
-          "height": 622,
+          "width": 820,
+          "height": 531,
           "displayCaption": [
             "Autumn colors · Voyageurs National Park",
             "สีสันใบไม้ร่วง · อุทยานแห่งชาติโวยาเจอร์ส",
@@ -12407,8 +12407,8 @@
           "license": "CC BY 3.0",
           "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
           "original": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Mtmajorsummitbig-2007-1022a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-          "width": 960,
-          "height": 720,
+          "width": 800,
+          "height": 600,
           "displayCaption": [
             "Panoramic view · Mount Major",
             "ทิวทัศน์มุมกว้าง · Mount Major",
@@ -15465,8 +15465,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/crla/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/crla/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-12",
-          "reviewAfter": "2026-10-13",
+          "reviewedAt": "2026-10-13",
+          "reviewAfter": "2026-10-14",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -15484,7 +15484,7 @@
               "Cleetwood Cove Trail은 공사로 계속 폐쇄되어 호숫가 접근을 계획하지 않아야 합니다. East Rim Drive는 통과 주행이 가능하지만 공사 구간에서 교통 통제가 있을 수 있습니다. 출발 전 NPS 현황을 확인하세요."
             ],
             "source": "https://www.nps.gov/crla/planyourvisit/conditions.htm",
-            "checkedAt": "2026-10-12"
+            "checkedAt": "2026-10-13"
           }
         }
       ]
@@ -16357,8 +16357,8 @@
           "license": "FAL",
           "licenseUrl": "https://artlibre.org/licence/lal/en",
           "original": "https://upload.wikimedia.org/wikipedia/commons/4/4f/A548%2C_Congaree_National_Park%2C_South_Carolina%2C_USA%2C_2012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-          "width": 960,
-          "height": 641,
+          "width": 800,
+          "height": 534,
           "displayCaption": [
             "Boardwalk · Congaree National Park",
             "ทางเดินไม้ · อุทยานแห่งชาติคองการี",

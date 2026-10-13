@@ -93,6 +93,7 @@ test('all templates have complete valid days and five-language experience copy',
 });
 
 test('six city plans validate 90 combinations and preserve visits, food and weather choices', () => {
+  expect(guides.every((guide) => guide.days.every((day) => !!day.arrival))).toBe(true);
   for (const [id] of CITY_PLAN_CASES) {
     const guide = findCityGuide(id)!;
     for (const [l, lang] of (['en', 'th', 'zh', 'ja', 'ko'] as const).entries()) {
@@ -156,7 +157,7 @@ test('Philadelphia arrival references survive JSON and library boundaries and re
   expect(() => validateTrip(conflicting)).toThrow();
 });
 
-for (const id of ['PA-0', 'MA-0', 'NY-0'])
+for (const id of ['PA-0', 'MA-0', 'NY-0', 'CA-0', 'NV-0', 'IL-0'])
   test(`${id} pins route only on request, export and print their sources, and can be removed`, async ({
     page,
     isMobile,

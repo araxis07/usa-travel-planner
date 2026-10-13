@@ -240,6 +240,13 @@ for (const page of pages) {
   await writeFile(`${outDir}${page.path}index.html`, page.html);
 }
 await writeFile(outDir + '/index.html', pages[0].html);
+// Offline navigation starts the app without preloading an unrelated homepage photograph.
+await writeFile(
+  outDir + '/offline.html',
+  template
+    .replace(/<link\s+data-roam-(?:mobile-)?cover\s[^>]+>/g, '')
+    .replace('</head>', '<meta name="robots" content="noindex, nofollow"/></head>'),
+);
 if (origin) {
   const xml = pages
     .map(
@@ -267,7 +274,15 @@ if (!initialAssets.length) throw Error('Build template has no application entry 
 const fonts = (await readdir(outDir + '/fonts'))
   .filter((name) => /\.(woff2|css)$/.test(name))
   .map((name) => '/fonts/' + name);
-const shell = ['/', '/index.html', '/favicon.svg', '/data/parks.json', ...initialAssets, ...fonts];
+const shell = [
+  '/',
+  '/index.html',
+  '/offline.html',
+  '/favicon.svg',
+  '/data/parks.json',
+  ...initialAssets,
+  ...fonts,
+];
 const version = createHash('sha256')
   .update(
     JSON.stringify({ shell, assets }) +
@@ -281,7 +296,7 @@ const sw = `const CACHE='roam-shell-${version}',PHOTOS='roam-trip-photos-v1',SHE
 self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);const saved=await caches.has(PHOTOS)&&(await(await caches.open(PHOTOS)).keys()).length>0;await cache.addAll(saved?[...new Set([...SHELL,...ASSETS])]:SHELL);})()));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('roam-shell-')&&key!==CACHE)await caches.delete(key);await self.clients.claim();})()));
 self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(url.origin!==self.location.origin||event.request.method!=='GET'||url.pathname.startsWith('/api/'))return;
- if(event.request.mode==='navigate'){event.respondWith(fetch(event.request).catch(async()=>{const cache=await caches.open(CACHE);return await cache.match('/index.html')||Response.error();}));return;}
+ if(event.request.mode==='navigate'){event.respondWith(fetch(event.request).catch(async()=>{const cache=await caches.open(CACHE);return await cache.match('/offline.html')||Response.error();}));return;}
  if(SHELL.includes(url.pathname)||ASSETS.includes(url.pathname)){event.respondWith((async()=>{const cache=await caches.open(CACHE);const hit=await cache.match(url.pathname);if(hit)return hit;const response=await fetch(event.request);if(response.ok&&!response.headers.get('content-type')?.includes('text/html'))await cache.put(url.pathname,response.clone()).catch(()=>{});return response;})());return;}
  if(url.pathname.startsWith('/images/'))event.respondWith((async()=>{const hit=await caches.match(url.pathname);return hit||fetch(event.request);})());
 });

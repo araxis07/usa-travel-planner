@@ -274,6 +274,22 @@ test('reduced motion, readable guides, focus trapping and mobile navigation', as
   await expect(page.getByRole('dialog')).toHaveCount(0);
 });
 
+test('manual animation pause survives reload and system preference changes', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await expect(page.locator('.site')).toHaveAttribute('data-motion', 'on');
+  await page.getByRole('button', { name: 'Pause animations', exact: true }).click();
+  await page.reload();
+  await expect(page.locator('.site')).toHaveAttribute('data-motion', 'paused');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await expect(page.locator('.site')).toHaveAttribute('data-motion', 'paused');
+  await page.getByRole('button', { name: 'Enable animations', exact: true }).click();
+  await page.reload();
+  await expect(page.locator('.site')).toHaveAttribute('data-motion', 'on');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.locator('.site')).toHaveAttribute('data-motion', 'paused');
+});
+
 test('corrupt local storage recovers without breaking the page', async ({ page }) => {
   await page.evaluate(() => {
     localStorage.setItem('roam.trip.v1', '{not-json');

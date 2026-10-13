@@ -277,6 +277,10 @@ test('contextual scenes switch to photographs and advisories appear in destinati
     await expect(page.locator('.landmark-scene-top')).toContainText(code);
     await expect(page.locator('.landmark-scene canvas, .landmark-scene img')).toHaveCount(1);
   }
+  const canvas = page.locator('.landmark-scene canvas');
+  if (await canvas.count()) await canvas.dispatchEvent('webglcontextlost');
+  await expect(page.locator('.landmark-scene img')).toBeVisible();
+  await expect(page.locator('.landmark-scene a.scene-note')).toHaveAttribute('href', /^https:\/\//);
   await page.getByRole('button', { name: 'Photo mode', exact: true }).click();
   await expect(page.locator('.landmark-scene img')).toBeVisible();
   await page.reload();
