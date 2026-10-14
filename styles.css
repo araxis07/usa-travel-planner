@@ -227,7 +227,8 @@ h4 {
 }
 /* The masthead */
 .announcement {
-  height: 34px;
+  min-height: 34px;
+  padding-block: 6px;
   background: var(--navy);
   color: #f5f0e6;
   display: flex;
@@ -3208,7 +3209,7 @@ html[lang='th'] .guide-card h3 {
     padding-right: 23px;
   }
   .announcement {
-    height: 30px;
+    min-height: 30px;
     font-size: 8px;
     gap: 10px;
   }

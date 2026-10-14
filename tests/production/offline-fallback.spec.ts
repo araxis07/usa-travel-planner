@@ -5,6 +5,7 @@ import { LANGUAGES } from '../../lib/i18n';
 import { cityGuideTrip } from '../../lib/city-plan';
 import { validateCityContent } from '../../lib/city-content';
 import cityContent from '../../content/city-guides.json' with { type: 'json' };
+import { x } from '../../data/experience-copy';
 
 for (const [engine, browserType] of [
   ['chromium', chromium],
@@ -15,8 +16,22 @@ for (const [engine, browserType] of [
   }) => {
     test.setTimeout(90000);
     let unavailable = false;
+    let failPhoto = true;
+    const photoRequests = new Map<string, number>();
+    const interruptedPhoto = '/images/responsive/states/ca-1-640.webp';
+    let releasePhoto!: () => void;
+    const photoGate = new Promise<void>((resolve) => {
+      releasePhoto = resolve;
+    });
     const server = createServer(async (req, res) => {
       if (unavailable) return req.socket.destroy();
+      if (req.url?.startsWith('/images/'))
+        photoRequests.set(req.url, (photoRequests.get(req.url) ?? 0) + 1);
+      if (req.url === interruptedPhoto && failPhoto) {
+        await photoGate;
+        res.writeHead(503).end();
+        return;
+      }
       try {
         const upstream = await fetch(baseURL + req.url!, { signal: AbortSignal.timeout(15000) });
         res.writeHead(upstream.status, {
@@ -60,9 +75,27 @@ for (const [engine, browserType] of [
       await page.waitForFunction(() => !!navigator.serviceWorker.controller);
       await page.locator('.planner-utility > summary').click();
       await page.getByRole('button', { name: 'Save for offline', exact: true }).click();
+      await expect(page.getByRole('progressbar', { name: 'Offline downloads' })).toBeVisible();
+      await expect(page.locator('.offline-progress')).toContainText(/Saved \d+ of \d+ files/);
+      releasePhoto();
+      await expect(page.getByText(x('en', 'offlineRetry'), { exact: true })).toBeVisible();
+      await expect(page.getByText('Ready offline on this device.', { exact: false })).toHaveCount(
+        0,
+      );
+      await page.locator('.offline-status > summary').click();
+      await expect(page.locator('.offline-status')).toContainText(
+        'Photo downloads incomplete: California',
+      );
+      const cachedRequests = photoRequests.get('/images/states/ca-1.jpg');
+      expect(cachedRequests).toBeGreaterThan(0);
+      failPhoto = false;
+      await page.getByRole('button', { name: 'Save for offline', exact: true }).click();
       await expect(page.getByText('Ready offline on this device.', { exact: false })).toBeVisible({
         timeout: 30000,
       });
+      expect(photoRequests.get('/images/states/ca-1.jpg')).toBe(cachedRequests);
+      await expect(page.locator('.offline-status')).toContainText('36/36');
+      await expect(page.getByText(x('en', 'offlineRetry'), { exact: true })).toHaveCount(0);
       const requests: string[] = [];
       page.on('request', (request) => requests.push(request.url()));
       unavailable = true;
@@ -70,6 +103,12 @@ for (const [engine, browserType] of [
         await page.goto(`${origin}/${lang}/?view=planner`);
         await expect(page.locator('.daily-planner')).toBeVisible();
         await expect(page.locator('link[as="image"]')).toHaveCount(0);
+        await page.locator('.planner-utility > summary').click();
+        await page.locator('.offline-status > summary').click();
+        await expect(page.locator('.offline-status')).toContainText(
+          x(lang, 'offlineCoverage', { count: 36, total: 36 }),
+        );
+        await expect(page.locator('.offline-status')).toContainText(x(lang, 'offlineScope'));
         if (lang === 'en') {
           await page.getByRole('button', { name: 'Edit activity', exact: true }).first().click();
           await page
@@ -93,7 +132,44 @@ for (const [engine, browserType] of [
       expect(await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!))).toEqual(
         trip,
       );
+      await page.evaluate(
+        (trip) =>
+          localStorage.setItem(
+            'roam.trip.v1',
+            JSON.stringify({
+              ...trip,
+              stops: [...trip.stops, { code: 'NV', days: 1, notes: '' }],
+            }),
+          ),
+        trip,
+      );
+      await page.reload();
+      await page.locator('.planner-utility > summary').click();
+      await page.locator('.offline-status > summary').click();
+      await expect(page.locator('.offline-status')).toContainText('36/72');
+      await expect(page.locator('.offline-status')).toContainText(
+        'Photo downloads incomplete: Nevada',
+      );
+      await expect(page.getByText('Ready offline on this device.', { exact: false })).toHaveCount(
+        0,
+      );
+      await page.getByRole('button', { name: 'Save for offline', exact: true }).click();
+      await expect(page.getByText('Ready offline on this device.', { exact: false })).toBeVisible();
+      await expect(page.locator('.offline-status')).toContainText('72/72');
+      await page.getByRole('button', { name: 'Remove downloaded photos', exact: true }).click();
+      await page
+        .locator('.offline-status')
+        .getByRole('button', { name: x('en', 'remove'), exact: true })
+        .click();
+      await expect(page.locator('.offline-status')).toContainText('0/72');
+      await expect(page.getByText('Ready offline on this device.', { exact: false })).toHaveCount(
+        0,
+      );
+      expect(
+        await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!).expenses),
+      ).toEqual(trip.expenses);
     } finally {
+      releasePhoto();
       await browser.close();
       await new Promise<void>((resolve) => server.close(() => resolve()));
     }

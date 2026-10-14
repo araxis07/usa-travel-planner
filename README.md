@@ -165,6 +165,10 @@ Destination summaries now use concise editorial highlights rather than encyclope
 
 State geometry comes from the ISC-licensed [US Atlas](https://github.com/topojson/us-atlas), with Alaska and Hawaii in separate insets. D.C. and territories are outside the 50-state count. DM Sans, DM Serif Display and Noto Sans Thai are self-hosted under bundled SIL Open Font Licenses. Chinese, Japanese and Korean use the device’s installed font fallbacks.
 
+## October 14 download progress and city-guide review
+
+Offline saving now shows completed/total files, reuses saved files on retry and lists states with missing photo downloads for the current trip. Removing downloaded photos clears the success message without deleting plans or expenses. Enlarged announcement text gets enough vertical space. All 18 photos in the six detailed city galleries received a targeted visual review; the Las Vegas ISS photograph is explicitly dated 2010 in all five languages. Crater Lake guidance was checked October 14 and treats fuel service after the published October 13 cutoff as unconfirmed, with an October 16 follow-up. Production tests now run before the longer regular browser suite in CI. See [sources, checks and remaining limits](docs/2026-10-14-trip-readiness.md).
+
 ## October 13 offline trips and six-city coverage
 
 All six city guides now have three sourced daily arrival references in five languages, including nine new starts for San Francisco, Las Vegas and Chicago. Offline navigation uses an app shell without unrelated homepage image preloads. Manual animation pause survives reloads and respects system reduced motion. Six photo dimensions and the Chicago skyline caption were corrected; content checks now validate image dimensions. The next Crater Lake and JFK checks are October 14 and 16 respectively. See [sources, validation and measurement limits](docs/2026-10-13-offline-and-six-city-readiness.md).

@@ -432,6 +432,12 @@ test('all language pages contain readable content without JavaScript and recipro
       true,
     );
     // Wider fallback fonts must not push language links off narrow static pages.
+    const announcement = await page.locator('.announcement').boundingBox();
+    const message = await page.locator('.announcement > span').last().boundingBox();
+    expect(message!.y).toBeGreaterThanOrEqual(announcement!.y);
+    expect(message!.y + message!.height).toBeLessThanOrEqual(
+      announcement!.y + announcement!.height,
+    );
     await page.locator('.published-header nav').evaluate((nav: HTMLElement) => {
       nav.style.fontFamily = 'monospace';
     });

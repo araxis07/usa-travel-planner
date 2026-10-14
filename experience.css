@@ -717,6 +717,11 @@
   background: #fff;
   margin: 12px 0;
   padding: 0 18px;
+  overflow-wrap: anywhere;
+}
+.offline-progress progress {
+  width: 100%;
+  accent-color: var(--navy);
 }
 .trip-checklist summary,
 .offline-status summary {

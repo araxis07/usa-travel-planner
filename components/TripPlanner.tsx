@@ -8,7 +8,7 @@ import Icon from './Icon';
 import { StateShape, regionColors } from './Atlas';
 import DailyPlanner from './DailyPlanner';
 import TripPrint from './TripPrint';
-import { saveOffline } from '../lib/offline';
+import { saveOffline, type OfflineProgress } from '../lib/offline';
 import { activityName, sortedActivities } from '../lib/destinations';
 import TripChecklist from './TripChecklist';
 import OfflineStatus from './OfflineStatus';
@@ -40,7 +40,11 @@ export default function TripPlanner({
   const t = (en: string, th: string, values?: Record<string, string | number>) =>
     translate(en, th, lang, values);
   const [offlineBusy, setOfflineBusy] = useState(false);
-  const [offlineReady, setOfflineReady] = useState(false);
+  const [offlineReady, setOfflineReady] = useState('');
+  const [offlineProgress, setOfflineProgress] = useState<OfflineProgress | null>(null);
+  const [offlineFailed, setOfflineFailed] = useState(false);
+  const [offlineRefresh, setOfflineRefresh] = useState(0);
+  const offlineKey = [...new Set(trip.stops.map((stop) => stop.code))].sort().join(',');
   const [account, setAccount] = useState(
     new URLSearchParams(location.search).get('account') === '1',
   );
@@ -492,11 +496,14 @@ export default function TripPlanner({
             disabled={offlineBusy || !trip.stops.length}
             onClick={async () => {
               setOfflineBusy(true);
-              setOfflineReady(false);
+              setOfflineReady('');
+              setOfflineProgress(null);
+              setOfflineFailed(false);
               try {
-                await saveOffline(trip);
-                setOfflineReady(true);
+                await saveOffline(trip, setOfflineProgress);
+                setOfflineReady(offlineKey);
               } catch {
+                setOfflineFailed(true);
                 notify(
                   t(
                     'Offline download failed. Connect to the internet and try again on the published site.',
@@ -505,6 +512,7 @@ export default function TripPlanner({
                 );
               } finally {
                 setOfflineBusy(false);
+                setOfflineRefresh((value) => value + 1);
               }
             }}
           >
@@ -518,7 +526,22 @@ export default function TripPlanner({
             </button>
           )}
         </div>
-        {offlineReady && (
+        {offlineBusy && (
+          <div className="offline-progress" role="status">
+            <p>
+              {offlineProgress
+                ? x(lang, 'offlineProgress', offlineProgress)
+                : x(lang, 'offlinePreparing')}
+            </p>
+            <progress
+              aria-label={x(lang, 'offlineStatus')}
+              max={offlineProgress?.total ?? 1}
+              value={offlineProgress?.completed}
+            />
+          </div>
+        )}
+        {offlineFailed && <p role="alert">{x(lang, 'offlineRetry')}</p>}
+        {offlineReady && offlineReady === offlineKey && (
           <p role="status">
             {t(
               'Ready offline on this device. Your saved plan and these photos are available without internet; live maps need a connection.',
@@ -526,7 +549,13 @@ export default function TripPlanner({
             )}
           </p>
         )}
-        <OfflineStatus trip={trip} lang={lang} refresh={offlineReady} />
+        <OfflineStatus
+          trip={trip}
+          lang={lang}
+          refresh={offlineRefresh}
+          downloading={offlineBusy}
+          onRemove={() => setOfflineReady('')}
+        />
       </details>
       <div className="backup-actions">
         <button

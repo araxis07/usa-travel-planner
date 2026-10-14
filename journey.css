@@ -54,6 +54,12 @@
   height: 100%;
   object-fit: cover;
 }
+.destination-hero > img[src='/images/states/pa-1.jpg'] {
+  object-position: 15% center;
+}
+.destination-hero > img[src='/images/states/ny-1.jpg'] {
+  object-position: center top;
+}
 .destination-hero-shade {
   background: linear-gradient(0deg, #102b3bd9 0%, #102b3b40 70%);
 }
