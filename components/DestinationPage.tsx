@@ -1,5 +1,5 @@
 import TravelImage from './TravelImage';
-import { useStateDetails } from '../data/state-details';
+import { useStateDetails, type StateDetails } from '../data/state-details';
 import { useEffect, useRef, useState } from 'react';
 import {
   local,
@@ -30,22 +30,7 @@ import { useCityGuide } from '../data/city-details';
 import { x } from '../data/experience-copy';
 import type { PlaceCollections } from '../lib/collections';
 
-export default function DestinationPage({
-  state: overviewState,
-  placeIndex,
-  lang,
-  saved,
-  inTrip,
-  onSave,
-  onCompare,
-  onAdd,
-  onAddPlace,
-  onCreateTrip,
-  onOpen,
-  onBack,
-  notify,
-  collections,
-}: {
+type DestinationPageProps = {
   state: StateGuide;
   placeIndex?: number;
   lang: Language;
@@ -60,8 +45,44 @@ export default function DestinationPage({
   onBack: () => void;
   notify: (message: string) => void;
   collections: PlaceCollections;
+};
+
+export default function DestinationPage(props: DestinationPageProps) {
+  // Give each suspending resource its own component before mounting the UI hooks.
+  const state = { ...props.state, ...useStateDetails(props.state.code) };
+  return <DestinationCity {...props} state={state} />;
+}
+
+type LoadedDestinationProps = Omit<DestinationPageProps, 'state'> & {
+  state: Omit<StateGuide, keyof StateDetails> & StateDetails;
+};
+
+function DestinationCity(props: LoadedDestinationProps) {
+  const profile =
+    props.placeIndex === undefined ? undefined : props.state.destinations[props.placeIndex];
+  const cityGuide = useCityGuide(profile?.id);
+  return <DestinationContent {...props} cityGuide={cityGuide} />;
+}
+
+function DestinationContent({
+  state,
+  placeIndex,
+  lang,
+  saved,
+  inTrip,
+  onSave,
+  onCompare,
+  onAdd,
+  onAddPlace,
+  onCreateTrip,
+  onOpen,
+  onBack,
+  notify,
+  collections,
+  cityGuide,
+}: LoadedDestinationProps & {
+  cityGuide: ReturnType<typeof useCityGuide>;
 }) {
-  const state = { ...overviewState, ...useStateDetails(overviewState.code) };
   const t = (en: string, th: string) => translate(en, th, lang);
   const [gallery, setGallery] = useState<number | null>(null);
   const [shareFallback, setShareFallback] = useState(false);
@@ -112,7 +133,6 @@ export default function DestinationPage({
     (p) => placeIndex === undefined || p.placeIndex === placeIndex,
   );
   const profile = placeIndex === undefined ? undefined : state.destinations[placeIndex];
-  const cityGuide = useCityGuide(profile?.id);
   useEffect(() => {
     const nav = tocRef.current!;
     const links = [...nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')];

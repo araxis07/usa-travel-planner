@@ -136,6 +136,14 @@ test('updated access notices stay readable and linked on a narrow screen in all 
   page,
 }) => {
   test.setTimeout(90000);
+  const latestCheck = Math.max(
+    ...catalog.states.flatMap((state) =>
+      state.destinations.flatMap((profile) =>
+        profile.advisory ? [Date.parse(profile.advisory.checkedAt)] : [],
+      ),
+    ),
+  );
+  await page.clock.setFixedTime(new Date(latestCheck + 8 * 86400000));
   await page.setViewportSize({ width: 320, height: 700 });
   for (const [path, code, index] of [
     ['/en/states/california/big-sur/', 'CA', 2],
@@ -152,7 +160,16 @@ test('updated access notices stay readable and linked on a narrow screen in all 
     await page.goto(path);
     for (const [i, lang] of LANGUAGES.entries()) {
       await page.getByLabel('Language / ภาษา').selectOption(lang);
-      await expect(page.locator('.guide-advisory p')).toHaveText(profile.advisory!.text[i]);
+      await expect(page.locator('.guide-advisory > p:not(.fine-print)')).toHaveText(
+        profile.advisory!.text[i],
+      );
+      await expect(page.locator('.guide-advisory .fine-print')).toHaveText(
+        translate(
+          'This snapshot is over 7 days old. Check the official site for current conditions.',
+          'ข้อมูลชุดนี้เก่ากว่า 7 วัน ตรวจสภาพล่าสุดที่เว็บไซต์ทางการ',
+          lang,
+        ),
+      );
       await expect(page.locator('.guide-advisory a')).toHaveAttribute(
         'href',
         profile.advisory!.source,
@@ -168,8 +185,12 @@ test('dated access notices warn visitors when their saved check becomes stale', 
 }) => {
   const checkedAt = catalog.states.find((state) => state.code === 'OR')!.destinations[2].advisory!
     .checkedAt;
-  await page.clock.setFixedTime(new Date(Date.parse(checkedAt) + 8 * 86400000));
+  await page.clock.setFixedTime(new Date(Date.parse(checkedAt) + 7 * 86400000));
   await page.goto('/en/states/oregon/crater-lake-national-park/');
+  await expect(page.locator('.guide-advisory')).toBeVisible();
+  await expect(page.locator('.guide-advisory .fine-print')).toHaveCount(0);
+  await page.clock.setFixedTime(new Date(Date.parse(checkedAt) + 8 * 86400000));
+  await page.reload();
   await expect(page.locator('.guide-advisory .fine-print')).toContainText('over 7 days old');
   await expect(page.locator('.guide-advisory a')).toHaveAttribute(
     'href',

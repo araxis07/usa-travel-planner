@@ -82,10 +82,44 @@ test('guide dialog accepts a focused-field touch submit and dismisses after rota
   await expect(dialog).toBeVisible();
 });
 
+test('guide loads state and city data in sequence without a render recovery', async ({ page }) => {
+  const failures: string[] = [];
+  page.on('pageerror', (error) => failures.push(error.message));
+  await page.addInitScript(() => {
+    window.addEventListener('error', (event) => {
+      if (event.error?.cause)
+        console.error('Render cause:', String(event.error.cause), event.error.cause.stack);
+    });
+  });
+  const requested: string[] = [];
+  await page.route(
+    /\/content\/(states|city-guides)\.json\?(?:import&)?(details|city)=/,
+    async (route) => {
+      requested.push(route.request().url());
+      const response = await route.fetch();
+      // Force separate Suspense retries for the state and city modules.
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      await route.fulfill({ response });
+    },
+  );
+  await page.goto('/en/states/pennsylvania/philadelphia/');
+  await expect(page.locator('.destination-hero h1')).toHaveText('Philadelphia');
+  await expect(page.locator('.city-guide')).toBeVisible();
+  expect(requested.some((url) => url.includes('details=PA'))).toBe(true);
+  expect(requested.some((url) => url.includes('city=PA-0'))).toBe(true);
+  expect(failures).toEqual([]);
+});
+
 test('guide hero grows around enlarged titles and actions on short portrait and landscape screens', async ({
   page,
 }, testInfo) => {
   test.setTimeout(60000);
+  await page.addInitScript(() => {
+    window.addEventListener('error', (event) => {
+      if (event.error?.cause)
+        console.error('Render cause:', String(event.error.cause), event.error.cause.stack);
+    });
+  });
   const startup: { language: string; milliseconds: number }[] = [];
   const failures: string[] = [];
   const requests: string[] = [];
