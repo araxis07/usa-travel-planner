@@ -3935,8 +3935,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/dena/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/dena/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-10",
-          "reviewAfter": "2026-10-15",
+          "reviewedAt": "2026-10-16",
+          "reviewAfter": "2026-10-19",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -3947,14 +3947,14 @@
           },
           "advisory": {
             "text": [
-              "The Pretty Rocks bridge is complete. NPS plans private-vehicle access to Teklanika (mile 30) through October 15, weather permitting; snow or ice may close the road earlier at mile 13 or mile 3. Full bus service is planned for 2027. Check NPS conditions for your travel date.",
-              "สะพาน Pretty Rocks สร้างเสร็จแล้ว NPS มีแผนให้รถส่วนตัวไปถึง Teklanika (ไมล์ 30) ได้ถึง 15 ตุลาคมหากอากาศเอื้อ หิมะหรือน้ำแข็งอาจทำให้ปิดถนนก่อนหน้านั้นที่ไมล์ 13 หรือไมล์ 3 ส่วนรถบัสตลอดเส้นทางมีกำหนดกลับมาในปี 2027 ตรวจสถานะ NPS ตามวันเดินทาง",
-              "Pretty Rocks 大桥已建成。NPS 计划在天气允许时让私家车通行至 Teklanika（30英里处），直至10月15日；雪或冰可能使道路提前在13英里或3英里处关闭。全线巴士预计于2027年恢复。请按出行日期查询 NPS 最新状况。",
-              "Pretty Rocks の橋は完成しました。NPSは天候が許せば10月15日まで自家用車で Teklanika（30マイル地点）へ行ける予定としています。雪や氷で13マイルまたは3マイル地点から早めに閉鎖する場合があります。全区間のバスは2027年に再開予定です。旅行日の状況をNPSで確認してください。",
-              "Pretty Rocks 다리가 완공되었습니다. NPS는 날씨가 허락하면 10월 15일까지 자가용으로 Teklanika(30마일 지점)에 갈 수 있도록 할 예정입니다. 눈이나 얼음으로 13마일 또는 3마일 지점에서 더 일찍 도로가 닫힐 수 있습니다. 전 구간 버스는 2027년 재개 예정입니다. 여행 날짜의 NPS 현황을 확인하세요."
+              "The Pretty Rocks bridge is complete, but the published autumn private-vehicle access window to Teklanika (mile 30) ended October 15, 2026. Access beyond that date is unconfirmed; check NPS road conditions before planning a drive. Winter weather can restrict access at mile 13 or mile 3. Full bus service is planned for 2027.",
+              "สะพาน Pretty Rocks สร้างเสร็จแล้ว แต่ช่วงให้รถส่วนตัวไปถึง Teklanika (ไมล์ 30) ในฤดูใบไม้ร่วงตามประกาศสิ้นสุด 15 ตุลาคม 2026 ยังไม่ยืนยันการเข้าถึงหลังจากนั้น ให้ตรวจสภาพถนนกับ NPS ก่อนวางแผนขับ อากาศฤดูหนาวอาจจำกัดการเข้าถึงที่ไมล์ 13 หรือไมล์ 3 ส่วนรถบัสตลอดเส้นทางมีกำหนดกลับมาในปี 2027",
+              "Pretty Rocks大桥已建成，但公告中的秋季私家车通行至Teklanika（30英里处）的时段于2026年10月15日结束。此后能否通行尚未确认，计划驾车前请查看NPS路况。冬季天气可能将通行范围限制在13英里或3英里处。全线巴士计划于2027年恢复。",
+              "Pretty Rocksの橋は完成しましたが、秋に自家用車でTeklanika（30マイル地点）まで通行できる公表期間は2026年10月15日までです。それ以降の通行は未確認のため、ドライブの計画前にNPSの道路状況を確認してください。冬の天候で13マイルまたは3マイル地点から通行が制限される場合があります。全区間のバスは2027年に再開予定です。",
+              "Pretty Rocks 다리는 완공되었지만, 가을철 자가용의 Teklanika(30마일 지점) 통행을 안내한 기간은 2026년 10월 15일까지입니다. 이후 통행 여부는 확인되지 않았으므로 운전 계획 전에 NPS 도로 상황을 확인하세요. 겨울 날씨로 13마일 또는 3마일 지점부터 통행이 제한될 수 있습니다. 전 구간 버스는 2027년 재개 예정입니다."
             ],
             "source": "https://www.nps.gov/dena/planyourvisit/conditions.htm",
-            "checkedAt": "2026-10-09"
+            "checkedAt": "2026-10-16"
           }
         },
         {
@@ -15438,11 +15438,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Use Highway 62 for the South or West Entrance. The Highway 138 North Entrance is seasonal and closes November 1 or earlier with snow. The published Mazama Village fuel schedule ended October 13, 2026. Later service is unconfirmed: plan to refuel outside the park and check with the operator before relying on park fuel. Check road conditions before driving.",
-            "ใช้ Highway 62 ไปทางใต้หรือตะวันตก ทางเหนือจาก Highway 138 เปิดตามฤดูกาลและปิด 1 พฤศจิกายนหรือเร็วกว่านั้นถ้ามีหิมะ ตารางบริการน้ำมันที่เผยแพร่ของ Mazama Village สิ้นสุด 13 ตุลาคม 2026 ยังไม่ยืนยันบริการหลังจากนั้น ให้วางแผนเติมนอกอุทยานและตรวจสอบกับผู้ให้บริการก่อนพึ่งพาน้ำมันในอุทยาน ตรวจสภาพถนนก่อนขับ",
-            "经Highway 62到南或西入口。Highway 138北入口季节性开放，11月1日或降雪时更早关闭。Mazama Village公布的供油时段已于2026年10月13日结束，之后的服务尚未确认。请计划在园外加油，依赖园内供油前先向运营方核实。驾车前检查路况。",
-            "南・西入口はHighway 62から。Highway 138の北入口は季節営業で、11月1日または降雪によりそれ以前に閉鎖します。Mazama Villageの公表された給油期間は2026年10月13日までで、その後の営業は未確認です。園外での給油を計画し、園内の給油を頼りにする前に運営者へ確認してください。運転前に道路状況も確認を。",
-            "남쪽이나 서쪽 입구는 Highway 62를 이용하세요. Highway 138 북쪽 입구는 계절 운영으로 11월 1일 또는 눈이 오면 더 일찍 닫힙니다. Mazama Village의 공지된 주유 기간은 2026년 10월 13일까지이며 이후 운영은 확인되지 않았습니다. 공원 밖 주유를 계획하고 공원 내 주유에 의존하기 전에 운영자에게 확인하세요. 운전 전 도로 상황도 확인하세요."
+            "Use Highway 62 for the South or West Entrance. The Highway 138 North Entrance is seasonal and closes November 1 or earlier with snow. NPS reports no gasoline available in the park, checked October 16, 2026. Refuel outside the park and recheck road and fuel conditions before driving.",
+            "ใช้ Highway 62 ไปทางใต้หรือตะวันตก ทางเหนือจาก Highway 138 เปิดตามฤดูกาลและปิด 1 พฤศจิกายนหรือเร็วกว่านั้นถ้ามีหิมะ NPS ระบุว่าไม่มีน้ำมันจำหน่ายในอุทยาน ตรวจข้อมูล 16 ตุลาคม 2026 ให้เติมนอกอุทยานและตรวจสภาพถนนกับการให้บริการน้ำมันอีกครั้งก่อนขับ",
+            "经Highway 62到南或西入口。Highway 138北入口季节性开放，11月1日或降雪时更早关闭。2026年10月16日核查时，NPS表示园内不供应汽油。请在园外加油，驾车前再次确认路况和供油情况。",
+            "南・西入口はHighway 62から。Highway 138の北入口は季節営業で、11月1日または降雪によりそれ以前に閉鎖します。2026年10月16日の確認時点で、NPSは園内でガソリンを供給していないと案内しています。園外で給油し、出発前に道路と給油の状況を再確認してください。",
+            "남쪽이나 서쪽 입구는 Highway 62를 이용하세요. Highway 138 북쪽 입구는 계절 운영으로 11월 1일 또는 눈이 오면 더 일찍 닫힙니다. 2026년 10월 16일 확인한 NPS 안내에 따르면 공원 내에서 휘발유를 구할 수 없습니다. 공원 밖에서 주유하고 출발 전 도로와 주유소 운영 상황을 다시 확인하세요."
           ],
           "stay": [
             "Compare stays in Fort Klamath / Chiloquin as possible bases. Check the journey to your selected entrance, stop or departure point before booking.",
@@ -15465,8 +15465,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/crla/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/crla/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-14",
-          "reviewAfter": "2026-10-16",
+          "reviewedAt": "2026-10-16",
+          "reviewAfter": "2026-10-19",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -15484,7 +15484,7 @@
               "Cleetwood Cove Trail은 공사로 계속 폐쇄되어 호숫가 접근을 계획하지 않아야 합니다. East Rim Drive는 통과 주행이 가능하지만 공사 구간에서 교통 통제가 있을 수 있습니다. 출발 전 NPS 현황을 확인하세요."
             ],
             "source": "https://www.nps.gov/crla/planyourvisit/conditions.htm",
-            "checkedAt": "2026-10-14"
+            "checkedAt": "2026-10-16"
           }
         }
       ]

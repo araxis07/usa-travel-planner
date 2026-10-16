@@ -610,7 +610,31 @@ test('place discovery filters, saves collections and opens a guide with its tabl
   await page.locator('.place-filter-row').getByLabel('Getting around').selectOption('transit');
   await expect(page.locator('.discovery-place')).toHaveCount(1);
   await page.getByRole('button', { name: 'Save place San Francisco', exact: true }).click();
-  await page.locator('.discovery-place h3 button').click();
+  const place = page.locator('.discovery-place h3 button');
+  await place.scrollIntoViewIfNeeded();
+  const discoveryScroll = await page.evaluate(() => scrollY);
+  await place.click();
+  await expect(page.locator('.guide-toc')).toBeVisible();
+  await page.locator('.guide-breadcrumb button').first().click();
+  await expect(page.getByLabel('Search destinations', { exact: true })).toHaveValue(
+    'San Francisco',
+  );
+  await expect(page.locator('.place-filter-row').getByLabel('Getting around')).toHaveValue(
+    'transit',
+  );
+  await expect(page.locator('.discovery-place')).toHaveCount(1);
+  await expect
+    .poll(async () => Math.abs((await page.evaluate(() => scrollY)) - discoveryScroll))
+    .toBeLessThan(3);
+  await expect(place).toBeFocused();
+  await place.press('Enter');
+  await expect(page.locator('.guide-toc')).toBeVisible();
+  await page.goBack();
+  await expect(place).toBeFocused();
+  await expect(page.getByLabel('Search destinations', { exact: true })).toHaveValue(
+    'San Francisco',
+  );
+  await place.press('Enter');
   await expect(page.locator('.guide-toc')).toBeVisible();
   await page.locator('.guide-toc').getByRole('link', { name: 'Before you go' }).click();
   await expect(page.locator('#guide-practical')).toBeInViewport();

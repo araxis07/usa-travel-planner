@@ -19,7 +19,8 @@
     "test:cloud": "node scripts/test-cloud.mjs",
     "test:production": "playwright test --config playwright.production.config.ts",
     "prepare:images": "node scripts/prepare-images.mjs",
-    "predev": "npm run prepare:images"
+    "predev": "npm run prepare:images",
+    "review:content": "node scripts/review-content.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.116.0",

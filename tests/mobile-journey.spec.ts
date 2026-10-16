@@ -84,58 +84,77 @@ test('guide dialog accepts a focused-field touch submit and dismisses after rota
 
 test('guide hero grows around enlarged titles and actions on short portrait and landscape screens', async ({
   page,
-}) => {
+}, testInfo) => {
   test.setTimeout(60000);
-  for (const lang of LANGUAGES) {
-    await page.setViewportSize({ width: 320, height: 360 });
-    await page.goto(`/${lang}/states/pennsylvania/philadelphia/`);
-    await expect(page.locator('.destination-hero h1')).toBeVisible();
-    await page.evaluate(() => document.fonts.ready);
-    await page.locator('.destination-hero').evaluate((hero) => {
-      // Layout stress check, not an OS font-size or keyboard simulation.
-      const nodes = [...hero.querySelectorAll<HTMLElement>('*')];
-      const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
-      nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
-    });
-    for (const viewport of [
-      { width: 320, height: 360 },
-      { width: 844, height: 320 },
-    ]) {
-      await page.setViewportSize(viewport);
-      expect(
-        await page.locator('.destination-hero').evaluate((hero) => {
-          const bounds = hero.getBoundingClientRect();
-          const gallery = hero.querySelector('.destination-gallery-open')!;
-          const g = gallery.getBoundingClientRect();
-          return [...hero.querySelectorAll('h1, button, .eyebrow, .destination-original')].every(
-            (node) => {
-              const r = node.getBoundingClientRect();
-              return (
-                r.top >= bounds.top &&
-                r.bottom <= bounds.bottom &&
-                r.left >= 0 &&
-                r.right <= innerWidth &&
-                node.scrollWidth <= node.clientWidth + 1 &&
-                (node === gallery ||
-                  r.bottom <= g.top ||
-                  r.top >= g.bottom ||
-                  r.right <= g.left ||
-                  r.left >= g.right)
-              );
-            },
-          );
-        }),
-        `${lang} at ${viewport.width} × ${viewport.height}`,
-      ).toBe(true);
+  const startup: { language: string; milliseconds: number }[] = [];
+  const failures: string[] = [];
+  const requests: string[] = [];
+  page.on('pageerror', (error) => failures.push(error.message));
+  page.on('requestfailed', (request) =>
+    requests.push(`${request.url()}: ${request.failure()?.errorText}`),
+  );
+  try {
+    for (const lang of LANGUAGES) {
+      await page.setViewportSize({ width: 320, height: 360 });
+      const started = Date.now();
+      await page.goto(`/${lang}/states/pennsylvania/philadelphia/`);
+      // A cold Vite module graph can outlast the default 5s assertion window on CI.
+      // Keep a separate bounded startup allowance; layout assertions remain unchanged.
+      await expect(page.locator('.destination-hero h1')).toBeVisible({ timeout: 15000 });
+      startup.push({ language: lang, milliseconds: Date.now() - started });
+      await page.evaluate(() => document.fonts.ready);
+      await page.locator('.destination-hero').evaluate((hero) => {
+        // Layout stress check, not an OS font-size or keyboard simulation.
+        const nodes = [...hero.querySelectorAll<HTMLElement>('*')];
+        const sizes = nodes.map((node) => parseFloat(getComputedStyle(node).fontSize));
+        nodes.forEach((node, i) => (node.style.fontSize = `${sizes[i] * 2}px`));
+      });
+      for (const viewport of [
+        { width: 320, height: 360 },
+        { width: 844, height: 320 },
+      ]) {
+        await page.setViewportSize(viewport);
+        expect(
+          await page.locator('.destination-hero').evaluate((hero) => {
+            const bounds = hero.getBoundingClientRect();
+            const gallery = hero.querySelector('.destination-gallery-open')!;
+            const g = gallery.getBoundingClientRect();
+            return [...hero.querySelectorAll('h1, button, .eyebrow, .destination-original')].every(
+              (node) => {
+                const r = node.getBoundingClientRect();
+                return (
+                  r.top >= bounds.top &&
+                  r.bottom <= bounds.bottom &&
+                  r.left >= 0 &&
+                  r.right <= innerWidth &&
+                  node.scrollWidth <= node.clientWidth + 1 &&
+                  (node === gallery ||
+                    r.bottom <= g.top ||
+                    r.top >= g.bottom ||
+                    r.right <= g.left ||
+                    r.left >= g.right)
+                );
+              },
+            );
+          }),
+          `${lang} at ${viewport.width} × ${viewport.height}`,
+        ).toBe(true);
+      }
+      await page.setViewportSize({ width: 320, height: 360 });
+      await page.locator('.destination-gallery-open').tap();
+      await expect(page.locator('.photo-lightbox')).toBeVisible();
+      await page.keyboard.press('Escape');
+      await expect(page.locator('.photo-lightbox')).toHaveCount(0);
+      await page.locator('.hero-primary-action').tap();
+      await expect(page.getByRole('dialog')).toBeVisible();
+      await page.keyboard.press('Escape');
     }
-    await page.setViewportSize({ width: 320, height: 360 });
-    await page.locator('.destination-gallery-open').tap();
-    await expect(page.locator('.photo-lightbox')).toBeVisible();
-    await page.keyboard.press('Escape');
-    await expect(page.locator('.photo-lightbox')).toHaveCount(0);
-    await page.locator('.hero-primary-action').tap();
-    await expect(page.getByRole('dialog')).toBeVisible();
-    await page.keyboard.press('Escape');
+    expect(failures).toEqual([]);
+  } finally {
+    await testInfo.attach('guide-startup', {
+      body: JSON.stringify({ url: page.url(), startup, failures, requests }, null, 2),
+      contentType: 'application/json',
+    });
   }
 });
 

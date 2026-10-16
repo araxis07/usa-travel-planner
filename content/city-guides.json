@@ -170,8 +170,8 @@
   "guides": [
     {
       "placeId": "NY-0",
-      "checkedAt": "2026-10-10",
-      "reviewAfter": "2026-10-16",
+      "checkedAt": "2026-10-16",
+      "reviewAfter": "2026-10-17",
       "translationsReviewed": [false, false, false, false, false],
       "intro": [
         "Give each day one part of the city. Start around Midtown, then add Lower Manhattan and Brooklyn instead of crossing the whole city repeatedly.",
@@ -415,11 +415,11 @@
           "성인 일반 편도: AirTrain $8.75 + 지하철 $3.00 = $11.75. 할인과 LIRR 이용 조건은 다릅니다."
         ],
         "note": [
-          "AirTrain work is scheduled on the nights of October 13, 14 and 15, 2026, from 22:00 to 06:00 the following morning, New York local time; the last window ends October 16. Weather permitting, free buses replace service between all stations and terminals. Recheck the Port Authority notice and MTA service/elevator status, and allow extra time. This route serves JFK only; LIRR connections also depend on AirTrain. Replacement buses use ground-level station and terminal stops; Jamaica passengers bound for the terminals transfer at Lot 66. Follow staff directions and the linked JFK disruption notice.",
-          "มีกำหนดปรับปรุง AirTrain ในคืนวันที่ 13, 14 และ 15 ตุลาคม 2026 เวลา 22:00 ถึง 06:00 ของเช้าวันถัดไป ตามเวลาท้องถิ่นนิวยอร์ก รอบสุดท้ายสิ้นสุดเช้า 16 ตุลาคม หากสภาพอากาศเอื้อจะดำเนินงานและใช้รถบัสฟรีทดแทนระหว่างทุกสถานีกับอาคารผู้โดยสาร ตรวจประกาศ Port Authority และสถานะรถไฟกับลิฟต์ MTA อีกครั้ง พร้อมเผื่อเวลา เส้นทางนี้ใช้กับ JFK เท่านั้น การต่อ LIRR ก็ยังต้องใช้ AirTrain รถบัสทดแทนใช้จุดจอดระดับพื้นบริเวณสถานีและอาคาร ผู้โดยสารจาก Jamaica ไปอาคารผู้โดยสารต้องเปลี่ยนที่ Lot 66 ให้ตามคำแนะนำเจ้าหน้าที่และประกาศหยุดบริการของ JFK ที่แนบไว้",
-          "AirTrain计划于2026年10月13、14、15日夜间施工，每晚纽约当地时间22:00至次日06:00，最后一轮于10月16日早晨结束。施工视天气而定，期间各车站和航站楼间有免费替代巴士。再次核对Port Authority公告及MTA列车、电梯状态，并预留额外时间。本路线仅适用于JFK；换乘LIRR也需使用AirTrain。 替代巴士停靠车站及航站楼地面层；从Jamaica前往航站楼的乘客在Lot 66换乘。请遵从工作人员指引并查看所附JFK停运公告。",
-          "AirTrainは2026年10月13・14・15日の各夜、ニューヨーク現地時間22:00〜翌朝06:00に工事を予定しています。最終回は10月16日朝まで。天候により実施し、全駅とターミナル間は無料の代行バスを運行します。Port Authorityの公告とMTAの運行・エレベーター情報を再確認し、時間に余裕を。本経路はJFK専用で、LIRRへの乗り継ぎにもAirTrainを利用します。 代行バスは駅・ターミナルの地上階に停車し、Jamaicaからターミナルへ向かう乗客はLot 66で乗り継ぎます。係員の案内とリンク先のJFK運休情報を確認してください。",
-          "AirTrain 공사는 2026년 10월 13·14·15일 밤, 뉴욕 현지 시각 22:00부터 다음 날 06:00까지 예정되어 있으며 마지막 작업은 10월 16일 아침에 끝납니다. 날씨가 허용하면 작업하며 모든 역과 터미널 사이에 무료 대체 버스를 운행합니다. Port Authority 공지와 MTA 열차·엘리베이터 상태를 다시 확인하고 시간을 넉넉히 잡으세요. JFK 전용 경로이며 LIRR 환승에도 AirTrain을 이용합니다. 대체 버스는 역과 터미널 지상층에 정차하며 Jamaica에서 터미널로 가는 승객은 Lot 66에서 환승합니다. 직원 안내와 연결된 JFK 운행 중단 공지를 확인하세요."
+          "The latest linked maintenance notice lists a final overnight window ending October 16, 2026 at 06:00 New York local time. That scheduled end is not confirmation that service has resumed: check JFK alerts and MTA service/elevator status before departure. During the listed closures, free buses replace AirTrain; Jamaica passengers going to the terminals transfer at Lot 66. Follow staff directions and allow extra time. This route serves JFK only; LIRR connections also depend on AirTrain.",
+          "ประกาศปรับปรุงล่าสุดที่เชื่อมไว้ระบุรอบกลางคืนสุดท้ายสิ้นสุด 16 ตุลาคม 2026 เวลา 06:00 ตามเวลาท้องถิ่นนิวยอร์ก เวลาสิ้นสุดตามกำหนดไม่ได้ยืนยันว่าเดินรถแล้ว ให้ตรวจประกาศ JFK และสถานะรถไฟกับลิฟต์ของ MTA ก่อนออกเดินทาง ช่วงปิดตามประกาศใช้รถบัสฟรีแทน AirTrain ผู้โดยสารจาก Jamaica ไปอาคารผู้โดยสารต่อรถที่ Lot 66 ให้ตามคำแนะนำเจ้าหน้าที่และเผื่อเวลา เส้นทางนี้สำหรับ JFK เท่านั้น การต่อ LIRR ก็อาศัย AirTrain",
+          "所链接的最新维护公告列明，最后一个夜间施工时段于纽约当地时间2026年10月16日06:00结束。计划结束时间不代表已确认恢复运行；出发前请查看JFK公告及MTA列车和电梯状态。公告中的停运时段提供免费替代巴士，从Jamaica前往航站楼的乘客在Lot 66换乘。请遵循工作人员指引并预留时间。此路线仅适用于JFK；转乘LIRR也依赖AirTrain。",
+          "リンク先の最新工事案内では、最後の夜間作業はニューヨーク現地時間2026年10月16日06:00に終了予定とされています。予定時刻だけでは運行再開の確認になりません。出発前にJFKの案内とMTAの運行・エレベーター状況を確認してください。告知された運休中は無料代行バスが運行し、JamaicaからターミナルへはLot 66で乗り換えます。係員の案内に従い、時間に余裕を。この経路はJFK専用で、LIRRへの接続にもAirTrainを使います。",
+          "연결된 최신 공사 공지는 마지막 야간 작업 종료 예정 시각을 뉴욕 현지 시간 2026년 10월 16일 06:00으로 안내합니다. 예정 시각만으로 운행 재개가 확인되는 것은 아닙니다. 출발 전 JFK 공지와 MTA 열차·엘리베이터 상태를 확인하세요. 공지된 운행 중단 시간에는 무료 대체 버스가 운행하며 Jamaica에서 터미널로 가는 승객은 Lot 66에서 환승합니다. 직원 안내를 따르고 시간을 넉넉히 잡으세요. 이 경로는 JFK 전용이며 LIRR 환승도 AirTrain에 의존합니다."
         ],
         "sources": [
           {

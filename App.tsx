@@ -30,6 +30,7 @@ import './expedition.css';
 import { updatePageMetadata } from './lib/pageMetadata';
 import { destinationUrl, readDestination } from './lib/destinations';
 import { x } from './data/experience-copy';
+import { ITINERARIES } from './data/itineraries';
 import { useJourneyLibrary } from './lib/journeyLibrary';
 import { useCollections } from './lib/collections';
 import type { Trip } from './data/travel';
@@ -118,6 +119,7 @@ export default function App({
   const heroRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const discoveryScroll = useRef<number | null>(null);
+  const discoveryTrigger = useRef<HTMLElement | null>(null);
   const [homeVisited, setHomeVisited] = useState(
     () =>
       !readDestination() &&
@@ -187,7 +189,9 @@ export default function App({
     const old = history.scrollRestoration;
     history.scrollRestoration = 'manual';
     const pop = (event: PopStateEvent) => {
-      setDestination(readDestination());
+      const target = readDestination();
+      const planner = new URLSearchParams(location.search).get('view') === 'planner';
+      setDestination(target);
       setShareToken(sharedToken());
       setLang(initialLanguage());
       updateModal(
@@ -197,9 +201,11 @@ export default function App({
       );
       setMobileNav(false);
       setActiveSection(location.hash === '#map' ? 'map' : 'discover');
-      requestAnimationFrame(() =>
-        window.scrollTo({ top: event.state?.scrollY ?? 0, behavior: 'instant' }),
-      );
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: event.state?.scrollY ?? 0, behavior: 'instant' });
+        if (!target && !planner && discoveryTrigger.current?.isConnected)
+          discoveryTrigger.current.focus({ preventScroll: true });
+      });
     };
     const hash = () => setShareToken(sharedToken());
     window.addEventListener('hashchange', hash);
@@ -211,7 +217,11 @@ export default function App({
     };
   }, []);
   const openDestination = (state: StateGuide, placeIndex?: number) => {
-    if (!destination) discoveryScroll.current = window.scrollY;
+    if (!destination) {
+      discoveryScroll.current = window.scrollY;
+      discoveryTrigger.current =
+        document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    }
     history.replaceState({ ...history.state, scrollY: window.scrollY }, '', location.href);
     history.pushState({ scrollY: 0 }, '', destinationUrl(state, lang, placeIndex));
     setDestination({ state, placeIndex });
@@ -278,9 +288,11 @@ export default function App({
   const returnToDiscovery = () => {
     goSection('destinations');
     if (discoveryScroll.current !== null)
-      requestAnimationFrame(() =>
-        window.scrollTo({ top: discoveryScroll.current!, behavior: 'instant' }),
-      );
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: discoveryScroll.current!, behavior: 'instant' });
+        if (discoveryTrigger.current?.isConnected)
+          discoveryTrigger.current.focus({ preventScroll: true });
+      });
   };
   const addState = (state: StateGuide) => {
     if (!trip.stops.some((stop) => stop.code === state.code)) {
@@ -774,7 +786,9 @@ export default function App({
               <a href="#road-trips">
                 <Icon name="route" />
                 <strong>{x(lang, 'templates')}</strong>
-                <span>8 · {x(lang, 'suggested')}</span>
+                <span>
+                  {ITINERARIES.length} · {x(lang, 'suggested')}
+                </span>
                 <Icon name="arrow" size={16} />
               </a>
               <button

@@ -10,7 +10,7 @@ import { x } from '../../data/experience-copy';
 for (const [engine, browserType] of [
   ['chromium', chromium],
   ['webkit', webkit],
-] as const)
+] as const) {
   test(`${engine} mobile offline navigation avoids home preloads and preserves editable trips in five languages`, async ({
     baseURL,
   }) => {
@@ -156,6 +156,18 @@ for (const [engine, browserType] of [
       await page.getByRole('button', { name: 'Save for offline', exact: true }).click();
       await expect(page.getByText('Ready offline on this device.', { exact: false })).toBeVisible();
       await expect(page.locator('.offline-status')).toContainText('72/72');
+      await page.evaluate(async () => {
+        const cache = await caches.open('roam-trip-photos-v1');
+        await cache.delete('/images/states/ca-1.jpg');
+        window.dispatchEvent(new Event('focus'));
+      });
+      await expect(page.locator('.offline-status')).toContainText('71/72');
+      await expect(page.getByText('Ready offline on this device.', { exact: false })).toHaveCount(
+        0,
+      );
+      await page.getByRole('button', { name: 'Save for offline', exact: true }).click();
+      await expect(page.getByText('Ready offline on this device.', { exact: false })).toBeVisible();
+      await expect(page.locator('.offline-status')).toContainText('72/72');
       await page.getByRole('button', { name: 'Remove downloaded photos', exact: true }).click();
       await page
         .locator('.offline-status')
@@ -174,3 +186,86 @@ for (const [engine, browserType] of [
       await new Promise<void>((resolve) => server.close(() => resolve()));
     }
   });
+
+  test(`${engine} offline status recovers from unavailable storage and refreshes after another tab removes photos`, async ({
+    baseURL,
+  }) => {
+    const browser = await browserType.launch();
+    try {
+      const context = await browser.newContext({
+        viewport: { width: 390, height: 844 },
+        isMobile: true,
+        hasTouch: true,
+      });
+      const page = await context.newPage();
+      await page.addInitScript(() => {
+        Object.assign(window, { denyPhotoCache: true });
+        const open = CacheStorage.prototype.open;
+        CacheStorage.prototype.open = function (name) {
+          if (name === 'roam-trip-photos-v1' && Reflect.get(window, 'denyPhotoCache'))
+            return Promise.reject(new Error('Simulated storage denial'));
+          return open.call(this, name);
+        };
+      });
+      await page.goto(baseURL + '/en/?view=planner');
+      await page.locator('.planner-utility > summary').click();
+      await page.locator('.offline-status > summary').click();
+      const panel = page.locator('.offline-status');
+      for (const lang of LANGUAGES) {
+        await page.getByLabel('Language / ภาษา', { exact: true }).selectOption(lang);
+        await expect(panel).toContainText(x(lang, 'offlineEmpty'));
+        await expect(panel).not.toContainText('0/0');
+        await expect(panel.locator('[role="alert"]')).toHaveCount(0);
+      }
+      const trip = cityGuideTrip(
+        validateCityContent(cityContent).guides.find((g) => g.placeId === 'CA-0')!,
+        3,
+        'en',
+      );
+      await page.evaluate(
+        (trip) => localStorage.setItem('roam.trip.v1', JSON.stringify(trip)),
+        trip,
+      );
+      await page.goto(baseURL + '/en/?view=planner');
+      await page.locator('.planner-utility > summary').click();
+      await page.locator('.offline-status > summary').click();
+      for (const lang of LANGUAGES) {
+        await page.getByLabel('Language / ภาษา', { exact: true }).selectOption(lang);
+        await expect(panel.getByRole('alert')).toHaveText(x(lang, 'offlineStorageError'));
+        await expect(panel).not.toContainText(x(lang, 'offlineChecking'));
+        await expect(
+          panel.getByRole('button', { name: x(lang, 'offlineCheckAgain') }),
+        ).toBeVisible();
+      }
+      await page.getByLabel('Language / ภาษา', { exact: true }).selectOption('en');
+      await page.evaluate(async () => {
+        Reflect.set(window, 'denyPhotoCache', false);
+        const cache = await caches.open('roam-trip-photos-v1');
+        await cache.put(
+          '/images/states/ca-1.jpg',
+          new Response('photo fixture', { headers: { 'content-type': 'image/jpeg' } }),
+        );
+      });
+      await panel.getByRole('button', { name: x('en', 'offlineCheckAgain') }).click();
+      await expect(panel).toContainText('1/36');
+      await expect(panel.getByRole('alert')).toHaveCount(0);
+      await panel.getByRole('button', { name: x('en', 'clearDownloads') }).click();
+      await expect(panel).toContainText(x('en', 'offlineRemoveExplanation'));
+      await panel.getByRole('button', { name: x('en', 'cancel'), exact: true }).click();
+      const other = await context.newPage();
+      await other.goto(baseURL + '/en/');
+      await other.evaluate(() => caches.delete('roam-trip-photos-v1'));
+      await other.close();
+      await page.bringToFront();
+      // Dispatch the return-to-tab event explicitly for deterministic headless coverage.
+      await page.evaluate(() => window.dispatchEvent(new Event('focus')));
+      await expect(panel).toContainText('0/36');
+      await expect(panel.getByRole('button', { name: x('en', 'clearDownloads') })).toHaveCount(0);
+      expect(await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!))).toEqual(
+        trip,
+      );
+    } finally {
+      await browser.close();
+    }
+  });
+}

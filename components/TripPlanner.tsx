@@ -1,7 +1,7 @@
 import { statePlaces, statePhoto } from '../data/travel';
 import { translate, LOCALES, languageIndex } from '../lib/i18n';
 import { x } from '../data/experience-copy';
-import { lazy, Suspense, useEffect, useRef, useState, type ChangeEvent } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { EMPTY_TRIP, STATES, stateName, type Language, type Trip } from '../data/travel';
 import { downloadFile, tripDays, validateTrip, validDate } from '../lib/storage';
 import Icon from './Icon';
@@ -40,10 +40,12 @@ export default function TripPlanner({
   const t = (en: string, th: string, values?: Record<string, string | number>) =>
     translate(en, th, lang, values);
   const [offlineBusy, setOfflineBusy] = useState(false);
+  const [offlineRemoving, setOfflineRemoving] = useState(false);
   const [offlineReady, setOfflineReady] = useState('');
   const [offlineProgress, setOfflineProgress] = useState<OfflineProgress | null>(null);
   const [offlineFailed, setOfflineFailed] = useState(false);
   const [offlineRefresh, setOfflineRefresh] = useState(0);
+  const invalidateOffline = useCallback(() => setOfflineReady(''), []);
   const offlineKey = [...new Set(trip.stops.map((stop) => stop.code))].sort().join(',');
   const [account, setAccount] = useState(
     new URLSearchParams(location.search).get('account') === '1',
@@ -493,7 +495,7 @@ export default function TripPlanner({
           </button>
           <button
             className="button button-outline"
-            disabled={offlineBusy || !trip.stops.length}
+            disabled={offlineBusy || offlineRemoving || !trip.stops.length}
             onClick={async () => {
               setOfflineBusy(true);
               setOfflineReady('');
@@ -554,7 +556,8 @@ export default function TripPlanner({
           lang={lang}
           refresh={offlineRefresh}
           downloading={offlineBusy}
-          onRemove={() => setOfflineReady('')}
+          onRemove={invalidateOffline}
+          onRemoving={setOfflineRemoving}
         />
       </details>
       <div className="backup-actions">
