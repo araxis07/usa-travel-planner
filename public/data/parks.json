@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-09T10:48:39.988Z",
+  "checkedAt": "2026-10-17T08:47:36.638Z",
   "source": "https://www.nps.gov/subjects/developer/",
   "parks": [
     {
@@ -219,7 +219,7 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-10-12",
+                  "startDate": "2026-11-01",
                   "name": "Seasonal Closure",
                   "endDate": "2027-04-18"
                 }
@@ -319,12 +319,12 @@
       ],
       "alerts": [
         {
-          "id": "7FB2991F-FED2-4E87-8002-B4BADAD2749F",
-          "title": "Glacier Point Road is temporarily closed due to the Dome Fire",
-          "category": "Park Closure",
-          "description": "The Dome Fire is burning in the wilderness northeast of Wawona. Glacier Point Road is temporarily closed because of reduced visibility along the road due to smoke and to safely allow firefighting operations. Additionally, there are some trail closures south of Glacier Point Road.. Smoky conditions are possible at times.",
-          "url": "https://inciweb.wildfire.gov/incident-information/caynp-dome-fire",
-          "lastIndexedDate": "2026-10-07 00:00:00.0"
+          "id": "B1B8B58E-47EB-4729-8494-A201E094EBDF",
+          "title": "No overnight parking on Tioga & Glacier Point Roads",
+          "category": "Information",
+          "description": "Overnight parking is not allowed on Tioga Road and Glacier Point Road, including all parking lots reachable from these roads.",
+          "url": "",
+          "lastIndexedDate": "2026-10-16 00:00:00.0"
         }
       ]
     },
@@ -443,15 +443,15 @@
           "operatingHours": [
             {
               "exceptions": [],
-              "description": "The Visitor Center is open daily from 8 am to 4 pm during the summer season.",
+              "description": "The Visitor Center is open daily from 9 am to 4 pm during the fall season.",
               "standardHours": {
-                "wednesday": "8:00AM - 4:00PM",
-                "monday": "8:00AM - 4:00PM",
-                "thursday": "8:00AM - 4:00PM",
-                "sunday": "8:00AM - 4:00PM",
-                "tuesday": "8:00AM - 4:00PM",
-                "friday": "8:00AM - 4:00PM",
-                "saturday": "8:00AM - 4:00PM"
+                "wednesday": "9:00AM - 4:00PM",
+                "monday": "9:00AM - 4:00PM",
+                "thursday": "9:00AM - 4:00PM",
+                "sunday": "9:00AM - 4:00PM",
+                "tuesday": "9:00AM - 4:00PM",
+                "friday": "9:00AM - 4:00PM",
+                "saturday": "9:00AM - 4:00PM"
               },
               "name": "Grand Canyon Visitor Center (South Rim)"
             }
@@ -495,9 +495,9 @@
           "id": "BD6EC75E-89ED-4345-BE71-4A2EA5FF186E",
           "title": "INNER CANYON TRAIL CLOSURES",
           "category": "Danger",
-          "description": "Current trail closures: The entire North Kaibab Trail (including Cottonwood Campground), Phantom Ranch, Bright Angel Campground, Silver Bridge, the South Kaibab Trail below Tip-Off, the River Trail east of the River Resthouse to the South Kaibab Trail junction, and the Black Bridge. Please do not attempt to access the closed areas.",
+          "description": "Current trail closures: Bright Angel Trail from One-and-a-Half Mile Resthouse to Havasupai Gardens, the entire North Kaibab Trail (including Cottonwood Campground), Phantom Ranch, Bright Angel Campground, Silver Bridge, the South Kaibab Trail below Tip-Off, the River Trail east of the River Resthouse to the South Kaibab Trail junction, and the Black Bridge. Please do not attempt to access the closed areas.",
           "url": "",
-          "lastIndexedDate": "2026-09-24 00:00:00.0"
+          "lastIndexedDate": "2026-10-15 00:00:00.0"
         },
         {
           "id": "608538F9-D5D1-4AD4-BD95-6BB351146EDC",
@@ -514,6 +514,14 @@
           "description": "Visit this link for the inner canyon weather forecast, current trail closures, today's heat risk, and drinking water availability.",
           "url": "https://www.nps.gov/grca/planyourvisit/key-messages.htm",
           "lastIndexedDate": "2026-06-26 00:00:00.0"
+        },
+        {
+          "id": "7F3F5A00-0567-40F0-8283-7B0002C0EF53",
+          "title": "North Rim Scenic Road Closure: Cape Royal and Point Imperial",
+          "category": "Park Closure",
+          "description": "The Point Imperial Road (from the Cape Royal Road to Point Imperial) will be closed from Oct. 15 through Nov. 3, 2026. No services, fuel, and no water are available on the North Rim as of Oct. 15, 2026.",
+          "url": "https://www.nps.gov/grca/northrimstatus.htm",
+          "lastIndexedDate": "2026-10-15 00:00:00.0"
         }
       ]
     },
@@ -726,11 +734,11 @@
       "alerts": [
         {
           "id": "611B580A-2CFD-4331-B712-E8E46FC6683D",
-          "title": "Mauna Loa Road Closed Past Second Cattle Guard for Tree Removal ",
+          "title": "Mauna Loa Road Closed Past First Cattle Guard for Tree Removal ",
           "category": "Information",
-          "description": "Mauna Loa Road will be closed to all use from the second cattle guard (about two miles past Kīpukapuaulu) to Mauna Loa Lookout for tree removal starting September 23 through October 29, 2026. The tree work will prepare the area for the Mauna Loa Road Rehabilitation Project. Vehicles, bicyclists and pedestrians will not be allowed during the closure. ",
+          "description": "Mauna Loa Road will be closed to all use from the first cattle guard to Mauna Loa Lookout for tree removal starting September 23 through October 29, 2026. The tree work will prepare the area for the Mauna Loa Road Rehabilitation Project. Vehicles, bicyclists and pedestrians will not be allowed during the closure. ",
           "url": "",
-          "lastIndexedDate": "2026-10-08 00:00:00.0"
+          "lastIndexedDate": "2026-10-15 00:00:00.0"
         },
         {
           "id": "E184228C-9A0B-4463-9848-44AF5D566030",
@@ -754,7 +762,7 @@
           "category": "Park Closure",
           "description": "Halemaʻumaʻu Trail and part of Byron Ledge Trail are temporarily closed due to continued inflation and increased seismicity at the summit of Kīlauea volcano. The closure is a total of 1.3 miles. The increased seismicity could trigger additional rock falls and presents a serious safety risk. Both trails descend from the caldera rim to the floor and have been the site of dangerous rock falls in the past.",
           "url": "",
-          "lastIndexedDate": "2026-10-07 00:00:00.0"
+          "lastIndexedDate": "2026-10-09 00:00:00.0"
         },
         {
           "id": "372637DA-0B8C-422B-B98B-9ACF44B56C46",
@@ -770,7 +778,7 @@
           "category": "Park Closure",
           "description": "Due to increased earthquakes below the summit of Kīlauea and volcanic unrest, the Keanakākoʻi area is temporarily closed for safety. This includes old Crater Rim Drive, the overlooks near Keanakākoʻi crater and Crater Rim Trail to Keanakākoʻi crater. Devastation parking lot remains open.",
           "url": "",
-          "lastIndexedDate": "2026-10-01 00:00:00.0"
+          "lastIndexedDate": "2026-10-09 00:00:00.0"
         },
         {
           "id": "031E225F-49AB-4264-9DD6-4402E620DC1B",
@@ -778,7 +786,7 @@
           "category": "Information",
           "description": "Volcanic eruptions can be hazardous. Stay out of closed areas and monitor air quality. Eruptions can last a few hours and are often separated by pauses lasting several weeks.",
           "url": "https://www.nps.gov/havo/planyourvisit/lava2.htm",
-          "lastIndexedDate": "2026-09-24 00:00:00.0"
+          "lastIndexedDate": "2026-10-16 00:00:00.0"
         },
         {
           "id": "9EA3FC4B-73DA-4CD9-BB0D-6A1F3DFF7407",
@@ -1091,14 +1099,6 @@
       ],
       "alerts": [
         {
-          "id": "FC405217-4B9B-4042-8D9C-96475F3997D0",
-          "title": "Zion-Mt. Carmel Highway closed from Canyon Junction to Great Arch Pullout",
-          "category": "Park Closure",
-          "description": "The Zion-Mt. Carmel Highway is currently closed from Canyon Junction to Great Arch Pullout to all pedestrian, bicycle, and vehicle traffic. Zion-Mt. Carmel Highway is open from East Entrance to Great Arch Pullout. There will be no through traffic until further notice.",
-          "url": "",
-          "lastIndexedDate": "2026-10-06 00:00:00.0"
-        },
-        {
           "id": "CDD9D321-49B3-4C74-89AD-A186807220E6",
           "title": "Watchman Trail closed",
           "category": "Park Closure",
@@ -1347,9 +1347,9 @@
           "id": "FC27643B-95B4-4158-9028-BEB8E235FF66",
           "title": "Trail Closures Due to Recent Rains",
           "category": "Park Closure",
-          "description": "Wall Street is closed until further notice. Other park trails are open but muddy, and hikers are urged to use caution.",
+          "description": "Wall Street is closed until further notice. Other park trails are open, but hikers are urged to use caution.",
           "url": "",
-          "lastIndexedDate": "2026-09-30 00:00:00.0"
+          "lastIndexedDate": "2026-10-15 00:00:00.0"
         },
         {
           "id": "FDF5B1EA-4A56-4D29-8BE0-C55822069481",
@@ -1358,6 +1358,14 @@
           "description": "Fires are only allowed in established fire pits.",
           "url": "",
           "lastIndexedDate": "2026-08-31 00:00:00.0"
+        },
+        {
+          "id": "02F6DDD2-25FD-4D13-85F5-941F0CD23FAE",
+          "title": "Dump Station Closed for Season",
+          "category": "Information",
+          "description": "The dump station has closed due to early freezing temperatures. Please make other arrangements. Drinking fountains are also in the process of being winterized for the same reason. Please plan appropriately.",
+          "url": "",
+          "lastIndexedDate": "2026-10-15 00:00:00.0"
         }
       ]
     },
@@ -1774,13 +1782,13 @@
               ],
               "description": "Fall River Visitor Center is located along U.S. Hwy 34 in Estes Park, Colorado and near the Fall River Entrance to the park. Fall River Visitor Center will be closed on Thanksgiving Day and Christmas Day.",
               "standardHours": {
-                "wednesday": "9:00AM - 5:00PM",
-                "monday": "9:00AM - 5:00PM",
-                "thursday": "9:00AM - 5:00PM",
-                "sunday": "9:00AM - 5:00PM",
-                "tuesday": "9:00AM - 5:00PM",
-                "friday": "9:00AM - 5:00PM",
-                "saturday": "9:00AM - 5:00PM"
+                "wednesday": "9:00AM - 4:30PM",
+                "monday": "9:00AM - 4:30PM",
+                "thursday": "9:00AM - 4:30PM",
+                "sunday": "9:00AM - 4:30PM",
+                "tuesday": "9:00AM - 4:30PM",
+                "friday": "9:00AM - 4:30PM",
+                "saturday": "9:00AM - 4:30PM"
               },
               "name": "Fall River Visitor Center"
             }
@@ -1841,13 +1849,13 @@
               ],
               "description": "Open year-round. During the summer season the visitor center is open 9 a.m. to 6 p.m. Beaver Meadows Visitor Center is closed on Thanksgiving Day and Christmas Day.",
               "standardHours": {
-                "wednesday": "9:00AM - 6:00PM",
-                "monday": "9:00AM - 6:00PM",
-                "thursday": "9:00AM - 6:00PM",
-                "sunday": "9:00AM - 6:00PM",
-                "tuesday": "9:00AM - 6:00PM",
-                "friday": "9:00AM - 6:00PM",
-                "saturday": "9:00AM - 6:00PM"
+                "wednesday": "9:00AM - 4:30PM",
+                "monday": "9:00AM - 4:30PM",
+                "thursday": "9:00AM - 4:30PM",
+                "sunday": "9:00AM - 4:30PM",
+                "tuesday": "9:00AM - 4:30PM",
+                "friday": "9:00AM - 4:30PM",
+                "saturday": "9:00AM - 4:30PM"
               },
               "name": "Beaver Meadows Visitor Center"
             }
@@ -1918,9 +1926,9 @@
               "exceptions": [
                 {
                   "exceptionHours": {},
-                  "startDate": "2026-10-12",
+                  "startDate": "2027-10-12",
                   "name": "Holiday Closure - Columbus Day",
-                  "endDate": "2026-10-12"
+                  "endDate": "2027-10-12"
                 },
                 {
                   "exceptionHours": {},
@@ -1957,6 +1965,34 @@
                   "startDate": "2027-02-15",
                   "name": "Holiday Closure - Presidents' Day",
                   "endDate": "2027-02-15"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2027-07-04",
+                  "name": "Independence Day",
+                  "endDate": "2027-07-04"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2027-09-06",
+                  "name": "Labor Day",
+                  "endDate": "2027-09-06"
                 }
               ],
               "description": "Open 7 a.m. to 3:30 p.m. daily for both the east side & west sides of Rocky Mountain National Park. On the west side of RMNP, the Wilderness Office is located inside the Kawuneeche Visitor Center.\n\nThe Wilderness Office is closed on the following holidays: New Years Day, Martin Luther King Jr. Day, Presidents' Day, Indigenous Peoples' Day / Columbus Day, Veterans Day, Thanksgiving Day and Christmas Day. To pick up your permit on these federal holidays, please call ahead to make arrangements.",
@@ -1983,15 +2019,15 @@
           "operatingHours": [
             {
               "exceptions": [],
-              "description": "Alpine Visitor Center is open for the 2026 summer season. Located at the top of Fall River Pass and accessed via Trail Ridge Road, Alpine Visitor Center is the highest elevation visitor center in the National Park System at 11,796 feet above sea level. Stop by and learn more about plants and wildlife that live in the land above trees - the Alpine tundra.\n\nTemporary closures can happen at any time, based on weather and conditions.",
+              "description": "Alpine Visitor Center is closed for the season. The visitor center will reopen in summer 2027. Located at the top of Fall River Pass and accessed via Trail Ridge Road, Alpine Visitor Center is the highest elevation visitor center in the National Park System at 11,796 feet above sea level. Stop by and learn more about plants and wildlife that live in the land above trees - the Alpine tundra.",
               "standardHours": {
-                "wednesday": "9:30AM - 5:00PM",
-                "monday": "9:30AM - 5:00PM",
-                "thursday": "9:30AM - 5:00PM",
-                "sunday": "9:30AM - 5:00PM",
-                "tuesday": "9:30AM - 5:00PM",
-                "friday": "9:30AM - 5:00PM",
-                "saturday": "9:30AM - 5:00PM"
+                "wednesday": "Closed",
+                "monday": "Closed",
+                "thursday": "Closed",
+                "sunday": "Closed",
+                "tuesday": "Closed",
+                "friday": "Closed",
+                "saturday": "Closed"
               },
               "name": "Alpine Visitor Center"
             }
@@ -2109,7 +2145,16 @@
           ]
         }
       ],
-      "alerts": []
+      "alerts": [
+        {
+          "id": "631E9CE5-E0F2-4194-8F8F-20EFE555A495",
+          "title": "Trail Ridge Road is Closed at Many Parks Curve & Milner Pass",
+          "category": "Park Closure",
+          "description": "Due to recent winter storms, Trail Ridge Road is temporarily closed on the east side of the park at Many Parks Curve and at Milner Pass on the west side of the park. Call the Trail Ridge Road recorded line at 970-586-1222 for the most up-to-date conditions.",
+          "url": "https://www.nps.gov/romo/planyourvisit/road_status.htm",
+          "lastIndexedDate": "2026-10-16 00:00:00.0"
+        }
+      ]
     },
     {
       "id": "CO-2",
@@ -2865,11 +2910,11 @@
               "exceptions": [],
               "description": "Visitor information, exhibits, passport stamping station, book store. Two self-guided nature trails and the Hoh River Trail start near the visitor center. Guided walks and talks are offered during the summer. Wilderness Camping Permits should be picked up at a Wilderness Information Center.\nNo food service is available in the Hoh Rain Forest and the closest gas station is 31 miles away.",
               "standardHours": {
-                "wednesday": "9:00AM - 4:30PM",
-                "monday": "9:00AM - 4:30PM",
-                "thursday": "9:00AM - 4:30PM",
+                "wednesday": "Closed",
+                "monday": "Closed",
+                "thursday": "Closed",
                 "sunday": "9:00AM - 4:30PM",
-                "tuesday": "9:00AM - 4:30PM",
+                "tuesday": "Closed",
                 "friday": "9:00AM - 4:30PM",
                 "saturday": "9:00AM - 4:30PM"
               },
@@ -2906,42 +2951,18 @@
         {
           "id": "BD0ECF54-649B-46A7-A9B1-3C185F62D8E1",
           "title": "Bat Tests Positive for Rabies, Visitors Urged to Report Potential Contact",
-          "category": "Caution",
+          "category": "Danger",
           "description": "A rabid bat was found at Olympic National Park near Staircase Bridge on August 9th. At approximately 2 p.m., the bat swooped down onto an unidentified woman and was temporarily caught in her hair. This individual is at risk for rabies and should seek healthcare immediately, as well as contact the Mason County Health Department at 360-427-9670, ext. 405. More at the link.",
           "url": "https://www.nps.gov/olym/learn/news/bat-tests-positive-for-rabies-at-olympic-national-park.htm",
-          "lastIndexedDate": "2026-10-08 00:00:00.0"
-        },
-        {
-          "id": "5A258C0A-F669-4319-B11F-14295742D42D",
-          "title": "Boil Water Advisory at Hoh Rainforest - Bring Water",
-          "category": "Danger",
-          "description": "There is currently NO POTABLE WATER available at the Hoh Rainforest. Bring what you need. A boil water advisory has been issued for the Hoh Rainforest Visitor Center, campground, and all park facilities in the Hoh area today, October 8. It is unknown when the advisory will be lifted.",
-          "url": "",
-          "lastIndexedDate": "2026-10-08 00:00:00.0"
+          "lastIndexedDate": "2026-10-09 00:00:00.0"
         },
         {
           "id": "73549B6B-64CF-4B70-A42B-581EB4D11DA5",
-          "title": "Highway 101 Closed at Hoh River Bridge",
+          "title": "Highway 101 Overnight Closures at Hoh River Bridge, October 13-19",
           "category": "Park Closure",
-          "description": "The Highway 101 closure cuts off the only direct route between some of the most popular areas of the park. There are no detours available. Taking alternate routes around the east side of the Olympic Peninsula will add at least four hours to travel times.",
+          "description": "These overnight Highway 101 closures cuts off the only direct route between some of the most popular areas of the park. There are no detours available. Taking alternate routes around the east side of the Olympic Peninsula will add at least four hours to travel times.",
           "url": "https://www.nps.gov/olym/planyourvisit/hwy-101-closure-at-hoh-river-bridge.htm",
-          "lastIndexedDate": "2026-09-25 00:00:00.0"
-        },
-        {
-          "id": "4D18B12B-E625-4D7C-825A-C779A6EACCA5",
-          "title": "South Shore Quinault Road Washed Out Beyond Park Boundary",
-          "category": "Information",
-          "description": "South Shore Road – which is maintained by Jefferson County – is closed due to a major wash-out. For more information, visit the Jefferson County website.",
-          "url": "https://jeffersoncountypublichealth.org/1935/Quinault-South-Shore-Rd-MP-13---CLOSED",
-          "lastIndexedDate": "2026-08-23 00:00:00.0"
-        },
-        {
-          "id": "8889EA7E-7113-4F30-A234-F417065A7A3E",
-          "title": "Mora Road Closed for Essential Repairs",
-          "category": "Park Closure",
-          "description": "Mora Road is closed to all traffic, including bicycles and pedestrians, at the campground. Rialto Beach is not accessible via Mora Road during this construction period. Mora Campground is open. This construction work will repair damage from a severe winter flood event, fortify the road against river migration, and protect long-term access to Rialto Beach.",
-          "url": "",
-          "lastIndexedDate": "2026-07-08 00:00:00.0"
+          "lastIndexedDate": "2026-10-13 00:00:00.0"
         },
         {
           "id": "0918CC30-347E-47CA-98FC-9AB7602DE1B3",
@@ -3287,27 +3308,13 @@
               "exceptions": [
                 {
                   "exceptionHours": {
-                    "wednesday": "9:30AM - 4:00PM",
-                    "monday": "9:30AM - 4:00PM",
-                    "thursday": "9:30AM - 4:00PM",
-                    "sunday": "9:30AM - 4:00PM",
-                    "tuesday": "9:30AM - 4:00PM",
-                    "friday": "9:30AM - 4:00PM",
-                    "saturday": "9:30AM - 4:00PM"
-                  },
-                  "startDate": "2026-09-28",
-                  "name": "Fall Season",
-                  "endDate": "2026-10-11"
-                },
-                {
-                  "exceptionHours": {
                     "wednesday": "Closed",
-                    "monday": "Closed",
+                    "monday": "10:00AM - 3:30PM",
                     "thursday": "Closed",
-                    "sunday": "10:00AM - 4:00PM",
+                    "sunday": "10:00AM - 3:30PM",
                     "tuesday": "Closed",
-                    "friday": "10:00AM - 4:00PM",
-                    "saturday": "10:00AM - 4:00PM"
+                    "friday": "10:00AM - 3:30PM",
+                    "saturday": "10:00AM - 3:30PM"
                   },
                   "startDate": "2026-10-12",
                   "name": "Winter Season",
@@ -3599,7 +3606,7 @@
           "category": "Danger",
           "description": "Due to several active fires on the north side of the park, the following closures are in effect until further notice: Grand Park area & trails, Northern Loop Trail, Wonderland Trail from Carbon River Suspension Bridge to Frozen Lake, & associated backcountry campgrounds. White River Road & WR Campground reopened along with White River/Sunrise Trails. Sunrise Rd CLOSED to vehicles; open for pedestrians/bicycling only.",
           "url": "https://www.nps.gov/mora/learn/news/fire.htm",
-          "lastIndexedDate": "2026-09-11 00:00:00.0"
+          "lastIndexedDate": "2026-10-15 00:00:00.0"
         },
         {
           "id": "6080843E-B4D3-44DF-97C3-3F26D3CC4883",
@@ -3950,34 +3957,6 @@
               "exceptions": [
                 {
                   "exceptionHours": {
-                    "wednesday": "10:00AM - 4:00PM",
-                    "monday": "10:00AM - 4:00PM",
-                    "thursday": "10:00AM - 4:00PM",
-                    "sunday": "Closed",
-                    "tuesday": "10:00AM - 4:00PM",
-                    "friday": "10:00AM - 4:00PM",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2027-01-19",
-                  "name": "Late Winter Hours",
-                  "endDate": "2027-04-11"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "10:00AM - 4:00PM",
-                    "monday": "10:00AM - 4:00PM",
-                    "thursday": "10:00AM - 4:00PM",
-                    "sunday": "Closed",
-                    "tuesday": "10:00AM - 4:00PM",
-                    "friday": "10:00AM - 4:00PM",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-09-19",
-                  "name": "Fall Hours",
-                  "endDate": "2026-10-16"
-                },
-                {
-                  "exceptionHours": {
                     "wednesday": "Closed",
                     "monday": "Closed",
                     "thursday": "Closed",
@@ -3986,23 +3965,9 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-10-12",
-                  "name": "Closed on Columbus Day",
-                  "endDate": "2026-10-12"
-                },
-                {
-                  "exceptionHours": {
-                    "wednesday": "Closed",
-                    "monday": "Closed",
-                    "thursday": "Closed",
-                    "sunday": "Closed",
-                    "tuesday": "Closed",
-                    "friday": "Closed",
-                    "saturday": "Closed"
-                  },
-                  "startDate": "2026-10-17",
-                  "name": "Closed in Mid-Winter",
-                  "endDate": "2027-01-18"
+                  "startDate": "2027-01-01",
+                  "name": "New Years Day",
+                  "endDate": "2027-01-01"
                 },
                 {
                   "exceptionHours": {
@@ -4180,12 +4145,12 @@
       ],
       "alerts": [
         {
-          "id": "08FD4C32-0851-4EFD-811E-FF9740E965FB",
-          "title": "Road Open To: Mile 30 (Teklanika River)",
+          "id": "BB9A9C62-35D1-4F41-9861-0F12D8343051",
+          "title": "Road Open To: Mile 13 (Mountain Vista)",
           "category": "Information",
-          "description": "The Denali Park Road is open to Mile 30, Teklanika River. Please stay alert for heavy equipment traveling on the park road.",
-          "url": "https://www.nps.gov/dena/planyourvisit/shoulder-season.htm",
-          "lastIndexedDate": "2026-09-18 00:00:00.0"
+          "description": "The Denali Park Road is open to Mile 13, Mountain Vista. Be prepared for winter driving conditions to reach Mile 13.",
+          "url": "",
+          "lastIndexedDate": "2026-10-15 00:00:00.0"
         }
       ]
     },
@@ -6403,6 +6368,34 @@
               "exceptions": [
                 {
                   "exceptionHours": {
+                    "wednesday": "9:00AM - 4:00PM",
+                    "monday": "9:00AM - 4:00PM",
+                    "thursday": "9:00AM - 4:00PM",
+                    "sunday": "9:00AM - 4:00PM",
+                    "tuesday": "9:00AM - 4:00PM",
+                    "friday": "9:00AM - 4:00PM",
+                    "saturday": "9:00AM - 4:00PM"
+                  },
+                  "startDate": "2027-04-13",
+                  "name": "Summer Hours",
+                  "endDate": "2027-10-12"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "10:00AM - 4:00PM",
+                    "thursday": "Closed",
+                    "sunday": "10:00AM - 4:00PM",
+                    "tuesday": "Closed",
+                    "friday": "10:00AM - 4:00PM",
+                    "saturday": "10:00AM - 4:00PM"
+                  },
+                  "startDate": "2026-10-13",
+                  "name": "Winter Hours",
+                  "endDate": "2027-04-12"
+                },
+                {
+                  "exceptionHours": {
                     "wednesday": "Closed",
                     "monday": "Closed",
                     "thursday": "Closed",
@@ -6430,15 +6423,15 @@
                   "endDate": "2026-12-25"
                 }
               ],
-              "description": "Open Daily: 9:00 am - 4:00 pm \nAs of April 19, 2026",
+              "description": "Open Friday - Monday 10:00 am - 4:00 pm \nAs of October 13, 2026",
               "standardHours": {
-                "wednesday": "9:00AM - 4:00PM",
-                "monday": "9:00AM - 4:00PM",
-                "thursday": "9:00AM - 4:00PM",
-                "sunday": "9:00AM - 4:00PM",
-                "tuesday": "9:00AM - 4:00PM",
-                "friday": "9:00AM - 4:00PM",
-                "saturday": "9:00AM - 4:00PM"
+                "wednesday": "Closed",
+                "monday": "10:00AM - 4:00PM",
+                "thursday": "Closed",
+                "sunday": "10:00AM - 4:00PM",
+                "tuesday": "Closed",
+                "friday": "10:00AM - 4:00PM",
+                "saturday": "10:00AM - 4:00PM"
               },
               "name": "Herbert H. Bateman Educational and Administrative Center"
             }
@@ -6503,17 +6496,9 @@
           "id": "CA2DB2F7-145C-4C6A-A84D-7289EA0E1FBC",
           "title": "OSV Status",
           "category": "Information",
-          "description": "10/2/26 MD OSV open to KM 21.5. VA South OSV is closed due to overwash. The VA North OSV fishing mile is closed.",
+          "description": "10/13/26 MD OSV open to the State Line. VA South OSV is open. Beware of overwash conditions at high tides. The VA North OSV fishing mile is closed.",
           "url": "",
-          "lastIndexedDate": "2026-10-02 00:00:00.0"
-        },
-        {
-          "id": "15AB7E15-6916-483C-B211-1CE0B768FCBD",
-          "title": "Postponed- Beach Clean Ups in MD & VA",
-          "category": "Information",
-          "description": "Postponed- Beach Clean Ups scheduled for National Public Lands Day on September 26 in MD and VA have been postponed due to storm conditions. New date TBD.",
-          "url": "",
-          "lastIndexedDate": "2026-09-24 00:00:00.0"
+          "lastIndexedDate": "2026-10-13 00:00:00.0"
         }
       ]
     },
@@ -7721,17 +7706,9 @@
           "id": "660FD693-2370-4C15-BF70-DCE12CB5975C",
           "title": "Hurricane Isaias Closures Florida",
           "category": "Park Closure",
-          "description": "Severe weather conditions are possible in Florida and Mississippi. All of the areas are closed until further notice. Highway 399 will close at 8 a.m. Oct 9. Fort Pickens Area and Fort Pickens Campground Okaloosa Area and Crab Island Santa Rosa Area (Opal Beach) Perdido Key Area (Johnson Beach) Fort Barrancas Area Naval Live Oaks Area",
+          "description": "All of the areas are closed until further notice. Fort Pickens Area and Fort Pickens Campground Okaloosa Area Santa Rosa Area (Opal Beach) Naval Live Oaks Area",
           "url": "",
-          "lastIndexedDate": "2026-10-08 00:00:00.0"
-        },
-        {
-          "id": "04A0DE94-18CF-4DD5-BA62-7B39906F9634",
-          "title": "Hurricane Isaias Closures Mississippi",
-          "category": "Park Closure",
-          "description": "Severe weather conditions are possible in Florida and Mississippi. The following areas will remain closed until further notice. Mississippi Barrier Islands (Horn, Cat, Ship, Petit Bois and West Petit Bois) Davis Bayou Area",
-          "url": "",
-          "lastIndexedDate": "2026-10-08 00:00:00.0"
+          "lastIndexedDate": "2026-10-16 00:00:00.0"
         },
         {
           "id": "D9579078-040B-4933-8A1A-D005244C2795",
@@ -7902,9 +7879,31 @@
                     "sunday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-10-12",
+                  "startDate": "2027-10-12",
                   "name": "Columbus Day",
-                  "endDate": "2026-10-12"
+                  "endDate": "2027-10-12"
+                },
+                {
+                  "exceptionHours": {
+                    "monday": "Closed"
+                  },
+                  "startDate": "2027-10-12",
+                  "name": "Columbus Day",
+                  "endDate": "2027-10-12"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2026-11-11",
+                  "name": "Veterans Day",
+                  "endDate": "2026-11-11"
                 },
                 {
                   "exceptionHours": {
@@ -7935,6 +7934,14 @@
                   "endDate": "2026-11-26"
                 },
                 {
+                  "exceptionHours": {
+                    "thursday": "Closed"
+                  },
+                  "startDate": "2026-11-26",
+                  "name": "Thanksgiving Day",
+                  "endDate": "2026-11-26"
+                },
+                {
                   "exceptionHours": {},
                   "startDate": "2026-12-24",
                   "name": "Christmas Eve",
@@ -7951,8 +7958,25 @@
                 },
                 {
                   "exceptionHours": {
+                    "thursday": "9:00AM - 3:30PM",
+                    "sunday": "Closed"
+                  },
+                  "startDate": "2026-12-25",
+                  "name": "Christmas Day",
+                  "endDate": "2026-12-25"
+                },
+                {
+                  "exceptionHours": {
                     "sunday": "Closed",
                     "saturday": "Closed"
+                  },
+                  "startDate": "2027-01-01",
+                  "name": "New Year's Day",
+                  "endDate": "2027-01-01"
+                },
+                {
+                  "exceptionHours": {
+                    "sunday": "Closed"
                   },
                   "startDate": "2027-01-01",
                   "name": "New Year's Day",
@@ -7969,12 +7993,51 @@
                 },
                 {
                   "exceptionHours": {
+                    "monday": "Closed"
+                  },
+                  "startDate": "2027-02-15",
+                  "name": "Washington's Birthday",
+                  "endDate": "2027-02-15"
+                },
+                {
+                  "exceptionHours": {
                     "sunday": "Closed",
                     "saturday": "Closed"
                   },
                   "startDate": "2027-02-15",
                   "name": "Presidents Day",
                   "endDate": "2027-02-15"
+                },
+                {
+                  "exceptionHours": {
+                    "monday": "Closed"
+                  },
+                  "startDate": "2027-05-31",
+                  "name": "Memorial Day",
+                  "endDate": "2027-05-31"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2027-07-04",
+                  "name": "Independence Day",
+                  "endDate": "2027-07-04"
+                },
+                {
+                  "exceptionHours": {
+                    "monday": "Closed",
+                    "sunday": "9:00AM - 3:30PM"
+                  },
+                  "startDate": "2027-09-06",
+                  "name": "Labor Day",
+                  "endDate": "2027-09-06"
                 }
               ],
               "description": "Big Spring Entrance Station is open 7 days a week between Memorial Day and Labor Day. During the off season (fall and winter), it is closed on weekends and federal holidays.",
@@ -8283,67 +8346,53 @@
       ],
       "images": [
         {
-          "credit": "NPS Photo",
-          "title": "East Side Sunset",
-          "altText": "Jagged peaks rise out of a forested valley and an empty road curves off into the distance.",
-          "caption": "Going-to-the-Sun Road in the St. Mary Valley",
-          "url": "https://www.nps.gov/common/uploads/structured_data/C1C49B92-9BE9-6A08-F2C851A2A4ACEC8D.jpg"
+          "credit": "NPS",
+          "title": "Grinnell Glacier from Lower Grinnell Ridge in 2016",
+          "altText": "Grinnell Glacier from Lower Grinnell Ridge in 2016",
+          "caption": "Grinnell Glacier from lower Grinnell Ridge on September 27, 2016.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/52AA1BF2-F8F7-F07B-0B0DA9EBED705589.jpg"
         },
         {
-          "credit": "George A. Grant Glacier National Park Archives",
-          "title": "Boulder Glacier in 1932",
-          "altText": "black and white picture of people standing near an ice cave in a glacier",
-          "caption": "Boulder Glacier with visitors observing ice cave, July 27, 1932",
-          "url": "https://www.nps.gov/common/uploads/structured_data/35C21C03-0338-DEDF-929F8655BF0CBEC4.jpg"
+          "credit": "NPS",
+          "title": "Grinnell Glacier from Lower Grinnell Ridge in 2023",
+          "altText": "Grinnell Glacier from Lower Grinnell Ridge in 2023",
+          "caption": "Grinnell Glacier from Lower Grinnell Ridge on September 16, 2023.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/52CA38E5-AE2E-A0D6-BA4A6C9B091262B9.jpg"
         },
         {
-          "credit": "Morton J. Elrod. Glacier National Park Archives",
-          "title": "Grinnell Glacier in 1911",
-          "altText": "a black and white landscape of a big glacier and mountains",
-          "caption": "Grinnell Glacier from Upper Grinnell Ridge in 1911 by Morton J. Elrod.",
-          "url": "https://www.nps.gov/common/uploads/structured_data/35F92864-02EA-D9ED-96EA9AD9116D52DC.jpg"
+          "credit": "NPS",
+          "title": "Grinnell Glacier from Grinnell Ridge in 2025",
+          "altText": "Grinnell Glacier from Grinnell Ridge in 2025",
+          "caption": "Grinnell Glacier from Lower Grinnell Ridge on September 6, 2025.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/52D95F47-BA47-85AF-A6109B9EE49C7B17.jpg"
         },
         {
-          "credit": "NPS Photo",
-          "title": "Swiftcurrent Fire Lookout",
-          "altText": "A small, brown and white structure sits on a rocky top with mountain peaks in the distance.",
-          "caption": "The historic Swiftcurrent Lookout was built in a Swiss chalet architectural style.",
-          "url": "https://www.nps.gov/common/uploads/structured_data/89491DA7-0FDD-BDB9-D0D03D996091EA72.jpg"
+          "credit": "NPS",
+          "title": "Swiftcurrent Glacier from Lookout in 2015",
+          "altText": "Swiftcurrent Glacier as seen from right outside the Swiftcurrent Firelookout on August 5, 2015.",
+          "caption": "Swiftcurrent Glacier as seen from right outside the Swiftcurrent Firelookout on August 5, 2015.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/51C04B39-FF89-7EF8-25176969A2EC48F6.jpg"
         },
         {
-          "credit": "NPS Photo",
+          "credit": "NPS",
+          "title": "Swiftcurrent Glacier from Lookout in 2025",
+          "altText": "Swiftcurrent Glacier as seen from right outside the Swiftcurrent Firelookout on August 30, 2025.",
+          "caption": "Swiftcurrent Glacier as seen from right outside the Swiftcurrent Firelookout on August 30, 2025.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/51E53634-BE86-3E2D-50F690E75F45EF34.jpg"
+        },
+        {
+          "credit": "NPS",
           "title": "Grinnell Glacier from Upper Grinnell Ridge in 2021",
           "altText": "Grinnell Glacier from Upper Grinnell Ridge in 2021",
-          "caption": "Seasonal snow is much whiter and cleaner than the rock and dirt covered glacial ice. Can you see the differences?",
-          "url": "https://www.nps.gov/common/uploads/structured_data/36387E8C-A3F5-0776-493EEA7289104D12.jpg"
+          "caption": "Grinnell Glacier from Upper Grinnell Ridge on August 29, 2021.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/594EBEF2-B62E-F03A-E76831147FC18CB0.jpg"
         },
         {
-          "credit": "NPS Photo",
-          "title": "Grinnell Glacier in 2025",
-          "altText": "a mountain glacier with a lake and mountains behind",
+          "credit": "NPS",
+          "title": "Grinnell Glacier from Upper Grinnell Ridge in 2025",
+          "altText": "Grinnell Glacier from Upper Grinnell Ridge in 2025",
           "caption": "Grinnell Glacier from Upper Grinnell Ridge on September 6, 2025.",
-          "url": "https://www.nps.gov/common/uploads/structured_data/3676C0C4-DAE8-9603-7668281F66A34E69.jpg"
-        },
-        {
-          "credit": "NPS Photo",
-          "title": "Wildfires are a natural part of Glacier National Park",
-          "altText": "sun and fog shine in a burned forest",
-          "caption": "Scientists estimate that climate change has doubled the amount of acres burned in western US wildfires since the 1980s.",
-          "url": "https://www.nps.gov/common/uploads/structured_data/36AB8EF5-9A74-AD5F-CD831D39944CCF3F.jpg"
-        },
-        {
-          "credit": "NPS Photo",
-          "title": "Whitebark Pine Tree & Grinnell Glacier",
-          "altText": "A pine tree with a glacier in the background in 2021.",
-          "caption": "Whitebark pine trees only grow at high elevations.",
-          "url": "https://www.nps.gov/common/uploads/structured_data/3982955C-C0C3-9CE9-92DA40FEF17B4A45.jpg"
-        },
-        {
-          "credit": "NPS Photo",
-          "title": "A Mountain Goat and a Snow Patch",
-          "altText": "a mountain goat laying on snow bank",
-          "caption": "Mountain goats in Glacier National Park rest on snow patches to cool down on hot days. Doing so helps them slow their breathing and conserve energy. Climate change raises temperatures and shrinks snow patches.",
-          "url": "https://www.nps.gov/common/uploads/structured_data/395CAD64-0AB6-F903-CCA1AF9999561FB8.jpg"
+          "url": "https://www.nps.gov/common/uploads/structured_data/5224F7C0-D552-8921-5B9257F20C555683.jpg"
         }
       ],
       "visitorCenters": [
@@ -8367,9 +8416,9 @@
                     "friday": "10:00AM - 4:00PM",
                     "saturday": "10:00AM - 4:00PM"
                   },
-                  "startDate": "2026-10-05",
+                  "startDate": "2027-10-05",
                   "name": "Summer to Fall Transition",
-                  "endDate": "2026-10-11"
+                  "endDate": "2027-10-11"
                 },
                 {
                   "exceptionHours": {
@@ -8523,12 +8572,12 @@
       ],
       "alerts": [
         {
-          "id": "97783AC4-B242-4BF7-8C71-37A17B987928",
-          "title": "Going-to-the-Sun Road is Open for 2026 Season",
-          "category": "Information",
-          "description": "The Going-to-the-Sun Road is fully open for the 2026 summer season. The road may now be accessed by motorized vehicles over Logan Pass from both the West Glacier and St. Mary Entrances.",
-          "url": "https://www.nps.gov/glac/planyourvisit/index.htm",
-          "lastIndexedDate": "2026-06-22 00:00:00.0"
+          "id": "1FD3D242-051B-4A42-9F16-931E1C51BF26",
+          "title": "Going-to-the-Sun Road Partial Closure",
+          "category": "Park Closure",
+          "description": "Going-to-the-Sun Road is now open on the east side from St. Mary to Logan Pass. It remains closed between Avalanche and Logan Pass.",
+          "url": "https://www.nps.gov/glac/planyourvisit/road-trail-campground-status.htm",
+          "lastIndexedDate": "2026-10-14 00:00:00.0"
         }
       ]
     },
@@ -9413,7 +9462,7 @@
                   },
                   "startDate": "2026-11-01",
                   "name": "November Hours",
-                  "endDate": "2026-11-16"
+                  "endDate": "2026-11-15"
                 },
                 {
                   "exceptionHours": {
@@ -9425,7 +9474,7 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-11-17",
+                  "startDate": "2026-11-16",
                   "name": "Closed in Winter",
                   "endDate": "2027-04-14"
                 }
@@ -9464,7 +9513,7 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-11-03",
+                  "startDate": "2026-11-02",
                   "name": "Closed for Winter",
                   "endDate": "2027-04-24"
                 }
@@ -9565,7 +9614,7 @@
                   },
                   "startDate": "2026-11-01",
                   "name": "November Hours",
-                  "endDate": "2026-11-30"
+                  "endDate": "2026-11-29"
                 },
                 {
                   "exceptionHours": {
@@ -9577,7 +9626,7 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-12-01",
+                  "startDate": "2026-11-30",
                   "name": "Closed in Winter",
                   "endDate": "2027-04-14"
                 }
@@ -9630,7 +9679,7 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-11-03",
+                  "startDate": "2026-11-02",
                   "name": "Closed for Winter",
                   "endDate": "2027-04-30"
                 }
@@ -9669,7 +9718,7 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-11-17",
+                  "startDate": "2026-11-02",
                   "name": "Closed for the season",
                   "endDate": "2027-05-07"
                 }
@@ -9747,7 +9796,7 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2026-11-03",
+                  "startDate": "2026-11-02",
                   "name": "Closed for Winter",
                   "endDate": "2027-04-30"
                 }
@@ -10550,9 +10599,9 @@
                   "exceptionHours": {
                     "monday": "Closed"
                   },
-                  "startDate": "2026-10-12",
+                  "startDate": "2027-10-11",
                   "name": "Columbus Day/Indigenous Peoples' Day",
-                  "endDate": "2026-10-12"
+                  "endDate": "2027-10-11"
                 },
                 {
                   "exceptionHours": {
@@ -10570,6 +10619,12 @@
                   "startDate": "2026-11-26",
                   "name": "Thanksgiving Day",
                   "endDate": "2026-11-26"
+                },
+                {
+                  "exceptionHours": {},
+                  "startDate": "2026-12-25",
+                  "name": "Christmas Day",
+                  "endDate": "2026-12-25"
                 },
                 {
                   "exceptionHours": {
@@ -10605,14 +10660,6 @@
       ],
       "alerts": [
         {
-          "id": "1BCED3CD-DDA5-4888-8D05-EF5518DEEF43",
-          "title": "Visitor Center Closed Oct 12",
-          "category": "Information",
-          "description": "The Harry Hampton Visitor Center will be closed Monday, October 12 for the holiday.",
-          "url": "https://www.nps.gov/cong/planyourvisit/hours.htm",
-          "lastIndexedDate": "2026-10-08 00:00:00.0"
-        },
-        {
           "id": "F0DB9548-4A6F-4D8A-A12F-443FABB37F2F",
           "title": "Paddling Conditions",
           "category": "Caution",
@@ -10635,6 +10682,14 @@
           "description": "If being dropped off at the park, please ensure you will have a return ride. Taxis and rideshares do not often come out to Congaree, and the bus may be unavailable. Please plan ahead.",
           "url": "https://www.nps.gov/cong/planyourvisit/directions.htm",
           "lastIndexedDate": "2023-11-08 14:25:04.0"
+        },
+        {
+          "id": "B9B85B56-D796-4DCC-A14D-4452241EB0C8",
+          "title": "Post-flood Trail Conditions",
+          "category": "Caution",
+          "description": "Park trails may still have significant areas of standing water on them over the next several days as waters continue to recede post flood. Please be aware that trails such as Boggy Gut, Oak Ridge, and Kingsnake may be more difficult to follow after flooding events and depth of standing water may be difficult to gauge. Please check our current conditions page for more information.",
+          "url": "https://www.nps.gov/cong/planyourvisit/conditions.htm",
+          "lastIndexedDate": "2026-10-15 00:00:00.0"
         }
       ]
     },
@@ -11216,6 +11271,14 @@
           "description": "All vehicles parking for longer than 15 minutes require a parking tag. Three tag durations are available for purchase for all vehicle sizes and types: Daily ($5), Weekly ($15), or Annual ($40).",
           "url": "https://www.nps.gov/grsm/planyourvisit/fees.htm",
           "lastIndexedDate": "2024-02-08 13:03:57.0"
+        },
+        {
+          "id": "12245A18-7A06-441D-AF04-AC317D28D5D2",
+          "title": "Cherokee Orchard Road Closed to Pedestrian Traffic",
+          "category": "Park Closure",
+          "description": "Cherokee Orchard Road is currently closed to pedestrian traffic due to bear activity. All visitors must stay in their vehicles. Do not stop or park your vehicle in the roadway.",
+          "url": "",
+          "lastIndexedDate": "2026-10-15 00:00:00.0"
         }
       ]
     },
@@ -11607,14 +11670,6 @@
       ],
       "alerts": [
         {
-          "id": "AD89519B-B6CB-49FE-8F2B-699A5349C57B",
-          "title": "Boquillas Crossing Port of Entry is open Friday-Monday 9:00 am to 4:00 pm",
-          "category": "Information",
-          "description": "Until further notice, the Boquillas Crossing Port of Entry will be open Friday through Monday, 9:00 am through 4:00 pm. It will not change to winter hours at this time.",
-          "url": "",
-          "lastIndexedDate": "2025-11-13 00:00:00.0"
-        },
-        {
           "id": "03B953FC-7E30-415D-A65D-42147D28452E",
           "title": "Big Bend is a NO DRONE Zone",
           "category": "Information",
@@ -11833,9 +11888,9 @@
           "id": "2DC60C7E-23DA-4C5F-915E-5971F1B408F6",
           "title": "Active Closure",
           "category": "Park Closure",
-          "description": "Due to recent wildlife interactions and out of an abundance of caution, the Naked Creek backcountry zone is closed until further notice.",
+          "description": "Due to recent wildlife interactions and out of an abundance of caution, the Naked Creek backcountry zone is closed to all recreation until further notice. A camping closure remains in effect for the Appalachian Trail (AT) from Lewis Mountain to Big Meadows, including the Bearfence AT Hut. The AT is still accessible to hikers for day-use only.",
           "url": "https://www.nps.gov/shen/planyourvisit/naked-creek-backcountry-zone-closure.htm",
-          "lastIndexedDate": "2026-10-08 00:00:00.0"
+          "lastIndexedDate": "2026-10-14 00:00:00.0"
         },
         {
           "id": "F4AB8754-5847-4FB2-AB55-670DAD3FE1DF",
@@ -11876,6 +11931,22 @@
           "description": "March 1 - November 30 those wishing to hike Old Rag are required to obtain a day-use ticket before arriving.",
           "url": "https://www.nps.gov/shen/planyourvisit/faqs-oldrag.htm",
           "lastIndexedDate": "2024-01-17 13:20:06.0"
+        },
+        {
+          "id": "657460E5-7ED8-4EC0-9FE7-B99FD9E79CE7",
+          "title": "Power Outages",
+          "category": "Caution",
+          "description": "Due to the impacts associated with the remnants of Hurricane Isaias, we are currently experiencing power outages at the Big Meadows Developed Area. As the day progresses, we may also experience outages in other areas of the Park, but for now, Big Meadows has the most impacts. Lodging guests with reservations should contact our Concessioner, Delaware North Parks and Resorts if they have specific questions. Also, be aware that trees may be downed on the road, so caution is strongly advised while traveling.",
+          "url": "",
+          "lastIndexedDate": "2026-10-11 00:00:00.0"
+        },
+        {
+          "id": "EE9142C1-F172-45BD-A6DF-5E3145AD7612",
+          "title": "Emergency Phone Line Unavailable",
+          "category": "Caution",
+          "description": "Shenandoah National Park Emergency Phone number (1-800-732-0911) is currently unavailable. For all emergencies, Park visitors can dial 911.",
+          "url": "",
+          "lastIndexedDate": "2026-10-10 00:00:00.0"
         }
       ]
     },
@@ -12206,14 +12277,6 @@
       ],
       "alerts": [
         {
-          "id": "04D33070-0985-4FEA-8B07-E8B506B8BC0E",
-          "title": "Train derailment at Thurmond",
-          "category": "Information",
-          "description": "Due to a recent train derailment in the Thurmond area, visitors are encouraged to visit other areas of the park during cleanup activities, which is expected to last through Friday (Oct. 10). Check back here for updates.",
-          "url": "",
-          "lastIndexedDate": "2026-10-07 00:00:00.0"
-        },
-        {
           "id": "4565D0AA-7CB9-463F-BFCF-81E20510B907",
           "title": "Burnwood Campground and Restroom Closure",
           "category": "Information",
@@ -12236,6 +12299,14 @@
           "description": "From June 15 through November 19 the upper part of the Kaymoor Miners Trail (from Kaymoor Top down to the mine site at the junction with the Kaymoor Trail) will be closed Monday through Thursday due to a trail rehab project. The trail is expected to be fully open Friday, Saturday, and Sunday.",
           "url": "",
           "lastIndexedDate": "2026-05-29 00:00:00.0"
+        },
+        {
+          "id": "68D1D2F5-A801-4581-8D1F-50E62B192FF9",
+          "title": "Bridge Day closures",
+          "category": "Information",
+          "description": "On Saturday, October 17, U.S. Route 19 will close at 7 a.m. on Saturday and remain closed until 5 p.m. that afternoon. Alternate route is via US Routes 60 and 16 (about a 45-minute detour). The parking lot at Canyon Rim Visitor Center will close at 5:30 PM on Friday Oct 16 and will reopen later Saturday morning. Visitor Centers are all open normal hours. Fayette Station Road will be closed for 6:00 PM on Friday through 6:00 PM on Saturday. Burnwood will be closed on Friday and Saturday.",
+          "url": "",
+          "lastIndexedDate": "2026-10-15 00:00:00.0"
         }
       ]
     },
@@ -12608,6 +12679,13 @@
           "altText": "Photograph of sandy shoreline.",
           "caption": "Sandspit on the southern tip of Outer Island.",
           "url": "https://www.nps.gov/common/uploads/structured_data/2F266113-B885-CCC5-FE97FEC5F1467F64.jpg"
+        },
+        {
+          "credit": "NPS / Billy Flynn",
+          "title": "Outer Island Lighthouse",
+          "altText": "White lighthouse rising above colorful fall trees along a rocky shoreline under a blue sky.",
+          "caption": "The Outer Island lighthouse was built in 1874 to guide ships past the archipelago to the rapidly growing ports on Lake Superior.",
+          "url": "https://www.nps.gov/common/uploads/structured_data/5405A96A-AE89-B2B4-29F5BE7AC095296A.jpg"
         }
       ],
       "visitorCenters": [
@@ -13723,22 +13801,6 @@
       ],
       "alerts": [
         {
-          "id": "3A28F80C-D5A9-4CA7-8169-545AEDCDA941",
-          "title": "Beartooth Highway Temporary Closure",
-          "category": "Park Closure",
-          "description": "The Beartooth Highway (US-212) between Red Lodge and Cooke City/Silver Gate, Montana, will close temporarily at 2:30 p.m. Friday, Oct. 9 in preparation for winter weather and anticipated hazardous driving conditions. The forecast calls for ice and snow Saturday through Monday. The highway is scheduled to close for the season Monday, Oct. 12 and, depending on conditions, may not reopen until next spring.",
-          "url": "https://www.nps.gov/yell/planyourvisit/parkroads.htm#Beartooth",
-          "lastIndexedDate": "2026-10-08 00:00:00.0"
-        },
-        {
-          "id": "00D47802-8E06-4418-80D8-69D37A885146",
-          "title": "West Thumb Geyser Basin Boardwalk - Partial Closure",
-          "category": "Information",
-          "description": "A section of the West Thumb Geyser Basin boardwalk will be closed to Fishing Cone and Lakeshore Geyser through mid-October while crews replace damaged support structures along the shoreline. The remaining sections of boardwalk will remain open to visitors. Dates are subject to change without notice.",
-          "url": "https://www.nps.gov/yell/images/WT-Desk-Ref-Map-closure.jpg",
-          "lastIndexedDate": "2026-09-14 00:00:00.0"
-        },
-        {
           "id": "67146540-50E1-44EE-8D3A-2314B0192DDB",
           "title": "Stay Away From Bull Elk",
           "category": "Caution",
@@ -14315,6 +14377,14 @@
           "description": "Death Canyon Road and Trailhead are closed to all use. Start hikes at alternative trailheads such as Granite Canyon, LSR Preserve, and Taggart Lake.",
           "url": "https://www.nps.gov/grte/planyourvisit/road-construction.htm",
           "lastIndexedDate": "2026-06-18 00:00:00.0"
+        },
+        {
+          "id": "D180D78B-29C6-491D-9FC0-52E385201765",
+          "title": "Plan Ahead for 2027 Construction",
+          "category": "Information",
+          "description": "Plan ahead for construction in 2027. Check road construction and park construction pages for more information.",
+          "url": "https://www.nps.gov/grte/planyourvisit/road-construction.htm",
+          "lastIndexedDate": "2026-10-13 00:00:00.0"
         }
       ]
     }

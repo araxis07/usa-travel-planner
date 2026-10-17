@@ -13,7 +13,6 @@ import {
 import { x } from '../data/experience-copy';
 import { translate } from '../lib/i18n';
 import type { PlaceCollections } from '../lib/collections';
-import { readLocal } from '../lib/storage';
 import Icon from './Icon';
 const RouteMap = lazy(() => import('./RouteMap'));
 export default function PlaceDiscovery({
@@ -26,6 +25,10 @@ export default function PlaceDiscovery({
   onOpen,
   onAdd,
   onCompare,
+  transport,
+  setting,
+  setTransport,
+  setSetting,
 }: {
   lang: Language;
   query: string;
@@ -36,24 +39,15 @@ export default function PlaceDiscovery({
   onOpen: (state: StateGuide, index: number) => void;
   onAdd: (state: StateGuide, index: number) => void;
   onCompare: (id: string) => void;
+  transport: string;
+  setting: string;
+  setTransport: (value: string) => void;
+  setSetting: (value: string) => void;
 }) {
-  const [transport, setTransport] = useState(() =>
-    readLocal('roam.place-filter.v1', 'any', (v) =>
-      ['any', 'transit', 'car', 'boat'].includes(String(v)) ? String(v) : 'any',
-    ),
-  );
-  const [setting, setSetting] = useState('any');
   const [map, setMap] = useState(false);
   const [limit, setLimit] = useState(9);
   const [selected, setSelected] = useState<string | null>(null);
   const t = (en: string, th: string) => translate(en, th, lang);
-  useEffect(() => {
-    try {
-      localStorage.setItem('roam.place-filter.v1', JSON.stringify(transport));
-    } catch {
-      /* Optional view preference. */
-    }
-  }, [transport]);
   useEffect(() => setLimit(9), [query, region, interest, season, transport, setting]);
   const search = query.trim().toLocaleLowerCase();
   const months: Record<Season, number[]> = {

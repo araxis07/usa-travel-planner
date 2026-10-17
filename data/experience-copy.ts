@@ -2,6 +2,92 @@ import { languageIndex, type Language } from '../lib/i18n';
 
 // Every new experience string ships together in EN / TH / ZH / JA / KO.
 export const EXPERIENCE_COPY = {
+  planReview: ['Check your plan', 'ตรวจแผนทริป', '检查行程', '旅の計画を確認', '여행 계획 확인'],
+  planReviewNote: [
+    'Planning reminders only; bookings and travel documents need your own checks.',
+    'รายการช่วยจัดแผน ต้องตรวจการจองและเอกสารเดินทางด้วยตนเอง',
+    '仅为规划提醒；预订和旅行证件需自行确认。',
+    '計画の確認用です。予約や渡航書類はご自身で確認してください。',
+    '계획 참고용입니다. 예약과 여행 서류는 직접 확인하세요.',
+  ],
+  openDays: [
+    '{count} days left flexible',
+    'ยังเว้นว่าง {count} วัน',
+    '{count}天尚未安排',
+    '予定を入れていない日：{count}日',
+    '아직 비워 둔 날 {count}일',
+  ],
+  reviewDays: [
+    '{count} days to review',
+    'มี {count} วันที่ควรตรวจแผน',
+    '{count}天需要检查',
+    '確認したい日：{count}日',
+    '확인할 일정 {count}일',
+  ],
+  openDay: [
+    'Day {day} · {state} · no activities yet',
+    'วันที่ {day} · {state} · ยังไม่มีกิจกรรม',
+    '第{day}天 · {state} · 暂无活动',
+    '{day}日目 · {state} · 予定なし',
+    '{day}일차 · {state} · 아직 활동 없음',
+  ],
+  reviewDay: [
+    'Day {day} · {state} · check timing or distance',
+    'วันที่ {day} · {state} · ตรวจเวลาหรือระยะทาง',
+    '第{day}天 · {state} · 检查时间或距离',
+    '{day}日目 · {state} · 時間・距離を確認',
+    '{day}일차 · {state} · 시간 또는 거리 확인',
+  ],
+  noDayIssues: [
+    'Each day has activities; no timing or distance warnings found.',
+    'ทุกวันมีกิจกรรมและไม่พบคำเตือนเวลาหรือระยะทาง',
+    '每天均有活动，未发现时间或距离提醒。',
+    '毎日予定があり、時間・距離の警告はありません。',
+    '매일 활동이 있으며 시간 또는 거리 경고가 없습니다.',
+  ],
+  checklistRemaining: [
+    '{count} checklist items left',
+    'รายการเตรียมตัวค้าง {count} ข้อ',
+    '待办清单剩余{count}项',
+    'チェックリストの残り：{count}件',
+    '체크리스트 {count}개 남음',
+  ],
+  photosSaved: [
+    'Selected photos saved on this device',
+    'บันทึกภาพที่เลือกครบในเครื่องนี้',
+    '所选照片已保存到此设备',
+    '選んだ写真はこの端末に保存済み',
+    '선택한 사진이 이 기기에 저장됨',
+  ],
+  photosMissing: [
+    'Selected photos are not fully downloaded',
+    'ยังดาวน์โหลดภาพที่เลือกไม่ครบ',
+    '所选照片尚未全部下载',
+    '選んだ写真のダウンロードが未完了',
+    '선택한 사진의 다운로드가 완료되지 않음',
+  ],
+  checkPhotos: [
+    'Check downloaded photos',
+    'ตรวจภาพที่ดาวน์โหลด',
+    '检查已下载照片',
+    'ダウンロードした写真を確認',
+    '다운로드한 사진 확인',
+  ],
+  planSteps: [
+    'Find a place. Choose a plan. Make it yours.',
+    'เลือกที่เที่ยว ดูแผนตัวอย่าง แล้วปรับเป็นทริปของคุณ',
+    '寻找目的地，挑选计划，打造自己的旅程。',
+    '行き先を探し、プランを選び、自分らしい旅へ。',
+    '여행지를 찾고 일정을 골라 나만의 여행을 만드세요.',
+  ],
+  resumeNamed: [
+    'Continue your trip',
+    'วางแผนทริปเดิมต่อ',
+    '继续规划行程',
+    '旅の計画を続ける',
+    '여행 계획 계속하기',
+  ],
+
   cityPlanShortNote: [
     'Local travel, a visit, a nearby meal and rest each day. All durations are planning allowances.',
     'แต่ละวันมีการเดินทางในเมือง จุดเที่ยว มื้ออาหารใกล้กัน และช่วงพัก ระยะเวลาเป็นค่าประมาณสำหรับวางแผน',

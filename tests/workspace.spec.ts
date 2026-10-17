@@ -290,7 +290,7 @@ test('contextual scenes switch to photographs and advisories appear in destinati
     'true',
   );
   await page.goto('/en/states/california/big-sur/');
-  await expect(page.locator('.guide-overview .guide-advisory')).toContainText('September 2');
+  await expect(page.locator('.guide-overview .guide-advisory')).toContainText('October 16');
   await expect(page.locator('.place-practical')).toContainText(
     'Big Sur Station visitor information',
   );

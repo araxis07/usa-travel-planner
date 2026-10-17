@@ -18,6 +18,7 @@ test('main page and planner meet automated WCAG 2.2 AA checks', async ({ page })
   ).toEqual([]);
   await page.locator('.route-card').first().click();
   await page.getByRole('button', { name: 'Make this my adventure' }).click();
+  await page.locator('.trip-readiness summary').click();
   const planner = await audit();
   expect(
     planner.violations.map((item) => ({

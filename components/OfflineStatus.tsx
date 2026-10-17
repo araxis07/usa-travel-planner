@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { STATES, stateName, type Trip, type Language } from '../data/travel';
 import { x } from '../data/experience-copy';
 import { offlinePhotoPaths } from '../lib/offline';
+export type PhotoStatus = 'checking' | 'downloading' | 'unavailable' | 'missing' | 'saved';
 export default function OfflineStatus({
   trip,
   lang,
@@ -9,6 +10,7 @@ export default function OfflineStatus({
   downloading,
   onRemove,
   onRemoving,
+  onStatus,
 }: {
   trip: Trip;
   lang: Language;
@@ -16,6 +18,7 @@ export default function OfflineStatus({
   downloading: boolean;
   onRemove: () => void;
   onRemoving: (busy: boolean) => void;
+  onStatus?: (status: PhotoStatus) => void;
 }) {
   const [online, setOnline] = useState(navigator.onLine);
   const [coverage, setCoverage] = useState<{
@@ -94,6 +97,21 @@ export default function OfflineStatus({
       document.removeEventListener('visibilitychange', visible);
     };
   }, [key, refresh, attempt, downloading, onRemove]);
+  useEffect(() => {
+    onStatus?.(
+      downloading
+        ? 'downloading'
+        : busy
+          ? 'checking'
+          : failed
+            ? 'unavailable'
+            : !current
+              ? 'checking'
+              : current.missing.length
+                ? 'missing'
+                : 'saved',
+    );
+  }, [downloading, busy, failed, current, onStatus]);
   return (
     <details className="offline-status">
       <summary>

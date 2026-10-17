@@ -389,8 +389,8 @@
           "locationCheckedAt": "2026-09-15",
           "officialUrl": "https://parks.ca.gov/?page_id=29170",
           "bookingUrl": "",
-          "reviewedAt": "2026-10-10",
-          "reviewAfter": "2026-10-17",
+          "reviewedAt": "2026-10-17",
+          "reviewAfter": "2026-10-19",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -400,14 +400,14 @@
             "months": [4, 5, 6, 7, 8, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-10-09",
-            "source": "https://parks.ca.gov/?page_id=29170",
+            "checkedAt": "2026-10-17",
+            "source": "https://parks.ca.gov/NewsRelease/1594",
             "text": [
-              "The official September 2 notice reports Big Sur park and Highway 1 closures due to fires. This is a saved notice; confirm current access before travel.",
-              "ประกาศทางการวันที่ 2 กันยายนระบุการปิดอุทยานใน Big Sur และ Highway 1 จากไฟป่า นี่คือประกาศที่บันทึกไว้ โปรดตรวจการเข้าถึงล่าสุดก่อนเดินทาง",
-              "官方9月2日公告提及火灾导致大苏尔公园及1号公路关闭。此为保存的公告，出行前请核对最新通行情况。",
-              "9月2日の公式告知では火災によるBig Surの公園とHighway 1の閉鎖が報告されています。保存された告知のため、出発前に最新状況を確認してください。",
-              "9월 2일 공식 공지는 화재로 인한 Big Sur 공원과 1번 도로 폐쇄를 알립니다. 저장된 공지이므로 출발 전에 최신 통행 상황을 확인하세요."
+              "Pfeiffer Big Sur reopened selected facilities October 16; some trails remain closed. Check the park notice and Caltrans before choosing stops or driving Highway 1.",
+              "Pfeiffer Big Sur เปิดบริการบางส่วนอีกครั้งวันที่ 16 ตุลาคม แต่บางเส้นทางยังปิด ตรวจประกาศอุทยานและ Caltrans ก่อนเลือกจุดเที่ยวหรือขับ Highway 1",
+              "Pfeiffer Big Sur 于10月16日重新开放部分设施，部分步道仍关闭。选择停靠点或驾驶1号公路前，请查看公园公告和Caltrans路况。",
+              "Pfeiffer Big Surは10月16日に一部施設を再開しましたが、閉鎖中のトレイルもあります。立ち寄り先やHighway 1の経路を決める前に、公園の告知とCaltransを確認してください。",
+              "Pfeiffer Big Sur는 10월 16일 일부 시설을 재개장했지만 일부 탐방로는 계속 폐쇄 중입니다. 방문지와 1번 도로 경로를 정하기 전에 공원 공지와 Caltrans를 확인하세요."
             ]
           }
         }
@@ -1084,8 +1084,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/grca/planyourvisit/directions_s_rim.htm",
           "bookingUrl": "https://www.nps.gov/grca/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-10",
-          "reviewAfter": "2026-10-17",
+          "reviewedAt": "2026-10-17",
+          "reviewAfter": "2026-10-19",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1095,7 +1095,7 @@
             "months": [4, 5, 6, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-10-09",
+            "checkedAt": "2026-10-17",
             "source": "https://www.nps.gov/grca/learn/news/grand-canyon-national-park-to-close-overnight-hotel-accommodations-beginning-august-31.htm",
             "text": [
               "NPS reports that South Rim hotels inside Grand Canyon have suspended overnight stays because of water restrictions; only dry camping is allowed. Day visits remain open. Check current lodging and water rules before booking.",
@@ -1540,8 +1540,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/havo/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/havo/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-10",
-          "reviewAfter": "2026-10-17",
+          "reviewedAt": "2026-10-17",
+          "reviewAfter": "2026-10-19",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1551,14 +1551,14 @@
             "months": [4, 5, 6, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-10-09",
+            "checkedAt": "2026-10-17",
             "source": "https://www.nps.gov/havo/planyourvisit/conditions.htm",
             "text": [
-              "NPS reports temporary closures at Keanakākoʻi, Halemaʻumaʻu Trail and part of Byron Ledge Trail because of volcanic unrest. Devastation parking remains open. Mauna Loa Road beyond the second cattle guard is closed through October 29 for tree work. Check current closures before visiting.",
-              "NPS ระบุว่าพื้นที่ Keanakākoʻi, Halemaʻumaʻu Trail และบางส่วนของ Byron Ledge Trail ปิดชั่วคราวจากความเคลื่อนไหวของภูเขาไฟ ที่จอดรถ Devastation ยังเปิดอยู่ ส่วน Mauna Loa Road เลยแนวรั้วกันวัวจุดที่สองปิดถึง 29 ตุลาคมเพื่อจัดการต้นไม้ ตรวจพื้นที่ปิดล่าสุดก่อนเดินทาง",
-              "NPS 通报因火山活动，Keanakākoʻi 区域、Halemaʻumaʻu 步道及部分 Byron Ledge 步道暂时关闭；Devastation 停车场仍开放。Mauna Loa Road 第二处防牛栅栏以后的路段因树木作业关闭至10月29日。出行前请核对最新关闭区域。",
-              "NPSによると、火山活動のため Keanakākoʻi 周辺、Halemaʻumaʻu Trail、Byron Ledge Trail の一部が一時閉鎖中です。Devastation 駐車場は利用可能。Mauna Loa Road の2つ目のキャトルガードより先は樹木作業で10月29日まで閉鎖。訪問前に最新の閉鎖情報を確認してください。",
-              "NPS에 따르면 화산 활동으로 Keanakākoʻi 일대, Halemaʻumaʻu Trail과 Byron Ledge Trail 일부가 임시 폐쇄 중입니다. Devastation 주차장은 열려 있습니다. Mauna Loa Road의 두 번째 소 통행 방지 격자 이후 구간은 수목 작업으로 10월 29일까지 폐쇄됩니다. 방문 전 최신 폐쇄 정보를 확인하세요."
+              "NPS reports temporary closures at Keanakākoʻi, Halemaʻumaʻu Trail and part of Byron Ledge Trail because of volcanic unrest. Devastation parking remains open. Mauna Loa Road beyond the first cattle guard is closed through October 29 for tree work. Check current closures before visiting.",
+              "NPS ระบุว่าพื้นที่ Keanakākoʻi, Halemaʻumaʻu Trail และบางส่วนของ Byron Ledge Trail ปิดชั่วคราวจากความเคลื่อนไหวของภูเขาไฟ ที่จอดรถ Devastation ยังเปิดอยู่ ส่วน Mauna Loa Road เลยแนวรั้วกันวัวจุดแรกปิดถึง 29 ตุลาคมเพื่อจัดการต้นไม้ ตรวจพื้นที่ปิดล่าสุดก่อนเดินทาง",
+              "NPS 通报因火山活动，Keanakākoʻi 区域、Halemaʻumaʻu 步道及部分 Byron Ledge 步道暂时关闭；Devastation 停车场仍开放。Mauna Loa Road 第一处防牛栅栏以后的路段因树木作业关闭至10月29日。出行前请核对最新关闭区域。",
+              "NPSによると、火山活動のため Keanakākoʻi 周辺、Halemaʻumaʻu Trail、Byron Ledge Trail の一部が一時閉鎖中です。Devastation 駐車場は利用可能。Mauna Loa Road の1つ目のキャトルガードより先は樹木作業で10月29日まで閉鎖。訪問前に最新の閉鎖情報を確認してください。",
+              "NPS에 따르면 화산 활동으로 Keanakākoʻi 일대, Halemaʻumaʻu Trail과 Byron Ledge Trail 일부가 임시 폐쇄 중입니다. Devastation 주차장은 열려 있습니다. Mauna Loa Road의 첫 번째 소 통행 방지 격자 이후 구간은 수목 작업으로 10월 29일까지 폐쇄됩니다. 방문 전 최신 폐쇄 정보를 확인하세요."
             ]
           }
         },
@@ -1601,8 +1601,8 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://www.gohawaii.com/islands/kauai/travel-info/transportation",
           "bookingUrl": "",
-          "reviewedAt": "2026-10-10",
-          "reviewAfter": "2026-10-17",
+          "reviewedAt": "2026-10-17",
+          "reviewAfter": "2026-10-19",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "boat",
@@ -1612,14 +1612,14 @@
             "months": [4, 5, 6, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-10-09",
+            "checkedAt": "2026-10-17",
             "source": "https://dlnr.hawaii.gov/dsp/",
             "text": [
-              "Hawaiʻi State Parks’ October 8 notice says Kōkeʻe Road, all Kauaʻi camping and other state parks remain closed. Wailua River has limited river and designated landing/trailhead access; Fern Grotto access for individual kayakers and access to Uluwehi Falls remain prohibited. Check current park notices before travel.",
-              "ประกาศอุทยานรัฐฮาวายวันที่ 8 ตุลาคมระบุว่าถนน Kōkeʻe พื้นที่ตั้งแคมป์ทั้งหมดและอุทยานรัฐอื่นบนคาไวยังปิด Wailua River เปิดเฉพาะแม่น้ำและจุดขึ้นฝั่งหรือจุดเริ่มเส้นทางที่กำหนด ผู้พายคายักรายบุคคลยังเข้า Fern Grotto ไม่ได้ และเส้นทางไป Uluwehi Falls ยังปิด ตรวจประกาศล่าสุดก่อนเดินทาง",
-              "夏威夷州立公园10月8日公告称，Kōkeʻe 公路、可爱岛全部露营地及其他州立公园仍关闭。Wailua River 仅开放河流及指定上岸点或步道起点；个人皮划艇游客不可前往 Fern Grotto，Uluwehi Falls 通道仍关闭。出行前请查看最新公园公告。",
-              "ハワイ州立公園の10月8日のお知らせでは、Kōkeʻe Road、カウアイ島の全キャンプ場と他の州立公園は引き続き閉鎖中です。Wailua River は川と指定の上陸地点・登山口のみ利用可能。個人のカヤック利用者は Fern Grotto に入れず、Uluwehi Falls への道も閉鎖中です。出発前に最新情報を確認してください。",
-              "하와이 주립공원의 10월 8일 공지에 따르면 Kōkeʻe Road, 카우아이섬의 모든 캠핑장과 다른 주립공원은 계속 폐쇄 중입니다. Wailua River는 강과 지정된 상륙 지점·탐방로 입구만 이용할 수 있습니다. 개인 카약 이용자의 Fern Grotto 접근과 Uluwehi Falls 접근은 금지됩니다. 출발 전 최신 공지를 확인하세요."
+              "The October 13 notice schedules Hāʻena reopening for October 15. Kōkeʻe Road, Kauaʻi camping and other state parks remain closed; Wailua River access is limited. Check current notices and restrictions before travel.",
+              "ประกาศวันที่ 13 ตุลาคมกำหนดเปิด Hāʻena อีกครั้งวันที่ 15 ตุลาคม ถนน Kōkeʻe พื้นที่แคมป์บนคาไวและอุทยานรัฐอื่นยังปิด ส่วน Wailua River เปิดจำกัด ตรวจประกาศและข้อจำกัดล่าสุดก่อนเดินทาง",
+              "10月13日公告安排Hāʻena于10月15日重开。Kōkeʻe公路、可爱岛露营地及其他州立公园仍关闭，Wailua River仅限部分区域。出行前查看最新公告与限制。",
+              "10月13日の告知ではHāʻenaを10月15日に再開予定としています。Kōkeʻe Road、カウアイ島のキャンプ場と他の州立公園は閉鎖中で、Wailua Riverも利用範囲が限られます。出発前に最新の告知と制限を確認してください。",
+              "10월 13일 공지는 Hāʻena의 10월 15일 재개장을 안내합니다. Kōkeʻe Road, 카우아이 캠핑장과 다른 주립공원은 폐쇄 중이며 Wailua River 이용도 제한됩니다. 출발 전 최신 공지와 제한을 확인하세요."
             ]
           }
         }
@@ -1913,8 +1913,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/zion/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/zion/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-10",
-          "reviewAfter": "2026-10-17",
+          "reviewedAt": "2026-10-17",
+          "reviewAfter": "2026-10-19",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1924,14 +1924,14 @@
             "months": [4, 5, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-10-09",
+            "checkedAt": "2026-10-17",
             "source": "https://www.nps.gov/zion/planyourvisit/conditions.htm",
             "text": [
-              "NPS reports Zion–Mt. Carmel Highway closed from Canyon Junction to Great Arch Pullout to walkers, bicycles and vehicles. The section from the East Entrance to Great Arch Pullout is open, but there is no through traffic. Check conditions before choosing an approach.",
-              "NPS ระบุว่าถนน Zion–Mt. Carmel ช่วง Canyon Junction ถึง Great Arch Pullout ปิดทั้งคนเดิน จักรยานและรถยนต์ ช่วง East Entrance ถึง Great Arch Pullout เปิดแล้ว แต่ยังเดินทางผ่านตลอดเส้นไม่ได้ ตรวจสภาพถนนก่อนเลือกทางเข้า",
-              "NPS 通报 Zion–Mt. Carmel 公路从 Canyon Junction 至 Great Arch Pullout 对行人、自行车及车辆关闭。东入口至 Great Arch Pullout 路段已开放，但仍无法全线穿行。选择入园路线前请核对最新路况。",
-              "NPSによると、Zion–Mt. Carmel Highway の Canyon Junction〜Great Arch Pullout は歩行者・自転車・車両とも通行止めです。東入口〜Great Arch Pullout は開通していますが、全線の通り抜けはできません。入園経路を決める前に最新状況を確認してください。",
-              "NPS에 따르면 Zion–Mt. Carmel Highway의 Canyon Junction부터 Great Arch Pullout까지 보행자·자전거·차량 통행이 금지됩니다. 동쪽 입구부터 Great Arch Pullout 구간은 열려 있지만 전체 구간을 통과할 수는 없습니다. 진입 경로를 정하기 전 최신 도로 상황을 확인하세요."
+              "Watchman Trail is closed for repairs. Large vehicles face Zion–Mt. Carmel Highway restrictions between Canyon Junction and the East Entrance. Check current trail closures, vehicle limits and road conditions before choosing your route.",
+              "Watchman Trail ปิดซ่อม รถขนาดใหญ่มีข้อจำกัดบน Zion–Mt. Carmel Highway ช่วง Canyon Junction ถึง East Entrance ตรวจเส้นทางปิด ขนาดรถที่อนุญาตและสภาพถนนล่าสุดก่อนวางแผน",
+              "Watchman步道因维修关闭。大型车辆在Zion–Mt. Carmel公路Canyon Junction至东入口路段受到限制。规划路线前核对步道关闭、车辆尺寸限制和最新路况。",
+              "Watchman Trailは修理のため閉鎖中です。Zion–Mt. Carmel HighwayのCanyon Junction〜東入口は大型車の通行制限があります。経路を決める前にトレイル閉鎖、車両制限、最新の道路情報を確認してください。",
+              "Watchman Trail은 보수로 폐쇄 중입니다. Zion–Mt. Carmel Highway의 Canyon Junction부터 동쪽 입구까지 대형 차량 통행 제한이 있습니다. 경로를 정하기 전에 탐방로 폐쇄, 차량 크기 제한과 최신 도로 상황을 확인하세요."
             ]
           }
         },
@@ -12256,8 +12256,8 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://parks.nv.gov/parks/valley-of-fire",
           "bookingUrl": "",
-          "reviewedAt": "2026-10-10",
-          "reviewAfter": "2026-10-17",
+          "reviewedAt": "2026-10-17",
+          "reviewAfter": "2026-10-24",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -12275,7 +12275,7 @@
               "서쪽 입구는 2026년 공사 기간 월~목요일에 닫히므로 해당 요일에는 동쪽 입구를 이용하세요. 공원 전체는 매년 12월 1~14일 정비로 휴장하고 일부 탐방로는 매년 5월 15일~9월 30일 고온으로 폐쇄됩니다. 탐방로와 입구를 정하기 전에 최신 공지를 확인하세요."
             ],
             "source": "https://parks.nv.gov/parks/valley-of-fire",
-            "checkedAt": "2026-10-09"
+            "checkedAt": "2026-10-17"
           }
         },
         {
@@ -19402,8 +19402,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/apis/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/apis/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-10",
-          "reviewAfter": "2026-10-17",
+          "reviewedAt": "2026-10-17",
+          "reviewAfter": "2026-10-24",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "boat",
@@ -19421,7 +19421,7 @@
               "Little Sand Bay 방문자 센터는 2026년 공사 기간에 폐쇄됩니다. 보트와 카약 접근은 별도 안내를 따르므로 출항 지점을 정하기 전에 최신 공사 공지를 확인하세요."
             ],
             "source": "https://www.nps.gov/apis/learn/infrastructure-projects.htm",
-            "checkedAt": "2026-10-09"
+            "checkedAt": "2026-10-17"
           }
         }
       ]

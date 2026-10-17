@@ -394,7 +394,7 @@ test('all language pages contain readable content without JavaScript and recipro
   }
   const sitemap = await (await page.request.get('/sitemap.xml')).text();
   await page.goto(`${baseURL}/en/states/california/big-sur/`);
-  await expect(page.locator('main aside')).toContainText('September 2');
+  await expect(page.locator('main aside')).toContainText('October 16');
   for (const state of catalog.states) {
     for (const [index, profile] of state.destinations.entries()) {
       const advisory = 'advisory' in profile ? profile.advisory : undefined;

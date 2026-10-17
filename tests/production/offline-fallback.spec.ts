@@ -86,6 +86,7 @@ for (const [engine, browserType] of [
       await expect(page.locator('.offline-status')).toContainText(
         'Photo downloads incomplete: California',
       );
+      await expect(page.locator('.trip-readiness')).toContainText(x('en', 'photosMissing'));
       const cachedRequests = photoRequests.get('/images/states/ca-1.jpg');
       expect(cachedRequests).toBeGreaterThan(0);
       failPhoto = false;
@@ -95,6 +96,7 @@ for (const [engine, browserType] of [
       });
       expect(photoRequests.get('/images/states/ca-1.jpg')).toBe(cachedRequests);
       await expect(page.locator('.offline-status')).toContainText('36/36');
+      await expect(page.locator('.trip-readiness')).toContainText(x('en', 'photosSaved'));
       await expect(page.getByText(x('en', 'offlineRetry'), { exact: true })).toHaveCount(0);
       const requests: string[] = [];
       page.on('request', (request) => requests.push(request.url()));
@@ -232,6 +234,7 @@ for (const [engine, browserType] of [
       for (const lang of LANGUAGES) {
         await page.getByLabel('Language / ภาษา', { exact: true }).selectOption(lang);
         await expect(panel.getByRole('alert')).toHaveText(x(lang, 'offlineStorageError'));
+        await expect(page.locator('.trip-readiness')).toContainText(x(lang, 'checkPhotos'));
         await expect(panel).not.toContainText(x(lang, 'offlineChecking'));
         await expect(
           panel.getByRole('button', { name: x(lang, 'offlineCheckAgain') }),
@@ -248,6 +251,7 @@ for (const [engine, browserType] of [
       });
       await panel.getByRole('button', { name: x('en', 'offlineCheckAgain') }).click();
       await expect(panel).toContainText('1/36');
+      await expect(page.locator('.trip-readiness')).toContainText(x('en', 'photosMissing'));
       await expect(panel.getByRole('alert')).toHaveCount(0);
       await panel.getByRole('button', { name: x('en', 'clearDownloads') }).click();
       await expect(panel).toContainText(x('en', 'offlineRemoveExplanation'));

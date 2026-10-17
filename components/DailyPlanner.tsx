@@ -29,17 +29,19 @@ export default function DailyPlanner({
   setTrip,
   lang,
   initialCode,
+  initialDay = 1,
   notify,
 }: {
   trip: Trip;
   setTrip: (trip: Trip) => void;
   lang: Language;
   initialCode?: string;
+  initialDay?: number;
   notify: (text: string) => void;
 }) {
   const [code, setCode] = useState(initialCode ?? trip.stops[0]?.code ?? '');
   const stop = trip.stops.find((s) => s.code === code) ?? trip.stops[0];
-  const [selectedDay, setDay] = useState(1);
+  const [selectedDay, setDay] = useState(initialDay);
   const day = Math.min(selectedDay, stop?.days ?? 1);
   const [period, setPeriod] = useState<DayPeriod>('morning');
   const [selection, setSelection] = useState(`${stop?.code ?? 'CA'}-0`);

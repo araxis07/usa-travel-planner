@@ -75,6 +75,19 @@ export default function App({
   const [libraryOpen, setLibraryOpen] = useState(false);
   const [wizardOpen, setWizardOpen] = useState(false);
   const [placeView, setPlaceView] = useState(false);
+  const [transport, setTransport] = useState(() =>
+    readLocal('roam.place-filter.v1', 'any', (v) =>
+      ['any', 'transit', 'car', 'boat'].includes(String(v)) ? String(v) : 'any',
+    ),
+  );
+  const [setting, setSetting] = useState('any');
+  useEffect(() => {
+    try {
+      localStorage.setItem('roam.place-filter.v1', JSON.stringify(transport));
+    } catch {
+      /* Optional view preference. */
+    }
+  }, [transport]);
   const [pendingPlace, setPendingPlace] = useState<{ state: StateGuide; index: number } | null>(
     null,
   );
@@ -311,6 +324,8 @@ export default function App({
     setInterest('All');
     setRegion('All');
     setSeason('All');
+    setTransport('any');
+    setSetting('any');
     setShowAll(false);
   };
   const addPlace = (state: StateGuide, index: number) => {
@@ -368,6 +383,7 @@ export default function App({
       (season === 'All' || state.season.includes(season)),
   );
   const hasFilters = !!search || interest !== 'All' || region !== 'All' || season !== 'All';
+  const hasPlaceFilters = placeView && (transport !== 'any' || setting !== 'any');
   const sorted =
     sort === 'az'
       ? [...filtered].sort((a, b) => stateName(a, lang).localeCompare(stateName(b, lang), lang))
@@ -649,12 +665,7 @@ export default function App({
                   <br />
                   <em>{t('state of mind.', 'ที่เป็นคุณ')}</em>
                 </h1>
-                <p>
-                  {t(
-                    'From the places you’ve always dreamed of to the ones you haven’t found yet. Discover America, one unforgettable state at a time.',
-                    'จากสถานที่ในฝัน สู่มุมที่คุณยังไม่เคยรู้จัก ออกไปค้นพบอเมริกา ทีละรัฐ ทีละความทรงจำ',
-                  )}
-                </p>
+                <p>{x(lang, 'planSteps')}</p>
                 <form
                   className="hero-search"
                   role="search"
@@ -691,10 +702,17 @@ export default function App({
                   {trip.stops.length ? (
                     <button
                       className="hero-map-link hero-resume"
+                      aria-label={x(lang, 'resume')}
                       onClick={() => setModal({ type: 'trip', daily: true })}
                     >
                       <Icon name="bag" size={18} />
-                      {x(lang, 'resume')}
+                      <span>
+                        <small>{x(lang, 'resumeNamed')}</small>
+                        <strong>
+                          {trip.name || t('My American adventure', 'ทริปอเมริกาของฉัน')}
+                        </strong>
+                      </span>
+                      <Icon name="arrow" size={18} />
                     </button>
                   ) : (
                     <a className="hero-map-link" href="#destinations">
@@ -946,11 +964,22 @@ export default function App({
                   <Icon name="arrow" size={16} />
                 </button>
               </div>
-              {hasFilters && (
+              {(hasFilters || hasPlaceFilters) && (
                 <div className="active-filters">
                   <span>
-                    {t('Exploring', 'กำลังค้นหา')}: {query.trim() && `“${query.trim()}” `}
-                    {season !== 'All' && local(SEASON_LABELS[season], lang)}
+                    {t('Exploring', 'กำลังค้นหา')}:{' '}
+                    {[
+                      query.trim() && `“${query.trim()}”`,
+                      season !== 'All' && local(SEASON_LABELS[season], lang),
+                      region !== 'All' && local(REGION_LABELS[region], lang),
+                      interest !== 'All' && local(INTEREST_LABELS[interest], lang),
+                      placeView &&
+                        transport !== 'any' &&
+                        x(lang, transport as 'transit' | 'car' | 'boat'),
+                      placeView && setting !== 'any' && x(lang, setting as 'indoors' | 'outdoors'),
+                    ]
+                      .filter(Boolean)
+                      .join(' · ')}
                   </span>
                   <button onClick={resetFilters}>
                     {t('Reset filters', 'ล้างตัวกรอง')}
@@ -961,6 +990,10 @@ export default function App({
               {placeView && (
                 <Suspense fallback={<p role="status">{t('Loading…', 'กำลังโหลด…')}</p>}>
                   <PlaceDiscovery
+                    transport={transport}
+                    setting={setting}
+                    setTransport={setTransport}
+                    setSetting={setSetting}
                     lang={lang}
                     query={query}
                     region={region}

@@ -11,7 +11,8 @@ import TripPrint from './TripPrint';
 import { saveOffline, type OfflineProgress } from '../lib/offline';
 import { activityName, sortedActivities } from '../lib/destinations';
 import TripChecklist from './TripChecklist';
-import OfflineStatus from './OfflineStatus';
+import OfflineStatus, { type PhotoStatus } from './OfflineStatus';
+import TripReadiness from './TripReadiness';
 import { w } from '../data/workspace-copy';
 import { budgetTotals } from '../lib/budget';
 const TripBudget = lazy(() => import('./TripBudget'));
@@ -53,6 +54,36 @@ export default function TripPlanner({
   const [confirmClear, setConfirmClear] = useState(false);
   const [daily, setDaily] = useState(initialDaily);
   const [budgetOpen, setBudgetOpen] = useState(false);
+  const [photoStatus, setPhotoStatus] = useState<PhotoStatus>('checking');
+  const [dayTarget, setDayTarget] = useState<{
+    code: string;
+    day: number;
+    revision: number;
+  } | null>(null);
+  const plannerRef = useRef<HTMLDivElement>(null);
+  function openDetails(selector: string) {
+    const section = plannerRef.current?.querySelector<HTMLElement>(selector);
+    if (!section) return;
+    let ancestor: HTMLElement | null = section;
+    while (ancestor) {
+      if (ancestor instanceof HTMLDetailsElement) ancestor.open = true;
+      ancestor = ancestor.parentElement;
+    }
+    const target = section.querySelector<HTMLElement>('summary');
+    target?.focus({ preventScroll: true });
+    section.scrollIntoView({ block: 'center', behavior: 'instant' });
+  }
+  useEffect(() => {
+    if (!dayTarget) return;
+    const id = requestAnimationFrame(() => {
+      const target = plannerRef.current?.querySelector<HTMLElement>(
+        '.day-strip [aria-pressed="true"]',
+      );
+      target?.focus({ preventScroll: true });
+      target?.scrollIntoView({ block: 'center', behavior: 'instant' });
+    });
+    return () => cancelAnimationFrame(id);
+  }, [dayTarget]);
   const [pendingImport, setPendingImport] = useState<Trip | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
@@ -151,7 +182,7 @@ export default function TripPlanner({
     }
   }
   return (
-    <div className="planner-content">
+    <div className="planner-content" ref={plannerRef}>
       <span className="eyebrow">
         <span className="red-dot" />
         {t('MAKE IT YOUR OWN', 'ออกแบบการเดินทางของคุณ')}
@@ -171,6 +202,20 @@ export default function TripPlanner({
           : t('Saved automatically on this browser', 'บันทึกอัตโนมัติในเบราว์เซอร์นี้')}
       </p>
       <TripPrint trip={trip} lang={lang} />
+      {!!trip.stops.length && (
+        <TripReadiness
+          trip={trip}
+          lang={lang}
+          photoStatus={photoStatus}
+          onDay={(code, day) => {
+            setBudgetOpen(false);
+            setDaily(true);
+            setDayTarget((previous) => ({ code, day, revision: (previous?.revision ?? 0) + 1 }));
+          }}
+          onChecklist={() => openDetails('.trip-checklist')}
+          onPhotos={() => openDetails('.offline-status')}
+        />
+      )}
       {account && (
         <Suspense fallback={<p role="status">{t('Loading…', 'กำลังโหลด…')}</p>}>
           <CloudPanel
@@ -221,7 +266,9 @@ export default function TripPlanner({
           trip={trip}
           setTrip={setTrip}
           lang={lang}
-          initialCode={initialCode}
+          key={dayTarget?.revision ?? 0}
+          initialCode={dayTarget?.code ?? initialCode}
+          initialDay={dayTarget?.day ?? 1}
           notify={notify}
         />
       )}
@@ -552,6 +599,7 @@ export default function TripPlanner({
           </p>
         )}
         <OfflineStatus
+          onStatus={setPhotoStatus}
           trip={trip}
           lang={lang}
           refresh={offlineRefresh}
