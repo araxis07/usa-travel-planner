@@ -135,8 +135,8 @@
     },
     {
       "placeId": "UT-0",
-      "checkedAt": "2026-10-17",
-      "reviewAfter": "2026-10-19",
+      "checkedAt": "2026-10-18",
+      "reviewAfter": "2026-10-21",
       "translationsReviewed": [false, false, false, false, false],
       "notice": {
         "text": [
@@ -224,8 +224,8 @@
     },
     {
       "placeId": "AZ-0",
-      "checkedAt": "2026-10-17",
-      "reviewAfter": "2026-10-19",
+      "checkedAt": "2026-10-18",
+      "reviewAfter": "2026-10-21",
       "translationsReviewed": [false, false, false, false, false],
       "sections": [
         {
@@ -283,11 +283,11 @@
         },
         {
           "text": [
-            "As checked October 17, 2026, park concession overnight accommodation is suspended because of waterline damage. Tusayan lodging outside the park is unaffected by that suspension. Check lodging and camping restrictions before making any booking.",
-            "ตรวจวันที่ 17 ตุลาคม 2026 ที่พักค้างคืนของผู้ให้บริการภายในอุทยานยังหยุดให้บริการจากความเสียหายของท่อส่งน้ำ การหยุดดังกล่าวไม่กระทบที่พัก Tusayan นอกอุทยาน ตรวจข้อจำกัดที่พักและแคมป์ก่อนจอง",
-            "截至2026年10月17日核对，因输水管道损坏，园内特许经营住宿暂停过夜服务。园外Tusayan住宿不受该暂停影响。预订前请核对住宿与露营限制。",
-            "2026年10月17日の確認時点では、水道設備の損傷により園内の営業宿泊施設は宿泊を停止しています。園外の Tusayan はこの停止の対象外です。宿泊とキャンプの制限を予約前に確認してください。",
-            "2026년 10월 17일 확인 기준으로 송수관 손상 때문에 공원 내 위탁 운영 숙박시설의 숙박이 중단됐습니다. 공원 밖 Tusayan 숙소는 이 중단의 영향을 받지 않습니다. 예약 전에 숙박과 캠핑 제한을 확인하세요."
+            "As checked October 18, 2026, park concession overnight accommodation is suspended because of waterline damage. Tusayan lodging outside the park is unaffected by that suspension. Check lodging and camping restrictions before making any booking.",
+            "ตรวจวันที่ 18 ตุลาคม 2026 ที่พักค้างคืนของผู้ให้บริการภายในอุทยานยังหยุดให้บริการจากความเสียหายของท่อส่งน้ำ การหยุดดังกล่าวไม่กระทบที่พัก Tusayan นอกอุทยาน ตรวจข้อจำกัดที่พักและแคมป์ก่อนจอง",
+            "截至2026年10月18日核对，因输水管道损坏，园内特许经营住宿暂停过夜服务。园外Tusayan住宿不受该暂停影响。预订前请核对住宿与露营限制。",
+            "2026年10月18日の確認時点では、水道設備の損傷により園内の営業宿泊施設は宿泊を停止しています。園外の Tusayan はこの停止の対象外です。宿泊とキャンプの制限を予約前に確認してください。",
+            "2026년 10월 18일 확인 기준으로 송수관 손상 때문에 공원 내 위탁 운영 숙박시설의 숙박이 중단됐습니다. 공원 밖 Tusayan 숙소는 이 중단의 영향을 받지 않습니다. 예약 전에 숙박과 캠핑 제한을 확인하세요."
           ],
           "sources": [
             {
@@ -304,8 +304,8 @@
     },
     {
       "placeId": "CO-0",
-      "checkedAt": "2026-10-12",
-      "reviewAfter": "2026-10-18",
+      "checkedAt": "2026-10-18",
+      "reviewAfter": "2026-10-19",
       "translationsReviewed": [false, false, false, false, false],
       "sections": [
         {

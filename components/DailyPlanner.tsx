@@ -225,15 +225,25 @@ export default function DailyPlanner({
           ))}
         </div>
       </div>
-      <div className="day-summary">
-        <strong>
-          {t('Day', 'วันที่')} {globalOffset + day}
-          {date &&
-            ` · ${new Intl.DateTimeFormat(LOCALES[lang], { dateStyle: 'medium' }).format(date)}`}
-        </strong>
-        <span>
-          {total} {t('minutes planned', 'นาทีที่วางแผนไว้')}
-        </span>
+      <div className="day-overview">
+        <div className="day-summary">
+          <strong>
+            {t('Day', 'วันที่')} {globalOffset + day}
+            {date &&
+              ` · ${new Intl.DateTimeFormat(LOCALES[lang], { dateStyle: 'medium' }).format(date)}`}
+          </strong>
+          <span>
+            {total} {t('minutes planned', 'นาทีที่วางแผนไว้')}
+          </span>
+        </div>
+        <div className="segmented mobile-workspace-switch">
+          <button aria-pressed={!mobileMap} onClick={() => setMobileMap(false)}>
+            {x(lang, 'list')}
+          </button>
+          <button aria-pressed={mobileMap} onClick={() => setMobileMap(true)}>
+            {x(lang, 'map')}
+          </button>
+        </div>
       </div>
       {[...new Set((stop.activities ?? []).filter((a) => a.day === day).map((a) => a.placeId))].map(
         (id) => {
@@ -362,40 +372,6 @@ export default function DailyPlanner({
           </button>
         </form>
       )}
-      <div className="daily-quick-actions">
-        {(['lunch', 'rest'] as const).map((key) => (
-          <button
-            className="button button-outline"
-            key={key}
-            disabled={trip.stops.reduce((n, s) => n + (s.activities?.length ?? 0), 0) >= 200}
-            onClick={() =>
-              update([
-                ...activities,
-                {
-                  id: crypto.randomUUID(),
-                  day,
-                  period: key === 'lunch' ? 'afternoon' : 'evening',
-                  title: x(lang, key),
-                  minutes: 60,
-                  notes: '',
-                  bufferMinutes: 0,
-                },
-              ])
-            }
-          >
-            <Icon name="plus" size={15} />
-            {x(lang, key)}
-          </button>
-        ))}
-        <div className="segmented mobile-workspace-switch">
-          <button aria-pressed={!mobileMap} onClick={() => setMobileMap(false)}>
-            {x(lang, 'list')}
-          </button>
-          <button aria-pressed={mobileMap} onClick={() => setMobileMap(true)}>
-            {x(lang, 'map')}
-          </button>
-        </div>
-      </div>
       <div className={`day-workspace ${mobileMap ? 'mobile-map-view' : ''}`}>
         {mobileMap && !today.length && (
           <aside className="day-map-aside">
@@ -733,6 +709,32 @@ export default function DailyPlanner({
             </ol>
           </aside>
         )}
+      </div>
+      <div className="daily-quick-actions">
+        {(['lunch', 'rest'] as const).map((key) => (
+          <button
+            className="button button-outline"
+            key={key}
+            disabled={trip.stops.reduce((n, s) => n + (s.activities?.length ?? 0), 0) >= 200}
+            onClick={() =>
+              update([
+                ...activities,
+                {
+                  id: crypto.randomUUID(),
+                  day,
+                  period: key === 'lunch' ? 'afternoon' : 'evening',
+                  title: x(lang, key),
+                  minutes: 60,
+                  notes: '',
+                  bufferMinutes: 0,
+                },
+              ])
+            }
+          >
+            <Icon name="plus" size={15} />
+            {x(lang, key)}
+          </button>
+        ))}
       </div>
       <details className="day-help">
         <summary>{t('Planning tips', 'คำแนะนำการวางแผน')}</summary>

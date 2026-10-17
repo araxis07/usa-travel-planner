@@ -633,6 +633,22 @@
 .day-summary span {
   color: #e4e8ef;
 }
+.day-overview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.day-overview .day-summary {
+  flex: 1 1 150px;
+  min-width: 0;
+  margin: 0;
+}
+.day-overview .mobile-workspace-switch {
+  flex-shrink: 0;
+  margin: 0;
+}
 .daily-quick-actions {
   display: flex;
   gap: 10px;
@@ -2426,15 +2442,18 @@ html[lang='ko'] .discovery-place h3 {
     font-size: 12px;
     margin-bottom: 10px;
   }
+  .day-overview {
+    margin-bottom: 10px;
+  }
+  .day-period > h4 {
+    margin: 0 0 8px;
+  }
   .daily-quick-actions {
-    margin-bottom: 12px;
+    margin: 12px 0;
     gap: 6px;
   }
   .daily-quick-actions .button {
     padding: 8px;
-  }
-  .daily-quick-actions .mobile-workspace-switch {
-    margin-left: auto;
   }
   .daily-planner {
     padding-bottom: 0;

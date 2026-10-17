@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { EMPTY_TRIP } from '../data/travel';
 import { LANGUAGES } from '../lib/i18n';
+import { x } from '../data/experience-copy';
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(
@@ -10,6 +11,49 @@ test.beforeEach(async ({ page }) => {
     },
     { ...EMPTY_TRIP, name: 'Touch journey', stops: [{ code: 'CA', days: 3, notes: '' }] },
   );
+});
+
+test('first activity is unobscured and day actions remain usable in five languages', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 664 });
+  await page.goto('/en/?view=planner');
+  await page.evaluate(() => {
+    const trip = JSON.parse(localStorage.getItem('roam.trip.v1')!);
+    trip.stops[0].activities = [
+      { id: 'first', day: 1, period: 'morning', title: 'Morning visit', minutes: 60, notes: '' },
+    ];
+    localStorage.setItem('roam.trip.v1', JSON.stringify(trip));
+  });
+  await page.reload();
+  for (const lang of LANGUAGES) {
+    await page.getByLabel('Language / ภาษา', { exact: true }).selectOption(lang);
+    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(() => scrollTo(0, 0));
+    const title = page.locator('.day-activity h5').first();
+    await expect
+      .poll(() =>
+        title.evaluate((element) => {
+          const r = element.getBoundingClientRect();
+          const nav = document.querySelector('.bottom-nav')!.getBoundingClientRect();
+          return (
+            r.bottom <= nav.top - 12 &&
+            [r.top + 1, r.bottom - 1].every((y) =>
+              element.contains(document.elementFromPoint(r.left + r.width / 2, y)),
+            )
+          );
+        }),
+      )
+      .toBe(true);
+  }
+  await page.locator('.day-strip button').nth(1).tap();
+  await page.getByRole('button', { name: x('ko', 'lunch'), exact: true }).tap();
+  await expect(page.locator('.day-activity h5')).toHaveText(x('ko', 'lunch'));
+  await page.getByRole('button', { name: x('ko', 'rest'), exact: true }).tap();
+  await expect(page.locator('.day-activity')).toHaveCount(2);
+  await page.reload();
+  await page.locator('.day-strip button').nth(1).tap();
+  await expect(page.locator('.day-activity')).toHaveCount(2);
 });
 
 test('touch planning survives short viewports, rotation and reload in all languages', async ({

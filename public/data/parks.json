@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-17T08:47:36.638Z",
+  "checkedAt": "2026-10-17T21:20:37.735Z",
   "source": "https://www.nps.gov/subjects/developer/",
   "parks": [
     {
@@ -757,28 +757,12 @@
           "lastIndexedDate": "2026-10-08 00:00:00.0"
         },
         {
-          "id": "E6380F1D-EB3A-44EC-B206-6A65019B38D5",
-          "title": "Halemaʻumaʻu Trail and Part of Byron Ledge Trail Closed Due to Safety Risks",
-          "category": "Park Closure",
-          "description": "Halemaʻumaʻu Trail and part of Byron Ledge Trail are temporarily closed due to continued inflation and increased seismicity at the summit of Kīlauea volcano. The closure is a total of 1.3 miles. The increased seismicity could trigger additional rock falls and presents a serious safety risk. Both trails descend from the caldera rim to the floor and have been the site of dangerous rock falls in the past.",
-          "url": "",
-          "lastIndexedDate": "2026-10-09 00:00:00.0"
-        },
-        {
           "id": "372637DA-0B8C-422B-B98B-9ACF44B56C46",
           "title": "Sulphur Banks Bridge Closed; Boardwalk is Open",
           "category": "Information",
           "description": "The Sulphur Banks Bridge is damaged and closed until further notice. The Haʻakulamanu area, boardwalk and Sulphur Banks Trail are open and accessible from the west side near Steam Vents.",
           "url": "",
           "lastIndexedDate": "2026-10-01 00:00:00.0"
-        },
-        {
-          "id": "C8F694F3-2542-4433-A7E7-B2EFC3BDA48A",
-          "title": "Keanakākoʻi Side of Kīlauea Volcano Closed Due to Volcanic Unrest",
-          "category": "Park Closure",
-          "description": "Due to increased earthquakes below the summit of Kīlauea and volcanic unrest, the Keanakākoʻi area is temporarily closed for safety. This includes old Crater Rim Drive, the overlooks near Keanakākoʻi crater and Crater Rim Trail to Keanakākoʻi crater. Devastation parking lot remains open.",
-          "url": "",
-          "lastIndexedDate": "2026-10-09 00:00:00.0"
         },
         {
           "id": "031E225F-49AB-4264-9DD6-4402E620DC1B",
@@ -2957,14 +2941,6 @@
           "lastIndexedDate": "2026-10-09 00:00:00.0"
         },
         {
-          "id": "73549B6B-64CF-4B70-A42B-581EB4D11DA5",
-          "title": "Highway 101 Overnight Closures at Hoh River Bridge, October 13-19",
-          "category": "Park Closure",
-          "description": "These overnight Highway 101 closures cuts off the only direct route between some of the most popular areas of the park. There are no detours available. Taking alternate routes around the east side of the Olympic Peninsula will add at least four hours to travel times.",
-          "url": "https://www.nps.gov/olym/planyourvisit/hwy-101-closure-at-hoh-river-bridge.htm",
-          "lastIndexedDate": "2026-10-13 00:00:00.0"
-        },
-        {
           "id": "0918CC30-347E-47CA-98FC-9AB7602DE1B3",
           "title": "Staircase Developed Area is Open, Use Caution in Burned Areas",
           "category": "Caution",
@@ -3957,6 +3933,34 @@
               "exceptions": [
                 {
                   "exceptionHours": {
+                    "wednesday": "10:00AM - 4:00PM",
+                    "monday": "10:00AM - 4:00PM",
+                    "thursday": "10:00AM - 4:00PM",
+                    "sunday": "Closed",
+                    "tuesday": "10:00AM - 4:00PM",
+                    "friday": "10:00AM - 4:00PM",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2027-01-19",
+                  "name": "Late Winter Hours",
+                  "endDate": "2027-04-11"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "10:00AM - 4:00PM",
+                    "monday": "10:00AM - 4:00PM",
+                    "thursday": "10:00AM - 4:00PM",
+                    "sunday": "Closed",
+                    "tuesday": "10:00AM - 4:00PM",
+                    "friday": "10:00AM - 4:00PM",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2027-09-19",
+                  "name": "Fall Hours",
+                  "endDate": "2027-10-16"
+                },
+                {
+                  "exceptionHours": {
                     "wednesday": "Closed",
                     "monday": "Closed",
                     "thursday": "Closed",
@@ -3965,9 +3969,9 @@
                     "friday": "Closed",
                     "saturday": "Closed"
                   },
-                  "startDate": "2027-01-01",
-                  "name": "New Years Day",
-                  "endDate": "2027-01-01"
+                  "startDate": "2026-10-17",
+                  "name": "Closed in Mid-Winter",
+                  "endDate": "2027-01-18"
                 },
                 {
                   "exceptionHours": {
@@ -3982,6 +3986,20 @@
                   "startDate": "2027-02-15",
                   "name": "Closed on Washington's Birthday",
                   "endDate": "2027-02-15"
+                },
+                {
+                  "exceptionHours": {
+                    "wednesday": "Closed",
+                    "monday": "Closed",
+                    "thursday": "Closed",
+                    "sunday": "Closed",
+                    "tuesday": "Closed",
+                    "friday": "Closed",
+                    "saturday": "Closed"
+                  },
+                  "startDate": "2027-10-11",
+                  "name": "Closed on Columbus Day",
+                  "endDate": "2027-10-11"
                 }
               ],
               "description": "Throughout the main summer season (mid-April to mid-September), the ranger station is open daily from 9 am to 4 pm. Hours are limited and vary in fall, winter, and spring. Call to speak with a ranger about visiting during winter months.",
@@ -10216,6 +10234,14 @@
           "description": "Directions to the Petrified Forest trailhead have changed. Please use the approved legal route from I-94, Exit 10 toward Camels Hump Lake and follow the clearly marked posts. This update helps maintain good cooperation with neighbors and respect park boundaries. For precise directions, use the link provided.",
           "url": "https://www.nps.gov/thingstodo/hike-the-petrified-forest.htm",
           "lastIndexedDate": "2025-09-17 00:00:00.0"
+        },
+        {
+          "id": "C3420148-23D7-47AD-BA98-FB07F096BED2",
+          "title": "North Unit Bison Roundup",
+          "category": "Caution",
+          "description": "October 18–23, 2026, the National Park Service will conduct helicopter bison roundup operations in the North Unit of Theodore Roosevelt National Park. Bison may cross the scenic drive during herding, causing temporary traffic delays. Up to 100 bison will be transferred live to Tribes. These operations help maintain bison numbers in line with available resources and support healthy ecological relationships.",
+          "url": "",
+          "lastIndexedDate": "2026-10-17 00:00:00.0"
         }
       ]
     },
@@ -11279,6 +11305,14 @@
           "description": "Cherokee Orchard Road is currently closed to pedestrian traffic due to bear activity. All visitors must stay in their vehicles. Do not stop or park your vehicle in the roadway.",
           "url": "",
           "lastIndexedDate": "2026-10-15 00:00:00.0"
+        },
+        {
+          "id": "13500752-527E-4330-B9A8-E9EB19A2DBD8",
+          "title": "Kuwohi Road Closure",
+          "category": "Park Closure",
+          "description": "Kuwohi Road will close today at 7:30 PM due to forecasted ice creating hazardous driving conditions.",
+          "url": "https://www.nps.gov/grsm/planyourvisit/conditions.htm",
+          "lastIndexedDate": "2026-10-17 00:00:00.0"
         }
       ]
     },

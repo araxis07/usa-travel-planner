@@ -389,8 +389,8 @@
           "locationCheckedAt": "2026-09-15",
           "officialUrl": "https://parks.ca.gov/?page_id=29170",
           "bookingUrl": "",
-          "reviewedAt": "2026-10-17",
-          "reviewAfter": "2026-10-19",
+          "reviewedAt": "2026-10-18",
+          "reviewAfter": "2026-10-21",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -400,7 +400,7 @@
             "months": [4, 5, 6, 7, 8, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-10-17",
+            "checkedAt": "2026-10-18",
             "source": "https://parks.ca.gov/NewsRelease/1594",
             "text": [
               "Pfeiffer Big Sur reopened selected facilities October 16; some trails remain closed. Check the park notice and Caltrans before choosing stops or driving Highway 1.",
@@ -1084,8 +1084,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/grca/planyourvisit/directions_s_rim.htm",
           "bookingUrl": "https://www.nps.gov/grca/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-17",
-          "reviewAfter": "2026-10-19",
+          "reviewedAt": "2026-10-18",
+          "reviewAfter": "2026-10-21",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1095,7 +1095,7 @@
             "months": [4, 5, 6, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-10-17",
+            "checkedAt": "2026-10-18",
             "source": "https://www.nps.gov/grca/learn/news/grand-canyon-national-park-to-close-overnight-hotel-accommodations-beginning-august-31.htm",
             "text": [
               "NPS reports that South Rim hotels inside Grand Canyon have suspended overnight stays because of water restrictions; only dry camping is allowed. Day visits remain open. Check current lodging and water rules before booking.",
@@ -1540,8 +1540,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/havo/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/havo/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-17",
-          "reviewAfter": "2026-10-19",
+          "reviewedAt": "2026-10-18",
+          "reviewAfter": "2026-10-21",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1551,14 +1551,14 @@
             "months": [4, 5, 6, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-10-17",
+            "checkedAt": "2026-10-18",
             "source": "https://www.nps.gov/havo/planyourvisit/conditions.htm",
             "text": [
-              "NPS reports temporary closures at Keanakākoʻi, Halemaʻumaʻu Trail and part of Byron Ledge Trail because of volcanic unrest. Devastation parking remains open. Mauna Loa Road beyond the first cattle guard is closed through October 29 for tree work. Check current closures before visiting.",
-              "NPS ระบุว่าพื้นที่ Keanakākoʻi, Halemaʻumaʻu Trail และบางส่วนของ Byron Ledge Trail ปิดชั่วคราวจากความเคลื่อนไหวของภูเขาไฟ ที่จอดรถ Devastation ยังเปิดอยู่ ส่วน Mauna Loa Road เลยแนวรั้วกันวัวจุดแรกปิดถึง 29 ตุลาคมเพื่อจัดการต้นไม้ ตรวจพื้นที่ปิดล่าสุดก่อนเดินทาง",
-              "NPS 通报因火山活动，Keanakākoʻi 区域、Halemaʻumaʻu 步道及部分 Byron Ledge 步道暂时关闭；Devastation 停车场仍开放。Mauna Loa Road 第一处防牛栅栏以后的路段因树木作业关闭至10月29日。出行前请核对最新关闭区域。",
-              "NPSによると、火山活動のため Keanakākoʻi 周辺、Halemaʻumaʻu Trail、Byron Ledge Trail の一部が一時閉鎖中です。Devastation 駐車場は利用可能。Mauna Loa Road の1つ目のキャトルガードより先は樹木作業で10月29日まで閉鎖。訪問前に最新の閉鎖情報を確認してください。",
-              "NPS에 따르면 화산 활동으로 Keanakākoʻi 일대, Halemaʻumaʻu Trail과 Byron Ledge Trail 일부가 임시 폐쇄 중입니다. Devastation 주차장은 열려 있습니다. Mauna Loa Road의 첫 번째 소 통행 방지 격자 이후 구간은 수목 작업으로 10월 29일까지 폐쇄됩니다. 방문 전 최신 폐쇄 정보를 확인하세요."
+              "Mauna Loa Road past the first cattle guard is closed through October 29, 2026 for tree work. Kīpukapuaulu Trail is also closed because of hazardous trees. Check NPS alerts for volcanic hazards and other access restrictions before visiting.",
+              "ถนน Mauna Loa เลยตะแกรงกั้นวัวจุดแรกปิดถึง 29 ตุลาคม 2026 เพื่อจัดการต้นไม้ เส้นทาง Kīpukapuaulu ปิดเช่นกันเนื่องจากต้นไม้ที่เป็นอันตราย ตรวจประกาศ NPS เรื่องอันตรายจากภูเขาไฟและข้อจำกัดพื้นที่อื่นก่อนเดินทาง",
+              "Mauna Loa Road第一处防牛栅格以远因树木作业关闭至2026年10月29日。Kīpukapuaulu步道也因危险树木关闭。出发前查看NPS火山风险和其他通行限制公告。",
+              "Mauna Loa Roadは最初のキャトルガードより先が樹木作業のため2026年10月29日まで閉鎖。Kīpukapuaulu Trailも危険な樹木のため閉鎖中です。訪問前にNPSの火山活動に伴う危険情報とその他の立入制限を確認してください。",
+              "Mauna Loa Road의 첫 가축 통행 방지 격자 너머는 수목 작업으로 2026년 10월 29일까지 폐쇄됩니다. Kīpukapuaulu Trail도 위험한 나무로 폐쇄되어 있습니다. 방문 전 NPS의 화산 위험과 다른 출입 제한 공지를 확인하세요."
             ]
           }
         },
@@ -1601,8 +1601,8 @@
           "locationCheckedAt": "2026-09-09",
           "officialUrl": "https://www.gohawaii.com/islands/kauai/travel-info/transportation",
           "bookingUrl": "",
-          "reviewedAt": "2026-10-17",
-          "reviewAfter": "2026-10-19",
+          "reviewedAt": "2026-10-18",
+          "reviewAfter": "2026-10-21",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "boat",
@@ -1612,7 +1612,7 @@
             "months": [4, 5, 6, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-10-17",
+            "checkedAt": "2026-10-18",
             "source": "https://dlnr.hawaii.gov/dsp/",
             "text": [
               "The October 13 notice schedules Hāʻena reopening for October 15. Kōkeʻe Road, Kauaʻi camping and other state parks remain closed; Wailua River access is limited. Check current notices and restrictions before travel.",
@@ -1913,8 +1913,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/zion/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/zion/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-17",
-          "reviewAfter": "2026-10-19",
+          "reviewedAt": "2026-10-18",
+          "reviewAfter": "2026-10-21",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -1924,7 +1924,7 @@
             "months": [4, 5, 9, 10]
           },
           "advisory": {
-            "checkedAt": "2026-10-17",
+            "checkedAt": "2026-10-18",
             "source": "https://www.nps.gov/zion/planyourvisit/conditions.htm",
             "text": [
               "Watchman Trail is closed for repairs. Large vehicles face Zion–Mt. Carmel Highway restrictions between Canyon Junction and the East Entrance. Check current trail closures, vehicle limits and road conditions before choosing your route.",
@@ -3935,8 +3935,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/dena/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/dena/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-16",
-          "reviewAfter": "2026-10-19",
+          "reviewedAt": "2026-10-18",
+          "reviewAfter": "2026-10-21",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -3954,7 +3954,7 @@
               "Pretty Rocks 다리는 완공되었지만, 가을철 자가용의 Teklanika(30마일 지점) 통행을 안내한 기간은 2026년 10월 15일까지입니다. 이후 통행 여부는 확인되지 않았으므로 운전 계획 전에 NPS 도로 상황을 확인하세요. 겨울 날씨로 13마일 또는 3마일 지점부터 통행이 제한될 수 있습니다. 전 구간 버스는 2027년 재개 예정입니다."
             ],
             "source": "https://www.nps.gov/dena/planyourvisit/conditions.htm",
-            "checkedAt": "2026-10-16"
+            "checkedAt": "2026-10-18"
           }
         },
         {
@@ -15438,11 +15438,11 @@
           ],
           "summaryLicense": "CC BY-SA 4.0",
           "access": [
-            "Use Highway 62 for the South or West Entrance. The Highway 138 North Entrance is seasonal and closes November 1 or earlier with snow. NPS reports no gasoline available in the park, checked October 16, 2026. Refuel outside the park and recheck road and fuel conditions before driving.",
-            "ใช้ Highway 62 ไปทางใต้หรือตะวันตก ทางเหนือจาก Highway 138 เปิดตามฤดูกาลและปิด 1 พฤศจิกายนหรือเร็วกว่านั้นถ้ามีหิมะ NPS ระบุว่าไม่มีน้ำมันจำหน่ายในอุทยาน ตรวจข้อมูล 16 ตุลาคม 2026 ให้เติมนอกอุทยานและตรวจสภาพถนนกับการให้บริการน้ำมันอีกครั้งก่อนขับ",
-            "经Highway 62到南或西入口。Highway 138北入口季节性开放，11月1日或降雪时更早关闭。2026年10月16日核查时，NPS表示园内不供应汽油。请在园外加油，驾车前再次确认路况和供油情况。",
-            "南・西入口はHighway 62から。Highway 138の北入口は季節営業で、11月1日または降雪によりそれ以前に閉鎖します。2026年10月16日の確認時点で、NPSは園内でガソリンを供給していないと案内しています。園外で給油し、出発前に道路と給油の状況を再確認してください。",
-            "남쪽이나 서쪽 입구는 Highway 62를 이용하세요. Highway 138 북쪽 입구는 계절 운영으로 11월 1일 또는 눈이 오면 더 일찍 닫힙니다. 2026년 10월 16일 확인한 NPS 안내에 따르면 공원 내에서 휘발유를 구할 수 없습니다. 공원 밖에서 주유하고 출발 전 도로와 주유소 운영 상황을 다시 확인하세요."
+            "Use Highway 62 for the South or West Entrance. The Highway 138 North Entrance is seasonal and closes November 1 or earlier with snow. NPS reports no gasoline available in the park, checked October 18, 2026. Refuel outside the park and recheck road and fuel conditions before driving.",
+            "ใช้ Highway 62 ไปทางใต้หรือตะวันตก ทางเหนือจาก Highway 138 เปิดตามฤดูกาลและปิด 1 พฤศจิกายนหรือเร็วกว่านั้นถ้ามีหิมะ NPS ระบุว่าไม่มีน้ำมันจำหน่ายในอุทยาน ตรวจข้อมูล 18 ตุลาคม 2026 ให้เติมนอกอุทยานและตรวจสภาพถนนกับการให้บริการน้ำมันอีกครั้งก่อนขับ",
+            "经Highway 62到南或西入口。Highway 138北入口季节性开放，11月1日或降雪时更早关闭。2026年10月18日核查时，NPS表示园内不供应汽油。请在园外加油，驾车前再次确认路况和供油情况。",
+            "南・西入口はHighway 62から。Highway 138の北入口は季節営業で、11月1日または降雪によりそれ以前に閉鎖します。2026年10月18日の確認時点で、NPSは園内でガソリンを供給していないと案内しています。園外で給油し、出発前に道路と給油の状況を再確認してください。",
+            "남쪽이나 서쪽 입구는 Highway 62를 이용하세요. Highway 138 북쪽 입구는 계절 운영으로 11월 1일 또는 눈이 오면 더 일찍 닫힙니다. 2026년 10월 18일 확인한 NPS 안내에 따르면 공원 내에서 휘발유를 구할 수 없습니다. 공원 밖에서 주유하고 출발 전 도로와 주유소 운영 상황을 다시 확인하세요."
           ],
           "stay": [
             "Compare stays in Fort Klamath / Chiloquin as possible bases. Check the journey to your selected entrance, stop or departure point before booking.",
@@ -15465,8 +15465,8 @@
           "locationCheckedAt": "2026-09-10",
           "officialUrl": "https://www.nps.gov/crla/planyourvisit/directions.htm",
           "bookingUrl": "https://www.nps.gov/crla/planyourvisit/fees.htm",
-          "reviewedAt": "2026-10-16",
-          "reviewAfter": "2026-10-19",
+          "reviewedAt": "2026-10-18",
+          "reviewAfter": "2026-10-21",
           "translationsReviewed": [false, false, false, false, false],
           "planning": {
             "transport": "car",
@@ -15484,7 +15484,7 @@
               "Cleetwood Cove Trail은 공사로 계속 폐쇄되어 호숫가 접근을 계획하지 않아야 합니다. East Rim Drive는 통과 주행이 가능하지만 공사 구간에서 교통 통제가 있을 수 있습니다. 출발 전 NPS 현황을 확인하세요."
             ],
             "source": "https://www.nps.gov/crla/planyourvisit/conditions.htm",
-            "checkedAt": "2026-10-16"
+            "checkedAt": "2026-10-18"
           }
         }
       ]

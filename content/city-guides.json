@@ -170,8 +170,8 @@
   "guides": [
     {
       "placeId": "NY-0",
-      "checkedAt": "2026-10-17",
-      "reviewAfter": "2026-10-19",
+      "checkedAt": "2026-10-18",
+      "reviewAfter": "2026-10-21",
       "translationsReviewed": [false, false, false, false, false],
       "intro": [
         "Give each day one part of the city. Start around Midtown, then add Lower Manhattan and Brooklyn instead of crossing the whole city repeatedly.",
@@ -415,11 +415,11 @@
           "성인 일반 편도: AirTrain $8.75 + 지하철 $3.00 = $11.75. 할인과 LIRR 이용 조건은 다릅니다."
         ],
         "note": [
-          "Check JFK alerts and MTA service and elevator status before departure. The previous overnight maintenance notice is no longer available; that does not confirm normal service. Follow staff directions during disruptions and allow extra time. This route serves JFK only; LIRR connections also depend on AirTrain.",
-          "ตรวจประกาศ JFK และสถานะบริการกับลิฟต์ของ MTA ก่อนเดินทาง ลิงก์ประกาศซ่อมกลางคืนเดิมใช้งานไม่ได้แล้ว แต่ไม่ได้ยืนยันว่าบริการปกติ หากมีการหยุดบริการให้ทำตามเจ้าหน้าที่และเผื่อเวลา เส้นทางนี้ใช้กับ JFK เท่านั้น การต่อ LIRR ต้องใช้ AirTrain เช่นกัน",
-          "出发前查看JFK公告及MTA服务和电梯状态。此前的夜间维护公告已无法访问，这不代表服务已恢复正常。如遇中断请遵循工作人员指示并预留时间。本路线仅适用于JFK；转乘LIRR同样依赖AirTrain。",
-          "出発前にJFKの告知とMTAの運行・エレベーター状況を確認してください。以前の夜間保守の告知は閲覧できませんが、通常運行の確認にはなりません。運休時は係員の指示に従い、時間に余裕を持ってください。この経路はJFK専用で、LIRRへの乗り継ぎにもAirTrainを使います。",
-          "출발 전 JFK 공지와 MTA 운행·엘리베이터 상태를 확인하세요. 이전 야간 정비 공지를 더 이상 열 수 없지만 정상 운행을 의미하지는 않습니다. 운행 중단 시 직원 안내를 따르고 시간을 넉넉히 잡으세요. 이 경로는 JFK 전용이며 LIRR 환승도 AirTrain을 이용합니다."
+          "Check JFK alerts and MTA service and elevator status before departure. Follow staff directions during disruptions and allow extra time. This route serves JFK only; LIRR connections also depend on AirTrain.",
+          "ตรวจประกาศ JFK และสถานะบริการกับลิฟต์ของ MTA ก่อนเดินทาง หากมีการหยุดบริการให้ทำตามเจ้าหน้าที่และเผื่อเวลา เส้นทางนี้ใช้กับ JFK เท่านั้น การต่อ LIRR ต้องใช้ AirTrain เช่นกัน",
+          "出发前查看JFK公告及MTA服务和电梯状态。如遇中断请遵循工作人员指示并预留时间。本路线仅适用于JFK；转乘LIRR同样依赖AirTrain。",
+          "出発前にJFKの告知とMTAの運行・エレベーター状況を確認してください。運休時は係員の指示に従い、時間に余裕を持ってください。この経路はJFK専用で、LIRRへの乗り継ぎにもAirTrainを使います。",
+          "출발 전 JFK 공지와 MTA 운행·엘리베이터 상태를 확인하세요. 운행 중단 시 직원 안내를 따르고 시간을 넉넉히 잡으세요. 이 경로는 JFK 전용이며 LIRR 환승도 AirTrain을 이용합니다."
         ],
         "sources": [
           {
@@ -934,8 +934,8 @@
     },
     {
       "placeId": "NV-0",
-      "checkedAt": "2026-10-17",
-      "reviewAfter": "2026-10-19",
+      "checkedAt": "2026-10-18",
+      "reviewAfter": "2026-10-21",
       "translationsReviewed": [false, false, false, false, false],
       "intro": [
         "Treat the Strip, Downtown and Arts District as separate outings. Keep outdoor walks short in heat and compare the complete hotel bill, including mandatory fees.",
@@ -1172,11 +1172,11 @@
           ]
         ],
         "fare": [
-          "Compare RTC Strip & All Access passes for your travel dates. Confirm current prices, airport-route coverage and validity directly with RTC before buying; this guide does not quote a newly verified fare.",
-          "เทียบบัตร RTC Strip & All Access ตามวันเดินทาง ตรวจราคาปัจจุบัน การครอบคลุมเส้นทางสนามบินและอายุบัตรกับ RTC ก่อนซื้อ คู่มือนี้ไม่ได้ระบุราคาที่เพิ่งตรวจยืนยันใหม่",
-          "按旅行日期比较RTC Strip & All Access票种。购买前向RTC确认现价、机场线路覆盖和有效期；本指南不提供新核实的票价。",
-          "旅行日に合わせてRTC Strip & All Accessのパスを比較してください。購入前に最新料金、空港路線の対象範囲、有効期間をRTCで確認。このガイドでは新たに確認済みの運賃は提示していません。",
-          "여행 날짜에 맞춰 RTC Strip & All Access 패스를 비교하세요. 구매 전 RTC에서 현재 가격, 공항 노선 적용 범위와 유효기간을 확인하세요. 이 안내에는 새로 확인된 요금을 제시하지 않습니다."
+          "RTC visitor fares, checked October 18, 2026: $8/24 hours or $20/3 days (regular Strip & All Access). Passes cover all routes. Check activation and prices before buying.",
+          "ค่าโดยสารนักท่องเที่ยว RTC ตรวจ 18 ตุลาคม 2026: 8 ดอลลาร์/24 ชั่วโมง หรือ 20 ดอลลาร์/3 วัน (Strip & All Access ราคาปกติ) ใช้ได้ทุกเส้นทาง ตรวจวิธีเปิดใช้และราคาก่อนซื้อ",
+          "RTC游客票价（2026年10月18日核对）：普通Strip & All Access票24小时8美元、3天20美元，适用于所有线路。购买前确认启用方式和价格。",
+          "RTC観光客向け通常運賃（2026年10月18日確認）：Strip & All Accessは24時間8米ドル、3日間20米ドル。全路線で有効。購入前に利用開始方法と料金を確認してください。",
+          "RTC 방문객 요금(2026년 10월 18일 확인): 일반 Strip & All Access 패스는 24시간 8달러, 3일 20달러이며 모든 노선에 유효합니다. 구매 전 활성화 방법과 요금을 확인하세요."
         ],
         "note": [
           "Use the current airport route page: RED LINE replaced Route 109 in August 2026. Allow for transfers with bags and roadwork delays; an official airport taxi can simplify a late arrival.",
