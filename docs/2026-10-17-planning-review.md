@@ -4,7 +4,7 @@
 
 The homepage explains the planning flow and shows the saved trip by name in a high-contrast resume card. Discovery now lists every active filter. Reset clears transport and indoor/outdoor selections as well as search, region, interest and season. Transport retains its existing browser preference and validation.
 
-The planner has a collapsed **Review your plan** panel in all five languages. It counts days with no activities and days flagged by the existing timeline for overlap, midnight overruns or distant places. A day link selects that state's local day, displays its trip-wide day number and moves keyboard focus to it. Empty days remain valid flexible days. Checklist and photo buttons expand their existing sections and move focus there.
+The planner has a collapsed **Review your plan** panel beside the checklist, after the itinerary, in all five languages. This preserves the existing mobile activity position without hiding the review counts. It counts days with no activities and days flagged by the existing timeline for overlap, midnight overruns or distant places. A day link selects that state's local day, displays its trip-wide day number and moves keyboard focus to it. Empty days remain valid flexible days. Checklist and photo buttons expand their existing sections and move focus there.
 
 Photo status comes from the existing cache check, including failure and retry behavior. It describes downloaded trip photographs, not complete offline availability. The panel does not certify reservations, documents, weather, road access or journey times. No trip schema, account setup, database connection or dependency was added.
 

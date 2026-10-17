@@ -202,20 +202,6 @@ export default function TripPlanner({
           : t('Saved automatically on this browser', 'บันทึกอัตโนมัติในเบราว์เซอร์นี้')}
       </p>
       <TripPrint trip={trip} lang={lang} />
-      {!!trip.stops.length && (
-        <TripReadiness
-          trip={trip}
-          lang={lang}
-          photoStatus={photoStatus}
-          onDay={(code, day) => {
-            setBudgetOpen(false);
-            setDaily(true);
-            setDayTarget((previous) => ({ code, day, revision: (previous?.revision ?? 0) + 1 }));
-          }}
-          onChecklist={() => openDetails('.trip-checklist')}
-          onPhotos={() => openDetails('.offline-status')}
-        />
-      )}
       {account && (
         <Suspense fallback={<p role="status">{t('Loading…', 'กำลังโหลด…')}</p>}>
           <CloudPanel
@@ -522,6 +508,20 @@ export default function TripPlanner({
             'หากต้องการลดวันในรัฐ ให้ย้ายหรือลบกิจกรรมของวันสุดท้ายในแผนรายวันก่อน',
           )}
         </p>
+      )}
+      {!!trip.stops.length && (
+        <TripReadiness
+          trip={trip}
+          lang={lang}
+          photoStatus={photoStatus}
+          onDay={(code, day) => {
+            setBudgetOpen(false);
+            setDaily(true);
+            setDayTarget((previous) => ({ code, day, revision: (previous?.revision ?? 0) + 1 }));
+          }}
+          onChecklist={() => openDetails('.trip-checklist')}
+          onPhotos={() => openDetails('.offline-status')}
+        />
       )}
       <TripChecklist trip={trip} setTrip={setTrip} lang={lang} />
       <details className="planner-utility" open={!matchMedia('(max-width: 760px)').matches}>
