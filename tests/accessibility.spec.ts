@@ -132,9 +132,9 @@ test('photo labels remain readable on white images and card focus stays inside i
   await expect(page.locator('.state-card')).toHaveCount(50);
   const whiteImages = await page.addStyleTag({
     content: `
-    .state-card-visual, .detail-cover { background: #fff !important; }
-    .state-card-visual img, .detail-cover img { visibility: hidden !important; }
-    .card-image-button::after, .detail-cover::after { background: none !important; }
+    .state-card-visual, .detail-cover, .route-card { background: #fff !important; }
+    .state-card-visual img, .detail-cover img, .route-card > img { visibility: hidden !important; }
+    .card-image-button::after, .detail-cover::after, .route-card::after { background: none !important; }
   `,
   });
   for (const lang of LANGUAGES) {
@@ -164,10 +164,29 @@ test('photo labels remain readable on white images and card focus stays inside i
     const cards = await new AxeBuilder({ page })
       .include('.card-region')
       .include('.card-over-image')
+      .include('.route-days')
+      .include('.route-card-content')
       .withRules(['color-contrast'])
       .analyze();
     expect(cards.violations, lang).toEqual([]);
     expect(cards.incomplete, lang).toEqual([]);
+    const routeOverflow = await page.locator('.route-card').evaluateAll((routes) =>
+      routes.flatMap((route) => {
+        const elements = [...route.querySelectorAll<HTMLElement>('*')];
+        const sizes = elements.map((el) => parseFloat(getComputedStyle(el).fontSize));
+        elements.forEach((el, i) => (el.style.fontSize = `${sizes[i] * 2}px`));
+        const card = route.getBoundingClientRect();
+        const panel = route.querySelector('.route-card-content')!.getBoundingClientRect();
+        const badge = route.querySelector('.route-days')!.getBoundingClientRect();
+        const fits =
+          panel.bottom <= card.bottom &&
+          panel.top >= badge.bottom &&
+          elements.every((el) => el.scrollWidth <= el.clientWidth);
+        elements.forEach((el) => el.style.removeProperty('font-size'));
+        return fits ? [] : [route.textContent];
+      }),
+    );
+    expect(routeOverflow, `${lang} doubled itinerary-card text`).toEqual([]);
     await page.locator('.card-quick-view').first().click();
     await expect(page.locator('.detail-cover > div')).toBeVisible();
     await page.evaluate(() => document.fonts.ready);

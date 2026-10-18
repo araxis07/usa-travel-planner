@@ -304,8 +304,8 @@
     },
     {
       "placeId": "CO-0",
-      "checkedAt": "2026-10-18",
-      "reviewAfter": "2026-10-19",
+      "checkedAt": "2026-10-19",
+      "reviewAfter": "2026-10-26",
       "translationsReviewed": [false, false, false, false, false],
       "sections": [
         {
@@ -325,11 +325,11 @@
         },
         {
           "text": [
-            "2026: general timed entry runs May 22–October 12, 09:00–14:00; Bear Lake Road+ runs May 22–October 18, 05:00–18:00, in local Mountain Time. During October 13–18 the Bear Lake Road requirement still applies in those hours, although general timed entry has ended. Choose the option for your area; the USD 2 reservation fee is separate from admission. Check current road conditions.",
-            "ปี 2026: แบบทั่วไปใช้วันที่ 22 พฤษภาคม–12 ตุลาคม เวลา 09:00–14:00 ส่วน Bear Lake Road+ ใช้วันที่ 22 พฤษภาคม–18 ตุลาคม เวลา 05:00–18:00 ตามเวลา Mountain Time ท้องถิ่น ช่วง 13–18 ตุลาคม Bear Lake Road ยังต้องจองในเวลานี้ แม้แบบทั่วไปสิ้นสุดแล้ว เลือกแบบให้ตรงพื้นที่ ค่าจอง 2 ดอลลาร์แยกจากค่าเข้า และตรวจสภาพถนนปัจจุบัน",
-            "2026年：普通分时预约为5月22日至10月12日09:00–14:00；Bear Lake Road+为5月22日至10月18日05:00–18:00，均为当地山地时间。10月13–18日普通预约虽已结束，Bear Lake Road在上述时段仍须预约。按到访区域选择类型；2美元预约费与入园费分开，并核对当前路况。",
-            "2026年：一般の時間指定予約は5月22日〜10月12日の09:00〜14:00、Bear Lake Road+は5月22日〜10月18日の05:00〜18:00（現地Mountain Time）。10月13〜18日は一般予約の期間終了後も、Bear Lake Roadでは上記時間帯の予約が必要です。訪問区域に合う予約を選び、2米ドルの予約手数料と入園料を区別してください。最新の道路状況も確認を。",
-            "2026년 일반 시간 지정 예약은 5월 22일~10월 12일 09:00~14:00, Bear Lake Road+는 5월 22일~10월 18일 05:00~18:00이며 현지 Mountain Time 기준입니다. 10월 13~18일에는 일반 예약 기간이 끝나도 Bear Lake Road는 해당 시간에 예약이 필요합니다. 방문 구역에 맞게 선택하세요. 예약 수수료 2달러는 입장료와 별개이며 최신 도로 상황도 확인하세요."
+            "For visits from October 19, 2026 (local Mountain Time), both published 2026 timed-entry windows have ended: general entry on October 12 and Bear Lake Road+ on October 18. Admission or a qualifying pass is still required. The season ending does not confirm that roads, trails or campgrounds are open. Check NPS conditions before travel and new reservation dates for later seasons.",
+            "สำหรับการเข้าชมตั้งแต่วันที่ 19 ตุลาคม 2026 ตามเวลา Mountain Time ท้องถิ่น ช่วงจองเข้าตามเวลาที่ประกาศไว้ทั้งสองแบบของปี 2026 สิ้นสุดแล้ว: แบบทั่วไปวันที่ 12 ตุลาคม และ Bear Lake Road+ วันที่ 18 ตุลาคม ยังต้องชำระค่าเข้าหรือใช้บัตรผ่านที่มีสิทธิ์ การสิ้นสุดช่วงจองไม่ได้ยืนยันว่าถนน เส้นทาง หรือแคมป์เปิด ตรวจสภาพปัจจุบันกับ NPS ก่อนเดินทาง และตรวจวันจองใหม่สำหรับฤดูกาลถัดไป",
+            "按当地山地时间，2026年10月19日起到访时，已公布的2026年两类分时预约时段均已结束：普通预约于10月12日结束，Bear Lake Road+于10月18日结束。仍须支付入园费或持符合条件的通行证。预约季结束不代表道路、步道或营地开放。出发前查看NPS现状，后续季节须重新核对预约日期。",
+            "現地Mountain Timeで2026年10月19日以降の訪問では、公表された2026年の時間指定予約期間は両方とも終了しています。一般予約は10月12日、Bear Lake Road+は10月18日までです。入園料または対象パスは引き続き必要です。予約期間の終了は道路・登山道・キャンプ場の開放を意味しません。出発前にNPSの現況を確認し、次のシーズンは新しい予約日程を確認してください。",
+            "현지 Mountain Time 기준 2026년 10월 19일부터 방문할 경우, 공지된 2026년 시간 지정 예약 기간은 모두 끝났습니다. 일반 예약은 10월 12일, Bear Lake Road+는 10월 18일까지입니다. 입장료나 적용 가능한 패스는 여전히 필요합니다. 예약 기간 종료가 도로·탐방로·캠핑장 개방을 의미하지는 않습니다. 출발 전 NPS 현황을 확인하고 이후 시즌에는 새 예약 날짜를 확인하세요."
           ],
           "sources": [
             {
@@ -339,6 +339,10 @@
             {
               "name": "Recreation.gov · timed entry",
               "url": "https://www.recreation.gov/timed-entry/10086910"
+            },
+            {
+              "name": "NPS · current conditions",
+              "url": "https://www.nps.gov/romo/planyourvisit/conditions.htm"
             }
           ]
         },
@@ -359,11 +363,11 @@
         },
         {
           "text": [
-            "Developed campgrounds use separate reservations. An in-park camping reservation may provide timed-entry access under specific date and arrival conditions; it is not a blanket exemption. Confirm your campground’s instructions, especially Bear Lake Road access.",
-            "แคมป์ที่มีสิ่งอำนวยความสะดวกใช้การจองแยก การจองแคมป์ในอุทยานอาจให้สิทธิ์เข้าโดยมีเงื่อนไขวันและเวลามาถึง ไม่ใช่ข้อยกเว้นทุกกรณี ตรวจคำแนะนำแคมป์ โดยเฉพาะการเข้า Bear Lake Road",
-            "设施完善的营地需单独预订。园内露营预订可能按日期及抵达条件提供入园资格，并非一概豁免。尤其须核对Bear Lake Road的访问规定。",
-            "整備されたキャンプ場は別途予約します。園内キャンプ予約で入園できる場合もありますが、日付・到着時刻の条件付きです。Bear Lake Road を含め、各キャンプ場の案内を確認してください。",
-            "시설 캠핑장은 별도 예약을 사용합니다. 공원 내 캠핑 예약으로 날짜와 도착 조건에 따라 입장이 가능할 수 있지만 모든 경우의 예외는 아닙니다. 특히 Bear Lake Road 접근 규정을 확인하세요."
+            "During the timed-entry season: Developed campgrounds use separate reservations. An in-park camping reservation may provide timed-entry access under specific date and arrival conditions; it is not a blanket exemption. Confirm your campground’s instructions, especially Bear Lake Road access.",
+            "ในช่วงฤดูกาลที่ต้องจองเข้าตามเวลา: แคมป์ที่มีสิ่งอำนวยความสะดวกใช้การจองแยก การจองแคมป์ในอุทยานอาจให้สิทธิ์เข้าโดยมีเงื่อนไขวันและเวลามาถึง ไม่ใช่ข้อยกเว้นทุกกรณี ตรวจคำแนะนำแคมป์ โดยเฉพาะการเข้า Bear Lake Road",
+            "在须分时预约的季节：设施完善的营地需单独预订。园内露营预订可能按日期及抵达条件提供入园资格，并非一概豁免。尤其须核对Bear Lake Road的访问规定。",
+            "時間指定予約が必要なシーズンは：整備されたキャンプ場は別途予約します。園内キャンプ予約で入園できる場合もありますが、日付・到着時刻の条件付きです。Bear Lake Road を含め、各キャンプ場の案内を確認してください。",
+            "시간 지정 예약이 필요한 시즌에는: 시설 캠핑장은 별도 예약을 사용합니다. 공원 내 캠핑 예약으로 날짜와 도착 조건에 따라 입장이 가능할 수 있지만 모든 경우의 예외는 아닙니다. 특히 Bear Lake Road 접근 규정을 확인하세요."
           ],
           "sources": [
             {

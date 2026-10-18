@@ -430,8 +430,19 @@ test('park booking requirements stay distinct, dated and accessible in every lan
       if (profile.advisory)
         await expect(page.locator('.guide-advisory')).toContainText(profile.advisory.text[l]);
       if (guide.placeId === 'CO-0') {
-        await expect(section.locator('details').nth(1)).toContainText(/09:00[–〜~]14:00/);
-        await expect(section.locator('details').nth(1)).toContainText(/05:00[–〜~]18:00/);
+        const timing = section.locator('details').nth(1);
+        await expect(timing).toContainText(
+          [
+            'October 19, 2026',
+            '19 ตุลาคม 2026',
+            '2026年10月19日',
+            '2026年10月19日',
+            '2026년 10월 19일',
+          ][l],
+        );
+        await expect(
+          timing.locator('a[href="https://www.nps.gov/romo/planyourvisit/conditions.htm"]'),
+        ).toBeVisible();
       }
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
         true,
