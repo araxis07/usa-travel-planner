@@ -2576,6 +2576,25 @@ html[lang='ko'] .discovery-place h3 {
   white-space: normal;
   max-width: 100%;
 }
+.readiness-notices {
+  margin: 16px 0;
+  border-top: 1px solid #d4deea;
+  overflow-wrap: anywhere;
+}
+.readiness-notices h3 {
+  font-size: 16px;
+  margin: 16px 0 8px;
+}
+.readiness-notices h4 {
+  margin: 0;
+}
+.readiness-notices a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.readiness-notices li + li {
+  margin-top: 20px;
+}
 @media print {
   .trip-readiness {
     display: none;

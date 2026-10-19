@@ -213,3 +213,40 @@ test('photo labels remain readable on white images and card focus stays inside i
     }),
   ).toBe(true);
 });
+
+test('long English state names keep whole words on narrow discovery and saved cards', async ({
+  page,
+}) => {
+  await page.addInitScript(() =>
+    localStorage.setItem('roam.saved.v1', JSON.stringify(['WA', 'MA', 'PA'])),
+  );
+  await page.goto('/en/');
+  await page.getByRole('button', { name: 'Explore all 50 states', exact: true }).click();
+  await page.evaluate(() => document.fonts.ready);
+  for (const width of [320, 390]) {
+    await page.setViewportSize({ width, height: 740 });
+    for (const selector of ['.destination-grid', '.saved-grid']) {
+      if (selector === '.saved-grid') {
+        await page
+          .locator('.footer-links')
+          .getByRole('button', { name: 'Saved places', exact: true })
+          .click();
+      }
+      const headings = page.locator(`${selector} .card-over-image h3`);
+      await expect(headings).toHaveCount(selector === '.saved-grid' ? 3 : 50);
+      const splitWords = await headings.evaluateAll((headings) =>
+        headings.flatMap((heading) => {
+          const node = heading.firstChild!;
+          return [...node.textContent!.matchAll(/[A-Za-z]+/g)].flatMap((match) => {
+            const range = document.createRange();
+            range.setStart(node, match.index!);
+            range.setEnd(node, match.index! + match[0].length);
+            return range.getClientRects().length > 1 ? [match[0]] : [];
+          });
+        }),
+      );
+      expect(splitWords, `${width}px ${selector} state names`).toEqual([]);
+      if (selector === '.saved-grid') await page.keyboard.press('Escape');
+    }
+  }
+});

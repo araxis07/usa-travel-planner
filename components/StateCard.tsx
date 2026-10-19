@@ -55,7 +55,7 @@ export default function StateCard({
               src={photo.src}
               alt={local(state.placeNames[photo.placeIndex], lang)}
               loading="lazy"
-              sizes="(max-width: 1100px) calc((100vw - 64px) / 2), 25vw"
+              sizes="(max-width: 480px) calc(100vw - 48px), (max-width: 1100px) calc((100vw - 64px) / 2), 25vw"
               width="600"
               height="700"
             />

@@ -845,6 +845,14 @@ h4 {
 .card-image-button img[src='/images/states/pa-1.jpg'] {
   object-position: 15% center;
 }
+.card-image-button img[src='/images/states/ct-1.jpg'],
+.card-image-button img[src='/images/states/ok-1.jpg'],
+.card-image-button img[src='/images/states/wv-1.jpg'] {
+  object-position: right center;
+}
+.card-image-button img[src='/images/states/oh-1.jpg'] {
+  object-position: left center;
+}
 .state-card:hover .card-image-button img {
   transform: scale(1.065);
 }
@@ -4782,4 +4790,14 @@ html:lang(ko) .eyebrow {
   clip-path: inset(50%) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+@media (max-width: 480px) {
+  .destination-grid,
+  .saved-grid {
+    grid-template-columns: 1fr;
+  }
+  .state-card-visual {
+    aspect-ratio: 4 / 3;
+    min-height: 220px;
+  }
 }

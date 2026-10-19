@@ -3,6 +3,41 @@ import { languageIndex, type Language } from '../lib/i18n';
 // Every new experience string ships together in EN / TH / ZH / JA / KO.
 export const EXPERIENCE_COPY = {
   planReview: ['Check your plan', 'ตรวจแผนทริป', '检查行程', '旅の計画を確認', '여행 계획 확인'],
+  noticePlaces: [
+    'Places with saved notices: {count}',
+    'สถานที่ที่มีประกาศบันทึกไว้ {count} แห่ง',
+    '有已保存公告的地点：{count}个',
+    '保存済みのお知らせがある場所：{count}か所',
+    '저장된 안내가 있는 장소: {count}곳',
+  ],
+  placeNotices: [
+    'Saved place notices',
+    'ประกาศสถานที่ที่บันทึกไว้',
+    '已保存的地点公告',
+    '保存済みの場所のお知らせ',
+    '저장된 장소 안내',
+  ],
+  placeNoticesNote: [
+    'Dated notices for linked places in this trip. Custom activities are not checked. Open the official sources before travel; no notice does not confirm that a place is open.',
+    'ประกาศตามวันที่บันทึกของสถานที่ที่ผูกกับกิจกรรมในทริป ไม่ได้ตรวจสำหรับกิจกรรมที่ตั้งเอง เปิดแหล่งทางการก่อนเดินทาง การไม่มีประกาศไม่ได้ยืนยันว่าสถานที่เปิด',
+    '这些是行程中关联地点的已存公告，并非实时信息；自定义活动未检查。出发前查看官方来源，没有公告不代表地点开放。',
+    '旅程に紐づく場所の、記載日時点のお知らせです。自作の予定は確認対象外です。出発前に公式情報を確認してください。お知らせがないことは営業・開放の確認ではありません。',
+    '일정에 연결된 장소의 표시 날짜 기준 안내입니다. 직접 만든 활동은 확인 대상이 아닙니다. 출발 전 공식 출처를 확인하세요. 안내가 없다고 개방이 확인된 것은 아닙니다.',
+  ],
+  noPlaceNotices: [
+    'No saved notices match the linked places in this trip.',
+    'ไม่พบประกาศที่บันทึกไว้สำหรับสถานที่ที่ผูกกับกิจกรรมในทริปนี้',
+    '未找到与此行程关联地点相符的已保存公告。',
+    'この旅程に紐づく場所に該当する保存済みのお知らせはありません。',
+    '이 일정에 연결된 장소에 해당하는 저장된 안내가 없습니다.',
+  ],
+  noticeDay: [
+    'Day {day} · {state}',
+    'วันที่ {day} · {state}',
+    '第{day}天 · {state}',
+    '{day}日目 · {state}',
+    '{day}일차 · {state}',
+  ],
   planReviewNote: [
     'Planning reminders only; bookings and travel documents need your own checks.',
     'รายการช่วยจัดแผน ต้องตรวจการจองและเอกสารเดินทางด้วยตนเอง',

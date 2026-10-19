@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { EMPTY_TRIP, type Trip } from '../data/travel';
+import { EMPTY_TRIP, STATES, type Trip } from '../data/travel';
 import { x } from '../data/experience-copy';
 import { LANGUAGES } from '../lib/i18n';
 
@@ -116,4 +116,108 @@ test('plan reminders recalculate after time edits, deletion and undo', async ({ 
   await expect(review).toContainText(x('en', 'reviewDays', { count: 0 }));
   await page.getByRole('button', { name: 'Undo', exact: true }).click();
   await expect(review).toContainText(x('en', 'reviewDays', { count: 1 }));
+});
+
+test('saved notices deduplicate places, navigate days and update after removal and undo in five languages', async ({
+  page,
+}) => {
+  test.setTimeout(60000);
+  const visit = {
+    day: 1,
+    period: 'morning' as const,
+    minutes: 60,
+    notes: 'Keep my personal note',
+  };
+  const saved: Trip = {
+    ...EMPTY_TRIP,
+    name: 'Notices review',
+    stops: [
+      {
+        code: 'CA',
+        days: 2,
+        notes: 'Keep my state note',
+        activities: [
+          { ...visit, id: 'coast-a', title: 'First coast visit', placeId: 'CA-2' },
+          { ...visit, id: 'coast-b', title: 'Second coast visit', placeId: 'CA-2' },
+          { ...visit, id: 'coast-c', title: 'Next day coast visit', placeId: 'CA-2', day: 2 },
+        ],
+      },
+      {
+        code: 'UT',
+        days: 1,
+        notes: '',
+        activities: [{ ...visit, id: 'zion', title: 'Park visit', placeId: 'UT-0' }],
+      },
+      {
+        code: 'AZ',
+        days: 1,
+        notes: '',
+        activities: [{ ...visit, id: 'custom', title: 'Grand Canyon South Rim' }],
+      },
+    ],
+    budgetMode: 'items',
+    expenses: [{ id: 'hotel', name: 'Hotel', category: 'lodging', planned: 300, paid: 100 }],
+  };
+  await page.addInitScript(
+    (value) => localStorage.setItem('roam.trip.v1', JSON.stringify(value)),
+    saved,
+  );
+  let routeRequests = 0;
+  page.on('request', (request) => {
+    if (request.url().includes('routing.openstreetmap.de')) routeRequests++;
+  });
+  await page.goto('/en/?view=planner');
+  const review = page.locator('.trip-readiness');
+  await review.locator('summary').click();
+  const notices = review.locator('.readiness-notices');
+  const items = notices.locator('li');
+  for (const lang of LANGUAGES) {
+    await page.getByLabel('Language / ภาษา', { exact: true }).selectOption(lang);
+    await expect(review.locator('summary')).toContainText(x(lang, 'noticePlaces', { count: 2 }));
+    await expect(notices).toContainText(x(lang, 'placeNoticesNote'));
+    await expect(items).toHaveCount(2);
+    await expect(items.first().getByRole('button')).toHaveCount(2);
+    const coastNotice = STATES.find((state) => state.code === 'CA')!.destinations[2].advisory!;
+    await expect(items.first().locator('time')).toHaveAttribute('datetime', coastNotice.checkedAt);
+    await expect(items.first().getByRole('link')).toHaveAttribute('href', coastNotice.source);
+    await expect(items.first().getByRole('link')).toHaveAttribute('rel', 'noreferrer');
+    const dayLink = items.last().getByRole('button');
+    await dayLink.focus();
+    await dayLink.press('Enter');
+    await expect(page.locator('.day-navigation select')).toHaveValue('UT');
+    await expect(page.locator('.day-strip [aria-pressed="true"]')).toContainText('3');
+    await expect(page.locator('.day-strip [aria-pressed="true"]')).toBeFocused();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!))).toEqual(
+    saved,
+  );
+  await page.getByLabel('Language / ภาษา', { exact: true }).selectOption('en');
+  await items.first().getByRole('button').last().click();
+  await page.getByRole('button', { name: /^Remove activity/ }).click();
+  await expect(items.first().getByRole('button')).toHaveCount(1);
+  await expect(items).toHaveCount(2);
+  await items.first().getByRole('button').click();
+  await page
+    .getByRole('button', { name: /^Remove activity/ })
+    .first()
+    .click();
+  await expect(items).toHaveCount(2);
+  await page.getByRole('button', { name: /^Remove activity/ }).click();
+  await expect(items).toHaveCount(1);
+  await items.first().getByRole('button').click();
+  await page.getByRole('button', { name: /^Remove activity/ }).click();
+  await expect(items).toHaveCount(0);
+  await expect(notices).toContainText(x('en', 'noPlaceNotices'));
+  await expect(review.locator('summary')).toContainText(x('en', 'noticePlaces', { count: 0 }));
+  await page.getByRole('button', { name: 'Undo', exact: true }).click();
+  await expect(items).toHaveCount(1);
+  await expect(review.locator('summary')).toContainText(x('en', 'noticePlaces', { count: 1 }));
+  expect(routeRequests).toBe(0);
+  const after = await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!));
+  expect(after.expenses).toEqual(saved.expenses);
+  expect(after.stops[0].notes).toBe(saved.stops[0].notes);
+  expect(after.stops[2].activities).toEqual(saved.stops[2].activities);
 });

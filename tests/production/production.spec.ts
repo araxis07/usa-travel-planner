@@ -267,7 +267,7 @@ test('mobile home defers guide details and atlas while credits and practical gui
       .locator('.destination-grid .card-image-button img')
       .first()
       .evaluate((image: HTMLImageElement) => image.currentSrc),
-  ).toContain('-640.webp');
+  ).toContain('-960.webp');
   await page.locator('.destination-grid .card-image-button').first().click();
   await expect(page.locator('#destination-guide .destination-hero h1')).toHaveText('California');
   await expect(page.locator('.destination-page > .photo-credit a').first()).toHaveAttribute(
@@ -565,10 +565,20 @@ test('saved itinerary and all selected state photos reopen offline; print covers
   page,
   context,
 }, testInfo) => {
+  const offlineTrip = structuredClone(sample);
+  offlineTrip.stops[0].activities!.push({
+    id: 'coast-notice',
+    day: 1,
+    period: 'morning',
+    placeId: 'CA-2',
+    title: 'Big Sur',
+    minutes: 120,
+    notes: '',
+  });
   await page.goto('/en/?view=planner');
   await page.evaluate(
     (value) => localStorage.setItem('roam.trip.v1', JSON.stringify(value)),
-    sample,
+    offlineTrip,
   );
   await page.reload();
   await page.evaluate(async () => {
@@ -597,8 +607,19 @@ test('saved itinerary and all selected state photos reopen offline; print covers
   await context.setOffline(true);
   await page.reload();
   await expect(page.locator('#planner-page')).toBeVisible();
+  const review = page.locator('.trip-readiness');
+  await review.locator('summary').click();
+  const advisory = STATES[0].destinations[2].advisory!;
   for (const lang of LANGUAGES) {
     await page.getByLabel('Language / ภาษา').selectOption(lang);
+    await expect(review.locator('summary')).toContainText(x(lang, 'noticePlaces', { count: 1 }));
+    const notice = review.locator('.readiness-notices li');
+    await expect(notice).toHaveCount(1);
+    await expect(notice.getByRole('link')).toHaveAttribute('href', advisory.source);
+    await expect(notice.locator('time')).toHaveAttribute('datetime', advisory.checkedAt);
+    await notice.getByRole('button').click();
+    await expect(page.locator('.day-strip [aria-pressed="true"]')).toBeFocused();
+    await expect(page.locator('.day-strip [aria-pressed="true"]')).toContainText('1');
     await page.emulateMedia({ media: 'print' });
     await expect(page.locator('.print-itinerary')).toBeVisible();
     await expect(page.locator('.print-day')).toHaveCount(2);
