@@ -1,4 +1,4 @@
-import { statePlaces, statePhoto } from '../data/travel';
+import { statePlaces, statePhoto, local } from '../data/travel';
 import { translate, LOCALES, languageIndex } from '../lib/i18n';
 import { x } from '../data/experience-copy';
 import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ChangeEvent } from 'react';
@@ -9,8 +9,10 @@ import { StateShape, regionColors } from './Atlas';
 import DailyPlanner from './DailyPlanner';
 import TripPrint from './TripPrint';
 import { saveOffline, type OfflineProgress } from '../lib/offline';
-import { activityName, sortedActivities } from '../lib/destinations';
-import TripChecklist from './TripChecklist';
+import { activityName } from '../lib/destinations';
+import TripChecklist, { checklistItems, checklistLabel } from './TripChecklist';
+import { dayTimeline, clockLabel } from '../lib/timeline';
+import { tripNotices } from '../lib/trip-notices';
 import OfflineStatus, { type PhotoStatus } from './OfflineStatus';
 import TripReadiness from './TripReadiness';
 import { w } from '../data/workspace-copy';
@@ -114,6 +116,9 @@ export default function TripPlanner({
     }).format(date);
   }
   function exportText() {
+    let offset = 0;
+    const totals = budgetTotals(trip);
+    const notices = tripNotices(trip);
     const text = [
       trip.name || t('My American adventure', 'ทริปอเมริกาของฉัน'),
       `${days} ${t('days', 'วัน')} · ${trip.travelers} ${t('travelers', 'คน')}`,
@@ -121,17 +126,54 @@ export default function TripPlanner({
       '',
       ...trip.stops.flatMap((stop, index) => {
         const state = STATES.find((item) => item.code === stop.code)!;
+        const start = offset;
+        offset += stop.days;
         return [
           `${index + 1}. ${stateName(state, lang)} — ${stop.days} ${t('days', 'วัน')}`,
           `   ${statePlaces(state, lang).join(' / ')}`,
           stop.notes ? `   ${stop.notes}` : '',
-          ...sortedActivities(stop.activities ?? []).map(
-            (a) =>
-              `   ${t('Day', 'วันที่')} ${a.day} · ${a.period === 'morning' ? t('Morning', 'เช้า') : a.period === 'afternoon' ? t('Afternoon', 'บ่าย') : t('Evening', 'เย็น')} · ${activityName(a, lang)} · ${a.minutes} ${t('minutes', 'นาที')}${a.notes ? ` — ${a.notes}` : ''}${a.arrival ? `\n      ${a.arrival.label[languageIndex(lang)]} · ${a.arrival.note[languageIndex(lang)]}\n      https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a.arrival.coordinates.join(','))}\n      ${a.arrival.source.url} · ${a.arrival.coordinateSource} · ODbL ${a.arrival.coordinateLicense} · ${x(lang, 'arrivalChecked', { date: a.arrival.checkedAt })}\n      ${x(lang, 'arrivalLimit')}` : ''}`,
-          ),
+          ...Array.from({ length: stop.days }, (_, i) =>
+            dayTimeline((stop.activities ?? []).filter((a) => a.day === i + 1)).map(
+              ({ activity: a, start: time, end, estimated }) =>
+                `   ${t('Day', 'วันที่')} ${start + a.day} · ${a.period === 'morning' ? t('Morning', 'เช้า') : a.period === 'afternoon' ? t('Afternoon', 'บ่าย') : t('Evening', 'เย็น')} · ${activityName(a, lang)} · ${clockLabel(time)}–${clockLabel(end)}${estimated ? ` · ${x(lang, 'estimatedTime')}` : ''} · ${a.minutes} ${t('minutes', 'นาที')}${a.notes ? ` — ${a.notes}` : ''}${a.arrival ? `\n      ${a.arrival.label[languageIndex(lang)]} · ${a.arrival.note[languageIndex(lang)]}\n      https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a.arrival.coordinates.join(','))}\n      ${a.arrival.source.url} · ${a.arrival.coordinateSource} · ODbL ${a.arrival.coordinateLicense} · ${x(lang, 'arrivalChecked', { date: a.arrival.checkedAt })}\n      ${x(lang, 'arrivalLimit')}` : ''}`,
+            ),
+          ).flat(),
           '',
         ];
       }),
+      ...(notices.length
+        ? [
+            x(lang, 'placeNotices'),
+            x(lang, 'placeNoticesNote'),
+            ...notices.flatMap(({ place, advisory, days }) => [
+              local(place.state.placeNames[place.index], lang),
+              days
+                .map((day) =>
+                  x(lang, 'noticeDay', {
+                    day: day.number,
+                    state: stateName(
+                      STATES.find((s) => s.code === day.code)!,
+                      lang,
+                    ),
+                  }),
+                )
+                .join(' · '),
+              local(advisory.text, lang),
+              x(lang, 'arrivalChecked', { date: advisory.checkedAt }),
+              advisory.source,
+              '',
+            ]),
+          ]
+        : []),
+      ...(checklistItems(trip).length
+        ? [
+            x(lang, 'checklist'),
+            ...checklistItems(trip).map(
+              (item) => `${item.done ? '☑' : '☐'} ${checklistLabel(item, lang)}`,
+            ),
+            '',
+          ]
+        : []),
       trip.budgetMode !== 'items'
         ? `${t('Daily budget per traveler', 'งบรายวันต่อคน')}: ${money(trip.dailyBudget)}`
         : w(lang, 'itemMode'),
@@ -140,7 +182,12 @@ export default function TripPlanner({
         (e) =>
           `${w(lang, e.category)} · ${e.name}: ${w(lang, 'planned')} ${money(e.planned)} · ${w(lang, 'paid')} ${money(e.paid)}`,
       ),
-      `${w(lang, 'paid')}: ${money(budgetTotals(trip).paid)}`,
+      `${w(lang, 'paid')}: ${money(totals.paid)}`,
+      ...(trip.expenses?.length
+        ? [
+            `${w(lang, 'totals')}: ${money(totals.planned)} · ${w(lang, 'unpaid')}: ${money(totals.remaining)}`,
+          ]
+        : []),
       trip.budgetMode === 'items'
         ? w(lang, 'budgetHint')
         : t(

@@ -1,7 +1,9 @@
+import { readFileSync } from 'node:fs';
+import { w } from '../data/workspace-copy';
 import { test, expect } from '@playwright/test';
-import { EMPTY_TRIP, STATES, type Trip } from '../data/travel';
+import { EMPTY_TRIP, STATES, local, type Trip } from '../data/travel';
 import { x } from '../data/experience-copy';
-import { LANGUAGES } from '../lib/i18n';
+import { LANGUAGES, LOCALES, translate } from '../lib/i18n';
 
 const trip: Trip = {
   ...EMPTY_TRIP,
@@ -220,4 +222,102 @@ test('saved notices deduplicate places, navigate days and update after removal a
   expect(after.expenses).toEqual(saved.expenses);
   expect(after.stops[0].notes).toBe(saved.stops[0].notes);
   expect(after.stops[2].activities).toEqual(saved.stops[2].activities);
+});
+
+test('text and print retain trip-wide days, times, dated notices, checklists and item balances in five languages', async ({
+  page,
+}) => {
+  test.setTimeout(60000);
+  const activity = { day: 1, period: 'morning' as const, minutes: 60, notes: '' };
+  const saved: Trip = {
+    ...EMPTY_TRIP,
+    stops: [
+      {
+        code: 'CA',
+        days: 2,
+        notes: 'Keep this note',
+        activities: [
+          {
+            ...activity,
+            id: 'first',
+            title: 'Coast',
+            placeId: 'CA-2',
+            startTime: '10:00',
+            bufferMinutes: 15,
+          },
+          { ...activity, id: 'repeat', title: 'Coast again', placeId: 'CA-2', minutes: 30 },
+          { ...activity, id: 'tomorrow', title: 'Coast tomorrow', placeId: 'CA-2', day: 2 },
+        ],
+      },
+      {
+        code: 'UT',
+        days: 1,
+        notes: '',
+        activities: [{ ...activity, id: 'park', title: 'Zion', placeId: 'UT-0' }],
+      },
+    ],
+    checklist: [{ id: 'custom', label: 'Bring my camera', done: true }],
+    budgetMode: 'items',
+    expenses: [
+      { id: 'hotel', name: 'Hotel deposit', category: 'lodging', planned: 600.25, paid: 200.1 },
+      { id: 'food', name: 'Lunch', category: 'food', planned: 20, paid: 25 },
+    ],
+  };
+  await page.addInitScript((value) => {
+    if (!localStorage.getItem('roam.trip.v1'))
+      localStorage.setItem('roam.trip.v1', JSON.stringify(value));
+  }, saved);
+  await page.goto('/en/?view=planner');
+  const printed = page.locator('.print-itinerary');
+  for (const lang of LANGUAGES) {
+    await page.getByLabel('Language / ภาษา', { exact: true }).selectOption(lang);
+    const download = page.waitForEvent('download');
+    await page.locator('.export-main:visible').click();
+    const text = readFileSync((await (await download).path())!, 'utf8');
+    expect(text).toContain('10:00–11:00');
+    expect(text).toContain('11:15–11:45');
+    expect(text.split('09:00–10:00')).toHaveLength(3);
+    expect(text.split(x(lang, 'estimatedTime'))).toHaveLength(4);
+    expect(text).toContain('☑ Bring my camera');
+    expect(text).toContain('Keep this note');
+    expect(text).toContain(
+      `${w(lang, 'unpaid')}: ${new Intl.NumberFormat(LOCALES[lang], { style: 'currency', currency: 'USD' }).format(400.15)}`,
+    );
+    await page.emulateMedia({ media: 'print' });
+    await expect(printed.locator('.print-day')).toHaveCount(3);
+    await expect(printed.locator('.print-day').nth(1)).toContainText('09:00–10:00');
+    await expect(printed.locator('.print-day').last()).toContainText(
+      `${translate('Day', 'วันที่', lang)} 3`,
+    );
+    expect(text).toContain(`${translate('Day', 'วันที่', lang)} 3 ·`);
+    await expect(printed.locator('.estimated-time')).toHaveCount(3);
+    await expect(printed.locator('.print-notices li')).toHaveCount(2);
+    await expect(printed.locator('.print-checklist')).toContainText('☑ Bring my camera');
+    await expect(printed.locator('.print-budget')).toContainText('400.15');
+    for (const code of ['CA', 'UT']) {
+      const state = STATES.find((s) => s.code === code)!;
+      const advisory = state.destinations[code === 'CA' ? 2 : 0].advisory!;
+      expect(text.split(advisory.source)).toHaveLength(2);
+      expect(text).toContain(local(advisory.text, lang));
+      await expect(printed.locator('.print-notices')).toContainText(local(advisory.text, lang));
+      await expect(printed.locator('.print-notices')).toContainText(advisory.checkedAt);
+    }
+    await page.emulateMedia({ media: 'screen' });
+  }
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('roam.trip.v1')!))).toEqual(
+    saved,
+  );
+  for (const checklist of [undefined, []]) {
+    await page.evaluate((checklist) => {
+      const trip = JSON.parse(localStorage.getItem('roam.trip.v1')!);
+      trip.checklist = checklist;
+      localStorage.setItem('roam.trip.v1', JSON.stringify(trip));
+    }, checklist);
+    await page.reload();
+    await expect(printed.locator('.print-checklist li')).toHaveCount(checklist ? 0 : 6);
+    const download = page.waitForEvent('download');
+    await page.locator('.export-main:visible').click();
+    const text = readFileSync((await (await download).path())!, 'utf8');
+    expect(text.includes(x('ko', 'documents'))).toBe(!checklist);
+  }
 });

@@ -1,6 +1,6 @@
 import { STATES, local, stateName, type Trip, type Language } from '../data/travel';
 import { x } from '../data/experience-copy';
-import { findPlace } from '../lib/destinations';
+import { tripNotices } from '../lib/trip-notices';
 import { dayTimeline } from '../lib/timeline';
 import { checklistItems } from './TripChecklist';
 import type { PhotoStatus } from './OfflineStatus';
@@ -30,20 +30,13 @@ export default function TripReadiness({
         number: offset + i + 1,
         empty: !activities.length,
         warning: dayTimeline(activities).some((item) => item.overlap || item.far),
-        placeIds: activities.flatMap((activity) => (activity.placeId ? [activity.placeId] : [])),
       };
     });
     offset += stop.days;
     return result;
   });
   const issues = days.filter((day) => day.empty || day.warning);
-  const notices = [...new Set(days.flatMap((day) => day.placeIds))].flatMap((id) => {
-    const place = findPlace(id);
-    const advisory = place?.profile.advisory;
-    return place && advisory
-      ? [{ place, advisory, days: days.filter((day) => day.placeIds.includes(id)) }]
-      : [];
-  });
+  const notices = tripNotices(trip);
   return (
     <details className="trip-readiness">
       <summary>

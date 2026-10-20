@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 import { EMPTY_TRIP, STATES, type Trip } from '../../data/travel';
 import { LANGUAGES, LOCALES } from '../../lib/i18n';
 import catalog from '../../content/states.json' with { type: 'json' };
@@ -623,6 +624,10 @@ test('saved itinerary and all selected state photos reopen offline; print covers
     await page.emulateMedia({ media: 'print' });
     await expect(page.locator('.print-itinerary')).toBeVisible();
     await expect(page.locator('.print-day')).toHaveCount(2);
+    await expect(page.locator('.print-notices li')).toHaveCount(1);
+    await expect(page.locator('.print-notices a')).toHaveAttribute('href', advisory.source);
+    await expect(page.locator('.print-notices')).toContainText(advisory.checkedAt);
+    await expect(page.locator('.print-checklist li')).toHaveCount(6);
     await expect(page.locator('.print-budget')).toContainText('Hotel deposit');
     await expect(page.locator('.print-budget')).toContainText('400.15');
     await expect(page.locator('.print-itinerary')).toContainText(
@@ -636,6 +641,13 @@ test('saved itinerary and all selected state photos reopen offline; print covers
     expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
     expect(pdf.byteLength).toBeGreaterThan(12000);
     await page.emulateMedia({ media: 'screen' });
+    const download = page.waitForEvent('download');
+    await page.locator('.export-main:visible').click();
+    const text = readFileSync((await (await download).path())!, 'utf8');
+    expect(text).toContain(advisory.source);
+    expect(text).toContain(advisory.checkedAt);
+    expect(text).toContain(x(lang, 'checklist'));
+    expect(text).toContain('400.15');
   }
   await page.goto('/en/states/california/yosemite-national-park/');
   await expect(page.locator('h1')).toContainText('Yosemite');

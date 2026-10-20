@@ -1,4 +1,4 @@
-import { STATES, stateName, type Trip, type Language } from '../data/travel';
+import { STATES, local, stateName, type Trip, type Language } from '../data/travel';
 import { translate, LOCALES } from '../lib/i18n';
 import { activityName, sortedActivities } from '../lib/destinations';
 import { tripDays } from '../lib/storage';
@@ -8,6 +8,7 @@ import { checklistItems, checklistLabel } from './TripChecklist';
 import { budgetTotals } from '../lib/budget';
 import { w } from '../data/workspace-copy';
 import ArrivalReference from './ArrivalReference';
+import { tripNotices } from '../lib/trip-notices';
 export default function TripPrint({
   trip,
   lang,
@@ -18,6 +19,7 @@ export default function TripPrint({
   screen?: boolean;
 }) {
   const t = (en: string, th: string) => translate(en, th, lang);
+  const notices = tripNotices(trip);
   let offset = 0;
   return (
     <article
@@ -91,6 +93,37 @@ export default function TripPrint({
           </section>
         );
       })}
+      {!!notices.length && (
+        <section className="print-notices">
+          <h2>{x(lang, 'placeNotices')}</h2>
+          <p>{x(lang, 'placeNoticesNote')}</p>
+          <ul>
+            {notices.map(({ place, advisory, days }) => (
+              <li key={place.id}>
+                <h3>{local(place.state.placeNames[place.index], lang)}</h3>
+                <p>
+                  {days
+                    .map((day) =>
+                      x(lang, 'noticeDay', {
+                        day: day.number,
+                        state: stateName(
+                          STATES.find((s) => s.code === day.code)!,
+                          lang,
+                        ),
+                      }),
+                    )
+                    .join(' · ')}
+                </p>
+                <p>{local(advisory.text, lang)}</p>
+                <p>{x(lang, 'arrivalChecked', { date: advisory.checkedAt })}</p>
+                <a href={advisory.source} target="_blank" rel="noreferrer">
+                  {advisory.source}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       {!!trip.expenses?.length && (
         <section className="print-budget">
           <h2>{w(lang, 'budget')} · USD</h2>
@@ -122,7 +155,7 @@ export default function TripPrint({
           </p>
         </section>
       )}
-      {!!trip.checklist?.length && (
+      {!!checklistItems(trip).length && (
         <section className="print-checklist">
           <h2>{x(lang, 'checklist')}</h2>
           <ul>

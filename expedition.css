@@ -508,6 +508,12 @@
 .print-itinerary {
   display: none;
 }
+.print-notices {
+  overflow-wrap: anywhere;
+}
+.print-notices li {
+  break-inside: avoid;
+}
 .day-period .period-empty {
   color: #586366;
 }
@@ -593,7 +599,7 @@
     break-inside: avoid;
   }
   .print-day h3,
-  .print-state h2 {
+  .print-itinerary h2 {
     break-after: avoid;
   }
   .print-itinerary .fine-print {
